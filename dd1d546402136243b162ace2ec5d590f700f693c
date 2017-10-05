@@ -22,6 +22,30 @@
       "revId": "dd1d546402136243b162ace2ec5d590f700f693c",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d5d6ec4_d772caec",
+        "filename": "sdk/android/src/java/org/webrtc/HardwareVideoDecoder.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 5112
+      },
+      "writtenOn": "2017-10-05T10:47:02Z",
+      "side": 1,
+      "message": "I changed this to: copyNV12ToI420Buffer",
+      "parentUuid": "96a53042_9ebee09b",
+      "range": {
+        "startLine": 492,
+        "startChar": 28,
+        "endLine": 492,
+        "endChar": 42
+      },
+      "revId": "dd1d546402136243b162ace2ec5d590f700f693c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
     }
   ]
 }
