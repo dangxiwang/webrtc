@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a1c39b90_9e4ffc40",
+        "filename": "pc/peerconnection_rtp_unittest.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 5039
+      },
+      "writtenOn": "2017-10-05T17:30:14Z",
+      "side": 1,
+      "message": "I\u0027d suggest caller/callee instead of pc1/pc2 -- especially since they are always used in this way (with pc1 always creating offers and pc2 setting them as its remote description).",
+      "revId": "b36d253725a86f22aabf231fdecd1c757f3dcf22",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2173676b_a090aa97",
+        "filename": "pc/peerconnection_rtp_unittest.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 5039
+      },
+      "writtenOn": "2017-10-05T17:30:14Z",
+      "side": 1,
+      "message": "Take a look at the helper methods on PeerConnectionWrapper. With the helpers, this method reduces to the following:\n\nASSERT_TRUE(pc2_-\u003eSetRemoteDescription(pc1_-\u003eCreateOfferAndSetAsLocal()));",
+      "revId": "b36d253725a86f22aabf231fdecd1c757f3dcf22",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "100a77e1_ba5af105",
+        "filename": "pc/peerconnection_rtp_unittest.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 5039
+      },
+      "writtenOn": "2017-10-05T17:30:14Z",
+      "side": 1,
+      "message": "This is personal preference, but I think the unit tests are easier to read if these are local variables (named caller/callee) instead of fixture members. You get the benefit of only initializing what is needed for the test (perhaps less useful here though, since caller/callee are always used). And it makes it clear how the PeerConnections are initialized (e.g., with special configuration).\n\nThe PeerConnectionWrapper helpers make it so you usually don\u0027t need fixture methods to operate on both PeerConnections because exchanging offer/answer is done in 2 lines:\n\nASSERT_TRUE(callee-\u003eSetRemoteDescription(caller-\u003eCreateOfferAndSetAsLocal());\nASSERT_TRUE(caller-\u003eSetRemoteDescription(callee-\u003eCreateAnswerAndSetAsLocal()));\n\n(Here\u0027s an example of a test that does multiple offer/answer exchanges: https://webrtc-review.googlesource.com/c/src/+/6640/3/pc/peerconnection_media_unittest.cc#690)",
+      "revId": "b36d253725a86f22aabf231fdecd1c757f3dcf22",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "326ecd62_bef33546",
+        "filename": "pc/peerconnection_rtp_unittest.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 5039
+      },
+      "writtenOn": "2017-10-05T17:30:14Z",
+      "side": 1,
+      "message": "ASSERT otherwise the following line will crash if this is false.",
+      "revId": "b36d253725a86f22aabf231fdecd1c757f3dcf22",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6df52dbc_efe7a57f",
+        "filename": "pc/peerconnection_rtp_unittest.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 5039
+      },
+      "writtenOn": "2017-10-05T17:30:14Z",
+      "side": 1,
+      "message": "ASSERT again",
+      "revId": "b36d253725a86f22aabf231fdecd1c757f3dcf22",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2670df8_98c8de5a",
+        "filename": "pc/peerconnection_rtp_unittest.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 5039
+      },
+      "writtenOn": "2017-10-05T17:30:14Z",
+      "side": 1,
+      "message": "Ditto with ASSERT",
+      "revId": "b36d253725a86f22aabf231fdecd1c757f3dcf22",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57a01b05_e7e2e8d3",
+        "filename": "pc/peerconnection_rtp_unittest.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 5039
+      },
+      "writtenOn": "2017-10-05T17:30:14Z",
+      "side": 1,
+      "message": "Would it be appropriate for this to be an EXPECT -- or would this failing make the rest of the test assertions irrelevant?",
+      "revId": "b36d253725a86f22aabf231fdecd1c757f3dcf22",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
