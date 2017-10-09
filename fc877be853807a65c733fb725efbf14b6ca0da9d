@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "934f432d_8212322d",
+        "filename": "pc/peerconnection_rtp_unittest.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 5039
+      },
+      "writtenOn": "2017-10-09T21:41:41Z",
+      "side": 1,
+      "message": "Nit: can just use {} here (and other places) for the empty vector.",
+      "revId": "fc877be853807a65c733fb725efbf14b6ca0da9d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "299f1a76_24fb7edf",
+        "filename": "pc/peerconnection_rtp_unittest.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 5039
+      },
+      "writtenOn": "2017-10-09T21:41:41Z",
+      "side": 1,
+      "message": "Nit: don\u0027t need to state the vector type when using the brace syntax. E.g., the second parameter can just be |{stream.get()}|. Same applies for the other calls to AddTrack in this file.",
+      "revId": "fc877be853807a65c733fb725efbf14b6ca0da9d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
