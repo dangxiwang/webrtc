@@ -578,7 +578,7 @@ TEST_F(NetEqImplTest, ReorderedPacket) {
       .WillOnce(DoAll(SetArrayArgument<3>(dummy_output,
                                           dummy_output + kPayloadLengthSamples),
                       SetArgPointee<4>(AudioDecoder::kSpeech),
-                      Return(kPayloadLengthSamples)));
+                      Return(rtc::checked_cast<int>(kPayloadLengthSamples))));
   EXPECT_EQ(NetEq::kOK, neteq_->RegisterExternalDecoder(
                             &mock_decoder, NetEqDecoder::kDecoderPCM16B,
                             "dummy name", kPayloadType));
@@ -616,7 +616,7 @@ TEST_F(NetEqImplTest, ReorderedPacket) {
       .WillOnce(DoAll(SetArrayArgument<3>(dummy_output,
                                           dummy_output + kPayloadLengthSamples),
                       SetArgPointee<4>(AudioDecoder::kSpeech),
-                      Return(kPayloadLengthSamples)));
+                      Return(rtc::checked_cast<int>(kPayloadLengthSamples))));
 
   // Pull audio once.
   EXPECT_EQ(NetEq::kOK, neteq_->GetAudio(&output, &muted));
@@ -719,11 +719,11 @@ TEST_F(NetEqImplTest, CodecInternalCng) {
   EXPECT_CALL(mock_decoder, IncomingPacket(_, kPayloadLengthBytes, _, _, _))
       .WillRepeatedly(Return(0));
   EXPECT_CALL(mock_decoder, PacketDuration(_, kPayloadLengthBytes))
-      .WillRepeatedly(Return(kPayloadLengthSamples));
+      .WillRepeatedly(Return(rtc::checked_cast<int>(kPayloadLengthSamples)));
   // Packed duration when asking the decoder for more CNG data (without a new
   // packet).
   EXPECT_CALL(mock_decoder, PacketDuration(nullptr, 0))
-      .WillRepeatedly(Return(kPayloadLengthSamples));
+      .WillRepeatedly(Return(rtc::checked_cast<int>(kPayloadLengthSamples)));
 
   // Pointee(x) verifies that first byte of the payload equals x, this makes it
   // possible to verify that the correct payload is fed to Decode().
@@ -732,28 +732,28 @@ TEST_F(NetEqImplTest, CodecInternalCng) {
       .WillOnce(DoAll(SetArrayArgument<3>(dummy_output,
                                           dummy_output + kPayloadLengthSamples),
                       SetArgPointee<4>(AudioDecoder::kSpeech),
-                      Return(kPayloadLengthSamples)));
+                      Return(rtc::checked_cast<int>(kPayloadLengthSamples))));
 
   EXPECT_CALL(mock_decoder, DecodeInternal(Pointee(1), kPayloadLengthBytes,
                                            kSampleRateKhz * 1000, _, _))
       .WillOnce(DoAll(SetArrayArgument<3>(dummy_output,
                                           dummy_output + kPayloadLengthSamples),
                       SetArgPointee<4>(AudioDecoder::kComfortNoise),
-                      Return(kPayloadLengthSamples)));
+                      Return(rtc::checked_cast<int>(kPayloadLengthSamples))));
 
   EXPECT_CALL(mock_decoder,
               DecodeInternal(IsNull(), 0, kSampleRateKhz * 1000, _, _))
       .WillOnce(DoAll(SetArrayArgument<3>(dummy_output,
                                           dummy_output + kPayloadLengthSamples),
                       SetArgPointee<4>(AudioDecoder::kComfortNoise),
-                      Return(kPayloadLengthSamples)));
+                      Return(rtc::checked_cast<int>(kPayloadLengthSamples))));
 
   EXPECT_CALL(mock_decoder, DecodeInternal(Pointee(2), kPayloadLengthBytes,
                                            kSampleRateKhz * 1000, _, _))
       .WillOnce(DoAll(SetArrayArgument<3>(dummy_output,
                                           dummy_output + kPayloadLengthSamples),
                       SetArgPointee<4>(AudioDecoder::kSpeech),
-                      Return(kPayloadLengthSamples)));
+                      Return(rtc::checked_cast<int>(kPayloadLengthSamples))));
 
   EXPECT_EQ(NetEq::kOK, neteq_->RegisterExternalDecoder(
                             &mock_decoder, NetEqDecoder::kDecoderOpus,
@@ -865,7 +865,7 @@ TEST_F(NetEqImplTest, UnsupportedDecoder) {
   EXPECT_CALL(decoder,
               PacketDuration(Pointee(kFirstPayloadValue), kPayloadLengthBytes))
       .Times(AtLeast(1))
-      .WillRepeatedly(Return(kNetEqMaxFrameSize + 1));
+      .WillRepeatedly(Return(rtc::checked_cast<int>(kNetEqMaxFrameSize + 1)));
 
   EXPECT_CALL(decoder, DecodeInternal(Pointee(kFirstPayloadValue), _, _, _, _))
       .Times(0);
@@ -882,7 +882,7 @@ TEST_F(NetEqImplTest, UnsupportedDecoder) {
   EXPECT_CALL(decoder,
               PacketDuration(Pointee(kSecondPayloadValue), kPayloadLengthBytes))
       .Times(AtLeast(1))
-      .WillRepeatedly(Return(kNetEqMaxFrameSize));
+      .WillRepeatedly(Return(rtc::checked_cast<int>(kNetEqMaxFrameSize)));
 
   EXPECT_CALL(decoder, SampleRateHz())
       .WillRepeatedly(Return(kSampleRateHz));
@@ -993,7 +993,7 @@ TEST_F(NetEqImplTest, DecodedPayloadTooShort) {
   EXPECT_CALL(mock_decoder, IncomingPacket(_, kPayloadLengthBytes, _, _, _))
       .WillRepeatedly(Return(0));
   EXPECT_CALL(mock_decoder, PacketDuration(_, _))
-      .WillRepeatedly(Return(kPayloadLengthSamples));
+      .WillRepeatedly(Return(rtc::checked_cast<int>(kPayloadLengthSamples)));
   int16_t dummy_output[kPayloadLengthSamples] = {0};
   // The below expectation will make the mock decoder write
   // |kPayloadLengthSamples| - 5 zeros to the output array, and mark it as
@@ -1004,7 +1004,7 @@ TEST_F(NetEqImplTest, DecodedPayloadTooShort) {
           DoAll(SetArrayArgument<3>(dummy_output,
                                     dummy_output + kPayloadLengthSamples - 5),
                 SetArgPointee<4>(AudioDecoder::kSpeech),
-                Return(kPayloadLengthSamples - 5)));
+                Return(rtc::checked_cast<int>(kPayloadLengthSamples - 5))));
   EXPECT_EQ(NetEq::kOK, neteq_->RegisterExternalDecoder(
                             &mock_decoder, NetEqDecoder::kDecoderPCM16B,
                             "dummy name", kPayloadType));
@@ -1060,7 +1060,7 @@ TEST_F(NetEqImplTest, DecodingError) {
   EXPECT_CALL(mock_decoder, IncomingPacket(_, kPayloadLengthBytes, _, _, _))
       .WillRepeatedly(Return(0));
   EXPECT_CALL(mock_decoder, PacketDuration(_, _))
-      .WillRepeatedly(Return(kFrameLengthSamples));
+      .WillRepeatedly(Return(rtc::checked_cast<int>(kFrameLengthSamples)));
   EXPECT_CALL(mock_decoder, ErrorCode())
       .WillOnce(Return(kDecoderErrorCode));
   EXPECT_CALL(mock_decoder, HasDecodePlc())
@@ -1077,7 +1077,7 @@ TEST_F(NetEqImplTest, DecodingError) {
             DoAll(SetArrayArgument<3>(dummy_output,
                                       dummy_output + kFrameLengthSamples),
                   SetArgPointee<4>(AudioDecoder::kSpeech),
-                  Return(kFrameLengthSamples)))
+                  Return(rtc::checked_cast<int>(kFrameLengthSamples))))
         .RetiresOnSaturation();
 
     // Then mock decoder fails. A common reason for failure can be buffer being
@@ -1095,7 +1095,7 @@ TEST_F(NetEqImplTest, DecodingError) {
             DoAll(SetArrayArgument<3>(dummy_output,
                                       dummy_output + kFrameLengthSamples),
                   SetArgPointee<4>(AudioDecoder::kSpeech),
-                  Return(kFrameLengthSamples)));
+                  Return(rtc::checked_cast<int>(kFrameLengthSamples))));
   }
 
   EXPECT_EQ(NetEq::kOK, neteq_->RegisterExternalDecoder(
@@ -1174,7 +1174,7 @@ TEST_F(NetEqImplTest, DecodingErrorDuringInternalCng) {
   EXPECT_CALL(mock_decoder, IncomingPacket(_, kPayloadLengthBytes, _, _, _))
       .WillRepeatedly(Return(0));
   EXPECT_CALL(mock_decoder, PacketDuration(_, _))
-      .WillRepeatedly(Return(kFrameLengthSamples));
+      .WillRepeatedly(Return(rtc::checked_cast<int>(kFrameLengthSamples)));
   EXPECT_CALL(mock_decoder, ErrorCode())
       .WillOnce(Return(kDecoderErrorCode));
   int16_t dummy_output[kFrameLengthSamples] = {0};
@@ -1189,7 +1189,7 @@ TEST_F(NetEqImplTest, DecodingErrorDuringInternalCng) {
             DoAll(SetArrayArgument<3>(dummy_output,
                                       dummy_output + kFrameLengthSamples),
                   SetArgPointee<4>(AudioDecoder::kComfortNoise),
-                  Return(kFrameLengthSamples)))
+                  Return(rtc::checked_cast<int>(kFrameLengthSamples))))
         .RetiresOnSaturation();
 
     // Then mock decoder fails. A common reason for failure can be buffer being
@@ -1205,7 +1205,7 @@ TEST_F(NetEqImplTest, DecodingErrorDuringInternalCng) {
             DoAll(SetArrayArgument<3>(dummy_output,
                                       dummy_output + kFrameLengthSamples),
                   SetArgPointee<4>(AudioDecoder::kComfortNoise),
-                  Return(kFrameLengthSamples)));
+                  Return(rtc::checked_cast<int>(kFrameLengthSamples))));
   }
 
   EXPECT_EQ(NetEq::kOK, neteq_->RegisterExternalDecoder(
