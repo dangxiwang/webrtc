@@ -93,6 +93,30 @@
       "revId": "584eeaaa39153f657a243a492c7323700d26a76a",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f00ac478_bde6544d",
+        "filename": "media/engine/internalencoderfactory.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 5023
+      },
+      "writtenOn": "2017-10-26T12:00:36Z",
+      "side": 1,
+      "message": "I think that would work too. Then we should probably strive towards sending the encoder factory down to VideoStreamEncoder and create the encoders there though, since that\u0027s where some of the non-user-configurable settings are set:\nhttps://cs.chromium.org/chromium/src/third_party/webrtc/video/video_stream_encoder.cc?l\u003d600\u0026rcl\u003d74e72c8c9b4278ee507c3651252c92f6c4a5a66b\n\nIf we use a subset of SDP (i.e., SdpVideoFormat) as the ctor argument, it should be clear what settings the user can control from the SDP/RtpSender and what we set internally.\n\nAgree that the union is not very nice.",
+      "parentUuid": "cec8d6a7_2a172869",
+      "range": {
+        "startLine": 67,
+        "startChar": 34,
+        "endLine": 67,
+        "endChar": 47
+      },
+      "revId": "584eeaaa39153f657a243a492c7323700d26a76a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }

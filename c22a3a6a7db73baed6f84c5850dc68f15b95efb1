@@ -46,6 +46,30 @@
       "revId": "c22a3a6a7db73baed6f84c5850dc68f15b95efb1",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3efb2b18_3baf9a6d",
+        "filename": "media/engine/internalencoderfactory.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 5023
+      },
+      "writtenOn": "2017-10-26T12:00:36Z",
+      "side": 0,
+      "message": "\u003e Should we try to move it into the video engine like RTX in a follow-up CL?\n\nI think that would be a good followup!",
+      "parentUuid": "1551bbec_bf63785e",
+      "range": {
+        "startLine": 54,
+        "startChar": 4,
+        "endLine": 54,
+        "endChar": 34
+      },
+      "revId": "c22a3a6a7db73baed6f84c5850dc68f15b95efb1",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
