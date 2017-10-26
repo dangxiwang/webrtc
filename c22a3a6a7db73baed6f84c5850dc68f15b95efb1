@@ -22,6 +22,30 @@
       "revId": "c22a3a6a7db73baed6f84c5850dc68f15b95efb1",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1551bbec_bf63785e",
+        "filename": "media/engine/internalencoderfactory.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 5098
+      },
+      "writtenOn": "2017-10-26T11:30:27Z",
+      "side": 0,
+      "message": "This is exactly what I was thinking as well. FlexFEC should probably not be added as an \"injectable\" codec. I remember there was some reason for adding it here in the internal factory? Should we try to move it into the video engine like RTX in a follow-up CL?",
+      "parentUuid": "52b4abec_cec35a51",
+      "range": {
+        "startLine": 54,
+        "startChar": 4,
+        "endLine": 54,
+        "endChar": 34
+      },
+      "revId": "c22a3a6a7db73baed6f84c5850dc68f15b95efb1",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }

@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "02d67cc9_06601daf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5098
+      },
+      "writtenOn": "2017-10-26T11:30:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ecc22a7f_1b25c845",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 14
+      },
+      "revId": "584eeaaa39153f657a243a492c7323700d26a76a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30704b10_266e9602",
         "filename": "media/engine/internalencoderfactory.cc",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-10-26T07:50:50Z",
       "side": 1,
       "message": "This is unrelated to this CL, but I find it a bit annoying that OpenH264 and the HW codecs take a cricket::VideoCodec in the ctor, and then some other parameters in the InitEncode. Are there plans to get rid of the ctor argument (e.g., by using the H264::Profile field in VideoCodecH264), so the interface is the same as for VP8/VP9?",
+      "range": {
+        "startLine": 67,
+        "startChar": 34,
+        "endLine": 67,
+        "endChar": 47
+      },
+      "revId": "584eeaaa39153f657a243a492c7323700d26a76a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cec8d6a7_2a172869",
+        "filename": "media/engine/internalencoderfactory.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 5098
+      },
+      "writtenOn": "2017-10-26T11:30:27Z",
+      "side": 1,
+      "message": "I rather want to go in the opposite direction, i.e. remove codec specific arguments from InitEncode. I think the whole \u0027VideoCodecUnion codec_specific_\u0027 should be removed since it\u0027s not modular or extensible and only works for VP8, VP9, H264.\n\nI don\u0027t have any plan to fix that right now though.",
+      "parentUuid": "30704b10_266e9602",
       "range": {
         "startLine": 67,
         "startChar": 34,
