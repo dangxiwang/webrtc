@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ecc22a7f_1b25c845",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5023
+      },
+      "writtenOn": "2017-10-26T07:50:50Z",
+      "side": 1,
+      "message": "FlexFEC",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 14
+      },
+      "revId": "584eeaaa39153f657a243a492c7323700d26a76a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30704b10_266e9602",
+        "filename": "media/engine/internalencoderfactory.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 5023
+      },
+      "writtenOn": "2017-10-26T07:50:50Z",
+      "side": 1,
+      "message": "This is unrelated to this CL, but I find it a bit annoying that OpenH264 and the HW codecs take a cricket::VideoCodec in the ctor, and then some other parameters in the InitEncode. Are there plans to get rid of the ctor argument (e.g., by using the H264::Profile field in VideoCodecH264), so the interface is the same as for VP8/VP9?",
+      "range": {
+        "startLine": 67,
+        "startChar": 34,
+        "endLine": 67,
+        "endChar": 47
+      },
+      "revId": "584eeaaa39153f657a243a492c7323700d26a76a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    }
+  ]
+}

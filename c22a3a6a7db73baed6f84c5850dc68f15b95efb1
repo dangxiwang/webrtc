@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "52b4abec_cec35a51",
+        "filename": "media/engine/internalencoderfactory.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 5023
+      },
+      "writtenOn": "2017-10-26T07:50:50Z",
+      "side": 0,
+      "message": "I think this change is a step in the right direction: the factory is responsible for the media parameters (H.264 profile and level, FlexFEC repair window size, etc.), and somebody else is responsible for the BWE parameters (transport-cc and REMB).\n\nIn the future maybe we could event move out all non-media \"SDP codecs\" from the factory, since the code supporting RED/FEC is not injectable anyway. Just like the RTX codecs are handled somewhere else.",
+      "range": {
+        "startLine": 54,
+        "startChar": 4,
+        "endLine": 54,
+        "endChar": 34
+      },
+      "revId": "c22a3a6a7db73baed6f84c5850dc68f15b95efb1",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    }
+  ]
+}
