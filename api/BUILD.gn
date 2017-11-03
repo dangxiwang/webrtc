@@ -40,6 +40,7 @@ rtc_static_library("libjingle_peerconnection_api") {
     "candidate.h",
     "datachannelinterface.h",
     "dtmfsenderinterface.h",
+    "failurereason.h",
     "jsep.h",
     "jsepicecandidate.h",
     "jsepsessiondescription.h",
@@ -61,6 +62,8 @@ rtc_static_library("libjingle_peerconnection_api") {
     "rtpparameters.h",
     "rtpreceiverinterface.h",
     "rtpsenderinterface.h",
+    "setremotedescriptionobserver.cc",
+    "setremotedescriptionobserver.h",
     "statstypes.cc",
     "statstypes.h",
     "turncustomizer.h",
@@ -355,6 +358,7 @@ if (rtc_include_tests) {
       "ortc/sessiondescription_unittest.cc",
       "rtcerror_unittest.cc",
       "rtpparameters_unittest.cc",
+      "setremotedescriptionobserver_unittest.cc",
     ]
 
     if (!build_with_chromium && is_clang) {

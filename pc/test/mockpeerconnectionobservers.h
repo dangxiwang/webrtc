@@ -207,6 +207,7 @@ class MockCreateSessionDescriptionObserver
   std::unique_ptr<SessionDescriptionInterface> desc_;
 };
 
+// Move this to webrtc/pc/test/...
 class MockSetSessionDescriptionObserver
     : public webrtc::SetSessionDescriptionObserver {
  public:
