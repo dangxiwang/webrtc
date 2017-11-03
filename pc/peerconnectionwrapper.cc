@@ -150,6 +150,21 @@ bool PeerConnectionWrapper::SetRemoteDescription(
       error_out);
 }
 
+bool PeerConnectionWrapper::SetRemoteDescription(
+    std::unique_ptr<SessionDescriptionInterface> desc,
+    SetRemoteDescriptionObserver::StateChanges* state_changes_out,
+    FailureReason* failure_reason_out) {
+  rtc::scoped_refptr<MockSetRemoteDescriptionObserver> observer =
+      new MockSetRemoteDescriptionObserver();
+  pc()->SetRemoteDescription(observer, std::move(desc));
+  EXPECT_EQ_WAIT(true, observer->called(), kDefaultTimeout);
+  if (observer->result() && state_changes_out)
+    *state_changes_out = observer->state_changes();
+  if (!observer->result() && failure_reason_out)
+    *failure_reason_out = observer->failure_reason();
+  return observer->result();
+}
+
 bool PeerConnectionWrapper::SetSdp(
     std::function<void(SetSessionDescriptionObserver*)> fn,
     std::string* error_out) {

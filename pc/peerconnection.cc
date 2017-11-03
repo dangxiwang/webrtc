@@ -1002,26 +1002,28 @@ void PeerConnection::SetLocalDescription(
 }
 
 void PeerConnection::SetRemoteDescription(
-    SetSessionDescriptionObserver* observer,
-    SessionDescriptionInterface* desc) {
+    rtc::scoped_refptr<SetRemoteDescriptionObserver> observer,
+    std::unique_ptr<SessionDescriptionInterface> desc) {
   TRACE_EVENT0("webrtc", "PeerConnection::SetRemoteDescription");
   if (!observer) {
     LOG(LS_ERROR) << "SetRemoteDescription - observer is NULL.";
     return;
   }
   if (!desc) {
-    PostSetSessionDescriptionFailure(observer, "SessionDescription is NULL.");
+    observer->OnFailure(FailureReason("SessionDescription is NULL."));
     return;
   }
 
   // Takes the ownership of |desc| regardless of the result.
-  std::unique_ptr<SessionDescriptionInterface> desc_temp(desc);
+  // TODO(hbos): This is completely broken.
+  SessionDescriptionInterface* desc_unsafe = desc.release();
+  std::unique_ptr<SessionDescriptionInterface> desc_temp(desc_unsafe);
 
   if (IsClosed()) {
-    std::string error = "Failed to set remote " + desc->type() +
+    std::string error = "Failed to set remote " + desc_unsafe->type() +
                         " sdp: Called in wrong state: STATE_CLOSED";
     LOG(LS_ERROR) << error;
-    PostSetSessionDescriptionFailure(observer, error);
+    observer->OnFailure(FailureReason(error));
     return;
   }
 
@@ -1030,7 +1032,7 @@ void PeerConnection::SetRemoteDescription(
   stats_->UpdateStats(kStatsOutputLevelStandard);
   std::string error;
   if (!session_->SetRemoteDescription(std::move(desc_temp), &error)) {
-    PostSetSessionDescriptionFailure(observer, error);
+    observer->OnFailure(FailureReason(error));
     return;
   }
 
@@ -1042,7 +1044,7 @@ void PeerConnection::SetRemoteDescription(
     AllocateSctpSids(role);
   }
 
-  const cricket::SessionDescription* remote_desc = desc->description();
+  const cricket::SessionDescription* remote_desc = desc_unsafe->description();
   const cricket::ContentInfo* audio_content = GetFirstAudioContent(remote_desc);
   const cricket::ContentInfo* video_content = GetFirstVideoContent(remote_desc);
   const cricket::AudioContentDescription* audio_desc =
@@ -1059,6 +1061,8 @@ void PeerConnection::SetRemoteDescription(
       (video_desc && !video_desc->streams().empty())) {
     remote_peer_supports_msid_ = true;
   }
+
+  SetRemoteDescriptionObserver::StateChanges state_changes;
 
   // We wait to signal new streams until we finish processing the description,
   // since only at that point will new streams have all their tracks.
@@ -1084,7 +1088,7 @@ void PeerConnection::SetRemoteDescription(
           MediaContentDirectionHasSend(audio_desc->direction());
       UpdateRemoteStreamsList(GetActiveStreams(audio_desc),
                               default_audio_track_needed, audio_desc->type(),
-                              new_streams);
+                              new_streams, &state_changes);
     }
   }
 
@@ -1099,7 +1103,7 @@ void PeerConnection::SetRemoteDescription(
           MediaContentDirectionHasSend(video_desc->direction());
       UpdateRemoteStreamsList(GetActiveStreams(video_desc),
                               default_video_track_needed, video_desc->type(),
-                              new_streams);
+                              new_streams, &state_changes);
     }
   }
 
@@ -1121,11 +1125,9 @@ void PeerConnection::SetRemoteDescription(
 
   UpdateEndedRemoteMediaStreams();
 
-  SetSessionDescriptionMsg* msg = new SetSessionDescriptionMsg(observer);
-  signaling_thread()->Post(RTC_FROM_HERE, this,
-                           MSG_SET_SESSIONDESCRIPTION_SUCCESS, msg);
+  observer->OnSuccess(std::move(state_changes));
 
-  if (desc->type() == SessionDescriptionInterface::kAnswer) {
+  if (desc_unsafe->type() == SessionDescriptionInterface::kAnswer) {
     // TODO(deadbeef): We already had to hop to the network thread for
     // MaybeStartGathering...
     network_thread()->Invoke<void>(
@@ -1503,9 +1505,11 @@ void PeerConnection::OnMessage(rtc::Message* msg) {
   }
 }
 
-void PeerConnection::CreateAudioReceiver(MediaStreamInterface* stream,
-                                         const std::string& track_id,
-                                         uint32_t ssrc) {
+void PeerConnection::CreateAudioReceiver(
+    MediaStreamInterface* stream,
+    const std::string& track_id,
+    uint32_t ssrc,
+    SetRemoteDescriptionObserver::StateChanges* state_changes) {
   rtc::scoped_refptr<RtpReceiverProxyWithInternal<RtpReceiverInternal>>
       receiver = RtpReceiverProxyWithInternal<RtpReceiverInternal>::Create(
           signaling_thread(),
@@ -1516,11 +1520,17 @@ void PeerConnection::CreateAudioReceiver(MediaStreamInterface* stream,
   std::vector<rtc::scoped_refptr<MediaStreamInterface>> streams;
   streams.push_back(rtc::scoped_refptr<MediaStreamInterface>(stream));
   observer_->OnAddTrack(receiver, streams);
+  if (state_changes) {
+    state_changes->receivers_added.push_back(
+        ReceiverWithStreams(receiver, std::move(streams)));
+  }
 }
 
-void PeerConnection::CreateVideoReceiver(MediaStreamInterface* stream,
-                                         const std::string& track_id,
-                                         uint32_t ssrc) {
+void PeerConnection::CreateVideoReceiver(
+    MediaStreamInterface* stream,
+    const std::string& track_id,
+    uint32_t ssrc,
+    SetRemoteDescriptionObserver::StateChanges* state_changes) {
   rtc::scoped_refptr<RtpReceiverProxyWithInternal<RtpReceiverInternal>>
       receiver = RtpReceiverProxyWithInternal<RtpReceiverInternal>::Create(
           signaling_thread(),
@@ -1532,6 +1542,10 @@ void PeerConnection::CreateVideoReceiver(MediaStreamInterface* stream,
   std::vector<rtc::scoped_refptr<MediaStreamInterface>> streams;
   streams.push_back(rtc::scoped_refptr<MediaStreamInterface>(stream));
   observer_->OnAddTrack(receiver, streams);
+  if (state_changes) {
+    state_changes->receivers_added.push_back(
+        ReceiverWithStreams(receiver, std::move(streams)));
+  }
 }
 
 // TODO(deadbeef): Keep RtpReceivers around even if track goes away in remote
@@ -1991,14 +2005,15 @@ void PeerConnection::GenerateMediaDescriptionOptions(
 void PeerConnection::RemoveTracks(cricket::MediaType media_type) {
   UpdateLocalTracks(std::vector<cricket::StreamParams>(), media_type);
   UpdateRemoteStreamsList(std::vector<cricket::StreamParams>(), false,
-                          media_type, nullptr);
+                          media_type, nullptr, nullptr);
 }
 
 void PeerConnection::UpdateRemoteStreamsList(
     const cricket::StreamParamsVec& streams,
     bool default_track_needed,
     cricket::MediaType media_type,
-    StreamCollection* new_streams) {
+    StreamCollection* new_streams,
+    SetRemoteDescriptionObserver::StateChanges* state_changes) {
   TrackInfos* current_tracks = GetRemoteTracks(media_type);
 
   // Find removed tracks. I.e., tracks where the track id or ssrc don't match
@@ -2014,7 +2029,8 @@ void PeerConnection::UpdateRemoteStreamsList(
         track_exists) {
       ++track_it;
     } else {
-      OnRemoteTrackRemoved(info.stream_label, info.track_id, media_type);
+      OnRemoteTrackRemoved(info.stream_label, info.track_id, media_type,
+                           state_changes);
       track_it = current_tracks->erase(track_it);
     }
   }
@@ -2041,7 +2057,8 @@ void PeerConnection::UpdateRemoteStreamsList(
         FindTrackInfo(*current_tracks, stream_label, track_id);
     if (!track_info) {
       current_tracks->push_back(TrackInfo(stream_label, track_id, ssrc));
-      OnRemoteTrackSeen(stream_label, track_id, ssrc, media_type);
+      OnRemoteTrackSeen(stream_label, track_id, ssrc, media_type,
+                        state_changes);
     }
   }
 
@@ -2064,29 +2081,34 @@ void PeerConnection::UpdateRemoteStreamsList(
     if (!default_track_info) {
       current_tracks->push_back(
           TrackInfo(kDefaultStreamLabel, default_track_id, 0));
-      OnRemoteTrackSeen(kDefaultStreamLabel, default_track_id, 0, media_type);
+      OnRemoteTrackSeen(kDefaultStreamLabel, default_track_id, 0, media_type,
+                        state_changes);
     }
   }
 }
 
-void PeerConnection::OnRemoteTrackSeen(const std::string& stream_label,
-                                       const std::string& track_id,
-                                       uint32_t ssrc,
-                                       cricket::MediaType media_type) {
+void PeerConnection::OnRemoteTrackSeen(
+    const std::string& stream_label,
+    const std::string& track_id,
+    uint32_t ssrc,
+    cricket::MediaType media_type,
+    SetRemoteDescriptionObserver::StateChanges* state_changes) {
   MediaStreamInterface* stream = remote_streams_->find(stream_label);
 
   if (media_type == cricket::MEDIA_TYPE_AUDIO) {
-    CreateAudioReceiver(stream, track_id, ssrc);
+    CreateAudioReceiver(stream, track_id, ssrc, state_changes);
   } else if (media_type == cricket::MEDIA_TYPE_VIDEO) {
-    CreateVideoReceiver(stream, track_id, ssrc);
+    CreateVideoReceiver(stream, track_id, ssrc, state_changes);
   } else {
     RTC_NOTREACHED() << "Invalid media type";
   }
 }
 
-void PeerConnection::OnRemoteTrackRemoved(const std::string& stream_label,
-                                          const std::string& track_id,
-                                          cricket::MediaType media_type) {
+void PeerConnection::OnRemoteTrackRemoved(
+    const std::string& stream_label,
+    const std::string& track_id,
+    cricket::MediaType media_type,
+    SetRemoteDescriptionObserver::StateChanges* state_changes) {
   MediaStreamInterface* stream = remote_streams_->find(stream_label);
 
   rtc::scoped_refptr<RtpReceiverInterface> receiver;
@@ -2115,6 +2137,8 @@ void PeerConnection::OnRemoteTrackRemoved(const std::string& stream_label,
   }
   if (receiver) {
     observer_->OnRemoveTrack(receiver);
+    if (state_changes)
+      state_changes->receivers_removed.push_back(receiver);
   }
 }
 
