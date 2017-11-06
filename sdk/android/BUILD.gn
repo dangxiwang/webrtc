@@ -36,6 +36,8 @@ config("libjingle_peerconnection_jni_warnings_config") {
 rtc_source_set("base_jni") {
   sources = [
     "src/jni/androidhistogram_jni.cc",
+    "src/jni/class_loader.cc",
+    "src/jni/class_loader.h",
     "src/jni/classreferenceholder.cc",
     "src/jni/classreferenceholder.h",
     "src/jni/jni_common.cc",
