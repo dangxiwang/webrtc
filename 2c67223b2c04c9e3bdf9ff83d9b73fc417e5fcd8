@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e6398b1e_17266f59",
+        "filename": "sdk/android/src/jni/jni_generator_helper.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 5112
+      },
+      "writtenOn": "2017-11-06T15:37:04Z",
+      "side": 1,
+      "message": "Can you use webrtc::jni::GetClass directly here?",
+      "range": {
+        "startLine": 43,
+        "startChar": 44,
+        "endLine": 43,
+        "endChar": 52
+      },
+      "revId": "2c67223b2c04c9e3bdf9ff83d9b73fc417e5fcd8",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
