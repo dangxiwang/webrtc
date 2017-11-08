@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e3bb36f_214a1b9d",
+        "filename": "pc/peerconnection.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1432,
+      "author": {
+        "id": 5142
+      },
+      "writtenOn": "2017-11-08T15:57:24Z",
+      "side": 1,
+      "message": "I had to rename the helper function\n\nbool PeerConnection::SetRemoteDescription(std::unique_ptr\u003cSessionDescriptionInterface\u003e desc, std::string*)\n\nThis helper function is called from\nvoid PeerConnection::SetRemoteDescription(rtc::scoped_refptr\u003cSetRemoteDescriptionObserver\u003e, std::unique_ptr\u003cSessionDescriptionInterface\u003e) override\n\nThe rename was necessary to avoid hiding the old\n\nvirtual void PeerConnectionInterface::SetRemoteDescription(SetSessionDescriptionObserver*,SessionDescriptionInterface*)\n\nNot sure why that happens when a new virtual SetRemoteDescription signature is introduced...\nBut I renamed it to ApplySetRemoteDescription, so I used the same naming scheme for SetLocalDescription\u0027s helper function.",
+      "range": {
+        "startLine": 1432,
+        "startChar": 7,
+        "endLine": 1432,
+        "endChar": 31
+      },
+      "revId": "fa5692599e17713e2a55286f8c78dc6d2bb5e764",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    }
+  ]
+}
