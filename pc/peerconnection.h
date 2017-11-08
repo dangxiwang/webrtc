@@ -151,8 +151,9 @@ class PeerConnection : public PeerConnectionInterface,
                     const RTCOfferAnswerOptions& options) override;
   void SetLocalDescription(SetSessionDescriptionObserver* observer,
                            SessionDescriptionInterface* desc) override;
-  void SetRemoteDescription(SetSessionDescriptionObserver* observer,
-                            SessionDescriptionInterface* desc) override;
+  void SetRemoteDescription(
+      rtc::scoped_refptr<SetRemoteDescriptionObserver> observer,
+      std::unique_ptr<SessionDescriptionInterface> desc) override;
   PeerConnectionInterface::RTCConfiguration GetConfiguration() override;
   bool SetConfiguration(
       const PeerConnectionInterface::RTCConfiguration& configuration,
@@ -296,13 +297,17 @@ class PeerConnection : public PeerConnectionInterface,
   // Implements MessageHandler.
   void OnMessage(rtc::Message* msg) override;
 
-  void CreateAudioReceiver(MediaStreamInterface* stream,
-                           const std::string& track_id,
-                           uint32_t ssrc);
+  void CreateAudioReceiver(
+      MediaStreamInterface* stream,
+      const std::string& track_id,
+      uint32_t ssrc,
+      SetRemoteDescriptionObserver::StateChanges* state_changes);
 
-  void CreateVideoReceiver(MediaStreamInterface* stream,
-                           const std::string& track_id,
-                           uint32_t ssrc);
+  void CreateVideoReceiver(
+      MediaStreamInterface* stream,
+      const std::string& track_id,
+      uint32_t ssrc,
+      SetRemoteDescriptionObserver::StateChanges* state_changes);
   rtc::scoped_refptr<RtpReceiverInterface> RemoveAndStopReceiver(
       const std::string& track_id);
 
@@ -379,26 +384,32 @@ class PeerConnection : public PeerConnectionInterface,
   // is created if it doesn't exist; if false, it's removed if it exists.
   // |media_type| is the type of the |streams| and can be either audio or video.
   // If a new MediaStream is created it is added to |new_streams|.
+  // If a receiver is added or removed, |state_changes| is updated.
   void UpdateRemoteStreamsList(
       const std::vector<cricket::StreamParams>& streams,
       bool default_track_needed,
       cricket::MediaType media_type,
-      StreamCollection* new_streams);
+      StreamCollection* new_streams,
+      SetRemoteDescriptionObserver::StateChanges* state_changes);
 
   // Triggered when a remote track has been seen for the first time in a remote
   // session description. It creates a remote MediaStreamTrackInterface
   // implementation and triggers CreateAudioReceiver or CreateVideoReceiver.
-  void OnRemoteTrackSeen(const std::string& stream_label,
-                         const std::string& track_id,
-                         uint32_t ssrc,
-                         cricket::MediaType media_type);
+  void OnRemoteTrackSeen(
+      const std::string& stream_label,
+      const std::string& track_id,
+      uint32_t ssrc,
+      cricket::MediaType media_type,
+      SetRemoteDescriptionObserver::StateChanges* state_changes);
 
   // Triggered when a remote track has been removed from a remote session
   // description. It removes the remote track with id |track_id| from a remote
   // MediaStream and triggers DestroyAudioReceiver or DestroyVideoReceiver.
-  void OnRemoteTrackRemoved(const std::string& stream_label,
-                            const std::string& track_id,
-                            cricket::MediaType media_type);
+  void OnRemoteTrackRemoved(
+      const std::string& stream_label,
+      const std::string& track_id,
+      cricket::MediaType media_type,
+      SetRemoteDescriptionObserver::StateChanges* state_changes);
 
   // Finds remote MediaStreams without any tracks and removes them from
   // |remote_streams_| and notifies the observer that the MediaStreams no longer
@@ -532,7 +543,7 @@ class PeerConnection : public PeerConnectionInterface,
 
   bool SetLocalDescription(std::unique_ptr<SessionDescriptionInterface> desc,
                            std::string* err_desc);
-  bool SetRemoteDescription(std::unique_ptr<SessionDescriptionInterface> desc,
+  bool SetRemoteDescription2(std::unique_ptr<SessionDescriptionInterface> desc,
                             std::string* err_desc);
 
   cricket::IceConfig ParseIceConfig(
