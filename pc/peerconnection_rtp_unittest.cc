@@ -60,7 +60,11 @@ class PeerConnectionRtpTest : public testing::Test {
   rtc::scoped_refptr<webrtc::PeerConnectionFactoryInterface> pc_factory_;
 };
 
-TEST_F(PeerConnectionRtpTest, AddTrackWithoutStreamFiresOnAddTrack) {
+// These tests cover |webrtc::PeerConnectionObserver| callbacks firing upon
+// setting the remote description.
+class PeerConnectionRtpCallbacksTest : public PeerConnectionRtpTest {};
+
+TEST_F(PeerConnectionRtpCallbacksTest, AddTrackWithoutStreamFiresOnAddTrack) {
   auto caller = CreatePeerConnection();
   auto callee = CreatePeerConnection();
 
@@ -78,7 +82,7 @@ TEST_F(PeerConnectionRtpTest, AddTrackWithoutStreamFiresOnAddTrack) {
           "audio_track"));
 }
 
-TEST_F(PeerConnectionRtpTest, AddTrackWithStreamFiresOnAddTrack) {
+TEST_F(PeerConnectionRtpCallbacksTest, AddTrackWithStreamFiresOnAddTrack) {
   auto caller = CreatePeerConnection();
   auto callee = CreatePeerConnection();
 
@@ -97,7 +101,8 @@ TEST_F(PeerConnectionRtpTest, AddTrackWithStreamFiresOnAddTrack) {
           "audio_track"));
 }
 
-TEST_F(PeerConnectionRtpTest, RemoveTrackWithoutStreamFiresOnRemoveTrack) {
+TEST_F(PeerConnectionRtpCallbacksTest,
+       RemoveTrackWithoutStreamFiresOnRemoveTrack) {
   auto caller = CreatePeerConnection();
   auto callee = CreatePeerConnection();
 
@@ -114,7 +119,8 @@ TEST_F(PeerConnectionRtpTest, RemoveTrackWithoutStreamFiresOnRemoveTrack) {
             callee->observer()->remove_track_events_);
 }
 
-TEST_F(PeerConnectionRtpTest, RemoveTrackWithStreamFiresOnRemoveTrack) {
+TEST_F(PeerConnectionRtpCallbacksTest,
+       RemoveTrackWithStreamFiresOnRemoveTrack) {
   auto caller = CreatePeerConnection();
   auto callee = CreatePeerConnection();
 
@@ -132,7 +138,8 @@ TEST_F(PeerConnectionRtpTest, RemoveTrackWithStreamFiresOnRemoveTrack) {
             callee->observer()->remove_track_events_);
 }
 
-TEST_F(PeerConnectionRtpTest, RemoveTrackWithSharedStreamFiresOnRemoveTrack) {
+TEST_F(PeerConnectionRtpCallbacksTest,
+       RemoveTrackWithSharedStreamFiresOnRemoveTrack) {
   auto caller = CreatePeerConnection();
   auto callee = CreatePeerConnection();
 
@@ -163,6 +170,141 @@ TEST_F(PeerConnectionRtpTest, RemoveTrackWithSharedStreamFiresOnRemoveTrack) {
   ASSERT_EQ(2u, callee->observer()->add_track_events_.size());
   EXPECT_EQ(callee->observer()->GetAddTrackReceivers(),
             callee->observer()->remove_track_events_);
+}
+
+// These tests cover |webrtc::SetRemoteDescriptionObserver| callbacks with state
+// changes firing upon setting the remote description.
+class PeerConnectionRtpObserverTest : public PeerConnectionRtpTest {};
+
+TEST_F(PeerConnectionRtpObserverTest, AddSenderWithoutStreamAddsReceiver) {
+  auto caller = CreatePeerConnection();
+  auto callee = CreatePeerConnection();
+  webrtc::SetRemoteDescriptionObserver::StateChanges state_changes;
+
+  rtc::scoped_refptr<webrtc::AudioTrackInterface> audio_track(
+      pc_factory_->CreateAudioTrack("audio_track", nullptr));
+  EXPECT_TRUE(caller->pc()->AddTrack(audio_track.get(), {}));
+  ASSERT_TRUE(callee->SetRemoteDescription(caller->CreateOfferAndSetAsLocal(),
+                                           &state_changes, nullptr));
+
+  EXPECT_EQ(1u, state_changes.receivers_added.size());
+  webrtc::ReceiverWithStreams receiver_added = state_changes.receivers_added[0];
+  EXPECT_EQ("audio_track", receiver_added.receiver->track()->id());
+  // TODO(hbos): ...
+  EXPECT_EQ(1u, receiver_added.streams.size());
+  EXPECT_TRUE(receiver_added.streams[0]->FindAudioTrack("audio_track"));
+}
+
+TEST_F(PeerConnectionRtpObserverTest, AddSenderWithStreamAddsReceiver) {
+  auto caller = CreatePeerConnection();
+  auto callee = CreatePeerConnection();
+  webrtc::SetRemoteDescriptionObserver::StateChanges state_changes;
+
+  rtc::scoped_refptr<webrtc::AudioTrackInterface> audio_track(
+      pc_factory_->CreateAudioTrack("audio_track", nullptr));
+  auto stream = webrtc::MediaStream::Create("audio_stream");
+  EXPECT_TRUE(caller->pc()->AddTrack(audio_track.get(), {stream}));
+  ASSERT_TRUE(callee->SetRemoteDescription(caller->CreateOfferAndSetAsLocal(),
+                                           &state_changes, nullptr));
+
+  EXPECT_EQ(1u, state_changes.receivers_added.size());
+  webrtc::ReceiverWithStreams receiver_added = state_changes.receivers_added[0];
+  EXPECT_EQ("audio_track", receiver_added.receiver->track()->id());
+  EXPECT_EQ(1u, receiver_added.streams.size());
+  EXPECT_EQ("audio_stream", receiver_added.streams[0]->label());
+  EXPECT_TRUE(receiver_added.streams[0]->FindAudioTrack("audio_track"));
+}
+
+TEST_F(PeerConnectionRtpObserverTest,
+       RemoveSenderWithoutStreamRemovesReceiver) {
+  auto caller = CreatePeerConnection();
+  auto callee = CreatePeerConnection();
+  webrtc::SetRemoteDescriptionObserver::StateChanges state_changes;
+
+  rtc::scoped_refptr<webrtc::AudioTrackInterface> audio_track(
+      pc_factory_->CreateAudioTrack("audio_track", nullptr));
+  auto sender = caller->pc()->AddTrack(audio_track.get(), {});
+  ASSERT_TRUE(sender);
+  ASSERT_TRUE(callee->SetRemoteDescription(caller->CreateOfferAndSetAsLocal(),
+                                           &state_changes, nullptr));
+  ASSERT_EQ(1u, state_changes.receivers_added.size());
+  rtc::scoped_refptr<webrtc::RtpReceiverInterface> receiver =
+      state_changes.receivers_added[0].receiver;
+  ASSERT_TRUE(caller->pc()->RemoveTrack(sender));
+  ASSERT_TRUE(callee->SetRemoteDescription(caller->CreateOfferAndSetAsLocal(),
+                                           &state_changes, nullptr));
+
+  EXPECT_EQ(1u, state_changes.receivers_removed.size());
+  EXPECT_EQ(receiver, state_changes.receivers_removed[0]);
+}
+
+TEST_F(PeerConnectionRtpObserverTest, RemoveSenderWithStreamRemovesReceiver) {
+  auto caller = CreatePeerConnection();
+  auto callee = CreatePeerConnection();
+  webrtc::SetRemoteDescriptionObserver::StateChanges state_changes;
+
+  rtc::scoped_refptr<webrtc::AudioTrackInterface> audio_track(
+      pc_factory_->CreateAudioTrack("audio_track", nullptr));
+  auto stream = webrtc::MediaStream::Create("audio_stream");
+  auto sender = caller->pc()->AddTrack(audio_track.get(), {stream});
+  ASSERT_TRUE(sender);
+  ASSERT_TRUE(callee->SetRemoteDescription(caller->CreateOfferAndSetAsLocal(),
+                                           &state_changes, nullptr));
+  ASSERT_EQ(1u, state_changes.receivers_added.size());
+  rtc::scoped_refptr<webrtc::RtpReceiverInterface> receiver =
+      state_changes.receivers_added[0].receiver;
+  ASSERT_TRUE(caller->pc()->RemoveTrack(sender));
+  ASSERT_TRUE(callee->SetRemoteDescription(caller->CreateOfferAndSetAsLocal(),
+                                           &state_changes, nullptr));
+
+  EXPECT_EQ(1u, state_changes.receivers_removed.size());
+  EXPECT_EQ(receiver, state_changes.receivers_removed[0]);
+}
+
+TEST_F(PeerConnectionRtpObserverTest,
+       RemoveSenderWithSharedStreamRemovesReceiver) {
+  auto caller = CreatePeerConnection();
+  auto callee = CreatePeerConnection();
+  webrtc::SetRemoteDescriptionObserver::StateChanges state_changes;
+
+  rtc::scoped_refptr<webrtc::AudioTrackInterface> audio_track1(
+      pc_factory_->CreateAudioTrack("audio_track1", nullptr));
+  rtc::scoped_refptr<webrtc::AudioTrackInterface> audio_track2(
+      pc_factory_->CreateAudioTrack("audio_track2", nullptr));
+  auto stream = webrtc::MediaStream::Create("shared_audio_stream");
+  std::vector<webrtc::MediaStreamInterface*> streams{stream.get()};
+  auto sender1 = caller->pc()->AddTrack(audio_track1.get(), streams);
+  auto sender2 = caller->pc()->AddTrack(audio_track2.get(), streams);
+  ASSERT_TRUE(callee->SetRemoteDescription(caller->CreateOfferAndSetAsLocal(),
+                                           &state_changes, nullptr));
+
+  ASSERT_EQ(2u, state_changes.receivers_added.size());
+  rtc::scoped_refptr<webrtc::RtpReceiverInterface> receiver1;
+  rtc::scoped_refptr<webrtc::RtpReceiverInterface> receiver2;
+  if (state_changes.receivers_added[0].receiver->track()->id() ==
+      "audio_track1") {
+    receiver1 = state_changes.receivers_added[0].receiver;
+    receiver2 = state_changes.receivers_added[1].receiver;
+  } else {
+    receiver1 = state_changes.receivers_added[1].receiver;
+    receiver2 = state_changes.receivers_added[0].receiver;
+  }
+  EXPECT_EQ("audio_track1", receiver1->track()->id());
+  EXPECT_EQ("audio_track2", receiver2->track()->id());
+
+  // Remove "audio_track1".
+  EXPECT_TRUE(caller->pc()->RemoveTrack(sender1));
+  ASSERT_TRUE(callee->SetRemoteDescription(caller->CreateOfferAndSetAsLocal(),
+                                           &state_changes, nullptr));
+  EXPECT_EQ(1u, state_changes.receivers_removed.size());
+  EXPECT_EQ(receiver1, state_changes.receivers_removed[0]);
+
+  // Remove "audio_track2".
+  EXPECT_TRUE(caller->pc()->RemoveTrack(sender2));
+  ASSERT_TRUE(callee->SetRemoteDescription(caller->CreateOfferAndSetAsLocal(),
+                                           &state_changes, nullptr));
+  EXPECT_EQ(1u, state_changes.receivers_removed.size());
+  EXPECT_EQ(receiver2, state_changes.receivers_removed[0]);
 }
 
 }  // namespace
