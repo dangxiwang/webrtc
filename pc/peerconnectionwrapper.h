@@ -89,6 +89,10 @@ class PeerConnectionWrapper {
   // Returns true if the description was successfully set.
   bool SetRemoteDescription(std::unique_ptr<SessionDescriptionInterface> desc,
                             std::string* error_out = nullptr);
+  bool SetRemoteDescription(
+      std::unique_ptr<SessionDescriptionInterface> desc,
+      SetRemoteDescriptionObserver::StateChanges* state_changes_out,
+      FailureReason* failure_reason_out);
 
   // Calls the underlying PeerConnection's AddTrack method with an audio media
   // stream track not bound to any source.
