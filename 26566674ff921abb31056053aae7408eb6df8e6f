@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "10ec68c8_44369c7d",
+        "filename": "modules/video_coding/codecs/vp9/vp9_impl.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 5492
+      },
+      "writtenOn": "2017-11-10T15:50:42Z",
+      "side": 1,
+      "message": "Stats for sent width/height are set in SendStatisticsProxy::OnSendEncodedImage:\n\nstats-\u003ewidth \u003d encoded_image._encodedWidth;\nstats-\u003eheight \u003d encoded_image._encodedHeight;\n\nI think the max width/height should be reported here.",
+      "revId": "26566674ff921abb31056053aae7408eb6df8e6f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
