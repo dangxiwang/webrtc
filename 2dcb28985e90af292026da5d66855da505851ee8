@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "010a7463_beeaf6d5",
+        "filename": "api/failurereason.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5706
+      },
+      "writtenOn": "2017-11-10T17:13:54Z",
+      "side": 1,
+      "message": "What is the semantic difference between an empty and nullopt string?",
+      "range": {
+        "startLine": 28,
+        "startChar": 7,
+        "endLine": 28,
+        "endChar": 15
+      },
+      "revId": "2dcb28985e90af292026da5d66855da505851ee8",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63c2dc2c_936ffd11",
+        "filename": "api/setremotedescriptionobserver.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 5706
+      },
+      "writtenOn": "2017-11-10T17:13:54Z",
+      "side": 1,
+      "message": "\"\" -\u003e std::string()?",
+      "range": {
+        "startLine": 68,
+        "startChar": 66,
+        "endLine": 68,
+        "endChar": 67
+      },
+      "revId": "2dcb28985e90af292026da5d66855da505851ee8",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3b836ee_f54e6601",
+        "filename": "api/setremotedescriptionobserver.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 5706
+      },
+      "writtenOn": "2017-11-10T17:13:54Z",
+      "side": 1,
+      "message": "Does this represent state changes or just a state?\nWill it ever be necessary to express that a receiver was both added and removed?\nIf a receiver is added and later removed, does it appear on both lists after the removal? \nIf so, how do I tell what happened first?",
+      "range": {
+        "startLine": 44,
+        "startChar": 9,
+        "endLine": 44,
+        "endChar": 21
+      },
+      "revId": "2dcb28985e90af292026da5d66855da505851ee8",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
