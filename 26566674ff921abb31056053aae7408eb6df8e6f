@@ -34,6 +34,24 @@
       "revId": "26566674ff921abb31056053aae7408eb6df8e6f",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "237d875b_744ff719",
+        "filename": "modules/video_coding/codecs/vp9/vp9_impl.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 5492
+      },
+      "writtenOn": "2017-11-13T08:12:25Z",
+      "side": 1,
+      "message": "The sent frame width/height are reported through the GetStats api (googFrameWidthSent/googFrameHeightSent). For spatial layers \u003e 1, the largest resolution should probably be reported to GetStats. So an additional change in SendStatisticsProxy might be needed (to not get last encoded width/height, varying depending on when GetStats is called):\n\nstats-\u003ewidth \u003d max encoded width per frame\n...",
+      "parentUuid": "7d8a9aa6_e29d6846",
+      "revId": "26566674ff921abb31056053aae7408eb6df8e6f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
     }
   ]
 }
