@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3b00079e_bd6993ca",
+        "filename": "sdk/android/src/jni/videoframe.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 5112
+      },
+      "writtenOn": "2017-11-14T15:09:01Z",
+      "side": 1,
+      "message": "The method in the other class was called AdoptJavaVideoBuffer, consistency?",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 40,
+        "endChar": 7
+      },
+      "revId": "149d8f66ef518cae15ddbd6e7e713863be34b184",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
