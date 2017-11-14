@@ -22,6 +22,30 @@
       "revId": "149d8f66ef518cae15ddbd6e7e713863be34b184",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19fce97b_52e790c4",
+        "filename": "sdk/android/src/jni/videoframe.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 5098
+      },
+      "writtenOn": "2017-11-14T16:11:44Z",
+      "side": 1,
+      "message": "Renamed to Adopt.",
+      "parentUuid": "3b00079e_bd6993ca",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 40,
+        "endChar": 7
+      },
+      "revId": "149d8f66ef518cae15ddbd6e7e713863be34b184",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
