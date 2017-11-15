@@ -70,6 +70,24 @@
       "revId": "26566674ff921abb31056053aae7408eb6df8e6f",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1c9c4a7_68edcc79",
+        "filename": "modules/video_coding/codecs/vp9/vp9_impl.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 5524
+      },
+      "writtenOn": "2017-11-15T12:43:01Z",
+      "side": 1,
+      "message": "I think we want a callback for every spatial layer. We slice some of stats on simulcast or svc index.",
+      "parentUuid": "9c19676b_850a0f01",
+      "revId": "26566674ff921abb31056053aae7408eb6df8e6f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
     }
   ]
 }
