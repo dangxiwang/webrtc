@@ -151,8 +151,9 @@ class PeerConnection : public PeerConnectionInterface,
                     const RTCOfferAnswerOptions& options) override;
   void SetLocalDescription(SetSessionDescriptionObserver* observer,
                            SessionDescriptionInterface* desc) override;
-  void SetRemoteDescription(SetSessionDescriptionObserver* observer,
-                            SessionDescriptionInterface* desc) override;
+  void SetRemoteDescription(
+      rtc::scoped_refptr<SetRemoteDescriptionObserver> observer,
+      std::unique_ptr<SessionDescriptionInterface> desc) override;
   PeerConnectionInterface::RTCConfiguration GetConfiguration() override;
   bool SetConfiguration(
       const PeerConnectionInterface::RTCConfiguration& configuration,
@@ -379,6 +380,7 @@ class PeerConnection : public PeerConnectionInterface,
   // is created if it doesn't exist; if false, it's removed if it exists.
   // |media_type| is the type of the |streams| and can be either audio or video.
   // If a new MediaStream is created it is added to |new_streams|.
+  // If a receiver is added or removed, |state_changes| is updated.
   void UpdateRemoteStreamsList(
       const std::vector<cricket::StreamParams>& streams,
       bool default_track_needed,
@@ -530,10 +532,12 @@ class PeerConnection : public PeerConnectionInterface,
   // Get current SSL role used by SCTP's underlying transport.
   bool GetSctpSslRole(rtc::SSLRole* role);
 
-  bool SetLocalDescription(std::unique_ptr<SessionDescriptionInterface> desc,
-                           std::string* err_desc);
-  bool SetRemoteDescription(std::unique_ptr<SessionDescriptionInterface> desc,
-                            std::string* err_desc);
+  bool ApplySetLocalDescription(
+      std::unique_ptr<SessionDescriptionInterface> desc,
+      std::string* err_desc);
+  bool ApplySetRemoteDescription(
+      std::unique_ptr<SessionDescriptionInterface> desc,
+      std::string* err_desc);
 
   cricket::IceConfig ParseIceConfig(
       const PeerConnectionInterface::RTCConfiguration& config) const;
