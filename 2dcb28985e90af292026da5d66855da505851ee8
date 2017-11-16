@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "63dad6ca_7f98505e",
+        "filename": "api/failurereason.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5142
+      },
+      "writtenOn": "2017-11-16T14:23:55Z",
+      "side": 1,
+      "message": "If there is an error message I would expect it not to be empty. We could use std::string::size() \u003d\u003d 0 to mean \"no value\" but Optional documents the fact that it is optional explicitly.",
+      "parentUuid": "010a7463_beeaf6d5",
+      "range": {
+        "startLine": 28,
+        "startChar": 7,
+        "endLine": 28,
+        "endChar": 15
+      },
+      "revId": "2dcb28985e90af292026da5d66855da505851ee8",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "63c2dc2c_936ffd11",
         "filename": "api/setremotedescriptionobserver.cc",
         "patchSetId": 9
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "d41f9ee0_1b5b8713",
+        "filename": "api/setremotedescriptionobserver.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 5142
+      },
+      "writtenOn": "2017-11-16T14:23:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63c2dc2c_936ffd11",
+      "range": {
+        "startLine": 68,
+        "startChar": 66,
+        "endLine": 68,
+        "endChar": 67
+      },
+      "revId": "2dcb28985e90af292026da5d66855da505851ee8",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c3b836ee_f54e6601",
         "filename": "api/setremotedescriptionobserver.h",
         "patchSetId": 9
@@ -68,6 +116,30 @@
       "revId": "2dcb28985e90af292026da5d66855da505851ee8",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1204c13a_d8d0a3dd",
+        "filename": "api/setremotedescriptionobserver.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 5142
+      },
+      "writtenOn": "2017-11-16T14:23:55Z",
+      "side": 1,
+      "message": "There is a set of receivers before and after the SRD call. The StateChanges is essentially the diff, so a receiver cannot be added and removed at the same time.\n\nI changed the design to rely on the state of the peer connection directly. I removed StateChanges and I\u0027m looking at pc.GetReceivers() in the callback instead.\n\nWhat I will do in Chromium is to copy the set of receivers before I jump to the main thread, and determine the state changes there. This makes the API more stable when we move over from Plan B to Unified Plan and have transceivers instead, and Chromium has to \"copy\" certain states anyway.",
+      "parentUuid": "c3b836ee_f54e6601",
+      "range": {
+        "startLine": 44,
+        "startChar": 9,
+        "endLine": 44,
+        "endChar": 21
+      },
+      "revId": "2dcb28985e90af292026da5d66855da505851ee8",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
