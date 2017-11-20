@@ -213,12 +213,12 @@ class MockSetSessionDescriptionObserver
   MockSetSessionDescriptionObserver()
       : called_(false),
         error_("MockSetSessionDescriptionObserver not called") {}
-  virtual ~MockSetSessionDescriptionObserver() {}
-  virtual void OnSuccess() {
+  ~MockSetSessionDescriptionObserver() override {}
+  void OnSuccess() override {
     called_ = true;
     error_ = "";
   }
-  virtual void OnFailure(const std::string& error) {
+  void OnFailure(const std::string& error) override {
     called_ = true;
     error_ = error;
   }
@@ -229,6 +229,28 @@ class MockSetSessionDescriptionObserver
  private:
   bool called_;
   std::string error_;
+};
+
+class MockSetRemoteDescriptionObserver
+    : public rtc::RefCountedObject<SetRemoteDescriptionObserver> {
+ public:
+  bool called() const { return result_.has_value(); }
+  bool result() const { return *result_; }
+  const FailureReason& failure_reason() const {
+    RTC_DCHECK(result_);
+    return failure_reason_;
+  }
+
+  void OnSuccess() override { result_ = rtc::Optional<bool>(true); }
+
+  void OnFailure(FailureReason failure_reason) override {
+    result_ = rtc::Optional<bool>(false);
+    failure_reason_ = failure_reason;
+  }
+
+ private:
+  rtc::Optional<bool> result_;
+  FailureReason failure_reason_;
 };
 
 class MockDataChannelObserver : public webrtc::DataChannelObserver {
