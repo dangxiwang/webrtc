@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8e0ef9ca_89d9b52e",
+        "filename": "api/setremotedescriptionobserver.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5142
+      },
+      "writtenOn": "2017-11-20T11:30:12Z",
+      "side": 1,
+      "message": "Unfortunately, the rtc::MessageQueue\u0027s posting mechanism (which rtc::Thread implements) takes raw pointers.",
+      "parentUuid": "fe5bd26e_e5cb995c",
+      "range": {
+        "startLine": 21,
+        "startChar": 9,
+        "endLine": 21,
+        "endChar": 20
+      },
+      "revId": "ab2d6b41548c2d85a608dcfeff36db8d03a15fd5",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d0a3ced_9dee6f2a",
         "filename": "api/setremotedescriptionobserver.cc",
         "patchSetId": 13
@@ -45,6 +69,30 @@
       "revId": "ab2d6b41548c2d85a608dcfeff36db8d03a15fd5",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5bfa25c_ad2337f1",
+        "filename": "api/setremotedescriptionobserver.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 5142
+      },
+      "writtenOn": "2017-11-20T11:30:12Z",
+      "side": 1,
+      "message": "It is, but the posting in webrtc unfortunately uses raw points. Explicit delete in OnMessage is common in the webrtc, unlike elsewhere in the webrtc codebase.",
+      "parentUuid": "7d0a3ced_9dee6f2a",
+      "range": {
+        "startLine": 79,
+        "startChar": 9,
+        "endLine": 79,
+        "endChar": 16
+      },
+      "revId": "ab2d6b41548c2d85a608dcfeff36db8d03a15fd5",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "3fa584a2_06609157",
+        "filename": "pc/peerconnection.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 5142
+      },
+      "writtenOn": "2017-11-20T11:30:12Z",
+      "side": 1,
+      "message": "Oops, this was a remnant of a previous PS, removed.",
+      "parentUuid": "0da7f935_746965a4",
+      "range": {
+        "startLine": 383,
+        "startChar": 41,
+        "endLine": 383,
+        "endChar": 54
+      },
+      "revId": "ab2d6b41548c2d85a608dcfeff36db8d03a15fd5",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "43467486_6cbecefe",
         "filename": "pc/peerconnection.h",
         "patchSetId": 13
@@ -91,6 +163,30 @@
       "revId": "ab2d6b41548c2d85a608dcfeff36db8d03a15fd5",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9dbaeeea_72b03312",
+        "filename": "pc/peerconnection.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 5142
+      },
+      "writtenOn": "2017-11-20T11:30:12Z",
+      "side": 1,
+      "message": "These are old private helper functions called by the public SetLocal/RemoteDescription functions. When I overloaded SetRemoteDescription to use the new signature and implemented the old signature in peerconnectioninterface.h, the compiler started complaining about the SetRemoteDescription hiding the old signature. I renamed to ApplySetRemoteDescription to avoid the \"hiding\" and updated ApplySetLocalDescription to use the same naming scheme.\n\nAs to what the helper function is doing... it\u0027s validating the SDP, updating current/pending descriptions, creates/destroys channels, and updates ice connection state, etc. If ApplySetRemoteDescription is successful, SetRemoteDescription proceeds to create receivers/tracks/streams/etc in accordance with the SDP. I\u0027m not sure why this is split into two similar functions. As far as I can tell, this is simply a subset of the SRD operation which aborts (returns false) if the SDP could not be validated.\n\nIt does update current_local/remote_description_ and pending_local/remote_description_, so in that sense it \"sets\" the description, but it does do other things too.",
+      "parentUuid": "43467486_6cbecefe",
+      "range": {
+        "startLine": 535,
+        "startChar": 7,
+        "endLine": 535,
+        "endChar": 31
+      },
+      "revId": "ab2d6b41548c2d85a608dcfeff36db8d03a15fd5",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "01a4de85_3198d671",
+        "filename": "pc/peerconnection_rtp_unittest.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 5142
+      },
+      "writtenOn": "2017-11-20T11:30:12Z",
+      "side": 1,
+      "message": "It is necessary because the old callee-\u003eSetRemoteDescription() also takes a pointer as the second argument. When deprecated and removed, this can be nullptr.",
+      "parentUuid": "59240077_a14abb76",
+      "range": {
+        "startLine": 114,
+        "startChar": 26,
+        "endLine": 114,
+        "endChar": 39
+      },
+      "revId": "ab2d6b41548c2d85a608dcfeff36db8d03a15fd5",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fc2e4a68_705bd24f",
         "filename": "pc/peerconnection_rtp_unittest.cc",
         "patchSetId": 13
@@ -137,6 +257,30 @@
       "revId": "ab2d6b41548c2d85a608dcfeff36db8d03a15fd5",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c778fd07_f4d74be5",
+        "filename": "pc/peerconnection_rtp_unittest.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 5142
+      },
+      "writtenOn": "2017-11-20T11:30:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc2e4a68_705bd24f",
+      "range": {
+        "startLine": 209,
+        "startChar": 45,
+        "endLine": 209,
+        "endChar": 57
+      },
+      "revId": "ab2d6b41548c2d85a608dcfeff36db8d03a15fd5",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
