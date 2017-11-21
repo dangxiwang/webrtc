@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d117a675_6d7baac4",
+        "filename": "api/failurereason.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5142
+      },
+      "writtenOn": "2017-11-21T09:52:34Z",
+      "side": 1,
+      "message": "I noticed there already exists an RTCError, I can use that instead.",
+      "revId": "7a7f3f9244138284796a8c5fa0b26dfd2cd486ae",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
