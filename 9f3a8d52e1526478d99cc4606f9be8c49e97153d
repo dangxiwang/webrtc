@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56b0ef92_c7ee822c",
+        "filename": "api/peerconnectioninterface.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 5659
+      },
+      "writtenOn": "2017-11-22T05:13:42Z",
+      "side": 1,
+      "message": "I usually like to call things Interface (like SessionDescriptionInterface).  Should we call this SetRemoteDescriptionObserverInterface?  Or does Observer imply Interface?",
+      "range": {
+        "startLine": 731,
+        "startChar": 76,
+        "endLine": 731,
+        "endChar": 0
+      },
+      "revId": "9f3a8d52e1526478d99cc4606f9be8c49e97153d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a702b5e6_0b6da76c",
+        "filename": "api/peerconnectioninterface.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 741,
+      "author": {
+        "id": 5659
+      },
+      "writtenOn": "2017-11-22T05:13:42Z",
+      "side": 1,
+      "message": "I\u0027ve never understood why it\u0027s (observer, desc) when (desc, observer) seems so much more natural.  While we\u0027re switching it, can we switch it to the more natural order?",
+      "range": {
+        "startLine": 741,
+        "startChar": 59,
+        "endLine": 741,
+        "endChar": 0
+      },
+      "revId": "9f3a8d52e1526478d99cc4606f9be8c49e97153d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "559fd20e_afb40209",
+        "filename": "api/setremotedescriptionobserver.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 5659
+      },
+      "writtenOn": "2017-11-22T05:13:42Z",
+      "side": 1,
+      "message": "Can you be more explicit and say that it\u0027s error.ok()?",
+      "range": {
+        "startLine": 36,
+        "startChar": 47,
+        "endLine": 36,
+        "endChar": 0
+      },
+      "revId": "9f3a8d52e1526478d99cc4606f9be8c49e97153d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8280637_38f25a81",
+        "filename": "api/setremotedescriptionobserver.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5659
+      },
+      "writtenOn": "2017-11-22T05:13:42Z",
+      "side": 1,
+      "message": "I think more explicit here would be better something like OnSetRemoteDescriptionComplete.",
+      "range": {
+        "startLine": 37,
+        "startChar": 46,
+        "endLine": 37,
+        "endChar": 0
+      },
+      "revId": "9f3a8d52e1526478d99cc4606f9be8c49e97153d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffc5904f_2ed52d11",
+        "filename": "api/setremotedescriptionobserver.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 5659
+      },
+      "writtenOn": "2017-11-22T05:13:42Z",
+      "side": 1,
+      "message": "SetRemoteDescriptionObserverAdapter is probably clear and shorter.",
+      "range": {
+        "startLine": 48,
+        "startChar": 48,
+        "endLine": 48,
+        "endChar": 0
+      },
+      "revId": "9f3a8d52e1526478d99cc4606f9be8c49e97153d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1921993b_6900841c",
+        "filename": "api/setremotedescriptionobserver.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 5659
+      },
+      "writtenOn": "2017-11-22T05:13:42Z",
+      "side": 1,
+      "message": "I think less explicit here (wrapper_) is more clear.",
+      "range": {
+        "startLine": 64,
+        "startChar": 71,
+        "endLine": 64,
+        "endChar": 0
+      },
+      "revId": "9f3a8d52e1526478d99cc4606f9be8c49e97153d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1be15cda_5ea9ec2b",
+        "filename": "pc/peerconnection.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 2698,
+      "author": {
+        "id": 5659
+      },
+      "writtenOn": "2017-11-22T05:13:42Z",
+      "side": 1,
+      "message": "No, we like our {}s in this area of the code.  Please keep them.",
+      "range": {
+        "startLine": 2698,
+        "startChar": 0,
+        "endLine": 2698,
+        "endChar": 1
+      },
+      "revId": "9f3a8d52e1526478d99cc4606f9be8c49e97153d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1091b250_eb979590",
+        "filename": "pc/peerconnection.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 5659
+      },
+      "writtenOn": "2017-11-22T05:13:42Z",
+      "side": 1,
+      "message": "What does \"ApplySetX\" mean?  Especially without a comment, it\u0027s confusing.  Why not just ApplyX if you don\u0027t want it to be called SetX?  Even then, it deserves a comment explaining how it\u0027s different from SetX?",
+      "range": {
+        "startLine": 543,
+        "startChar": 32,
+        "endLine": 543,
+        "endChar": 0
+      },
+      "revId": "9f3a8d52e1526478d99cc4606f9be8c49e97153d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
