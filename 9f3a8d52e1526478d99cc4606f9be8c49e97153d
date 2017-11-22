@@ -375,6 +375,30 @@
       "revId": "9f3a8d52e1526478d99cc4606f9be8c49e97153d",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c80f018d_a0f35401",
+        "filename": "pc/peerconnection.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 5660
+      },
+      "writtenOn": "2017-11-22T15:38:23Z",
+      "side": 1,
+      "message": "How about SetCurrentOrPendingX?  Matches, roughly, what the comment says.",
+      "parentUuid": "4baf95a2_91ec9071",
+      "range": {
+        "startLine": 543,
+        "startChar": 32,
+        "endLine": 543,
+        "endChar": 0
+      },
+      "revId": "9f3a8d52e1526478d99cc4606f9be8c49e97153d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
