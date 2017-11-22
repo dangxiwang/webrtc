@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "714a0714_5f421707",
+        "filename": "api/peerconnectioninterface.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 5142
+      },
+      "writtenOn": "2017-11-22T10:38:09Z",
+      "side": 1,
+      "message": "Done.\n(Renaming the new interface to SetRemoteDescriptionObserverInterface, not touching the old interface SetSessionDescriptionObserver as that would break things)",
+      "parentUuid": "56b0ef92_c7ee822c",
+      "range": {
+        "startLine": 731,
+        "startChar": 76,
+        "endLine": 731,
+        "endChar": 0
+      },
+      "revId": "9f3a8d52e1526478d99cc4606f9be8c49e97153d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a702b5e6_0b6da76c",
         "filename": "api/peerconnectioninterface.h",
         "patchSetId": 18
@@ -45,6 +69,30 @@
       "revId": "9f3a8d52e1526478d99cc4606f9be8c49e97153d",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf32287c_05d46d9b",
+        "filename": "api/peerconnectioninterface.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 741,
+      "author": {
+        "id": 5142
+      },
+      "writtenOn": "2017-11-22T10:38:09Z",
+      "side": 1,
+      "message": "Done. I thought the same, not sure why I didn\u0027t fix it before.",
+      "parentUuid": "a702b5e6_0b6da76c",
+      "range": {
+        "startLine": 741,
+        "startChar": 59,
+        "endLine": 741,
+        "endChar": 0
+      },
+      "revId": "9f3a8d52e1526478d99cc4606f9be8c49e97153d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "6404f426_0f6f381d",
+        "filename": "api/setremotedescriptionobserver.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 5142
+      },
+      "writtenOn": "2017-11-22T10:38:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "559fd20e_afb40209",
+      "range": {
+        "startLine": 36,
+        "startChar": 47,
+        "endLine": 36,
+        "endChar": 0
+      },
+      "revId": "9f3a8d52e1526478d99cc4606f9be8c49e97153d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a8280637_38f25a81",
         "filename": "api/setremotedescriptionobserver.h",
         "patchSetId": 18
@@ -91,6 +163,30 @@
       "revId": "9f3a8d52e1526478d99cc4606f9be8c49e97153d",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df1b5c0d_d534e31d",
+        "filename": "api/setremotedescriptionobserver.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5142
+      },
+      "writtenOn": "2017-11-22T10:38:09Z",
+      "side": 1,
+      "message": "Yes! Done.",
+      "parentUuid": "a8280637_38f25a81",
+      "range": {
+        "startLine": 37,
+        "startChar": 46,
+        "endLine": 37,
+        "endChar": 0
+      },
+      "revId": "9f3a8d52e1526478d99cc4606f9be8c49e97153d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "8955a78b_0ec093b0",
+        "filename": "api/setremotedescriptionobserver.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 5142
+      },
+      "writtenOn": "2017-11-22T10:38:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ffc5904f_2ed52d11",
+      "range": {
+        "startLine": 48,
+        "startChar": 48,
+        "endLine": 48,
+        "endChar": 0
+      },
+      "revId": "9f3a8d52e1526478d99cc4606f9be8c49e97153d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1921993b_6900841c",
         "filename": "api/setremotedescriptionobserver.h",
         "patchSetId": 18
@@ -137,6 +257,30 @@
       "revId": "9f3a8d52e1526478d99cc4606f9be8c49e97153d",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4f59bf1_8c306cf7",
+        "filename": "api/setremotedescriptionobserver.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 5142
+      },
+      "writtenOn": "2017-11-22T10:38:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1921993b_6900841c",
+      "range": {
+        "startLine": 64,
+        "startChar": 71,
+        "endLine": 64,
+        "endChar": 0
+      },
+      "revId": "9f3a8d52e1526478d99cc4606f9be8c49e97153d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     },
     {
       "key": {
@@ -183,6 +327,30 @@
       "revId": "9f3a8d52e1526478d99cc4606f9be8c49e97153d",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4baf95a2_91ec9071",
+        "filename": "pc/peerconnection.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 5142
+      },
+      "writtenOn": "2017-11-22T10:38:09Z",
+      "side": 1,
+      "message": "These are unrelated to my changes, but I had to rename them to get around a compiler error about hiding due to all these functions sharing the same name and peerconnectioninterface.h now having a default implementation.\n\nI added a comment explaining what it does. I\u0027m not sure why there is a private helper function doing a subset of the work of the public function of the same name (and not used anywhere else).\n\nSomeone who knows why it is split up this way might be able to write a better comment, perhaps this is doing the \"JSEP\" parts and the other is doing the \"WEBRTC-PC\" parts? I simply looked at the code and wrote:\n\n  // Validates and takes ownership of the description, setting it as the current\n  // or pending description (depending on the description\u0027s action) if it is\n  // valid. Also updates ice role, candidates, creates and destroys channels.",
+      "parentUuid": "1091b250_eb979590",
+      "range": {
+        "startLine": 543,
+        "startChar": 32,
+        "endLine": 543,
+        "endChar": 0
+      },
+      "revId": "9f3a8d52e1526478d99cc4606f9be8c49e97153d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
