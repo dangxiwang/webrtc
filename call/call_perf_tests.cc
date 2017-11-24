@@ -122,8 +122,7 @@ class VideoRtcpAndSyncObserver : public test::RtpRtcpObserver,
 
   void PrintResults() {
     test::PrintResultList("stream_offset", "", "synchronization",
-                          test::ValuesToString(sync_offset_ms_list_), "ms",
-                          false);
+                          sync_offset_ms_list_, "ms", false);
   }
 
  private:
@@ -132,7 +131,7 @@ class VideoRtcpAndSyncObserver : public test::RtpRtcpObserver,
   int64_t first_time_in_sync_;
   rtc::CriticalSection crit_;
   VideoReceiveStream* receive_stream_ RTC_GUARDED_BY(crit_);
-  std::vector<int> sync_offset_ms_list_;
+  std::vector<double> sync_offset_ms_list_;
 };
 
 void CallPerfTest::TestAudioVideoSync(FecMode fec,
@@ -450,8 +449,7 @@ void CallPerfTest::TestCaptureNtpTime(const FakeNetworkPipe::Config& net_config,
                              "estimated capture NTP time to be "
                              "within bounds.";
       test::PrintResultList("capture_ntp_time", "", "real - estimated",
-                            test::ValuesToString(time_offset_ms_list_), "ms",
-                            true);
+                            time_offset_ms_list_, "ms", true);
     }
 
     rtc::CriticalSection crit_;
@@ -466,7 +464,7 @@ void CallPerfTest::TestCaptureNtpTime(const FakeNetworkPipe::Config& net_config,
     uint32_t rtp_start_timestamp_;
     typedef std::map<uint32_t, uint32_t> FrameCaptureTimeList;
     FrameCaptureTimeList capture_time_list_ RTC_GUARDED_BY(&crit_);
-    std::vector<int> time_offset_ms_list_;
+    std::vector<double> time_offset_ms_list_;
   } test(net_config, threshold_ms, start_time_ms, run_time_ms);
 
   RunBaseTest(&test);
@@ -643,8 +641,7 @@ void CallPerfTest::TestMinTransmitBitrate(bool pad_to_min_bitrate) {
           "bitrate_stats_",
           (pad_to_min_bitrate_ ? "min_transmit_bitrate"
                                : "without_min_transmit_bitrate"),
-          "bitrate_kbps", test::ValuesToString(bitrate_kbps_list_), "kbps",
-          false);
+          "bitrate_kbps", bitrate_kbps_list_, "kbps", false);
     }
 
     VideoSendStream* send_stream_;
@@ -653,7 +650,7 @@ void CallPerfTest::TestMinTransmitBitrate(bool pad_to_min_bitrate) {
     const int min_acceptable_bitrate_;
     const int max_acceptable_bitrate_;
     int num_bitrate_observations_in_range_;
-    std::vector<size_t> bitrate_kbps_list_;
+    std::vector<double> bitrate_kbps_list_;
   } test(pad_to_min_bitrate);
 
   fake_encoder_.SetMaxBitrate(kMaxEncodeBitrateKbps);
