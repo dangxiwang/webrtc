@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "33f9cbd8_e60a9ec1",
+        "filename": "test/testsupport/perf_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 5100
+      },
+      "writtenOn": "2017-11-28T08:19:48Z",
+      "side": 1,
+      "message": "You can shorten this by a few lines by doing\n value_stream \u003c\u003c \u0027[\u0027;\n std::ostream_iterator\u003cfloat\u003e value_iterator(value_stream, \",\");\n std::copy(values.begin(), values.end(), value_iterator);\n value_stream \u003c\u003c \u0027]\u0027;",
+      "range": {
+        "startLine": 77,
+        "startChar": 2,
+        "endLine": 85,
+        "endChar": 3
+      },
+      "revId": "6176666a6f559af41ab6caaeb4dcc23d20f3b2e8",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3f73b361_1e1e678c",
         "filename": "test/testsupport/perf_test_unittest.cc",
         "patchSetId": 2
