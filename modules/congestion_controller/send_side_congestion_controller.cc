@@ -299,6 +299,9 @@ void SendSideCongestionController::Process() {
     pacer_paused_ = false;
   }
   bitrate_controller_->Process();
+
+  auto alr_start_time = pacer_->GetApplicationLimitedRegionStartTime();
+  probe_controller_->SetAlrStartTimeMs(alr_start_time);
   probe_controller_->Process();
   MaybeTriggerOnNetworkChanged();
 }
@@ -319,15 +322,13 @@ void SendSideCongestionController::OnTransportFeedback(
   std::vector<PacketFeedback> feedback_vector = ReceivedPacketFeedbackVector(
       transport_feedback_adapter_.GetTransportFeedbackVector());
   SortPacketFeedbackVector(&feedback_vector);
-
-  bool currently_in_alr =
-      pacer_->GetApplicationLimitedRegionStartTime().has_value();
-  if (was_in_alr_ && !currently_in_alr) {
+  auto alr_start_time = pacer_->GetApplicationLimitedRegionStartTime();
+  if (was_in_alr_ && !alr_start_time.has_value()) {
     int64_t now_ms = rtc::TimeMillis();
     acknowledged_bitrate_estimator_->SetAlrEndedTimeMs(now_ms);
     probe_controller_->SetAlrEndedTimeMs(now_ms);
   }
-  was_in_alr_ = currently_in_alr;
+  was_in_alr_ = alr_start_time.has_value();
 
   acknowledged_bitrate_estimator_->IncomingPacketFeedbackVector(
       feedback_vector);
@@ -342,8 +343,10 @@ void SendSideCongestionController::OnTransportFeedback(
     // Update the estimate in the ProbeController, in case we want to probe.
     MaybeTriggerOnNetworkChanged();
   }
-  if (result.recovered_from_overuse)
+  if (result.recovered_from_overuse) {
+    probe_controller_->SetAlrStartTimeMs(alr_start_time);
     probe_controller_->RequestProbe();
+  }
   if (in_cwnd_experiment_)
     LimitOutstandingBytes(transport_feedback_adapter_.GetOutstandingBytes());
 }
