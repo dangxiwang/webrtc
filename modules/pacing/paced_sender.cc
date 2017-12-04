@@ -235,7 +235,7 @@ void PacedSender::Process() {
     if (packet_counter_ == 0)
       return;
     size_t bytes_sent = SendPadding(1, pacing_info);
-    alr_detector_->OnBytesSent(bytes_sent, elapsed_time_ms);
+    alr_detector_->OnBytesSent(bytes_sent, now_us);
     return;
   }
 
@@ -305,7 +305,7 @@ void PacedSender::Process() {
     if (!probing_send_failure_)
       prober_->ProbeSent(clock_->TimeInMilliseconds(), bytes_sent);
   }
-  alr_detector_->OnBytesSent(bytes_sent, elapsed_time_ms);
+  alr_detector_->OnBytesSent(bytes_sent, now_us);
 }
 
 void PacedSender::ProcessThreadAttached(ProcessThread* process_thread) {
