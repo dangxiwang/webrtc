@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "346fb9ca_1e932f32",
+        "filename": "modules/congestion_controller/send_side_congestion_controller.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 5150
+      },
+      "writtenOn": "2017-12-04T11:59:57Z",
+      "side": 1,
+      "message": "I understand why you changed |currently_in_alr| to |alr_start_time|, but I also feel that it makes the name |was_in_alr| slighly unclear. Wdyt about renaming it to previously_in_alr|?",
+      "range": {
+        "startLine": 326,
+        "startChar": 6,
+        "endLine": 326,
+        "endChar": 17
+      },
+      "revId": "2533559344c32684fd8d1370d75cb29a17b4d937",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
