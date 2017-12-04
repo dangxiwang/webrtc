@@ -32,7 +32,7 @@ class AlrDetector {
   AlrDetector();
   ~AlrDetector();
 
-  void OnBytesSent(size_t bytes_sent, int64_t delta_time_ms);
+  void OnBytesSent(size_t bytes_sent, int64_t send_time_ms);
 
   // Set current estimated bandwidth.
   void SetEstimatedBitrate(int bitrate_bps);
@@ -75,6 +75,7 @@ class AlrDetector {
   int alr_stop_budget_level_percent_;
 
   IntervalBudget alr_budget_;
+  rtc::Optional<int64_t> last_send_time_ms_;
   rtc::Optional<int64_t> alr_started_time_ms_;
 };
 

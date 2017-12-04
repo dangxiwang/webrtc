@@ -151,7 +151,7 @@ class SendSideCongestionController : public CallStatsObserver,
   std::unique_ptr<DelayBasedBwe> delay_based_bwe_ RTC_GUARDED_BY(bwe_lock_);
   bool in_cwnd_experiment_;
   int64_t accepted_queue_ms_;
-  bool was_in_alr_;
+  bool previously_in_alr;
 
   rtc::RaceChecker worker_race_;
 
