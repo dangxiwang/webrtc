@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3dfd86c_f0f08cbb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5029
+      },
+      "writtenOn": "2017-12-14T23:05:22Z",
+      "side": 1,
+      "message": "comment (Remove s)",
+      "range": {
+        "startLine": 11,
+        "startChar": 17,
+        "endLine": 11,
+        "endChar": 25
+      },
+      "revId": "15bf18c0a55ce680e0afa582926d92630bc54c2e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91eb6203_7cd3e003",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5029
+      },
+      "writtenOn": "2017-12-14T23:05:22Z",
+      "side": 1,
+      "message": "Bug: webrtc:8460\nto use Monorail of webrtc instead of chromium.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 8
+      },
+      "revId": "15bf18c0a55ce680e0afa582926d92630bc54c2e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
