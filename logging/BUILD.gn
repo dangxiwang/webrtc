@@ -104,6 +104,7 @@ rtc_static_library("rtc_event_log_impl") {
   defines = []
 
   deps = [
+    ":ice_log",
     ":rtc_event_log_api",
     "..:webrtc_common",
     "../modules/audio_coding:audio_network_adaptor",
@@ -282,4 +283,20 @@ if (rtc_enable_protobuf) {
       }
     }
   }
+}
+
+rtc_source_set("ice_log") {
+  sources = [
+    "rtc_event_log/events/rtc_event.h",
+    "rtc_event_log/events/rtc_event_ice_cp_state_update.cc",
+    "rtc_event_log/events/rtc_event_ice_cp_state_update.h",
+    "rtc_event_log/icelogger.cc",
+    "rtc_event_log/icelogger.h",
+    "rtc_event_log/rtc_event_log.h",
+  ]
+
+  deps = [
+    "../api:libjingle_logging_api",
+    "../rtc_base:rtc_base_approved",
+  ]
 }

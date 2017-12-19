@@ -526,6 +526,11 @@ EventLogAnalyzer::EventLogAnalyzer(const ParsedRtcEventLog& log)
         alr_state_events_.push_back(parsed_log_.GetAlrState(i));
         break;
       }
+      case ParsedRtcEventLog::ICE_CP_STATE_UPDATE_EVENT: {
+        ice_cp_state_update_events_.push_back(
+            parsed_log_.GetIceCpStateUpdate(i));
+        break;
+      }
       case ParsedRtcEventLog::UNKNOWN_EVENT: {
         break;
       }
@@ -1984,6 +1989,34 @@ void EventLogAnalyzer::CreateAudioJitterBufferGraph(
   plot->SetYAxis(min_y_axis, max_y_axis, "Relative delay (ms)", kBottomMargin,
                  kTopMargin);
   plot->SetTitle("NetEq timing");
+}
+
+void EventLogAnalyzer::CreateIceConnectivityCheckGraph(Plot* plot) {
+  // Use the candidate pair description string as the identifier for each pair.
+  std::set<std::string> ice_cp_desc_set;
+  std::map<std::string, TimeSeries> connectivity_checks_by_cp;
+  for (const auto& state_update : ice_cp_state_update_events_) {
+    if (ice_cp_desc_set.find(state_update.ice_cp_desc) ==
+        ice_cp_desc_set.end()) {
+      ice_cp_desc_set.insert(state_update.ice_cp_desc);
+      connectivity_checks_by_cp[state_update.ice_cp_desc] = TimeSeries(
+          state_update.ice_cp_desc, LineStyle::kNone, PointStyle::kHighlight);
+    }
+    float x =
+        static_cast<float>(state_update.timestamp - begin_time_) / 1000000;
+    float y = static_cast<float>(state_update.new_state);
+    connectivity_checks_by_cp[state_update.ice_cp_desc].points.emplace_back(x,
+                                                                            y);
+  }
+
+  for (auto cp : ice_cp_desc_set) {
+    plot->AppendTimeSeries(std::move(connectivity_checks_by_cp[cp]));
+  }
+
+  plot->SetXAxis(0, call_duration_s_, "Time (s)", kLeftMargin, kRightMargin);
+  plot->SetSuggestedYAxis(0, 6, "Numeric Connectivity State", kBottomMargin,
+                          kTopMargin);
+  plot->SetTitle("ICE connectivity checks");
 }
 
 void EventLogAnalyzer::Notification(
