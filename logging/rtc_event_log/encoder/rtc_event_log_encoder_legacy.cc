@@ -17,6 +17,7 @@
 #include "logging/rtc_event_log/events/rtc_event_audio_send_stream_config.h"
 #include "logging/rtc_event_log/events/rtc_event_bwe_update_delay_based.h"
 #include "logging/rtc_event_log/events/rtc_event_bwe_update_loss_based.h"
+#include "logging/rtc_event_log/events/rtc_event_ice_cp_state_update.h"
 #include "logging/rtc_event_log/events/rtc_event_logging_started.h"
 #include "logging/rtc_event_log/events/rtc_event_logging_stopped.h"
 #include "logging/rtc_event_log/events/rtc_event_probe_cluster_created.h"
@@ -105,6 +106,27 @@ rtclog::VideoReceiveConfig_RtcpMode ConvertRtcpMode(RtcpMode rtcp_mode) {
   RTC_NOTREACHED();
   return rtclog::VideoReceiveConfig::RTCP_COMPOUND;
 }
+
+rtclog::IceCpStateUpdate::IceCpState ConvertIceCpState(IceLogCpState state) {
+  switch (state) {
+    case IceLogCpState::kInactive:
+      return rtclog::IceCpStateUpdate::INACTIVE;
+    case IceLogCpState::kCheckSent:
+      return rtclog::IceCpStateUpdate::CHECK_SENT;
+    case IceLogCpState::kCheckReceived:
+      return rtclog::IceCpStateUpdate::CHECK_RECEIVED;
+    case IceLogCpState::kCheckResponseSent:
+      return rtclog::IceCpStateUpdate::CHECK_RESPONSE_SENT;
+    case IceLogCpState::kCheckResponseReceived:
+      return rtclog::IceCpStateUpdate::CHECK_RESPONSE_RECEIVED;
+    case IceLogCpState::kSelected:
+      return rtclog::IceCpStateUpdate::SELECTED;
+    default:
+      RTC_NOTREACHED();
+  }
+  RTC_NOTREACHED();
+  return rtclog::IceCpStateUpdate::INACTIVE;
+}
 }  // namespace
 
 std::string RtcEventLogEncoderLegacy::EncodeBatch(
@@ -157,6 +179,11 @@ std::string RtcEventLogEncoderLegacy::Encode(const RtcEvent& event) {
     case RtcEvent::Type::BweUpdateLossBased: {
       auto& rtc_event = static_cast<const RtcEventBweUpdateLossBased&>(event);
       return EncodeBweUpdateLossBased(rtc_event);
+    }
+
+    case RtcEvent::Type::IceCpStateUpdate: {
+      auto& rtc_event = static_cast<const RtcEventIceCpStateUpdate&>(event);
+      return EncodeIceCpStateUpdate(rtc_event);
     }
 
     case RtcEvent::Type::LoggingStarted: {
@@ -338,6 +365,21 @@ std::string RtcEventLogEncoderLegacy::EncodeBweUpdateLossBased(
   bwe_event->set_fraction_loss(event.fraction_loss_);
   bwe_event->set_total_packets(event.total_packets_);
 
+  return Serialize(&rtclog_event);
+}
+
+std::string RtcEventLogEncoderLegacy::EncodeIceCpStateUpdate(
+    const RtcEventIceCpStateUpdate& event) {
+  rtclog::Event rtclog_event;
+  rtclog_event.set_timestamp_us(event.timestamp_us_);
+  rtclog_event.set_type(rtclog::Event::ICE_CP_STATE_UPDATE_EVENT);
+
+  auto ice_cp_state_update = rtclog_event.mutable_ice_cp_state_update();
+  ice_cp_state_update->set_ice_cp_desc(event.ice_cp_desc_);
+  ice_cp_state_update->set_new_state(ConvertIceCpState(event.new_state_));
+
+  RTC_LOG(INFO) << "Serializing IceCpStateUpdate for connection "
+                << ice_cp_state_update->ice_cp_desc();
   return Serialize(&rtclog_event);
 }
 

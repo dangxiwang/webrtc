@@ -32,6 +32,7 @@ class RtcEventAudioReceiveStreamConfig;
 class RtcEventAudioSendStreamConfig;
 class RtcEventBweUpdateDelayBased;
 class RtcEventBweUpdateLossBased;
+class RtcEventIceCpStateUpdate;
 class RtcEventLoggingStarted;
 class RtcEventLoggingStopped;
 class RtcEventProbeClusterCreated;
@@ -69,6 +70,7 @@ class RtcEventLogEncoderLegacy final : public RtcEventLogEncoder {
   std::string EncodeBweUpdateDelayBased(
       const RtcEventBweUpdateDelayBased& event);
   std::string EncodeBweUpdateLossBased(const RtcEventBweUpdateLossBased& event);
+  std::string EncodeIceCpStateUpdate(const RtcEventIceCpStateUpdate& event);
   std::string EncodeLoggingStarted(const RtcEventLoggingStarted& event);
   std::string EncodeLoggingStopped(const RtcEventLoggingStopped& event);
   std::string EncodeProbeClusterCreated(
