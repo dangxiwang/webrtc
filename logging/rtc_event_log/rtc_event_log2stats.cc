@@ -166,6 +166,8 @@ std::string EventTypeToString(webrtc::rtclog::Event::EventType event_type) {
       return "BWE_PROBE_RESULT";
     case webrtc::rtclog::Event::ALR_STATE_EVENT:
       return "ALR_STATE_EVENT";
+    case webrtc::rtclog::Event::ICE_CP_STATE_UPDATE_EVENT:
+      return "ICE_CP_STATE_UPDATE";
   }
   RTC_NOTREACHED();
   return "UNKNOWN_EVENT";

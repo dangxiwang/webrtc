@@ -41,6 +41,7 @@ message Event {
     BWE_PROBE_CLUSTER_CREATED_EVENT = 17;
     BWE_PROBE_RESULT_EVENT = 18;
     ALR_STATE_EVENT = 19;
+    ICE_CP_STATE_UPDATE_EVENT = 20;
   }
 
   // required - Indicates the type of this event
@@ -85,6 +86,9 @@ message Event {
 
     // required if type == ALR_STATE_EVENT
     AlrState alr_state = 19;
+
+    // required if type == ICE_CP_STATE_UPDATE_EVENT
+    IceCpStateUpdate ice_cp_state_update = 20;
   }
 }
 
@@ -322,4 +326,20 @@ message BweProbeResult {
 message AlrState {
   // required - If we are in ALR or not.
   optional bool in_alr = 1;
+}
+
+message IceCpStateUpdate {
+  enum IceCpState {
+    INACTIVE = 0;
+    CHECK_SENT = 1;
+    CHECK_RECEIVED = 2;
+    CHECK_RESPONSE_SENT = 3;
+    CHECK_RESPONSE_RECEIVED = 4;
+    SELECTED = 5;
+  }
+
+  // required
+  optional string ice_cp_desc = 1;
+  // required
+  optional IceCpState new_state = 2;
 }
