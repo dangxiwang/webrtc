@@ -76,6 +76,8 @@ ParsedRtcEventLog::EventType GetRuntimeEventType(
       return ParsedRtcEventLog::EventType::BWE_PROBE_RESULT_EVENT;
     case rtclog::Event::ALR_STATE_EVENT:
       return ParsedRtcEventLog::EventType::ALR_STATE_EVENT;
+    case rtclog::Event::ICE_CP_STATE_UPDATE_EVENT:
+      return ParsedRtcEventLog::EventType::ICE_CP_STATE_UPDATE_EVENT;
   }
   return ParsedRtcEventLog::EventType::UNKNOWN_EVENT;
 }
@@ -667,6 +669,24 @@ ParsedRtcEventLog::AlrStateEvent ParsedRtcEventLog::GetAlrState(
   RTC_CHECK(alr_event.has_in_alr());
   res.in_alr = alr_event.in_alr();
 
+  return res;
+}
+
+ParsedRtcEventLog::IceCpStateUpdateEvent ParsedRtcEventLog::GetIceCpStateUpdate(
+    size_t index) const {
+  RTC_CHECK_LT(index, GetNumberOfEvents());
+  const rtclog::Event& event = events_[index];
+  RTC_CHECK(event.has_type());
+  RTC_CHECK_EQ(event.type(), rtclog::Event::ICE_CP_STATE_UPDATE_EVENT);
+  RTC_CHECK(event.has_ice_cp_state_update());
+  const rtclog::IceCpStateUpdate& ice_cp_state_update =
+      event.ice_cp_state_update();
+  IceCpStateUpdateEvent res;
+  res.timestamp = GetTimestamp(index);
+  RTC_CHECK(ice_cp_state_update.has_ice_cp_desc());
+  RTC_CHECK(ice_cp_state_update.has_new_state());
+  res.ice_cp_desc = ice_cp_state_update.ice_cp_desc();
+  res.new_state = ice_cp_state_update.new_state();
   return res;
 }
 

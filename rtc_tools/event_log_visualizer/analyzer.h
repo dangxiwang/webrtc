@@ -109,6 +109,8 @@ class EventLogAnalyzer {
                                     int file_sample_rate_hz,
                                     Plot* plot);
 
+  void CreateIceConnectivityCheckGraph(Plot* plot);
+
   // Returns a vector of capture and arrival timestamps for the video frames
   // of the stream with the most number of frames.
   std::vector<std::pair<int64_t, int64_t>> GetFrameTimestamps() const;
@@ -203,6 +205,9 @@ class EventLogAnalyzer {
   std::vector<std::unique_ptr<TriageNotification>> notifications_;
 
   std::vector<ParsedRtcEventLog::AlrStateEvent> alr_state_events_;
+
+  std::vector<ParsedRtcEventLog::IceCpStateUpdateEvent>
+      ice_cp_state_update_events_;
 
   // Window and step size used for calculating moving averages, e.g. bitrate.
   // The generated data points will be |step_| microseconds apart.
