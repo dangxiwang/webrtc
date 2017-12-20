@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f55782d4_d6ca02b6",
+        "filename": "logging/rtc_event_log/encoder/rtc_event_log_encoder_legacy.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 5660
+      },
+      "writtenOn": "2017-12-20T00:05:48Z",
+      "side": 1,
+      "message": "All the rest of these are past tense of verbs.  But not this one.  When would we log it?  When a candidate pair is destroyed/discarded/deactivated/removed?  In that case, should it be REMOVED?  And in that case, should we have an ADDED?",
+      "range": {
+        "startLine": 113,
+        "startChar": 48,
+        "endLine": 113,
+        "endChar": 0
+      },
+      "revId": "c4a373eaf7acc21a26b113715ae3d7abe6a8b996",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4abac842_eda21eed",
+        "filename": "logging/rtc_event_log/encoder/rtc_event_log_encoder_legacy.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 5660
+      },
+      "writtenOn": "2017-12-20T00:05:48Z",
+      "side": 1,
+      "message": "It\u0027s not really a new state, is it?  It\u0027s more like an event that took place.",
+      "range": {
+        "startLine": 379,
+        "startChar": 74,
+        "endLine": 379,
+        "endChar": 0
+      },
+      "revId": "c4a373eaf7acc21a26b113715ae3d7abe6a8b996",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00f2865f_66c61805",
+        "filename": "logging/rtc_event_log/encoder/rtc_event_log_encoder_legacy.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 5660
+      },
+      "writtenOn": "2017-12-20T00:05:48Z",
+      "side": 1,
+      "message": "I think a better name for this would be \"IceCandidatePairEvent\".  It\u0027s not really a state change or update.  It\u0027s more like something that happened that might indicate a state change.",
+      "range": {
+        "startLine": 73,
+        "startChar": 76,
+        "endLine": 73,
+        "endChar": 0
+      },
+      "revId": "c4a373eaf7acc21a26b113715ae3d7abe6a8b996",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3261e82_1b7d4df4",
+        "filename": "logging/rtc_event_log/events/rtc_event_ice_cp_state_update.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 5660
+      },
+      "writtenOn": "2017-12-20T00:05:48Z",
+      "side": 1,
+      "message": "A better name might be candidate_pair_id_ or candidate_pair_name_.",
+      "range": {
+        "startLine": 40,
+        "startChar": 33,
+        "endLine": 40,
+        "endChar": 0
+      },
+      "revId": "c4a373eaf7acc21a26b113715ae3d7abe6a8b996",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef55c759_a137abdf",
+        "filename": "rtc_tools/event_log_visualizer/analyzer.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1996,
+      "author": {
+        "id": 5660
+      },
+      "writtenOn": "2017-12-20T00:05:48Z",
+      "side": 1,
+      "message": "Could just be cp_ids",
+      "range": {
+        "startLine": 1996,
+        "startChar": 40,
+        "endLine": 1996,
+        "endChar": 0
+      },
+      "revId": "c4a373eaf7acc21a26b113715ae3d7abe6a8b996",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "935b32ec_6bff84ec",
+        "filename": "rtc_tools/event_log_visualizer/analyzer.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1997,
+      "author": {
+        "id": 5660
+      },
+      "writtenOn": "2017-12-20T00:05:48Z",
+      "side": 1,
+      "message": "Could just be checks_by_cp_id",
+      "range": {
+        "startLine": 1997,
+        "startChar": 62,
+        "endLine": 1997,
+        "endChar": 0
+      },
+      "revId": "c4a373eaf7acc21a26b113715ae3d7abe6a8b996",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c606851c_29f644f3",
+        "filename": "rtc_tools/event_log_visualizer/analyzer.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 2000,
+      "author": {
+        "id": 5660
+      },
+      "writtenOn": "2017-12-20T00:05:48Z",
+      "side": 1,
+      "message": "This makes me more convinced it should be candidate_pair_id since you\u0027re using it as an ID.",
+      "range": {
+        "startLine": 2000,
+        "startChar": 32,
+        "endLine": 2000,
+        "endChar": 0
+      },
+      "revId": "c4a373eaf7acc21a26b113715ae3d7abe6a8b996",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef133283_438b4767",
+        "filename": "rtc_tools/event_log_visualizer/analyzer.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 2001,
+      "author": {
+        "id": 5660
+      },
+      "writtenOn": "2017-12-20T00:05:48Z",
+      "side": 1,
+      "message": "If you do ice_cp_desc_set.insert(...), it will return whether or not it was inserted, so you don\u0027t have to do the find first.\n\nActually... why do you need the map *and* the set?  Why not just use the map and later iterate over the keys of the set?",
+      "range": {
+        "startLine": 2001,
+        "startChar": 55,
+        "endLine": 2001,
+        "endChar": 0
+      },
+      "revId": "c4a373eaf7acc21a26b113715ae3d7abe6a8b996",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f183d58d_d8e9b5b7",
+        "filename": "rtc_tools/event_log_visualizer/analyzer.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 2006,
+      "author": {
+        "id": 5660
+      },
+      "writtenOn": "2017-12-20T00:05:48Z",
+      "side": 1,
+      "message": "kNumMicrosecsPerSec",
+      "range": {
+        "startLine": 2006,
+        "startChar": 75,
+        "endLine": 2006,
+        "endChar": 0
+      },
+      "revId": "c4a373eaf7acc21a26b113715ae3d7abe6a8b996",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
