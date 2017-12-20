@@ -70,6 +70,12 @@ class ParsedRtcEventLog {
     bool in_alr;
   };
 
+  struct IceCandidatePairEvent {
+    uint64_t timestamp;
+    std::string candidate_pair_desc;
+    rtclog::IceCandidatePairEvent::IceCandidatePairStatus status;
+  };
+
   enum EventType {
     UNKNOWN_EVENT = 0,
     LOG_START = 1,
@@ -86,7 +92,8 @@ class ParsedRtcEventLog {
     AUDIO_NETWORK_ADAPTATION_EVENT = 16,
     BWE_PROBE_CLUSTER_CREATED_EVENT = 17,
     BWE_PROBE_RESULT_EVENT = 18,
-    ALR_STATE_EVENT = 19
+    ALR_STATE_EVENT = 19,
+    ICE_CANDIDATE_PAIR_EVENT = 20,
   };
 
   enum class MediaType { ANY, AUDIO, VIDEO, DATA };
@@ -187,6 +194,8 @@ class ParsedRtcEventLog {
   MediaType GetMediaType(uint32_t ssrc, PacketDirection direction) const;
 
   AlrStateEvent GetAlrState(size_t index) const;
+
+  IceCandidatePairEvent GetIceCandidatePairEvent(size_t index) const;
 
  private:
   rtclog::StreamConfig GetVideoReceiveConfig(const rtclog::Event& event) const;
