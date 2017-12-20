@@ -335,8 +335,7 @@ JNI_FUNCTION_DECLARATION(void,
                          JNIEnv*,
                          jclass,
                          jlong j_p) {
-  PeerConnectionObserverJni* p =
-      reinterpret_cast<PeerConnectionObserverJni*>(j_p);
+  PeerConnectionObserver* p = reinterpret_cast<PeerConnectionObserver*>(j_p);
   delete p;
 }
 
