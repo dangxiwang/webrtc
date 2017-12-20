@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0833f98e_db7c7b19",
+        "filename": "logging/rtc_event_log/encoder/rtc_event_log_encoder_legacy.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 5887
+      },
+      "writtenOn": "2017-12-20T19:26:30Z",
+      "side": 1,
+      "message": "Done. It was a bad name I gave for what should actually be called ADDED or CREATED. We can also add and log PRUNED.",
+      "parentUuid": "f55782d4_d6ca02b6",
+      "range": {
+        "startLine": 113,
+        "startChar": 48,
+        "endLine": 113,
+        "endChar": 0
+      },
+      "revId": "c4a373eaf7acc21a26b113715ae3d7abe6a8b996",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4abac842_eda21eed",
         "filename": "logging/rtc_event_log/encoder/rtc_event_log_encoder_legacy.cc",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2017-12-20T00:05:48Z",
       "side": 1,
       "message": "It\u0027s not really a new state, is it?  It\u0027s more like an event that took place.",
+      "range": {
+        "startLine": 379,
+        "startChar": 74,
+        "endLine": 379,
+        "endChar": 0
+      },
+      "revId": "c4a373eaf7acc21a26b113715ae3d7abe6a8b996",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7630038b_6e734681",
+        "filename": "logging/rtc_event_log/encoder/rtc_event_log_encoder_legacy.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 5887
+      },
+      "writtenOn": "2017-12-20T19:26:30Z",
+      "side": 1,
+      "message": "I have given a try to a major renaming as follow: 1) there are three mirrored event structs for logging, i. protobuf schema, ii. derived RtcEvent, iii. event of ParsedRtcEventLog; 2) the event is called IceCandidatePairEvent throughout, and the contained field, which was called state, is renamed to IceCandidatePairStatus",
+      "parentUuid": "4abac842_eda21eed",
       "range": {
         "startLine": 379,
         "startChar": 74,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "2f097e23_73051c6a",
+        "filename": "logging/rtc_event_log/encoder/rtc_event_log_encoder_legacy.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 5887
+      },
+      "writtenOn": "2017-12-20T19:26:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00f2865f_66c61805",
+      "range": {
+        "startLine": 73,
+        "startChar": 76,
+        "endLine": 73,
+        "endChar": 0
+      },
+      "revId": "c4a373eaf7acc21a26b113715ae3d7abe6a8b996",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c3261e82_1b7d4df4",
         "filename": "logging/rtc_event_log/events/rtc_event_ice_cp_state_update.h",
         "patchSetId": 5
@@ -82,6 +154,30 @@
       "writtenOn": "2017-12-20T00:05:48Z",
       "side": 1,
       "message": "A better name might be candidate_pair_id_ or candidate_pair_name_.",
+      "range": {
+        "startLine": 40,
+        "startChar": 33,
+        "endLine": 40,
+        "endChar": 0
+      },
+      "revId": "c4a373eaf7acc21a26b113715ae3d7abe6a8b996",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10c7f430_51570113",
+        "filename": "logging/rtc_event_log/events/rtc_event_ice_cp_state_update.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 5887
+      },
+      "writtenOn": "2017-12-20T19:26:30Z",
+      "side": 1,
+      "message": "What is recorded is something like \"relay:udp:Ethernet-\u003eprflx:udp\". I renamed it to candidate_pair_desc for the moment. Not sure if \"desc\" or \"name\" is a better name. It is also used as an \"id\" in the parser and analyzer when sorting events for different candidate pair, so \"id\" is also reasonable in that context. Let me know your thought.",
+      "parentUuid": "c3261e82_1b7d4df4",
       "range": {
         "startLine": 40,
         "startChar": 33,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "c2d023d6_eae36fba",
+        "filename": "rtc_tools/event_log_visualizer/analyzer.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1996,
+      "author": {
+        "id": 5887
+      },
+      "writtenOn": "2017-12-20T19:26:30Z",
+      "side": 1,
+      "message": "Related to the comment on the definition of ice_cp_desc (renamed to candidate_pair_desc) in rtc_event_ice_cp_state_update.h (renamed to rtc_event_ice_candidate_pair.h), and pasted here: \n\n\"What is recorded is something like \"relay:udp:Ethernet-\u003eprflx:udp\". I renamed it to candidate_pair_desc for the moment. Not sure if \"desc\" or \"name\" is a better name. It is also used as an \"id\" in the parser and analyzer when sorting events for different candidate pair, so \"id\" is also reasonable in that context.\"\n\nLet me know your thoughts.",
+      "parentUuid": "ef55c759_a137abdf",
+      "range": {
+        "startLine": 1996,
+        "startChar": 40,
+        "endLine": 1996,
+        "endChar": 0
+      },
+      "revId": "c4a373eaf7acc21a26b113715ae3d7abe6a8b996",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "935b32ec_6bff84ec",
         "filename": "rtc_tools/event_log_visualizer/analyzer.cc",
         "patchSetId": 5
@@ -128,6 +248,30 @@
       "writtenOn": "2017-12-20T00:05:48Z",
       "side": 1,
       "message": "Could just be checks_by_cp_id",
+      "range": {
+        "startLine": 1997,
+        "startChar": 62,
+        "endLine": 1997,
+        "endChar": 0
+      },
+      "revId": "c4a373eaf7acc21a26b113715ae3d7abe6a8b996",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdd494f4_50b143ac",
+        "filename": "rtc_tools/event_log_visualizer/analyzer.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1997,
+      "author": {
+        "id": 5887
+      },
+      "writtenOn": "2017-12-20T19:26:30Z",
+      "side": 1,
+      "message": "ditto. Renamed to checks_by_cp_desc for the moment.",
+      "parentUuid": "935b32ec_6bff84ec",
       "range": {
         "startLine": 1997,
         "startChar": 62,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "53c7772a_f8592ed6",
+        "filename": "rtc_tools/event_log_visualizer/analyzer.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 2000,
+      "author": {
+        "id": 5887
+      },
+      "writtenOn": "2017-12-20T19:26:30Z",
+      "side": 1,
+      "message": "ditto",
+      "parentUuid": "c606851c_29f644f3",
+      "range": {
+        "startLine": 2000,
+        "startChar": 32,
+        "endLine": 2000,
+        "endChar": 0
+      },
+      "revId": "c4a373eaf7acc21a26b113715ae3d7abe6a8b996",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ef133283_438b4767",
         "filename": "rtc_tools/event_log_visualizer/analyzer.cc",
         "patchSetId": 5
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "fd7bd70a_d7e0631f",
+        "filename": "rtc_tools/event_log_visualizer/analyzer.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 2001,
+      "author": {
+        "id": 5887
+      },
+      "writtenOn": "2017-12-20T19:26:30Z",
+      "side": 1,
+      "message": "Done. The set was very redundant and I could have just checked the existing keys of the map for creating new time series and also just done the iteration over the kv-pairs of the map later.",
+      "parentUuid": "ef133283_438b4767",
+      "range": {
+        "startLine": 2001,
+        "startChar": 55,
+        "endLine": 2001,
+        "endChar": 0
+      },
+      "revId": "c4a373eaf7acc21a26b113715ae3d7abe6a8b996",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f183d58d_d8e9b5b7",
         "filename": "rtc_tools/event_log_visualizer/analyzer.cc",
         "patchSetId": 5
@@ -206,6 +398,30 @@
       "revId": "c4a373eaf7acc21a26b113715ae3d7abe6a8b996",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10572039_ec80a8c8",
+        "filename": "rtc_tools/event_log_visualizer/analyzer.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 2006,
+      "author": {
+        "id": 5887
+      },
+      "writtenOn": "2017-12-20T19:26:30Z",
+      "side": 1,
+      "message": "Done. I have also refactored the same constant used in the existing code.",
+      "parentUuid": "f183d58d_d8e9b5b7",
+      "range": {
+        "startLine": 2006,
+        "startChar": 75,
+        "endLine": 2006,
+        "endChar": 0
+      },
+      "revId": "c4a373eaf7acc21a26b113715ae3d7abe6a8b996",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
