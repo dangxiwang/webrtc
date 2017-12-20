@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "21feb66e_cf7d4e66",
+        "filename": "logging/rtc_event_log/events/rtc_event_ice_cp_state_update.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 5660
+      },
+      "writtenOn": "2017-12-20T22:24:52Z",
+      "side": 1,
+      "message": "I prefer candidate_pair_id_.",
+      "parentUuid": "10c7f430_51570113",
+      "range": {
+        "startLine": 40,
+        "startChar": 33,
+        "endLine": 40,
+        "endChar": 0
+      },
+      "revId": "c4a373eaf7acc21a26b113715ae3d7abe6a8b996",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ef55c759_a137abdf",
         "filename": "rtc_tools/event_log_visualizer/analyzer.cc",
         "patchSetId": 5
@@ -225,6 +249,30 @@
       "side": 1,
       "message": "Related to the comment on the definition of ice_cp_desc (renamed to candidate_pair_desc) in rtc_event_ice_cp_state_update.h (renamed to rtc_event_ice_candidate_pair.h), and pasted here: \n\n\"What is recorded is something like \"relay:udp:Ethernet-\u003eprflx:udp\". I renamed it to candidate_pair_desc for the moment. Not sure if \"desc\" or \"name\" is a better name. It is also used as an \"id\" in the parser and analyzer when sorting events for different candidate pair, so \"id\" is also reasonable in that context.\"\n\nLet me know your thoughts.",
       "parentUuid": "ef55c759_a137abdf",
+      "range": {
+        "startLine": 1996,
+        "startChar": 40,
+        "endLine": 1996,
+        "endChar": 0
+      },
+      "revId": "c4a373eaf7acc21a26b113715ae3d7abe6a8b996",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30fabc2d_699b24b2",
+        "filename": "rtc_tools/event_log_visualizer/analyzer.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1996,
+      "author": {
+        "id": 5660
+      },
+      "writtenOn": "2017-12-20T22:24:52Z",
+      "side": 1,
+      "message": "I like id.",
+      "parentUuid": "c2d023d6_eae36fba",
       "range": {
         "startLine": 1996,
         "startChar": 40,

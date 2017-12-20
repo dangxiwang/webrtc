@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d4c77163_4a2a39eb",
+        "filename": "logging/rtc_event_log/encoder/rtc_event_log_encoder_legacy.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 5660
+      },
+      "writtenOn": "2017-12-20T22:24:52Z",
+      "side": 1,
+      "message": "I think it\u0027s more like an event type.  set_event_type? and event.type?",
+      "range": {
+        "startLine": 382,
+        "startChar": 73,
+        "endLine": 382,
+        "endChar": 0
+      },
+      "revId": "b2b833e797e3d1f8b4ea27e0b17469c146ea4b0c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70242661_6991d28f",
+        "filename": "logging/rtc_event_log/rtc_event_log.proto",
+        "patchSetId": 7
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 5660
+      },
+      "writtenOn": "2017-12-20T22:24:52Z",
+      "side": 1,
+      "message": "IceCandidatePairType seems reasonable here.",
+      "range": {
+        "startLine": 332,
+        "startChar": 31,
+        "endLine": 332,
+        "endChar": 0
+      },
+      "revId": "b2b833e797e3d1f8b4ea27e0b17469c146ea4b0c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
