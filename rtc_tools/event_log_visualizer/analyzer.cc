@@ -62,6 +62,8 @@ namespace plotting {
 
 namespace {
 
+const int kNumMicrosecsPerSec = 1000000;
+
 void SortPacketFeedbackVector(std::vector<PacketFeedback>* vec) {
   auto pred = [](const PacketFeedback& packet_feedback) {
     return packet_feedback.arrival_time_ms == PacketFeedback::kNotReceived;
@@ -88,9 +90,10 @@ bool MatchingSsrc(uint32_t ssrc, const std::vector<uint32_t>& desired_ssrc) {
 double AbsSendTimeToMicroseconds(int64_t abs_send_time) {
   // The timestamp is a fixed point representation with 6 bits for seconds
   // and 18 bits for fractions of a second. Thus, we divide by 2^18 to get the
-  // time in seconds and then multiply by 1000000 to convert to microseconds.
+  // time in seconds and then multiply by kNumMicrosecsPerSec to convert to
+  // microseconds.
   static constexpr double kTimestampToMicroSec =
-      1000000.0 / static_cast<double>(1ul << 18);
+      static_cast<double>(kNumMicrosecsPerSec) / static_cast<double>(1ul << 18);
   return abs_send_time * kTimestampToMicroSec;
 }
 
@@ -193,7 +196,9 @@ rtc::Optional<double> NetworkDelayDiff_CaptureTime(
     RTC_LOG(LS_WARNING) << "New capture time " << new_packet.header.timestamp
                         << ", received time " << new_packet.timestamp;
     RTC_LOG(LS_WARNING) << "Receive time difference " << recv_time_diff << " = "
-                        << static_cast<double>(recv_time_diff) / 1000000 << "s";
+                        << static_cast<double>(recv_time_diff) /
+                               kNumMicrosecsPerSec
+                        << "s";
     RTC_LOG(LS_WARNING) << "Send time difference " << send_time_diff << " = "
                         << static_cast<double>(send_time_diff) /
                                kVideoSampleRate
@@ -211,7 +216,8 @@ void ProcessPoints(
     uint64_t begin_time,
     TimeSeries* result) {
   for (size_t i = 0; i < data.size(); i++) {
-    float x = static_cast<float>(data[i].timestamp - begin_time) / 1000000;
+    float x = static_cast<float>(data[i].timestamp - begin_time) /
+              kNumMicrosecsPerSec;
     rtc::Optional<float> y = get_y(data[i]);
     if (y)
       result->points.emplace_back(x, *y);
@@ -229,7 +235,8 @@ void ProcessPairs(
     uint64_t begin_time,
     TimeSeries* result) {
   for (size_t i = 1; i < data.size(); i++) {
-    float x = static_cast<float>(data[i].timestamp - begin_time) / 1000000;
+    float x = static_cast<float>(data[i].timestamp - begin_time) /
+              kNumMicrosecsPerSec;
     rtc::Optional<ResultType> y = get_y(data[i - 1], data[i]);
     if (y)
       result->points.emplace_back(x, static_cast<float>(*y));
@@ -246,7 +253,8 @@ void AccumulatePoints(
     TimeSeries* result) {
   ResultType sum = 0;
   for (size_t i = 0; i < data.size(); i++) {
-    float x = static_cast<float>(data[i].timestamp - begin_time) / 1000000;
+    float x = static_cast<float>(data[i].timestamp - begin_time) /
+              kNumMicrosecsPerSec;
     rtc::Optional<ResultType> y = extract(data[i]);
     if (y) {
       sum += *y;
@@ -267,7 +275,8 @@ void AccumulatePairs(
     TimeSeries* result) {
   ResultType sum = 0;
   for (size_t i = 1; i < data.size(); i++) {
-    float x = static_cast<float>(data[i].timestamp - begin_time) / 1000000;
+    float x = static_cast<float>(data[i].timestamp - begin_time) /
+              kNumMicrosecsPerSec;
     rtc::Optional<ResultType> y = extract(data[i - 1], data[i]);
     if (y)
       sum += *y;
@@ -307,8 +316,9 @@ void MovingAverage(
         sum_in_window -= *value;
       ++window_index_begin;
     }
-    float window_duration_s = static_cast<float>(window_duration_us) / 1000000;
-    float x = static_cast<float>(t - begin_time) / 1000000;
+    float window_duration_s =
+        static_cast<float>(window_duration_us) / kNumMicrosecsPerSec;
+    float x = static_cast<float>(t - begin_time) / kNumMicrosecsPerSec;
     float y = sum_in_window / window_duration_s;
     result->points.emplace_back(x, y);
   }
@@ -526,6 +536,11 @@ EventLogAnalyzer::EventLogAnalyzer(const ParsedRtcEventLog& log)
         alr_state_events_.push_back(parsed_log_.GetAlrState(i));
         break;
       }
+      case ParsedRtcEventLog::ICE_CANDIDATE_PAIR_EVENT: {
+        ice_candidate_pair_events_.push_back(
+            parsed_log_.GetIceCandidatePairEvent(i));
+        break;
+      }
       case ParsedRtcEventLog::UNKNOWN_EVENT: {
         break;
       }
@@ -538,7 +553,8 @@ EventLogAnalyzer::EventLogAnalyzer(const ParsedRtcEventLog& log)
   }
   begin_time_ = first_timestamp;
   end_time_ = last_timestamp;
-  call_duration_s_ = static_cast<float>(end_time_ - begin_time_) / 1000000;
+  call_duration_s_ =
+      static_cast<float>(end_time_ - begin_time_) / kNumMicrosecsPerSec;
   if (last_log_start) {
     // The log was missing the last LOG_END event. Fake it.
     log_segments_.push_back(std::make_pair(*last_log_start, end_time_));
@@ -625,7 +641,7 @@ rtc::Optional<uint32_t> EventLogAnalyzer::EstimateRtpClockFrequency(
     last_rtp_timestamp = unwrapper.Unwrap(packets[i].header.timestamp);
     last_log_timestamp = packets[i].timestamp;
   }
-  if (last_log_timestamp - first_log_timestamp < 1000000) {
+  if (last_log_timestamp - first_log_timestamp < kNumMicrosecsPerSec) {
     RTC_LOG(LS_WARNING)
         << "Failed to estimate RTP clock frequency: Stream too short. ("
         << packets.size() << " packets, "
@@ -633,7 +649,8 @@ rtc::Optional<uint32_t> EventLogAnalyzer::EstimateRtpClockFrequency(
     return rtc::nullopt;
   }
   double duration =
-      static_cast<double>(last_log_timestamp - first_log_timestamp) / 1000000;
+      static_cast<double>(last_log_timestamp - first_log_timestamp) /
+      kNumMicrosecsPerSec;
   double estimated_frequency =
       (last_rtp_timestamp - first_rtp_timestamp) / duration;
   for (uint32_t f : {8000, 16000, 32000, 48000, 90000}) {
@@ -648,7 +665,7 @@ rtc::Optional<uint32_t> EventLogAnalyzer::EstimateRtpClockFrequency(
 }
 
 float EventLogAnalyzer::ToCallTime(int64_t timestamp) const {
-  return static_cast<float>(timestamp - begin_time_) / 1000000;
+  return static_cast<float>(timestamp - begin_time_) / kNumMicrosecsPerSec;
 }
 
 void EventLogAnalyzer::CreatePacketGraph(PacketDirection desired_direction,
@@ -700,7 +717,7 @@ void EventLogAnalyzer::CreateAccumulatedPacketsTimeSeries(
     TimeSeries time_series(label, LineStyle::kStep);
     for (size_t i = 0; i < packet_stream.size(); i++) {
       float x = static_cast<float>(packet_stream[i].timestamp - begin_time_) /
-                1000000;
+                kNumMicrosecsPerSec;
       time_series.points.emplace_back(x, i + 1);
     }
 
@@ -738,7 +755,8 @@ void EventLogAnalyzer::CreatePlayoutGraph(Plot* plot) {
       parsed_log_.GetAudioPlayout(i, &ssrc);
       uint64_t timestamp = parsed_log_.GetTimestamp(i);
       if (MatchingSsrc(ssrc, desired_ssrc_)) {
-        float x = static_cast<float>(timestamp - begin_time_) / 1000000;
+        float x =
+            static_cast<float>(timestamp - begin_time_) / kNumMicrosecsPerSec;
         float y = static_cast<float>(timestamp - last_playout[ssrc]) / 1000;
         if (time_series[ssrc].points.size() == 0) {
           // There were no previusly logged playout for this SSRC.
@@ -776,7 +794,8 @@ void EventLogAnalyzer::CreateAudioLevelGraph(Plot* plot) {
     //             streams. Tracking bug: webrtc:6399
     for (auto& packet : packet_stream) {
       if (packet.header.extension.hasAudioLevel) {
-        float x = static_cast<float>(packet.timestamp - begin_time_) / 1000000;
+        float x = static_cast<float>(packet.timestamp - begin_time_) /
+                  kNumMicrosecsPerSec;
         // The audio level is stored in -dBov (so e.g. -10 dBov is stored as 10)
         // Here we convert it to dBov.
         float y = static_cast<float>(-packet.header.extension.audioLevel);
@@ -867,7 +886,7 @@ void EventLogAnalyzer::CreateIncomingPacketLossGraph(Plot* plot) {
             std::max(highest_prior_seq_number, sequence_number);
         ++window_index_begin;
       }
-      float x = static_cast<float>(t - begin_time_) / 1000000;
+      float x = static_cast<float>(t - begin_time_) / kNumMicrosecsPerSec;
       int64_t expected_packets = highest_seq_number - highest_prior_seq_number;
       if (expected_packets > 0) {
         int64_t received_packets = window_index_end - window_index_begin;
@@ -956,7 +975,8 @@ void EventLogAnalyzer::CreateFractionLossGraph(Plot* plot) {
   TimeSeries time_series("Fraction lost", LineStyle::kLine,
                          PointStyle::kHighlight);
   for (auto& bwe_update : bwe_loss_updates_) {
-    float x = static_cast<float>(bwe_update.timestamp - begin_time_) / 1000000;
+    float x = static_cast<float>(bwe_update.timestamp - begin_time_) /
+              kNumMicrosecsPerSec;
     float y = static_cast<float>(bwe_update.fraction_loss) / 255 * 100;
     time_series.points.emplace_back(x, y);
   }
@@ -1016,8 +1036,8 @@ void EventLogAnalyzer::CreateTotalBitrateGraph(
       ++window_index_begin;
     }
     float window_duration_in_seconds =
-        static_cast<float>(window_duration_) / 1000000;
-    float x = static_cast<float>(time - begin_time_) / 1000000;
+        static_cast<float>(window_duration_) / kNumMicrosecsPerSec;
+    float x = static_cast<float>(time - begin_time_) / kNumMicrosecsPerSec;
     float y = bytes_in_window * 8 / window_duration_in_seconds / 1000;
     bitrate_series.points.emplace_back(x, y);
   }
@@ -1027,8 +1047,8 @@ void EventLogAnalyzer::CreateTotalBitrateGraph(
   if (desired_direction == kOutgoingPacket) {
     TimeSeries loss_series("Loss-based estimate", LineStyle::kStep);
     for (auto& loss_update : bwe_loss_updates_) {
-      float x =
-          static_cast<float>(loss_update.timestamp - begin_time_) / 1000000;
+      float x = static_cast<float>(loss_update.timestamp - begin_time_) /
+                kNumMicrosecsPerSec;
       float y = static_cast<float>(loss_update.new_bitrate) / 1000;
       loss_series.points.emplace_back(x, y);
     }
@@ -1046,8 +1066,8 @@ void EventLogAnalyzer::CreateTotalBitrateGraph(
     BandwidthUsage last_detector_state = BandwidthUsage::kBwNormal;
 
     for (auto& delay_update : bwe_delay_updates_) {
-      float x =
-          static_cast<float>(delay_update.timestamp - begin_time_) / 1000000;
+      float x = static_cast<float>(delay_update.timestamp - begin_time_) /
+                kNumMicrosecsPerSec;
       float y = static_cast<float>(delay_update.bitrate_bps) / 1000;
 
       if (last_detector_state != delay_update.detector_state) {
@@ -1079,7 +1099,8 @@ void EventLogAnalyzer::CreateTotalBitrateGraph(
     TimeSeries created_series("Probe cluster created.", LineStyle::kNone,
                               PointStyle::kHighlight);
     for (auto& cluster : bwe_probe_cluster_created_events_) {
-      float x = static_cast<float>(cluster.timestamp - begin_time_) / 1000000;
+      float x = static_cast<float>(cluster.timestamp - begin_time_) /
+                kNumMicrosecsPerSec;
       float y = static_cast<float>(cluster.bitrate_bps) / 1000;
       created_series.points.emplace_back(x, y);
     }
@@ -1088,7 +1109,8 @@ void EventLogAnalyzer::CreateTotalBitrateGraph(
                              PointStyle::kHighlight);
     for (auto& result : bwe_probe_result_events_) {
       if (result.bitrate_bps) {
-        float x = static_cast<float>(result.timestamp - begin_time_) / 1000000;
+        float x = static_cast<float>(result.timestamp - begin_time_) /
+                  kNumMicrosecsPerSec;
         float y = static_cast<float>(*result.bitrate_bps) / 1000;
         result_series.points.emplace_back(x, y);
       }
@@ -1150,7 +1172,8 @@ void EventLogAnalyzer::CreateTotalBitrateGraph(
   for (const auto& kv : remb_packets) {
     const LoggedRtcpPacket* const rtcp = kv.second;
     const rtcp::Remb* const remb = static_cast<rtcp::Remb*>(rtcp->packet.get());
-    float x = static_cast<float>(rtcp->timestamp - begin_time_) / 1000000;
+    float x =
+        static_cast<float>(rtcp->timestamp - begin_time_) / kNumMicrosecsPerSec;
     float y = static_cast<float>(remb->bitrate_bps()) / 1000;
     remb_series.points.emplace_back(x, y);
   }
@@ -1291,7 +1314,7 @@ void EventLogAnalyzer::CreateSendSideBweSimulationGraph(Plot* plot) {
           bitrate_bps = acked_bitrate.Rate(feedback.back().arrival_time_ms);
         }
         float x = static_cast<float>(clock.TimeInMicroseconds() - begin_time_) /
-                  1000000;
+                  kNumMicrosecsPerSec;
         float y = bitrate_bps.value_or(0) / 1000;
         acked_time_series.points.emplace_back(x, y);
 #if !(BWE_TEST_LOGGING_COMPILE_TIME_ENABLE)
@@ -1323,7 +1346,7 @@ void EventLogAnalyzer::CreateSendSideBweSimulationGraph(Plot* plot) {
         time_us - last_update_us >= 1e6) {
       uint32_t y = observer.last_bitrate_bps() / 1000;
       float x = static_cast<float>(clock.TimeInMicroseconds() - begin_time_) /
-                1000000;
+                kNumMicrosecsPerSec;
       time_series.points.emplace_back(x, y);
       last_update_us = time_us;
     }
@@ -1397,14 +1420,14 @@ void EventLogAnalyzer::CreateReceiveSideBweSimulationGraph(Plot* plot) {
     if (bitrate_bps) {
       uint32_t y = *bitrate_bps / 1000;
       float x = static_cast<float>(clock.TimeInMicroseconds() - begin_time_) /
-                1000000;
+                kNumMicrosecsPerSec;
       acked_time_series.points.emplace_back(x, y);
     }
     if (packet_router.GetAndResetBitrateUpdated() ||
         clock.TimeInMicroseconds() - last_update_us >= 1e6) {
       uint32_t y = packet_router.last_bitrate_bps() / 1000;
       float x = static_cast<float>(clock.TimeInMicroseconds() - begin_time_) /
-                1000000;
+                kNumMicrosecsPerSec;
       time_series.points.emplace_back(x, y);
       last_update_us = clock.TimeInMicroseconds();
     }
@@ -1477,7 +1500,7 @@ void EventLogAnalyzer::CreateNetworkDelayFeedbackGraph(Plot* plot) {
         for (const PacketFeedback& packet : feedback) {
           float x =
               static_cast<float>(clock.TimeInMicroseconds() - begin_time_) /
-              1000000;
+              kNumMicrosecsPerSec;
           if (packet.send_time_ms == PacketFeedback::kNoSendTime) {
             late_feedback_series.points.emplace_back(x, prev_y);
             continue;
@@ -1587,7 +1610,8 @@ void EventLogAnalyzer::CreatePacerDelayGraph(Plot* plot) {
                                *estimated_frequency * 1000;
       double send_time_ms =
           static_cast<double>(packet.timestamp - first_send_timestamp) / 1000;
-      float x = static_cast<float>(packet.timestamp - begin_time_) / 1000000;
+      float x = static_cast<float>(packet.timestamp - begin_time_) /
+                kNumMicrosecsPerSec;
       float y = send_time_ms - capture_time_ms;
       pacer_delay_series.points.emplace_back(x, y);
     }
@@ -1609,7 +1633,8 @@ void EventLogAnalyzer::CreateTimestampGraph(Plot* plot) {
       TimeSeries timestamp_data(GetStreamName(stream_id) + " capture-time",
                                 LineStyle::kLine, PointStyle::kHighlight);
       for (LoggedRtpPacket packet : rtp_packets) {
-        float x = static_cast<float>(packet.timestamp - begin_time_) / 1000000;
+        float x = static_cast<float>(packet.timestamp - begin_time_) /
+                  kNumMicrosecsPerSec;
         float y = packet.header.timestamp;
         timestamp_data.points.emplace_back(x, y);
       }
@@ -1628,7 +1653,8 @@ void EventLogAnalyzer::CreateTimestampGraph(Plot* plot) {
             continue;
           rtcp::SenderReport* sr;
           sr = static_cast<rtcp::SenderReport*>(rtcp.packet.get());
-          float x = static_cast<float>(rtcp.timestamp - begin_time_) / 1000000;
+          float x = static_cast<float>(rtcp.timestamp - begin_time_) /
+                    kNumMicrosecsPerSec;
           float y = sr->rtp_timestamp();
           timestamp_data.points.emplace_back(x, y);
         }
@@ -1984,6 +2010,32 @@ void EventLogAnalyzer::CreateAudioJitterBufferGraph(
   plot->SetYAxis(min_y_axis, max_y_axis, "Relative delay (ms)", kBottomMargin,
                  kTopMargin);
   plot->SetTitle("NetEq timing");
+}
+
+void EventLogAnalyzer::CreateIceConnectivityCheckGraph(Plot* plot) {
+  // Use the candidate pair description string as the identifier for each pair.
+  std::map<std::string, TimeSeries> checks_by_cp_desc;
+  for (const auto& cp_event : ice_candidate_pair_events_) {
+    if (checks_by_cp_desc.find(cp_event.candidate_pair_desc) ==
+        checks_by_cp_desc.end()) {
+      checks_by_cp_desc[cp_event.candidate_pair_desc] =
+          TimeSeries(cp_event.candidate_pair_desc, LineStyle::kNone,
+                     PointStyle::kHighlight);
+    }
+    float x = static_cast<float>(cp_event.timestamp - begin_time_) /
+              kNumMicrosecsPerSec;
+    float y = static_cast<float>(cp_event.status);
+    checks_by_cp_desc[cp_event.candidate_pair_desc].points.emplace_back(x, y);
+  }
+
+  for (auto& kv : checks_by_cp_desc) {
+    plot->AppendTimeSeries(std::move(kv.second));
+  }
+
+  plot->SetXAxis(0, call_duration_s_, "Time (s)", kLeftMargin, kRightMargin);
+  plot->SetSuggestedYAxis(0, 6, "Numeric Connectivity State", kBottomMargin,
+                          kTopMargin);
+  plot->SetTitle("ICE connectivity checks");
 }
 
 void EventLogAnalyzer::Notification(
