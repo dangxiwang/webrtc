@@ -22,6 +22,30 @@
       "revId": "2f065fc4b7294666c20317533c87864276f2e947",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be9f4712_5be4ed2d",
+        "filename": "sdk/android/src/jni/pc/peerconnection.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 5112
+      },
+      "writtenOn": "2017-12-21T12:09:04Z",
+      "side": 1,
+      "message": "I\u0027m doing that in the next CL anyway so skipping for now.",
+      "parentUuid": "c03386ac_20108225",
+      "range": {
+        "startLine": 332,
+        "startChar": 1,
+        "endLine": 333,
+        "endChar": 11
+      },
+      "revId": "2f065fc4b7294666c20317533c87864276f2e947",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
