@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "0795e7ec_e93fa1f0",
+        "filename": "logging/rtc_event_log/events/rtc_event_ice_candidate_pair.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5660
+      },
+      "writtenOn": "2017-12-22T21:46:31Z",
+      "side": 1,
+      "message": "Yeah, IceCandidatePairEvent or EventType would be nice here",
+      "range": {
+        "startLine": 20,
+        "startChar": 35,
+        "endLine": 20,
+        "endChar": 0
+      },
+      "revId": "b2b833e797e3d1f8b4ea27e0b17469c146ea4b0c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "70242661_6991d28f",
         "filename": "logging/rtc_event_log/rtc_event_log.proto",
         "patchSetId": 7
@@ -59,6 +82,30 @@
       "writtenOn": "2017-12-22T15:47:39Z",
       "side": 1,
       "message": "What will this contain? Maybe we should have a meeting about this.\n\nDoes it have to be a string? We are trying to get to a fully structured log, i.e. no arbitrary strings.",
+      "range": {
+        "startLine": 343,
+        "startChar": 0,
+        "endLine": 343,
+        "endChar": 42
+      },
+      "revId": "b2b833e797e3d1f8b4ea27e0b17469c146ea4b0c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33011acb_825f8aeb",
+        "filename": "logging/rtc_event_log/rtc_event_log.proto",
+        "patchSetId": 7
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 5660
+      },
+      "writtenOn": "2017-12-22T21:46:31Z",
+      "side": 1,
+      "message": "I think we could do two things with this:\n1.  Only log it for the Added event, and log it along with an int id.  And then in the other events use the event id.\n2.  Break the string down into some smaller parts, like ip, port, udp/tcp, host/stun/turn, etc.  \nI think that would avoid all \"arbitrary\" strings and be more efficient.",
+      "parentUuid": "da56e9fd_afa9c77c",
       "range": {
         "startLine": 343,
         "startChar": 0,
