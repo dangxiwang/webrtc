@@ -76,6 +76,8 @@ ParsedRtcEventLog::EventType GetRuntimeEventType(
       return ParsedRtcEventLog::EventType::BWE_PROBE_RESULT_EVENT;
     case rtclog::Event::ALR_STATE_EVENT:
       return ParsedRtcEventLog::EventType::ALR_STATE_EVENT;
+    case rtclog::Event::ICE_CANDIDATE_PAIR_EVENT:
+      return ParsedRtcEventLog::EventType::ICE_CANDIDATE_PAIR_EVENT;
   }
   return ParsedRtcEventLog::EventType::UNKNOWN_EVENT;
 }
@@ -666,6 +668,30 @@ ParsedRtcEventLog::AlrStateEvent ParsedRtcEventLog::GetAlrState(
   res.timestamp = GetTimestamp(index);
   RTC_CHECK(alr_event.has_in_alr());
   res.in_alr = alr_event.in_alr();
+
+  return res;
+}
+
+ParsedRtcEventLog::IceCandidatePairEvent
+ParsedRtcEventLog::GetIceCandidatePairEvent(size_t index) const {
+  RTC_CHECK_LT(index, GetNumberOfEvents());
+  const rtclog::Event& event = events_[index];
+  RTC_CHECK(event.has_type());
+  RTC_CHECK_EQ(event.type(), rtclog::Event::ICE_CANDIDATE_PAIR_EVENT);
+  RTC_CHECK(event.has_ice_candidate_pair_event());
+  const rtclog::IceCandidatePairEvent& ice_candidate_pair_event =
+      event.ice_candidate_pair_event();
+  IceCandidatePairEvent res;
+  res.timestamp = GetTimestamp(index);
+  RTC_CHECK(ice_candidate_pair_event.has_type());
+  res.type = ice_candidate_pair_event.type();
+  RTC_CHECK(ice_candidate_pair_event.has_candidate_pair_id());
+  res.candidate_pair_id = ice_candidate_pair_event.candidate_pair_id();
+  if (res.type == rtclog::IceCandidatePairEvent::ADDED) {
+    // Its description is required when a candidate pair is being added.
+    RTC_CHECK(ice_candidate_pair_event.has_candidate_pair_desc());
+    res.candidate_pair_desc = ice_candidate_pair_event.candidate_pair_desc();
+  }
 
   return res;
 }
