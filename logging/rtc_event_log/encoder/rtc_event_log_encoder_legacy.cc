@@ -17,6 +17,7 @@
 #include "logging/rtc_event_log/events/rtc_event_audio_send_stream_config.h"
 #include "logging/rtc_event_log/events/rtc_event_bwe_update_delay_based.h"
 #include "logging/rtc_event_log/events/rtc_event_bwe_update_loss_based.h"
+#include "logging/rtc_event_log/events/rtc_event_ice_candidate_pair.h"
 #include "logging/rtc_event_log/events/rtc_event_logging_started.h"
 #include "logging/rtc_event_log/events/rtc_event_logging_stopped.h"
 #include "logging/rtc_event_log/events/rtc_event_probe_cluster_created.h"
@@ -105,6 +106,30 @@ rtclog::VideoReceiveConfig_RtcpMode ConvertRtcpMode(RtcpMode rtcp_mode) {
   RTC_NOTREACHED();
   return rtclog::VideoReceiveConfig::RTCP_COMPOUND;
 }
+
+rtclog::IceCandidatePairEvent::IceCandidatePairEventType
+ConvertIceCandidatePairEventType(IceCandidatePairEventType type) {
+  switch (type) {
+    case IceCandidatePairEventType::kAdded:
+      return rtclog::IceCandidatePairEvent::ADDED;
+    case IceCandidatePairEventType::kCheckSent:
+      return rtclog::IceCandidatePairEvent::CHECK_SENT;
+    case IceCandidatePairEventType::kCheckReceived:
+      return rtclog::IceCandidatePairEvent::CHECK_RECEIVED;
+    case IceCandidatePairEventType::kCheckResponseSent:
+      return rtclog::IceCandidatePairEvent::CHECK_RESPONSE_SENT;
+    case IceCandidatePairEventType::kCheckResponseReceived:
+      return rtclog::IceCandidatePairEvent::CHECK_RESPONSE_RECEIVED;
+    case IceCandidatePairEventType::kSelected:
+      return rtclog::IceCandidatePairEvent::SELECTED;
+    case IceCandidatePairEventType::kPruned:
+      return rtclog::IceCandidatePairEvent::PRUNED;
+    default:
+      RTC_NOTREACHED();
+  }
+  RTC_NOTREACHED();
+  return rtclog::IceCandidatePairEvent::PRUNED;
+}
 }  // namespace
 
 std::string RtcEventLogEncoderLegacy::EncodeBatch(
@@ -157,6 +182,11 @@ std::string RtcEventLogEncoderLegacy::Encode(const RtcEvent& event) {
     case RtcEvent::Type::BweUpdateLossBased: {
       auto& rtc_event = static_cast<const RtcEventBweUpdateLossBased&>(event);
       return EncodeBweUpdateLossBased(rtc_event);
+    }
+
+    case RtcEvent::Type::IceCandidatePairEvent: {
+      auto& rtc_event = static_cast<const RtcEventIceCandidatePair&>(event);
+      return EncodeIceCandidatePairEvent(rtc_event);
     }
 
     case RtcEvent::Type::LoggingStarted: {
@@ -339,6 +369,31 @@ std::string RtcEventLogEncoderLegacy::EncodeBweUpdateLossBased(
   bwe_event->set_total_packets(event.total_packets_);
 
   return Serialize(&rtclog_event);
+}
+
+std::string RtcEventLogEncoderLegacy::EncodeIceCandidatePairEvent(
+    const RtcEventIceCandidatePair& event) {
+  rtclog::Event encoded_rtc_event;
+  encoded_rtc_event.set_timestamp_us(event.timestamp_us_);
+  encoded_rtc_event.set_type(rtclog::Event::ICE_CANDIDATE_PAIR_EVENT);
+
+  auto encoded_ice_event = encoded_rtc_event.mutable_ice_candidate_pair_event();
+  encoded_ice_event->set_type(ConvertIceCandidatePairEventType(event.type_));
+  encoded_ice_event->set_candidate_pair_id(event.candidate_pair_id_);
+  if (encoded_ice_event->type() == rtclog::IceCandidatePairEvent::ADDED) {
+    // The description is required if and only if we add a candidate pair.
+    const auto& desc = event.candidate_pair_desc_;
+    auto encoded_desc = encoded_ice_event->mutable_candidate_pair_desc();
+    encoded_desc->set_media_content(desc.media_content);
+    encoded_desc->set_local_candidate_type(desc.local_candidate_type);
+    encoded_desc->set_local_candidate_protocol(desc.local_candidate_protocol);
+    encoded_desc->set_local_transport_address(desc.local_transport_address);
+    encoded_desc->set_local_network_type(desc.local_network_type);
+    encoded_desc->set_remote_candidate_type(desc.remote_candidate_type);
+    encoded_desc->set_remote_candidate_protocol(desc.remote_candidate_protocol);
+    encoded_desc->set_remote_transport_address(desc.remote_transport_address);
+  }
+  return Serialize(&encoded_rtc_event);
 }
 
 std::string RtcEventLogEncoderLegacy::EncodeLoggingStarted(
