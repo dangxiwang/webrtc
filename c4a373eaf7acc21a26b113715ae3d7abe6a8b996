@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "d0fdb328_6ac6314e",
+        "filename": "logging/rtc_event_log/encoder/rtc_event_log_encoder_legacy.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 5887
+      },
+      "writtenOn": "2018-01-02T18:42:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7630038b_6e734681",
+      "range": {
+        "startLine": 379,
+        "startChar": 74,
+        "endLine": 379,
+        "endChar": 0
+      },
+      "revId": "c4a373eaf7acc21a26b113715ae3d7abe6a8b996",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "00f2865f_66c61805",
         "filename": "logging/rtc_event_log/encoder/rtc_event_log_encoder_legacy.h",
         "patchSetId": 5
@@ -214,6 +238,30 @@
     },
     {
       "key": {
+        "uuid": "2862d2a5_57295b6c",
+        "filename": "logging/rtc_event_log/events/rtc_event_ice_cp_state_update.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 5887
+      },
+      "writtenOn": "2018-01-02T18:42:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21feb66e_cf7d4e66",
+      "range": {
+        "startLine": 40,
+        "startChar": 33,
+        "endLine": 40,
+        "endChar": 0
+      },
+      "revId": "c4a373eaf7acc21a26b113715ae3d7abe6a8b996",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef55c759_a137abdf",
         "filename": "rtc_tools/event_log_visualizer/analyzer.cc",
         "patchSetId": 5
@@ -285,6 +333,30 @@
     },
     {
       "key": {
+        "uuid": "5ba5594d_b4025ea2",
+        "filename": "rtc_tools/event_log_visualizer/analyzer.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1996,
+      "author": {
+        "id": 5887
+      },
+      "writtenOn": "2018-01-02T18:42:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30fabc2d_699b24b2",
+      "range": {
+        "startLine": 1996,
+        "startChar": 40,
+        "endLine": 1996,
+        "endChar": 0
+      },
+      "revId": "c4a373eaf7acc21a26b113715ae3d7abe6a8b996",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "935b32ec_6bff84ec",
         "filename": "rtc_tools/event_log_visualizer/analyzer.cc",
         "patchSetId": 5
@@ -332,6 +404,30 @@
     },
     {
       "key": {
+        "uuid": "d1531262_b40bd7f9",
+        "filename": "rtc_tools/event_log_visualizer/analyzer.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1997,
+      "author": {
+        "id": 5887
+      },
+      "writtenOn": "2018-01-02T18:42:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bdd494f4_50b143ac",
+      "range": {
+        "startLine": 1997,
+        "startChar": 62,
+        "endLine": 1997,
+        "endChar": 0
+      },
+      "revId": "c4a373eaf7acc21a26b113715ae3d7abe6a8b996",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c606851c_29f644f3",
         "filename": "rtc_tools/event_log_visualizer/analyzer.cc",
         "patchSetId": 5
@@ -376,6 +472,30 @@
       "revId": "c4a373eaf7acc21a26b113715ae3d7abe6a8b996",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4a3b923_133f5fd7",
+        "filename": "rtc_tools/event_log_visualizer/analyzer.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 2000,
+      "author": {
+        "id": 5887
+      },
+      "writtenOn": "2018-01-02T18:42:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53c7772a_f8592ed6",
+      "range": {
+        "startLine": 2000,
+        "startChar": 32,
+        "endLine": 2000,
+        "endChar": 0
+      },
+      "revId": "c4a373eaf7acc21a26b113715ae3d7abe6a8b996",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     },
     {
       "key": {
