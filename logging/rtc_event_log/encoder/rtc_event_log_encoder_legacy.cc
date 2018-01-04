@@ -17,6 +17,7 @@
 #include "logging/rtc_event_log/events/rtc_event_audio_send_stream_config.h"
 #include "logging/rtc_event_log/events/rtc_event_bwe_update_delay_based.h"
 #include "logging/rtc_event_log/events/rtc_event_bwe_update_loss_based.h"
+#include "logging/rtc_event_log/events/rtc_event_ice_candidate_pair.h"
 #include "logging/rtc_event_log/events/rtc_event_probe_cluster_created.h"
 #include "logging/rtc_event_log/events/rtc_event_probe_result_failure.h"
 #include "logging/rtc_event_log/events/rtc_event_probe_result_success.h"
@@ -103,6 +104,128 @@ rtclog::VideoReceiveConfig_RtcpMode ConvertRtcpMode(RtcpMode rtcp_mode) {
   RTC_NOTREACHED();
   return rtclog::VideoReceiveConfig::RTCP_COMPOUND;
 }
+
+rtclog::IceCandidatePairEvent::IceCandidatePairEventType
+ConvertIceCandidatePairEventType(IceCandidatePairEventType type) {
+  switch (type) {
+    case IceCandidatePairEventType::kAdded:
+      return rtclog::IceCandidatePairEvent::ADDED;
+    case IceCandidatePairEventType::kCheckSent:
+      return rtclog::IceCandidatePairEvent::CHECK_SENT;
+    case IceCandidatePairEventType::kCheckReceived:
+      return rtclog::IceCandidatePairEvent::CHECK_RECEIVED;
+    case IceCandidatePairEventType::kCheckResponseSent:
+      return rtclog::IceCandidatePairEvent::CHECK_RESPONSE_SENT;
+    case IceCandidatePairEventType::kCheckResponseReceived:
+      return rtclog::IceCandidatePairEvent::CHECK_RESPONSE_RECEIVED;
+    case IceCandidatePairEventType::kSelected:
+      return rtclog::IceCandidatePairEvent::SELECTED;
+    case IceCandidatePairEventType::kPruned:
+      return rtclog::IceCandidatePairEvent::PRUNED;
+    default:
+      RTC_NOTREACHED();
+  }
+  RTC_NOTREACHED();
+  return rtclog::IceCandidatePairEvent::PRUNED;
+}
+
+rtclog::IceCandidatePairEvent::ContentName ConvertIceCandidatePairContentName(
+    IceCandidatePairContentName content_name) {
+  switch (content_name) {
+    case IceCandidatePairContentName::kAudio:
+      return rtclog::IceCandidatePairEvent::AUDIO;
+    case IceCandidatePairContentName::kVideo:
+      return rtclog::IceCandidatePairEvent::VIDEO;
+    case IceCandidatePairContentName::kData:
+      return rtclog::IceCandidatePairEvent::DATA;
+    case IceCandidatePairContentName::kUnknown:
+      return rtclog::IceCandidatePairEvent::UNKNOWN_CONTENT_NAME;
+    default:
+      RTC_NOTREACHED();
+  }
+  RTC_NOTREACHED();
+  return rtclog::IceCandidatePairEvent::UNKNOWN_CONTENT_NAME;
+}
+
+rtclog::IceCandidatePairEvent::IceCandidateType ConvertIceCandidateType(
+    IceCandidateType type) {
+  switch (type) {
+    case IceCandidateType::kLocal:
+      return rtclog::IceCandidatePairEvent::LOCAL;
+    case IceCandidateType::kStun:
+      return rtclog::IceCandidatePairEvent::STUN;
+    case IceCandidateType::kPrflx:
+      return rtclog::IceCandidatePairEvent::PRFLX;
+    case IceCandidateType::kRelay:
+      return rtclog::IceCandidatePairEvent::RELAY;
+    case IceCandidateType::kUnknown:
+      return rtclog::IceCandidatePairEvent::UNKNOWN_CANDIDATE_TYPE;
+    default:
+      RTC_NOTREACHED();
+  }
+  RTC_NOTREACHED();
+  return rtclog::IceCandidatePairEvent::UNKNOWN_CANDIDATE_TYPE;
+}
+
+rtclog::IceCandidatePairEvent::Protocol ConvertIceCandidatePairProtocol(
+    IceCandidatePairProtocol protocol) {
+  switch (protocol) {
+    case IceCandidatePairProtocol::kUdp:
+      return rtclog::IceCandidatePairEvent::UDP;
+    case IceCandidatePairProtocol::kTcp:
+      return rtclog::IceCandidatePairEvent::TCP;
+    case IceCandidatePairProtocol::kSsltcp:
+      return rtclog::IceCandidatePairEvent::SSLTCP;
+    case IceCandidatePairProtocol::kTls:
+      return rtclog::IceCandidatePairEvent::TLS;
+    case IceCandidatePairProtocol::kUnknown:
+      return rtclog::IceCandidatePairEvent::UNKNOWN_PROTOCOL;
+    default:
+      RTC_NOTREACHED();
+  }
+  RTC_NOTREACHED();
+  return rtclog::IceCandidatePairEvent::UNKNOWN_PROTOCOL;
+}
+
+rtclog::IceCandidatePairEvent::AddressFamily
+ConvertIceCandidatePairAddressFamily(
+    IceCandidatePairAddressFamily address_family) {
+  switch (address_family) {
+    case IceCandidatePairAddressFamily::kIpv4:
+      return rtclog::IceCandidatePairEvent::IPV4;
+    case IceCandidatePairAddressFamily::kIpv6:
+      return rtclog::IceCandidatePairEvent::IPV6;
+    case IceCandidatePairAddressFamily::kUnknown:
+      return rtclog::IceCandidatePairEvent::UNKNOWN_ADDRESS_FAMILY;
+    default:
+      RTC_NOTREACHED();
+  }
+  RTC_NOTREACHED();
+  return rtclog::IceCandidatePairEvent::UNKNOWN_ADDRESS_FAMILY;
+}
+
+rtclog::IceCandidatePairEvent::NetworkType ConvertIceCandidateNetworkType(
+    IceCandidateNetworkType network_type) {
+  switch (network_type) {
+    case IceCandidateNetworkType::kEthernet:
+      return rtclog::IceCandidatePairEvent::ETHERNET;
+    case IceCandidateNetworkType::kLoopback:
+      return rtclog::IceCandidatePairEvent::LOOPBACK;
+    case IceCandidateNetworkType::kWifi:
+      return rtclog::IceCandidatePairEvent::WIFI;
+    case IceCandidateNetworkType::kVpn:
+      return rtclog::IceCandidatePairEvent::VPN;
+    case IceCandidateNetworkType::kCellular:
+      return rtclog::IceCandidatePairEvent::CELLULAR;
+    case IceCandidateNetworkType::kUnknown:
+      return rtclog::IceCandidatePairEvent::UNKNOWN_NETWORK_TYPE;
+    default:
+      RTC_NOTREACHED();
+  }
+  RTC_NOTREACHED();
+  return rtclog::IceCandidatePairEvent::UNKNOWN_NETWORK_TYPE;
+}
+
 }  // namespace
 
 
@@ -170,6 +293,11 @@ std::string RtcEventLogEncoderLegacy::Encode(const RtcEvent& event) {
     case RtcEvent::Type::BweUpdateLossBased: {
       auto& rtc_event = static_cast<const RtcEventBweUpdateLossBased&>(event);
       return EncodeBweUpdateLossBased(rtc_event);
+    }
+
+    case RtcEvent::Type::IceCandidatePairEvent: {
+      auto& rtc_event = static_cast<const RtcEventIceCandidatePair&>(event);
+      return EncodeIceCandidatePairEvent(rtc_event);
     }
 
     case RtcEvent::Type::ProbeClusterCreated: {
@@ -342,6 +470,42 @@ std::string RtcEventLogEncoderLegacy::EncodeBweUpdateLossBased(
   bwe_event->set_total_packets(event.total_packets_);
 
   return Serialize(&rtclog_event);
+}
+
+std::string RtcEventLogEncoderLegacy::EncodeIceCandidatePairEvent(
+    const RtcEventIceCandidatePair& event) {
+  rtclog::Event encoded_rtc_event;
+  encoded_rtc_event.set_timestamp_us(event.timestamp_us_);
+  encoded_rtc_event.set_type(rtclog::Event::ICE_CANDIDATE_PAIR_EVENT);
+
+  if (event.type_ == IceCandidatePairEventType::kAdded) {
+    auto encoded_ice_event =
+        encoded_rtc_event.mutable_ice_candidate_pair_added_event();
+    encoded_ice_event->set_type(ConvertIceCandidatePairEventType(event.type_));
+    encoded_ice_event->set_candidate_pair_id(event.candidate_pair_id_);
+    // The description is encoded if and only if we add a candidate pair.
+    const auto& desc = event.candidate_pair_desc_;
+    encoded_ice_event->set_content_name(
+        ConvertIceCandidatePairContentName(desc.content_name));
+    encoded_ice_event->set_local_candidate_type(
+        ConvertIceCandidateType(desc.local_candidate_type));
+    encoded_ice_event->set_local_network_type(
+        ConvertIceCandidateNetworkType(desc.local_network_type));
+    encoded_ice_event->set_remote_candidate_type(
+        ConvertIceCandidateType(desc.remote_candidate_type));
+    encoded_ice_event->set_candidate_pair_protocol(
+        ConvertIceCandidatePairProtocol(desc.candidate_pair_protocol));
+    encoded_ice_event->set_candidate_pair_address_family(
+        ConvertIceCandidatePairAddressFamily(
+            desc.candidate_pair_address_family));
+    return Serialize(&encoded_rtc_event);
+  }
+
+  auto encoded_ice_event =
+      encoded_rtc_event.mutable_ice_candidate_pair_updated_event();
+  encoded_ice_event->set_type(ConvertIceCandidatePairEventType(event.type_));
+  encoded_ice_event->set_candidate_pair_id(event.candidate_pair_id_);
+  return Serialize(&encoded_rtc_event);
 }
 
 std::string RtcEventLogEncoderLegacy::EncodeProbeClusterCreated(
