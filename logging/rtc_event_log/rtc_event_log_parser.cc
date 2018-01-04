@@ -76,6 +76,8 @@ ParsedRtcEventLog::EventType GetRuntimeEventType(
       return ParsedRtcEventLog::EventType::BWE_PROBE_RESULT_EVENT;
     case rtclog::Event::ALR_STATE_EVENT:
       return ParsedRtcEventLog::EventType::ALR_STATE_EVENT;
+    case rtclog::Event::ICE_CANDIDATE_PAIR_EVENT:
+      return ParsedRtcEventLog::EventType::ICE_CANDIDATE_PAIR_EVENT;
   }
   return ParsedRtcEventLog::EventType::UNKNOWN_EVENT;
 }
@@ -667,6 +669,49 @@ ParsedRtcEventLog::AlrStateEvent ParsedRtcEventLog::GetAlrState(
   RTC_CHECK(alr_event.has_in_alr());
   res.in_alr = alr_event.in_alr();
 
+  return res;
+}
+
+ParsedRtcEventLog::IceCandidatePairEvent
+ParsedRtcEventLog::GetIceCandidatePairEvent(size_t index) const {
+  RTC_CHECK_LT(index, GetNumberOfEvents());
+  const rtclog::Event& event = events_[index];
+  RTC_CHECK(event.has_type());
+  RTC_CHECK_EQ(event.type(), rtclog::Event::ICE_CANDIDATE_PAIR_EVENT);
+  IceCandidatePairEvent res;
+  if (event.has_ice_candidate_pair_added_event()) {
+    const rtclog::IceCandidatePairEvent::Added& added_event =
+        event.ice_candidate_pair_added_event();
+    res.timestamp = GetTimestamp(index);
+    RTC_CHECK(added_event.has_type());
+    res.type = added_event.type();
+    RTC_CHECK(res.type == rtclog::IceCandidatePairEvent::ADDED);
+    RTC_CHECK(added_event.has_candidate_pair_id());
+    res.candidate_pair_id = added_event.candidate_pair_id();
+    RTC_CHECK(added_event.has_content_name());
+    res.content_name = added_event.content_name();
+    RTC_CHECK(added_event.has_local_candidate_type());
+    res.local_candidate_type = added_event.local_candidate_type();
+    RTC_CHECK(added_event.has_local_network_type());
+    res.local_network_type = added_event.local_network_type();
+    RTC_CHECK(added_event.has_remote_candidate_type());
+    res.remote_candidate_type = added_event.remote_candidate_type();
+    RTC_CHECK(added_event.has_candidate_pair_protocol());
+    res.candidate_pair_protocol = added_event.candidate_pair_protocol();
+    RTC_CHECK(added_event.has_candidate_pair_address_family());
+    res.candidate_pair_address_family =
+        added_event.candidate_pair_address_family();
+  } else if (event.has_ice_candidate_pair_updated_event()) {
+    const rtclog::IceCandidatePairEvent::Updated& updated_event =
+        event.ice_candidate_pair_updated_event();
+    res.timestamp = GetTimestamp(index);
+    RTC_CHECK(updated_event.has_type());
+    res.type = updated_event.type();
+    RTC_CHECK(updated_event.has_candidate_pair_id());
+    res.candidate_pair_id = updated_event.candidate_pair_id();
+  } else {
+    RTC_NOTREACHED();
+  }
   return res;
 }
 

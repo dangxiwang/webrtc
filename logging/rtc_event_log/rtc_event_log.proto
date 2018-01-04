@@ -41,6 +41,7 @@ message Event {
     BWE_PROBE_CLUSTER_CREATED_EVENT = 17;
     BWE_PROBE_RESULT_EVENT = 18;
     ALR_STATE_EVENT = 19;
+    ICE_CANDIDATE_PAIR_EVENT = 20;
   }
 
   // required - Indicates the type of this event
@@ -85,6 +86,10 @@ message Event {
 
     // required if type == ALR_STATE_EVENT
     AlrState alr_state = 19;
+
+    // one of the following is required if type == ICE_CANDIDATE_PAIR_EVENT
+    IceCandidatePairEvent.Added ice_candidate_pair_added_event = 20;
+    IceCandidatePairEvent.Updated ice_candidate_pair_updated_event = 21;
   }
 }
 
@@ -322,4 +327,90 @@ message BweProbeResult {
 message AlrState {
   // required - If we are in ALR or not.
   optional bool in_alr = 1;
+}
+
+// IceCandidatePairEvent only used for name encapsulation. Use
+// IceCandidatePairEvent.Add or IceCandidatePairEvent.Updated for actual
+// messages.
+message IceCandidatePairEvent {
+  enum IceCandidatePairEventType {
+    PRUNED = 0;
+    ADDED = 1;
+    CHECK_SENT = 2;
+    CHECK_RECEIVED = 3;
+    CHECK_RESPONSE_SENT = 4;
+    CHECK_RESPONSE_RECEIVED = 5;
+    SELECTED = 6;
+  }
+
+  enum ContentName {
+    AUDIO = 0;
+    VIDEO = 1;
+    DATA = 2;
+    UNKNOWN_CONTENT_NAME = 3;
+  }
+
+  enum IceCandidateType {
+    LOCAL = 0;
+    STUN = 1;
+    PRFLX = 2;
+    RELAY = 3;
+    UNKNOWN_CANDIDATE_TYPE = 4;
+  }
+
+  enum Protocol {
+    UDP = 0;
+    TCP = 1;
+    SSLTCP = 2;
+    TLS = 3;
+    UNKNOWN_PROTOCOL = 4;
+  }
+
+  enum AddressFamily {
+    IPV4 = 0;
+    IPV6 = 1;
+    UNKNOWN_ADDRESS_FAMILY = 2;
+  }
+
+  enum NetworkType {
+    ETHERNET = 0;
+    LOOPBACK = 1;
+    WIFI = 2;
+    VPN = 3;
+    CELLULAR = 4;
+    UNKNOWN_NETWORK_TYPE = 5;
+  }
+
+  message Added {
+    optional IceCandidatePairEventType type = 1;
+
+    // required
+    optional uint32 candidate_pair_id = 2;
+
+    // required
+    optional ContentName content_name = 3;
+
+    // required
+    optional IceCandidateType local_candidate_type = 4;
+
+    // required
+    optional NetworkType local_network_type = 5;
+
+    // required
+    optional IceCandidateType remote_candidate_type = 6;
+
+    // required
+    optional Protocol candidate_pair_protocol = 7;
+
+    // required
+    optional AddressFamily candidate_pair_address_family = 8;
+  }
+
+  message Updated {
+    // required and cannot be IceCandidatePairEventType::ADDED
+    optional IceCandidatePairEventType type = 1;
+
+    // required
+    optional uint32 candidate_pair_id = 2;
+  }
 }
