@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0fd41d05_4c51e0d3",
+        "filename": "logging/rtc_event_log/events/rtc_event_ice_candidate_pair.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2018-01-06T00:43:38Z",
+      "side": 1,
+      "message": "Another thing that would be pretty useful here is the \"relay protocol\" (the protocol used from client to TURN server). If it\u0027s TCP, that makes a big difference, even if the candidate pair (TURN allocation to remote candidate) is UDP.",
+      "revId": "a9bfa89ffb31fff9ce85a521d11722d42207bc2b",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b62b6aae_fd948e52",
+        "filename": "logging/rtc_event_log/events/rtc_event_ice_candidate_pair.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2018-01-06T00:43:38Z",
+      "side": 1,
+      "message": "Would it make sense to have separate classes for config events (added, selected, pruned/destroyed) and non-config events (connectivity checks)? The non-config events could also include metadata for the connectivity check (nominated flag/nomination value, for one).\n\nOr are these all non-config events by design?",
+      "revId": "a9bfa89ffb31fff9ce85a521d11722d42207bc2b",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb9c2c8b_63b77e86",
+        "filename": "logging/rtc_event_log/icelogger.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2018-01-06T00:43:38Z",
+      "side": 1,
+      "message": "Would be helpful to have a comment explaining the purpose of this class.",
+      "revId": "a9bfa89ffb31fff9ce85a521d11722d42207bc2b",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "058e73ba_1f1222fc",
+        "filename": "logging/rtc_event_log/icelogger.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2018-01-06T00:43:38Z",
+      "side": 1,
+      "message": "It seems unintuitive that this requires the description for every event, even though it\u0027s only used for the \"added\" event.",
+      "revId": "a9bfa89ffb31fff9ce85a521d11722d42207bc2b",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3ba1c95_9f5f4d97",
+        "filename": "logging/rtc_event_log/rtc_event_log.proto",
+        "patchSetId": 10
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2018-01-06T00:43:38Z",
+      "side": 1,
+      "message": "Like I mentioned in the other CL, the candidate pair\u0027s properties might change (the local candidate may be updated from \"local\" to \"srflx\", for instance). Would that use the \"Added\" event? If so, may want to change the naming, though I don\u0027t have any great ideas.",
+      "revId": "a9bfa89ffb31fff9ce85a521d11722d42207bc2b",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
