@@ -70,6 +70,25 @@ class ParsedRtcEventLog {
     bool in_alr;
   };
 
+  struct IceCandidatePairConfig {
+    uint64_t timestamp;
+    rtclog::IceCandidatePairConfig::IceCandidatePairConfigType type;
+    uint32_t candidate_pair_id;
+    rtclog::IceCandidatePairConfig::IceCandidateType local_candidate_type;
+    rtclog::IceCandidatePairConfig::NetworkType local_network_type;
+    rtclog::IceCandidatePairConfig::IceCandidateType remote_candidate_type;
+    rtclog::IceCandidatePairConfig::Protocol candidate_pair_protocol;
+    rtclog::IceCandidatePairConfig::Protocol local_relay_protocol;
+    rtclog::IceCandidatePairConfig::Protocol remote_relay_protocol;
+    rtclog::IceCandidatePairConfig::AddressFamily candidate_pair_address_family;
+  };
+
+  struct IceCandidatePairEvent {
+    uint64_t timestamp;
+    rtclog::IceCandidatePairEvent::IceCandidatePairEventType type;
+    uint32_t candidate_pair_id;
+  };
+
   enum EventType {
     UNKNOWN_EVENT = 0,
     LOG_START = 1,
@@ -86,7 +105,9 @@ class ParsedRtcEventLog {
     AUDIO_NETWORK_ADAPTATION_EVENT = 16,
     BWE_PROBE_CLUSTER_CREATED_EVENT = 17,
     BWE_PROBE_RESULT_EVENT = 18,
-    ALR_STATE_EVENT = 19
+    ALR_STATE_EVENT = 19,
+    ICE_CANDIDATE_PAIR_CONFIG = 20,
+    ICE_CANDIDATE_PAIR_EVENT = 21,
   };
 
   enum class MediaType { ANY, AUDIO, VIDEO, DATA };
@@ -187,6 +208,9 @@ class ParsedRtcEventLog {
   MediaType GetMediaType(uint32_t ssrc, PacketDirection direction) const;
 
   AlrStateEvent GetAlrState(size_t index) const;
+
+  IceCandidatePairConfig GetIceCandidatePairConfig(size_t index) const;
+  IceCandidatePairEvent GetIceCandidatePairEvent(size_t index) const;
 
  private:
   rtclog::StreamConfig GetVideoReceiveConfig(const rtclog::Event& event) const;
