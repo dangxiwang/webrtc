@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1d1c0e8b_1e845171",
+        "filename": "logging/rtc_event_log/events/rtc_event_ice_candidate_pair.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 5887
+      },
+      "writtenOn": "2018-01-09T19:17:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0fd41d05_4c51e0d3",
+      "revId": "a9bfa89ffb31fff9ce85a521d11722d42207bc2b",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b62b6aae_fd948e52",
         "filename": "logging/rtc_event_log/events/rtc_event_ice_candidate_pair.h",
         "patchSetId": 10
@@ -33,6 +51,24 @@
       "revId": "a9bfa89ffb31fff9ce85a521d11722d42207bc2b",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8f11555_e65fdb42",
+        "filename": "logging/rtc_event_log/events/rtc_event_ice_candidate_pair.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 5887
+      },
+      "writtenOn": "2018-01-09T19:17:26Z",
+      "side": 1,
+      "message": "I agree having a separate class for config events is a better idea and it also helps simplify the interface of the logger in the other CL. I haven\u0027t include other metadata in non-config events. I feel we may have a better idea what other data we want to log after starting adding ICE-specific visualization of logs and testing their usefulness for real calls.",
+      "parentUuid": "b62b6aae_fd948e52",
+      "revId": "a9bfa89ffb31fff9ce85a521d11722d42207bc2b",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "935b403c_37bbad38",
+        "filename": "logging/rtc_event_log/icelogger.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5887
+      },
+      "writtenOn": "2018-01-09T19:17:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb9c2c8b_63b77e86",
+      "revId": "a9bfa89ffb31fff9ce85a521d11722d42207bc2b",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "058e73ba_1f1222fc",
         "filename": "logging/rtc_event_log/icelogger.h",
         "patchSetId": 10
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "f2c612a3_0d7bcdc5",
+        "filename": "logging/rtc_event_log/icelogger.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5887
+      },
+      "writtenOn": "2018-01-09T19:17:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "058e73ba_1f1222fc",
+      "revId": "a9bfa89ffb31fff9ce85a521d11722d42207bc2b",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a3ba1c95_9f5f4d97",
         "filename": "logging/rtc_event_log/rtc_event_log.proto",
         "patchSetId": 10
@@ -81,6 +153,24 @@
       "writtenOn": "2018-01-06T00:43:38Z",
       "side": 1,
       "message": "Like I mentioned in the other CL, the candidate pair\u0027s properties might change (the local candidate may be updated from \"local\" to \"srflx\", for instance). Would that use the \"Added\" event? If so, may want to change the naming, though I don\u0027t have any great ideas.",
+      "revId": "a9bfa89ffb31fff9ce85a521d11722d42207bc2b",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5554081e_f35edd9d",
+        "filename": "logging/rtc_event_log/rtc_event_log.proto",
+        "patchSetId": 10
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 5887
+      },
+      "writtenOn": "2018-01-09T19:17:26Z",
+      "side": 1,
+      "message": "I have separated the config events, and the non-config events now are all about connectivity checks for the time being. Config events do not seem frequent and the description of properties is included for all config events. I have refactored \"Updated\" as a config event type in case of property changes.",
+      "parentUuid": "a3ba1c95_9f5f4d97",
       "revId": "a9bfa89ffb31fff9ce85a521d11722d42207bc2b",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
