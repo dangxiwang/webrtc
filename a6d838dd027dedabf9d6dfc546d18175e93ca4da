@@ -25,6 +25,47 @@
     },
     {
       "key": {
+        "uuid": "a8ca695f_6cca5f80",
+        "filename": "logging/rtc_event_log/events/rtc_event_ice_candidate_pair_config.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2018-01-09T23:01:49Z",
+      "side": 1,
+      "message": "The rotating log only stores the last few minutes of non-config events, correct? Then, I don\u0027t see how we can get around having at least *some* of these be config events. It\u0027s not very useful to know \"candidate pair X sent a check at time Y\" if you don\u0027t know any of the properties of that candidate pair, because the \"selected\" event was cut off.\n\nWhen you say \"we need a limit,\" how much memory would be \"too much\" for you?",
+      "parentUuid": "a8083e6b_83f90df0",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 14
+      },
+      "revId": "a6d838dd027dedabf9d6dfc546d18175e93ca4da",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ed16d94_b6047e89",
+        "filename": "logging/rtc_event_log/events/rtc_event_ice_candidate_pair_config.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2018-01-09T23:01:49Z",
+      "side": 1,
+      "message": "It\u0027s actually not possible to know the remote relay protocol, since it\u0027s not part of the candidate signaling; even if the remote endpoint connected to the TURN server over TCP, the candidate SDP string will only say \"UDP\".\n\nSo, the only way to know the remote relay protocol would be to do some post-processing on the logs from both sides.",
+      "revId": "a6d838dd027dedabf9d6dfc546d18175e93ca4da",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "32a091dc_0f421506",
         "filename": "logging/rtc_event_log/rtc_event_log_parser.h",
         "patchSetId": 14
