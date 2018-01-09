@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a8083e6b_83f90df0",
+        "filename": "logging/rtc_event_log/events/rtc_event_ice_candidate_pair_config.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 5150
+      },
+      "writtenOn": "2018-01-09T20:06:24Z",
+      "side": 1,
+      "message": "I\u0027m not sure about this. From the point of the log, config events are the ones that are stored perpetually in memory, even when not logging. If you really want this behavior, then we need a limit on how many ICE candidate pairs there is expected to be in a call.",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 14
+      },
+      "revId": "a6d838dd027dedabf9d6dfc546d18175e93ca4da",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32a091dc_0f421506",
+        "filename": "logging/rtc_event_log/rtc_event_log_parser.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 5150
+      },
+      "writtenOn": "2018-01-09T20:06:24Z",
+      "side": 1,
+      "message": "We\u0027re trying to avoid references to the proto in the parser interface.  In general, future development will be easier if we decouple the file format from the C++ representation. This argument is maybe less relevant since it is just a few unions where the representation is unlikely to change. However, the new format is currently (this might change) using the rtclog2 namespace.\n\nWould it be possible to use the same enum types that you used as input when constructing the IceCandidatePairConfig?",
+      "range": {
+        "startLine": 75,
+        "startChar": 4,
+        "endLine": 75,
+        "endChar": 10
+      },
+      "revId": "a6d838dd027dedabf9d6dfc546d18175e93ca4da",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfe75857_010e2e91",
+        "filename": "logging/rtc_event_log/rtc_event_log_parser.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 5150
+      },
+      "writtenOn": "2018-01-09T20:06:24Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 88,
+        "startChar": 4,
+        "endLine": 88,
+        "endChar": 10
+      },
+      "revId": "a6d838dd027dedabf9d6dfc546d18175e93ca4da",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32513a29_1478b3cf",
+        "filename": "rtc_tools/event_log_visualizer/analyzer.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 2132,
+      "author": {
+        "id": 5150
+      },
+      "writtenOn": "2018-01-09T20:06:24Z",
+      "side": 1,
+      "message": "When this happen, does it impact only the newly added events, or does it prevent visualization of the existing graphs too?",
+      "range": {
+        "startLine": 2132,
+        "startChar": 36,
+        "endLine": 2132,
+        "endChar": 60
+      },
+      "revId": "a6d838dd027dedabf9d6dfc546d18175e93ca4da",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
