@@ -35,9 +35,16 @@ namespace webrtc {
 class RtpReceiverInternal : public RtpReceiverInterface {
  public:
   virtual void Stop() = 0;
+
   // This SSRC is used as an identifier for the receiver between the API layer
   // and the WebRtcVideoEngine, WebRtcVoiceEngine layer.
   virtual uint32_t ssrc() const = 0;
+
+  // Set the associated remote media streams for this receiver. The remote track
+  // will be removed from any streams that are no longer present and added to
+  // any new streams.
+  virtual void SetStreams(
+      const std::vector<rtc::scoped_refptr<MediaStreamInterface>>& streams) = 0;
 };
 
 class AudioRtpReceiver : public ObserverInterface,
@@ -51,7 +58,6 @@ class AudioRtpReceiver : public ObserverInterface,
   // doesn't take an SSRC, and make this one DCHECK(ssrc != 0).
   AudioRtpReceiver(
       const std::string& receiver_id,
-      std::vector<rtc::scoped_refptr<MediaStreamInterface>> streams,
       uint32_t ssrc,
       cricket::VoiceChannel* channel);
   virtual ~AudioRtpReceiver();
@@ -87,6 +93,8 @@ class AudioRtpReceiver : public ObserverInterface,
   // RtpReceiverInternal implementation.
   void Stop() override;
   uint32_t ssrc() const override { return ssrc_; }
+  void SetStreams(const std::vector<rtc::scoped_refptr<MediaStreamInterface>>&
+                      streams) override;
 
   void SetObserver(RtpReceiverObserverInterface* observer) override;
 
@@ -119,7 +127,6 @@ class VideoRtpReceiver : public rtc::RefCountedObject<RtpReceiverInternal>,
   // sees.
   VideoRtpReceiver(
       const std::string& track_id,
-      std::vector<rtc::scoped_refptr<MediaStreamInterface>> streams,
       rtc::Thread* worker_thread,
       uint32_t ssrc,
       cricket::VideoChannel* channel);
@@ -151,6 +158,8 @@ class VideoRtpReceiver : public rtc::RefCountedObject<RtpReceiverInternal>,
   // RtpReceiverInternal implementation.
   void Stop() override;
   uint32_t ssrc() const override { return ssrc_; }
+  void SetStreams(const std::vector<rtc::scoped_refptr<MediaStreamInterface>>&
+                      streams) override;
 
   void SetObserver(RtpReceiverObserverInterface* observer) override;
 

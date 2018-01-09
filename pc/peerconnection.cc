@@ -1283,14 +1283,14 @@ PeerConnection::CreateTransceiver(cricket::MediaType media_type) {
     sender = RtpSenderProxyWithInternal<RtpSenderInternal>::Create(
         signaling_thread(), new AudioRtpSender(nullptr, stats_.get()));
     receiver = RtpReceiverProxyWithInternal<RtpReceiverInternal>::Create(
-        signaling_thread(), new AudioRtpReceiver(receiver_id, {}, 0, nullptr));
+        signaling_thread(), new AudioRtpReceiver(receiver_id, 0, nullptr));
   } else {
     RTC_DCHECK_EQ(cricket::MEDIA_TYPE_VIDEO, media_type);
     sender = RtpSenderProxyWithInternal<RtpSenderInternal>::Create(
         signaling_thread(), new VideoRtpSender(nullptr));
     receiver = RtpReceiverProxyWithInternal<RtpReceiverInternal>::Create(
         signaling_thread(),
-        new VideoRtpReceiver(receiver_id, {}, worker_thread(), 0, nullptr));
+        new VideoRtpReceiver(receiver_id, worker_thread(), 0, nullptr));
   }
   rtc::scoped_refptr<RtpTransceiverProxyWithInternal<RtpTransceiver>>
       transceiver = RtpTransceiverProxyWithInternal<RtpTransceiver>::Create(
@@ -1957,7 +1957,17 @@ RTCError PeerConnection::ApplyRemoteDescription(
           (!transceiver->current_direction() ||
            !RtpTransceiverDirectionHasRecv(
                *transceiver->current_direction()))) {
-        // TODO(bugs.webrtc.org/7600): Process the addition of a remote track.
+        const std::string& sync_label = media_desc->streams()[0].sync_label;
+        rtc::scoped_refptr<MediaStreamInterface> stream =
+            remote_streams_->find(sync_label);
+        if (!stream) {
+          stream = MediaStreamProxy::Create(rtc::Thread::Current(),
+                                            MediaStream::Create(sync_label));
+          remote_streams_->AddStream(stream);
+        }
+        transceiver->internal()->receiver_internal()->SetStreams({stream});
+        observer_->OnAddTrack(transceiver->receiver(),
+                              transceiver->receiver()->streams());
       }
       // If direction is sendonly or inactive, and transceiver's current
       // direction is neither sendonly nor inactive, process the removal of a
@@ -1965,7 +1975,7 @@ RTCError PeerConnection::ApplyRemoteDescription(
       if (!RtpTransceiverDirectionHasRecv(local_direction) &&
           (!transceiver->current_direction() ||
            RtpTransceiverDirectionHasRecv(*transceiver->current_direction()))) {
-        // TODO(bugs.webrtc.org/7600): Process the removal of a remote track.
+        transceiver->internal()->receiver_internal()->SetStreams({});
       }
       if (type == SdpType::kPrAnswer || type == SdpType::kAnswer) {
         transceiver->internal()->set_current_direction(local_direction);
@@ -2713,10 +2723,9 @@ void PeerConnection::CreateAudioReceiver(
   rtc::scoped_refptr<RtpReceiverProxyWithInternal<RtpReceiverInternal>>
       receiver = RtpReceiverProxyWithInternal<RtpReceiverInternal>::Create(
           signaling_thread(),
-          new AudioRtpReceiver(remote_sender_info.sender_id, streams,
+          new AudioRtpReceiver(remote_sender_info.sender_id,
                                remote_sender_info.first_ssrc, voice_channel()));
-  stream->AddTrack(
-      static_cast<AudioTrackInterface*>(receiver->internal()->track().get()));
+  receiver->internal()->SetStreams(streams);
   GetAudioTransceiver()->internal()->AddReceiver(receiver);
   observer_->OnAddTrack(receiver, std::move(streams));
 }
@@ -2729,11 +2738,9 @@ void PeerConnection::CreateVideoReceiver(
   rtc::scoped_refptr<RtpReceiverProxyWithInternal<RtpReceiverInternal>>
       receiver = RtpReceiverProxyWithInternal<RtpReceiverInternal>::Create(
           signaling_thread(),
-          new VideoRtpReceiver(remote_sender_info.sender_id, streams,
-                               worker_thread(), remote_sender_info.first_ssrc,
-                               video_channel()));
-  stream->AddTrack(
-      static_cast<VideoTrackInterface*>(receiver->internal()->track().get()));
+          new VideoRtpReceiver(remote_sender_info.sender_id, worker_thread(),
+                               remote_sender_info.first_ssrc, video_channel()));
+  receiver->internal()->SetStreams(streams);
   GetVideoTransceiver()->internal()->AddReceiver(receiver);
   observer_->OnAddTrack(receiver, std::move(streams));
 }
@@ -5272,6 +5279,21 @@ RTCError PeerConnection::ValidateSessionDescription(
         !MediaSectionsInSameOrder(current_desc, sdesc->description())) {
       LOG_AND_RETURN_ERROR(RTCErrorType::INVALID_PARAMETER,
                            kMlineMismatchInSubsequentOffer);
+    }
+  }
+
+  // Unified Plan SDP should have exactly one stream per m= section.
+  if (IsUnifiedPlan()) {
+    for (const ContentInfo& content : sdesc->description()->contents()) {
+      if (content.media_description()) {
+        const cricket::StreamParamsVec& streams =
+            content.media_description()->streams();
+        if (streams.size() != 1u) {
+          LOG_AND_RETURN_ERROR(RTCErrorType::INVALID_PARAMETER,
+                               "Unified Plan SDP should have exactly one "
+                               "stream per media section.");
+        }
+      }
     }
   }
 

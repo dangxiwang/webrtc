@@ -1031,6 +1031,11 @@ class PeerConnectionObserver {
       rtc::scoped_refptr<RtpReceiverInterface> receiver,
       const std::vector<rtc::scoped_refptr<MediaStreamInterface>>& streams) {}
 
+  // This is called when a receiver and its track is created.
+  // TODO(steveanton): Make this pure virtual when all subclasses implement it.
+  virtual void OnAddTrack(rtc::scoped_refptr<RtpReceiverInterface> receiver,
+                          const std::vector<std::string>& stream_labels) {}
+
   // TODO(hbos,deadbeef): Add |OnAssociatedStreamsUpdated| with |receiver| and
   // |streams| as arguments. This should be called when an existing receiver its
   // associated streams updated. https://crbug.com/webrtc/8315

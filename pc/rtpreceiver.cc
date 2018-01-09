@@ -23,7 +23,6 @@ namespace webrtc {
 
 AudioRtpReceiver::AudioRtpReceiver(
     const std::string& receiver_id,
-    std::vector<rtc::scoped_refptr<MediaStreamInterface>> streams,
     uint32_t ssrc,
     cricket::VoiceChannel* channel)
     : id_(receiver_id),
@@ -33,7 +32,6 @@ AudioRtpReceiver::AudioRtpReceiver(
           rtc::Thread::Current(),
           AudioTrack::Create(receiver_id,
                              RemoteAudioSource::Create(ssrc, channel)))),
-      streams_(std::move(streams)),
       cached_track_enabled_(track_->enabled()) {
   RTC_DCHECK(track_->GetSource()->remote());
   track_->RegisterObserver(this);
@@ -105,6 +103,39 @@ void AudioRtpReceiver::Stop() {
   stopped_ = true;
 }
 
+void AudioRtpReceiver::SetStreams(
+    const std::vector<rtc::scoped_refptr<MediaStreamInterface>>& streams) {
+  // Remove remote track from any streams that are going away.
+  for (auto existing_stream : streams_) {
+    bool removed = true;
+    for (auto stream : streams) {
+      if (existing_stream->label() == stream->label()) {
+        RTC_DCHECK_EQ(existing_stream.get(), stream.get());
+        removed = false;
+        break;
+      }
+    }
+    if (removed) {
+      existing_stream->RemoveTrack(track_);
+    }
+  }
+  // Add remote track to any streams that are new.
+  for (auto stream : streams) {
+    bool added = true;
+    for (auto existing_stream : streams_) {
+      if (stream->label() == existing_stream->label()) {
+        RTC_DCHECK_EQ(stream.get(), existing_stream.get());
+        added = false;
+        break;
+      }
+    }
+    if (added) {
+      stream->AddTrack(track_);
+    }
+  }
+  streams_ = streams;
+}
+
 std::vector<RtpSource> AudioRtpReceiver::GetSources() const {
   return channel_->GetSources(ssrc_);
 }
@@ -148,12 +179,10 @@ void AudioRtpReceiver::OnFirstPacketReceived(cricket::BaseChannel* channel) {
   received_first_packet_ = true;
 }
 
-VideoRtpReceiver::VideoRtpReceiver(
-    const std::string& track_id,
-    std::vector<rtc::scoped_refptr<MediaStreamInterface>> streams,
-    rtc::Thread* worker_thread,
-    uint32_t ssrc,
-    cricket::VideoChannel* channel)
+VideoRtpReceiver::VideoRtpReceiver(const std::string& track_id,
+                                   rtc::Thread* worker_thread,
+                                   uint32_t ssrc,
+                                   cricket::VideoChannel* channel)
     : id_(track_id),
       ssrc_(ssrc),
       channel_(channel),
@@ -167,8 +196,7 @@ VideoRtpReceiver::VideoRtpReceiver(
               VideoTrackSourceProxy::Create(rtc::Thread::Current(),
                                             worker_thread,
                                             source_),
-              worker_thread))),
-      streams_(std::move(streams)) {
+              worker_thread))) {
   source_->SetState(MediaSourceInterface::kLive);
   if (!channel_) {
     RTC_LOG(LS_ERROR)
@@ -220,6 +248,39 @@ void VideoRtpReceiver::Stop() {
     channel_->SetSink(ssrc_, nullptr);
   }
   stopped_ = true;
+}
+
+void VideoRtpReceiver::SetStreams(
+    const std::vector<rtc::scoped_refptr<MediaStreamInterface>>& streams) {
+  // Remove remote track from any streams that are going away.
+  for (auto existing_stream : streams_) {
+    bool removed = true;
+    for (auto stream : streams) {
+      if (existing_stream->label() == stream->label()) {
+        RTC_DCHECK_EQ(existing_stream.get(), stream.get());
+        removed = false;
+        break;
+      }
+    }
+    if (removed) {
+      existing_stream->RemoveTrack(track_);
+    }
+  }
+  // Add remote track to any streams that are new.
+  for (auto stream : streams) {
+    bool added = true;
+    for (auto existing_stream : streams_) {
+      if (stream->label() == existing_stream->label()) {
+        RTC_DCHECK_EQ(stream.get(), existing_stream.get());
+        added = false;
+        break;
+      }
+    }
+    if (added) {
+      stream->AddTrack(track_);
+    }
+  }
+  streams_ = streams;
 }
 
 void VideoRtpReceiver::SetObserver(RtpReceiverObserverInterface* observer) {
