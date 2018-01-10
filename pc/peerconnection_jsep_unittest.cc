@@ -949,4 +949,47 @@ TEST_F(PeerConnectionJsepTest,
   EXPECT_EQ(receiver_id, receiver->id());
 }
 
+// Test that setting a remote offer with one track that has no streams fires off
+// the correct OnAddTrack event.
+TEST_F(PeerConnectionJsepTest,
+       SetRemoteOfferWithOneTrackNoStreamFiresOnAddTrack) {
+  const std::string kTrackLabel = "audio_track";
+
+  auto caller = CreatePeerConnection();
+  auto callee = CreatePeerConnection();
+  ASSERT_TRUE(caller->AddAudioTrack(kTrackLabel));
+
+  ASSERT_TRUE(callee->SetRemoteDescription(caller->CreateOfferAndSetAsLocal()));
+
+  ASSERT_EQ(callee->observer()->add_track_events_.size(), 1u);
+  EXPECT_EQ(kTrackLabel,
+            callee->observer()->add_track_events_[0].receiver->track()->id());
+  // TODO(bugs.webrtc.org/7933): Also verify that no stream was added to the
+  // receiver.
+}
+
+// Test that setting a remote offer with one track that has one stream fires off
+// the correct OnAddTrack event.
+TEST_F(PeerConnectionJsepTest,
+       SetRemoteOfferWithOneTrackOneStreamFiresOnAddTrack) {
+  const std::string kTrackLabel = "audio_track";
+  const std::string kStreamLabel = "audio_stream";
+
+  auto caller = CreatePeerConnection();
+  auto callee = CreatePeerConnection();
+  ASSERT_TRUE(caller->AddAudioTrack(kTrackLabel, {kStreamLabel}));
+
+  ASSERT_TRUE(callee->SetRemoteDescription(caller->CreateOfferAndSetAsLocal()));
+
+  const auto& track_events = callee->observer()->add_track_events_;
+  ASSERT_EQ(1u, track_events.size());
+  ASSERT_EQ(1u, track_events[0].streams.size());
+  const auto& stream = track_events[0].streams[0];
+  EXPECT_EQ(kStreamLabel, stream->label());
+  EXPECT_TRUE(stream->FindAudioTrack(kTrackLabel));
+  EXPECT_EQ(track_events[0].receiver->streams(), track_events[0].streams);
+}
+
+// TODO(bugs.webrtc.org/7932): Also test multi-stream case.
+
 }  // namespace webrtc
