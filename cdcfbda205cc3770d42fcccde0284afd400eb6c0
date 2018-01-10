@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e077dec_eba94b8a",
+        "filename": "pc/peerconnection.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2020,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2018-01-10T19:54:52Z",
+      "side": 1,
+      "message": "nit: Shouldn\u0027t this condition be \"transceiver-\u003ecurrent_direction() \u0026\u0026 ...\" as opposed to \"!transceiver-\u003ecurrent_direction() ||\"?\n\nI suppose the code as-is will produce the intended behavior for the issue we discussed (https://github.com/w3c/webrtc-pc/issues/1729), but only for the initial offer, so I think that issue needs to be solved more generally.",
+      "revId": "cdcfbda205cc3770d42fcccde0284afd400eb6c0",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "266fe9cd_e644396f",
+        "filename": "pc/peerconnection_jsep_unittest.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 992,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2018-01-10T19:54:52Z",
+      "side": 1,
+      "message": "Would be good to have a test that verifies that in the \"two track one stream\" case, the first track event is fired after the stream already has both tracks added. That was the motivation for having the \"track event\" list that\u0027s processed at the end, rather than just firing events as each m\u003d section is processed.",
+      "revId": "cdcfbda205cc3770d42fcccde0284afd400eb6c0",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea034add_019a5499",
+        "filename": "pc/rtpreceiver.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2018-01-10T19:54:52Z",
+      "side": 1,
+      "message": "The CL that gets rid of the duplicate code between Audio/VideoRtpReceiver is getting more appealing... And I imagine we\u0027ll only see more duplicate code end up here over time. Should we revisit it? It\u0027s just difficult to draw a line between what the base class and subclass would be responsible for, but with enough comments and maybe some slight changes I\u0027m sure it would be fine.",
+      "revId": "cdcfbda205cc3770d42fcccde0284afd400eb6c0",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
