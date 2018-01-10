@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "c896b8c3_e3fc36ee",
+        "filename": "logging/rtc_event_log/events/rtc_event_ice_candidate_pair_config.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 5887
+      },
+      "writtenOn": "2018-01-10T00:06:23Z",
+      "side": 1,
+      "message": "Please correct me if I am wrong. It seems both config and non-config events are logged to the memory in the current implementation in RtcEventLogImpl::LogToMemory. The difference is the capacity of events that can be logged, 1k config vs 10k non-config. I have a ballpark estimate of ~50 non-config ICE events (some calls can generate around 20 to 30 candidate pairs). Does that squeeze the room of other config events?",
+      "parentUuid": "a8ca695f_6cca5f80",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 14
+      },
+      "revId": "a6d838dd027dedabf9d6dfc546d18175e93ca4da",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1ed16d94_b6047e89",
         "filename": "logging/rtc_event_log/events/rtc_event_ice_candidate_pair_config.h",
         "patchSetId": 14
@@ -123,6 +147,30 @@
       "writtenOn": "2018-01-09T20:06:24Z",
       "side": 1,
       "message": "When this happen, does it impact only the newly added events, or does it prevent visualization of the existing graphs too?",
+      "range": {
+        "startLine": 2132,
+        "startChar": 36,
+        "endLine": 2132,
+        "endChar": 60
+      },
+      "revId": "a6d838dd027dedabf9d6dfc546d18175e93ca4da",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e2eb04f_70c4955b",
+        "filename": "rtc_tools/event_log_visualizer/analyzer.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 2132,
+      "author": {
+        "id": 5887
+      },
+      "writtenOn": "2018-01-10T00:06:23Z",
+      "side": 1,
+      "message": "It does not fail the existing graphs because the ICE plots are appended at the end by the local LogAnalyzer. The issue is caused by the failure of generating a color palette with enough colors for a large number of time series.",
+      "parentUuid": "32513a29_1478b3cf",
       "range": {
         "startLine": 2132,
         "startChar": 36,
