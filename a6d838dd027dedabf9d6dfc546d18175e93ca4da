@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "140b62bd_72350af7",
+        "filename": "logging/rtc_event_log/encoder/rtc_event_log_encoder_legacy.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 5659
+      },
+      "writtenOn": "2018-01-11T23:23:27Z",
+      "side": 1,
+      "message": "Can you please leave a comment explaining why these are \"config\" events and not normal events?\n\nAlso, can we just have one enum for events and then have the log method special-case the config events rather than having the caller know the distinction?  If we move events from one type to another it will be a pain to rename it in a bunch of places.",
+      "range": {
+        "startLine": 119,
+        "startChar": 54,
+        "endLine": 119,
+        "endChar": 0
+      },
+      "revId": "a6d838dd027dedabf9d6dfc546d18175e93ca4da",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a8083e6b_83f90df0",
         "filename": "logging/rtc_event_log/events/rtc_event_ice_candidate_pair_config.cc",
         "patchSetId": 14
@@ -73,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "b57c2a2f_e4b13718",
+        "filename": "logging/rtc_event_log/events/rtc_event_ice_candidate_pair_config.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 5659
+      },
+      "writtenOn": "2018-01-11T23:23:27Z",
+      "side": 1,
+      "message": "Candidate pairs shouldn\u0027t take up much memory.  And realistically, you\u0027ll never see more than a few hundred in a call.  Is that too many?  Are we setting over a few KB of memory?",
+      "parentUuid": "c896b8c3_e3fc36ee",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 14
+      },
+      "revId": "a6d838dd027dedabf9d6dfc546d18175e93ca4da",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1ed16d94_b6047e89",
         "filename": "logging/rtc_event_log/events/rtc_event_ice_candidate_pair_config.h",
         "patchSetId": 14
@@ -84,6 +131,24 @@
       "writtenOn": "2018-01-09T23:01:49Z",
       "side": 1,
       "message": "It\u0027s actually not possible to know the remote relay protocol, since it\u0027s not part of the candidate signaling; even if the remote endpoint connected to the TURN server over TCP, the candidate SDP string will only say \"UDP\".\n\nSo, the only way to know the remote relay protocol would be to do some post-processing on the logs from both sides.",
+      "revId": "a6d838dd027dedabf9d6dfc546d18175e93ca4da",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "233ef288_95608be7",
+        "filename": "logging/rtc_event_log/events/rtc_event_ice_candidate_pair_config.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 5659
+      },
+      "writtenOn": "2018-01-11T23:23:27Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "1ed16d94_b6047e89",
       "revId": "a6d838dd027dedabf9d6dfc546d18175e93ca4da",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
