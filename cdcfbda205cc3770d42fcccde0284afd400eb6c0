@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "dee518dd_25900d3e",
+        "filename": "pc/peerconnection.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2020,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2018-01-11T00:29:25Z",
+      "side": 1,
+      "message": "Agree with your reasoning. Don\u0027t worry about changing this now, we can wait for that issue to resolve first.",
+      "parentUuid": "f0941898_0196e93c",
+      "revId": "cdcfbda205cc3770d42fcccde0284afd400eb6c0",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "266fe9cd_e644396f",
         "filename": "pc/peerconnection_jsep_unittest.cc",
         "patchSetId": 3
@@ -104,6 +122,24 @@
       "revId": "cdcfbda205cc3770d42fcccde0284afd400eb6c0",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "397c99dc_82ea56e1",
+        "filename": "pc/rtpreceiver.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2018-01-11T00:29:25Z",
+      "side": 1,
+      "message": "Argh, didn\u0027t think of that. Alright, we\u0027ll punt the issue for a bit longer.",
+      "parentUuid": "6b9480ad_8d8ee83a",
+      "revId": "cdcfbda205cc3770d42fcccde0284afd400eb6c0",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
