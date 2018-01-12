@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "2d47ef30_ce500e2b",
+        "filename": "logging/rtc_event_log/events/rtc_event_ice_candidate_pair_config.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2018-01-12T18:54:22Z",
+      "side": 1,
+      "message": "Hmm, this seems like a valid concern. If continual gathering is enabled, then switching network interfaces will indeed cause new candidates to be gathered (and paired with all applicable remote candidates), so in the 99.9th percentile you may have hundreds, thousands of candidate pairs.\n\nHowever, we need to do *something* to address my concern; we need the ability to know the properties of a candidate pair even when only the last few minutes of events are logged. Does that mean we need to include the candidate pair description on every event? Or are there any other solutions?",
+      "parentUuid": "baab180c_a2888279",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 14
+      },
+      "revId": "a6d838dd027dedabf9d6dfc546d18175e93ca4da",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1ed16d94_b6047e89",
         "filename": "logging/rtc_event_log/events/rtc_event_ice_candidate_pair_config.h",
         "patchSetId": 14
