@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b38433c2_1b1598cd",
+        "filename": "logging/rtc_event_log/encoder/rtc_event_log_encoder_legacy.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 5887
+      },
+      "writtenOn": "2018-01-12T22:27:55Z",
+      "side": 1,
+      "message": "Done. I placed the comment along with the enum definition.",
+      "parentUuid": "140b62bd_72350af7",
+      "range": {
+        "startLine": 119,
+        "startChar": 54,
+        "endLine": 119,
+        "endChar": 0
+      },
+      "revId": "a6d838dd027dedabf9d6dfc546d18175e93ca4da",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a8083e6b_83f90df0",
         "filename": "logging/rtc_event_log/events/rtc_event_ice_candidate_pair_config.cc",
         "patchSetId": 14
@@ -168,6 +192,30 @@
     },
     {
       "key": {
+        "uuid": "62869d8a_645f8a81",
+        "filename": "logging/rtc_event_log/events/rtc_event_ice_candidate_pair_config.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 5887
+      },
+      "writtenOn": "2018-01-12T22:27:55Z",
+      "side": 1,
+      "message": "How about I revert it to false? This is going to a conceptual config event for ICE logging but not a RtcEventLog-defined config event with memory implications. The capacity of non-config RtcEvent\u0027s is 10k in our current setup. It seems we can handle the tail cases with this capacity if IsConfigEvent() \u003d\u003d false.",
+      "parentUuid": "2d47ef30_ce500e2b",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 14
+      },
+      "revId": "a6d838dd027dedabf9d6dfc546d18175e93ca4da",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1ed16d94_b6047e89",
         "filename": "logging/rtc_event_log/events/rtc_event_ice_candidate_pair_config.h",
         "patchSetId": 14
@@ -203,6 +251,24 @@
     },
     {
       "key": {
+        "uuid": "8df3d822_5cdd85ac",
+        "filename": "logging/rtc_event_log/events/rtc_event_ice_candidate_pair_config.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 5887
+      },
+      "writtenOn": "2018-01-12T22:27:55Z",
+      "side": 1,
+      "message": "I have removed this field.",
+      "parentUuid": "233ef288_95608be7",
+      "revId": "a6d838dd027dedabf9d6dfc546d18175e93ca4da",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "32a091dc_0f421506",
         "filename": "logging/rtc_event_log/rtc_event_log_parser.h",
         "patchSetId": 14
@@ -226,6 +292,30 @@
     },
     {
       "key": {
+        "uuid": "dfb8ac7f_b5aba0cb",
+        "filename": "logging/rtc_event_log/rtc_event_log_parser.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 5887
+      },
+      "writtenOn": "2018-01-12T22:27:55Z",
+      "side": 1,
+      "message": "Done. Just a note that this adds some code translating proto enums to C++ enums, which is the inverse mapping of the translation in the encoder.",
+      "parentUuid": "32a091dc_0f421506",
+      "range": {
+        "startLine": 75,
+        "startChar": 4,
+        "endLine": 75,
+        "endChar": 10
+      },
+      "revId": "a6d838dd027dedabf9d6dfc546d18175e93ca4da",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dfe75857_010e2e91",
         "filename": "logging/rtc_event_log/rtc_event_log_parser.h",
         "patchSetId": 14
@@ -246,6 +336,30 @@
       "revId": "a6d838dd027dedabf9d6dfc546d18175e93ca4da",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0bb8fe34_98f03a51",
+        "filename": "logging/rtc_event_log/rtc_event_log_parser.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 5887
+      },
+      "writtenOn": "2018-01-12T22:27:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfe75857_010e2e91",
+      "range": {
+        "startLine": 88,
+        "startChar": 4,
+        "endLine": 88,
+        "endChar": 10
+      },
+      "revId": "a6d838dd027dedabf9d6dfc546d18175e93ca4da",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     },
     {
       "key": {

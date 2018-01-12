@@ -285,6 +285,30 @@
     },
     {
       "key": {
+        "uuid": "19251d78_eabda0b3",
+        "filename": "logging/rtc_event_log/events/rtc_event_ice_cp_state_update.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 5887
+      },
+      "writtenOn": "2018-01-12T22:27:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c53c0121_80c98c0b",
+      "range": {
+        "startLine": 40,
+        "startChar": 33,
+        "endLine": 40,
+        "endChar": 0
+      },
+      "revId": "c4a373eaf7acc21a26b113715ae3d7abe6a8b996",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef55c759_a137abdf",
         "filename": "rtc_tools/event_log_visualizer/analyzer.cc",
         "patchSetId": 5
