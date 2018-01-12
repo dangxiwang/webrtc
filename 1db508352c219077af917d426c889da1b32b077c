@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c50d6c8f_29eee4bb",
+        "filename": "PRESUBMIT.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 5126
+      },
+      "writtenOn": "2018-01-12T09:25:21Z",
+      "side": 0,
+      "message": "Please also make a corresponding update to native-api.md (see lines 100-101).",
+      "revId": "1db508352c219077af917d426c889da1b32b077c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
