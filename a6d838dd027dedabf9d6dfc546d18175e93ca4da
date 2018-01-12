@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "baab180c_a2888279",
+        "filename": "logging/rtc_event_log/events/rtc_event_ice_candidate_pair_config.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 5150
+      },
+      "writtenOn": "2018-01-12T01:25:09Z",
+      "side": 1,
+      "message": "Sorry, I still don\u0027t understand what causes a new candidate pair to be added. Does it grow with time? What if the user is on a lengthy train ride and goes in and out of a sequence of wifi hotspots along the tracks? What if the user is on the border between two countries and ends up repeatedly switching operator between the countries? Basically, what I\u0027m worried about isn\u0027t the typical call but rather something like the 99.9th percentile.\n\nPlease think of the rotating buffer as the last few seconds rather than the last few minutes. I\u0027m also not sure how useful it is to have this ability to log \"back in time\" since the typical use enables logging at the beginning of the call. This seems like a discussion that should be separate from this CL though.\n\nIf you are sure that you want to have this as a config, I\u0027m fine with it. Just exercise some care and keep in mind that configs stay in memory forever.",
+      "parentUuid": "b57c2a2f_e4b13718",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 14
+      },
+      "revId": "a6d838dd027dedabf9d6dfc546d18175e93ca4da",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1ed16d94_b6047e89",
         "filename": "logging/rtc_event_log/events/rtc_event_ice_candidate_pair_config.h",
         "patchSetId": 14
@@ -245,6 +269,30 @@
       "revId": "a6d838dd027dedabf9d6dfc546d18175e93ca4da",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efb3d1cb_ec18d4ac",
+        "filename": "rtc_tools/event_log_visualizer/analyzer.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 2132,
+      "author": {
+        "id": 5150
+      },
+      "writtenOn": "2018-01-12T01:25:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7e2eb04f_70c4955b",
+      "range": {
+        "startLine": 2132,
+        "startChar": 36,
+        "endLine": 2132,
+        "endChar": 60
+      },
+      "revId": "a6d838dd027dedabf9d6dfc546d18175e93ca4da",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
