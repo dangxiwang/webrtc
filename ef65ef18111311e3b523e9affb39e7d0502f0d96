@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8fe0a559_151ca658",
+        "filename": "pc/peerconnection.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 2001,
+      "author": {
+        "id": 5039
+      },
+      "writtenOn": "2018-01-16T19:02:54Z",
+      "side": 1,
+      "message": "I\u0027m not sure I understand the situation properly. This is just a straightforward implementation of step 2.2.8.5 of section 4.4.1.6 \"Set the RTCSessionDescription\" and I don\u0027t see any mention of whether a track has been added or not.\n\nCould you show a series of calls that would cause the problem? When receiving a remote description we always will create some track, so how would we end up with no track?",
+      "parentUuid": "ad95f06b_c35ee957",
+      "revId": "ef65ef18111311e3b523e9affb39e7d0502f0d96",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "91c4a9a0_0b6b215c",
         "filename": "pc/peerconnection_jsep_unittest.cc",
         "patchSetId": 6
