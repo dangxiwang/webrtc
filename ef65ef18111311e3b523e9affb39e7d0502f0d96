@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "d0cb0f67_53c3999f",
+        "filename": "pc/peerconnection.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 2001,
+      "author": {
+        "id": 5039
+      },
+      "writtenOn": "2018-01-16T19:15:26Z",
+      "side": 1,
+      "message": "Oh, OK I think I see what you mean now (just saw the Chromium CL tests). This is required for backwards compatibility with Plan B endpoints (as a Unified Plan endpoint would always send at least one track).",
+      "parentUuid": "8fe0a559_151ca658",
+      "revId": "ef65ef18111311e3b523e9affb39e7d0502f0d96",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "91c4a9a0_0b6b215c",
         "filename": "pc/peerconnection_jsep_unittest.cc",
         "patchSetId": 6
