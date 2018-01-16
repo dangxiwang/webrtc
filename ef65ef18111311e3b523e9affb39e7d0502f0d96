@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad95f06b_c35ee957",
+        "filename": "pc/peerconnection.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 2001,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2018-01-16T08:14:59Z",
+      "side": 1,
+      "message": "This fails to check for the case where the section is sendrecv, but no track has been added yet (which frequently happens in the CreateAnswer case).\nIn that case, no track event should be fired.",
+      "revId": "ef65ef18111311e3b523e9affb39e7d0502f0d96",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91c4a9a0_0b6b215c",
+        "filename": "pc/peerconnection_jsep_unittest.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1041,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2018-01-16T08:14:59Z",
+      "side": 1,
+      "message": "Also need to test no-track case.",
+      "revId": "ef65ef18111311e3b523e9affb39e7d0502f0d96",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
