@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "909759e7_625a1a3c",
+        "filename": "logging/BUILD.gn",
+        "patchSetId": 16
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 5150
+      },
+      "writtenOn": "2018-01-18T18:46:52Z",
+      "side": 1,
+      "message": "Do we generally want to add the same file to multiple source sets? It probably works in this case, but I\u0027m worried that it might cause confusing \"multiple definition\" errors in the future.",
+      "range": {
+        "startLine": 292,
+        "startChar": 0,
+        "endLine": 292,
+        "endChar": 39
+      },
+      "revId": "2e9b18bfeaa10dec7b114f972a4d5be1d1de16d9",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c65c027_9d0cab9c",
+        "filename": "logging/BUILD.gn",
+        "patchSetId": 16
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 5150
+      },
+      "writtenOn": "2018-01-18T18:46:52Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 299,
+        "startChar": 0,
+        "endLine": 299,
+        "endChar": 36
+      },
+      "revId": "2e9b18bfeaa10dec7b114f972a4d5be1d1de16d9",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f583de33_6b97034e",
+        "filename": "logging/rtc_event_log/icelogger.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5150
+      },
+      "writtenOn": "2018-01-18T18:46:52Z",
+      "side": 1,
+      "message": "This makes it sound as if we\u0027re still going have ice events without a config in the log. As far as I can tell, the only way this can happen is if ~10000 events are inserted into the log after logging has been started but before the output thread has been executed. This is way outside normal operating parameters for the log. May I suggest replacing the entire comment by:\n\n// This method constructs a config event for each candidate pair with their\n// description and logs these config events. It is intended to be called when logging starts to // ensure that we have at least one config for each candidate pair id.",
+      "range": {
+        "startLine": 38,
+        "startChar": 62,
+        "endLine": 39,
+        "endChar": 15
+      },
+      "revId": "2e9b18bfeaa10dec7b114f972a4d5be1d1de16d9",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f78f36c_057eddbc",
+        "filename": "logging/rtc_event_log/rtc_event_log.proto",
+        "patchSetId": 16
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 5150
+      },
+      "writtenOn": "2018-01-18T18:46:52Z",
+      "side": 1,
+      "message": "nit: I think there are too many uses of the variable name type. When reading \"event.type\", it isn\u0027t immediately clear whether it refers to Event::type IceCandidatePairConfig::type or IceCandidatePairEvent::type. Wdyt about candidate_type instead?",
+      "range": {
+        "startLine": 375,
+        "startChar": 38,
+        "endLine": 375,
+        "endChar": 42
+      },
+      "revId": "2e9b18bfeaa10dec7b114f972a4d5be1d1de16d9",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0174a53_38b71b02",
+        "filename": "logging/rtc_event_log/rtc_event_log.proto",
+        "patchSetId": 16
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 5150
+      },
+      "writtenOn": "2018-01-18T18:46:52Z",
+      "side": 1,
+      "message": "nit: As above, wdyt about check_type or similar?",
+      "range": {
+        "startLine": 408,
+        "startChar": 37,
+        "endLine": 408,
+        "endChar": 41
+      },
+      "revId": "2e9b18bfeaa10dec7b114f972a4d5be1d1de16d9",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d2a2057_4819ae4c",
+        "filename": "rtc_tools/event_log_visualizer/analyzer.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 5150
+      },
+      "writtenOn": "2018-01-18T18:46:52Z",
+      "side": 1,
+      "message": "Please add these 2 graph types and corresponding cmdline flags to the main.cc file in the same folder. They should probably be off by default.",
+      "range": {
+        "startLine": 112,
+        "startChar": 7,
+        "endLine": 112,
+        "endChar": 40
+      },
+      "revId": "2e9b18bfeaa10dec7b114f972a4d5be1d1de16d9",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
