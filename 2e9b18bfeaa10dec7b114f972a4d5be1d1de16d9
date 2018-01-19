@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "aa69b288_dc2ae001",
+        "filename": "logging/BUILD.gn",
+        "patchSetId": 16
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 5150
+      },
+      "writtenOn": "2018-01-19T12:15:16Z",
+      "side": 1,
+      "message": "Hm, rtc_event_log used to use several things in system_wrappers/, but I\u0027m not sure that\u0027s the case anymore. Try to remove it?\n\nAdding phoglund@ for suggestions.",
+      "parentUuid": "59ef7273_97d67190",
+      "range": {
+        "startLine": 292,
+        "startChar": 0,
+        "endLine": 292,
+        "endChar": 39
+      },
+      "revId": "2e9b18bfeaa10dec7b114f972a4d5be1d1de16d9",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8c65c027_9d0cab9c",
         "filename": "logging/BUILD.gn",
         "patchSetId": 16
@@ -140,6 +164,30 @@
       "revId": "2e9b18bfeaa10dec7b114f972a4d5be1d1de16d9",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bfbacc1b_8e791440",
+        "filename": "logging/rtc_event_log/icelogger.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5150
+      },
+      "writtenOn": "2018-01-19T12:15:16Z",
+      "side": 1,
+      "message": "You didn\u0027t like my wording?",
+      "parentUuid": "2d5aaec9_e288bbc6",
+      "range": {
+        "startLine": 38,
+        "startChar": 62,
+        "endLine": 39,
+        "endChar": 15
+      },
+      "revId": "2e9b18bfeaa10dec7b114f972a4d5be1d1de16d9",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
     },
     {
       "key": {

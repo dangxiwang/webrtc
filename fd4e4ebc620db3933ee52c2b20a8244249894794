@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b03bc002_79863c46",
+        "filename": "rtc_tools/event_log_visualizer/main.cc",
+        "patchSetId": 17
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 5150
+      },
+      "writtenOn": "2018-01-19T12:15:16Z",
+      "side": 1,
+      "message": "Please add these flags to the SetAllPlotFlags function.",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 40
+      },
+      "revId": "fd4e4ebc620db3933ee52c2b20a8244249894794",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
