@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "59ef7273_97d67190",
+        "filename": "logging/BUILD.gn",
+        "patchSetId": 16
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 5887
+      },
+      "writtenOn": "2018-01-19T06:54:37Z",
+      "side": 1,
+      "message": "Ack. Instead of adding rtc_event_log_api to the deps of ice_log, the two headers were taken out and added to ice_log sources because we could not depend on rtc_event_log_api in the target rtc_p2p, which would be the case in the other CL (where ICE logging is activated with rtc_p2p depending on ice_log) if ice_log also depends on rtc_event_log_api. It would cause build failure when building with Chromium, likely due to cyclic dependency issues. In fact, rtc_p2p does not seem able to depend on system_wrappers (which is among the dependency of rtc_event_log_api). I also tried to take out several base headers from rtc_event_log_api and make a smaller target, which will be added to public_deps of both the refactored rtc_event_log_api and ice_log; however the gn check rules now prohibit the use of public_deps in WebRTC. We may need to break down several build targets to solve this issue.",
+      "parentUuid": "909759e7_625a1a3c",
+      "range": {
+        "startLine": 292,
+        "startChar": 0,
+        "endLine": 292,
+        "endChar": 39
+      },
+      "revId": "2e9b18bfeaa10dec7b114f972a4d5be1d1de16d9",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8c65c027_9d0cab9c",
         "filename": "logging/BUILD.gn",
         "patchSetId": 16
@@ -36,6 +60,30 @@
       "writtenOn": "2018-01-18T18:46:52Z",
       "side": 1,
       "message": "Same here.",
+      "range": {
+        "startLine": 299,
+        "startChar": 0,
+        "endLine": 299,
+        "endChar": 36
+      },
+      "revId": "2e9b18bfeaa10dec7b114f972a4d5be1d1de16d9",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f24761a_ea551224",
+        "filename": "logging/BUILD.gn",
+        "patchSetId": 16
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 5887
+      },
+      "writtenOn": "2018-01-19T06:54:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8c65c027_9d0cab9c",
       "range": {
         "startLine": 299,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "2d5aaec9_e288bbc6",
+        "filename": "logging/rtc_event_log/icelogger.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5887
+      },
+      "writtenOn": "2018-01-19T06:54:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f583de33_6b97034e",
+      "range": {
+        "startLine": 38,
+        "startChar": 62,
+        "endLine": 39,
+        "endChar": 15
+      },
+      "revId": "2e9b18bfeaa10dec7b114f972a4d5be1d1de16d9",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6f78f36c_057eddbc",
         "filename": "logging/rtc_event_log/rtc_event_log.proto",
         "patchSetId": 16
@@ -91,6 +163,30 @@
       "revId": "2e9b18bfeaa10dec7b114f972a4d5be1d1de16d9",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10a8e39f_45ffbbc6",
+        "filename": "logging/rtc_event_log/rtc_event_log.proto",
+        "patchSetId": 16
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 5887
+      },
+      "writtenOn": "2018-01-19T06:54:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f78f36c_057eddbc",
+      "range": {
+        "startLine": 375,
+        "startChar": 38,
+        "endLine": 375,
+        "endChar": 42
+      },
+      "revId": "2e9b18bfeaa10dec7b114f972a4d5be1d1de16d9",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "85d71874_57cbc881",
+        "filename": "logging/rtc_event_log/rtc_event_log.proto",
+        "patchSetId": 16
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 5887
+      },
+      "writtenOn": "2018-01-19T06:54:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0174a53_38b71b02",
+      "range": {
+        "startLine": 408,
+        "startChar": 37,
+        "endLine": 408,
+        "endChar": 41
+      },
+      "revId": "2e9b18bfeaa10dec7b114f972a4d5be1d1de16d9",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9d2a2057_4819ae4c",
         "filename": "rtc_tools/event_log_visualizer/analyzer.h",
         "patchSetId": 16
@@ -137,6 +257,30 @@
       "revId": "2e9b18bfeaa10dec7b114f972a4d5be1d1de16d9",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e06058e1_fdb26150",
+        "filename": "rtc_tools/event_log_visualizer/analyzer.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 5887
+      },
+      "writtenOn": "2018-01-19T06:54:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d2a2057_4819ae4c",
+      "range": {
+        "startLine": 112,
+        "startChar": 7,
+        "endLine": 112,
+        "endChar": 40
+      },
+      "revId": "2e9b18bfeaa10dec7b114f972a4d5be1d1de16d9",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
