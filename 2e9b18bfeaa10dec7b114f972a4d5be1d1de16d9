@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "950df366_446a1646",
+        "filename": "logging/BUILD.gn",
+        "patchSetId": 16
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 5150
+      },
+      "writtenOn": "2018-01-19T14:25:03Z",
+      "side": 1,
+      "message": "I created a CL that removes the system_wrappers dependency. (https://webrtc-review.googlesource.com/c/src/+/41261) Please let me know if it helps.",
+      "parentUuid": "aa69b288_dc2ae001",
+      "range": {
+        "startLine": 292,
+        "startChar": 0,
+        "endLine": 292,
+        "endChar": 39
+      },
+      "revId": "2e9b18bfeaa10dec7b114f972a4d5be1d1de16d9",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8c65c027_9d0cab9c",
         "filename": "logging/BUILD.gn",
         "patchSetId": 16
