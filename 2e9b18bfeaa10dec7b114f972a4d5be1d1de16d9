@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "9cc5072c_ab840321",
+        "filename": "logging/BUILD.gn",
+        "patchSetId": 16
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 5887
+      },
+      "writtenOn": "2018-01-20T00:20:16Z",
+      "side": 1,
+      "message": "The issue still exists and I figured the root cause is the dependency of rtc_event_log_api on media targets in call and modules, which depends on things like system_wrappers. It seems if we don\u0027t want the same headers in multiple source sets, we have to take these files out and make a new target that both rtc_event_log_api and ice_log can depend on, but like in my last reply comment, deps does not work in this case since sources in the media targets directly include these common headers, and public_deps is no longer allowed in WebRTC. One way that may get around the public_deps block is to create a meta-header as a source in rtc_event_log_api that includes the common ones, and refactor call/modules/media headers to include it instead of these small common headers. It feels more like a hack though. Is it possible to refactor the rtc_event_log_api target, so that the generic logging interface is a smaller target, and the events related to WebRTC implementations are separate targets, so that we may avoid inter-dependency among components of WebRTC because of using logging? Please let me know if you have other ideas to solve it.",
+      "parentUuid": "950df366_446a1646",
+      "range": {
+        "startLine": 292,
+        "startChar": 0,
+        "endLine": 292,
+        "endChar": 39
+      },
+      "revId": "2e9b18bfeaa10dec7b114f972a4d5be1d1de16d9",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8c65c027_9d0cab9c",
         "filename": "logging/BUILD.gn",
         "patchSetId": 16
@@ -212,6 +236,30 @@
       "revId": "2e9b18bfeaa10dec7b114f972a4d5be1d1de16d9",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afc1cdaa_b5e8dc62",
+        "filename": "logging/rtc_event_log/icelogger.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5887
+      },
+      "writtenOn": "2018-01-20T00:20:16Z",
+      "side": 1,
+      "message": "Oh, sorry. That was a glitch in my patch and I missed the update.",
+      "parentUuid": "bfbacc1b_8e791440",
+      "range": {
+        "startLine": 38,
+        "startChar": 62,
+        "endLine": 39,
+        "endChar": 15
+      },
+      "revId": "2e9b18bfeaa10dec7b114f972a4d5be1d1de16d9",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     },
     {
       "key": {
