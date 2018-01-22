@@ -46,6 +46,30 @@
       "revId": "2459359891eede48ceeb14584b70fc443cfd21f6",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3482c47d_5d907617",
+        "filename": "logging/BUILD.gn",
+        "patchSetId": 18
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 5027
+      },
+      "writtenOn": "2018-01-22T18:58:18Z",
+      "side": 1,
+      "message": "\u003e The deps of rtc_event_log_api is in its current shape is likely because the derived RtcEvents that are specific for each call and modules targets, e.g, rtc_event_audio_network_adaptation and rtc_event_rtcp_packet_incoming, are part of rtc_event_log_api\n\nYep, that\u0027s your problem right there. For instance, rtc_event.h is quite abstract and rtc_event_bwe_update_delay_based.cc is quite concrete. This mix of abstraction levels is the problem. The concrete implementations, therefore, either need to move out to the code they\u0027re coupled to (like bitrate_estimator etc) or sit in a different target. Then you make the _api target to the abstract target it should be.",
+      "parentUuid": "6f66408b_6d9bbc02",
+      "range": {
+        "startLine": 295,
+        "startChar": 4,
+        "endLine": 295,
+        "endChar": 36
+      },
+      "revId": "2459359891eede48ceeb14584b70fc443cfd21f6",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
     }
   ]
 }
