@@ -22,6 +22,30 @@
       "revId": "2459359891eede48ceeb14584b70fc443cfd21f6",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f66408b_6d9bbc02",
+        "filename": "logging/BUILD.gn",
+        "patchSetId": 18
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 5887
+      },
+      "writtenOn": "2018-01-22T18:10:29Z",
+      "side": 1,
+      "message": "I have the same thought that the current rtc_event_log_api is too big. I think the root cause of circular dependencies is that rtc_event_log_api depends on several targets from call and modules, which makes targets of WebRTC depends on each other just because of using logging with rtc_event_log_api. The deps of rtc_event_log_api is in its current shape is likely because the derived RtcEvents that are specific for each call and modules targets, e.g, rtc_event_audio_network_adaptation and rtc_event_rtcp_packet_incoming, are part of rtc_event_log_api. If we factor out a smaller target of *generic* logging interface, it would probably fix the issue.\n\nThe current problem of having ice_log depending on rtc_event_log_api is when later ice_log becomes a dependency of rtc_p2p in another CL (the downstream CL of this one) where the logging is applied, build failure occurs in Chromium builds. The same failure can be reproduced if adding rtc_event_log_api to the deps of rtc_p2p for a master-branch Chromium build (i.e., with no changes related to ICE logging), or adding directly system_wrappers to deps of rtc_p2p, which is among the dependencies of call and modules targets that rtc_event_log_api depends on.",
+      "parentUuid": "c10d0f41_10867246",
+      "range": {
+        "startLine": 295,
+        "startChar": 4,
+        "endLine": 295,
+        "endChar": 36
+      },
+      "revId": "2459359891eede48ceeb14584b70fc443cfd21f6",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
     }
   ]
 }
