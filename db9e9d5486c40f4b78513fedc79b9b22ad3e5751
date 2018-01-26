@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f8083360_314eed18",
+        "filename": "sdk/android/src/java/org/webrtc/CameraCapturer.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 5249
+      },
+      "writtenOn": "2018-01-26T08:28:00Z",
+      "side": 0,
+      "message": "Can we remove these methods at the same time as we\u0027re deprecating them? I don\u0027t understand exactly how this class is used so there might be a good reason.",
+      "revId": "db9e9d5486c40f4b78513fedc79b9b22ad3e5751",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
