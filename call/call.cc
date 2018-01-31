@@ -663,6 +663,7 @@ void Call::DestroyAudioSendStream(webrtc::AudioSendStream* send_stream) {
     }
   }
   UpdateAggregateNetworkState();
+  audio_send_stream->Terminate();
   sent_rtp_audio_timer_ms_.Extend(audio_send_stream->GetActiveLifetime());
   delete send_stream;
 }

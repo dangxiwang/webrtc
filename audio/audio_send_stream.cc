@@ -155,11 +155,6 @@ AudioSendStream::~AudioSendStream() {
   RTC_DCHECK(worker_thread_checker_.CalledOnValidThread());
   RTC_LOG(LS_INFO) << "~AudioSendStream: " << config_.rtp.ssrc;
   RTC_DCHECK(!sending_);
-  transport_->send_side_cc()->DeRegisterPacketFeedbackObserver(this);
-  channel_proxy_->RegisterTransport(nullptr);
-  channel_proxy_->ResetSenderCongestionControlObjects();
-  channel_proxy_->SetRtcEventLog(nullptr);
-  channel_proxy_->SetRtcpRttStats(nullptr);
 }
 
 const webrtc::AudioSendStream::Config& AudioSendStream::GetConfig() const {
@@ -456,7 +451,18 @@ RtpState AudioSendStream::GetRtpState() const {
   return rtp_rtcp_module_->GetRtpState();
 }
 
+void AudioSendStream::Terminate() {
+  RTC_DCHECK(worker_thread_checker_.CalledOnValidThread());
+  transport_->send_side_cc()->DeRegisterPacketFeedbackObserver(this);
+  channel_proxy_->RegisterTransport(nullptr);
+  channel_proxy_->ResetSenderCongestionControlObjects();
+  channel_proxy_->SetRtcEventLog(nullptr);
+  channel_proxy_->SetRtcpRttStats(nullptr);
+  RTC_DCHECK(!sending_);
+}
+
 const TimeInterval& AudioSendStream::GetActiveLifetime() const {
+  RTC_DCHECK(worker_thread_checker_.CalledOnValidThread());
   return active_lifetime_;
 }
 

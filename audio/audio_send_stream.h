@@ -92,8 +92,14 @@ class AudioSendStream final : public webrtc::AudioSendStream,
   void SetTransportOverhead(int transport_overhead_per_packet);
 
   RtpState GetRtpState() const;
-  const TimeInterval& GetActiveLifetime() const;
   const voe::ChannelProxy& GetChannelProxy() const;
+
+  // Must be called before destruction.
+  // Clears members of concurrency-related dependencies blocking destruction.
+  void Terminate();
+
+  // May only be called after Terminate().
+  const TimeInterval& GetActiveLifetime() const;
 
  private:
   class TimedTransport;
