@@ -14,13 +14,13 @@
 #include <stdint.h>
 
 #include "api/optional.h"
+#include "rtc_base/criticalsection.h"
 
 namespace webrtc {
 
 // This class logs the first and last time its Extend() function is called.
 //
-// This class is not thread-safe; Extend() calls should only be made by a
-// single thread at a time, such as within a lock or destructor.
+// This class is thread-safe. All member function calls block.
 //
 // Example usage:
 //   // let x < y < z < u < v
@@ -57,7 +57,8 @@ class TimeInterval {
 
     int64_t first, last;
   };
-  rtc::Optional<Interval> interval_;
+  rtc::Optional<Interval> interval_ RTC_GUARDED_BY(interval_lock_);
+  rtc::CriticalSection interval_lock_;
 };
 
 }  // namespace webrtc
