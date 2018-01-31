@@ -22,6 +22,7 @@ void TimeInterval::Extend() {
 }
 
 void TimeInterval::Extend(int64_t time) {
+  rtc::CritScope lock(&interval_lock_);
   if (!interval_) {
     interval_.emplace(time, time);
   } else {
@@ -35,6 +36,7 @@ void TimeInterval::Extend(int64_t time) {
 }
 
 void TimeInterval::Extend(const TimeInterval& other_interval) {
+  rtc::CritScope lock(&other_interval.interval_lock_);
   if (!other_interval.Empty()) {
     Extend(other_interval.interval_->first);
     Extend(other_interval.interval_->last);
@@ -42,10 +44,12 @@ void TimeInterval::Extend(const TimeInterval& other_interval) {
 }
 
 bool TimeInterval::Empty() const {
+  rtc::CritScope lock(&interval_lock_);
   return !interval_;
 }
 
 int64_t TimeInterval::Length() const {
+  rtc::CritScope lock(&interval_lock_);
   RTC_DCHECK(interval_);
   return interval_->last - interval_->first;
 }
