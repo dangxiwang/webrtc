@@ -227,12 +227,11 @@ VideoEncoderSoftwareFallbackWrapper::GetScalingSettings() const {
     }
     const auto settings = encoder_->GetScalingSettings();
     if (settings.thresholds) {
-      return VideoEncoder::ScalingSettings(
-          settings.enabled, settings.thresholds->low, settings.thresholds->high,
-          forced_fallback_.min_pixels_);
+      return VideoEncoder::ScalingSettings(settings.thresholds->low,
+                                           settings.thresholds->high,
+                                           forced_fallback_.min_pixels_);
     }
-    return VideoEncoder::ScalingSettings(settings.enabled,
-                                         forced_fallback_.min_pixels_);
+    return VideoEncoder::ScalingSettings();
   }
   return encoder_->GetScalingSettings();
 }

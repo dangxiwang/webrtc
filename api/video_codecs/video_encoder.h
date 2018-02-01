@@ -85,15 +85,14 @@ class VideoEncoder {
     int low;
     int high;
   };
+  // Quality scaling is enabled if thresholds are provided.
   struct ScalingSettings {
-    ScalingSettings(bool on, int low, int high);
-    ScalingSettings(bool on, int low, int high, int min_pixels);
-    ScalingSettings(bool on, int min_pixels);
-    explicit ScalingSettings(bool on);
+    ScalingSettings();
+    ScalingSettings(int low, int high);
+    ScalingSettings(int low, int high, int min_pixels);
     ScalingSettings(const ScalingSettings&);
     ~ScalingSettings();
 
-    const bool enabled;
     const rtc::Optional<QpThresholds> thresholds;
 
     // We will never ask for a resolution lower than this.
