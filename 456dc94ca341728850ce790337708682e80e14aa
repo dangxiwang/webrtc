@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79e82b35_ff69b876",
+        "filename": "modules/video_coding/utility/quality_scaler.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2018-02-06T08:34:34Z",
+      "side": 1,
+      "message": "Does it make sense to keep these unused thresholds #if:ed out? Alternatives are:\n\n1. Just delete.\n\n2. Move to a TODO comment about VP9EncoderImpl::GetScalingSettings",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 41
+      },
+      "revId": "456dc94ca341728850ce790337708682e80e14aa",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7396afbb_d2875e4c",
+        "filename": "sdk/android/src/jni/videoencoderwrapper.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2018-02-06T08:34:34Z",
+      "side": 1,
+      "message": "Note that this is a change in behavior in case isOn is true, but low or high is unset.\nIs that in use? \n\nShould the corresponding java classes be changed to also require thresholds to be set when scaling is enabled, or should it support just \"scaling on\" and substitute some default thresholds somewhere?",
+      "range": {
+        "startLine": 171,
+        "startChar": 2,
+        "endLine": 172,
+        "endChar": 55
+      },
+      "revId": "456dc94ca341728850ce790337708682e80e14aa",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
