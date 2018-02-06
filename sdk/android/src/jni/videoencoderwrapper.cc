@@ -168,8 +168,8 @@ VideoEncoderWrapper::ScalingSettings VideoEncoderWrapper::GetScalingSettings()
       jni,
       Java_VideoEncoderWrapper_getScalingSettingsHigh(jni, j_scaling_settings));
 
-  return (low && high) ? ScalingSettings(isOn, *low, *high)
-                       : ScalingSettings(isOn);
+  return (isOn && low && high) ? ScalingSettings(*low, *high)
+                               : ScalingSettings::kOff;
 }
 
 const char* VideoEncoderWrapper::ImplementationName() const {
