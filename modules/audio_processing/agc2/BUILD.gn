@@ -1,0 +1,62 @@
+# Copyright (c) 2017 The WebRTC project authors. All Rights Reserved.
+#
+# Use of this source code is governed by a BSD-style license
+# that can be found in the LICENSE file in the root of the source
+# tree. An additional intellectual property rights grant can be found
+# in the file PATENTS.  All contributing project authors may
+# be found in the AUTHORS file in the root of the source tree.
+
+import("../../../webrtc.gni")  # Is this needed?
+
+rtc_source_set("agc2") {
+  visibility = [ "*" ]
+  sources = [
+    "agc2_common.cc",
+    "agc2_common.h",
+    "fixed_gain_controller.cc",
+    "fixed_gain_controller.h",
+
+    # "float_frame.h",
+    # "gain_controller2.cc",
+    # "gain_controller2.h",
+    "gain_curve_applier.cc",
+    "gain_curve_applier.h",
+    "interpolated_gain_curve.cc",
+    "interpolated_gain_curve.h",
+    "level_estimator.cc",
+    "level_estimator.h",
+    "limiter.cc",
+    "limiter.h",
+    "vector_float_frame.cc",
+    "vector_float_frame.h",
+  ]
+
+  configs += [ "..:apm_debug_dump" ]
+
+  deps = [
+    "..:aec_dump_interface",
+    "..:float_audio_frame",
+    "../../../rtc_base:rtc_base_approved",
+    "adaptive_mode",
+  ]
+}
+
+rtc_source_set("limiter_unittests") {
+  testonly = true
+  configs += [ "..:apm_debug_dump" ]
+  sources = [
+    "agc2_common_unittest.cc",
+    "gain_curve_applier_unittest.cc",
+    "interpolated_gain_curve_unittest.cc",
+    "level_estimator_unittest.cc",
+    "limiter_unittest.cc",
+  ]
+  deps = [
+    ":agc2",
+    "../../../rtc_base:rtc_base_approved",
+    "../../../rtc_base:rtc_base_tests_utils",
+
+    # "//testing/gtest",
+    "../../../test:test_support",
+  ]
+}

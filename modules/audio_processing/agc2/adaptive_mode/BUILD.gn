@@ -1,0 +1,35 @@
+# Copyright (c) 2018 The WebRTC project authors. All Rights Reserved.
+#
+# Use of this source code is governed by a BSD-style license
+# that can be found in the LICENSE file in the root of the source
+# tree. An additional intellectual property rights grant can be found
+# in the file PATENTS.  All contributing project authors may
+# be found in the AUTHORS file in the root of the source tree.
+
+import("../../../../webrtc.gni")  # Is this needed?
+
+rtc_source_set("adaptive_mode") {
+  visibility = [ "*" ]
+  sources = [
+    "adaptive_agc.cc",
+    "adaptive_agc.h",
+    "adaptive_mode_level_estimator.h",
+    "apm_vad.cc",
+    "apm_vad.h",
+    "rms_level_estimator.cc",
+    "rms_level_estimator.h",
+    "saturation_protector.cc",
+    "saturation_protector.h",
+    "vad_with_level.h",
+
+    # "peak_level_estimator.h",  # Add when written!
+  ]
+
+  configs += [ "../..:apm_debug_dump" ]
+
+  deps = [
+    "../..:float_audio_frame",
+    "../../../../rtc_base:rtc_base_approved",
+    "../../vad",
+  ]
+}

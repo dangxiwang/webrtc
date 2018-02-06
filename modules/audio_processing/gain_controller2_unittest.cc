@@ -11,8 +11,8 @@
 #include <algorithm>
 
 #include "api/array_view.h"
-#include "modules/audio_processing/agc2/gain_controller2.h"
 #include "modules/audio_processing/audio_buffer.h"
+#include "modules/audio_processing/gain_controller2.h"
 #include "rtc_base/checks.h"
 #include "test/gtest.h"
 

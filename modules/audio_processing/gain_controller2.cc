@@ -8,11 +8,12 @@
  *  be found in the AUTHORS file in the root of the source tree.
  */
 
-#include "modules/audio_processing/agc2/gain_controller2.h"
+#include "modules/audio_processing/gain_controller2.h"
 
 #include <cmath>
 
 #include "modules/audio_processing/audio_buffer.h"
+#include "modules/audio_processing/include/float_audio_frame.h"
 #include "modules/audio_processing/logging/apm_data_dumper.h"
 #include "rtc_base/atomicops.h"
 #include "rtc_base/checks.h"
@@ -26,7 +27,8 @@ GainController2::GainController2()
     : data_dumper_(
           new ApmDataDumper(rtc::AtomicOps::Increment(&instance_count_))),
       sample_rate_hz_(AudioProcessing::kSampleRate48kHz),
-      fixed_gain_(1.f) {}
+      fixed_gain_(1.f),
+      adaptive_agc_{data_dumper_.get()} {}
 
 GainController2::~GainController2() = default;
 
@@ -42,6 +44,9 @@ void GainController2::Initialize(int sample_rate_hz) {
 }
 
 void GainController2::Process(AudioBuffer* audio) {
+  MutableFloatAudioFrame mfaf(audio->channels_f(), audio->num_channels(),
+                              audio->num_frames());
+  adaptive_agc_.Process(mfaf);
   if (fixed_gain_ == 1.f)
     return;
 

@@ -17,6 +17,8 @@
 
 #include "api/array_view.h"
 
+#include "modules/audio_processing/include/float_audio_frame.h"
+
 namespace webrtc {
 
 class AudioFrame;
@@ -63,37 +65,6 @@ struct InternalAPMStreamsConfig {
   size_t output_num_channels = 0;
   size_t render_input_num_channels = 0;
   size_t render_output_num_channels = 0;
-};
-
-// Class to pass audio data in float** format. This is to avoid
-// dependence on AudioBuffer, and avoid problems associated with
-// rtc::ArrayView<rtc::ArrayView>.
-class FloatAudioFrame {
- public:
-  // |num_channels| and |channel_size| describe the float**
-  // |audio_samples|. |audio_samples| is assumed to point to a
-  // two-dimensional |num_channels * channel_size| array of floats.
-  FloatAudioFrame(const float* const* audio_samples,
-                  size_t num_channels,
-                  size_t channel_size)
-      : audio_samples_(audio_samples),
-        num_channels_(num_channels),
-        channel_size_(channel_size) {}
-
-  FloatAudioFrame() = delete;
-
-  size_t num_channels() const { return num_channels_; }
-
-  rtc::ArrayView<const float> channel(size_t idx) const {
-    RTC_DCHECK_LE(0, idx);
-    RTC_DCHECK_LE(idx, num_channels_);
-    return rtc::ArrayView<const float>(audio_samples_[idx], channel_size_);
-  }
-
- private:
-  const float* const* audio_samples_;
-  size_t num_channels_;
-  size_t channel_size_;
 };
 
 // An interface for recording configuration and input/output streams
