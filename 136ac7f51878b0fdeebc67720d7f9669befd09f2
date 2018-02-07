@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90c8a20e_e551b99e",
+        "filename": "media/engine/videoencodersoftwarefallbackwrapper.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 5112
+      },
+      "writtenOn": "2018-02-07T16:51:03Z",
+      "side": 1,
+      "message": "nit: const auto settings \u003d forced_fallback_.active_ ? fallback_encoder_-\u003eGetScalingSettings() : encoder_-\u003eGetScalingSettings();\n\nLooks equal to me and less code duplication?",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 47
+      },
+      "revId": "136ac7f51878b0fdeebc67720d7f9669befd09f2",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec0591d1_9762c248",
+        "filename": "sdk/android/src/jni/androidmediaencoder.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 1205,
+      "author": {
+        "id": 5112
+      },
+      "writtenOn": "2018-02-07T16:51:03Z",
+      "side": 1,
+      "message": "nit: I think if (!scale_) return ScalingSettings::kOff shortcut might be cleaner?",
+      "range": {
+        "startLine": 1205,
+        "startChar": 2,
+        "endLine": 1205,
+        "endChar": 15
+      },
+      "revId": "136ac7f51878b0fdeebc67720d7f9669befd09f2",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05b08c23_1f83badc",
+        "filename": "sdk/android/src/jni/androidmediaencoder.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 1234,
+      "author": {
+        "id": 5112
+      },
+      "writtenOn": "2018-02-07T16:51:03Z",
+      "side": 1,
+      "message": "Should we also specify for VP9?",
+      "range": {
+        "startLine": 1234,
+        "startChar": 4,
+        "endLine": 1234,
+        "endChar": 39
+      },
+      "revId": "136ac7f51878b0fdeebc67720d7f9669befd09f2",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
