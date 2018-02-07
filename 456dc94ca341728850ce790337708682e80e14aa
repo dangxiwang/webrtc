@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3dc39ebf_d7b5b6f8",
+        "filename": "modules/video_coding/utility/quality_scaler.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2018-02-07T15:07:13Z",
+      "side": 1,
+      "message": "Deleted.",
+      "parentUuid": "79e82b35_ff69b876",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 41
+      },
+      "revId": "456dc94ca341728850ce790337708682e80e14aa",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7396afbb_d2875e4c",
         "filename": "sdk/android/src/jni/videoencoderwrapper.cc",
         "patchSetId": 7
@@ -45,6 +69,30 @@
       "revId": "456dc94ca341728850ce790337708682e80e14aa",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77d5c7f7_48bd2775",
+        "filename": "sdk/android/src/jni/videoencoderwrapper.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2018-02-07T15:07:13Z",
+      "side": 1,
+      "message": "I\u0027m adding default threshold values here. We can consider changing the model on the java side later.",
+      "parentUuid": "7396afbb_d2875e4c",
+      "range": {
+        "startLine": 171,
+        "startChar": 2,
+        "endLine": 172,
+        "endChar": 55
+      },
+      "revId": "456dc94ca341728850ce790337708682e80e14aa",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
