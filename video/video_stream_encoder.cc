@@ -394,7 +394,6 @@ VideoStreamEncoder::VideoStreamEncoder(
       source_proxy_(new VideoSourceProxy(this)),
       sink_(nullptr),
       settings_(settings),
-      codec_type_(PayloadStringToCodecType(settings.payload_name)),
       video_sender_(Clock::GetRealTimeClock(), this),
       overuse_detector_(
           overuse_detector.get()
@@ -648,18 +647,14 @@ void VideoStreamEncoder::ConfigureQualityScaler() {
   const auto scaling_settings = settings_.encoder->GetScalingSettings();
   const bool quality_scaling_allowed =
       IsResolutionScalingEnabled(degradation_preference_) &&
-      scaling_settings.enabled;
+      scaling_settings.thresholds;
 
   if (quality_scaling_allowed) {
     if (quality_scaler_.get() == nullptr) {
       // Quality scaler has not already been configured.
       // Drop frames and scale down until desired quality is achieved.
-      if (scaling_settings.thresholds) {
-        quality_scaler_.reset(
-            new QualityScaler(this, *(scaling_settings.thresholds)));
-      } else {
-        quality_scaler_.reset(new QualityScaler(this, codec_type_));
-      }
+      quality_scaler_ =
+          rtc::MakeUnique<QualityScaler>(this, *(scaling_settings.thresholds));
     }
   } else {
     quality_scaler_.reset(nullptr);
