@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "fde68cbe_7ae0e5bf",
+        "filename": "sdk/android/src/jni/androidmediaencoder.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 1205,
+      "author": {
+        "id": 5520
+      },
+      "writtenOn": "2018-02-08T08:33:30Z",
+      "side": 1,
+      "message": "Perfect place for a good old `goto end` :)",
+      "parentUuid": "41e262f3_c78874a7",
+      "range": {
+        "startLine": 1205,
+        "startChar": 2,
+        "endLine": 1205,
+        "endChar": 15
+      },
+      "revId": "136ac7f51878b0fdeebc67720d7f9669befd09f2",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "05b08c23_1f83badc",
         "filename": "sdk/android/src/jni/androidmediaencoder.cc",
         "patchSetId": 9
