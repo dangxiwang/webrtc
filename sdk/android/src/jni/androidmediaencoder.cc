@@ -1202,8 +1202,11 @@ void MediaCodecVideoEncoder::LogStatistics(bool force_log) {
 
 VideoEncoder::ScalingSettings MediaCodecVideoEncoder::GetScalingSettings()
     const {
+  if (!scale_)
+    return VideoEncoder::ScalingSettings::kOff;
+
+  const VideoCodecType codec_type = GetCodecType();
   if (field_trial::IsEnabled(kCustomQPThresholdsFieldTrial)) {
-    const VideoCodecType codec_type = GetCodecType();
     std::string experiment_string =
         field_trial::FindFullName(kCustomQPThresholdsFieldTrial);
     ALOGD << "QP custom thresholds: " << experiment_string << " for codec "
@@ -1221,15 +1224,29 @@ VideoEncoder::ScalingSettings MediaCodecVideoEncoder::GetScalingSettings()
       RTC_CHECK_GT(high_h264_qp_threshold, low_h264_qp_threshold);
       RTC_CHECK_GT(low_h264_qp_threshold, 0);
       if (codec_type == kVideoCodecVP8) {
-        return VideoEncoder::ScalingSettings(scale_, low_vp8_qp_threshold,
+        return VideoEncoder::ScalingSettings(low_vp8_qp_threshold,
                                              high_vp8_qp_threshold);
       } else if (codec_type == kVideoCodecH264) {
-        return VideoEncoder::ScalingSettings(scale_, low_h264_qp_threshold,
+        return VideoEncoder::ScalingSettings(low_h264_qp_threshold,
                                              high_h264_qp_threshold);
       }
     }
   }
-  return VideoEncoder::ScalingSettings(scale_);
+  if (codec_type == kVideoCodecVP8) {
+    // TODO(nisse): Duplicated in vp8_impl.cc.
+    static const int kLowVp8QpThreshold = 29;
+    static const int kHighVp8QpThreshold = 95;
+
+    return VideoEncoder::ScalingSettings(kLowVp8QpThreshold,
+                                         kHighVp8QpThreshold);
+  } else if (codec_type == kVideoCodecH264) {
+    static const int kLowH264QpThreshold = 24;
+    static const int kHighH264QpThreshold = 37;
+
+    return VideoEncoder::ScalingSettings(kLowH264QpThreshold,
+                                         kHighH264QpThreshold);
+  }
+  return VideoEncoder::ScalingSettings::kOff;
 }
 
 const char* MediaCodecVideoEncoder::ImplementationName() const {
