@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "46773cae_9efa6e7a",
+        "filename": "media/engine/videoencodersoftwarefallbackwrapper.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2018-02-08T08:29:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90c8a20e_e551b99e",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 47
+      },
+      "revId": "136ac7f51878b0fdeebc67720d7f9669befd09f2",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ec0591d1_9762c248",
         "filename": "sdk/android/src/jni/androidmediaencoder.cc",
         "patchSetId": 9
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "41e262f3_c78874a7",
+        "filename": "sdk/android/src/jni/androidmediaencoder.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 1205,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2018-02-08T08:29:40Z",
+      "side": 1,
+      "message": "Done. But note that we still need a return ScalingSettings::kOff at the end of the function, for the case that scale_ is true, but there were no known thresholds.",
+      "parentUuid": "ec0591d1_9762c248",
+      "range": {
+        "startLine": 1205,
+        "startChar": 2,
+        "endLine": 1205,
+        "endChar": 15
+      },
+      "revId": "136ac7f51878b0fdeebc67720d7f9669befd09f2",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "05b08c23_1f83badc",
         "filename": "sdk/android/src/jni/androidmediaencoder.cc",
         "patchSetId": 9
@@ -68,6 +116,30 @@
       "revId": "136ac7f51878b0fdeebc67720d7f9669befd09f2",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c75c9a0c_ea9f8ad2",
+        "filename": "sdk/android/src/jni/androidmediaencoder.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 1234,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2018-02-08T08:29:40Z",
+      "side": 1,
+      "message": "I don\u0027t think so. We currently never do quality scaling of vp9. (Maybe vp9 has some built in quality scaling, not sure).",
+      "parentUuid": "05b08c23_1f83badc",
+      "range": {
+        "startLine": 1234,
+        "startChar": 4,
+        "endLine": 1234,
+        "endChar": 39
+      },
+      "revId": "136ac7f51878b0fdeebc67720d7f9669befd09f2",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
