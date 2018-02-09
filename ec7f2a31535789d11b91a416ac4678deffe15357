@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "4b904a39_affd68b5",
+        "filename": "api/video_codecs/video_encoder.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2018-02-09T12:22:03Z",
+      "side": 1,
+      "message": "The one of the android bots (see https://logs.chromium.org/v/?s\u003dchromium%2Fbb%2Ftryserver.webrtc%2Fandroid_webrtc_compile_rel%2F1273%2F%2B%2Frecipes%2Fsteps%2Fcompile__with_patch_%2F0%2Fstdout)\n\ncomplains that we get a (global) static initializer here. It that a real problem? Would it help to inline the trivial ScalingSettings() constructor?",
+      "range": {
+        "startLine": 90,
+        "startChar": 33,
+        "endLine": 90,
+        "endChar": 37
+      },
+      "revId": "ec7f2a31535789d11b91a416ac4678deffe15357",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ad1efefe_7c22c42a",
         "filename": "media/engine/videoencodersoftwarefallbackwrapper.cc",
         "patchSetId": 10
@@ -13,6 +36,24 @@
       "writtenOn": "2018-02-09T10:17:28Z",
       "side": 1,
       "message": "Please add asapersson@ to review the change in this file.",
+      "revId": "ec7f2a31535789d11b91a416ac4678deffe15357",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fc7373e_3a17e18b",
+        "filename": "media/engine/videoencodersoftwarefallbackwrapper.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2018-02-09T12:22:03Z",
+      "side": 1,
+      "message": "I realize it looks like the check of codec_settings_.VP8().automaticResizeOn has disappeared. My reading of the code was that codec_settings_ is passed to fallback_encoder_-\u003eInitEncode(), and that fallback_encoder_-\u003eGetScalingSettings() checks the flag.\n\nNo intended change in behavior.",
+      "parentUuid": "ad1efefe_7c22c42a",
       "revId": "ec7f2a31535789d11b91a416ac4678deffe15357",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
