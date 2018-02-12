@@ -57,6 +57,29 @@
       "revId": "ec7f2a31535789d11b91a416ac4678deffe15357",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b1011a6_9728148b",
+        "filename": "sdk/android/src/jni/androidmediaencoder.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 1248,
+      "author": {
+        "id": 5492
+      },
+      "writtenOn": "2018-02-12T08:51:47Z",
+      "side": 1,
+      "message": "Quality scaling is currently done for VP9, add default thresholds.",
+      "range": {
+        "startLine": 1248,
+        "startChar": 2,
+        "endLine": 1248,
+        "endChar": 3
+      },
+      "revId": "ec7f2a31535789d11b91a416ac4678deffe15357",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
     }
   ]
 }
