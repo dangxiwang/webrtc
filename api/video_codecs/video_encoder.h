@@ -85,15 +85,14 @@ class VideoEncoder {
     int low;
     int high;
   };
+  // Quality scaling is enabled if thresholds are provided.
   struct ScalingSettings {
-    ScalingSettings(bool on, int low, int high);
-    ScalingSettings(bool on, int low, int high, int min_pixels);
-    ScalingSettings(bool on, int min_pixels);
-    explicit ScalingSettings(bool on);
+    static const ScalingSettings kOff;
+    ScalingSettings(int low, int high);
+    ScalingSettings(int low, int high, int min_pixels);
     ScalingSettings(const ScalingSettings&);
     ~ScalingSettings();
 
-    const bool enabled;
     const rtc::Optional<QpThresholds> thresholds;
 
     // We will never ask for a resolution lower than this.
@@ -101,6 +100,11 @@ class VideoEncoder {
     // on MediaCodec and fallback implementations are in place.
     // See https://bugs.chromium.org/p/webrtc/issues/detail?id=7206
     const int min_pixels_per_frame = 320 * 180;
+
+    // Private constructor; to get an object without thresholds, use
+    // ScalingSettings::kOff.
+   private:
+    ScalingSettings();
   };
 
   static VideoCodecVP8 GetDefaultVp8Settings();

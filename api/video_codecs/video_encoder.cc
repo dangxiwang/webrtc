@@ -60,24 +60,24 @@ VideoCodecH264 VideoEncoder::GetDefaultH264Settings() {
   return h264_settings;
 }
 
-VideoEncoder::ScalingSettings::ScalingSettings(bool on, int low, int high)
-    : enabled(on), thresholds(QpThresholds(low, high)) {}
+VideoEncoder::ScalingSettings::ScalingSettings() {}
 
-VideoEncoder::ScalingSettings::ScalingSettings(bool on,
-                                               int low,
+VideoEncoder::ScalingSettings::ScalingSettings(int low, int high)
+    : thresholds(QpThresholds(low, high)) {}
+
+VideoEncoder::ScalingSettings::ScalingSettings(int low,
                                                int high,
                                                int min_pixels)
-    : enabled(on),
-      thresholds(QpThresholds(low, high)),
-      min_pixels_per_frame(min_pixels) {}
+    : thresholds(QpThresholds(low, high)), min_pixels_per_frame(min_pixels) {}
 
-VideoEncoder::ScalingSettings::ScalingSettings(bool on, int min_pixels)
-    : enabled(on), min_pixels_per_frame(min_pixels) {}
-
-VideoEncoder::ScalingSettings::ScalingSettings(bool on) : enabled(on) {}
+VideoEncoder::ScalingSettings::ScalingSettings(const ScalingSettings&) =
+    default;
 
 VideoEncoder::ScalingSettings::~ScalingSettings() {}
 
+// static
+const VideoEncoder::ScalingSettings VideoEncoder::ScalingSettings::kOff =
+    ScalingSettings();
 
 int32_t VideoEncoder::SetRates(uint32_t bitrate, uint32_t framerate) {
   RTC_NOTREACHED() << "SetRate(uint32_t, uint32_t) is deprecated.";
@@ -91,7 +91,7 @@ int32_t VideoEncoder::SetRateAllocation(
 }
 
 VideoEncoder::ScalingSettings VideoEncoder::GetScalingSettings() const {
-  return ScalingSettings(false);
+  return ScalingSettings::kOff;
 }
 
 int32_t VideoEncoder::SetPeriodicKeyFrames(bool enable) {
