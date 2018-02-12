@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad83351d_76797290",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 5100
+      },
+      "writtenOn": "2018-02-12T13:07:34Z",
+      "side": 1,
+      "message": "Please, add a little more description. What tool are you adding to? What does it provide for the user?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 0
+      },
+      "revId": "c220ce2d9ce546c59a20c6fe818ab9470bd7c458",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd9bebee_48857574",
+        "filename": "modules/audio_coding/neteq/tools/neteq_quality_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 5100
+      },
+      "writtenOn": "2018-02-12T13:07:34Z",
+      "side": 1,
+      "message": "I can imagine the command line getting very long if you want to pass a few loss events. Would it be better to point to a file with the loss information? Then, the file could be formatted with one event per row, each row containing the pair \u003ctime, duration\u003e. WDYT?",
+      "range": {
+        "startLine": 80,
+        "startChar": 15,
+        "endLine": 81,
+        "endChar": 43
+      },
+      "revId": "c220ce2d9ce546c59a20c6fe818ab9470bd7c458",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a13f8bd7_ede5f061",
+        "filename": "modules/audio_coding/neteq/tools/neteq_quality_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 5100
+      },
+      "writtenOn": "2018-02-12T13:07:34Z",
+      "side": 1,
+      "message": "This one is called now_ms in the h-file. Please, unify.",
+      "range": {
+        "startLine": 209,
+        "startChar": 22,
+        "endLine": 209,
+        "endChar": 37
+      },
+      "revId": "c220ce2d9ce546c59a20c6fe818ab9470bd7c458",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4031d36c_2a14be55",
+        "filename": "modules/audio_coding/neteq/tools/neteq_quality_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 5100
+      },
+      "writtenOn": "2018-02-12T13:07:34Z",
+      "side": 1,
+      "message": "Unify with h-file.",
+      "range": {
+        "startLine": 217,
+        "startChar": 27,
+        "endLine": 217,
+        "endChar": 42
+      },
+      "revId": "c220ce2d9ce546c59a20c6fe818ab9470bd7c458",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72057ff1_a78a439a",
+        "filename": "modules/audio_coding/neteq/tools/neteq_quality_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 5100
+      },
+      "writtenOn": "2018-02-12T13:07:34Z",
+      "side": 1,
+      "message": "Unify with h-file.",
+      "range": {
+        "startLine": 231,
+        "startChar": 33,
+        "endLine": 231,
+        "endChar": 48
+      },
+      "revId": "c220ce2d9ce546c59a20c6fe818ab9470bd7c458",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b5b4640_3184a63c",
+        "filename": "modules/audio_coding/neteq/tools/neteq_quality_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 5100
+      },
+      "writtenOn": "2018-02-12T13:07:34Z",
+      "side": 1,
+      "message": "Do you really have to special-case this? I think the result will be the same even if you just call the new loss model as the other ones below.",
+      "range": {
+        "startLine": 345,
+        "startChar": 2,
+        "endLine": 346,
+        "endChar": 47
+      },
+      "revId": "c220ce2d9ce546c59a20c6fe818ab9470bd7c458",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8e01dc3_77f5c0f8",
+        "filename": "modules/audio_coding/neteq/tools/neteq_quality_test.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 5100
+      },
+      "writtenOn": "2018-02-12T13:07:34Z",
+      "side": 1,
+      "message": "This constructor looks weird to me. You are just assuming that the vector passed to it will have at least two elements. I\u0027d much rather you had a simple 1-to-1 constructor, and let the caller do conversion from the vector.\n\n FixedLossEvent(int st, int du) : start_ms(st), duration_ms(du) {}",
+      "range": {
+        "startLine": 77,
+        "startChar": 17,
+        "endLine": 77,
+        "endChar": 51
+      },
+      "revId": "c220ce2d9ce546c59a20c6fe818ab9470bd7c458",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dff380db_c8932721",
+        "filename": "modules/audio_coding/neteq/tools/neteq_quality_test.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 5100
+      },
+      "writtenOn": "2018-02-12T13:07:34Z",
+      "side": 1,
+      "message": "Suggestion: If you were to use an std::vector instead of a set, and you made sure that the user enters the loss events in order, then you would not need the Cmp function.",
+      "range": {
+        "startLine": 97,
+        "startChar": 2,
+        "endLine": 97,
+        "endChar": 10
+      },
+      "revId": "c220ce2d9ce546c59a20c6fe818ab9470bd7c458",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
