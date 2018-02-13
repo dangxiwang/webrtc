@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "b75a25dc_5c360293",
+        "filename": "modules/audio_coding/neteq/tools/neteq_quality_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 5100
+      },
+      "writtenOn": "2018-02-13T10:19:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "da6f2cb3_18f21338",
+      "range": {
+        "startLine": 80,
+        "startChar": 15,
+        "endLine": 81,
+        "endChar": 43
+      },
+      "revId": "c220ce2d9ce546c59a20c6fe818ab9470bd7c458",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a13f8bd7_ede5f061",
         "filename": "modules/audio_coding/neteq/tools/neteq_quality_test.cc",
         "patchSetId": 2
@@ -284,6 +308,30 @@
     },
     {
       "key": {
+        "uuid": "b6556533_ea2a5069",
+        "filename": "modules/audio_coding/neteq/tools/neteq_quality_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 5100
+      },
+      "writtenOn": "2018-02-13T10:19:40Z",
+      "side": 1,
+      "message": "I still think you should remove this special case. The basic design of the loss models strongly suggest that all are called in the same way, so this is obscure and confusing to the developer. A future version of you or me will thank us for sticking to the basic design.",
+      "parentUuid": "22fbfebf_aed0ba68",
+      "range": {
+        "startLine": 345,
+        "startChar": 2,
+        "endLine": 346,
+        "endChar": 47
+      },
+      "revId": "c220ce2d9ce546c59a20c6fe818ab9470bd7c458",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f8e01dc3_77f5c0f8",
         "filename": "modules/audio_coding/neteq/tools/neteq_quality_test.h",
         "patchSetId": 2
@@ -375,6 +423,30 @@
       "revId": "c220ce2d9ce546c59a20c6fe818ab9470bd7c458",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58f3fb9e_027380ca",
+        "filename": "modules/audio_coding/neteq/tools/neteq_quality_test.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 5100
+      },
+      "writtenOn": "2018-02-13T10:19:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "09164434_9b448604",
+      "range": {
+        "startLine": 97,
+        "startChar": 2,
+        "endLine": 97,
+        "endChar": 10
+      },
+      "revId": "c220ce2d9ce546c59a20c6fe818ab9470bd7c458",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
