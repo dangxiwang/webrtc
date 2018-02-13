@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5de99861_1827855f",
+        "filename": "api/video_codecs/video_encoder.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2018-02-13T13:52:08Z",
+      "side": 1,
+      "message": "\u003e Class names should be in CamelCase. So \"KOff\"?\n\nDone.\n\n\u003e Also, why forward-declare rather than just declaring it outright?\n\nAttempted put private things after the public. But changed to have the full type definition (and comment) here.",
+      "parentUuid": "688110b7_00f78325",
+      "range": {
+        "startLine": 91,
+        "startChar": 11,
+        "endLine": 91,
+        "endChar": 17
+      },
+      "revId": "0bfd7a22cec1d6bc9297c87c92ce679a06050127",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9861329e_7543e422",
         "filename": "api/video_codecs/video_encoder.h",
         "patchSetId": 13
@@ -36,6 +60,30 @@
       "writtenOn": "2018-02-13T13:27:22Z",
       "side": 1,
       "message": "static constexpr? I don\u0027t think it makes much difference in practice, but why not...",
+      "range": {
+        "startLine": 94,
+        "startChar": 4,
+        "endLine": 94,
+        "endChar": 16
+      },
+      "revId": "0bfd7a22cec1d6bc9297c87c92ce679a06050127",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61315cb5_7d242449",
+        "filename": "api/video_codecs/video_encoder.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2018-02-13T13:52:08Z",
+      "side": 1,
+      "message": "Could do that, but I\u0027m not sure what that implies for the cc file. If I change to constexpr here, should I delete the definition, \n\n  const VideoEncoder::ScalingSettings::KOff VideoEncoder::ScalingSettings::kOff;\n\nor update it in some other way?",
+      "parentUuid": "9861329e_7543e422",
       "range": {
         "startLine": 94,
         "startChar": 4,
