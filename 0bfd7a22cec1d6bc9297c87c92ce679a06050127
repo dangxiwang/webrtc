@@ -93,6 +93,30 @@
       "revId": "0bfd7a22cec1d6bc9297c87c92ce679a06050127",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78dcb556_7235ff5a",
+        "filename": "api/video_codecs/video_encoder.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 5126
+      },
+      "writtenOn": "2018-02-13T14:16:25Z",
+      "side": 1,
+      "message": "IIUC you\u0027ll do\n\n  static constexpr KOff kOff \u003d {};\n\nin the header and\n\n  static constexpr ScalingSettings::kOff;\n\nin the .cc.",
+      "parentUuid": "61315cb5_7d242449",
+      "range": {
+        "startLine": 94,
+        "startChar": 4,
+        "endLine": 94,
+        "endChar": 16
+      },
+      "revId": "0bfd7a22cec1d6bc9297c87c92ce679a06050127",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
     }
   ]
 }
