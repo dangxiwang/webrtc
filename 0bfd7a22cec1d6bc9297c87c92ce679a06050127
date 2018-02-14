@@ -117,6 +117,30 @@
       "revId": "0bfd7a22cec1d6bc9297c87c92ce679a06050127",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9b44721_63864fcf",
+        "filename": "api/video_codecs/video_encoder.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2018-02-14T07:54:37Z",
+      "side": 1,
+      "message": "Done. Except that the \"static\" must be in header file only.",
+      "parentUuid": "78dcb556_7235ff5a",
+      "range": {
+        "startLine": 94,
+        "startChar": 4,
+        "endLine": 94,
+        "endChar": 16
+      },
+      "revId": "0bfd7a22cec1d6bc9297c87c92ce679a06050127",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
     }
   ]
 }
