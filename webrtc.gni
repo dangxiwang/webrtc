@@ -81,6 +81,9 @@ declare_args() {
   # Enable to use the Mozilla internal settings.
   build_with_mozilla = false
 
+  # Allow WebRTC to be used as a library.
+  build_as_library = false
+
   rtc_enable_android_opensl = false
 
   # Link-Time Optimizations.
@@ -274,6 +277,9 @@ if (build_with_chromium) {
   # Allow Chromium's WebRTC overrides targets to bypass the regular
   # visibility restrictions.
   webrtc_default_visibility += [ webrtc_root + "/../webrtc_overrides/*" ]
+} else if (build_as_library) {
+  # Allow the parent application to access all parts of WebRTC.
+  webrtc_default_visibility += [ "*" ]
 }
 
 template("rtc_test") {
