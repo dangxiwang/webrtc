@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "34a133e9_8774be8e",
+        "filename": "tools_webrtc/gtest-parallel-wrapper.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 5114
+      },
+      "writtenOn": "2018-02-19T11:11:08Z",
+      "side": 1,
+      "message": "I see this code comes mostly from \nhttps://github.com/google/gtest-parallel/blob/40f73803eabde9e7988473e75e2ca578e25e7b6e/gtest_parallel.py#L730\n\nIt needs many checks because directory deletion is involved, but I think it\u0027s too many for this code. I would probably remove the `try` entirely.",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 24
+      },
+      "revId": "cdeb5b52944bf53e6dbde4d665f965473a5275cd",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    }
+  ]
+}
