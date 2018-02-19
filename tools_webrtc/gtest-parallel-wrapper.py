@@ -64,6 +64,7 @@ Will be converted into:
 
 import argparse
 import collections
+import errno
 import os
 import shutil
 import subprocess
@@ -168,6 +169,14 @@ def main():
       sys.executable,
       gtest_parallel_path,
   ] + args.gtest_parallel_args
+
+  if args.output_dir and not os.path.isdir(args.output_dir):
+    try:
+      os.makedirs(args.output_dir)
+    except OSError as e:
+      # Ignore errors if this directory already exists.
+      if e.errno != errno.EEXIST or not os.path.isdir(args.output_dir):
+        raise e
 
   print 'gtest-parallel-wrapper: Executing command %s' % ' '.join(command)
   sys.stdout.flush()
