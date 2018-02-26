@@ -79,9 +79,9 @@ int main(int argc, char* argv[]) {
   // Write config to file.
   std::ofstream out_config(FLAG_oc);
   out_config << "{"
-             << "'frame_len_ms': " << FLAG_f << ", "
-             << "'attack_ms': " << FLAG_a << ", "
-             << "'decay_ms': " << FLAG_d << "}\n";
+                "'frame_len_ms': " << FLAG_f << ", "
+                "'attack_ms': " << FLAG_a << ", "
+                "'decay_ms': " << FLAG_d << "}\n";
   out_config.close();
 
   // Measure level frame-by-frame.

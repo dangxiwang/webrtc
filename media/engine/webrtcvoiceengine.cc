@@ -177,7 +177,7 @@ rtc::Optional<int> ComputeSendBitrate(int max_send_bitrate_bps,
     // bitrate then ignore.
     RTC_LOG(LS_ERROR) << "Failed to set codec " << spec.format.name
                       << " to bitrate " << bps << " bps"
-                      << ", requires at least " << spec.info.min_bitrate_bps
+                         ", requires at least " << spec.info.min_bitrate_bps
                       << " bps.";
     return rtc::nullopt;
   }
@@ -1341,7 +1341,7 @@ webrtc::RtpParameters WebRtcVoiceMediaChannel::GetRtpSendParameters(
   auto it = send_streams_.find(ssrc);
   if (it == send_streams_.end()) {
     RTC_LOG(LS_WARNING) << "Attempting to get RTP send parameters for stream "
-                        << "with ssrc " << ssrc << " which doesn't exist.";
+                           "with ssrc " << ssrc << " which doesn't exist.";
     return webrtc::RtpParameters();
   }
 
@@ -1361,7 +1361,7 @@ webrtc::RTCError WebRtcVoiceMediaChannel::SetRtpSendParameters(
   auto it = send_streams_.find(ssrc);
   if (it == send_streams_.end()) {
     RTC_LOG(LS_WARNING) << "Attempting to set RTP send parameters for stream "
-                        << "with ssrc " << ssrc << " which doesn't exist.";
+                           "with ssrc " << ssrc << " which doesn't exist.";
     return webrtc::RTCError(webrtc::RTCErrorType::INTERNAL_ERROR);
   }
 
@@ -1370,7 +1370,7 @@ webrtc::RTCError WebRtcVoiceMediaChannel::SetRtpSendParameters(
   webrtc::RtpParameters current_parameters = GetRtpSendParameters(ssrc);
   if (current_parameters.codecs != parameters.codecs) {
     RTC_LOG(LS_ERROR) << "Using SetParameters to change the set of codecs "
-                      << "is not currently supported.";
+                         "is not currently supported.";
     return webrtc::RTCError(webrtc::RTCErrorType::UNSUPPORTED_PARAMETER);
   }
 
@@ -1407,7 +1407,7 @@ webrtc::RtpParameters WebRtcVoiceMediaChannel::GetRtpReceiveParameters(
     if (it == recv_streams_.end()) {
       RTC_LOG(LS_WARNING)
           << "Attempting to get RTP receive parameters for stream "
-          << "with ssrc " << ssrc << " which doesn't exist.";
+             "with ssrc " << ssrc << " which doesn't exist.";
       return webrtc::RtpParameters();
     }
     rtp_params.encodings.emplace_back();
@@ -1439,7 +1439,7 @@ bool WebRtcVoiceMediaChannel::SetRtpReceiveParameters(
     if (it == recv_streams_.end()) {
       RTC_LOG(LS_WARNING)
           << "Attempting to set RTP receive parameters for stream "
-          << "with ssrc " << ssrc << " which doesn't exist.";
+             "with ssrc " << ssrc << " which doesn't exist.";
       return false;
     }
   }
@@ -1447,7 +1447,7 @@ bool WebRtcVoiceMediaChannel::SetRtpReceiveParameters(
   webrtc::RtpParameters current_parameters = GetRtpReceiveParameters(ssrc);
   if (current_parameters != parameters) {
     RTC_LOG(LS_ERROR) << "Changing the RTP receive parameters is currently "
-                      << "unsupported.";
+                         "unsupported.";
     return false;
   }
   return true;

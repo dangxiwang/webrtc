@@ -136,8 +136,8 @@ TEST(MessageQueueManager, Clear) {
   if (MessageQueueManager::IsInitialized()) {
     RTC_LOG(LS_INFO)
         << "Unable to run MessageQueueManager::Clear test, since the "
-        << "MessageQueueManager was already initialized by some "
-        << "other test in this run.";
+           "MessageQueueManager was already initialized by some "
+           "other test in this run.";
     return;
   }
   bool deleted = false;

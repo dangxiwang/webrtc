@@ -872,7 +872,7 @@ VP9DecoderImpl::~VP9DecoderImpl() {
     // decoding. There may be valid usage cases where previous frames are still
     // referenced after ~VP9DecoderImpl that is not a leak.
     RTC_LOG(LS_INFO) << num_buffers_in_use << " Vp9FrameBuffers are still "
-                     << "referenced during ~VP9DecoderImpl.";
+                        "referenced during ~VP9DecoderImpl.";
   }
 }
 

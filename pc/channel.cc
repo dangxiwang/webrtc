@@ -346,7 +346,7 @@ void BaseChannel::SetTransport_n(
   if (rtcp && new_dtls_transport) {
     RTC_CHECK(!(ShouldSetupDtlsSrtp_n() && srtp_active()))
         << "Setting RTCP for DTLS/SRTP after the DTLS is active "
-        << "should never happen.";
+           "should never happen.";
   }
 
   auto& socket_options = rtcp ? rtcp_socket_options_ : socket_options_;
@@ -549,7 +549,7 @@ bool BaseChannel::SendPacket(bool rtcp,
       // (and SetSend(true) is called).
       RTC_LOG(LS_ERROR)
           << "Can't send outgoing RTP packet when SRTP is inactive"
-          << " and crypto is required";
+             " and crypto is required";
       RTC_NOTREACHED();
       return false;
     }

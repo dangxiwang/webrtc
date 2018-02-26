@@ -170,7 +170,7 @@ VideoCodec VideoCodecInitializer::VideoEncoderConfigToVideoCodec(
       if (nack_enabled && !TemporalLayersConfigured(streams) &&
           video_codec.VP9()->numberOfSpatialLayers == 1) {
         RTC_LOG(LS_INFO) << "No temporal or spatial layers and nack enabled -> "
-                         << "resilience off";
+                            "resilience off";
         video_codec.VP9()->resilienceOn = false;
       }
       break;

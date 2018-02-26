@@ -51,7 +51,7 @@ RtpHeaderExtensionMap RegisterBweExtensions(
     } else {
       RTC_LOG(LS_INFO)
           << "FlexfecSender only supports RTP header extensions for "
-          << "BWE, so the extension " << extension.ToString()
+             "BWE, so the extension " << extension.ToString()
           << " will not be used.";
     }
   }

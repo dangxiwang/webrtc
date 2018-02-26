@@ -682,7 +682,7 @@ bool WebRtcVideoChannel::GetChangedSendParameters(
     if (selected_send_codec->flexfec_payload_type != -1) {
       RTC_LOG(LS_INFO)
           << "Remote supports flexfec-03, but we will not send since "
-          << "WebRTC-FlexFEC-03 field trial is not enabled.";
+             "WebRTC-FlexFEC-03 field trial is not enabled.";
     }
     selected_send_codec->flexfec_payload_type = -1;
   }
@@ -810,7 +810,7 @@ webrtc::RtpParameters WebRtcVideoChannel::GetRtpSendParameters(
   auto it = send_streams_.find(ssrc);
   if (it == send_streams_.end()) {
     RTC_LOG(LS_WARNING) << "Attempting to get RTP send parameters for stream "
-                        << "with ssrc " << ssrc << " which doesn't exist.";
+                           "with ssrc " << ssrc << " which doesn't exist.";
     return webrtc::RtpParameters();
   }
 
@@ -831,7 +831,7 @@ webrtc::RTCError WebRtcVideoChannel::SetRtpSendParameters(
   auto it = send_streams_.find(ssrc);
   if (it == send_streams_.end()) {
     RTC_LOG(LS_ERROR) << "Attempting to set RTP send parameters for stream "
-                      << "with ssrc " << ssrc << " which doesn't exist.";
+                         "with ssrc " << ssrc << " which doesn't exist.";
     return webrtc::RTCError(webrtc::RTCErrorType::INTERNAL_ERROR);
   }
 
@@ -840,7 +840,7 @@ webrtc::RTCError WebRtcVideoChannel::SetRtpSendParameters(
   webrtc::RtpParameters current_parameters = GetRtpSendParameters(ssrc);
   if (current_parameters.codecs != parameters.codecs) {
     RTC_LOG(LS_ERROR) << "Using SetParameters to change the set of codecs "
-                      << "is not currently supported.";
+                         "is not currently supported.";
     return webrtc::RTCError(webrtc::RTCErrorType::INTERNAL_ERROR);
   }
 
@@ -866,7 +866,7 @@ webrtc::RtpParameters WebRtcVideoChannel::GetRtpReceiveParameters(
     if (it == receive_streams_.end()) {
       RTC_LOG(LS_WARNING)
           << "Attempting to get RTP receive parameters for stream "
-          << "with SSRC " << ssrc << " which doesn't exist.";
+             "with SSRC " << ssrc << " which doesn't exist.";
       return webrtc::RtpParameters();
     }
     // TODO(deadbeef): Return stream-specific parameters, beyond just SSRC.
@@ -901,7 +901,7 @@ bool WebRtcVideoChannel::SetRtpReceiveParameters(
     if (it == receive_streams_.end()) {
       RTC_LOG(LS_WARNING)
           << "Attempting to set RTP receive parameters for stream "
-          << "with SSRC " << ssrc << " which doesn't exist.";
+             "with SSRC " << ssrc << " which doesn't exist.";
       return false;
     }
   }
@@ -909,7 +909,7 @@ bool WebRtcVideoChannel::SetRtpReceiveParameters(
   webrtc::RtpParameters current_parameters = GetRtpReceiveParameters(ssrc);
   if (current_parameters != parameters) {
     RTC_LOG(LS_ERROR) << "Changing the RTP receive parameters is currently "
-                      << "unsupported.";
+                         "unsupported.";
     return false;
   }
   return true;

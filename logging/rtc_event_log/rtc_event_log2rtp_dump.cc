@@ -202,6 +202,6 @@ int main(int argc, char* argv[]) {
   }
   std::cout << "Wrote " << rtp_counter << (header_only ? " header-only" : "")
             << " RTP packets and " << rtcp_counter << " RTCP packets to the "
-            << "output file." << std::endl;
+               "output file." << std::endl;
   return 0;
 }
