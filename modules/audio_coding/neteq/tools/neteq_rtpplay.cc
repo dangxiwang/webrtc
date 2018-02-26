@@ -720,8 +720,7 @@ int RunTest(int argc, char* argv[]) {
   printf("  current_buffer_size_ms: %f ms\n", stats.current_buffer_size_ms);
   printf("  preferred_buffer_size_ms: %f ms\n", stats.preferred_buffer_size_ms);
   if (FLAG_concealment_events) {
-    std::cout << " concealment_events_ms:"
-              << "\n";
+    std::cout << " concealment_events_ms:\n";
     for (auto concealment_event : stats_getter.concealment_events())
       std::cout << concealment_event;
     std::cout << " end of concealment_events_ms\n";

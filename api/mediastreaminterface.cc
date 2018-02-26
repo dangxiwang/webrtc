@@ -19,9 +19,9 @@ const char MediaStreamTrackInterface::kAudioKind[] = "audio";
 
 void AudioProcessorInterface::GetStats(AudioProcessorStats* /*stats*/) {
   RTC_NOTREACHED() << "Old-style GetStats() is called but it has no "
-                   << "implementation.";
+                      "implementation.";
   RTC_LOG(LS_ERROR) << "Old-style GetStats() is called but it has no "
-                    << "implementation.";
+                       "implementation.";
 }
 
 // TODO(ivoc): Remove this when the function becomes pure virtual.

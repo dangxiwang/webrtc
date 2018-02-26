@@ -1039,22 +1039,22 @@ int32_t AudioDeviceMac::InitPlayout() {
 
   if (_outStreamFormat.mFormatFlags & kAudioFormatFlagIsNonInterleaved) {
     RTC_LOG(LS_ERROR) << "Non-interleaved audio data is not supported."
-                      << "AudioHardware streams should not have this format.";
+                         "AudioHardware streams should not have this format.";
     return -1;
   }
 
-  RTC_LOG(LS_VERBOSE) << "Ouput stream format:";
-  RTC_LOG(LS_VERBOSE) << "mSampleRate = " << _outStreamFormat.mSampleRate
-                      << ", mChannelsPerFrame = "
+  RTC_LOG(LS_VERBOSE) << "Ouput stream format: "
+                         "mSampleRate=" << _outStreamFormat.mSampleRate
+                      << ", mChannelsPerFrame="
                       << _outStreamFormat.mChannelsPerFrame;
-  RTC_LOG(LS_VERBOSE) << "mBytesPerPacket = "
+                      << ", mBytesPerPacket="
                       << _outStreamFormat.mBytesPerPacket
-                      << ", mFramesPerPacket = "
+                      << ", mFramesPerPacket="
                       << _outStreamFormat.mFramesPerPacket;
-  RTC_LOG(LS_VERBOSE) << "mBytesPerFrame = " << _outStreamFormat.mBytesPerFrame
-                      << ", mBitsPerChannel = "
+                      << ", mBytesPerFrame=" << _outStreamFormat.mBytesPerFrame
+                      << ", mBitsPerChannel="
                       << _outStreamFormat.mBitsPerChannel;
-  RTC_LOG(LS_VERBOSE) << "mFormatFlags = " << _outStreamFormat.mFormatFlags;
+                      << ", mFormatFlags=" << _outStreamFormat.mFormatFlags;
   logCAMsg(rtc::LS_VERBOSE, "mFormatID",
            (const char*)&_outStreamFormat.mFormatID);
 
@@ -1339,7 +1339,7 @@ int32_t AudioDeviceMac::StopRecording() {
       if (kEventTimeout == _stopEventRec.Wait(2000)) {
         rtc::CritScope critScoped(&_critSect);
         RTC_LOG(LS_WARNING) << "Timed out stopping the capture IOProc."
-                            << "We may have failed to detect a device removal.";
+                               "We may have failed to detect a device removal.";
         WEBRTC_CA_LOG_WARN(AudioDeviceStop(_inputDeviceID, _inDeviceIOProcID));
         WEBRTC_CA_LOG_WARN(
             AudioDeviceDestroyIOProcID(_inputDeviceID, _inDeviceIOProcID));
@@ -1367,7 +1367,7 @@ int32_t AudioDeviceMac::StopRecording() {
       if (kEventTimeout == _stopEvent.Wait(2000)) {
         rtc::CritScope critScoped(&_critSect);
         RTC_LOG(LS_WARNING) << "Timed out stopping the shared IOProc."
-                            << "We may have failed to detect a device removal.";
+                               "We may have failed to detect a device removal.";
         // We assume rendering on a shared device has stopped as well if
         // the IOProc times out.
         WEBRTC_CA_LOG_WARN(AudioDeviceStop(_outputDeviceID, _deviceIOProcID));
@@ -1475,7 +1475,7 @@ int32_t AudioDeviceMac::StopPlayout() {
     if (kEventTimeout == _stopEvent.Wait(2000)) {
       rtc::CritScope critScoped(&_critSect);
       RTC_LOG(LS_WARNING) << "Timed out stopping the render IOProc."
-                          << "We may have failed to detect a device removal.";
+                             "We may have failed to detect a device removal.";
 
       // We assume capturing on a shared device has stopped as well if the
       // IOProc times out.

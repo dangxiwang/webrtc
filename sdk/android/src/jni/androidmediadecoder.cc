@@ -747,13 +747,12 @@ bool MediaCodecVideoDecoder::DeliverPendingOutputs(
     int current_bitrate = current_bytes_ * 8 / statistic_time_ms;
     int current_fps =
         (current_frames_ * 1000 + statistic_time_ms / 2) / statistic_time_ms;
-    ALOGD << "Frames decoded: " << frames_decoded_ <<
-        ". Received: " <<  frames_received_ <<
-        ". Bitrate: " << current_bitrate << " kbps" <<
-        ". Fps: " << current_fps <<
-        ". DecTime: " << (current_decoding_time_ms_ / current_frames_) <<
-        ". DelayTime: " << (current_delay_time_ms_ / current_frames_) <<
-        " for last " << statistic_time_ms << " ms.";
+    ALOGD << "Frames decoded: " << frames_decoded_
+          << ". Received: " << frames_received_
+          << ". Bitrate: " << current_bitrate << " kbps. Fps: " << current_fps
+          << ". DecTime: " << (current_decoding_time_ms_ / current_frames_)
+          << ". DelayTime: " << (current_delay_time_ms_ / current_frames_)
+          << " for last " << statistic_time_ms << " ms.";
     start_time_ms_ = rtc::TimeMillis();
     current_frames_ = 0;
     current_bytes_ = 0;

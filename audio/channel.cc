@@ -361,7 +361,7 @@ bool Channel::SendRtp(const uint8_t* data,
   if (_transportPtr == NULL) {
     RTC_DLOG(LS_ERROR)
         << "Channel::SendPacket() failed to send RTP packet due to"
-        << " invalid transport object";
+           " invalid transport object";
     return false;
   }
 
@@ -377,7 +377,7 @@ bool Channel::SendRtcp(const uint8_t* data, size_t len) {
   if (_transportPtr == NULL) {
     RTC_DLOG(LS_ERROR)
         << "Channel::SendRtcp() failed to send RTCP packet due to"
-        << " invalid transport object";
+           " invalid transport object";
     return false;
   }
 
@@ -1230,7 +1230,7 @@ int Channel::GetRTPStatistics(CallStatistics& stats) {
   if (_rtpRtcpModule->DataCountersRTP(&bytesSent, &packetsSent) != 0) {
     RTC_DLOG(LS_WARNING)
         << "GetRTPStatistics() failed to retrieve RTP datacounters"
-        << " => output will not be complete";
+           " => output will not be complete";
   }
 
   stats.bytesSent = bytesSent;
@@ -1419,7 +1419,7 @@ void Channel::UpdatePlayoutTimestamp(bool rtcp) {
   uint16_t delay_ms = 0;
   if (_audioDeviceModulePtr->PlayoutDelay(&delay_ms) == -1) {
     RTC_DLOG(LS_WARNING) << "Channel::UpdatePlayoutTimestamp() failed to read"
-                         << " playout delay from the ADM";
+                            " playout delay from the ADM";
     return;
   }
 

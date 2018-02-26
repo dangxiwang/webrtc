@@ -958,7 +958,7 @@ bool ParseCandidate(const std::string& message, Candidate* candidate,
     if (is_raw) {
       std::ostringstream description;
       description << "Expect line: " << kAttributeCandidate
-                  << ":" << "<candidate-str>";
+                  << ":<candidate-str>";
       return ParseFailed(first_line, 0, description.str(), error);
     } else {
       return ParseFailedExpectLine(first_line, 0, kLineTypeAttributes,

@@ -113,7 +113,7 @@ static void RtpFragmentize(EncodedImage* encoded_image,
       // Encoded data > unencoded data. Allocate required bytes.
       RTC_LOG(LS_WARNING)
           << "Encoding produced more bytes than the original image "
-          << "data! Original bytes: " << encoded_image->_size
+             "data! Original bytes: " << encoded_image->_size
           << ", encoded bytes: " << required_size << ".";
       encoded_image->_size = required_size;
     }
@@ -312,7 +312,7 @@ int32_t H264EncoderImpl::Encode(const VideoFrame& input_frame,
   if (!encoded_image_callback_) {
     RTC_LOG(LS_WARNING)
         << "InitEncode() has been called, but a callback function "
-        << "has not been set with RegisterEncodeCompleteCallback()";
+           "has not been set with RegisterEncodeCompleteCallback()";
     ReportError();
     return WEBRTC_VIDEO_CODEC_UNINITIALIZED;
   }

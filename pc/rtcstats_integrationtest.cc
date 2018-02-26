@@ -277,7 +277,7 @@ class RTCStatsVerifier {
       }
     }
     EXPECT_TRUE(valid_reference) <<
-      stats_->type() << "." << member.name() << " is not a reference to an " <<
+      stats_->type() << "." << member.name() << " is not a reference to an "
       "existing dictionary of type " << expected_type << " (" <<
       member.ValueToString() << ").";
     MarkMemberTested(member, valid_reference);
