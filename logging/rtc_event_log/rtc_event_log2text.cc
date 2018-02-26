@@ -176,8 +176,8 @@ void PrintSenderReport(const webrtc::ParsedRtcEventLog& parsed_stream,
       parsed_stream.GetMediaType(sr.sender_ssrc(), direction);
   if (ExcludePacket(direction, media_type, sr.sender_ssrc()))
     return;
-  std::cout << log_timestamp << "\t"
-            << "RTCP_SR" << StreamInfo(direction, media_type)
+  std::cout << log_timestamp
+            << "\tRTCP_SR" << StreamInfo(direction, media_type)
             << "\tssrc=" << sr.sender_ssrc()
             << "\ttimestamp=" << sr.rtp_timestamp() << std::endl;
 }
@@ -193,8 +193,8 @@ void PrintReceiverReport(const webrtc::ParsedRtcEventLog& parsed_stream,
       parsed_stream.GetMediaType(rr.sender_ssrc(), direction);
   if (ExcludePacket(direction, media_type, rr.sender_ssrc()))
     return;
-  std::cout << log_timestamp << "\t"
-            << "RTCP_RR" << StreamInfo(direction, media_type)
+  std::cout << log_timestamp
+            << "\tRTCP_RR" << StreamInfo(direction, media_type)
             << "\tssrc=" << rr.sender_ssrc() << std::endl;
 }
 
@@ -209,16 +209,16 @@ void PrintXr(const webrtc::ParsedRtcEventLog& parsed_stream,
       parsed_stream.GetMediaType(xr.sender_ssrc(), direction);
   if (ExcludePacket(direction, media_type, xr.sender_ssrc()))
     return;
-  std::cout << log_timestamp << "\t"
-            << "RTCP_XR" << StreamInfo(direction, media_type)
+  std::cout << log_timestamp
+            << "\tRTCP_XR" << StreamInfo(direction, media_type)
             << "\tssrc=" << xr.sender_ssrc() << std::endl;
 }
 
 void PrintSdes(const webrtc::rtcp::CommonHeader& rtcp_block,
                uint64_t log_timestamp,
                webrtc::PacketDirection direction) {
-  std::cout << log_timestamp << "\t"
-            << "RTCP_SDES" << StreamInfo(direction, MediaType::ANY)
+  std::cout << log_timestamp
+            << "\tRTCP_SDES" << StreamInfo(direction, MediaType::ANY)
             << std::endl;
   RTC_NOTREACHED() << "SDES should have been redacted when writing the log";
 }
@@ -234,8 +234,8 @@ void PrintBye(const webrtc::ParsedRtcEventLog& parsed_stream,
       parsed_stream.GetMediaType(bye.sender_ssrc(), direction);
   if (ExcludePacket(direction, media_type, bye.sender_ssrc()))
     return;
-  std::cout << log_timestamp << "\t"
-            << "RTCP_BYE" << StreamInfo(direction, media_type)
+  std::cout << log_timestamp
+            << "\tRTCP_BYE" << StreamInfo(direction, media_type)
             << "\tssrc=" << bye.sender_ssrc() << std::endl;
 }
 
@@ -252,8 +252,8 @@ void PrintRtpFeedback(const webrtc::ParsedRtcEventLog& parsed_stream,
           parsed_stream.GetMediaType(nack.sender_ssrc(), direction);
       if (ExcludePacket(direction, media_type, nack.sender_ssrc()))
         return;
-      std::cout << log_timestamp << "\t"
-                << "RTCP_NACK" << StreamInfo(direction, media_type)
+      std::cout << log_timestamp
+                << "\tRTCP_NACK" << StreamInfo(direction, media_type)
                 << "\tssrc=" << nack.sender_ssrc() << std::endl;
       break;
     }
@@ -265,8 +265,8 @@ void PrintRtpFeedback(const webrtc::ParsedRtcEventLog& parsed_stream,
           parsed_stream.GetMediaType(tmmbr.sender_ssrc(), direction);
       if (ExcludePacket(direction, media_type, tmmbr.sender_ssrc()))
         return;
-      std::cout << log_timestamp << "\t"
-                << "RTCP_TMMBR" << StreamInfo(direction, media_type)
+      std::cout << log_timestamp
+                << "\tRTCP_TMMBR" << StreamInfo(direction, media_type)
                 << "\tssrc=" << tmmbr.sender_ssrc() << std::endl;
       break;
     }
@@ -278,8 +278,8 @@ void PrintRtpFeedback(const webrtc::ParsedRtcEventLog& parsed_stream,
           parsed_stream.GetMediaType(tmmbn.sender_ssrc(), direction);
       if (ExcludePacket(direction, media_type, tmmbn.sender_ssrc()))
         return;
-      std::cout << log_timestamp << "\t"
-                << "RTCP_TMMBN" << StreamInfo(direction, media_type)
+      std::cout << log_timestamp
+                << "\tRTCP_TMMBN" << StreamInfo(direction, media_type)
                 << "\tssrc=" << tmmbn.sender_ssrc() << std::endl;
       break;
     }
@@ -291,8 +291,8 @@ void PrintRtpFeedback(const webrtc::ParsedRtcEventLog& parsed_stream,
           parsed_stream.GetMediaType(sr_req.sender_ssrc(), direction);
       if (ExcludePacket(direction, media_type, sr_req.sender_ssrc()))
         return;
-      std::cout << log_timestamp << "\t"
-                << "RTCP_SRREQ" << StreamInfo(direction, media_type)
+      std::cout << log_timestamp
+                << "\tRTCP_SRREQ" << StreamInfo(direction, media_type)
                 << "\tssrc=" << sr_req.sender_ssrc() << std::endl;
       break;
     }
@@ -305,16 +305,16 @@ void PrintRtpFeedback(const webrtc::ParsedRtcEventLog& parsed_stream,
       if (ExcludePacket(direction, media_type,
                         transport_feedback.sender_ssrc()))
         return;
-      std::cout << log_timestamp << "\t"
-                << "RTCP_NEWFB" << StreamInfo(direction, media_type)
+      std::cout << log_timestamp
+                << "\tRTCP_NEWFB" << StreamInfo(direction, media_type)
                 << "\tsender_ssrc=" << transport_feedback.sender_ssrc()
                 << "\tmedia_ssrc=" << transport_feedback.media_ssrc()
                 << std::endl;
       break;
     }
     default:
-      std::cout << log_timestamp << "\t"
-                << "RTCP_RTPFB(UNKNOWN)" << std::endl;
+      std::cout << log_timestamp
+                << "\tRTCP_RTPFB(UNKNOWN)" << std::endl;
       break;
   }
 }
@@ -332,8 +332,8 @@ void PrintPsFeedback(const webrtc::ParsedRtcEventLog& parsed_stream,
           parsed_stream.GetMediaType(pli.sender_ssrc(), direction);
       if (ExcludePacket(direction, media_type, pli.sender_ssrc()))
         return;
-      std::cout << log_timestamp << "\t"
-                << "RTCP_PLI" << StreamInfo(direction, media_type)
+      std::cout << log_timestamp
+                << "\tRTCP_PLI" << StreamInfo(direction, media_type)
                 << "\tssrc=" << pli.sender_ssrc() << std::endl;
       break;
     }
@@ -345,8 +345,8 @@ void PrintPsFeedback(const webrtc::ParsedRtcEventLog& parsed_stream,
           parsed_stream.GetMediaType(fir.sender_ssrc(), direction);
       if (ExcludePacket(direction, media_type, fir.sender_ssrc()))
         return;
-      std::cout << log_timestamp << "\t"
-                << "RTCP_FIR" << StreamInfo(direction, media_type)
+      std::cout << log_timestamp
+                << "\tRTCP_FIR" << StreamInfo(direction, media_type)
                 << "\tssrc=" << fir.sender_ssrc() << std::endl;
       break;
     }
@@ -358,14 +358,14 @@ void PrintPsFeedback(const webrtc::ParsedRtcEventLog& parsed_stream,
           parsed_stream.GetMediaType(remb.sender_ssrc(), direction);
       if (ExcludePacket(direction, media_type, remb.sender_ssrc()))
         return;
-      std::cout << log_timestamp << "\t"
-                << "RTCP_REMB" << StreamInfo(direction, media_type)
+      std::cout << log_timestamp
+                << "\tRTCP_REMB" << StreamInfo(direction, media_type)
                 << "\tssrc=" << remb.sender_ssrc() << std::endl;
       break;
     }
     default:
-      std::cout << log_timestamp << "\t"
-                << "RTCP_PSFB(UNKNOWN)" << std::endl;
+      std::cout << log_timestamp
+                << "\tRTCP_PSFB(UNKNOWN)" << std::endl;
       break;
   }
 }
@@ -586,7 +586,7 @@ int main(int argc, char* argv[]) {
           uint32_t ssrc;
           parsed_stream.GetAudioPlayout(i, &ssrc);
           std::cout << parsed_stream.GetTimestamp(i) << "\tAUDIO_PLAYOUT"
-                    << "\tssrc=" << ssrc << std::endl;
+                       "\tssrc=" << ssrc << std::endl;
         }
         event_recognized = true;
         break;
@@ -600,7 +600,7 @@ int main(int argc, char* argv[]) {
           parsed_stream.GetLossBasedBweUpdate(i, &bitrate_bps, &fraction_loss,
                                               &total_packets);
           std::cout << parsed_stream.GetTimestamp(i) << "\tBWE(LOSS_BASED)"
-                    << "\tbitrate_bps=" << bitrate_bps << "\tfraction_loss="
+                       "\tbitrate_bps=" << bitrate_bps << "\tfraction_loss="
                     << static_cast<unsigned>(fraction_loss)
                     << "\ttotal_packets=" << total_packets << std::endl;
         }
@@ -612,7 +612,7 @@ int main(int argc, char* argv[]) {
         if (FLAG_bwe) {
           auto bwe_update = parsed_stream.GetDelayBasedBweUpdate(i);
           std::cout << parsed_stream.GetTimestamp(i) << "\tBWE(DELAY_BASED)"
-                    << "\tbitrate_bps=" << bwe_update.bitrate_bps
+                       "\tbitrate_bps=" << bwe_update.bitrate_bps
                     << "\tdetector_state="
                     << static_cast<int>(bwe_update.detector_state) << std::endl;
         }
@@ -625,14 +625,13 @@ int main(int argc, char* argv[]) {
           webrtc::rtclog::StreamConfig config =
               parsed_stream.GetVideoReceiveConfig(i);
           std::cout << parsed_stream.GetTimestamp(i) << "\tVIDEO_RECV_CONFIG"
-                    << "\tssrc=" << config.remote_ssrc
+                       "\tssrc=" << config.remote_ssrc
                     << "\tfeedback_ssrc=" << config.local_ssrc;
           std::cout << "\textensions={";
           for (const auto& extension : config.rtp_extensions) {
             std::cout << extension.ToString() << ",";
           }
-          std::cout << "}";
-          std::cout << "\tcodecs={";
+          std::cout << "}\tcodecs={";
           for (const auto& codec : config.codecs) {
             std::cout << "{name: " << codec.payload_name
                       << ", payload_type: " << codec.payload_type
@@ -677,7 +676,7 @@ int main(int argc, char* argv[]) {
           webrtc::rtclog::StreamConfig config =
               parsed_stream.GetAudioReceiveConfig(i);
           std::cout << parsed_stream.GetTimestamp(i) << "\tAUDIO_RECV_CONFIG"
-                    << "\tssrc=" << config.remote_ssrc
+                       "\tssrc=" << config.remote_ssrc
                     << "\tfeedback_ssrc=" << config.local_ssrc;
           std::cout << "\textensions={";
           for (const auto& extension : config.rtp_extensions) {
@@ -702,7 +701,7 @@ int main(int argc, char* argv[]) {
           webrtc::rtclog::StreamConfig config =
               parsed_stream.GetAudioSendConfig(i);
           std::cout << parsed_stream.GetTimestamp(i) << "\tAUDIO_SEND_CONFIG"
-                    << "\tssrc=" << config.local_ssrc;
+                       "\tssrc=" << config.local_ssrc;
           std::cout << "\textensions={";
           for (const auto& extension : config.rtp_extensions) {
             std::cout << extension.ToString() << ",";
@@ -758,7 +757,7 @@ int main(int argc, char* argv[]) {
               parsed_stream.GetBweProbeClusterCreated(i);
           std::cout << parsed_stream.GetTimestamp(i) << "\tPROBE_CREATED("
                     << probe_event.id << ")"
-                    << "\tbitrate_bps=" << probe_event.bitrate_bps
+                       "\tbitrate_bps=" << probe_event.bitrate_bps
                     << "\tmin_packets=" << probe_event.min_packets
                     << "\tmin_bytes=" << probe_event.min_bytes << std::endl;
         }
@@ -773,13 +772,13 @@ int main(int argc, char* argv[]) {
           if (probe_result.failure_reason) {
             std::cout << parsed_stream.GetTimestamp(i) << "\tPROBE_SUCCESS("
                       << probe_result.id << ")"
-                      << "\tfailure_reason="
+                         "\tfailure_reason="
                       << static_cast<int>(*probe_result.failure_reason)
                       << std::endl;
           } else {
             std::cout << parsed_stream.GetTimestamp(i) << "\tPROBE_SUCCESS("
                       << probe_result.id << ")"
-                      << "\tbitrate_bps=" << *probe_result.bitrate_bps
+                         "\tbitrate_bps=" << *probe_result.bitrate_bps
                       << std::endl;
           }
         }
@@ -792,7 +791,7 @@ int main(int argc, char* argv[]) {
           webrtc::ParsedRtcEventLog::AlrStateEvent alr_state =
               parsed_stream.GetAlrState(i);
           std::cout << parsed_stream.GetTimestamp(i) << "\tALR_STATE"
-                    << "\tin_alr=" << alr_state.in_alr << std::endl;
+                       "\tin_alr=" << alr_state.in_alr << std::endl;
         }
         event_recognized = true;
         break;
@@ -805,7 +804,7 @@ int main(int argc, char* argv[]) {
           // TODO(qingsi): convert the numeric representation of states to text
           std::cout << parsed_stream.GetTimestamp(i)
                     << "\tICE_CANDIDATE_PAIR_CONFIG"
-                    << "\ttype=" << static_cast<int>(ice_cp_config.type)
+                       "\ttype=" << static_cast<int>(ice_cp_config.type)
                     << std::endl;
         }
         event_recognized = true;
@@ -819,7 +818,7 @@ int main(int argc, char* argv[]) {
           // TODO(qingsi): convert the numeric representation of states to text
           std::cout << parsed_stream.GetTimestamp(i)
                     << "\tICE_CANDIDATE_PAIR_EVENT"
-                    << "\ttype=" << static_cast<int>(ice_cp_event.type)
+                       "\ttype=" << static_cast<int>(ice_cp_event.type)
                     << std::endl;
         }
         event_recognized = true;

@@ -453,7 +453,7 @@ int32_t AudioMixerManagerLinuxPulse::StereoRecordingIsAvailable(
 
   RTC_LOG(LS_VERBOSE)
       << "AudioMixerManagerLinuxPulse::StereoRecordingIsAvailable()"
-      << " => available=" << available;
+         " => available=" << available;
 
   return 0;
 }

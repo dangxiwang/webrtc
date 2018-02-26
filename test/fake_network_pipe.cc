@@ -111,7 +111,7 @@ void FakeNetworkPipe::SetConfig(const FakeNetworkPipe::Config& config) {
 
     RTC_CHECK_GT(avg_burst_loss_length, min_avg_burst_loss_length)
         << "For a total packet loss of " << config.loss_percent << "%% then"
-        << " avg_burst_loss_length must be " << min_avg_burst_loss_length + 1
+           " avg_burst_loss_length must be " << min_avg_burst_loss_length + 1
         << " or higher.";
 
     prob_loss_bursting_ = (1.0 - 1.0 / avg_burst_loss_length);

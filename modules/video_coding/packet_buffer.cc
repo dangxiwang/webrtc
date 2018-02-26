@@ -347,7 +347,7 @@ std::vector<std::unique_ptr<RtpFrameObject>> PacketBuffer::FindFrames(
         if (has_h264_idr && (!has_h264_sps || !has_h264_pps)) {
           std::stringstream ss;
           ss << "Received H.264-IDR frame "
-             << "(SPS: " << has_h264_sps << ", PPS: " << has_h264_pps << "). ";
+                "(SPS: " << has_h264_sps << ", PPS: " << has_h264_pps << "). ";
           if (sps_pps_idr_is_h264_keyframe_) {
             ss << "Treating as delta frame since "
                   "WebRTC-SpsPpsIdrIsH264Keyframe is enabled.";
@@ -432,7 +432,7 @@ bool PacketBuffer::GetBitstream(const RtpFrameObject& frame,
     if (destination + length > destination_end) {
       RTC_LOG(LS_WARNING) << "Frame (" << frame.picture_id << ":"
                           << static_cast<int>(frame.spatial_layer) << ")"
-                          << " bitstream buffer is not large enough.";
+                             " bitstream buffer is not large enough.";
       return false;
     }
 

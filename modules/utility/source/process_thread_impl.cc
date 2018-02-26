@@ -127,7 +127,7 @@ void ProcessThreadImpl::RegisterModule(Module* module,
     for (const ModuleCallback& mc : modules_) {
       RTC_DCHECK(mc.module != module)
           << "Already registered here: " << mc.location.ToString() << "\n"
-          << "Now attempting from here: " << from.ToString();
+             "Now attempting from here: " << from.ToString();
     }
   }
 #endif

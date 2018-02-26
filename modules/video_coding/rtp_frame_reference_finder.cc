@@ -359,7 +359,7 @@ RtpFrameReferenceFinder::FrameDecision RtpFrameReferenceFinder::ManageFrameVp8(
                           << " and packet range [" << frame->first_seq_num()
                           << ", " << frame->last_seq_num()
                           << "] already received, "
-                          << " dropping frame.";
+                             " dropping frame.";
       return kDrop;
     }
 

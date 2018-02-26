@@ -59,9 +59,10 @@ bool GainController2::Validate(
 std::string GainController2::ToString(
     const AudioProcessing::Config::GainController2& config) {
   std::stringstream ss;
-  ss << "{enabled: " << (config.enabled ? "true" : "false") << ", "
-     << "fixed_gain_dB: " << config.fixed_gain_db << ", "
-     << "enable_limiter: " << (config.enable_limiter ? "true" : "false") << "}";
+  ss << "{enabled: " << (config.enabled ? "true" : "false")
+     << ", fixed_gain_dB: " << config.fixed_gain_db
+     << ", enable_limiter: " << (config.enable_limiter ? "true" : "false")
+     << "}";
   return ss.str();
 }
 

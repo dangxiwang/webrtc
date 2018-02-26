@@ -18,13 +18,13 @@ namespace test {
 std::string NetEqInput::PacketData::ToString() const {
   std::stringstream ss;
   ss << "{"
-     << "time_ms: " << static_cast<int64_t>(time_ms) << ", "
-     << "header: {"
-     << "pt: " << static_cast<int>(header.payloadType) << ", "
-     << "sn: " << header.sequenceNumber << ", "
-     << "ts: " << header.timestamp << ", "
-     << "ssrc: " << header.ssrc << "}, "
-     << "payload bytes: " << payload.size() << "}";
+        "time_ms: " << static_cast<int64_t>(time_ms) << ", "
+        "header: {"
+        "pt: " << static_cast<int>(header.payloadType) << ", "
+        "sn: " << header.sequenceNumber << ", "
+        "ts: " << header.timestamp << ", "
+        "ssrc: " << header.ssrc << "}, "
+        "payload bytes: " << payload.size() << "}";
   return ss.str();
 }
 

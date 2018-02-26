@@ -321,7 +321,7 @@ bool RtpDataMediaChannel::SendData(
   packet.AppendData(payload);
 
   RTC_LOG(LS_VERBOSE) << "Sent RTP data packet: "
-                      << " stream=" << found_stream->id
+                         " stream=" << found_stream->id
                       << " ssrc=" << header.ssrc
                       << ", seqnum=" << header.seq_num
                       << ", timestamp=" << header.timestamp
