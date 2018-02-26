@@ -52,7 +52,10 @@
 #include "rtc_base/networkmonitor.h"
 #include "rtc_base/nullsocketserver.h"
 #include "rtc_base/timeutils.h"
+
+#if defined(WEBRTC_WIN)
 #include "rtc_base/win32socketinit.h"
+#endif
 
 #if defined(WEBRTC_WIN)
 #define LAST_SYSTEM_ERROR (::GetLastError())

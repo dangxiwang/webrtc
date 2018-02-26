@@ -11,7 +11,10 @@
 #ifndef RTC_BASE_WIN32SOCKETSERVER_H_
 #define RTC_BASE_WIN32SOCKETSERVER_H_
 
-#if defined(WEBRTC_WIN)
+#ifndef WEBRTC_WIN
+#error "Only include this header if WEBRTC_WIN is defined."
+#endif
+
 #include "rtc_base/asyncsocket.h"
 #include "rtc_base/criticalsection.h"
 #include "rtc_base/messagequeue.h"
@@ -152,7 +155,5 @@ class Win32Thread : public Thread {
 ///////////////////////////////////////////////////////////////////////////////
 
 }  // namespace rtc
-
-#endif  // WEBRTC_WIN
 
 #endif  // RTC_BASE_WIN32SOCKETSERVER_H_
