@@ -225,8 +225,8 @@ void NetEqDelayAnalyzer::CreateMatlabScript(
   output << "];" << std::endl;
 
   output << "h=plot(send_time_s, arrival_delay_ms, "
-         << "send_time_s, target_delay_ms, 'g.', "
-         << "send_time_s, playout_delay_ms);" << std::endl;
+            "send_time_s, target_delay_ms, 'g.', "
+            "send_time_s, playout_delay_ms);" << std::endl;
   output << "set(h(1),'color',0.75*[1 1 1]);" << std::endl;
   output << "set(h(2),'markersize',6);" << std::endl;
   output << "set(h(3),'linew',1.5);" << std::endl;
@@ -306,8 +306,8 @@ void NetEqDelayAnalyzer::CreatePythonScript(
 
   output << "if __name__ == '__main__':" << std::endl;
   output << "  h=plt.plot(send_time_s, arrival_delay_ms, "
-         << "send_time_s, target_delay_ms, 'g.', "
-         << "send_time_s, playout_delay_ms)" << std::endl;
+            "send_time_s, target_delay_ms, 'g.', "
+            "send_time_s, playout_delay_ms)" << std::endl;
   output << "  plt.setp(h[0],'color',[.75, .75, .75])" << std::endl;
   output << "  plt.setp(h[1],'markersize',6)" << std::endl;
   output << "  plt.setp(h[2],'linewidth',1.5)" << std::endl;

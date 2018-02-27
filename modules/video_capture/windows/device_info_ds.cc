@@ -75,7 +75,7 @@ DeviceInfoDS::DeviceInfoDS()
       //
       RTC_LOG(LS_INFO) << __FUNCTION__
                        << ": CoInitializeEx(NULL, COINIT_APARTMENTTHREADED)"
-                       << " => RPC_E_CHANGED_MODE, error 0x" << std::hex << hr;
+                          " => RPC_E_CHANGED_MODE, error 0x" << std::hex << hr;
     }
   }
 }
@@ -164,7 +164,7 @@ int32_t DeviceInfoDS::GetDeviceInfo(uint32_t deviceNumber,
                                                deviceNameLength, NULL, NULL);
               if (convResult == 0) {
                 RTC_LOG(LS_INFO) << "Failed to convert device name to UTF8, "
-                                 << "error = " << GetLastError();
+                                    "error = " << GetLastError();
                 return -1;
               }
             }
@@ -174,8 +174,8 @@ int32_t DeviceInfoDS::GetDeviceInfo(uint32_t deviceNumber,
                 strncpy_s((char*)deviceUniqueIdUTF8, deviceUniqueIdUTF8Length,
                           (char*)deviceNameUTF8, convResult);
                 RTC_LOG(LS_INFO) << "Failed to get "
-                                 << "deviceUniqueIdUTF8 using "
-                                 << "deviceNameUTF8";
+                                    "deviceUniqueIdUTF8 using "
+                                    "deviceNameUTF8";
               } else {
                 convResult = WideCharToMultiByte(
                     CP_UTF8, 0, varName.bstrVal, -1, (char*)deviceUniqueIdUTF8,
@@ -183,7 +183,7 @@ int32_t DeviceInfoDS::GetDeviceInfo(uint32_t deviceNumber,
                 if (convResult == 0) {
                   RTC_LOG(LS_INFO)
                       << "Failed to convert device "
-                      << "name to UTF8, error = " << GetLastError();
+                         "name to UTF8, error = " << GetLastError();
                   return -1;
                 }
                 if (productUniqueIdUTF8 && productUniqueIdUTF8Length > 0) {
@@ -262,7 +262,7 @@ IBaseFilter* DeviceInfoDS::GetDeviceFilter(const char* deviceUniqueIdUTF8,
             if
               FAILED(hr) {
                 RTC_LOG(LS_ERROR) << "Failed to bind to the selected "
-                                  << "capture device " << hr;
+                                     "capture device " << hr;
               }
 
             if (productUniqueIdUTF8 &&
@@ -335,7 +335,7 @@ int32_t DeviceInfoDS::CreateCapabilityMap(const char* deviceUniqueIdUTF8)
                                         (void**)&streamConfig);
   if (FAILED(hr)) {
     RTC_LOG(LS_INFO) << "Failed to get IID_IAMStreamConfig interface "
-                     << "from capture device";
+                        "from capture device";
     return -1;
   }
 

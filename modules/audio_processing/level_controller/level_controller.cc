@@ -278,9 +278,9 @@ void LevelController::ApplyConfig(
 std::string LevelController::ToString(
     const AudioProcessing::Config::LevelController& config) {
   std::stringstream ss;
-  ss << "{"
-     << "enabled: " << (config.enabled ? "true" : "false") << ", "
-     << "initial_peak_level_dbfs: " << config.initial_peak_level_dbfs << "}";
+  ss << "{enabled: " << (config.enabled ? "true" : "false")
+     << ", initial_peak_level_dbfs: " << config.initial_peak_level_dbfs
+     << "}";
   return ss.str();
 }
 

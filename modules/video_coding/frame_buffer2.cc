@@ -182,8 +182,8 @@ FrameBuffer::ReturnReason FrameBuffer::NextFrame(
               << "Frame with (timestamp:picture_id:spatial_id) ("
               << frame->timestamp << ":" << frame->picture_id << ":"
               << static_cast<int>(frame->spatial_layer) << ")"
-              << " sent to decoder after frame with"
-              << " (timestamp:picture_id:spatial_id) ("
+                 " sent to decoder after frame with"
+                 " (timestamp:picture_id:spatial_id) ("
               << last_decoded_frame_timestamp_ << ":"
               << last_decoded_frame_key.picture_id << ":"
               << static_cast<int>(last_decoded_frame_key.spatial_layer) << ").";
@@ -219,7 +219,7 @@ bool FrameBuffer::HasBadRenderTiming(const FrameObject& frame, int64_t now_ms) {
     int frame_delay = static_cast<int>(std::abs(render_time_ms - now_ms));
     RTC_LOG(LS_WARNING)
         << "A frame about to be decoded is out of the configured "
-        << "delay bounds (" << frame_delay << " > " << kMaxVideoDelayMs
+           "delay bounds (" << frame_delay << " > " << kMaxVideoDelayMs
         << "). Resetting the video jitter buffer.";
     return true;
   }
@@ -313,7 +313,7 @@ int64_t FrameBuffer::InsertFrame(std::unique_ptr<FrameObject> frame) {
                         << key.picture_id << ":"
                         << static_cast<int>(key.spatial_layer)
                         << ") could not be inserted due to the frame "
-                        << "buffer being full, dropping frame.";
+                           "buffer being full, dropping frame.";
     return last_continuous_picture_id;
   }
 
@@ -484,7 +484,7 @@ bool FrameBuffer::UpdateFrameInfoWithIncomingFrame(const FrameObject& frame,
               << "Frame with (picture_id:spatial_id) (" << key.picture_id << ":"
               << static_cast<int>(key.spatial_layer)
               << ") depends on a non-decoded frame more previous than"
-              << " the last decoded frame, dropping frame.";
+                 " the last decoded frame, dropping frame.";
           last_log_non_decoded_ms_ = now_ms;
         }
         return false;

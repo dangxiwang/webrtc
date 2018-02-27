@@ -272,7 +272,7 @@ jlong CreatePeerConnectionFactoryForJava(
           std::move(media_engine), std::move(call_factory),
           std::move(rtc_event_log_factory), std::move(fec_controller_factory)));
   RTC_CHECK(factory) << "Failed to create the peer connection factory; "
-                     << "WebRTC/libjingle init likely failed on this device";
+                        "WebRTC/libjingle init likely failed on this device";
   // TODO(honghaiz): Maybe put the options as the argument of
   // CreatePeerConnectionFactory.
   if (has_options) {

@@ -169,7 +169,7 @@ class DelayTest {
   void OpenOutFile(const char* output_id) {
     std::stringstream file_stream;
     file_stream << "delay_test_" << FLAG_codec << "_" << FLAG_sample_rate_hz
-        << "Hz" << "_" << FLAG_delay << "ms.pcm";
+        << "Hz_" << FLAG_delay << "ms.pcm";
     std::cout << "Output file: " << file_stream.str() << std::endl << std::endl;
     std::string file_name = webrtc::test::OutputPath() + file_stream.str();
     out_file_b_.Open(file_name.c_str(), 32000, "wb");

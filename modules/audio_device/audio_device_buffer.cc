@@ -416,18 +416,18 @@ void AudioDeviceBuffer::LogStats(LogState state) {
     RTC_LOG(INFO) << "[REC : " << time_since_last << "msec, "
                   << rec_sample_rate_ / 1000 << "kHz] callbacks: "
                   << stats.rec_callbacks - last_stats_.rec_callbacks << ", "
-                  << "samples: " << diff_samples << ", "
-                  << "rate: " << static_cast<int>(rate + 0.5) << ", "
-                  << "level: " << stats.max_rec_level;
+                     "samples: " << diff_samples << ", "
+                     "rate: " << static_cast<int>(rate + 0.5) << ", "
+                     "level: " << stats.max_rec_level;
 
     diff_samples = stats.play_samples - last_stats_.play_samples;
     rate = diff_samples / (static_cast<float>(time_since_last) / 1000.0);
     RTC_LOG(INFO) << "[PLAY: " << time_since_last << "msec, "
                   << play_sample_rate_ / 1000 << "kHz] callbacks: "
                   << stats.play_callbacks - last_stats_.play_callbacks << ", "
-                  << "samples: " << diff_samples << ", "
-                  << "rate: " << static_cast<int>(rate + 0.5) << ", "
-                  << "level: " << stats.max_play_level;
+                     "samples: " << diff_samples << ", "
+                     "rate: " << static_cast<int>(rate + 0.5) << ", "
+                     "level: " << stats.max_play_level;
     last_stats_ = stats;
   }
 

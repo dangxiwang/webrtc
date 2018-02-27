@@ -98,8 +98,8 @@ bool RTCStats::operator!=(const RTCStats& other) const {
 std::string RTCStats::ToJson() const {
   std::ostringstream oss;
   oss << "{\"type\":\"" << type() << "\","
-      << "\"id\":\"" << id_ << "\","
-      << "\"timestamp\":" << timestamp_us_;
+         "\"id\":\"" << id_ << "\","
+         "\"timestamp\":" << timestamp_us_;
   for (const RTCStatsMemberInterface* member : Members()) {
     if (member->is_defined()) {
       oss << ",\"" << member->name() << "\":";

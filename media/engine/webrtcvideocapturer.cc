@@ -223,7 +223,7 @@ bool WebRtcVideoCapturer::GetBestCaptureFormat(const VideoFormat& desired,
     best_format->fourcc = FOURCC_I420;
     best_format->interval = desired.interval;
     RTC_LOG(LS_INFO) << "Failed to find best capture format,"
-                     << " fall back to the requested format "
+                        " fall back to the requested format "
                      << best_format->ToString();
   }
   return true;
