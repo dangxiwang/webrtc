@@ -23,7 +23,8 @@ int GainController2::instance_count_ = 0;
 GainController2::GainController2()
     : data_dumper_(
           new ApmDataDumper(rtc::AtomicOps::Increment(&instance_count_))),
-      gain_controller_(data_dumper_.get()) {}
+      gain_controller_(data_dumper_.get()),
+      adaptive_agc_(data_dumper_.get()) {}
 
 GainController2::~GainController2() = default;
 
