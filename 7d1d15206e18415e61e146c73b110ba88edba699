@@ -22,6 +22,30 @@
       "revId": "7d1d15206e18415e61e146c73b110ba88edba699",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "757cd1c1_298f768c",
+        "filename": "modules/congestion_controller/network_control/include/network_units.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-03-02T13:28:33Z",
+      "side": 1,
+      "message": "I\u0027d say that it might be usable for algorithms as well, where it does make sense to fall back to some default value. For instance, a calculation using a minimum constraint could be implemented using min_rate.bps_or(0). Either way I suspect the legacy use case will survive for a while.\n\nI do realize that unset values somewhat overlaps with the use of Optional. However I think this more or less unavoidable for this kind of types, indicated by the fact that we are using a lot of -1:s or 0:s in our current code to represent unset values. Better to have it included from the start and at least trigger proper run time errors when accidents happens.",
+      "parentUuid": "f4faef28_a4386a70",
+      "range": {
+        "startLine": 288,
+        "startChar": 10,
+        "endLine": 288,
+        "endChar": 16
+      },
+      "revId": "7d1d15206e18415e61e146c73b110ba88edba699",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
     }
   ]
 }
