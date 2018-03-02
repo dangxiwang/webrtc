@@ -1818,14 +1818,31 @@ void VideoQualityTest::CreateVideoStreams() {
   if (fec_controller_factory_.get()) {
     RTC_DCHECK_LE(video_send_configs_.size(), 1);
   }
+
+  // http://crbug/818127
+  // If dual streams are created, att screenshare second.
+  // TODO(ilnik): Remove this workaround when ALR is not screenshare-specific.
+  size_t streams_permutation[2] = {0, 1};
+  if (video_send_configs_.size() == 2 &&
+      video_encoder_configs_[0].content_type ==
+          VideoEncoderConfig::ContentType::kScreen) {
+    streams_permutation[0] = 1;
+    streams_permutation[1] = 0;
+  }
+  RTC_CHECK_LE(video_send_configs_.size(), 2u);
+
+  video_send_streams_.resize(video_send_configs_.size(), nullptr);
+
   for (size_t i = 0; i < video_send_configs_.size(); ++i) {
+    // Create streams from respective configs in order of |streams_permutation|
+    size_t j = streams_permutation[i];
     if (fec_controller_factory_.get()) {
-      video_send_streams_.push_back(sender_call_->CreateVideoSendStream(
-          video_send_configs_[i].Copy(), video_encoder_configs_[i].Copy(),
-          fec_controller_factory_->CreateFecController()));
+      video_send_streams_[j] = sender_call_->CreateVideoSendStream(
+          video_send_configs_[j].Copy(), video_encoder_configs_[j].Copy(),
+          fec_controller_factory_->CreateFecController());
     } else {
-      video_send_streams_.push_back(sender_call_->CreateVideoSendStream(
-          video_send_configs_[i].Copy(), video_encoder_configs_[i].Copy()));
+      video_send_streams_[j] = sender_call_->CreateVideoSendStream(
+          video_send_configs_[j].Copy(), video_encoder_configs_[j].Copy());
     }
   }
   for (size_t i = 0; i < video_receive_configs_.size(); ++i) {
