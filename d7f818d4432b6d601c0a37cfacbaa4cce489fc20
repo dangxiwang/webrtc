@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d360ef8b_d977c0e2",
+        "filename": "call/rtp_transport_controller_send.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-03-02T13:16:16Z",
+      "side": 1,
+      "message": "Note that we now have six different configurated bitrates: min_bitrate, max_bitrate, start_bitrate, min_send_bitrate, max_padding_bitrate, and total_bitrate.\n\nIt\u0027s not obvious to me what the total bitrate represents from the bitrate estimation perspective. In practice it seems to be used as a way to request a bitrate probe at a level in between the current estimate and the max_bitrate, but only when the value changes?\n\nMaybe the intent is to repeat the probe periodically if it is not reached? If so, maybe it can be considered a target bitrate? The bitrate target we will try to reach if it is not fulfilled.\n\nHowever, than we can start wondering, what is the difference between this bitrate and the max bitrate? I\u0027d say that the max bitrate is the maximum we will report as encoder target if detected while the target bitrate is the maximum we will spend resources, such as a probe, to get. The default for target bitrate would then naturally be max_bitrate, but set lower by this interface. Is this a correct understanding?",
+      "range": {
+        "startLine": 68,
+        "startChar": 8,
+        "endLine": 68,
+        "endChar": 25
+      },
+      "revId": "d7f818d4432b6d601c0a37cfacbaa4cce489fc20",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e991d2d3_f794a578",
+        "filename": "call/rtp_transport_controller_send.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-03-02T13:16:16Z",
+      "side": 1,
+      "message": "Just a note, the new SSCC implements SetSendBitrateLimits, so total bitrate can probably be given as an extra argument there. For the legacy SSCC this variant seems right.",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 0
+      },
+      "revId": "d7f818d4432b6d601c0a37cfacbaa4cce489fc20",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4f79443_dbdf8d2a",
+        "filename": "modules/congestion_controller/probe_controller.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-03-02T13:16:16Z",
+      "side": 1,
+      "message": "This method doesn\u0027t seem to actually set any total bitrate property on the probe controller, which is what I woul expect given this name. It triggers a probe under the condition that there is a set estimated bitrate lower than max bitrate and the given bitrate. Could this be better reflected in the name?\n\nSomething like TriggerProbeIfEstimateLowerThanBitrate(int64_t bitrate) would be clearer, possibly a bit long. I\u0027d say that clarity beats terseness though.",
+      "range": {
+        "startLine": 128,
+        "startChar": 22,
+        "endLine": 128,
+        "endChar": 37
+      },
+      "revId": "d7f818d4432b6d601c0a37cfacbaa4cce489fc20",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ea480dc_498e17c3",
+        "filename": "modules/congestion_controller/probe_controller_unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-03-02T13:16:16Z",
+      "side": 1,
+      "message": "Should be LegacyProbeControllerTest if added to this file.",
+      "range": {
+        "startLine": 270,
+        "startChar": 7,
+        "endLine": 270,
+        "endChar": 26
+      },
+      "revId": "d7f818d4432b6d601c0a37cfacbaa4cce489fc20",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
