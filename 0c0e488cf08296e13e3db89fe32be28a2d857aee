@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fd11abe0_731e0aab",
+        "filename": "video/video_quality_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1823,
+      "author": {
+        "id": 5524
+      },
+      "writtenOn": "2018-03-02T12:12:20Z",
+      "side": 1,
+      "message": "att?",
+      "range": {
+        "startLine": 1823,
+        "startChar": 34,
+        "endLine": 1823,
+        "endChar": 37
+      },
+      "revId": "0c0e488cf08296e13e3db89fe32be28a2d857aee",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9eac19b_db42393d",
+        "filename": "video/video_quality_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1825,
+      "author": {
+        "id": 5524
+      },
+      "writtenOn": "2018-03-02T12:12:20Z",
+      "side": 1,
+      "message": "What if instead of stream_permutation, you have a std::list\u003csize_t\u003e stream_creation_order.\nThen loop through video_send_configs_, if it is screenshare stream, add the index to the front of stream_creation_order, otherwise push it to the back.\nThen below on line 1836 you can just do\nfor (size_t i : stream_creation_order) {",
+      "revId": "0c0e488cf08296e13e3db89fe32be28a2d857aee",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6072cb60_471c7d2e",
+        "filename": "video/video_quality_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1825,
+      "author": {
+        "id": 5524
+      },
+      "writtenOn": "2018-03-02T12:12:20Z",
+      "side": 1,
+      "message": "nit: you can actually write \n// TODO(http://crbug/818127):",
+      "range": {
+        "startLine": 1824,
+        "startChar": 78,
+        "endLine": 1825,
+        "endChar": 0
+      },
+      "revId": "0c0e488cf08296e13e3db89fe32be28a2d857aee",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
