@@ -32,6 +32,8 @@ class ProbeController {
                    int64_t start_bitrate_bps,
                    int64_t max_bitrate_bps);
 
+  void SetTotalBitrate(int64_t total_bitrate_bps);
+
   void OnNetworkStateChanged(NetworkState state);
 
   void SetEstimatedBitrate(int64_t bitrate_bps);
