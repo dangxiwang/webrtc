@@ -190,6 +190,10 @@ void SendSideCongestionController::SetBweBitrates(int min_bitrate_bps,
   MaybeTriggerOnNetworkChanged();
 }
 
+void SendSideCongestionController::SetTotalBitrate(int total_bitrate_bps) {
+  probe_controller_->SetTotalBitrate(total_bitrate_bps);
+}
+
 // TODO(holmer): Split this up and use SetBweBitrates in combination with
 // OnNetworkRouteChanged.
 void SendSideCongestionController::OnNetworkRouteChanged(
