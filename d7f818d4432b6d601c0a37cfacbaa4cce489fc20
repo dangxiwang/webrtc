@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9ea79a0a_98872ebd",
+        "filename": "call/rtp_transport_controller_send.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 5527
+      },
+      "writtenOn": "2018-03-05T14:28:15Z",
+      "side": 1,
+      "message": "|total_bitrate_bps| is the sum of bitrates for all active streams, and it\u0027s updated as soon as any stream is activated/deactivated or any configured bitrate for a stream has been updated.\n\nThe ProbeController is the class that decides what to do with this information, and it will probe at min(total_bitrate_bps, max_bitrate_bps) if the estimated is not already equal or higher to that bitrate.",
+      "parentUuid": "d360ef8b_d977c0e2",
+      "range": {
+        "startLine": 68,
+        "startChar": 8,
+        "endLine": 68,
+        "endChar": 25
+      },
+      "revId": "d7f818d4432b6d601c0a37cfacbaa4cce489fc20",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e991d2d3_f794a578",
         "filename": "call/rtp_transport_controller_send.cc",
         "patchSetId": 1
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "f6c8498a_1e8ef579",
+        "filename": "modules/congestion_controller/probe_controller.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 5527
+      },
+      "writtenOn": "2018-03-05T14:28:15Z",
+      "side": 1,
+      "message": "Agree that the name is a bit confusing, but it\u0027s up to the ProbeController to decide what to do, so TriggerProbeIfEstimateLowerThanBitrate is to explicit.\n\nWDYT about UpdateTotalBitrate or NewTotalBitrate?",
+      "parentUuid": "a4f79443_dbdf8d2a",
+      "range": {
+        "startLine": 128,
+        "startChar": 22,
+        "endLine": 128,
+        "endChar": 37
+      },
+      "revId": "d7f818d4432b6d601c0a37cfacbaa4cce489fc20",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1ea480dc_498e17c3",
         "filename": "modules/congestion_controller/probe_controller_unittest.cc",
         "patchSetId": 1
@@ -91,6 +139,30 @@
       "revId": "d7f818d4432b6d601c0a37cfacbaa4cce489fc20",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "302f4202_1eb3d431",
+        "filename": "modules/congestion_controller/probe_controller_unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 5527
+      },
+      "writtenOn": "2018-03-05T14:28:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ea480dc_498e17c3",
+      "range": {
+        "startLine": 270,
+        "startChar": 7,
+        "endLine": 270,
+        "endChar": 26
+      },
+      "revId": "d7f818d4432b6d601c0a37cfacbaa4cce489fc20",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
