@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "88af15f0_4e317cb5",
+        "filename": "call/rtp_transport_controller_send.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-03-05T17:02:31Z",
+      "side": 1,
+      "message": "Ok, I see what you mean, if we consider it the Probe Controllers responsibility to act on this value I think the name should show that it is the maximum possible bitrate that can be allocated to the send streams.\n\nIn this context the function name actually tells us that it is allocated send bitrate limits that are set, so max_total_bitrate_bps would probably be enough. It would probably be appropriate to add more information to SSCC function name though, for instance SetMaxTotalAllocatedBitrate.",
+      "parentUuid": "9ea79a0a_98872ebd",
+      "range": {
+        "startLine": 68,
+        "startChar": 8,
+        "endLine": 68,
+        "endChar": 25
+      },
+      "revId": "d7f818d4432b6d601c0a37cfacbaa4cce489fc20",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e991d2d3_f794a578",
         "filename": "call/rtp_transport_controller_send.cc",
         "patchSetId": 1
@@ -113,6 +137,47 @@
         "endLine": 128,
         "endChar": 37
       },
+      "revId": "d7f818d4432b6d601c0a37cfacbaa4cce489fc20",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0d21aae_a2835f0e",
+        "filename": "modules/congestion_controller/probe_controller.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-03-05T17:02:31Z",
+      "side": 1,
+      "message": "I think I understand what you mean, it can make sense that it\u0027s up to the ProbeController to decide what to do. I think the simple implementation made me assume that the probe side effect was part of the intended interface. \n\nWhat about using On...? That doesn\u0027t imply anything about how probe controller will use the value, only that it for some reason listens to it and might want to do something with it.\n\nCould it be named ...MaxTotalAllocatedBitrate to make it easier to understand it\u0027s context. Might even make sense to add a comment in the header file about why we have two different maximum values?",
+      "parentUuid": "f6c8498a_1e8ef579",
+      "range": {
+        "startLine": 128,
+        "startChar": 22,
+        "endLine": 128,
+        "endChar": 37
+      },
+      "revId": "d7f818d4432b6d601c0a37cfacbaa4cce489fc20",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1513a20_15ba81e5",
+        "filename": "modules/congestion_controller/probe_controller.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-03-05T17:02:31Z",
+      "side": 1,
+      "message": "Could you add a comment explaining why it only needs to send the probe when receiving a new value and why the value is not saved for use in ALR probing?",
       "revId": "d7f818d4432b6d601c0a37cfacbaa4cce489fc20",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
