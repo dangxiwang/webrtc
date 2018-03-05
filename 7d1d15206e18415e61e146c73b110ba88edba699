@@ -46,6 +46,30 @@
       "revId": "7d1d15206e18415e61e146c73b110ba88edba699",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63cdd5ff_47a07dc7",
+        "filename": "modules/congestion_controller/network_control/include/network_units.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 5150
+      },
+      "writtenOn": "2018-03-05T10:22:16Z",
+      "side": 1,
+      "message": "Ack. In general I think we should try to avoid using sentinel values like -1 in favor of less ambiguous constructions (such as IsInitialized and IsFinite).",
+      "parentUuid": "757cd1c1_298f768c",
+      "range": {
+        "startLine": 288,
+        "startChar": 10,
+        "endLine": 288,
+        "endChar": 16
+      },
+      "revId": "7d1d15206e18415e61e146c73b110ba88edba699",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
     }
   ]
 }
