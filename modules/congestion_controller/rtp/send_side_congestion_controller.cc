@@ -340,6 +340,13 @@ void SendSideCongestionController::SetBweBitrates(int min_bitrate_bps,
   WaitOnTask([this, msg]() { controller_->OnTargetRateConstraints(msg); });
 }
 
+void SendSideCongestionController::SetTotalBitrate(int total_bitrate_bps) {
+  WaitOnTask([this, total_bitrate_bps]() {
+    streams_config_.total_bitrate = DataRate::bps(total_bitrate_bps);
+    UpdateStreamsConfig();
+  });
+}
+
 // TODO(holmer): Split this up and use SetBweBitrates in combination with
 // OnNetworkRouteChanged.
 void SendSideCongestionController::OnNetworkRouteChanged(

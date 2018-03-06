@@ -32,6 +32,10 @@ class ProbeController {
                    int64_t start_bitrate_bps,
                    int64_t max_bitrate_bps);
 
+  // The total bitrate, as opposed to the max bitrate, is the sum of the
+  // configured bitrates for all active streams.
+  void OnTotalBitrate(int64_t total_bitrate_bps);
+
   void OnNetworkStateChanged(NetworkState state);
 
   void SetEstimatedBitrate(int64_t bitrate_bps);
