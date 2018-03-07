@@ -27,6 +27,7 @@
 #include <vector>
 
 #include "api/optional.h"
+#include "api/rtcerror.h"
 #include "rtc_base/refcount.h"
 
 namespace cricket {
@@ -198,6 +199,11 @@ class CreateSessionDescriptionObserver : public rtc::RefCountInterface {
   // around ownership.
   virtual void OnSuccess(SessionDescriptionInterface* desc) = 0;
   virtual void OnFailure(const std::string& error) = 0;
+  // TODO(hta): Remove when clients are updated.
+  virtual void OnFailure(const RTCError& error) {
+    std::string message(error.message());
+    OnFailure(message);
+  }
 
  protected:
   ~CreateSessionDescriptionObserver() override = default;
@@ -208,6 +214,11 @@ class SetSessionDescriptionObserver : public rtc::RefCountInterface {
  public:
   virtual void OnSuccess() = 0;
   virtual void OnFailure(const std::string& error) = 0;
+  // TODO(hta): Remove when clients are updated.
+  virtual void OnFailure(const RTCError& error) {
+    std::string message(error.message());
+    OnFailure(message);
+  }
 
  protected:
   ~SetSessionDescriptionObserver() override = default;
