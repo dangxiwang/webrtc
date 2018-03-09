@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c5cc7b0b_2c33e0a4",
+        "filename": "api/jsep.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2018-03-09T10:35:11Z",
+      "side": 1,
+      "message": "Done, with commentary.",
+      "parentUuid": "60323052_1dcb1961",
+      "revId": "f7632f135807db6d699ca6c9bbdf8313a970146c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5b872fc8_f0eb7203",
         "filename": "api/jsep.h",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "f7632f135807db6d699ca6c9bbdf8313a970146c",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "827d5b06_787c3772",
+        "filename": "api/jsep.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2018-03-09T10:35:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5b872fc8_f0eb7203",
+      "revId": "f7632f135807db6d699ca6c9bbdf8313a970146c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "d77a7997_1096c01c",
+        "filename": "api/jsep.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2018-03-09T10:35:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "39d52789_e1a6088a",
+      "revId": "f7632f135807db6d699ca6c9bbdf8313a970146c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8ca5b6b9_ec750436",
         "filename": "pc/peerconnection.cc",
         "patchSetId": 2
@@ -67,6 +121,24 @@
       "revId": "f7632f135807db6d699ca6c9bbdf8313a970146c",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e6f1066_88902574",
+        "filename": "pc/peerconnection.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3405,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2018-03-09T10:35:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ca5b6b9_ec750436",
+      "revId": "f7632f135807db6d699ca6c9bbdf8313a970146c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     },
     {
       "key": {
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "51f6e557_0b747692",
+        "filename": "pc/peerconnection.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3412,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2018-03-09T10:35:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "997be4bf_39764c20",
+      "revId": "f7632f135807db6d699ca6c9bbdf8313a970146c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4625c0ac_f32a112e",
         "filename": "pc/peerconnection.h",
         "patchSetId": 2
@@ -98,6 +188,24 @@
       "writtenOn": "2018-03-09T09:24:38Z",
       "side": 1,
       "message": "Remove this version.",
+      "revId": "f7632f135807db6d699ca6c9bbdf8313a970146c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d508d4e6_2e6a13a2",
+        "filename": "pc/peerconnection.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2018-03-09T10:35:11Z",
+      "side": 1,
+      "message": "Not going to touch this. The functions call Post() with different MSG_ constants. It\u0027s irrelevant to the change that this CL is making.",
+      "parentUuid": "4625c0ac_f32a112e",
       "revId": "f7632f135807db6d699ca6c9bbdf8313a970146c",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "ae6d4150_0bc08fcd",
+        "filename": "pc/peerconnection.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2018-03-09T10:35:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c34890be_f23b9e0c",
+      "revId": "f7632f135807db6d699ca6c9bbdf8313a970146c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7fbfee78_00c25b65",
         "filename": "pc/peerconnection.h",
         "patchSetId": 2
@@ -132,6 +258,24 @@
       "writtenOn": "2018-03-09T09:24:38Z",
       "side": 1,
       "message": "RTCError contains whether or not it was successful (RTCError::OK()). Rename to PostSetSessionDescriptionCompleted() and remove Success/Failure verisons.",
+      "revId": "f7632f135807db6d699ca6c9bbdf8313a970146c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d869138_631aaf99",
+        "filename": "pc/peerconnection.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2018-03-09T10:35:11Z",
+      "side": 1,
+      "message": "As above; not refactoring this now. Will DCHECK instead.",
+      "parentUuid": "7fbfee78_00c25b65",
       "revId": "f7632f135807db6d699ca6c9bbdf8313a970146c",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
@@ -155,6 +299,24 @@
     },
     {
       "key": {
+        "uuid": "e9197657_03026175",
+        "filename": "pc/peerconnection.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2018-03-09T10:35:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9a7d76d_97db349f",
+      "revId": "f7632f135807db6d699ca6c9bbdf8313a970146c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e611e8ef_89f7c2ff",
         "filename": "pc/peerconnection.h",
         "patchSetId": 2
@@ -166,6 +328,24 @@
       "writtenOn": "2018-03-09T09:24:38Z",
       "side": 1,
       "message": "Same as above, RTCError contains whether or not successful. Funny enough though there is no success path within peerconnection.cc, so don\u0027t rename it but DCHECK RTCError::error(). The CreateSessionDescription work is performed by webrtcsessiondescriptionfactory.cc - where the same comment as above applies (merge success/failure).",
+      "revId": "f7632f135807db6d699ca6c9bbdf8313a970146c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b3be45e_88bfcf31",
+        "filename": "pc/peerconnection.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2018-03-09T10:35:11Z",
+      "side": 1,
+      "message": "Not merging in this CL.",
+      "parentUuid": "e611e8ef_89f7c2ff",
       "revId": "f7632f135807db6d699ca6c9bbdf8313a970146c",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
