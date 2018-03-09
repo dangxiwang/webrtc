@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f1134f0_e58fcf0e",
+        "filename": "api/jsep.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 5142
+      },
+      "writtenOn": "2018-03-09T13:17:05Z",
+      "side": 1,
+      "message": "super-nit: While we\u0027re at it, pass by value might be more appropriate for an error, allowing it to be moved all the way without copy even when you have to thread-jump.",
+      "revId": "a052a9049dd05a5f05da7f5c6827c4ec0b868cf3",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9687bc00_d7eecb2b",
+        "filename": "api/jsep.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 5142
+      },
+      "writtenOn": "2018-03-09T13:17:05Z",
+      "side": 1,
+      "message": "nit: no need for temp variable message, just error.message()",
+      "revId": "a052a9049dd05a5f05da7f5c6827c4ec0b868cf3",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b209e067_afe00b0d",
+        "filename": "api/jsep.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 5142
+      },
+      "writtenOn": "2018-03-09T13:17:05Z",
+      "side": 1,
+      "message": "nit: no need to wrap error in std::string",
+      "revId": "a052a9049dd05a5f05da7f5c6827c4ec0b868cf3",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19006f16_b6f1138e",
+        "filename": "api/jsep.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 5142
+      },
+      "writtenOn": "2018-03-09T13:17:05Z",
+      "side": 1,
+      "message": "Sorry I missed this the first time around, but how about this while we\u0027re at it? Better now than later since it changes APIs.\n\nvirtual void OnCreateSessionDescriptionComplete(std::unique_ptr\u003cSessionDescriptionInterface\u003e desc, RTCError error) {\n  if (error.ok()) {\n    OnSuccess(desc.release());\n  else\n    OnFailure(error.message());\n}\n// TODO remove...\nvirtual void OnSuccess(SessionDescriptionInterface* desc) {\n  OnCreateSessionDescriptionComplete(desc, RTCError::OK());\n}\nvirtual void OnFailure(const std::string\u0026 error) {\n  OnCreateSessionDescriptionComplete(\n      nullptr, RTCError(RTCErrorType::INTERNAL_ERROR, error));\n}\n\nThis would...\n- Remove deadbeef\u0027s ownership TODO about desc.\n- Use a non-generic name not colliding with other observer callbacks.\n- Proper use of RTCError: covering both success and failure.\n- Pass error by value.",
+      "revId": "a052a9049dd05a5f05da7f5c6827c4ec0b868cf3",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63bf0f83_9b0e0815",
+        "filename": "api/jsep.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 5142
+      },
+      "writtenOn": "2018-03-09T13:17:05Z",
+      "side": 1,
+      "message": "Same nits here about std::strings",
+      "revId": "a052a9049dd05a5f05da7f5c6827c4ec0b868cf3",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "689d0d3d_d5a1516d",
+        "filename": "pc/peerconnection.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 5142
+      },
+      "writtenOn": "2018-03-09T13:17:05Z",
+      "side": 1,
+      "message": "nit: Our style guide disallows \u0026\u0026 in arguments (outside of implementing move operators). Use \"RTCError\", caller can still std::move(). Otherwise use \"const RTCError\u0026\".",
+      "revId": "a052a9049dd05a5f05da7f5c6827c4ec0b868cf3",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
