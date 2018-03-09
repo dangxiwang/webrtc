@@ -1,0 +1,225 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "60323052_1dcb1961",
+        "filename": "api/jsep.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 5142
+      },
+      "writtenOn": "2018-03-09T09:24:38Z",
+      "side": 1,
+      "message": "Also default-implement this one to call the new one so that it is possible for third parties to remove their implementation without \"not implemented\" compile errors.\n\nTwo methods implemented on top of each other is infinite recursion of course, but you only need to implement one of them to have both working.",
+      "revId": "f7632f135807db6d699ca6c9bbdf8313a970146c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b872fc8_f0eb7203",
+        "filename": "api/jsep.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 5142
+      },
+      "writtenOn": "2018-03-09T09:24:38Z",
+      "side": 1,
+      "message": "nit: The TODO-comment belongs to the one above.",
+      "revId": "f7632f135807db6d699ca6c9bbdf8313a970146c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39d52789_e1a6088a",
+        "filename": "api/jsep.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 5142
+      },
+      "writtenOn": "2018-03-09T09:24:38Z",
+      "side": 1,
+      "message": "Same two comments as above.",
+      "revId": "f7632f135807db6d699ca6c9bbdf8313a970146c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ca5b6b9_ec750436",
+        "filename": "pc/peerconnection.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3405,
+      "author": {
+        "id": 5142
+      },
+      "writtenOn": "2018-03-09T09:24:38Z",
+      "side": 1,
+      "message": "I think it\u0027s better to be explicit about the failure type at the calling site rather than a helper function for internal error.",
+      "revId": "f7632f135807db6d699ca6c9bbdf8313a970146c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "997be4bf_39764c20",
+        "filename": "pc/peerconnection.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3412,
+      "author": {
+        "id": 5142
+      },
+      "writtenOn": "2018-03-09T09:24:38Z",
+      "side": 1,
+      "message": "Same.",
+      "revId": "f7632f135807db6d699ca6c9bbdf8313a970146c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4625c0ac_f32a112e",
+        "filename": "pc/peerconnection.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 5142
+      },
+      "writtenOn": "2018-03-09T09:24:38Z",
+      "side": 1,
+      "message": "Remove this version.",
+      "revId": "f7632f135807db6d699ca6c9bbdf8313a970146c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c34890be_f23b9e0c",
+        "filename": "pc/peerconnection.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 5142
+      },
+      "writtenOn": "2018-03-09T09:24:38Z",
+      "side": 1,
+      "message": "Remove this version.",
+      "revId": "f7632f135807db6d699ca6c9bbdf8313a970146c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fbfee78_00c25b65",
+        "filename": "pc/peerconnection.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 5142
+      },
+      "writtenOn": "2018-03-09T09:24:38Z",
+      "side": 1,
+      "message": "RTCError contains whether or not it was successful (RTCError::OK()). Rename to PostSetSessionDescriptionCompleted() and remove Success/Failure verisons.",
+      "revId": "f7632f135807db6d699ca6c9bbdf8313a970146c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9a7d76d_97db349f",
+        "filename": "pc/peerconnection.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 5142
+      },
+      "writtenOn": "2018-03-09T09:24:38Z",
+      "side": 1,
+      "message": "Remove this version.",
+      "revId": "f7632f135807db6d699ca6c9bbdf8313a970146c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e611e8ef_89f7c2ff",
+        "filename": "pc/peerconnection.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 5142
+      },
+      "writtenOn": "2018-03-09T09:24:38Z",
+      "side": 1,
+      "message": "Same as above, RTCError contains whether or not successful. Funny enough though there is no success path within peerconnection.cc, so don\u0027t rename it but DCHECK RTCError::error(). The CreateSessionDescription work is performed by webrtcsessiondescriptionfactory.cc - where the same comment as above applies (merge success/failure).",
+      "revId": "f7632f135807db6d699ca6c9bbdf8313a970146c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb24218b_3ef16750",
+        "filename": "pc/test/mockpeerconnectionobservers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 5142
+      },
+      "writtenOn": "2018-03-09T09:24:38Z",
+      "side": 1,
+      "message": "With the default implementation I suggested, don\u0027t override the method you don\u0027t aim to continue to support.",
+      "revId": "f7632f135807db6d699ca6c9bbdf8313a970146c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba834b04_f83d5ee7",
+        "filename": "pc/test/mockpeerconnectionobservers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 5142
+      },
+      "writtenOn": "2018-03-09T09:24:38Z",
+      "side": 1,
+      "message": "Same as above, don\u0027t override.",
+      "revId": "f7632f135807db6d699ca6c9bbdf8313a970146c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28ad8eec_8ebcaabb",
+        "filename": "pc/test/peerconnectiontestwrapper.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 5142
+      },
+      "writtenOn": "2018-03-09T09:24:38Z",
+      "side": 1,
+      "message": "Same as above, don\u0027t override.",
+      "revId": "f7632f135807db6d699ca6c9bbdf8313a970146c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
