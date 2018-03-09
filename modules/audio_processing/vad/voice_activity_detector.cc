@@ -12,7 +12,11 @@
 
 #include <algorithm>
 
+#include <math.h>
+
 #include "rtc_base/checks.h"
+
+#include "common_audio/include/audio_util.h"
 
 namespace webrtc {
 namespace {
@@ -26,9 +30,9 @@ const double kLowProbability = 0.01;
 }  // namespace
 
 VoiceActivityDetector::VoiceActivityDetector()
-    : last_voice_probability_(kDefaultVoiceValue),
-      standalone_vad_(StandaloneVad::Create()) {
-}
+    : vad_and_level_(),
+      last_voice_probability_(kDefaultVoiceValue),
+      standalone_vad_(StandaloneVad::Create()) {}
 
 VoiceActivityDetector::~VoiceActivityDetector() = default;
 
@@ -80,6 +84,46 @@ void VoiceActivityDetector::ProcessChunk(const int16_t* audio,
     }
     last_voice_probability_ = chunkwise_voice_probabilities_.back();
   }
+  for (size_t i = 0; i < features_.num_frames; ++i) {
+    vad_and_level_[i] = LevelAndProbability(
+        chunkwise_voice_probabilities_[i], FloatS16ToDbfs(chunkwise_rms_[i]),
+        FloatS16ToDbfs(chunkwise_rms_[i]));  // TODO(aleloi): fix last argument.
+  }
+}
+
+rtc::ArrayView<const VadWithLevel::LevelAndProbability>
+VoiceActivityDetector::AnalyzeFrame(AudioFrameView<const float> frame) {
+  // First attempt: we only feed the first channel to the VAD. The VAD
+  // takes int16 values. We convert the first channel to int16.
+  std::array<int16_t, 480> first_channel_as_int;
+  RTC_DCHECK_LE(frame.samples_per_channel(), 480);
+  std::transform(frame.channel(0).begin(),
+                 frame.channel(0).begin() + frame.samples_per_channel(),
+                 first_channel_as_int.begin(), [](float f) {
+                   RTC_DCHECK_LE(std::abs(static_cast<int16_t>(f)),
+                                 std::numeric_limits<int16_t>::max());
+                   return static_cast<int16_t>(
+                       f);  // * std::numeric_limits<int16_t>::max();
+                 });
+
+  ProcessChunk(first_channel_as_int.begin(), frame.samples_per_channel(),
+               frame.samples_per_channel() * 100);
+
+  // const std::vector<double>& probabilities =
+  //     vad_.chunkwise_voice_probabilities();
+
+  // const std::vector<double>& rms_values = vad_.chunkwise_rms();
+
+  return rtc::ArrayView<const VadWithLevel::LevelAndProbability>(
+      &vad_and_level_[0], chunkwise_rms_.size());
+
+  // std::vector<LevelAndProbability> result;
+  // for (size_t i = 0; i < probabilities.size(); ++i) {
+  //   result.emplace_back(probabilities[i], FloatS16ToDbfs(rms_values[i]),
+  //   -90.f);
+  // }
+
+  // return result;
 }
 
 }  // namespace webrtc

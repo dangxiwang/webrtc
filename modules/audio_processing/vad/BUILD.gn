@@ -35,6 +35,7 @@ rtc_static_library("vad") {
     "voice_gmm_tables.h",
   ]
   deps = [
+    ":vad_with_level",
     "../..:module_api",
     "../../..:typedefs",
     "../../../audio/utility:audio_frame_operations",
@@ -42,6 +43,16 @@ rtc_static_library("vad") {
     "../../../common_audio:common_audio_c",
     "../../../rtc_base:checks",
     "../../audio_coding:isac",
+  ]
+}
+
+rtc_static_library("vad_with_level") {
+  sources = [
+    "vad_with_level.h",
+  ]
+  deps = [
+    "..:audio_frame_view",
+    "../../../api:array_view",
   ]
 }
 
