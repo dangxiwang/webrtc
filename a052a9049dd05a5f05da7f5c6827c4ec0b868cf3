@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8a0be98a_62607c07",
+        "filename": "api/jsep.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2018-03-09T14:06:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f1134f0_e58fcf0e",
+      "revId": "a052a9049dd05a5f05da7f5c6827c4ec0b868cf3",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9687bc00_d7eecb2b",
         "filename": "api/jsep.h",
         "patchSetId": 4
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "5970270f_d8ec7aed",
+        "filename": "api/jsep.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2018-03-09T14:06:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9687bc00_d7eecb2b",
+      "revId": "a052a9049dd05a5f05da7f5c6827c4ec0b868cf3",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b209e067_afe00b0d",
         "filename": "api/jsep.h",
         "patchSetId": 4
@@ -47,6 +83,24 @@
       "writtenOn": "2018-03-09T13:17:05Z",
       "side": 1,
       "message": "nit: no need to wrap error in std::string",
+      "revId": "a052a9049dd05a5f05da7f5c6827c4ec0b868cf3",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61ed3a4d_7e0b11b5",
+        "filename": "api/jsep.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2018-03-09T14:06:22Z",
+      "side": 1,
+      "message": "Yes there is.",
+      "parentUuid": "b209e067_afe00b0d",
       "revId": "a052a9049dd05a5f05da7f5c6827c4ec0b868cf3",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "0a9db651_b1aef7a0",
+        "filename": "api/jsep.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2018-03-09T14:06:22Z",
+      "side": 1,
+      "message": "No, I disagree on principle. We do not unify paths that have nothing in common; the success path and the error path are completely disjoint, and unifying them just makes the code harder to read.",
+      "parentUuid": "19006f16_b6f1138e",
+      "revId": "a052a9049dd05a5f05da7f5c6827c4ec0b868cf3",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "63bf0f83_9b0e0815",
         "filename": "api/jsep.h",
         "patchSetId": 4
@@ -81,6 +153,24 @@
       "writtenOn": "2018-03-09T13:17:05Z",
       "side": 1,
       "message": "Same nits here about std::strings",
+      "revId": "a052a9049dd05a5f05da7f5c6827c4ec0b868cf3",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab19db2d_00263042",
+        "filename": "api/jsep.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2018-03-09T14:06:22Z",
+      "side": 1,
+      "message": "And same response.",
+      "parentUuid": "63bf0f83_9b0e0815",
       "revId": "a052a9049dd05a5f05da7f5c6827c4ec0b868cf3",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
