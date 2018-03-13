@@ -61,6 +61,8 @@ def _ParseArgs():
       help='Output file of the script.')
   parser.add_argument('--arch', default=DEFAULT_ARCHS, nargs='*',
       help='Architectures to build. Defaults to %(default)s.')
+  parser.add_argument('--debug-build', action='store_true', default=False,
+      help='Build debug configuration.')
   parser.add_argument('--use-goma', action='store_true', default=False,
       help='Use goma.')
   parser.add_argument('--verbose', action='store_true', default=False,
@@ -127,13 +129,13 @@ def _GetArmVersion(arch):
     raise Exception('Unknown arch: ' + arch)
 
 
-def Build(build_dir, arch, use_goma, extra_gn_args):
+def Build(build_dir, arch, use_goma, is_debug, extra_gn_args):
   """Generates target architecture using GN and builds it using ninja."""
   logging.info('Building: %s', arch)
   output_directory = _GetOutputDirectory(build_dir, arch)
   gn_args = {
     'target_os': 'android',
-    'is_debug': False,
+    'is_debug': is_debug,
     'is_component_build': False,
     'rtc_include_tests': False,
     'target_cpu': _GetTargetCpu(arch),
@@ -178,13 +180,13 @@ def GenerateLicenses(output_dir, build_dir, archs):
   builder.GenerateLicenseText(output_dir)
 
 
-def BuildAar(archs, output_file, use_goma=False, extra_gn_args=None,
-             ext_build_dir=None):
+def BuildAar(archs, output_file, use_goma=False, is_debug=False,
+             extra_gn_args=None, ext_build_dir=None):
   extra_gn_args = extra_gn_args or []
   build_dir = ext_build_dir if ext_build_dir else tempfile.mkdtemp()
 
   for arch in archs:
-    Build(build_dir, arch, use_goma, extra_gn_args)
+    Build(build_dir, arch, use_goma, is_debug, extra_gn_args)
 
   with zipfile.ZipFile(output_file, 'w') as aar_file:
     # Architecture doesn't matter here, arbitrarily using the first one.
@@ -203,8 +205,8 @@ def main():
   args = _ParseArgs()
   logging.basicConfig(level=logging.DEBUG if args.verbose else logging.INFO)
 
-  BuildAar(args.arch, args.output, args.use_goma, args.extra_gn_args,
-           args.build_dir)
+  BuildAar(args.arch, args.output, args.use_goma, args.debug_build,
+           args.extra_gn_args, args.build_dir)
 
 
 if __name__ == '__main__':
