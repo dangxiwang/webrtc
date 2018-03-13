@@ -27,6 +27,10 @@ constexpr float kLimiterMaxInputLevelDbFs = 1.f;
 constexpr float kLimiterKneeSmoothnessDb = 1.f;
 constexpr float kLimiterCompressionRatio = 5.f;
 
+// // Saturation Protector constants.
+// constexpr float kSatProcAttackMs = 1000;
+// constexpr float kSatProcDecayMs = 5000;
+
 std::vector<double> LinSpace(const double l, const double r, size_t num_points);
 }  // namespace test
 }  // namespace webrtc
