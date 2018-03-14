@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ec30c244_d39a9230",
+        "filename": "examples/BUILD.gn",
+        "patchSetId": 3
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 5520
+      },
+      "writtenOn": "2018-03-14T09:57:14Z",
+      "side": 1,
+      "message": "I think this folder name is pretty bad, but I can\u0027t really come up with a better one :(",
+      "range": {
+        "startLine": 404,
+        "startChar": 9,
+        "endLine": 404,
+        "endChar": 22
+      },
+      "revId": "f1937ee99c02bea55f438c43e9d7832a3ef7a5c9",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    }
+  ]
+}
