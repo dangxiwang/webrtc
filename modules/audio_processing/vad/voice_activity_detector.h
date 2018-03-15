@@ -11,23 +11,25 @@
 #ifndef MODULES_AUDIO_PROCESSING_VAD_VOICE_ACTIVITY_DETECTOR_H_
 #define MODULES_AUDIO_PROCESSING_VAD_VOICE_ACTIVITY_DETECTOR_H_
 
+#include <array>
 #include <memory>
 #include <vector>
 
 #include "common_audio/resampler/include/resampler.h"
-#include "modules/audio_processing/vad/vad_audio_proc.h"
 #include "modules/audio_processing/vad/common.h"
 #include "modules/audio_processing/vad/pitch_based_vad.h"
 #include "modules/audio_processing/vad/standalone_vad.h"
+#include "modules/audio_processing/vad/vad_audio_proc.h"
+#include "modules/audio_processing/vad/vad_with_level.h"
 
 namespace webrtc {
 
 // A Voice Activity Detector (VAD) that combines the voice probability from the
 // StandaloneVad and PitchBasedVad to get a more robust estimation.
-class VoiceActivityDetector {
+class VoiceActivityDetector : public VadWithLevel {
  public:
   VoiceActivityDetector();
-  ~VoiceActivityDetector();
+  ~VoiceActivityDetector() override;
 
   // Processes each audio chunk and estimates the voice probability.
   void ProcessChunk(const int16_t* audio, size_t length, int sample_rate_hz);
@@ -42,6 +44,10 @@ class VoiceActivityDetector {
   // Returns a vector of RMS values for each chunk. It has the same length as
   // chunkwise_voice_probabilities().
   const std::vector<double>& chunkwise_rms() const { return chunkwise_rms_; }
+  const std::vector<float>& chunkwise_peak() const { return chunkwise_peak_; }
+
+  rtc::ArrayView<const VadWithLevel::LevelAndProbability> AnalyzeFrame(
+      AudioFrameView<const float> frame) override;
 
   // Returns the last voice probability, regardless of the internal
   // implementation, although it has a few chunks of delay.
@@ -51,6 +57,9 @@ class VoiceActivityDetector {
   // TODO(aluebs): Change these to float.
   std::vector<double> chunkwise_voice_probabilities_;
   std::vector<double> chunkwise_rms_;
+  std::vector<float> chunkwise_peak_;
+
+  std::array<VadWithLevel::LevelAndProbability, 3> vad_and_level_;
 
   float last_voice_probability_;
 

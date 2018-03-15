@@ -274,8 +274,12 @@ class AudioProcessing : public rtc::RefCountInterface {
     // standard methods of gain control in the previous AGC.
     // The functionality is not yet activated in the code and turning this on
     // does not yet have the desired behavior.
+    //
+    // TODO(aleloi): think about fields here and logic in
+    // gain_controller2. How do we want it?
     struct GainController2 {
       bool enabled = false;
+      bool enable_adaptive_digital = true;
       float fixed_gain_db = 0.f;
       bool enable_limiter = true;
     } gain_controller2;

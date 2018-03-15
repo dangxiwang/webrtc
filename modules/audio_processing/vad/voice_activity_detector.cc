@@ -11,7 +11,12 @@
 #include "modules/audio_processing/vad/voice_activity_detector.h"
 
 #include <algorithm>
+#include <limits>
 
+#include <math.h>
+
+#include "api/array_view.h"
+#include "common_audio/include/audio_util.h"
 #include "rtc_base/checks.h"
 
 namespace webrtc {
@@ -23,12 +28,20 @@ const double kDefaultVoiceValue = 1.0;
 const double kNeutralProbability = 0.5;
 const double kLowProbability = 0.01;
 
+void ProcessForPeak(rtc::ArrayView<const int16_t, kLength10Ms> audio,
+                    std::vector<float>* put_here) {
+  float current_max = 0;
+  for (const auto& x : audio) {
+    current_max = std::max(static_cast<float>(std::abs(x)), current_max);
+  }
+  put_here->push_back(current_max);
+}
 }  // namespace
 
 VoiceActivityDetector::VoiceActivityDetector()
-    : last_voice_probability_(kDefaultVoiceValue),
-      standalone_vad_(StandaloneVad::Create()) {
-}
+    : vad_and_level_(),
+      last_voice_probability_(kDefaultVoiceValue),
+      standalone_vad_(StandaloneVad::Create()) {}
 
 VoiceActivityDetector::~VoiceActivityDetector() = default;
 
@@ -49,6 +62,10 @@ void VoiceActivityDetector::ProcessChunk(const int16_t* audio,
     resampled_ptr = resampled_;
   }
   RTC_DCHECK_EQ(length, kLength10Ms);
+
+  ProcessForPeak(
+      rtc::ArrayView<const int16_t, kLength10Ms>(resampled_ptr, kLength10Ms),
+      &chunkwise_peak_);
 
   // Each chunk needs to be passed into |standalone_vad_|, because internally it
   // buffers the audio and processes it all at once when GetActivity() is
@@ -80,6 +97,52 @@ void VoiceActivityDetector::ProcessChunk(const int16_t* audio,
     }
     last_voice_probability_ = chunkwise_voice_probabilities_.back();
   }
+  for (size_t i = 0; i < features_.num_frames; ++i) {
+    // TODO(aleloi): this is intentionally broken. To cover more code
+    // in Adaptive AGC for profiling. FIX!
+    vad_and_level_[i] =
+        LevelAndProbability(1.f,  // chunkwise_voice_probabilities_[i],
+                            chunkwise_rms_[i], chunkwise_peak_[i]);
+  }
+  // TODO(aleloi) fix this!
+  if (chunkwise_peak_.size() == 3) {
+    chunkwise_peak_.clear();
+  }
+}
+
+rtc::ArrayView<const VadWithLevel::LevelAndProbability>
+VoiceActivityDetector::AnalyzeFrame(AudioFrameView<const float> frame) {
+  // First attempt: we only feed the first channel to the VAD. The VAD
+  // takes int16 values. We convert the first channel to int16.
+  std::array<int16_t, 480> first_channel_as_int;
+  RTC_DCHECK_LE(frame.samples_per_channel(), 480);
+  std::transform(frame.channel(0).begin(),
+                 frame.channel(0).begin() + frame.samples_per_channel(),
+                 first_channel_as_int.begin(), [](float f) {
+                   // RTC_DCHECK_LE(std::abs(static_cast<int16_t>(f)),
+                   //               std::numeric_limits<int16_t>::max());
+                   return static_cast<int16_t>(
+                       f);  // * std::numeric_limits<int16_t>::max();
+                 });
+
+  ProcessChunk(first_channel_as_int.begin(), frame.samples_per_channel(),
+               frame.samples_per_channel() * 100);
+
+  // const std::vector<double>& probabilities =
+  //     vad_.chunkwise_voice_probabilities();
+
+  // const std::vector<double>& rms_values = vad_.chunkwise_rms();
+
+  return rtc::ArrayView<const VadWithLevel::LevelAndProbability>(
+      &vad_and_level_[0], chunkwise_rms_.size());
+
+  // std::vector<LevelAndProbability> result;
+  // for (size_t i = 0; i < probabilities.size(); ++i) {
+  //   result.emplace_back(probabilities[i], FloatS16ToDbfs(rms_values[i]),
+  //   -90.f);
+  // }
+
+  // return result;
 }
 
 }  // namespace webrtc
