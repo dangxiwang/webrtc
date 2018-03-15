@@ -20,6 +20,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include <iostream>
+
 #include "rtc_base/checks.h"
 extern "C" {
 #include "common_audio/ring_buffer.h"
@@ -226,6 +228,7 @@ void BlockBuffer::ExtractExtendedBlock(float extended_block[PART_LEN2]) {
 }
 
 int BlockBuffer::AdjustSize(int buffer_size_decrease) {
+  std::cout << this << "AdjustSize " << buffer_size_decrease << "\n";
   return WebRtc_MoveReadPtr(buffer_, buffer_size_decrease);
 }
 
