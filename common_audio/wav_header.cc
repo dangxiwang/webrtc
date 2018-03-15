@@ -223,8 +223,8 @@ bool ReadWavHeader(ReadableWav* readable,
     return false;
   if (ReadFourCC(header.fmt.header.ID) != "fmt ")
     return false;
-  if (ReadFourCC(header.data.header.ID) != "data")
-    return false;
+  // if (ReadFourCC(header.data.header.ID) != "data")
+  //   return false;
 
   if (ReadLE32(header.riff.header.Size) < RiffChunkSize(bytes_in_payload))
     return false;
