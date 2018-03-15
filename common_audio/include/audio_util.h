@@ -74,6 +74,11 @@ inline float DbToRatio(float v) {
   return std::pow(10.0f, v / 20.0f);
 }
 
+inline float RatioToDb(float v) {
+  RTC_DCHECK_GT(v, 0.f);
+  return 20.0f * std::log10(v);
+}
+
 inline float DbfsToFloatS16(float v) {
   static constexpr float kMaximumAbsFloatS16 = -limits_int16::min();
   return DbToRatio(v) * kMaximumAbsFloatS16;
@@ -88,7 +93,7 @@ inline float FloatS16ToDbfs(float v) {
     return kMinDbfs;
   }
   // Equal to 20 * log10(v / (-limits_int16::min()))
-  return 20.0f * std::log10(v) + kMinDbfs;
+  return RatioToDb(v) + kMinDbfs;
 }
 
 // Copy audio from |src| channels to |dest| channels unless |src| and |dest|
