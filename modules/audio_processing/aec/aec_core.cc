@@ -20,6 +20,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include <iostream>
+
 #include "rtc_base/checks.h"
 extern "C" {
 #include "common_audio/ring_buffer.h"

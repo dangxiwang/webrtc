@@ -140,7 +140,8 @@ rtc_static_library("audio_processing") {
     "../../system_wrappers:cpu_features_api",
     "../../system_wrappers:field_trial_api",
     "../../system_wrappers:metrics_api",
-    "agc2",
+    "agc2:adaptive_digital",
+    "agc2:fixed_digital",
     "vad",
   ]
 
@@ -491,6 +492,7 @@ if (rtc_include_tests) {
       "agc/mock_agc.h",
       "audio_buffer_unittest.cc",
       "audio_frame_view_unittest.cc",
+      "audio_processing_complexity_unittest.cc",
       "beamformer/array_util_unittest.cc",
       "beamformer/complex_matrix_unittest.cc",
       "beamformer/covariance_matrix_generator_unittest.cc",
@@ -544,9 +546,12 @@ if (rtc_include_tests) {
       "../../test:test_support",
       "../audio_coding:neteq_input_audio_tools",
       "aec_dump:mock_aec_dump_unittests",
+      "agc2:adaptive_digital_unittests",
       "agc2:fixed_digital_unittests",
       "test/conversational_speech:unittest",
+      "vad",
       "vad:vad_unittests",
+      "//test:perf_test",
       "//testing/gtest",
     ]
 
