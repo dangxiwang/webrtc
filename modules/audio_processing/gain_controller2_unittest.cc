@@ -62,12 +62,17 @@ TEST(GainController2, ToString) {
 
   config.enabled = false;
   config.enable_limiter = true;
-  EXPECT_EQ("{enabled: false, fixed_gain_dB: 5, enable_limiter: true}",
-            GainController2::ToString(config));
+  config.enable_adaptive_digital = true;
+  EXPECT_EQ(
+      "{enabled: false, enable_adaptive_digital: true, fixed_gain_dB: 5, "
+      "enable_limiter: true}",
+      GainController2::ToString(config));
 
   config.enabled = true;
-  EXPECT_EQ("{enabled: true, fixed_gain_dB: 5, enable_limiter: true}",
-            GainController2::ToString(config));
+  EXPECT_EQ(
+      "{enabled: true, enable_adaptive_digital: true, fixed_gain_dB: 5, "
+      "enable_limiter: true}",
+      GainController2::ToString(config));
 }
 
 TEST(GainController2, Usage) {

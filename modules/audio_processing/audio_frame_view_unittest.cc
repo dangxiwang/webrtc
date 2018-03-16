@@ -24,25 +24,25 @@ TEST(AudioFrameTest, ConstructFromAudioBuffer) {
       stream_config.num_frames(), stream_config.num_channels(),
       stream_config.num_frames());
 
-  AudioFrameView<float> non_const_view(
+  webrtc::AudioFrameView<float> non_const_view(
       buffer.channels_f(), buffer.num_channels(), buffer.num_frames());
   // Modification is allowed.
   non_const_view.channel(0)[0] = kFloatConstant;
   EXPECT_EQ(buffer.channels_f()[0][0], kFloatConstant);
 
-  AudioFrameView<const float> const_view(
+  webrtc::AudioFrameView<const float> const_view(
       buffer.channels_f(), buffer.num_channels(), buffer.num_frames());
   // Modification is not allowed.
   // const_view.channel(0)[0] = kFloatConstant;
 
   // Assignment is allowed.
-  AudioFrameView<const float> other_const_view = non_const_view;
+  webrtc::AudioFrameView<const float> other_const_view = non_const_view;
   static_cast<void>(other_const_view);
 
   // But not the other way. The following will fail:
   // non_const_view = other_const_view;
 
-  AudioFrameView<int16_t> non_const_int16_view(
+  webrtc::AudioFrameView<int16_t> non_const_int16_view(
       buffer.channels(), buffer.num_channels(), buffer.num_frames());
   non_const_int16_view.channel(0)[0] = kIntConstant;
   EXPECT_EQ(buffer.channels()[0][0], kIntConstant);
