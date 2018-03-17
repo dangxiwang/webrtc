@@ -187,12 +187,15 @@ class SendSideCongestionController
   // TODO(srte): Remove this checker when feedback adapter runs on task queue.
   rtc::RaceChecker worker_race_;
 
+  // Needed to stop tsan from detecting race on destruction.
+  rtc::TaskQueue* task_queue_;
+
   // Note that moving ownership of the task queue makes it neccessary to make
   // sure that there is no outstanding tasks on it using destructed objects.
   // This is currently guranteed by using explicit reset in the destructor of
   // this class. It is declared last to indicate that it's lifetime is shorter
   // than all other members.
-  std::unique_ptr<rtc::TaskQueue> task_queue_;
+  std::unique_ptr<rtc::TaskQueue> owned_task_queue_;
 
   RTC_DISALLOW_IMPLICIT_CONSTRUCTORS(SendSideCongestionController);
 };
