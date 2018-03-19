@@ -41,6 +41,8 @@ constexpr size_t kMaxEventsInHistory = 10000;
 // to prevent an attack via unreasonable memory use.
 constexpr size_t kMaxEventsInConfigHistory = 1000;
 
+constexpr char kDefaultTaskQueueName[] = "rtc_event_log";
+
 // Observe a limit on the number of concurrent logs, so as not to run into
 // OS-imposed limits on open files and/or threads/task-queues.
 // TODO(eladalon): Known issue - there's a race over |rtc_event_log_count|.
@@ -84,7 +86,7 @@ class RtcEventLogImpl final : public RtcEventLog {
   explicit RtcEventLogImpl(
       std::unique_ptr<RtcEventLogEncoder> event_encoder,
       std::unique_ptr<rtc::TaskQueue> task_queue =
-          rtc::MakeUnique<rtc::TaskQueue>("rtc_event_log"));
+          rtc::MakeUnique<rtc::TaskQueue>(kDefaultTaskQueueName));
   ~RtcEventLogImpl() override;
 
   // TODO(eladalon): We should change these name to reflect that what we're
@@ -363,6 +365,13 @@ void RtcEventLogImpl::WriteToOutput(const std::string& output_string) {
 
 // RtcEventLog member functions.
 std::unique_ptr<RtcEventLog> RtcEventLog::Create(EncodingType encoding_type) {
+  return Create(encoding_type,
+                rtc::MakeUnique<rtc::TaskQueue>(kDefaultTaskQueueName));
+}
+
+std::unique_ptr<RtcEventLog> RtcEventLog::Create(
+    EncodingType encoding_type,
+    std::unique_ptr<rtc::TaskQueue> task_queue) {
 #ifdef ENABLE_RTC_EVENT_LOG
   // TODO(eladalon): Known issue - there's a race over |rtc_event_log_count|.
   constexpr int kMaxLogCount = 5;
@@ -374,7 +383,8 @@ std::unique_ptr<RtcEventLog> RtcEventLog::Create(EncodingType encoding_type) {
     return CreateNull();
   }
   auto encoder = CreateEncoder(encoding_type);
-  return rtc::MakeUnique<RtcEventLogImpl>(std::move(encoder));
+  return rtc::MakeUnique<RtcEventLogImpl>(std::move(encoder),
+                                          std::move(task_queue));
 #else
   return CreateNull();
 #endif  // ENABLE_RTC_EVENT_LOG
