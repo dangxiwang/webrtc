@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "44526778_c75b5da2",
+        "filename": "pc/srtptransport.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 5039
+      },
+      "writtenOn": "2018-03-19T23:44:45Z",
+      "side": 1,
+      "message": "My thought here is that it would be surprising to someone down the line to have a SetMetricsObserver that doesn\u0027t actually get called. I think it\u0027s worth it to wire it up now even if it\u0027s not used in that configuration presently. What do you think?",
+      "parentUuid": "2b67e0ea_0eeec09d",
+      "range": {
+        "startLine": 411,
+        "startChar": 6,
+        "endLine": 411,
+        "endChar": 24
+      },
+      "revId": "38198ea82badbe951689c8a8093437eb488c09ef",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "69b65638_816f37de",
         "filename": "pc/srtptransport.cc",
         "patchSetId": 3
