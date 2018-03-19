@@ -2866,6 +2866,13 @@ void PeerConnection::RegisterUMAObserver(UMAObserver* observer) {
     transport_controller()->SetMetricsObserver(uma_observer_);
   }
 
+  for (auto transceiver : transceivers_) {
+    auto* channel = transceiver->internal()->channel();
+    if (channel) {
+      channel->SetMetricsObserver(uma_observer_);
+    }
+  }
+
   // Send information about IPv4/IPv6 status.
   if (uma_observer_) {
     port_allocator_->SetMetricsObserver(uma_observer_);

@@ -354,6 +354,14 @@ void BaseChannel::SetTransport_n(
   }
 }
 
+void BaseChannel::SetMetricsObserver(
+    rtc::scoped_refptr<webrtc::MetricsObserverInterface> metrics_observer) {
+  metrics_observer_ = metrics_observer;
+  if (rtp_transport_) {
+    rtp_transport_->SetMetricsObserver(metrics_observer);
+  }
+}
+
 bool BaseChannel::Enable(bool enable) {
   worker_thread_->Invoke<void>(
       RTC_FROM_HERE,
@@ -743,6 +751,9 @@ void BaseChannel::EnableSdes_n() {
   RTC_DCHECK(unencrypted_rtp_transport_);
   sdes_transport_ = rtc::MakeUnique<webrtc::SrtpTransport>(
       std::move(unencrypted_rtp_transport_));
+  if (metrics_observer_) {
+    sdes_transport_->SetMetricsObserver(metrics_observer_);
+  }
 #if defined(ENABLE_EXTERNAL_AUTH)
   sdes_transport_->EnableExternalAuth();
 #endif
@@ -766,6 +777,9 @@ void BaseChannel::EnableDtlsSrtp_n() {
 #endif
   dtls_srtp_transport_ =
       rtc::MakeUnique<webrtc::DtlsSrtpTransport>(std::move(srtp_transport));
+  if (metrics_observer_) {
+    dtls_srtp_transport_->SetMetricsObserver(metrics_observer_);
+  }
 
   SetRtpTransport(dtls_srtp_transport_.get());
   if (cached_send_extension_ids_) {
