@@ -42,6 +42,7 @@ enum PeerConnectionEnumCounterType {
   kEnumCounterSdpSemanticNegotiated,
   kEnumCounterKeyProtocolMediaType,
   kEnumCounterSdpFormatReceived,
+  kEnumCounterSrtpUnprotectError,
   kPeerConnectionEnumCounterMax
 };
 
