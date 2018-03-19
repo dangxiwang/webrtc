@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b67e0ea_0eeec09d",
+        "filename": "pc/srtptransport.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 5080
+      },
+      "writtenOn": "2018-03-19T23:24:06Z",
+      "side": 1,
+      "message": "Looks like we only cares about the RTP packet. We don\u0027t have to set the observer for RTCP session, right?",
+      "range": {
+        "startLine": 411,
+        "startChar": 6,
+        "endLine": 411,
+        "endChar": 24
+      },
+      "revId": "38198ea82badbe951689c8a8093437eb488c09ef",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69b65638_816f37de",
+        "filename": "pc/srtptransport.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 5080
+      },
+      "writtenOn": "2018-03-19T23:24:06Z",
+      "side": 1,
+      "message": "rtp_transport_ doesn\u0027t need to have this observer.",
+      "range": {
+        "startLine": 416,
+        "startChar": 3,
+        "endLine": 417,
+        "endChar": 55
+      },
+      "revId": "38198ea82badbe951689c8a8093437eb488c09ef",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
