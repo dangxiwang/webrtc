@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d68df636_e4f9eec6",
+        "filename": "logging/BUILD.gn",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2018-03-19T18:54:26Z",
+      "side": 1,
+      "message": "It might be good to ask nisse@, or someone else who\u0027s currently involved with work on task queues, for confirmation that this dependency is OK.",
+      "revId": "24295443bfa25d50466e67c29d576e744f23a476",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1fd82f2_c3473778",
+        "filename": "logging/rtc_event_log/rtc_event_log.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2018-03-19T18:54:26Z",
+      "side": 1,
+      "message": "nit: What do you think about a forward-declaration instead? (If you end up doing that, other files might benefit, too.)",
+      "revId": "24295443bfa25d50466e67c29d576e744f23a476",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01cf30e0_4f8003ff",
+        "filename": "logging/rtc_event_log/rtc_event_log.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2018-03-19T18:54:26Z",
+      "side": 1,
+      "message": "Will the version that injects a task queue be used for tests, or unrelated to tests?\nIf for tests, maybe we could modify the name to reflect that?\nIf not, (nit) do you think having one version of this function, with a a default parameter (nullptr), would be an improvement of style? (I don\u0027t have a strong opinion either way.)",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 50
+      },
+      "revId": "24295443bfa25d50466e67c29d576e744f23a476",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6095a10a_977c305d",
+        "filename": "logging/rtc_event_log/rtc_event_log_factory.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2018-03-19T18:54:26Z",
+      "side": 1,
+      "message": "At the moment, you are including logging/rtc_event_log/rtc_event_log_factory.h, which then include rtc_base/task_queue.h. You might change that, if my other suggestion makes sense to you, but if not, you\u0027d probably want to remove the #include here.",
+      "revId": "24295443bfa25d50466e67c29d576e744f23a476",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1664c22_72323064",
+        "filename": "logging/rtc_event_log/rtc_event_log_factory_interface.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2018-03-19T18:54:26Z",
+      "side": 1,
+      "message": "Don\u0027t we want to make this version pure-virtual too? I find it confusing that this version discards the task queue, and leaves it up to the sub-class to not forget to override this if it wants to. If a sub-class chooses not to override, somebody using the sub-class could end up missing that the task queue he\u0027s passed in does not end up used.",
+      "revId": "24295443bfa25d50466e67c29d576e744f23a476",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23e49f2e_3773522e",
+        "filename": "logging/rtc_event_log/rtc_event_log_impl.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2018-03-19T18:54:26Z",
+      "side": 1,
+      "message": "Do you happen to know if it\u0027s a problem if we create two task queues with the same name? (I could look it up myself if you don\u0027t know this off the top of your head.)",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 64
+      },
+      "revId": "24295443bfa25d50466e67c29d576e744f23a476",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
