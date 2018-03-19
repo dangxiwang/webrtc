@@ -82,6 +82,9 @@ class RtpTransportInternal : public RtpTransportInterface,
   virtual bool HandlesPayloadType(int payload_type) const = 0;
 
   virtual void AddHandledPayloadType(int payload_type) = 0;
+
+  virtual void SetMetricsObserver(
+      rtc::scoped_refptr<MetricsObserverInterface> metrics_observer) = 0;
 };
 
 }  // namespace webrtc

@@ -133,8 +133,14 @@ bool SrtpSession::UnprotectRtp(void* p, int in_len, int* out_len) {
   int err = srtp_unprotect(session_, p, out_len);
   if (err != srtp_err_status_ok) {
     RTC_LOG(LS_WARNING) << "Failed to unprotect SRTP packet, err=" << err;
+    if (metrics_observer_) {
+      metrics_observer_->IncrementSparseEnumCounter(
+          webrtc::kEnumCounterSrtpUnprotectError, err);
+    }
     return false;
   }
+  RTC_LOG(LS_INFO) << "Unprotect with metrics observer? "
+                   << (metrics_observer_ ? "yes" : "no");
   return true;
 }
 
@@ -342,6 +348,11 @@ bool SrtpSession::UpdateKey(int type,
   }
 
   return DoSetKey(type, cs, key, len, extension_ids);
+}
+
+void SrtpSession::SetMetricsObserver(
+    rtc::scoped_refptr<webrtc::MetricsObserverInterface> metrics_observer) {
+  metrics_observer_ = metrics_observer;
 }
 
 int g_libsrtp_usage_count = 0;
