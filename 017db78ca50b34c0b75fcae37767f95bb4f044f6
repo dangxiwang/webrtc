@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "55fa7087_05fdb4c0",
+        "filename": "api/umametrics.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2018-03-20T00:30:32Z",
+      "side": 1,
+      "message": "May be helpful to document that this uses the srtp_err_status_t enum defined by libsrtp.",
+      "revId": "017db78ca50b34c0b75fcae37767f95bb4f044f6",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ab4e032_566e7c9f",
+        "filename": "pc/channel.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2018-03-20T00:30:32Z",
+      "side": 1,
+      "message": "I\u0027d add \"TODO: Set metrics observer through JsepTransportController once it takes responsibility for creating RtpTransports.\"\n\n(In other words, once Zhi\u0027s CL lands).",
+      "revId": "017db78ca50b34c0b75fcae37767f95bb4f044f6",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c05c341e_e72e7071",
+        "filename": "pc/channel.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2018-03-20T00:30:32Z",
+      "side": 1,
+      "message": "Unset in DisconnectFromRtpTransport?",
+      "revId": "017db78ca50b34c0b75fcae37767f95bb4f044f6",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7d378e1_67ad8f17",
+        "filename": "pc/srtpsession.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2018-03-20T00:30:32Z",
+      "side": 1,
+      "message": "Add \"kEnumCounterSrtcpUnprotectError\" too? A few of the recent reports of this issue only affected RTCP.",
+      "revId": "017db78ca50b34c0b75fcae37767f95bb4f044f6",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
