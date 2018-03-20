@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f72d2e89_4c29b828",
+        "filename": "logging/BUILD.gn",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5742
+      },
+      "writtenOn": "2018-03-20T08:39:29Z",
+      "side": 1,
+      "message": "Pinged nisse@ to check.",
+      "parentUuid": "d68df636_e4f9eec6",
+      "revId": "24295443bfa25d50466e67c29d576e744f23a476",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e1fd82f2_c3473778",
         "filename": "logging/rtc_event_log/rtc_event_log.h",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "24295443bfa25d50466e67c29d576e744f23a476",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70c32dd4_6a2a530a",
+        "filename": "logging/rtc_event_log/rtc_event_log.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5742
+      },
+      "writtenOn": "2018-03-20T08:39:29Z",
+      "side": 1,
+      "message": "I wouldn\u0027t mind, but the Google Style guide doesn\u0027t like them: https://google.github.io/styleguide/cppguide.html#Forward_Declarations",
+      "parentUuid": "e1fd82f2_c3473778",
+      "revId": "24295443bfa25d50466e67c29d576e744f23a476",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "95841358_49318efe",
+        "filename": "logging/rtc_event_log/rtc_event_log.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 5742
+      },
+      "writtenOn": "2018-03-20T08:39:29Z",
+      "side": 1,
+      "message": "Non-test code.\n\nRe default parameters: I was in doubt, so I went for overloads as suggested in the style guide: https://google.github.io/styleguide/cppguide.html#Default_Arguments\n\nAnd I\u0027d prefer it checkfailed when task_queue \u003d\u003d nullptr (in the constructor of RtcEventLogImpl).",
+      "parentUuid": "01cf30e0_4f8003ff",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 50
+      },
+      "revId": "24295443bfa25d50466e67c29d576e744f23a476",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6095a10a_977c305d",
         "filename": "logging/rtc_event_log/rtc_event_log_factory.cc",
         "patchSetId": 1
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "625c1b1b_3074059a",
+        "filename": "logging/rtc_event_log/rtc_event_log_factory.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5742
+      },
+      "writtenOn": "2018-03-20T08:39:29Z",
+      "side": 1,
+      "message": "That was a mistake, thanks for catching!\nDone.",
+      "parentUuid": "6095a10a_977c305d",
+      "revId": "24295443bfa25d50466e67c29d576e744f23a476",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d1664c22_72323064",
         "filename": "logging/rtc_event_log/rtc_event_log_factory_interface.h",
         "patchSetId": 1
@@ -90,6 +168,24 @@
       "revId": "24295443bfa25d50466e67c29d576e744f23a476",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98015643_35657b59",
+        "filename": "logging/rtc_event_log/rtc_event_log_factory_interface.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 5742
+      },
+      "writtenOn": "2018-03-20T08:39:29Z",
+      "side": 1,
+      "message": "I thought of doing it, but wouldn\u0027t that break potential dependants?",
+      "parentUuid": "d1664c22_72323064",
+      "revId": "24295443bfa25d50466e67c29d576e744f23a476",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     },
     {
       "key": {
@@ -113,6 +209,30 @@
       "revId": "24295443bfa25d50466e67c29d576e744f23a476",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "648e9ed5_9d2b7062",
+        "filename": "logging/rtc_event_log/rtc_event_log_impl.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 5742
+      },
+      "writtenOn": "2018-03-20T08:39:29Z",
+      "side": 1,
+      "message": "Shouldn\u0027t be.\n\nIt just gets passed down thru layers of abstraction to this: \nhttps://cs.chromium.org/chromium/src/third_party/webrtc/rtc_base/platform_thread.cc?sq\u003dpackage:chromium\u0026dr\u003dCSs\u0026l\u003d39\n\nAs an additional argument: If there was a problem, then RtcEventLogImpl would already be dangerous (as each instance used to have a TaskQueue of the same name). And we do have a limit on the number of instances in the factory method, implying that multiple are expected.",
+      "parentUuid": "23e49f2e_3773522e",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 64
+      },
+      "revId": "24295443bfa25d50466e67c29d576e744f23a476",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
