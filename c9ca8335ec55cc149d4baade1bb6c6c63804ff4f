@@ -84,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "10d22207_e115977b",
+        "filename": "logging/rtc_event_log/rtc_event_log_factory_interface.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2018-03-20T12:33:30Z",
+      "side": 1,
+      "message": "That doesn\u0027t look like a dependent. Chrome is using WebRTC. When you update it here, in WebRTC, it will just get pulled into Chrome. Or am I missing something?",
+      "parentUuid": "0f864642_50bed46f",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 3
+      },
+      "revId": "c9ca8335ec55cc149d4baade1bb6c6c63804ff4f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "08e8d5aa_dc342be7",
         "filename": "logging/rtc_event_log/rtc_event_log_impl.cc",
         "patchSetId": 2
