@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c62ea34a_e12d0754",
+        "filename": "logging/rtc_event_log/rtc_event_log.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5742
+      },
+      "writtenOn": "2018-03-20T12:30:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "361222cd_804313ef",
+      "revId": "c9ca8335ec55cc149d4baade1bb6c6c63804ff4f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "598a941c_df2b50b9",
         "filename": "logging/rtc_event_log/rtc_event_log_factory_interface.h",
         "patchSetId": 2
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "0f864642_50bed46f",
+        "filename": "logging/rtc_event_log/rtc_event_log_factory_interface.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 5742
+      },
+      "writtenOn": "2018-03-20T12:30:57Z",
+      "side": 1,
+      "message": "To answer those: \n\nYes, there are dependents: https://cs.chromium.org/chromium/src/third_party/webrtc/pc/peerconnectionfactory.cc?sq\u003dpackage:chromium\u0026l\u003d369\n\nSure, added TODO",
+      "parentUuid": "598a941c_df2b50b9",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 3
+      },
+      "revId": "c9ca8335ec55cc149d4baade1bb6c6c63804ff4f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "08e8d5aa_dc342be7",
         "filename": "logging/rtc_event_log/rtc_event_log_impl.cc",
         "patchSetId": 2
@@ -62,6 +104,30 @@
       "revId": "c9ca8335ec55cc149d4baade1bb6c6c63804ff4f",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc12efe2_b7ab487d",
+        "filename": "logging/rtc_event_log/rtc_event_log_impl.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 5742
+      },
+      "writtenOn": "2018-03-20T12:30:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08e8d5aa_dc342be7",
+      "range": {
+        "startLine": 89,
+        "startChar": 10,
+        "endLine": 89,
+        "endChar": 64
+      },
+      "revId": "c9ca8335ec55cc149d4baade1bb6c6c63804ff4f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
