@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "361222cd_804313ef",
+        "filename": "logging/rtc_event_log/rtc_event_log.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2018-03-20T10:46:44Z",
+      "side": 1,
+      "message": "nits:\n1. This could be slightly misleading, as the logs are not necessarily written on this task queue (or at all); they\u0027re... I\u0027m not sure how to phrase this. Emitted to output, perhaps? Consider revising?\n2. The phrasing is such that \"uses\" could appear to bind grammatically to \"factory method\" rather than to \"the given rtc::TaskQueue\".",
+      "revId": "c9ca8335ec55cc149d4baade1bb6c6c63804ff4f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "598a941c_df2b50b9",
+        "filename": "logging/rtc_event_log/rtc_event_log_factory_interface.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2018-03-20T10:46:44Z",
+      "side": 1,
+      "message": "This (see comments on previous revisions) is the only thing stopping me from LGTMing.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 3
+      },
+      "revId": "c9ca8335ec55cc149d4baade1bb6c6c63804ff4f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "08e8d5aa_dc342be7",
         "filename": "logging/rtc_event_log/rtc_event_log_impl.cc",
         "patchSetId": 2
