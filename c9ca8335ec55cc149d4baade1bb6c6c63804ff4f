@@ -108,6 +108,30 @@
     },
     {
       "key": {
+        "uuid": "a9f4d2df_243c5020",
+        "filename": "logging/rtc_event_log/rtc_event_log_factory_interface.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 5742
+      },
+      "writtenOn": "2018-03-20T12:41:52Z",
+      "side": 1,
+      "message": "Ah, sure, there are no subclasses.\n\nSorry for the shallow parsing.\nDone.",
+      "parentUuid": "10d22207_e115977b",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 3
+      },
+      "revId": "c9ca8335ec55cc149d4baade1bb6c6c63804ff4f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "08e8d5aa_dc342be7",
         "filename": "logging/rtc_event_log/rtc_event_log_impl.cc",
         "patchSetId": 2
