@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "08e8d5aa_dc342be7",
+        "filename": "logging/rtc_event_log/rtc_event_log_impl.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2018-03-20T10:07:39Z",
+      "side": 1,
+      "message": "Are there still uses of single-parameter constructor? \nIf not it might be good idea to delete the default argument.\n(specially that this kind of default value is against style)",
+      "range": {
+        "startLine": 89,
+        "startChar": 10,
+        "endLine": 89,
+        "endChar": 64
+      },
+      "revId": "c9ca8335ec55cc149d4baade1bb6c6c63804ff4f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
