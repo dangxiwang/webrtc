@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "13493658_44a45435",
+        "filename": "logging/BUILD.gn",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2018-03-20T08:51:01Z",
+      "side": 1,
+      "message": "I think this is the right rarget to depend on.",
+      "parentUuid": "f72d2e89_4c29b828",
+      "revId": "24295443bfa25d50466e67c29d576e744f23a476",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e1fd82f2_c3473778",
         "filename": "logging/rtc_event_log/rtc_event_log.h",
         "patchSetId": 1
