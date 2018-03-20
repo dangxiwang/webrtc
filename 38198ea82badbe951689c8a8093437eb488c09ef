@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "89fcfc02_79cff39c",
+        "filename": "pc/srtptransport.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 5080
+      },
+      "writtenOn": "2018-03-20T00:48:19Z",
+      "side": 1,
+      "message": "Are you referring to \"rtp_transport_-\u003eSetMetricsObserver(metrics_observer);\" down below? That make sense.",
+      "parentUuid": "44526778_c75b5da2",
+      "range": {
+        "startLine": 411,
+        "startChar": 6,
+        "endLine": 411,
+        "endChar": 24
+      },
+      "revId": "38198ea82badbe951689c8a8093437eb488c09ef",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "69b65638_816f37de",
         "filename": "pc/srtptransport.cc",
         "patchSetId": 3
