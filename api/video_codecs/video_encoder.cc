@@ -81,7 +81,7 @@ constexpr VideoEncoder::ScalingSettings::KOff
     VideoEncoder::ScalingSettings::kOff;
 
 int32_t VideoEncoder::SetRates(uint32_t bitrate, uint32_t framerate) {
-  RTC_NOTREACHED() << "SetRate(uint32_t, uint32_t) is deprecated.";
+  RTC_DCHECK_NOTREACHED() << "SetRate(uint32_t, uint32_t) is deprecated.";
   return -1;
 }
 

@@ -494,23 +494,23 @@ void RtcEventLogSession::WriteSession() {
         break;
       case EventType::kAudioRecvConfig:
         // Not implemented
-        RTC_NOTREACHED();
+        RTC_DCHECK_NOTREACHED();
         break;
       case EventType::kAudioSendConfig:
         // Not implemented
-        RTC_NOTREACHED();
+        RTC_DCHECK_NOTREACHED();
         break;
       case EventType::kAudioNetworkAdaptation:
         // Not implemented
-        RTC_NOTREACHED();
+        RTC_DCHECK_NOTREACHED();
         break;
       case EventType::kBweProbeClusterCreated:
         // Not implemented
-        RTC_NOTREACHED();
+        RTC_DCHECK_NOTREACHED();
         break;
       case EventType::kBweProbeResult:
         // Not implemented
-        RTC_NOTREACHED();
+        RTC_DCHECK_NOTREACHED();
         break;
     }
   }
@@ -607,23 +607,23 @@ void RtcEventLogSession::ReadAndVerifySession() {
         break;
       case EventType::kAudioRecvConfig:
         // Not implemented
-        RTC_NOTREACHED();
+        RTC_DCHECK_NOTREACHED();
         break;
       case EventType::kAudioSendConfig:
         // Not implemented
-        RTC_NOTREACHED();
+        RTC_DCHECK_NOTREACHED();
         break;
       case EventType::kAudioNetworkAdaptation:
         // Not implemented
-        RTC_NOTREACHED();
+        RTC_DCHECK_NOTREACHED();
         break;
       case EventType::kBweProbeClusterCreated:
         // Not implemented
-        RTC_NOTREACHED();
+        RTC_DCHECK_NOTREACHED();
         break;
       case EventType::kBweProbeResult:
         // Not implemented
-        RTC_NOTREACHED();
+        RTC_DCHECK_NOTREACHED();
         break;
     }
   }

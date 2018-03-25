@@ -477,7 +477,7 @@ bool FileStream::Flush() {
     return (0 == fflush(file_));
   }
   // try to flush empty file?
-  RTC_NOTREACHED();
+  RTC_DCHECK_NOTREACHED();
   return false;
 }
 

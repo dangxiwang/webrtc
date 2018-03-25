@@ -170,7 +170,7 @@ TemporalLayers::FrameConfig ScreenshareLayers::UpdateLayerConfig(
       ++stats_.num_dropped_frames_;
       break;
     default:
-      RTC_NOTREACHED();
+      RTC_DCHECK_NOTREACHED();
   }
 
   TemporalLayers::FrameConfig tl_config;

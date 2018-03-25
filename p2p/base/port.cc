@@ -692,7 +692,7 @@ bool Port::MaybeIceRoleConflict(
       }
       break;
     default:
-      RTC_NOTREACHED();
+      RTC_DCHECK_NOTREACHED();
   }
   return ret;
 }
@@ -710,7 +710,7 @@ bool Port::HandleIncomingPacket(rtc::AsyncPacketSocket* socket,
                                 size_t size,
                                 const rtc::SocketAddress& remote_addr,
                                 const rtc::PacketTime& packet_time) {
-  RTC_NOTREACHED();
+  RTC_DCHECK_NOTREACHED();
   return false;
 }
 
@@ -958,7 +958,7 @@ class ConnectionRequest : public StunRequest {
       request->AddAttribute(rtc::MakeUnique<StunUInt64Attribute>(
           STUN_ATTR_ICE_CONTROLLED, connection_->port()->IceTiebreaker()));
     } else {
-      RTC_NOTREACHED();
+      RTC_DCHECK_NOTREACHED();
     }
 
     // Adding PRIORITY Attribute.
@@ -1218,7 +1218,7 @@ void Connection::OnReadPacket(
         break;
 
       default:
-        RTC_NOTREACHED();
+        RTC_DCHECK_NOTREACHED();
         break;
     }
   }

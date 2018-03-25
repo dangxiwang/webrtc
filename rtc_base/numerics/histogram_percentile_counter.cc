@@ -72,7 +72,7 @@ rtc::Optional<uint32_t> HistogramPercentileCounter::GetPercentile(
       elements_to_skip -= it.second;
     }
   }
-  RTC_NOTREACHED();
+  RTC_DCHECK_NOTREACHED();
   return rtc::nullopt;
 }
 

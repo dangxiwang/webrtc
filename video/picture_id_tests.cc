@@ -34,7 +34,7 @@ RtpVideoCodecTypes PayloadNameToRtpVideoCodecType(
   } else if (payload_name == "VP9") {
     return kRtpVideoVp9;
   } else {
-    RTC_NOTREACHED();
+    RTC_DCHECK_NOTREACHED();
     return kRtpVideoNone;
   }
 }
@@ -122,7 +122,7 @@ class PictureIdObserver : public test::RtpRtcpObserver {
             parsed_payload.type.Video.codecHeader.VP9.temporal_idx;
         break;
       default:
-        RTC_NOTREACHED();
+        RTC_DCHECK_NOTREACHED();
         break;
     }
 

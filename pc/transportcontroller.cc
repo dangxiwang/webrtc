@@ -580,7 +580,7 @@ void TransportController::OnMessage(rtc::Message* pmsg) {
       break;
     }
     default:
-      RTC_NOTREACHED();
+      RTC_DCHECK_NOTREACHED();
   }
 }
 
@@ -981,7 +981,7 @@ void TransportController::OnChannelCandidateGathered_n(
 
   // We should never signal peer-reflexive candidates.
   if (candidate.type() == PRFLX_PORT_TYPE) {
-    RTC_NOTREACHED();
+    RTC_DCHECK_NOTREACHED();
     return;
   }
   std::vector<Candidate> candidates;

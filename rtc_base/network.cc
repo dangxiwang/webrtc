@@ -106,7 +106,7 @@ std::string AdapterTypeToString(AdapterType type) {
     case ADAPTER_TYPE_LOOPBACK:
       return "Loopback";
     default:
-      RTC_NOTREACHED() << "Invalid type " << type;
+      RTC_DCHECK_NOTREACHED() << "Invalid type " << type;
       return std::string();
   }
 }
@@ -425,7 +425,7 @@ void BasicNetworkManager::OnNetworksChanged() {
 
 bool BasicNetworkManager::CreateNetworks(bool include_ignored,
                                          NetworkList* networks) const {
-  RTC_NOTREACHED();
+  RTC_DCHECK_NOTREACHED();
   RTC_LOG(LS_WARNING) << "BasicNetworkManager doesn't work on NaCl yet";
   return false;
 }
@@ -812,7 +812,7 @@ void BasicNetworkManager::OnMessage(Message* msg) {
       break;
     }
     default:
-      RTC_NOTREACHED();
+      RTC_DCHECK_NOTREACHED();
   }
 }
 

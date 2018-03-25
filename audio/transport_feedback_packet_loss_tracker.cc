@@ -203,7 +203,7 @@ void TransportFeedbackPacketLossTracker::UpdatePlr(
       UpdateCounter(&plr_state_.num_lost_packets_, apply);
       break;
     default:
-      RTC_NOTREACHED();
+      RTC_DCHECK_NOTREACHED();
   }
 }
 
@@ -309,7 +309,7 @@ void TransportFeedbackPacketLossTracker::Validate() const {  // Testing only!
           ++lost_packets;
           break;
         default:
-          RTC_NOTREACHED();
+          RTC_DCHECK_NOTREACHED();
       }
 
       auto next = std::next(it);

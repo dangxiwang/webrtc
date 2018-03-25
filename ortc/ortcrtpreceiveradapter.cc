@@ -103,7 +103,7 @@ RTCError OrtcRtpReceiverAdapter::Receive(const RtpParameters& parameters) {
       }
       break;
     case cricket::MEDIA_TYPE_DATA:
-      RTC_NOTREACHED();
+      RTC_DCHECK_NOTREACHED();
       return webrtc::RTCError(webrtc::RTCErrorType::INTERNAL_ERROR);
   }
   last_applied_parameters_ = filled_parameters;
@@ -171,7 +171,7 @@ void OrtcRtpReceiverAdapter::MaybeRecreateInternalReceiver() {
       break;
     }
     case cricket::MEDIA_TYPE_DATA:
-      RTC_NOTREACHED();
+      RTC_DCHECK_NOTREACHED();
   }
   internal_receiver_->SetupMediaChannel(ssrc);
 }

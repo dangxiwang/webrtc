@@ -219,7 +219,7 @@ void RtpTransceiver::Stop() {
 void RtpTransceiver::SetCodecPreferences(
     rtc::ArrayView<RtpCodecCapability> codecs) {
   // TODO(steveanton): Implement this.
-  RTC_NOTREACHED() << "Not implemented";
+  RTC_DCHECK_NOTREACHED() << "Not implemented";
 }
 
 }  // namespace webrtc

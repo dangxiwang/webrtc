@@ -461,7 +461,7 @@ int VideoReceiver::SetReceiverRobustnessMode(
       _receiver.SetNackMode(kNack, -1, -1);
       break;
     default:
-      RTC_NOTREACHED();
+      RTC_DCHECK_NOTREACHED();
       return VCM_PARAMETER_ERROR;
   }
   _receiver.SetDecodeErrorMode(decode_error_mode);

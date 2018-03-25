@@ -1392,7 +1392,7 @@ void VideoQualityTest::SetupVideo(Transport* send_transport,
           new InternalEncoderFactory(), SdpVideoFormat(cricket::kVp9CodecName));
       payload_type = kPayloadTypeVP9;
     } else {
-      RTC_NOTREACHED() << "Codec not supported!";
+      RTC_DCHECK_NOTREACHED() << "Codec not supported!";
       return;
     }
     video_send_configs_[video_idx].encoder_settings.encoder =

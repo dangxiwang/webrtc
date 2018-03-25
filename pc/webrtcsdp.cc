@@ -667,7 +667,7 @@ static int GetCandidatePreferenceFromType(const std::string& type) {
   } else if (type == cricket::RELAY_PORT_TYPE) {
     preference = kPreferenceRelayed;
   } else {
-    RTC_NOTREACHED();
+    RTC_DCHECK_NOTREACHED();
   }
   return preference;
 }
@@ -1229,7 +1229,7 @@ void BuildMediaDescription(const ContentInfo* content_info,
   else if (media_type == cricket::MEDIA_TYPE_DATA)
     type = kMediaTypeData;
   else
-    RTC_NOTREACHED();
+    RTC_DCHECK_NOTREACHED();
 
   std::string fmt;
   if (media_type == cricket::MEDIA_TYPE_VIDEO) {
@@ -1838,7 +1838,7 @@ void BuildCandidate(const std::vector<Candidate>& candidates,
       type = kCandidatePrflx;
       // Peer reflexive candidate may be signaled for being removed.
     } else {
-      RTC_NOTREACHED();
+      RTC_DCHECK_NOTREACHED();
       // Never write out candidates if we don't know the type.
       continue;
     }
@@ -2320,7 +2320,7 @@ static C* ParseContentDescription(const std::string& message,
       *content_name = cricket::CN_DATA;
       break;
     default:
-      RTC_NOTREACHED();
+      RTC_DCHECK_NOTREACHED();
       break;
   }
   if (!ParseContent(message, media_type, mline_index, protocol, payload_types,

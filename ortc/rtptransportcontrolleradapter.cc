@@ -182,7 +182,7 @@ RtpTransportControllerAdapter::CreateProxiedRtpSender(
       err = AttachVideoSender(new_sender.get(), transport_proxy->GetInternal());
       break;
     case cricket::MEDIA_TYPE_DATA:
-      RTC_NOTREACHED();
+      RTC_DCHECK_NOTREACHED();
   }
   if (!err.ok()) {
     return std::move(err);
@@ -211,7 +211,7 @@ RtpTransportControllerAdapter::CreateProxiedRtpReceiver(
                                 transport_proxy->GetInternal());
       break;
     case cricket::MEDIA_TYPE_DATA:
-      RTC_NOTREACHED();
+      RTC_DCHECK_NOTREACHED();
   }
   if (!err.ok()) {
     return std::move(err);
@@ -811,7 +811,7 @@ void RtpTransportControllerAdapter::OnRtpTransportDestroyed(
                            return proxy->GetInternal() == transport;
                          });
   if (it == transport_proxies_.end()) {
-    RTC_NOTREACHED();
+    RTC_DCHECK_NOTREACHED();
     return;
   }
   transport_proxies_.erase(it);
@@ -819,7 +819,7 @@ void RtpTransportControllerAdapter::OnRtpTransportDestroyed(
 
 void RtpTransportControllerAdapter::OnAudioSenderDestroyed() {
   if (!have_audio_sender_) {
-    RTC_NOTREACHED();
+    RTC_DCHECK_NOTREACHED();
     return;
   }
   // Empty parameters should result in sending being stopped.
@@ -834,7 +834,7 @@ void RtpTransportControllerAdapter::OnAudioSenderDestroyed() {
 
 void RtpTransportControllerAdapter::OnVideoSenderDestroyed() {
   if (!have_video_sender_) {
-    RTC_NOTREACHED();
+    RTC_DCHECK_NOTREACHED();
     return;
   }
   // Empty parameters should result in sending being stopped.
@@ -849,7 +849,7 @@ void RtpTransportControllerAdapter::OnVideoSenderDestroyed() {
 
 void RtpTransportControllerAdapter::OnAudioReceiverDestroyed() {
   if (!have_audio_receiver_) {
-    RTC_NOTREACHED();
+    RTC_DCHECK_NOTREACHED();
     return;
   }
   // Empty parameters should result in receiving being stopped.
@@ -863,7 +863,7 @@ void RtpTransportControllerAdapter::OnAudioReceiverDestroyed() {
 
 void RtpTransportControllerAdapter::OnVideoReceiverDestroyed() {
   if (!have_video_receiver_) {
-    RTC_NOTREACHED();
+    RTC_DCHECK_NOTREACHED();
     return;
   }
   // Empty parameters should result in receiving being stopped.

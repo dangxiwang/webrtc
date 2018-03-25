@@ -104,7 +104,7 @@ class TestTurnServer : public TurnAuthInterface {
       socket->Listen(5);
       server_.AddInternalServerSocket(socket, proto);
     } else {
-      RTC_NOTREACHED() << "Unknown protocol type: " << proto;
+      RTC_DCHECK_NOTREACHED() << "Unknown protocol type: " << proto;
     }
   }
 

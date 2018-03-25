@@ -155,7 +155,7 @@ void TestConfig::SetCodecSettings(VideoCodecType codec_type,
       codec_settings.H264()->keyFrameInterval = kBaseKeyFrameInterval;
       break;
     default:
-      RTC_NOTREACHED();
+      RTC_DCHECK_NOTREACHED();
       break;
   }
 }
@@ -243,7 +243,7 @@ SdpVideoFormat TestConfig::ToSdpVideoFormat() const {
            {cricket::kH264FmtpPacketizationMode, packetization_mode}});
     }
     default:
-      RTC_NOTREACHED();
+      RTC_DCHECK_NOTREACHED();
       return SdpVideoFormat("");
   }
 }

@@ -108,7 +108,7 @@ AsyncTCPSocket::State AsyncTCPSocketBase::GetState() const {
     case Socket::CS_CONNECTED:
       return STATE_CONNECTED;
     default:
-      RTC_NOTREACHED();
+      RTC_DCHECK_NOTREACHED();
       return STATE_CLOSED;
   }
 }
@@ -160,7 +160,7 @@ int AsyncTCPSocketBase::FlushOutBuffer() {
     return res;
   }
   if (static_cast<size_t>(res) > outbuf_.size()) {
-    RTC_NOTREACHED();
+    RTC_DCHECK_NOTREACHED();
     return -1;
   }
   size_t new_size = outbuf_.size() - res;
@@ -235,7 +235,7 @@ void AsyncTCPSocketBase::OnReadEvent(AsyncSocket* socket) {
 
     if (size > inbuf_.size()) {
       RTC_LOG(LS_ERROR) << "input buffer overflow";
-      RTC_NOTREACHED();
+      RTC_DCHECK_NOTREACHED();
       inbuf_.Clear();
     } else {
       inbuf_.SetSize(size);

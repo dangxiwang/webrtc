@@ -30,7 +30,7 @@ libyuv::RotationMode ToLibyuvRotationMode(Rotation rotation) {
     case Rotation::CLOCK_WISE_270:
       return libyuv::kRotate270;
   }
-  RTC_NOTREACHED();
+  RTC_DCHECK_NOTREACHED();
   return libyuv::kRotate0;
 }
 
@@ -56,7 +56,7 @@ Rotation ReverseRotation(Rotation rotation) {
     case Rotation::CLOCK_WISE_270:
       return Rotation::CLOCK_WISE_90;
   }
-  RTC_NOTREACHED();
+  RTC_DCHECK_NOTREACHED();
   return Rotation::CLOCK_WISE_0;
 }
 
@@ -69,7 +69,7 @@ DesktopSize RotateSize(DesktopSize size, Rotation rotation) {
     case Rotation::CLOCK_WISE_270:
       return DesktopSize(size.height(), size.width());
   }
-  RTC_NOTREACHED();
+  RTC_DCHECK_NOTREACHED();
   return DesktopSize();
 }
 
@@ -88,7 +88,7 @@ DesktopRect RotateRect(DesktopRect rect, DesktopSize size, Rotation rotation) {
       return DesktopRect::MakeXYWH(rect.top(), size.width() - rect.right(),
                                    rect.height(), rect.width());
   }
-  RTC_NOTREACHED();
+  RTC_DCHECK_NOTREACHED();
   return DesktopRect();
 }
 

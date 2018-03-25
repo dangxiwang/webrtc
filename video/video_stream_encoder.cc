@@ -970,7 +970,7 @@ void VideoStreamEncoder::AdaptDown(AdaptReason reason) {
       break;
     }
     case VideoSendStream::DegradationPreference::kDegradationDisabled:
-      RTC_NOTREACHED();
+      RTC_DCHECK_NOTREACHED();
   }
 
   last_adaptation_request_.emplace(adaptation_request);

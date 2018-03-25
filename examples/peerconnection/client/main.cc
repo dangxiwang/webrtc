@@ -43,7 +43,7 @@ int PASCAL wWinMain(HINSTANCE instance, HINSTANCE prev_instance,
 
   MainWnd wnd(FLAG_server, FLAG_port, FLAG_autoconnect, FLAG_autocall);
   if (!wnd.Create()) {
-    RTC_NOTREACHED();
+    RTC_DCHECK_NOTREACHED();
     return -1;
   }
 

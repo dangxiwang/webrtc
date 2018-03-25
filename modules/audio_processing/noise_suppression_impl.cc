@@ -139,7 +139,7 @@ int NoiseSuppressionImpl::set_level(Level level) {
       policy = 3;
       break;
     default:
-      RTC_NOTREACHED();
+      RTC_DCHECK_NOTREACHED();
   }
   rtc::CritScope cs(crit_);
   level_ = level;

@@ -105,7 +105,7 @@ void BufferedReadAdapter::OnReadEvent(AsyncSocket * socket) {
 
   if (data_len_ >= buffer_size_) {
     RTC_LOG(LS_ERROR) << "Input buffer overflow";
-    RTC_NOTREACHED();
+    RTC_DCHECK_NOTREACHED();
     data_len_ = 0;
   }
 

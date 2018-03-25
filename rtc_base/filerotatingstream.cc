@@ -136,7 +136,7 @@ StreamResult FileRotatingStream::Read(void* buffer,
     // Succeeded, continue reading from this file.
     return SR_SUCCESS;
   } else {
-    RTC_NOTREACHED();
+    RTC_DCHECK_NOTREACHED();
   }
   return result;
 }

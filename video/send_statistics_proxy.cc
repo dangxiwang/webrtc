@@ -53,7 +53,7 @@ const char* GetUmaPrefix(VideoEncoderConfig::ContentType content_type) {
     case VideoEncoderConfig::ContentType::kScreen:
       return kScreenPrefix;
   }
-  RTC_NOTREACHED();
+  RTC_DCHECK_NOTREACHED();
   return nullptr;
 }
 

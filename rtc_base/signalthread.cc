@@ -48,7 +48,7 @@ void SignalThread::Start() {
     OnWorkStart();
     worker_.Start();
   } else {
-    RTC_NOTREACHED();
+    RTC_DCHECK_NOTREACHED();
   }
 }
 
@@ -71,7 +71,7 @@ void SignalThread::Destroy(bool wait) {
       refcount_--;
     }
   } else {
-    RTC_NOTREACHED();
+    RTC_DCHECK_NOTREACHED();
   }
 }
 
@@ -84,7 +84,7 @@ void SignalThread::Release() {
     state_ = kReleasing;
   } else {
     // if (kInit == state_) use Destroy()
-    RTC_NOTREACHED();
+    RTC_DCHECK_NOTREACHED();
   }
 }
 

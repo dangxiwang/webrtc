@@ -801,7 +801,7 @@ void P2PTransportChannel::OnUnknownAddress(
                        << "candidate: " << remote_candidate.ToString();
       return;
     } else {
-      RTC_NOTREACHED();
+      RTC_DCHECK_NOTREACHED();
       port->SendBindingErrorResponse(stun_msg, address,
                                      STUN_ERROR_SERVER_ERROR,
                                      STUN_ERROR_REASON_SERVER_ERROR);
@@ -1660,7 +1660,7 @@ void P2PTransportChannel::UpdateState() {
                    state == IceTransportState::STATE_COMPLETED);
         break;
       default:
-        RTC_NOTREACHED();
+        RTC_DCHECK_NOTREACHED();
         break;
     }
     state_ = state;
@@ -1741,7 +1741,7 @@ void P2PTransportChannel::OnMessage(rtc::Message *pmsg) {
       OnRegatherOnAllNetworks();
       break;
     default:
-      RTC_NOTREACHED();
+      RTC_DCHECK_NOTREACHED();
       break;
   }
 }
@@ -2008,7 +2008,7 @@ bool P2PTransportChannel::GetUseCandidateAttr(Connection* conn,
       return selected || better_than_selected;
     }
     default:
-      RTC_NOTREACHED();
+      RTC_DCHECK_NOTREACHED();
       return false;
   }
 }
