@@ -86,7 +86,7 @@ RtpFrameReferenceFinder::ManageFrameInternal(RtpFrameObject* frame) {
     case kVideoCodecFlexfec:
     case kVideoCodecULPFEC:
     case kVideoCodecRED:
-      RTC_NOTREACHED();
+      RTC_DCHECK_NOTREACHED();
       break;
     case kVideoCodecVP8:
       return ManageFrameVp8(frame);
@@ -105,7 +105,7 @@ RtpFrameReferenceFinder::ManageFrameInternal(RtpFrameObject* frame) {
   }
 
   // If not all code paths return a value it makes the win compiler sad.
-  RTC_NOTREACHED();
+  RTC_DCHECK_NOTREACHED();
   return kDrop;
 }
 

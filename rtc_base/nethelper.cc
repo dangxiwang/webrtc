@@ -27,7 +27,7 @@ int GetIpOverhead(int addr_family) {
     case AF_INET6:  // IPv6
       return 40;
     default:
-      RTC_NOTREACHED() << "Invaild address family.";
+      RTC_DCHECK_NOTREACHED() << "Invaild address family.";
       return 0;
   }
 }

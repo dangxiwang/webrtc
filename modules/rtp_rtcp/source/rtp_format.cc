@@ -40,7 +40,7 @@ RtpPacketizer* RtpPacketizer::Create(RtpVideoCodecTypes type,
       return new RtpPacketizerGeneric(frame_type, max_payload_len,
                                       last_packet_reduction_len);
     case kRtpVideoNone:
-      RTC_NOTREACHED();
+      RTC_DCHECK_NOTREACHED();
   }
   return nullptr;
 }

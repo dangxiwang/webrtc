@@ -18,8 +18,8 @@ const char MediaStreamTrackInterface::kVideoKind[] = "video";
 const char MediaStreamTrackInterface::kAudioKind[] = "audio";
 
 void AudioProcessorInterface::GetStats(AudioProcessorStats* /*stats*/) {
-  RTC_NOTREACHED() << "Old-style GetStats() is called but it has no "
-                   << "implementation.";
+  RTC_DCHECK_NOTREACHED() << "Old-style GetStats() is called but it has no "
+                          << "implementation.";
   RTC_LOG(LS_ERROR) << "Old-style GetStats() is called but it has no "
                     << "implementation.";
 }

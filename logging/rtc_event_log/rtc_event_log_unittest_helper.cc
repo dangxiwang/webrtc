@@ -43,7 +43,7 @@ BandwidthUsage GetRuntimeDetectorState(
     case rtclog::DelayBasedBweUpdate::BWE_OVERUSING:
       return BandwidthUsage::kBwOverusing;
   }
-  RTC_NOTREACHED();
+  RTC_DCHECK_NOTREACHED();
   return BandwidthUsage::kBwNormal;
 }
 
@@ -57,9 +57,9 @@ rtclog::BweProbeResult::ResultType GetProbeResultType(
     case ProbeFailureReason::kTimeout:
       return rtclog::BweProbeResult::TIMEOUT;
     case ProbeFailureReason::kLast:
-      RTC_NOTREACHED();
+      RTC_DCHECK_NOTREACHED();
   }
-  RTC_NOTREACHED();
+  RTC_DCHECK_NOTREACHED();
   return rtclog::BweProbeResult::SUCCESS;
 }
 }  // namespace

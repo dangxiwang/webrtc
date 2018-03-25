@@ -256,7 +256,7 @@ bool SrtpSession::DoSetKey(int type,
   if (!rtc::GetSrtpKeyAndSaltLengths(cs, &expected_key_len,
                                      &expected_salt_len)) {
     // This should never happen.
-    RTC_NOTREACHED();
+    RTC_DCHECK_NOTREACHED();
     RTC_LOG(LS_WARNING)
         << "Failed to " << (session_ ? "update" : "create")
         << " SRTP session: unsupported cipher_suite without length information"

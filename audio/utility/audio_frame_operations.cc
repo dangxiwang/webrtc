@@ -196,8 +196,8 @@ void AudioFrameOperations::DownmixChannels(const int16_t* src_audio,
     return;
   }
 
-  RTC_NOTREACHED() << "src_channels: " << src_channels
-                   << ", dst_channels: " << dst_channels;
+  RTC_DCHECK_NOTREACHED() << "src_channels: " << src_channels
+                          << ", dst_channels: " << dst_channels;
 }
 
 int AudioFrameOperations::DownmixChannels(size_t dst_channels,

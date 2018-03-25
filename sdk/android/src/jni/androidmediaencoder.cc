@@ -737,7 +737,7 @@ int32_t MediaCodecVideoEncoder::Encode(
         break;
       }
       default:
-        RTC_NOTREACHED();
+        RTC_DCHECK_NOTREACHED();
         return WEBRTC_VIDEO_CODEC_ERROR;
     }
   }
@@ -819,7 +819,7 @@ bool MediaCodecVideoEncoder::IsTextureFrame(JNIEnv* jni,
           jni, static_cast<AndroidVideoBuffer*>(android_buffer)
                    ->video_frame_buffer());
     default:
-      RTC_NOTREACHED();
+      RTC_DCHECK_NOTREACHED();
       return false;
   }
 }

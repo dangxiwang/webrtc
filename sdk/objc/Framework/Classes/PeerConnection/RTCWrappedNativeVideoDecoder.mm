@@ -32,17 +32,17 @@
 #pragma mark - RTCVideoDecoder
 
 - (void)setCallback:(RTCVideoDecoderCallback)callback {
-  RTC_NOTREACHED();
+  RTC_DCHECK_NOTREACHED();
 }
 
 - (NSInteger)startDecodeWithSettings:(RTCVideoEncoderSettings *)settings
                        numberOfCores:(int)numberOfCores {
-  RTC_NOTREACHED();
+  RTC_DCHECK_NOTREACHED();
   return 0;
 }
 
 - (NSInteger)releaseDecoder {
-  RTC_NOTREACHED();
+  RTC_DCHECK_NOTREACHED();
   return 0;
 }
 
@@ -51,12 +51,12 @@
     fragmentationHeader:(RTCRtpFragmentationHeader *)fragmentationHeader
       codecSpecificInfo:(nullable id<RTCCodecSpecificInfo>)info
            renderTimeMs:(int64_t)renderTimeMs {
-  RTC_NOTREACHED();
+  RTC_DCHECK_NOTREACHED();
   return 0;
 }
 
 - (NSString *)implementationName {
-  RTC_NOTREACHED();
+  RTC_DCHECK_NOTREACHED();
   return nil;
 }
 

@@ -70,7 +70,7 @@ RtpTransportAdapter::CreateProxied(
   if (!rtp_transport_controller) {
     // Since OrtcFactory::CreateRtpTransport creates an RtpTransportController
     // automatically when one isn't passed in, this should never be reached.
-    RTC_NOTREACHED();
+    RTC_DCHECK_NOTREACHED();
     LOG_AND_RETURN_ERROR(RTCErrorType::INVALID_PARAMETER,
                          "Must provide an RTP transport controller.");
   }
@@ -111,7 +111,7 @@ RtpTransportAdapter::CreateSrtpProxied(
   if (!rtp_transport_controller) {
     // Since OrtcFactory::CreateRtpTransport creates an RtpTransportController
     // automatically when one isn't passed in, this should never be reached.
-    RTC_NOTREACHED();
+    RTC_DCHECK_NOTREACHED();
     LOG_AND_RETURN_ERROR(RTCErrorType::INVALID_PARAMETER,
                          "Must provide an RTP transport controller.");
   }

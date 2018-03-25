@@ -94,7 +94,7 @@
   } else if (string == webrtc::SessionDescriptionInterface::kAnswer) {
     return RTCSdpTypeAnswer;
   } else {
-    RTC_NOTREACHED();
+    RTC_DCHECK_NOTREACHED();
     return RTCSdpTypeOffer;
   }
 }

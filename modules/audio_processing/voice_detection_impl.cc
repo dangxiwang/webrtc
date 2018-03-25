@@ -75,7 +75,7 @@ void VoiceDetectionImpl::ProcessCaptureAudio(AudioBuffer* audio) {
     stream_has_voice_ = true;
     audio->set_activity(AudioFrame::kVadActive);
   } else {
-    RTC_NOTREACHED();
+    RTC_DCHECK_NOTREACHED();
   }
 }
 
@@ -126,7 +126,7 @@ int VoiceDetectionImpl::set_likelihood(VoiceDetection::Likelihood likelihood) {
         mode = 0;
         break;
       default:
-        RTC_NOTREACHED();
+        RTC_DCHECK_NOTREACHED();
         break;
     }
     int error = WebRtcVad_set_mode(vad_->state(), mode);

@@ -204,7 +204,7 @@ class PeerConnectionIceBaseTest : public ::testing::Test {
         }
       }
     }
-    RTC_NOTREACHED();
+    RTC_DCHECK_NOTREACHED();
     return cricket::ICEROLE_UNKNOWN;
   }
 

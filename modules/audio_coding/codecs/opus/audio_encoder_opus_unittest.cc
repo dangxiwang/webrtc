@@ -77,7 +77,7 @@ AudioEncoderOpusStates CreateCodec(size_t num_channels) {
         if (auto sp = mock_ptr.lock()) {
           *sp = adaptor.get();
         } else {
-          RTC_NOTREACHED();
+          RTC_DCHECK_NOTREACHED();
         }
         return adaptor;
       };

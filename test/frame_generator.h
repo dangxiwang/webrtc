@@ -55,7 +55,7 @@ class FrameGenerator {
 
   // Change the capture resolution.
   virtual void ChangeResolution(size_t width, size_t height) {
-    RTC_NOTREACHED();
+    RTC_DCHECK_NOTREACHED();
   }
 
   enum class OutputType { I420, I420A };

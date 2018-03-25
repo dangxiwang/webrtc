@@ -580,7 +580,7 @@ int RunTest(int argc, char* argv[]) {
   if (!sample_rate_hz) {
     std::cout << "Cannot find any packets with known payload types"
               << std::endl;
-    RTC_NOTREACHED();
+    RTC_DCHECK_NOTREACHED();
   }
 
   // Open the output file now that we know the sample rate. (Rate is only needed

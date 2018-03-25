@@ -142,7 +142,7 @@ VideoDecoder *ObjCVideoDecoderFactory::CreateVideoDecoderWithParams(
 
 VideoDecoder *ObjCVideoDecoderFactory::CreateVideoDecoder(VideoCodecType type) {
   // This is implemented to avoid hiding an overloaded virtual function
-  RTC_NOTREACHED();
+  RTC_DCHECK_NOTREACHED();
   return nullptr;
 }
 

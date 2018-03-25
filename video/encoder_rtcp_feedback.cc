@@ -41,7 +41,7 @@ size_t EncoderRtcpFeedback::GetStreamIndex(uint32_t ssrc) {
     if (ssrcs_[i] == ssrc)
       return i;
   }
-  RTC_NOTREACHED() << "Unknown ssrc " << ssrc;
+  RTC_DCHECK_NOTREACHED() << "Unknown ssrc " << ssrc;
   return 0;
 }
 
