@@ -221,7 +221,7 @@ uint32_t ConvertIceTransportTypeToCandidateFilter(
     case PeerConnectionInterface::kAll:
       return cricket::CF_ALL;
     default:
-      RTC_NOTREACHED();
+      RTC_DCHECK_NOTREACHED();
   }
   return cricket::CF_NONE;
 }
@@ -257,7 +257,7 @@ std::string GetSignalingStateString(
     case PeerConnectionInterface::kClosed:
       return "kClosed";
   }
-  RTC_NOTREACHED();
+  RTC_DCHECK_NOTREACHED();
   return "";
 }
 
@@ -741,7 +741,7 @@ std::string GenerateRtcpCname() {
   std::string cname;
   if (!rtc::CreateRandomString(kRtcpCnameLength, &cname)) {
     RTC_LOG(LS_ERROR) << "Failed to generate CNAME.";
-    RTC_NOTREACHED();
+    RTC_DCHECK_NOTREACHED();
   }
   return cname;
 }
@@ -2913,7 +2913,7 @@ void PeerConnection::RegisterUMAObserver(UMAObserver* observer) {
                                             kSdpSemanticRequestMax);
         break;
       default:
-        RTC_NOTREACHED();
+        RTC_DCHECK_NOTREACHED();
     }
   }
 }
@@ -3166,7 +3166,7 @@ void PeerConnection::OnMessage(rtc::Message* msg) {
       break;
     }
     default:
-      RTC_NOTREACHED() << "Not implemented";
+      RTC_DCHECK_NOTREACHED() << "Not implemented";
       break;
   }
 }
@@ -4005,7 +4005,7 @@ void PeerConnection::OnRemoteSenderAdded(const RtpSenderInfo& sender_info,
   } else if (media_type == cricket::MEDIA_TYPE_VIDEO) {
     CreateVideoReceiver(stream, sender_info);
   } else {
-    RTC_NOTREACHED() << "Invalid media type";
+    RTC_DCHECK_NOTREACHED() << "Invalid media type";
   }
 }
 
@@ -4035,7 +4035,7 @@ void PeerConnection::OnRemoteSenderRemoved(const RtpSenderInfo& sender_info,
       stream->RemoveTrack(video_track);
     }
   } else {
-    RTC_NOTREACHED() << "Invalid media type";
+    RTC_DCHECK_NOTREACHED() << "Invalid media type";
   }
   if (receiver) {
     observer_->OnRemoveTrack(receiver);
@@ -4358,7 +4358,7 @@ PeerConnection::GetAudioTransceiver() const {
       return transceiver;
     }
   }
-  RTC_NOTREACHED();
+  RTC_DCHECK_NOTREACHED();
   return nullptr;
 }
 
@@ -4372,7 +4372,7 @@ PeerConnection::GetVideoTransceiver() const {
       return transceiver;
     }
   }
-  RTC_NOTREACHED();
+  RTC_DCHECK_NOTREACHED();
   return nullptr;
 }
 
@@ -4387,7 +4387,7 @@ bool PeerConnection::HasRtpSender(cricket::MediaType type) const {
     case cricket::MEDIA_TYPE_DATA:
       return false;
   }
-  RTC_NOTREACHED();
+  RTC_DCHECK_NOTREACHED();
   return false;
 }
 
@@ -4893,7 +4893,7 @@ cricket::IceConfig PeerConnection::ParseIceConfig(
       gathering_policy = cricket::GATHER_CONTINUALLY;
       break;
     default:
-      RTC_NOTREACHED();
+      RTC_DCHECK_NOTREACHED();
       gathering_policy = cricket::GATHER_ONCE;
   }
 
@@ -5147,7 +5147,7 @@ void PeerConnection::OnTransportControllerConnectionState(
       }
       break;
     default:
-      RTC_NOTREACHED();
+      RTC_DCHECK_NOTREACHED();
   }
 }
 
@@ -5816,7 +5816,7 @@ const char* PeerConnection::SessionErrorToString(SessionError error) const {
     case SessionError::kTransport:
       return "ERROR_TRANSPORT";
   }
-  RTC_NOTREACHED();
+  RTC_DCHECK_NOTREACHED();
   return "";
 }
 
@@ -5888,7 +5888,7 @@ void PeerConnection::ReportNegotiatedSdpSemantics(
                                           kSdpSemanticNegotiatedMax);
       break;
     default:
-      RTC_NOTREACHED();
+      RTC_DCHECK_NOTREACHED();
   }
 }
 
@@ -6058,7 +6058,7 @@ void PeerConnection::ReportNegotiatedCiphers(
         ssl_counter_type = kEnumCounterDataSslCipher;
         break;
       default:
-        RTC_NOTREACHED();
+        RTC_DCHECK_NOTREACHED();
         continue;
     }
     if (srtp_crypto_suite != rtc::SRTP_INVALID_CRYPTO_SUITE) {
@@ -6157,7 +6157,8 @@ void PeerConnection::DestroyBaseChannel(cricket::BaseChannel* channel) {
           static_cast<cricket::RtpDataChannel*>(channel));
       break;
     default:
-      RTC_NOTREACHED() << "Unknown media type: " << channel->media_type();
+      RTC_DCHECK_NOTREACHED()
+          << "Unknown media type: " << channel->media_type();
       break;
   }
 

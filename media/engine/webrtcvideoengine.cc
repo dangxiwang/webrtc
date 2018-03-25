@@ -104,7 +104,7 @@ class DecoderFactoryAdapter {
     webrtc::VideoDecoder* CreateVideoDecoderWithParams(
         webrtc::VideoCodecType type,
         VideoDecoderParams params) override {
-      RTC_NOTREACHED();
+      RTC_DCHECK_NOTREACHED();
       return nullptr;
     }
 

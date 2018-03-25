@@ -37,7 +37,7 @@ RtcpMode GetRuntimeRtcpMode(rtclog::VideoReceiveConfig::RtcpMode rtcp_mode) {
     case rtclog::VideoReceiveConfig::RTCP_REDUCEDSIZE:
       return RtcpMode::kReducedSize;
   }
-  RTC_NOTREACHED();
+  RTC_DCHECK_NOTREACHED();
   return RtcpMode::kOff;
 }
 
@@ -94,7 +94,7 @@ BandwidthUsage GetRuntimeDetectorState(
     case rtclog::DelayBasedBweUpdate::BWE_OVERUSING:
       return BandwidthUsage::kBwOverusing;
   }
-  RTC_NOTREACHED();
+  RTC_DCHECK_NOTREACHED();
   return BandwidthUsage::kBwNormal;
 }
 
@@ -110,7 +110,7 @@ IceCandidatePairEventType GetRuntimeIceCandidatePairConfigType(
     case rtclog::IceCandidatePairConfig::SELECTED:
       return IceCandidatePairEventType::kSelected;
   }
-  RTC_NOTREACHED();
+  RTC_DCHECK_NOTREACHED();
   return IceCandidatePairEventType::kAdded;
 }
 
@@ -128,7 +128,7 @@ IceCandidateType GetRuntimeIceCandidateType(
     case rtclog::IceCandidatePairConfig::UNKNOWN_CANDIDATE_TYPE:
       return IceCandidateType::kUnknown;
   }
-  RTC_NOTREACHED();
+  RTC_DCHECK_NOTREACHED();
   return IceCandidateType::kUnknown;
 }
 
@@ -146,7 +146,7 @@ IceCandidatePairProtocol GetRuntimeIceCandidatePairProtocol(
     case rtclog::IceCandidatePairConfig::UNKNOWN_PROTOCOL:
       return IceCandidatePairProtocol::kUnknown;
   }
-  RTC_NOTREACHED();
+  RTC_DCHECK_NOTREACHED();
   return IceCandidatePairProtocol::kUnknown;
 }
 
@@ -160,7 +160,7 @@ IceCandidatePairAddressFamily GetRuntimeIceCandidatePairAddressFamily(
     case rtclog::IceCandidatePairConfig::UNKNOWN_ADDRESS_FAMILY:
       return IceCandidatePairAddressFamily::kUnknown;
   }
-  RTC_NOTREACHED();
+  RTC_DCHECK_NOTREACHED();
   return IceCandidatePairAddressFamily::kUnknown;
 }
 
@@ -180,7 +180,7 @@ IceCandidateNetworkType GetRuntimeIceCandidateNetworkType(
     case rtclog::IceCandidatePairConfig::UNKNOWN_NETWORK_TYPE:
       return IceCandidateNetworkType::kUnknown;
   }
-  RTC_NOTREACHED();
+  RTC_DCHECK_NOTREACHED();
   return IceCandidateNetworkType::kUnknown;
 }
 
@@ -196,7 +196,7 @@ IceCandidatePairEventType GetRuntimeIceCandidatePairEventType(
     case rtclog::IceCandidatePairEvent::CHECK_RESPONSE_RECEIVED:
       return IceCandidatePairEventType::kCheckResponseReceived;
   }
-  RTC_NOTREACHED();
+  RTC_DCHECK_NOTREACHED();
   return IceCandidatePairEventType::kCheckSent;
 }
 
@@ -754,7 +754,7 @@ ParsedRtcEventLog::BweProbeResultEvent ParsedRtcEventLog::GetBweProbeResult(
   } else if (pr_event.result() == rtclog::BweProbeResult::TIMEOUT) {
     res.failure_reason = ProbeFailureReason::kTimeout;
   } else {
-    RTC_NOTREACHED();
+    RTC_DCHECK_NOTREACHED();
   }
 
   return res;

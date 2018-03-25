@@ -63,7 +63,7 @@ class PeerConnectionWrapperForBundleTest : public PeerConnectionWrapper {
         return pc()->AddIceCandidate(&jsep_candidate);
       }
     }
-    RTC_NOTREACHED();
+    RTC_DCHECK_NOTREACHED();
     return false;
   }
 

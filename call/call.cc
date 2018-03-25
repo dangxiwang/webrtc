@@ -970,7 +970,7 @@ void Call::SignalChannelNetworkState(MediaType media, NetworkState state) {
       break;
     case MediaType::ANY:
     case MediaType::DATA:
-      RTC_NOTREACHED();
+      RTC_DCHECK_NOTREACHED();
       break;
   }
 
@@ -1014,7 +1014,7 @@ void Call::OnTransportOverheadChanged(MediaType media,
     }
     case MediaType::ANY:
     case MediaType::DATA:
-      RTC_NOTREACHED();
+      RTC_DCHECK_NOTREACHED();
       break;
   }
 }

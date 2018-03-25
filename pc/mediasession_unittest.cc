@@ -308,7 +308,7 @@ static void AttachSenderToMediaSection(
       it->AddRtpDataChannel(track_id, stream_ids[0]);
       break;
     default:
-      RTC_NOTREACHED();
+      RTC_DCHECK_NOTREACHED();
   }
 }
 
@@ -323,7 +323,7 @@ static void DetachSenderFromMediaSection(const std::string& mid,
       return;
     }
   }
-  RTC_NOTREACHED();
+  RTC_DCHECK_NOTREACHED();
 }
 
 // Helper function used to create a default MediaSessionOptions for Plan B SDP.

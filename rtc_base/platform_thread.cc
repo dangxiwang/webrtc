@@ -190,10 +190,10 @@ void PlatformThread::Run() {
       auto diff = loop_stamps[id] - loop_stamps[compare_id];
       RTC_DCHECK_GE(diff, 0);
       if (diff < kPeriodToMeasureMs) {
-        RTC_NOTREACHED() << "This thread is too busy: " << name_ << " " << diff
-                         << "ms sequence=" << sequence_nr << " "
-                         << loop_stamps[id] << " vs " << loop_stamps[compare_id]
-                         << ", " << id << " vs " << compare_id;
+        RTC_DCHECK_NOTREACHED()
+            << "This thread is too busy: " << name_ << " " << diff
+            << "ms sequence=" << sequence_nr << " " << loop_stamps[id] << " vs "
+            << loop_stamps[compare_id] << ", " << id << " vs " << compare_id;
       }
     }
     ++sequence_nr;

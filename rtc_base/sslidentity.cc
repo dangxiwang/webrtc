@@ -83,7 +83,7 @@ KeyParams::KeyParams(KeyType key_type) {
     params_.rsa.mod_size = kRsaDefaultModSize;
     params_.rsa.pub_exp = kRsaDefaultExponent;
   } else {
-    RTC_NOTREACHED();
+    RTC_DCHECK_NOTREACHED();
   }
 }
 

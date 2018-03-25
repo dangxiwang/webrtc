@@ -100,7 +100,7 @@ class JsepTransport2Test : public testing::Test, public sigslot::has_slots<> {
                                     rtcp_dtls_transport.get());
         break;
       default:
-        RTC_NOTREACHED();
+        RTC_DCHECK_NOTREACHED();
     }
 
     jsep_transport_ = rtc::MakeUnique<JsepTransport2>(

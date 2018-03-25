@@ -66,7 +66,7 @@ class AudioTransport {
       int sample_rate,
       size_t number_of_channels,
       size_t number_of_frames) {
-    RTC_NOTREACHED();
+    RTC_DCHECK_NOTREACHED();
   }
 
   // Method to pull mixed render audio data from all active VoE channels.

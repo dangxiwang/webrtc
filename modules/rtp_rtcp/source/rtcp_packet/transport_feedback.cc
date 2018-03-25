@@ -427,7 +427,7 @@ bool TransportFeedback::Parse(const CommonHeader& packet) {
         RTC_LOG(LS_WARNING) << "Invalid delta_size for seq_no " << seq_no;
         return false;
       default:
-        RTC_NOTREACHED();
+        RTC_DCHECK_NOTREACHED();
         break;
     }
     ++seq_no;

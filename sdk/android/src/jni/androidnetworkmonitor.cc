@@ -63,7 +63,7 @@ static NetworkType GetNetworkTypeFromJava(
   if (enum_name == "CONNECTION_NONE") {
     return NetworkType::NETWORK_NONE;
   }
-  RTC_NOTREACHED();
+  RTC_DCHECK_NOTREACHED();
   return NetworkType::NETWORK_UNKNOWN;
 }
 
@@ -85,7 +85,7 @@ static rtc::AdapterType AdapterTypeFromNetworkType(NetworkType network_type) {
       // Map it to VPN for now.
       return rtc::ADAPTER_TYPE_VPN;
     default:
-      RTC_NOTREACHED() << "Invalid network type " << network_type;
+      RTC_DCHECK_NOTREACHED() << "Invalid network type " << network_type;
       return rtc::ADAPTER_TYPE_UNKNOWN;
   }
 }

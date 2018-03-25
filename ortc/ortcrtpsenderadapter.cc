@@ -74,7 +74,7 @@ RTCError OrtcRtpSenderAdapter::SetTrack(MediaStreamTrackInterface* track) {
   }
   if (internal_sender_ && !internal_sender_->SetTrack(track)) {
     // Since we checked the track type above, this should never happen...
-    RTC_NOTREACHED();
+    RTC_DCHECK_NOTREACHED();
     LOG_AND_RETURN_ERROR(RTCErrorType::INTERNAL_ERROR,
                          "Failed to set track on RtpSender.");
   }
@@ -119,7 +119,7 @@ RTCError OrtcRtpSenderAdapter::Send(const RtpParameters& parameters) {
       }
       break;
     case cricket::MEDIA_TYPE_DATA:
-      RTC_NOTREACHED();
+      RTC_DCHECK_NOTREACHED();
       return webrtc::RTCError(webrtc::RTCErrorType::INTERNAL_ERROR);
   }
   last_applied_parameters_ = filled_parameters;
@@ -174,13 +174,13 @@ void OrtcRtpSenderAdapter::CreateInternalSender() {
       break;
     }
     case cricket::MEDIA_TYPE_DATA:
-      RTC_NOTREACHED();
+      RTC_DCHECK_NOTREACHED();
   }
   if (track_) {
     if (!internal_sender_->SetTrack(track_)) {
       // Since we checked the track type when it was set, this should never
       // happen...
-      RTC_NOTREACHED();
+      RTC_DCHECK_NOTREACHED();
     }
   }
 }

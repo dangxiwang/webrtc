@@ -59,7 +59,7 @@ const NSString * const kRTCH264CodecName = @(cricket::kH264CodecName);
         _kind = kRTCMediaStreamTrackKindVideo;
         break;
       case cricket::MEDIA_TYPE_DATA:
-        RTC_NOTREACHED();
+        RTC_DCHECK_NOTREACHED();
         break;
     }
     if (nativeParameters.clock_rate) {
@@ -83,7 +83,7 @@ const NSString * const kRTCH264CodecName = @(cricket::kH264CodecName);
   } else if (_kind == kRTCMediaStreamTrackKindVideo) {
     parameters.kind = cricket::MEDIA_TYPE_VIDEO;
   } else {
-    RTC_NOTREACHED();
+    RTC_DCHECK_NOTREACHED();
   }
   if (_clockRate != nil) {
     parameters.clock_rate = rtc::Optional<int>(_clockRate.intValue);

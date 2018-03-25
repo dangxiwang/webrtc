@@ -86,7 +86,7 @@ class RTCCertificateGenerationTask : public RefCountInterface,
         delete msg->pdata;
         return;
       default:
-        RTC_NOTREACHED();
+        RTC_DCHECK_NOTREACHED();
     }
   }
 

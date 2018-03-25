@@ -110,7 +110,7 @@ FakeRecordingDevice::FakeRecordingDevice(int initial_mic_level,
       worker_ = rtc::MakeUnique<FakeRecordingDeviceLinear>(initial_mic_level);
       break;
     default:
-      RTC_NOTREACHED();
+      RTC_DCHECK_NOTREACHED();
       break;
   }
 }

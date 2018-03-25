@@ -160,7 +160,7 @@ class AudioRtpSender : public DtmfProviderInterface,
   }
   void SetVideoMediaChannel(
       cricket::VideoMediaChannel* video_media_channel) override {
-    RTC_NOTREACHED();
+    RTC_DCHECK_NOTREACHED();
   }
 
  private:
@@ -249,7 +249,7 @@ class VideoRtpSender : public ObserverInterface,
 
   void SetVoiceMediaChannel(
       cricket::VoiceMediaChannel* voice_media_channel) override {
-    RTC_NOTREACHED();
+    RTC_DCHECK_NOTREACHED();
   }
   void SetVideoMediaChannel(
       cricket::VideoMediaChannel* video_media_channel) override {

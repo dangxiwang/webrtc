@@ -171,7 +171,7 @@ std::string EventTypeToString(webrtc::rtclog::Event::EventType event_type) {
     case webrtc::rtclog::Event::ICE_CANDIDATE_PAIR_EVENT:
       return "ICE_CANDIDATE_PAIR_EVENT";
   }
-  RTC_NOTREACHED();
+  RTC_DCHECK_NOTREACHED();
   return "UNKNOWN_EVENT";
 }
 

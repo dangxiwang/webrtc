@@ -108,7 +108,7 @@
       return 0;  // Scaling RGBA frames does not require a temporary buffer.
     }
   }
-  RTC_NOTREACHED() << "Unsupported pixel format.";
+  RTC_DCHECK_NOTREACHED() << "Unsupported pixel format.";
   return 0;
 }
 
@@ -125,7 +125,7 @@
       [self cropAndScaleARGBTo:outputPixelBuffer];
       break;
     }
-    default: { RTC_NOTREACHED() << "Unsupported pixel format."; }
+    default: { RTC_DCHECK_NOTREACHED() << "Unsupported pixel format."; }
   }
 
   return YES;
@@ -201,7 +201,7 @@
                             libyuvPixelFormat);
       break;
     }
-    default: { RTC_NOTREACHED() << "Unsupported pixel format."; }
+    default: { RTC_DCHECK_NOTREACHED() << "Unsupported pixel format."; }
   }
 
   CVPixelBufferUnlockBaseAddress(_pixelBuffer, kCVPixelBufferLock_ReadOnly);

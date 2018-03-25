@@ -26,7 +26,7 @@ const size_t kSamplesPer48kHzChannel = 480;
 
 int KeyboardChannelIndex(const StreamConfig& stream_config) {
   if (!stream_config.has_keyboard()) {
-    RTC_NOTREACHED();
+    RTC_DCHECK_NOTREACHED();
     return 0;
   }
 

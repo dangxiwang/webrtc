@@ -220,7 +220,8 @@ void PrintSdes(const webrtc::rtcp::CommonHeader& rtcp_block,
   std::cout << log_timestamp << "\t"
             << "RTCP_SDES" << StreamInfo(direction, MediaType::ANY)
             << std::endl;
-  RTC_NOTREACHED() << "SDES should have been redacted when writing the log";
+  RTC_DCHECK_NOTREACHED()
+      << "SDES should have been redacted when writing the log";
 }
 
 void PrintBye(const webrtc::ParsedRtcEventLog& parsed_stream,

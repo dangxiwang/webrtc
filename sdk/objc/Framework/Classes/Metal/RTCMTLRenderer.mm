@@ -112,12 +112,12 @@ static const NSInteger kMaxInflightBuffers = 1;
 }
 
 - (NSString *)shaderSource {
-  RTC_NOTREACHED() << "Virtual method not implemented in subclass.";
+  RTC_DCHECK_NOTREACHED() << "Virtual method not implemented in subclass.";
   return nil;
 }
 
 - (void)uploadTexturesToRenderEncoder:(id<MTLRenderCommandEncoder>)renderEncoder {
-  RTC_NOTREACHED() << "Virtual method not implemented in subclass.";
+  RTC_DCHECK_NOTREACHED() << "Virtual method not implemented in subclass.";
 }
 
 - (BOOL)setupTexturesForFrame:(nonnull RTCVideoFrame *)frame {

@@ -1374,7 +1374,7 @@ class WebRtcSdpTest : public testing::Test {
     } else if (mline_index == 1) {
       content_name = kVideoContentName;
     } else {
-      RTC_NOTREACHED();
+      RTC_DCHECK_NOTREACHED();
     }
     TransportInfo transport_info(
         content_name, TransportDescription(ufrag, pwd));

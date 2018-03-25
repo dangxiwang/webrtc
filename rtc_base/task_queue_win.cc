@@ -77,7 +77,7 @@ ThreadPriority TaskQueuePriorityToThreadPriority(Priority priority) {
     case Priority::NORMAL:
       return kNormalPriority;
     default:
-      RTC_NOTREACHED();
+      RTC_DCHECK_NOTREACHED();
       break;
   }
   return kNormalPriority;
@@ -429,7 +429,7 @@ bool TaskQueue::Impl::ThreadState::ProcessQueuedMessages() {
           break;
         }
         default:
-          RTC_NOTREACHED();
+          RTC_DCHECK_NOTREACHED();
           break;
       }
     } else {

@@ -81,7 +81,7 @@ class VideoProcessorIntegrationTestLibvpx
         EXPECT_TRUE(
             vp9::GetQp(encoded_frame._buffer, encoded_frame._length, &qp));
       } else {
-        RTC_NOTREACHED();
+        RTC_DCHECK_NOTREACHED();
       }
       EXPECT_EQ(encoded_frame.qp_, qp) << "Encoder QP != parsed bitstream QP.";
     }

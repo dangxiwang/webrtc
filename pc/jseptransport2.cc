@@ -379,7 +379,7 @@ bool JsepTransport2::SetRtcpMux(bool enable,
       }
       break;
     default:
-      RTC_NOTREACHED();
+      RTC_DCHECK_NOTREACHED();
   }
 
   if (!ret) {

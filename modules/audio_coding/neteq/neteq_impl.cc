@@ -185,7 +185,7 @@ void SetAudioFrameActivityAndType(bool vad_enabled,
       break;
     }
     default:
-      RTC_NOTREACHED();
+      RTC_DCHECK_NOTREACHED();
   }
   if (!vad_enabled) {
     // Always set kVadUnknown when receive VAD is inactive.
@@ -1989,7 +1989,7 @@ int NetEqImpl::ExtractPackets(size_t required_samples,
     } else if (!has_cng_packet) {
       RTC_LOG(LS_WARNING) << "Unknown payload type "
                           << static_cast<int>(packet->payload_type);
-      RTC_NOTREACHED();
+      RTC_DCHECK_NOTREACHED();
     }
 
     if (packet_duration == 0) {

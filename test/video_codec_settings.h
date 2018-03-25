@@ -75,7 +75,7 @@ static void CodecSettings(VideoCodecType codec_type, VideoCodec* settings) {
     case kVideoCodecMultiplex:
     case kVideoCodecGeneric:
     case kVideoCodecUnknown:
-      RTC_NOTREACHED();
+      RTC_DCHECK_NOTREACHED();
       return;
   }
 }
