@@ -488,7 +488,7 @@ void GtkMainWnd::Draw(GtkWidget* widget, cairo_t* cr) {
   cairo_fill(cr);
   cairo_surface_destroy(surface);
 #else
-  RTC_NOTREACHED();
+  RTC_DCHECK_NOTREACHED();
 #endif
 }
 

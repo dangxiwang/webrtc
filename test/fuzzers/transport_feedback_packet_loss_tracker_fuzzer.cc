@@ -180,7 +180,7 @@ bool FuzzClockAdvancement(const uint8_t** data,
     }
   }
 
-  RTC_NOTREACHED();
+  RTC_DCHECK_NOTREACHED();
   return false;
 }
 

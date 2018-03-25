@@ -178,13 +178,13 @@ TEST_F(VideoDecoderSoftwareFallbackWrapperTest,
     int32_t Decoded(VideoFrame& decodedImage) override { return 0; }
     int32_t Decoded(
         webrtc::VideoFrame& decodedImage, int64_t decode_time_ms) override {
-      RTC_NOTREACHED();
+      RTC_DCHECK_NOTREACHED();
       return -1;
     }
     void Decoded(webrtc::VideoFrame& decodedImage,
                  rtc::Optional<int32_t> decode_time_ms,
                  rtc::Optional<uint8_t> qp) override {
-      RTC_NOTREACHED();
+      RTC_DCHECK_NOTREACHED();
     }
   } callback;
 

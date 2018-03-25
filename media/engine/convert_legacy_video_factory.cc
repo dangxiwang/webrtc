@@ -210,7 +210,7 @@ class DecoderAdapter : public webrtc::VideoDecoderFactory {
 
   std::vector<webrtc::SdpVideoFormat> GetSupportedFormats() const override {
     // This is not implemented for the legacy decoder factory.
-    RTC_NOTREACHED();
+    RTC_DCHECK_NOTREACHED();
     return std::vector<webrtc::SdpVideoFormat>();
   }
 

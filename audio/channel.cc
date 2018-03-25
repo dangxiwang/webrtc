@@ -70,11 +70,11 @@ class RtcEventLogProxy final : public webrtc::RtcEventLog {
 
   bool StartLogging(std::unique_ptr<RtcEventLogOutput> output,
                     int64_t output_period_ms) override {
-    RTC_NOTREACHED();
+    RTC_DCHECK_NOTREACHED();
     return false;
   }
 
-  void StopLogging() override { RTC_NOTREACHED(); }
+  void StopLogging() override { RTC_DCHECK_NOTREACHED(); }
 
   void Log(std::unique_ptr<RtcEvent> event) override {
     rtc::CritScope lock(&crit_);
@@ -216,7 +216,7 @@ class RtpPacketSenderProxy : public RtpPacketSender {
   }
 
   void SetAccountForAudioPackets(bool account_for_audio) override {
-    RTC_NOTREACHED();
+    RTC_DCHECK_NOTREACHED();
   }
 
  private:

@@ -39,7 +39,7 @@ size_t EncodedImage::GetBufferPaddingBytes(VideoCodecType codec_type) {
     case kVideoCodecUnknown:
       return 0;
   }
-  RTC_NOTREACHED();
+  RTC_DCHECK_NOTREACHED();
   return 0;
 }
 

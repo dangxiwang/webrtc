@@ -85,7 +85,7 @@ int32_t VideoStreamDecoder::FrameToRender(VideoFrame& video_frame,
 
 int32_t VideoStreamDecoder::ReceivedDecodedReferenceFrame(
   const uint64_t picture_id) {
-  RTC_NOTREACHED();
+  RTC_DCHECK_NOTREACHED();
   return 0;
 }
 

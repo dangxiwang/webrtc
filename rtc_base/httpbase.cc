@@ -65,7 +65,7 @@ HttpParser::Process(const char* buffer, size_t len, size_t* processed,
   *error = HE_NONE;
 
   if (state_ >= ST_COMPLETE) {
-    RTC_NOTREACHED();
+    RTC_DCHECK_NOTREACHED();
     return PR_COMPLETE;
   }
 
@@ -207,7 +207,7 @@ HttpParser::ProcessLine(const char* line, size_t len, HttpError* error) {
     break;
 
   default:
-    RTC_NOTREACHED();
+    RTC_DCHECK_NOTREACHED();
     break;
   }
 
@@ -380,7 +380,7 @@ HttpBase::isConnected() const {
 bool
 HttpBase::attach(StreamInterface* stream) {
   if ((mode_ != HM_NONE) || (http_stream_ != nullptr) || (stream == nullptr)) {
-    RTC_NOTREACHED();
+    RTC_DCHECK_NOTREACHED();
     return false;
   }
   http_stream_ = stream;
@@ -706,7 +706,7 @@ HttpBase::flush_data() {
     }
   }
 
-  RTC_NOTREACHED();
+  RTC_DCHECK_NOTREACHED();
 }
 
 bool

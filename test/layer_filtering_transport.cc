@@ -155,7 +155,7 @@ bool LayerFilteringTransport::SendRtp(const uint8_t* packet,
         temp_buffer[header.headerLength] = 1;  // One byte of padding.
       }
     } else {
-      RTC_NOTREACHED() << "Parse error";
+      RTC_DCHECK_NOTREACHED() << "Parse error";
     }
   }
 

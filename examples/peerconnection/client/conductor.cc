@@ -526,7 +526,7 @@ void Conductor::UIThreadCallback(int msg_id, void* data) {
     }
 
     default:
-      RTC_NOTREACHED();
+      RTC_DCHECK_NOTREACHED();
       break;
   }
 }

@@ -123,7 +123,7 @@ class AudioRtpReceiver : public ObserverInterface,
   }
   void SetVideoMediaChannel(
       cricket::VideoMediaChannel* video_media_channel) override {
-    RTC_NOTREACHED();
+    RTC_DCHECK_NOTREACHED();
   }
 
   std::vector<RtpSource> GetSources() const override;
@@ -193,7 +193,7 @@ class VideoRtpReceiver : public rtc::RefCountedObject<RtpReceiverInternal> {
 
   void SetVoiceMediaChannel(
       cricket::VoiceMediaChannel* voice_media_channel) override {
-    RTC_NOTREACHED();
+    RTC_DCHECK_NOTREACHED();
   }
   void SetVideoMediaChannel(
       cricket::VideoMediaChannel* video_media_channel) override {

@@ -396,7 +396,7 @@ rtc::Optional<Syncable::Info> VideoReceiveStream::GetInfo() const {
 }
 
 uint32_t VideoReceiveStream::GetPlayoutTimestamp() const {
-  RTC_NOTREACHED();
+  RTC_DCHECK_NOTREACHED();
   return 0;
 }
 

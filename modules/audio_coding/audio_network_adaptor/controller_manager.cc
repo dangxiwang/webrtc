@@ -282,7 +282,7 @@ std::unique_ptr<ControllerManager> ControllerManagerImpl::Create(
             initial_frame_length_ms);
         break;
       default:
-        RTC_NOTREACHED();
+        RTC_DCHECK_NOTREACHED();
     }
     if (controller_config.has_scoring_point()) {
       auto& scoring_point = controller_config.scoring_point();
@@ -310,7 +310,7 @@ std::unique_ptr<ControllerManager> ControllerManagerImpl::Create(
   }
 
 #else
-  RTC_NOTREACHED();
+  RTC_DCHECK_NOTREACHED();
   return nullptr;
 #endif  // WEBRTC_ENABLE_PROTOBUF
 }

@@ -179,7 +179,7 @@ OrtcFactory::OrtcFactory(
       audio_decoder_factory_(audio_decoder_factory) {
   if (!rtc::CreateRandomString(kDefaultRtcpCnameLength, &default_cname_)) {
     RTC_LOG(LS_ERROR) << "Failed to generate CNAME?";
-    RTC_NOTREACHED();
+    RTC_DCHECK_NOTREACHED();
   }
   if (!network_thread_) {
     owned_network_thread_ = rtc::Thread::CreateWithSocketServer();
