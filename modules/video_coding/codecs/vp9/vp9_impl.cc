@@ -565,7 +565,7 @@ int VP9EncoderImpl::Encode(const VideoFrame& input_image,
 
     if (codec_.mode == kRealtimeVideo) {
       // Real time video not yet implemented in flexible mode.
-      RTC_NOTREACHED();
+      RTC_DCHECK_NOTREACHED();
     } else {
       settings = spatial_layer_->GetSuperFrameSettings(input_image.timestamp(),
                                                        send_keyframe);

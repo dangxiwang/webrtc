@@ -747,7 +747,7 @@ void AudioDeviceIOS::UpdateAudioUnit(bool can_play_or_record) {
   switch (audio_unit_->GetState()) {
     case VoiceProcessingAudioUnit::kInitRequired:
       RTCLog(@"VPAU state: InitRequired");
-      RTC_NOTREACHED();
+      RTC_DCHECK_NOTREACHED();
       break;
     case VoiceProcessingAudioUnit::kUninitialized:
       RTCLog(@"VPAU state: Uninitialized");

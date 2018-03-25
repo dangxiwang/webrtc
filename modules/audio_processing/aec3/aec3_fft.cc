@@ -53,7 +53,7 @@ void Aec3Fft::ZeroPaddedFft(rtc::ArrayView<const float> x,
                      [](float a, float b) { return a * b; });
       break;
     default:
-      RTC_NOTREACHED();
+      RTC_DCHECK_NOTREACHED();
   }
 
   Fft(&fft, X);

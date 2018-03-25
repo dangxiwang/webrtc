@@ -1350,7 +1350,7 @@ SessionDescription* MediaSessionDescriptionFactory::CreateOffer(
         }
         break;
       default:
-        RTC_NOTREACHED();
+        RTC_DCHECK_NOTREACHED();
     }
     ++msection_index;
   }
@@ -1484,7 +1484,7 @@ SessionDescription* MediaSessionDescriptionFactory::CreateAnswer(
         }
         break;
       default:
-        RTC_NOTREACHED();
+        RTC_DCHECK_NOTREACHED();
     }
     ++msection_index;
     // See if we can add the newly generated m= section to the BUNDLE group in
@@ -1565,7 +1565,7 @@ const AudioCodecs& MediaSessionDescriptionFactory::GetAudioCodecsForOffer(
     case RtpTransceiverDirection::kRecvOnly:
       return audio_recv_codecs_;
   }
-  RTC_NOTREACHED();
+  RTC_DCHECK_NOTREACHED();
   return audio_sendrecv_codecs_;
 }
 
@@ -1584,7 +1584,7 @@ const AudioCodecs& MediaSessionDescriptionFactory::GetAudioCodecsForAnswer(
     case RtpTransceiverDirection::kRecvOnly:
       return audio_recv_codecs_;
   }
-  RTC_NOTREACHED();
+  RTC_DCHECK_NOTREACHED();
   return audio_sendrecv_codecs_;
 }
 

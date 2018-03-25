@@ -70,7 +70,7 @@ int LockManagerOperation(void** lock,
       *lock = nullptr;
       return 0;
   }
-  RTC_NOTREACHED() << "Unrecognized AVLockOp.";
+  RTC_DCHECK_NOTREACHED() << "Unrecognized AVLockOp.";
   return -1;
 }
 
@@ -78,7 +78,7 @@ void InitializeFFmpeg() {
   rtc::CritScope cs(&ffmpeg_init_lock);
   if (!ffmpeg_initialized) {
     if (av_lockmgr_register(LockManagerOperation) < 0) {
-      RTC_NOTREACHED() << "av_lockmgr_register failed.";
+      RTC_DCHECK_NOTREACHED() << "av_lockmgr_register failed.";
       return;
     }
     av_register_all();

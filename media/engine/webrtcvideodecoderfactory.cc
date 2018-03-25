@@ -23,7 +23,7 @@ webrtc::VideoDecoder* WebRtcVideoDecoderFactory::CreateVideoDecoderWithParams(
 
 webrtc::VideoDecoder* WebRtcVideoDecoderFactory::CreateVideoDecoder(
     webrtc::VideoCodecType type) {
-  RTC_NOTREACHED();
+  RTC_DCHECK_NOTREACHED();
   return nullptr;
 }
 

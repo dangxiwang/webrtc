@@ -46,7 +46,7 @@ class RtpToNtpEstimator {
     // we don't ask smoothing_filter_ to return anything if there were no
     // samples.
     Parameters(const int& value) {  // NOLINT
-      RTC_NOTREACHED();
+      RTC_DCHECK_NOTREACHED();
     }
     Parameters() : frequency_khz(0.0), offset_ms(0.0) {}
 

@@ -498,7 +498,7 @@ TEST_F(ScreenshareLayerTest, UpdatesHistograms) {
     } else if (flags == -1) {
       dropped_frame = true;
     } else {
-      RTC_NOTREACHED() << "Unexpected flags";
+      RTC_DCHECK_NOTREACHED() << "Unexpected flags";
     }
     clock_.AdvanceTimeMilliseconds(1000 / 5);
   }

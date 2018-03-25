@@ -100,7 +100,7 @@ void
 HttpServer::Remove(int connection_id) {
   ConnectionMap::iterator it = connections_.find(connection_id);
   if (it == connections_.end()) {
-    RTC_NOTREACHED();
+    RTC_DCHECK_NOTREACHED();
     return;
   }
   Connection* connection = it->second;
@@ -218,7 +218,7 @@ HttpServer::Connection::onHttpComplete(HttpMode mode, HttpError err) {
     current_->response.clear(true);
     base_.recv(&current_->request);
   } else {
-    RTC_NOTREACHED();
+    RTC_DCHECK_NOTREACHED();
   }
 }
 

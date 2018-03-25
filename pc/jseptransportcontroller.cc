@@ -517,7 +517,7 @@ void JsepTransportController::OnMessage(rtc::Message* pmsg) {
       break;
     }
     default:
-      RTC_NOTREACHED();
+      RTC_DCHECK_NOTREACHED();
   }
 }
 
@@ -907,7 +907,7 @@ void JsepTransportController::OnTransportCandidateGathered_n(
 
   // We should never signal peer-reflexive candidates.
   if (candidate.type() == cricket::PRFLX_PORT_TYPE) {
-    RTC_NOTREACHED();
+    RTC_DCHECK_NOTREACHED();
     return;
   }
   std::vector<cricket::Candidate> candidates;

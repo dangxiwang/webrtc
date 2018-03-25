@@ -746,7 +746,7 @@ void RelayServerBinding::OnMessage(rtc::Message *pmsg) {
     }
 
   } else {
-    RTC_NOTREACHED();
+    RTC_DCHECK_NOTREACHED();
   }
 }
 

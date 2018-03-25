@@ -30,7 +30,7 @@ int16_t MapSetting(EchoCancellation::SuppressionLevel level) {
     case EchoCancellation::kHighSuppression:
       return kAecNlpAggressive;
   }
-  RTC_NOTREACHED();
+  RTC_DCHECK_NOTREACHED();
   return -1;
 }
 

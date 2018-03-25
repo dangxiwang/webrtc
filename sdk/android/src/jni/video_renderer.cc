@@ -45,7 +45,7 @@ class JavaVideoRendererWrapper : public rtc::VideoSinkInterface<VideoFrame> {
           j_frame = FromWrappedJavaBuffer(env, video_frame);
           break;
         default:
-          RTC_NOTREACHED();
+          RTC_DCHECK_NOTREACHED();
       }
     } else {
       j_frame = ToJavaI420Frame(env, video_frame);

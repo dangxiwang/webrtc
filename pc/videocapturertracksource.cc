@@ -52,7 +52,7 @@ MediaSourceInterface::SourceState GetReadyState(cricket::CaptureState state) {
     case cricket::CS_STOPPED:
       return MediaSourceInterface::kEnded;
     default:
-      RTC_NOTREACHED() << "GetReadyState unknown state";
+      RTC_DCHECK_NOTREACHED() << "GetReadyState unknown state";
   }
   return MediaSourceInterface::kEnded;
 }

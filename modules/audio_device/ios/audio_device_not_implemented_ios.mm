@@ -46,22 +46,22 @@ int32_t AudioDeviceIOS::SpeakerVolumeIsAvailable(bool& available) {
 }
 
 int32_t AudioDeviceIOS::SetSpeakerVolume(uint32_t volume) {
-  RTC_NOTREACHED() << "Not implemented";
+  RTC_DCHECK_NOTREACHED() << "Not implemented";
   return -1;
 }
 
 int32_t AudioDeviceIOS::SpeakerVolume(uint32_t& volume) const {
-  RTC_NOTREACHED() << "Not implemented";
+  RTC_DCHECK_NOTREACHED() << "Not implemented";
   return -1;
 }
 
 int32_t AudioDeviceIOS::MaxSpeakerVolume(uint32_t& maxVolume) const {
-  RTC_NOTREACHED() << "Not implemented";
+  RTC_DCHECK_NOTREACHED() << "Not implemented";
   return -1;
 }
 
 int32_t AudioDeviceIOS::MinSpeakerVolume(uint32_t& minVolume) const {
-  RTC_NOTREACHED() << "Not implemented";
+  RTC_DCHECK_NOTREACHED() << "Not implemented";
   return -1;
 }
 
@@ -71,12 +71,12 @@ int32_t AudioDeviceIOS::SpeakerMuteIsAvailable(bool& available) {
 }
 
 int32_t AudioDeviceIOS::SetSpeakerMute(bool enable) {
-  RTC_NOTREACHED() << "Not implemented";
+  RTC_DCHECK_NOTREACHED() << "Not implemented";
   return -1;
 }
 
 int32_t AudioDeviceIOS::SpeakerMute(bool& enabled) const {
-  RTC_NOTREACHED() << "Not implemented";
+  RTC_DCHECK_NOTREACHED() << "Not implemented";
   return -1;
 }
 
@@ -86,7 +86,7 @@ int32_t AudioDeviceIOS::SetPlayoutDevice(uint16_t index) {
 }
 
 int32_t AudioDeviceIOS::SetPlayoutDevice(AudioDeviceModule::WindowsDeviceType) {
-  RTC_NOTREACHED() << "Not implemented";
+  RTC_DCHECK_NOTREACHED() << "Not implemented";
   return -1;
 }
 
@@ -104,12 +104,12 @@ int32_t AudioDeviceIOS::MicrophoneMuteIsAvailable(bool& available) {
 }
 
 int32_t AudioDeviceIOS::SetMicrophoneMute(bool enable) {
-  RTC_NOTREACHED() << "Not implemented";
+  RTC_DCHECK_NOTREACHED() << "Not implemented";
   return -1;
 }
 
 int32_t AudioDeviceIOS::MicrophoneMute(bool& enabled) const {
-  RTC_NOTREACHED() << "Not implemented";
+  RTC_DCHECK_NOTREACHED() << "Not implemented";
   return -1;
 }
 
@@ -149,36 +149,36 @@ int32_t AudioDeviceIOS::MicrophoneVolumeIsAvailable(bool& available) {
 }
 
 int32_t AudioDeviceIOS::SetMicrophoneVolume(uint32_t volume) {
-  RTC_NOTREACHED() << "Not implemented";
+  RTC_DCHECK_NOTREACHED() << "Not implemented";
   return -1;
 }
 
 int32_t AudioDeviceIOS::MicrophoneVolume(uint32_t& volume) const {
-  RTC_NOTREACHED() << "Not implemented";
+  RTC_DCHECK_NOTREACHED() << "Not implemented";
   return -1;
 }
 
 int32_t AudioDeviceIOS::MaxMicrophoneVolume(uint32_t& maxVolume) const {
-  RTC_NOTREACHED() << "Not implemented";
+  RTC_DCHECK_NOTREACHED() << "Not implemented";
   return -1;
 }
 
 int32_t AudioDeviceIOS::MinMicrophoneVolume(uint32_t& minVolume) const {
-  RTC_NOTREACHED() << "Not implemented";
+  RTC_DCHECK_NOTREACHED() << "Not implemented";
   return -1;
 }
 
 int32_t AudioDeviceIOS::PlayoutDeviceName(uint16_t index,
                                           char name[kAdmMaxDeviceNameSize],
                                           char guid[kAdmMaxGuidSize]) {
-  RTC_NOTREACHED() << "Not implemented";
+  RTC_DCHECK_NOTREACHED() << "Not implemented";
   return -1;
 }
 
 int32_t AudioDeviceIOS::RecordingDeviceName(uint16_t index,
                                             char name[kAdmMaxDeviceNameSize],
                                             char guid[kAdmMaxGuidSize]) {
-  RTC_NOTREACHED() << "Not implemented";
+  RTC_DCHECK_NOTREACHED() << "Not implemented";
   return -1;
 }
 
@@ -188,7 +188,7 @@ int32_t AudioDeviceIOS::SetRecordingDevice(uint16_t index) {
 }
 
 int32_t AudioDeviceIOS::SetRecordingDevice(AudioDeviceModule::WindowsDeviceType) {
-  RTC_NOTREACHED() << "Not implemented";
+  RTC_DCHECK_NOTREACHED() << "Not implemented";
   return -1;
 }
 

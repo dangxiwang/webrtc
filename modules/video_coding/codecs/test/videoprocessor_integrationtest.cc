@@ -87,7 +87,7 @@ void VideoProcessorIntegrationTest::H264KeyframeChecker::CheckEncodedFrame(
     EXPECT_FALSE(contains_pps) << "Delta frame should not contain PPS.";
     EXPECT_FALSE(contains_idr) << "Delta frame should not contain IDR.";
   } else {
-    RTC_NOTREACHED();
+    RTC_DCHECK_NOTREACHED();
   }
 }
 
@@ -307,7 +307,7 @@ void VideoProcessorIntegrationTest::CreateEncoderAndDecoder() {
         << "iOS HW codecs only support H264.";
     encoder_factory_ = CreateObjCEncoderFactory();
 #else
-    RTC_NOTREACHED() << "Only support HW encoder on Android and iOS.";
+    RTC_DCHECK_NOTREACHED() << "Only support HW encoder on Android and iOS.";
 #endif
   } else {
     encoder_factory_ = rtc::MakeUnique<InternalEncoderFactory>();
@@ -322,7 +322,7 @@ void VideoProcessorIntegrationTest::CreateEncoderAndDecoder() {
         << "iOS HW codecs only support H264.";
     decoder_factory = CreateObjCDecoderFactory();
 #else
-    RTC_NOTREACHED() << "Only support HW decoder on Android and iOS.";
+    RTC_DCHECK_NOTREACHED() << "Only support HW decoder on Android and iOS.";
 #endif
   } else {
     decoder_factory = rtc::MakeUnique<InternalDecoderFactory>();

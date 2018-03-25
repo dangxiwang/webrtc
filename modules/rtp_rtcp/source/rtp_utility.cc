@@ -479,7 +479,7 @@ void RtpHeaderParser::ParseOneByteExtensionHeader(
         }
         case kRtpExtensionNone:
         case kRtpExtensionNumberOfExtensions: {
-          RTC_NOTREACHED() << "Invalid extension type: " << type;
+          RTC_DCHECK_NOTREACHED() << "Invalid extension type: " << type;
           return;
         }
       }
