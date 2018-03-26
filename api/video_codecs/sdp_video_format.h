@@ -21,9 +21,12 @@ namespace webrtc {
 struct SdpVideoFormat {
   using Parameters = std::map<std::string, std::string>;
 
-  explicit SdpVideoFormat(const std::string& name) : name(name) {}
-  SdpVideoFormat(const std::string& name, const Parameters& parameters)
-      : name(name), parameters(parameters) {}
+  explicit SdpVideoFormat(const std::string& name);
+  SdpVideoFormat(const std::string& name, const Parameters& parameters);
+  SdpVideoFormat(const SdpVideoFormat& other);
+  SdpVideoFormat(SdpVideoFormat&& other);
+
+  ~SdpVideoFormat();
 
   friend bool operator==(const SdpVideoFormat& a, const SdpVideoFormat& b) {
     return a.name == b.name && a.parameters == b.parameters;
