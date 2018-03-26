@@ -22,6 +22,30 @@
       "revId": "357acf49d10a06cc47711a3d7a2bc1ac7f615e60",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7e7e67b_40b50219",
+        "filename": "api/video_codecs/video_decoder.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2018-03-26T18:30:29Z",
+      "side": 1,
+      "message": "Code only moved, but I agree it loks a bit strange. \n\nAnd it could be simplified to |.value_or(-1)|, I guess.",
+      "parentUuid": "84fdb57f_77dadf8a",
+      "range": {
+        "startLine": 25,
+        "startChar": 27,
+        "endLine": 25,
+        "endChar": 47
+      },
+      "revId": "357acf49d10a06cc47711a3d7a2bc1ac7f615e60",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
     }
   ]
 }
