@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f6c0d966_723fba8f",
+        "filename": "api/video_codecs/sdp_video_format.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2018-03-26T11:51:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40e5ceb0_b4c6a92b",
+      "range": {
+        "startLine": 22,
+        "startChar": 48,
+        "endLine": 22,
+        "endChar": 53
+      },
+      "revId": "48826fa69587ab2c5ced8076cb61480a5a8e6840",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4846ab8e_6ffe1734",
         "filename": "api/video_codecs/sdp_video_format.h",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "48826fa69587ab2c5ced8076cb61480a5a8e6840",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dccad96e_3d9eaabd",
+        "filename": "api/video_codecs/sdp_video_format.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2018-03-26T11:51:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4846ab8e_6ffe1734",
+      "range": {
+        "startLine": 27,
+        "startChar": 34,
+        "endLine": 27,
+        "endChar": 39
+      },
+      "revId": "48826fa69587ab2c5ced8076cb61480a5a8e6840",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     },
     {
       "key": {
@@ -92,6 +140,30 @@
       "revId": "48826fa69587ab2c5ced8076cb61480a5a8e6840",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64ca4621_a3c0ab4d",
+        "filename": "api/video_codecs/sdp_video_format.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2018-03-26T11:51:01Z",
+      "side": 1,
+      "message": "Ok. Also moving implementation to .cc file, after offline discussion.",
+      "parentUuid": "f2bf7eb0_9ef01ed1",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 0
+      },
+      "revId": "48826fa69587ab2c5ced8076cb61480a5a8e6840",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
