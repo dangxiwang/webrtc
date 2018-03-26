@@ -841,6 +841,19 @@ void TurnPort::HandleRefreshError() {
   }
 }
 
+void TurnPort::Release() {
+  // Remove any pending refresh requests.
+  request_manager_.Clear();
+
+  // Send refresh with lifetime 0.
+  TurnRefreshRequest* req = new TurnRefreshRequest(this);
+  req->set_lifetime(0);
+  SendRequest(req, 0);
+
+  // Modify state
+  state_ = STATE_RECEIVEONLY;
+}
+
 void TurnPort::Close() {
   if (!ready()) {
     OnAllocateError();
@@ -852,6 +865,12 @@ void TurnPort::Close() {
   for (auto kv : connections()) {
     kv.second->Destroy();
   }
+
+  SignalTurnPortClosed(this);
+}
+
+void TurnPort::ScheduleDestroy() {
+  thread()->Post(RTC_FROM_HERE, this, MSG_DESTROY);
 }
 
 void TurnPort::OnMessage(rtc::Message* message) {
@@ -882,6 +901,12 @@ void TurnPort::OnMessage(rtc::Message* message) {
         PrepareAddress();
       }
       break;
+    case MSG_ALLOCATION_RELEASED:
+      Close();
+      break;
+    case MSG_DESTROY:
+      Destroy();
+      return;
     default:
       Port::OnMessage(message);
   }
@@ -979,6 +1004,12 @@ void TurnPort::DispatchPacket(const char* data, size_t size,
 }
 
 bool TurnPort::ScheduleRefresh(uint32_t lifetime) {
+  if (lifetime == 0) {
+    // This means that the server released the allocation.
+    thread()->Post(RTC_FROM_HERE, this, MSG_ALLOCATION_RELEASED);
+    return true;
+  }
+
   // Lifetime is in seconds, delay is in milliseconds.
   int delay = 1 * 60 * 1000;
 
