@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "40e5ceb0_b4c6a92b",
+        "filename": "api/video_codecs/sdp_video_format.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5126
+      },
+      "writtenOn": "2018-03-26T11:46:12Z",
+      "side": 1,
+      "message": "You can omit the argument names here, since they don\u0027t contribute anything useful---it\u0027s well-known what the arguments to copy and move constructors are for.",
+      "range": {
+        "startLine": 22,
+        "startChar": 48,
+        "endLine": 22,
+        "endChar": 53
+      },
+      "revId": "48826fa69587ab2c5ced8076cb61480a5a8e6840",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4846ab8e_6ffe1734",
+        "filename": "api/video_codecs/sdp_video_format.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5126
+      },
+      "writtenOn": "2018-03-26T11:46:12Z",
+      "side": 1,
+      "message": "You can omit the argument names here, since they don\u0027t contribute anything useful---it\u0027s well-known what the arguments to copy and move constructors are for.",
+      "range": {
+        "startLine": 27,
+        "startChar": 34,
+        "endLine": 27,
+        "endChar": 39
+      },
+      "revId": "48826fa69587ab2c5ced8076cb61480a5a8e6840",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "52af20d9_b2921caa",
         "filename": "api/video_codecs/sdp_video_format.h",
         "patchSetId": 3
@@ -13,6 +59,30 @@
       "writtenOn": "2018-03-26T11:14:13Z",
       "side": 1,
       "message": "Why is this done as a function of two arguments, and why friend-declared?\n\nLikely copied from SdpAudioFormat.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 0
+      },
+      "revId": "48826fa69587ab2c5ced8076cb61480a5a8e6840",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2bf7eb0_9ef01ed1",
+        "filename": "api/video_codecs/sdp_video_format.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5126
+      },
+      "writtenOn": "2018-03-26T11:46:12Z",
+      "side": 1,
+      "message": "The SdpAudioFormat uses a non-member function because that\u0027s my preference when declaring symmetric operators like \u003d\u003d, +, etc.---doing it with a member function introduces an ugly asymmetry. (For other operators, like \u003d and +\u003d, the asymmetry is good, so I use member functions there.)\n\nMaking the function a friend lets me declare it inside the class, which is nice but not necessary. It also hides the implementation detail of whether the function is using private members or not, so that the operator declaration is identical in the two cases---also nice but not necessary.",
+      "parentUuid": "52af20d9_b2921caa",
       "range": {
         "startLine": 31,
         "startChar": 0,
