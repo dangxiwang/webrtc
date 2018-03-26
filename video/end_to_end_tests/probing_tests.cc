@@ -187,4 +187,103 @@ TEST_P(ProbingEndToEndTest, TriggerMidCallProbing) {
   EXPECT_TRUE(success) << "Failed to perform mid call probing (" << kMaxAttempts
                        << " attempts).";
 }
+
+#if defined(MEMORY_SANITIZER)
+TEST_P(ProbingEndToEndTest, DISABLED_ProbeOnVideoEncoderReconfiguration) {
+#elif defined(TARGET_IPHONE_SIMULATOR) && TARGET_IPHONE_SIMULATOR
+TEST_P(ProbingEndToEndTest, DISABLED_ProbeOnVideoEncoderReconfiguration) {
+#else
+TEST_P(ProbingEndToEndTest, ProbeOnVideoEncoderReconfiguration) {
+#endif
+
+  class ReconfigureTest : public ProbingTest {
+   public:
+    ReconfigureTest(test::SingleThreadedTaskQueueForTesting* task_queue,
+                    bool* success,
+                    std::unique_ptr<test::PacketTransport>* send_transport)
+        : ProbingTest(50000),
+          task_queue_(task_queue),
+          success_(success),
+          send_transport_(send_transport) {}
+
+    void ModifyVideoConfigs(
+        VideoSendStream::Config* send_config,
+        std::vector<VideoReceiveStream::Config>* receive_configs,
+        VideoEncoderConfig* encoder_config) override {
+      encoder_config_ = encoder_config;
+    }
+
+    void OnVideoStreamsCreated(
+        VideoSendStream* send_stream,
+        const std::vector<VideoReceiveStream*>& receive_streams) override {
+      send_stream_ = send_stream;
+    }
+
+    void PerformTest() override {
+      *success_ = false;
+      int64_t start_time_ms = clock_->TimeInMilliseconds();
+      do {
+        if (clock_->TimeInMilliseconds() - start_time_ms > kTimeoutMs)
+          break;
+
+        Call::Stats stats = sender_call_->GetStats();
+
+        switch (state_) {
+          case 0:
+            // Wait until initial probing has been completed
+            if (stats.send_bandwidth_bps >= 250000 &&
+                stats.send_bandwidth_bps <= 350000) {
+              FakeNetworkPipe::Config config;
+              config.link_capacity_kbps = 200;
+              (*send_transport_)->SetConfig(config);
+
+              ++state_;
+            }
+            break;
+          case 1:
+            if (stats.send_bandwidth_bps <= 200000) {
+              FakeNetworkPipe::Config config;
+              (*send_transport_)->SetConfig(config);
+
+              encoder_config_->max_bitrate_bps = 2000000;
+              encoder_config_->simulcast_layers[0].max_bitrate_bps = 1200000;
+              task_queue_->SendTask([this]() {
+                send_stream_->ReconfigureVideoEncoder(encoder_config_->Copy());
+              });
+
+              ++state_;
+            }
+            break;
+          case 2:
+            if (stats.send_bandwidth_bps >= 1000000) {
+              *success_ = true;
+              observation_complete_.Set();
+            }
+            break;
+        }
+      } while (!observation_complete_.Wait(20));
+    }
+
+   private:
+    const int kTimeoutMs = 3000;
+    test::SingleThreadedTaskQueueForTesting* const task_queue_;
+    bool* const success_;
+    std::unique_ptr<test::PacketTransport>* send_transport_;
+    VideoSendStream* send_stream_;
+    VideoEncoderConfig* encoder_config_;
+  };
+
+  bool success = false;
+  const int kMaxAttempts = 3;
+  for (int i = 0; i < kMaxAttempts; ++i) {
+    ReconfigureTest test(&task_queue_, &success, &send_transport_);
+    RunBaseTest(&test);
+    if (success) {
+      return;
+    }
+  }
+  EXPECT_TRUE(success) << "Failed to perform mid call probing (" << kMaxAttempts
+                       << " attempts).";
+}
+
 }  // namespace webrtc
