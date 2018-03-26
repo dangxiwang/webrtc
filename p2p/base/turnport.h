@@ -161,6 +161,19 @@ class TurnPort : public Port {
                    const rtc::SocketAddress&,
                    const rtc::SocketAddress&> SignalResolvedServerAddress;
 
+  // Release a TURN allocation by sending a refresh with lifetime 0.
+  // Sets state to STATE_RECEIVEONLY.
+  void Release();
+
+  // Signal when TurnPort is closed,
+  // e.g remote socket closed (TCP)
+  //  or receiveing a REFRESH response with lifetime 0.
+  sigslot::signal1<TurnPort*> SignalTurnPortClosed;
+
+  // Schedule destruction of this port.
+  // This can be called from signal handler.
+  void ScheduleDestroy();
+
   // All public methods/signals below are for testing only.
   sigslot::signal2<TurnPort*, int> SignalTurnRefreshResult;
   sigslot::signal3<TurnPort*, const rtc::SocketAddress&, int>
@@ -217,7 +230,9 @@ class TurnPort : public Port {
     MSG_ALLOCATE_ERROR = MSG_FIRST_AVAILABLE,
     MSG_ALLOCATE_MISMATCH,
     MSG_TRY_ALTERNATE_SERVER,
-    MSG_REFRESH_ERROR
+    MSG_REFRESH_ERROR,
+    MSG_ALLOCATION_RELEASED,
+    MSG_DESTROY
   };
 
   typedef std::list<TurnEntry*> EntryList;
