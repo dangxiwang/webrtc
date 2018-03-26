@@ -131,7 +131,7 @@ void ProbeController::OnMaxTotalAllocatedBitrate(
   // TODO(philipel): Should |max_total_allocated_bitrate| be used as a limit for
   //                 ALR probing?
   if (estimated_bitrate_bps_ != 0 &&
-      estimated_bitrate_bps_ < max_bitrate_bps_ &&
+      (max_bitrate_bps_ == -1 || estimated_bitrate_bps_ < max_bitrate_bps_) &&
       estimated_bitrate_bps_ < max_total_allocated_bitrate) {
     InitiateProbing(clock_->TimeInMilliseconds(), {max_total_allocated_bitrate},
                     false);
