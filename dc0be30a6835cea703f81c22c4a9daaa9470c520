@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63c1d43a_940b6958",
+        "filename": "p2p/base/turnport.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 853,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2018-03-26T20:16:28Z",
+      "side": 1,
+      "message": "nit: Don\u0027t need this comment, code is self-explanatory",
+      "revId": "dc0be30a6835cea703f81c22c4a9daaa9470c520",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "626e1a57_3c171e91",
+        "filename": "p2p/base/turnport.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 908,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2018-03-26T20:16:28Z",
+      "side": 1,
+      "message": "Calling Destroy isn\u0027t safe if there\u0027s still a Connection. Would Prune work for you?",
+      "revId": "dc0be30a6835cea703f81c22c4a9daaa9470c520",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18098999_b4d1cd0f",
+        "filename": "p2p/base/turnport.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1008,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2018-03-26T20:16:28Z",
+      "side": 1,
+      "message": "It\u0027s not obvious that ScheduleRefresh means \"the server released the allocation\"; I\u0027d suggest moving this to TurnRefreshRequest::OnResponse, doing:\n\nif (lifetime_attr-\u003evalue() \u003e 0) {\n  port_-\u003eScheduleRefresh(lifetime_attr-\u003evalue());\n} else {\n  // If we scheduled a refresh with lifetime 0, we\u0027re releasing this\n  // allocation; see TurnPort::Release.\n  port_-\u003ethread()-\u003ePost(RTC_FROM_HERE, port_, MSG_ALLOCATION_RELEASED);\n}",
+      "revId": "dc0be30a6835cea703f81c22c4a9daaa9470c520",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d24780b_ef68c103",
+        "filename": "p2p/base/turnport.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2018-03-26T20:16:28Z",
+      "side": 1,
+      "message": "nit: \"From a signal handler\"",
+      "revId": "dc0be30a6835cea703f81c22c4a9daaa9470c520",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b053c29e_b33c157f",
+        "filename": "p2p/base/turnport_unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 696,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2018-03-26T20:16:28Z",
+      "side": 1,
+      "message": "I\u0027d suggest \"Test that the TURN allocation is released by sending a refresh request with lifetime 0 when Release is called.\"",
+      "revId": "dc0be30a6835cea703f81c22c4a9daaa9470c520",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd14d166_ad408926",
+        "filename": "p2p/base/turnport_unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2018-03-26T20:16:28Z",
+      "side": 1,
+      "message": "Are the connections and data transmission relevant to this test?",
+      "revId": "dc0be30a6835cea703f81c22c4a9daaa9470c520",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a794185_bbef464b",
+        "filename": "p2p/base/turnport_unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2018-03-26T20:16:28Z",
+      "side": 1,
+      "message": "Is ScheduleDestroy relevant to this test?",
+      "revId": "dc0be30a6835cea703f81c22c4a9daaa9470c520",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}

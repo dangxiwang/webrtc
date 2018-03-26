@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bf3591e9_d546dfd5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2018-03-26T20:16:28Z",
+      "side": 1,
+      "message": "I\u0027d suggest \"Add ability to release TURN allocation gracefully\" as a more descriptive summary.\n\nIt sounds like that\u0027s the main purpose of this CL, correct? An alternative to the \"fire-and-forget\" teardown that happens in the destructor, and won\u0027t retransmit the refresh request?",
+      "revId": "b934f534a057726ad199b47ef557f5882cd01e8a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01fdfb15_3d5065a4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2018-03-26T20:16:28Z",
+      "side": 1,
+      "message": "\"The\"",
+      "revId": "b934f534a057726ad199b47ef557f5882cd01e8a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53880c50_da0660f7",
+        "filename": "p2p/base/turnport.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 844,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2018-03-26T20:16:28Z",
+      "side": 1,
+      "message": "Could call this from the destructor, which is what normally sends the 0-lifetime refresh.",
+      "revId": "b934f534a057726ad199b47ef557f5882cd01e8a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2eadc3bc_75941b6f",
+        "filename": "p2p/base/turnport.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2018-03-26T20:16:28Z",
+      "side": 1,
+      "message": "nit: Can you move Release and ScheduleDestroy to where other methods are declared? Say, above PrepareAddress? Typically we group methods with other methods and signals with other signals. And group similar types of methods together (callbacks, overrides, etc.)",
+      "revId": "b934f534a057726ad199b47ef557f5882cd01e8a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
