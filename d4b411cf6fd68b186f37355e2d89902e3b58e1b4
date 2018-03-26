@@ -1,0 +1,303 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e5718bf_dbec41eb",
+        "filename": "modules/congestion_controller/probe_controller.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-03-26T17:41:10Z",
+      "side": 1,
+      "message": "Make this a constant indicating what the value represents.",
+      "range": {
+        "startLine": 134,
+        "startChar": 27,
+        "endLine": 134,
+        "endChar": 29
+      },
+      "revId": "d4b411cf6fd68b186f37355e2d89902e3b58e1b4",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "878bbd73_6052dfba",
+        "filename": "test/encoder_settings.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-03-26T17:41:10Z",
+      "side": 1,
+      "message": "Is there code path where these values are left to be 0? If not, leave them uninitialized to indicate this to the reader. That way there\u0027s a chance that the sanitize bots will detect if the values are left unset by accident. You could also chose to set the stream setting parameters within each conditional scope.",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 28
+      },
+      "revId": "d4b411cf6fd68b186f37355e2d89902e3b58e1b4",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d04147d_d32e791f",
+        "filename": "test/encoder_settings.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-03-26T17:41:10Z",
+      "side": 1,
+      "message": "What is this testing for? Please add a comment explaining the purpose of the conditional.",
+      "range": {
+        "startLine": 53,
+        "startChar": 8,
+        "endLine": 53,
+        "endChar": 50
+      },
+      "revId": "d4b411cf6fd68b186f37355e2d89902e3b58e1b4",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6a6a9ba_e3db59df",
+        "filename": "video/end_to_end_tests/probing_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-03-26T17:41:10Z",
+      "side": 1,
+      "message": "This warrants a comment explaining why it\u0027s disabled, why it isn\u0027t indicative of a problem in production and what should be changed to enable the test in all configs.",
+      "range": {
+        "startLine": 191,
+        "startChar": 12,
+        "endLine": 191,
+        "endChar": 28
+      },
+      "revId": "d4b411cf6fd68b186f37355e2d89902e3b58e1b4",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2e32379_204a3d01",
+        "filename": "video/end_to_end_tests/probing_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-03-26T17:41:10Z",
+      "side": 1,
+      "message": "Since the test doesn\u0027t actually check that a probe is send I would suggest naming it based on what it does. Maybe it shouldn\u0027t even be seen as a Probe specific test?\n\nExample of what might be an accurate name:\nDetectsMoreCapacityWhenMaxBitrateIsIncreased",
+      "range": {
+        "startLine": 196,
+        "startChar": 28,
+        "endLine": 196,
+        "endChar": 62
+      },
+      "revId": "d4b411cf6fd68b186f37355e2d89902e3b58e1b4",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3f3a835_dd6db048",
+        "filename": "video/end_to_end_tests/probing_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-03-26T17:41:10Z",
+      "side": 1,
+      "message": "Please define constants for the literals (goes for literals below as well). it\u0027s ok to define them locally. Just giving them a name explaining their purpose helps a lot for a reader who aren\u0027t familiar with the code.",
+      "range": {
+        "startLine": 204,
+        "startChar": 22,
+        "endLine": 204,
+        "endChar": 27
+      },
+      "revId": "d4b411cf6fd68b186f37355e2d89902e3b58e1b4",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6f62d92_f2b74806",
+        "filename": "video/end_to_end_tests/probing_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-03-26T17:41:10Z",
+      "side": 1,
+      "message": "Please expand the comment to explaining why the condition being fulfilled indicates that initial probing has been completed.",
+      "range": {
+        "startLine": 234,
+        "startChar": 16,
+        "endLine": 235,
+        "endChar": 50
+      },
+      "revId": "d4b411cf6fd68b186f37355e2d89902e3b58e1b4",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6c5f9db_c4d13e58",
+        "filename": "video/end_to_end_tests/probing_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-03-26T17:41:10Z",
+      "side": 1,
+      "message": "Please add a comment on why the capacity is limited to 200 kbps before reconfigure.",
+      "range": {
+        "startLine": 237,
+        "startChar": 14,
+        "endLine": 237,
+        "endChar": 46
+      },
+      "revId": "d4b411cf6fd68b186f37355e2d89902e3b58e1b4",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d0676de_7fff2338",
+        "filename": "video/end_to_end_tests/probing_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-03-26T17:41:10Z",
+      "side": 1,
+      "message": "Don\u0027t depend on the bandwidth estimation being lower than the link capacity. Allow some margin to avoid flakiness.",
+      "range": {
+        "startLine": 244,
+        "startChar": 44,
+        "endLine": 244,
+        "endChar": 50
+      },
+      "revId": "d4b411cf6fd68b186f37355e2d89902e3b58e1b4",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b5ce687_35681b72",
+        "filename": "video/end_to_end_tests/probing_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-03-26T17:41:10Z",
+      "side": 1,
+      "message": "Is the purpose here to remove the previous limit? Please make the new limit explicit (config.link_capacity_kbps \u003d 3000 for instance) and/or add a comment describing the expected side effect.",
+      "range": {
+        "startLine": 245,
+        "startChar": 38,
+        "endLine": 245,
+        "endChar": 44
+      },
+      "revId": "d4b411cf6fd68b186f37355e2d89902e3b58e1b4",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1178b732_fb52c669",
+        "filename": "video/end_to_end_tests/probing_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-03-26T17:41:10Z",
+      "side": 1,
+      "message": "What would happen if the initial value would be 2000000? Would the test still work? Same for the line below.\n\nEither CHECK to see that it is different, or preferably, set different values from the start.",
+      "range": {
+        "startLine": 248,
+        "startChar": 14,
+        "endLine": 248,
+        "endChar": 57
+      },
+      "revId": "d4b411cf6fd68b186f37355e2d89902e3b58e1b4",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c805f958_e0a9ddc6",
+        "filename": "video/end_to_end_tests/probing_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-03-26T17:41:10Z",
+      "side": 1,
+      "message": "Don\u0027t retry tests by looping. If it\u0027s needed due to flakiness they have to be rewritten to not be flaky. Retrying a flaky test will not eliminate the possibility that it fails. Having many tests with a low individual flakiness yields overall flakiness that is really hard to solve. (since no single test is responsible)",
+      "range": {
+        "startLine": 277,
+        "startChar": 12,
+        "endLine": 277,
+        "endChar": 24
+      },
+      "revId": "d4b411cf6fd68b186f37355e2d89902e3b58e1b4",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e42f78a_d4f4c295",
+        "filename": "video/end_to_end_tests/probing_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-03-26T17:41:10Z",
+      "side": 1,
+      "message": "Why not send_transport.get()?",
+      "range": {
+        "startLine": 279,
+        "startChar": 49,
+        "endLine": 279,
+        "endChar": 65
+      },
+      "revId": "d4b411cf6fd68b186f37355e2d89902e3b58e1b4",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
