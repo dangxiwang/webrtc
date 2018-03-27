@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "29e9d7b5_4e43063f",
+        "filename": "p2p/base/turnport.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 853,
+      "author": {
+        "id": 5613
+      },
+      "writtenOn": "2018-03-27T13:33:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63c1d43a_940b6958",
+      "revId": "dc0be30a6835cea703f81c22c4a9daaa9470c520",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "626e1a57_3c171e91",
         "filename": "p2p/base/turnport.cc",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "dc0be30a6835cea703f81c22c4a9daaa9470c520",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ac41e58_8f301510",
+        "filename": "p2p/base/turnport.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 908,
+      "author": {
+        "id": 5613
+      },
+      "writtenOn": "2018-03-27T13:33:57Z",
+      "side": 1,
+      "message": "Yes, Prune() works fine.\nThx! Removed this method/path\nDone",
+      "parentUuid": "626e1a57_3c171e91",
+      "revId": "dc0be30a6835cea703f81c22c4a9daaa9470c520",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "449efffd_f2c3adc4",
+        "filename": "p2p/base/turnport.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1008,
+      "author": {
+        "id": 5613
+      },
+      "writtenOn": "2018-03-27T13:33:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18098999_b4d1cd0f",
+      "revId": "dc0be30a6835cea703f81c22c4a9daaa9470c520",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d24780b_ef68c103",
         "filename": "p2p/base/turnport.h",
         "patchSetId": 1
@@ -67,6 +121,24 @@
       "revId": "dc0be30a6835cea703f81c22c4a9daaa9470c520",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aca4448b_9115a2b5",
+        "filename": "p2p/base/turnport.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 5613
+      },
+      "writtenOn": "2018-03-27T13:33:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d24780b_ef68c103",
+      "revId": "dc0be30a6835cea703f81c22c4a9daaa9470c520",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     },
     {
       "key": {
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "a07a7346_ff97c917",
+        "filename": "p2p/base/turnport_unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 696,
+      "author": {
+        "id": 5613
+      },
+      "writtenOn": "2018-03-27T13:33:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b053c29e_b33c157f",
+      "revId": "dc0be30a6835cea703f81c22c4a9daaa9470c520",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd14d166_ad408926",
         "filename": "p2p/base/turnport_unittest.cc",
         "patchSetId": 1
@@ -104,6 +194,24 @@
     },
     {
       "key": {
+        "uuid": "205334f7_b187728e",
+        "filename": "p2p/base/turnport_unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 5613
+      },
+      "writtenOn": "2018-03-27T13:33:57Z",
+      "side": 1,
+      "message": "Yes,\nI want to make validate that it possible to receive data after Release() has been called.",
+      "parentUuid": "fd14d166_ad408926",
+      "revId": "dc0be30a6835cea703f81c22c4a9daaa9470c520",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a794185_bbef464b",
         "filename": "p2p/base/turnport_unittest.cc",
         "patchSetId": 1
@@ -118,6 +226,24 @@
       "revId": "dc0be30a6835cea703f81c22c4a9daaa9470c520",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcab13bd_c9bc7251",
+        "filename": "p2p/base/turnport_unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 5613
+      },
+      "writtenOn": "2018-03-27T13:33:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a794185_bbef464b",
+      "revId": "dc0be30a6835cea703f81c22c4a9daaa9470c520",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
