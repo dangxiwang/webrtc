@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "7c31b7ed_015907ad",
+        "filename": "modules/congestion_controller/probe_controller.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-03-27T16:28:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "396a0b94_ff74948a",
+      "range": {
+        "startLine": 134,
+        "startChar": 27,
+        "endLine": 134,
+        "endChar": 29
+      },
+      "revId": "d4b411cf6fd68b186f37355e2d89902e3b58e1b4",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "878bbd73_6052dfba",
         "filename": "test/encoder_settings.cc",
         "patchSetId": 2
@@ -93,6 +117,30 @@
       "revId": "d4b411cf6fd68b186f37355e2d89902e3b58e1b4",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4d78b62_1046de15",
+        "filename": "test/encoder_settings.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-03-27T16:28:48Z",
+      "side": 1,
+      "message": "Still prefer initialized since it\u0027s a local scope, but sure, this works.",
+      "parentUuid": "44c76131_80aafdbf",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 28
+      },
+      "revId": "d4b411cf6fd68b186f37355e2d89902e3b58e1b4",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     },
     {
       "key": {
@@ -201,6 +249,30 @@
       "side": 1,
       "message": "This is an end to end test testing probing specific behavior. If this was a unit test then I would check that a probe was triggered.",
       "parentUuid": "d2e32379_204a3d01",
+      "range": {
+        "startLine": 196,
+        "startChar": 28,
+        "endLine": 196,
+        "endChar": 62
+      },
+      "revId": "d4b411cf6fd68b186f37355e2d89902e3b58e1b4",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b62865de_193c12a7",
+        "filename": "video/end_to_end_tests/probing_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-03-27T16:28:48Z",
+      "side": 1,
+      "message": "Nothing wrong with that. Just that the name should reflect what is tested for.\n\nFor instance if a probe is sent but the result is not taken into consideration this test would fail. The person debugging would have to read the source code to not be confused by the fact that this test fails even though a probe was sent.",
+      "parentUuid": "083c62a3_8dcce139",
       "range": {
         "startLine": 196,
         "startChar": 28,
@@ -329,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "1ea0e4e3_cc6c8b12",
+        "filename": "video/end_to_end_tests/probing_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-03-27T16:28:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57342de2_53bd2375",
+      "range": {
+        "startLine": 244,
+        "startChar": 44,
+        "endLine": 244,
+        "endChar": 50
+      },
+      "revId": "d4b411cf6fd68b186f37355e2d89902e3b58e1b4",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9b5ce687_35681b72",
         "filename": "video/end_to_end_tests/probing_tests.cc",
         "patchSetId": 2
@@ -423,6 +519,30 @@
     },
     {
       "key": {
+        "uuid": "70e9c199_7bcb4645",
+        "filename": "video/end_to_end_tests/probing_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-03-27T16:28:48Z",
+      "side": 1,
+      "message": "Add a comment indicating this.\nFor example (if I understood it correctly):\n// Reconfiguring the video encoder with a config where the overall max bitrate is more than the top simulcast layer max bitrate should trigger a probe that causes the bandwidth to be updated.",
+      "parentUuid": "f5808947_13b95028",
+      "range": {
+        "startLine": 248,
+        "startChar": 14,
+        "endLine": 248,
+        "endChar": 57
+      },
+      "revId": "d4b411cf6fd68b186f37355e2d89902e3b58e1b4",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c805f958_e0a9ddc6",
         "filename": "video/end_to_end_tests/probing_tests.cc",
         "patchSetId": 2
@@ -481,6 +601,30 @@
       "side": 1,
       "message": "Because send_transport_ is not set to any object until RunBaseTest is called.",
       "parentUuid": "4e42f78a_d4f4c295",
+      "range": {
+        "startLine": 279,
+        "startChar": 49,
+        "endLine": 279,
+        "endChar": 65
+      },
+      "revId": "d4b411cf6fd68b186f37355e2d89902e3b58e1b4",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ccff825_9eec488e",
+        "filename": "video/end_to_end_tests/probing_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-03-27T16:28:48Z",
+      "side": 1,
+      "message": "I see. The solution is usually to overload CreateSendTransport. See how it is done in for instance the class MinVideoAndAudioBitrateTester. Try do implement it like that to be more consistent.\n\nIf you want to avoid overloading CreateSendTransport, you could add a callback for capturing the send transport upon creation like the OnCallsCreated callback used above.",
+      "parentUuid": "5ab96db5_8e95048d",
       "range": {
         "startLine": 279,
         "startChar": 49,

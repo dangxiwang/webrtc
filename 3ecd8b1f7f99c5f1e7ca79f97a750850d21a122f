@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8923c02f_d6c66a33",
+        "filename": "test/encoder_settings.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-03-27T16:28:48Z",
+      "side": 1,
+      "message": "Is it expected that there might be less simulcast layers than streams in this situation?\n\nOtherwise:\n// Use simulcast layer configuration for the stream settings if it is available.\n\nAnd add a check to ensure that the sizes match if nonzero.",
+      "range": {
+        "startLine": 54,
+        "startChar": 27,
+        "endLine": 55,
+        "endChar": 18
+      },
+      "revId": "3ecd8b1f7f99c5f1e7ca79f97a750850d21a122f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e431b3ad_a3a23ff7",
+        "filename": "test/encoder_settings.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-03-27T16:28:48Z",
+      "side": 1,
+      "message": "i iterates over the number of streams, but here it\u0027s compared to simulcast_layers. Is a encoder_config stream equivalent to a simulcast layer?",
+      "range": {
+        "startLine": 56,
+        "startChar": 8,
+        "endLine": 56,
+        "endChar": 50
+      },
+      "revId": "3ecd8b1f7f99c5f1e7ca79f97a750850d21a122f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2e15da2_0f940c8c",
+        "filename": "video/end_to_end_tests/probing_tests.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-03-27T16:28:48Z",
+      "side": 1,
+      "message": "What does it need to be reset to for the test to work?\n\nImagine this test failing due to a change in the default value, the person debugging the issue will want to know why this change cause this particular test to fail. Setting a value means that a change in the default have no effect and any DCHECKS for too large values would trigger. Leaving it as is requires documenting the assumptions.\n\nFor instance.\n// Resetting the bandwidth to the default value (which is larger than the 1Mbps that needs to be detected to pass this test)",
+      "range": {
+        "startLine": 245,
+        "startChar": 27,
+        "endLine": 245,
+        "endChar": 36
+      },
+      "revId": "3ecd8b1f7f99c5f1e7ca79f97a750850d21a122f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
