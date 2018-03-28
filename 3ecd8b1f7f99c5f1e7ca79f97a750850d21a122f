@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d83b7cba_185d9e8b",
+        "filename": "test/encoder_settings.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 5527
+      },
+      "writtenOn": "2018-03-28T10:46:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8923c02f_d6c66a33",
+      "range": {
+        "startLine": 54,
+        "startChar": 27,
+        "endLine": 55,
+        "endChar": 18
+      },
+      "revId": "3ecd8b1f7f99c5f1e7ca79f97a750850d21a122f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e431b3ad_a3a23ff7",
         "filename": "test/encoder_settings.cc",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "916d283b_267bff01",
+        "filename": "test/encoder_settings.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 5527
+      },
+      "writtenOn": "2018-03-28T10:46:18Z",
+      "side": 1,
+      "message": "A simulcast layer is a VideoStream.",
+      "parentUuid": "e431b3ad_a3a23ff7",
+      "range": {
+        "startLine": 56,
+        "startChar": 8,
+        "endLine": 56,
+        "endChar": 50
+      },
+      "revId": "3ecd8b1f7f99c5f1e7ca79f97a750850d21a122f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a2e15da2_0f940c8c",
         "filename": "video/end_to_end_tests/probing_tests.cc",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2018-03-27T16:28:48Z",
       "side": 1,
       "message": "What does it need to be reset to for the test to work?\n\nImagine this test failing due to a change in the default value, the person debugging the issue will want to know why this change cause this particular test to fail. Setting a value means that a change in the default have no effect and any DCHECKS for too large values would trigger. Leaving it as is requires documenting the assumptions.\n\nFor instance.\n// Resetting the bandwidth to the default value (which is larger than the 1Mbps that needs to be detected to pass this test)",
+      "range": {
+        "startLine": 245,
+        "startChar": 27,
+        "endLine": 245,
+        "endChar": 36
+      },
+      "revId": "3ecd8b1f7f99c5f1e7ca79f97a750850d21a122f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19319fc0_f968d06d",
+        "filename": "video/end_to_end_tests/probing_tests.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 5527
+      },
+      "writtenOn": "2018-03-28T10:46:18Z",
+      "side": 1,
+      "message": "Explicitly set it to 5 Mbps.",
+      "parentUuid": "a2e15da2_0f940c8c",
       "range": {
         "startLine": 245,
         "startChar": 27,
