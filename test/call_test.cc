@@ -97,6 +97,7 @@ void CallTest::RunBaseTest(BaseTest* test) {
     receive_transport_.reset(test->CreateReceiveTransport(&task_queue_));
     send_transport_.reset(
         test->CreateSendTransport(&task_queue_, sender_call_.get()));
+    test->OnTransportsCreated(send_transport_.get(), receive_transport_.get());
 
     if (test->ShouldCreateReceivers()) {
       send_transport_->SetReceiver(receiver_call_->Receiver());
@@ -511,6 +512,9 @@ void BaseTest::OnRtpTransportControllerSendCreated(
 
 void BaseTest::OnCallsCreated(Call* sender_call, Call* receiver_call) {
 }
+
+void BaseTest::OnTransportsCreated(test::PacketTransport* send_transport,
+                                   test::PacketTransport* receive_transport) {}
 
 test::PacketTransport* BaseTest::CreateSendTransport(
     SingleThreadedTaskQueueForTesting* task_queue,
