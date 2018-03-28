@@ -91,9 +91,13 @@ class OpenSSLAdapter : public SSLAdapter, public MessageHandler {
 
   void OnMessage(Message* msg) override;
 
-  static bool VerifyServerName(SSL* ssl, const char* host,
-                               bool ignore_bad_cert);
-  bool SSLPostConnectionCheck(SSL* ssl, const char* host);
+  // If LOG_CERTIFICATES is set enables verbose logging about the certificate.
+  static void LogCertificates(SSL* ssl, X509* certificate);
+
+  // Verifies that the certificate name matches the hostname.
+  static bool VerifyServerName(SSL* ssl, const std::string& host);
+
+  bool SSLPostConnectionCheck(SSL* ssl, const std::string& host);
 #if !defined(NDEBUG)
   // In debug builds, logs info about the state of the SSL connection.
   static void SSLInfoCallback(const SSL* ssl, int where, int ret);

@@ -414,7 +414,7 @@ int OpenSSLAdapter::ContinueSSL() {
   int code = (role_ == SSL_CLIENT) ? SSL_connect(ssl_) : SSL_accept(ssl_);
   switch (SSL_get_error(ssl_, code)) {
   case SSL_ERROR_NONE:
-    if (!SSLPostConnectionCheck(ssl_, ssl_host_name_.c_str())) {
+    if (!SSLPostConnectionCheck(ssl_, ssl_host_name_)) {
       RTC_LOG(LS_ERROR) << "TLS post connection check failed";
       // make sure we close the socket
       Cleanup();
@@ -790,96 +790,77 @@ void OpenSSLAdapter::OnCloseEvent(AsyncSocket* socket, int err) {
   AsyncSocketAdapter::OnCloseEvent(socket, err);
 }
 
-bool OpenSSLAdapter::VerifyServerName(SSL* ssl, const char* host,
-                                      bool ignore_bad_cert) {
-  if (!host)
-    return false;
+void OpenSSLAdapter::LogCertificates(SSL* ssl, X509* certificate) {
+  BIO* mem = BIO_new(BIO_s_mem());
+  if (mem == nullptr) {
+    RTC_DLOG(LS_ERROR) << "BIO_new() failed to allocate memory.";
+    return;
+  }
 
-  // Checking the return from SSL_get_peer_certificate here is not strictly
-  // necessary.  With our setup, it is not possible for it to return
-  // null.  However, it is good form to check the return.
-  X509* certificate = SSL_get_peer_certificate(ssl);
-  if (!certificate)
-    return false;
+  RTC_DLOG(LS_INFO) << "Certificate from server:";
+  X509_print_ex(mem, certificate, XN_FLAG_SEP_CPLUS_SPC, X509_FLAG_NO_HEADER);
+  BIO_write(mem, "\0", 1);
 
-  // Logging certificates is extremely verbose. So it is disabled by default.
-#ifdef LOG_CERTIFICATES
-  {
-    RTC_DLOG(LS_INFO) << "Certificate from server:";
-    BIO* mem = BIO_new(BIO_s_mem());
-    X509_print_ex(mem, certificate, XN_FLAG_SEP_CPLUS_SPC, X509_FLAG_NO_HEADER);
-    BIO_write(mem, "\0", 1);
-    char* buffer;
-    BIO_get_mem_data(mem, &buffer);
+  char* buffer = nullptr;
+  BIO_get_mem_data(mem, &buffer);
+  if (buffer != nullptr) {
     RTC_DLOG(LS_INFO) << buffer;
-    BIO_free(mem);
-
-    char* cipher_description =
-        SSL_CIPHER_description(SSL_get_current_cipher(ssl), nullptr, 128);
-    RTC_DLOG(LS_INFO) << "Cipher: " << cipher_description;
-    OPENSSL_free(cipher_description);
+  } else {
+    RTC_DLOG(LS_ERROR) << "BIO_get_mem_data() failed to set buffer.";
   }
-#endif
+  BIO_free(mem);
 
-  bool ok = false;
-  GENERAL_NAMES* names = reinterpret_cast<GENERAL_NAMES*>(
-      X509_get_ext_d2i(certificate, NID_subject_alt_name, nullptr, nullptr));
-  if (names) {
-    for (size_t i = 0; i < static_cast<size_t>(sk_GENERAL_NAME_num(names));
-         i++) {
-      const GENERAL_NAME* name = sk_GENERAL_NAME_value(names, i);
-      if (name->type != GEN_DNS)
-        continue;
-      std::string value(
-          reinterpret_cast<const char*>(ASN1_STRING_data(name->d.dNSName)),
-          ASN1_STRING_length(name->d.dNSName));
-      // string_match takes NUL-terminated strings, so check for embedded NULs.
-      if (value.find('\0') != std::string::npos)
-        continue;
-      if (string_match(host, value.c_str())) {
-        ok = true;
-        break;
-      }
-    }
-    GENERAL_NAMES_free(names);
+  const char* cipher_name = SSL_CIPHER_get_name(SSL_get_current_cipher(ssl));
+  if (cipher_name != nullptr) {
+    RTC_DLOG(LS_INFO) << "Cipher: " << cipher_name;
+  } else {
+    RTC_DLOG(LS_ERROR)
+        << "SSL_CIPHER_DESCRIPTION() failed to set cipher_name.";
   }
-
-  char data[256];
-  X509_NAME* subject;
-  if (!ok && ((subject = X509_get_subject_name(certificate)) != nullptr) &&
-      (X509_NAME_get_text_by_NID(subject, NID_commonName, data, sizeof(data)) >
-       0)) {
-    data[sizeof(data)-1] = 0;
-    if (_stricmp(data, host) == 0)
-      ok = true;
-  }
-
-  X509_free(certificate);
-
-  // This should only ever be turned on for debugging and development.
-  if (!ok && ignore_bad_cert) {
-    RTC_DLOG(LS_WARNING) << "TLS certificate check FAILED.  "
-                         << "Allowing connection anyway.";
-    ok = true;
-  }
-
-  return ok;
 }
 
-bool OpenSSLAdapter::SSLPostConnectionCheck(SSL* ssl, const char* host) {
-  bool ok = VerifyServerName(ssl, host, ignore_bad_cert_);
-
-  if (ok) {
-    ok = (SSL_get_verify_result(ssl) == X509_V_OK ||
-          custom_verification_succeeded_);
+bool OpenSSLAdapter::VerifyServerName(SSL* ssl, const std::string& host) {
+  if (host.empty()) {
+    RTC_DLOG(LS_ERROR) << "host parameter is invalid.";
+    return false;
+  }
+  if (ssl == nullptr) {
+    RTC_DLOG(LS_ERROR) << "ssl parameter is invalid.";
+    return false;
   }
 
-  if (!ok && ignore_bad_cert_) {
+  X509* certificate = SSL_get_peer_certificate(ssl);
+  if (certificate == nullptr) {
+    RTC_DLOG(LS_ERROR)
+        << "SSL_get_peer_certificate failed. This should never happen.";
+    return false;
+  }
+
+// Logging certificates is extremely verbose. So it is disabled by default.
+#ifdef LOG_CERTIFICATES
+  LogCertificates(ssl, certificate);
+#endif
+
+  bool is_valid_cert_name =
+      X509_check_host(certificate, host.c_str(), host.size(), 0, nullptr) == 1;
+  X509_free(certificate);
+  return is_valid_cert_name;
+}
+
+bool OpenSSLAdapter::SSLPostConnectionCheck(SSL* ssl, const std::string& host) {
+  bool is_valid_cert_name = VerifyServerName(ssl, host);
+  if (is_valid_cert_name) {
+    is_valid_cert_name = (SSL_get_verify_result(ssl) == X509_V_OK ||
+                       custom_verification_succeeded_);
+  }
+
+  if (!is_valid_cert_name && ignore_bad_cert_) {
     RTC_DLOG(LS_INFO) << "Other TLS post connection checks failed.";
-    ok = true;
+    RTC_DLOG(LS_WARNING) << "ignore_bad_cert_ set to true. Overriding name "
+                         "verification failure!";
+    is_valid_cert_name = true;
   }
-
-  return ok;
+  return is_valid_cert_name;
 }
 
 #if !defined(NDEBUG)
