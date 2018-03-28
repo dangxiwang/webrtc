@@ -700,7 +700,7 @@ TEST(OptionalTest, TestDereference) {
   // clang-format on
 }
 
-TEST(OptionalTest, TestDereferenceWithDefault) {
+TEST(OptionalTest, DISABLED_TestDereferenceWithDefault) {
   auto log = Logger::Setup();
   {
     const Logger a(17), b(42);
@@ -872,7 +872,7 @@ TEST(OptionalTest, TestMoveValue) {
 }
 
 TEST(OptionalTest, TestPrintTo) {
-  constexpr char kEmptyOptionalMessage[] = "<empty optional>";
+  constexpr char kEmptyOptionalMessage[] = "(nullopt)";
   const Optional<MyUnprintableType> empty_unprintable;
   const Optional<MyPrintableType> empty_printable;
   const Optional<MyOstreamPrintableType> empty_ostream_printable;
@@ -880,12 +880,20 @@ TEST(OptionalTest, TestPrintTo) {
   EXPECT_EQ(kEmptyOptionalMessage, ::testing::PrintToString(empty_printable));
   EXPECT_EQ(kEmptyOptionalMessage,
             ::testing::PrintToString(empty_ostream_printable));
-  EXPECT_NE("1", ::testing::PrintToString(Optional<MyUnprintableType>({1})));
-  EXPECT_NE("1", ::testing::PrintToString(Optional<MyPrintableType>({1})));
-  EXPECT_EQ("The value is 1",
+  EXPECT_NE("(1)", ::testing::PrintToString(Optional<MyUnprintableType>({1})));
+  EXPECT_NE("(1)", ::testing::PrintToString(Optional<MyPrintableType>({1})));
+  EXPECT_EQ("(The value is 1)",
             ::testing::PrintToString(Optional<MyPrintableType>({1})));
-  EXPECT_EQ("1",
+  EXPECT_EQ("(1)",
             ::testing::PrintToString(Optional<MyOstreamPrintableType>({1})));
+}
+
+TEST(OptionalTest, TestUnprintablePrintTo) {
+  struct UnprintableType {
+    uint8_t value[5];
+  };
+  Optional<UnprintableType> opt({0xa1, 0xb2, 0xc3, 0xd4, 0xe5});
+  EXPECT_EQ("(5-byte object <A1-B2 C3-D4 E5>)", ::testing::PrintToString(opt));
 }
 
 void UnusedFunctionWorkaround() {
