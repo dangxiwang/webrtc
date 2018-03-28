@@ -22,6 +22,30 @@
       "revId": "32142346885ba8ba2b5c4c3f8e8a23132a06f183",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52fba864_ca4d28a0",
+        "filename": "rtc_base/openssladapter.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 845,
+      "author": {
+        "id": 6930
+      },
+      "writtenOn": "2018-03-28T19:25:27Z",
+      "side": 1,
+      "message": "Given the latest change from fb it appears we are 1.1.0 compatible only now with OpenSSL.",
+      "parentUuid": "410a8622_d7afeff6",
+      "range": {
+        "startLine": 845,
+        "startChar": 6,
+        "endLine": 845,
+        "endChar": 21
+      },
+      "revId": "32142346885ba8ba2b5c4c3f8e8a23132a06f183",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
     }
   ]
 }
