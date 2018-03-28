@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "410a8622_d7afeff6",
+        "filename": "rtc_base/openssladapter.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 845,
+      "author": {
+        "id": 6630
+      },
+      "writtenOn": "2018-03-28T13:57:00Z",
+      "side": 1,
+      "message": "We need to make sure all WebRTC clients uses OpenSSL 1.0.2 or higher. Can we have #Ifdef block for previous version and keep the old code there, so just not breaking them?",
+      "range": {
+        "startLine": 845,
+        "startChar": 6,
+        "endLine": 845,
+        "endChar": 21
+      },
+      "revId": "32142346885ba8ba2b5c4c3f8e8a23132a06f183",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
