@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f513e70f_214ed520",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2018-04-04T21:17:34Z",
+      "side": 1,
+      "message": "Can you prefix the commit message with a 1-line summary like \"Fix issues with SSL certificate name matching.\"?",
+      "revId": "18f81b98fb97d300f4b7c486c3450f78a1307e78",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14c2ad8e_ca606b44",
+        "filename": "rtc_base/openssladapter.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 803,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2018-04-04T21:17:34Z",
+      "side": 1,
+      "message": "These two messages could be combined",
+      "revId": "18f81b98fb97d300f4b7c486c3450f78a1307e78",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1eb0ec0_164e7ff6",
+        "filename": "rtc_base/openssladapter.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2018-04-04T21:17:34Z",
+      "side": 1,
+      "message": "Looks like this isn\u0027t implemented.",
+      "revId": "18f81b98fb97d300f4b7c486c3450f78a1307e78",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b5f16ba_4b5a2a51",
+        "filename": "rtc_base/opensslcommon.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2018-04-04T21:17:34Z",
+      "side": 1,
+      "message": "Instead of logging/returning false for things that should never happen, could just DCHECK",
+      "revId": "18f81b98fb97d300f4b7c486c3450f78a1307e78",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d331d769_bc085072",
+        "filename": "rtc_base/opensslcommon.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2018-04-04T21:17:34Z",
+      "side": 1,
+      "message": "\"get\" instead of \"set\"?",
+      "revId": "18f81b98fb97d300f4b7c486c3450f78a1307e78",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de2f668e_01e6eb2c",
+        "filename": "rtc_base/opensslcommon.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2018-04-04T21:17:34Z",
+      "side": 1,
+      "message": "Here too",
+      "revId": "18f81b98fb97d300f4b7c486c3450f78a1307e78",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f9a4475_8f975d1a",
+        "filename": "rtc_base/opensslcommon.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2018-04-04T21:17:34Z",
+      "side": 1,
+      "message": "What\u0027s the purpose of having a class with only static methods? Couldn\u0027t VerifyPeerCertMatchesHost be a normal non-member method, either in the rtc:: namespace or a nested \"rtc::openssl::\" namespace if name conflicts are an issue?",
+      "revId": "18f81b98fb97d300f4b7c486c3450f78a1307e78",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67e382b7_64d3ed81",
+        "filename": "rtc_base/opensslcommon.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2018-04-04T21:17:34Z",
+      "side": 1,
+      "message": "\"performs verbose logging\" would be more accurate than \"enables\"",
+      "revId": "18f81b98fb97d300f4b7c486c3450f78a1307e78",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
