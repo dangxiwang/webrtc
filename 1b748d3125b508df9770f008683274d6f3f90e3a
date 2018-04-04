@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "88b2db37_76af859d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 5527
+      },
+      "writtenOn": "2018-04-04T12:08:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "acece765_8ca4eabd",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 0
+      },
+      "revId": "1b748d3125b508df9770f008683274d6f3f90e3a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef2a38b9_e4572ba9",
         "filename": "call/call_perf_tests.cc",
         "patchSetId": 7
@@ -36,6 +60,30 @@
       "writtenOn": "2018-04-04T11:40:29Z",
       "side": 1,
       "message": "Why is this done? Is it related to the other changes?",
+      "range": {
+        "startLine": 710,
+        "startChar": 26,
+        "endLine": 710,
+        "endChar": 38
+      },
+      "revId": "1b748d3125b508df9770f008683274d6f3f90e3a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0df37835_0f4fbefe",
+        "filename": "call/call_perf_tests.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 710,
+      "author": {
+        "id": 5527
+      },
+      "writtenOn": "2018-04-04T12:08:22Z",
+      "side": 1,
+      "message": "This test makes sure we don\u0027t reset the encoder bitrate when we reconfigure the encoder. Earlier it tested that the new config-\u003estartBitrate was close to the current estimate, but now it can flake since the estimate can sometimes jump up if the probe completes. Now we simply test that the config-\u003estartBitrate is larger than the reconfig threshold, which in turn is larger than the start bitrate (so start bitrate \u003e reconfig threshold \u003e initial start bitrate).",
+      "parentUuid": "ef2a38b9_e4572ba9",
       "range": {
         "startLine": 710,
         "startChar": 26,
