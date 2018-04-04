@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ea563af_d8f972c8",
+        "filename": "rtc_base/openssladapter.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 799,
+      "author": {
+        "id": 6630
+      },
+      "writtenOn": "2018-04-04T14:03:27Z",
+      "side": 1,
+      "message": "these can be combined in a single statement\nbool is_valid_cert_name \u003d OpenSSLCommon::VerifyPeerCertMatchesHost(ssl, host) \u0026\u0026 (SSL_get_verify_result(ssl) \u003d\u003d X509_V_OK || custom_verification_succeeded_)",
+      "revId": "532fa37154822632eb3cd3a310f1811ba9a60aa1",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b82d15d_b3710754",
+        "filename": "rtc_base/opensslcommon.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 6630
+      },
+      "writtenOn": "2018-04-04T14:03:27Z",
+      "side": 1,
+      "message": "Move this comment line to LogCertificates function below",
+      "revId": "532fa37154822632eb3cd3a310f1811ba9a60aa1",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
