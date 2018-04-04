@@ -89,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "d0b54582_92fcda17",
+        "filename": "rtc_base/openssladapter.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 6930
+      },
+      "writtenOn": "2018-04-04T23:45:09Z",
+      "side": 1,
+      "message": "Why are these getting added back in...\nThey aren\u0027t in my local change.",
+      "parentUuid": "20538af4_3217b106",
+      "revId": "18f81b98fb97d300f4b7c486c3450f78a1307e78",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1b5f16ba_4b5a2a51",
         "filename": "rtc_base/opensslcommon.cc",
         "patchSetId": 8
