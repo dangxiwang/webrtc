@@ -180,6 +180,8 @@ class BaseTest : public RtpRtcpObserver {
   virtual void OnRtpTransportControllerSendCreated(
       RtpTransportControllerSend* controller);
   virtual void OnCallsCreated(Call* sender_call, Call* receiver_call);
+  virtual void OnTransportsCreated(test::PacketTransport* send_transport,
+                                   test::PacketTransport* receive_transport);
 
   virtual test::PacketTransport* CreateSendTransport(
       SingleThreadedTaskQueueForTesting* task_queue,
