@@ -16,6 +16,24 @@
       "revId": "709a5ce77da1493fc10e04b4198f0c115c7283b2",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccaf4fac_8e58223f",
+        "filename": "rtc_base/openssladapter.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 801,
+      "author": {
+        "id": 6930
+      },
+      "writtenOn": "2018-04-05T18:34:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b020f7e_35bfa8c4",
+      "revId": "709a5ce77da1493fc10e04b4198f0c115c7283b2",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
