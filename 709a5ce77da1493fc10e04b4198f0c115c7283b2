@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3b020f7e_35bfa8c4",
+        "filename": "rtc_base/openssladapter.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 801,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2018-04-05T17:52:15Z",
+      "side": 1,
+      "message": "nit: Don\u0027t need this \u003c\u003c operator",
+      "revId": "709a5ce77da1493fc10e04b4198f0c115c7283b2",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
