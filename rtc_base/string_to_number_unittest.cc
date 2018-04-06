@@ -48,9 +48,10 @@ TYPED_TEST_P(BasicNumberTest, TestValidNumbers) {
   EXPECT_EQ(min_value, StringToNumber<T>(min_string.c_str()));
   EXPECT_EQ(max_value, StringToNumber<T>(max_string));
   EXPECT_EQ(max_value, StringToNumber<T>(max_string.c_str()));
-  EXPECT_EQ(0, StringToNumber<T>("0"));
-  EXPECT_EQ(0, StringToNumber<T>("-0"));
-  EXPECT_EQ(0, StringToNumber<T>(std::string("-0000000000000")));
+  constexpr T zero_value = 0;
+  EXPECT_EQ(zero_value, StringToNumber<T>("0"));
+  EXPECT_EQ(zero_value, StringToNumber<T>("-0"));
+  EXPECT_EQ(zero_value, StringToNumber<T>(std::string("-0000000000000")));
 }
 
 TYPED_TEST_P(BasicNumberTest, TestInvalidNumbers) {

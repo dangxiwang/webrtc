@@ -11,6 +11,7 @@
 #include <cerrno>
 #include <cstdlib>
 
+#include "rtc_base/checks.h"
 #include "rtc_base/string_to_number.h"
 
 namespace rtc {
