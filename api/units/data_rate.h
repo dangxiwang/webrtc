@@ -8,9 +8,8 @@
  *  be found in the AUTHORS file in the root of the source tree.
  */
 
-#ifndef MODULES_CONGESTION_CONTROLLER_NETWORK_CONTROL_UNITS_DATA_RATE_H_
-#define MODULES_CONGESTION_CONTROLLER_NETWORK_CONTROL_UNITS_DATA_RATE_H_
-
+#ifndef API_UNITS_DATA_RATE_H_
+#define API_UNITS_DATA_RATE_H_
 #include <stdint.h>
 #include <cmath>
 #include <limits>
@@ -19,8 +18,8 @@
 #include "api/optional.h"
 #include "rtc_base/checks.h"
 
-#include "modules/congestion_controller/network_control/units/data_size.h"
-#include "modules/congestion_controller/network_control/units/time_delta.h"
+#include "api/units/data_size.h"
+#include "api/units/time_delta.h"
 
 namespace webrtc {
 namespace data_rate_impl {
@@ -142,4 +141,4 @@ std::string ToString(const DataRate& value);
 
 }  // namespace webrtc
 
-#endif  // MODULES_CONGESTION_CONTROLLER_NETWORK_CONTROL_UNITS_DATA_RATE_H_
+#endif  // API_UNITS_DATA_RATE_H_

@@ -6,7 +6,7 @@
 # in the file PATENTS.  All contributing project authors may
 # be found in the AUTHORS file in the root of the source tree.
 
-import("../../../../webrtc.gni")
+import("../../webrtc.gni")
 
 rtc_source_set("data_rate") {
   sources = [
@@ -56,9 +56,9 @@ rtc_source_set("timestamp") {
 
   deps = [
     ":time_delta",
-    "../../../../api:optional",
-    "../../../../rtc_base:checks",
-    "../../../../rtc_base:rtc_base_approved",
+    "..:optional",
+    "../../rtc_base:checks",
+    "../../rtc_base:rtc_base_approved",
   ]
 }
 
@@ -76,7 +76,7 @@ if (rtc_include_tests) {
       ":data_size",
       ":time_delta",
       ":timestamp",
-      "../../../../test:test_support",
+      "../../test:test_support",
     ]
   }
 }
