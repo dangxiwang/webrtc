@@ -309,13 +309,10 @@ rtc_source_set("array_view") {
 rtc_source_set("optional") {
   visibility = [ "*" ]
   sources = [
-    "optional.cc",
     "optional.h",
   ]
   deps = [
-    ":array_view",
-    "../rtc_base:checks",
-    "../rtc_base:sanitizer",
+    "//third_party/abseil_cpp/third_party/absl/types:optional",
   ]
 }
 
@@ -422,7 +419,6 @@ if (rtc_include_tests) {
 
     sources = [
       "array_view_unittest.cc",
-      "optional_unittest.cc",
       "ortc/mediadescription_unittest.cc",
       "ortc/sessiondescription_unittest.cc",
       "rtcerror_unittest.cc",
