@@ -719,6 +719,7 @@ include_rules = [
   "+rtc_base",
   "+test",
   "+rtc_tools",
+  "+absl",
 ]
 
 # The below rules will be removed when webrtc:4243 is fixed.

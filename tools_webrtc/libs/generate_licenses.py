@@ -22,6 +22,7 @@ import subprocess
 
 
 LIB_TO_LICENSES_DICT = {
+    'abseil_cpp': ['third_party/abseil-cpp/absl/LICENSE'],
     'android_tools': ['third_party/android_tools/LICENSE'],
     'auto': ['third_party/auto/src/LICENSE.txt'],
     'bazel': ['third_party/bazel/LICENSE'],
