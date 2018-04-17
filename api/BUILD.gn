@@ -306,17 +306,22 @@ rtc_source_set("array_view") {
   ]
 }
 
+config("absl_test_define_config") {
+  defines = [ "GTEST_HAS_ABSL" ]
+  if (is_win && !is_clang) {
+    cflags_cc = [ "/wd4702" ]  # unreachable code
+  }
+}
+
 rtc_source_set("optional") {
   visibility = [ "*" ]
   sources = [
-    "optional.cc",
     "optional.h",
   ]
   deps = [
-    ":array_view",
-    "../rtc_base:checks",
-    "../rtc_base:sanitizer",
+    "//third_party/abseil-cpp/absl/types:optional",
   ]
+  all_dependent_configs = [ ":absl_test_define_config" ]
 }
 
 rtc_source_set("refcountedbase") {
