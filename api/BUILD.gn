@@ -306,16 +306,22 @@ rtc_source_set("array_view") {
   ]
 }
 
+config("absl_test_define_config") {
+  defines = [ "GTEST_HAS_ABSL" ]
+}
+
 rtc_source_set("optional") {
   visibility = [ "*" ]
   sources = [
-    "optional.cc",
     "optional.h",
   ]
   deps = [
-    ":array_view",
-    "../rtc_base:checks",
-    "../rtc_base:sanitizer",
+    "//third_party/abseil-cpp/absl/types:optional",
+  ]
+  all_dependent_configs = [
+    "//third_party/abseil-cpp:absl_include_config",
+    "//third_party/abseil-cpp:absl_define_config",
+    ":absl_test_define_config",
   ]
 }
 
