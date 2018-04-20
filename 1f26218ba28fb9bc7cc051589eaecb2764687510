@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a62651e_854475af",
+        "filename": "call/call.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2018-04-20T09:29:56Z",
+      "side": 1,
+      "message": "Would be nice to delete this argument right away, and similarly for other send streams.",
+      "range": {
+        "startLine": 583,
+        "startChar": 35,
+        "endLine": 583,
+        "endChar": 68
+      },
+      "revId": "1f26218ba28fb9bc7cc051589eaecb2764687510",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "faf8cb50_78379de4",
+        "filename": "call/call.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 938,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2018-04-20T09:29:56Z",
+      "side": 1,
+      "message": "Using another object\u0027s task queu isn\u0027t soo nice. In this method, I take it it will go away when bitrate_allocator_ is moved?",
+      "range": {
+        "startLine": 938,
+        "startChar": 2,
+        "endLine": 938,
+        "endChar": 54
+      },
+      "revId": "1f26218ba28fb9bc7cc051589eaecb2764687510",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58d4ddfe_badc1fed",
+        "filename": "call/call.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1072,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2018-04-20T09:29:56Z",
+      "side": 1,
+      "message": "This object is unrelated to SendSideCongestionController, right? Doesn anything depend on it being called from this task queue?",
+      "range": {
+        "startLine": 1072,
+        "startChar": 2,
+        "endLine": 1072,
+        "endChar": 18
+      },
+      "revId": "1f26218ba28fb9bc7cc051589eaecb2764687510",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d1a51bf_5d30d6ed",
+        "filename": "call/rtp_transport_controller_send.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2018-04-20T09:29:56Z",
+      "side": 1,
+      "message": "Rename both member variable and task queue name. Suggest |task_queue_| and \"rtp_send_controller\" (I think too long name would hurts debugging, hence no \"transport\" in there).",
+      "range": {
+        "startLine": 65,
+        "startChar": 6,
+        "endLine": 65,
+        "endChar": 40
+      },
+      "revId": "1f26218ba28fb9bc7cc051589eaecb2764687510",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "489f1f75_ed2213ac",
+        "filename": "call/rtp_transport_controller_send.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2018-04-20T09:29:56Z",
+      "side": 1,
+      "message": "Should document which state belongs to the task queue. As I understand it, it should control all state shared between send streams, while current use is a bit less well structured.",
+      "range": {
+        "startLine": 102,
+        "startChar": 17,
+        "endLine": 102,
+        "endChar": 30
+      },
+      "revId": "1f26218ba28fb9bc7cc051589eaecb2764687510",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bb4e6dc_faf4049e",
+        "filename": "call/rtp_transport_controller_send_interface.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2018-04-20T09:29:56Z",
+      "side": 1,
+      "message": "We should aim to delete this method, and have separate methods for the useful operations that need the task queue.",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 47
+      },
+      "revId": "1f26218ba28fb9bc7cc051589eaecb2764687510",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
