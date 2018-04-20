@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "74f4f9aa_12f8bec6",
+        "filename": "call/call.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-04-20T12:22:54Z",
+      "side": 1,
+      "message": "It would make the CL a lot larger though, involving more owners. Still worth it?",
+      "parentUuid": "6a62651e_854475af",
+      "range": {
+        "startLine": 583,
+        "startChar": 35,
+        "endLine": 583,
+        "endChar": 68
+      },
+      "revId": "1f26218ba28fb9bc7cc051589eaecb2764687510",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "faf8cb50_78379de4",
         "filename": "call/call.cc",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "1c5ebf6c_a3a92c7d",
+        "filename": "call/call.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 938,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-04-20T12:22:54Z",
+      "side": 1,
+      "message": "Yes, have that in a followup CL.",
+      "parentUuid": "faf8cb50_78379de4",
+      "range": {
+        "startLine": 938,
+        "startChar": 2,
+        "endLine": 938,
+        "endChar": 54
+      },
+      "revId": "1f26218ba28fb9bc7cc051589eaecb2764687510",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "58d4ddfe_badc1fed",
         "filename": "call/call.cc",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2018-04-20T09:29:56Z",
       "side": 1,
       "message": "This object is unrelated to SendSideCongestionController, right? Doesn anything depend on it being called from this task queue?",
+      "range": {
+        "startLine": 1072,
+        "startChar": 2,
+        "endLine": 1072,
+        "endChar": 18
+      },
+      "revId": "1f26218ba28fb9bc7cc051589eaecb2764687510",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "672c2285_b329afaf",
+        "filename": "call/call.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1072,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-04-20T12:22:54Z",
+      "side": 1,
+      "message": "Looking at the code, no, it grabs a lock for the only state modifying operations in it.",
+      "parentUuid": "58d4ddfe_badc1fed",
       "range": {
         "startLine": 1072,
         "startChar": 2,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "eb16f19d_0ab07e9b",
+        "filename": "call/rtp_transport_controller_send.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-04-20T12:22:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d1a51bf_5d30d6ed",
+      "range": {
+        "startLine": 65,
+        "startChar": 6,
+        "endLine": 65,
+        "endChar": 40
+      },
+      "revId": "1f26218ba28fb9bc7cc051589eaecb2764687510",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "489f1f75_ed2213ac",
         "filename": "call/rtp_transport_controller_send.h",
         "patchSetId": 1
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "077dae08_c2361beb",
+        "filename": "call/rtp_transport_controller_send.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-04-20T12:22:54Z",
+      "side": 1,
+      "message": "Do you have a suggestion for such a comment?",
+      "parentUuid": "489f1f75_ed2213ac",
+      "range": {
+        "startLine": 102,
+        "startChar": 17,
+        "endLine": 102,
+        "endChar": 30
+      },
+      "revId": "1f26218ba28fb9bc7cc051589eaecb2764687510",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3bb4e6dc_faf4049e",
         "filename": "call/rtp_transport_controller_send_interface.h",
         "patchSetId": 1
@@ -128,6 +248,30 @@
       "writtenOn": "2018-04-20T09:29:56Z",
       "side": 1,
       "message": "We should aim to delete this method, and have separate methods for the useful operations that need the task queue.",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 47
+      },
+      "revId": "1f26218ba28fb9bc7cc051589eaecb2764687510",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05369ea2_61233171",
+        "filename": "call/rtp_transport_controller_send_interface.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-04-20T12:22:54Z",
+      "side": 1,
+      "message": "Seems reasonable. Currently the send streams depend on it though. If they could be split into a RTCS owned part and a Call owned part it might work.",
+      "parentUuid": "3bb4e6dc_faf4049e",
       "range": {
         "startLine": 66,
         "startChar": 0,
