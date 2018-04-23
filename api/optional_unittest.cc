@@ -716,17 +716,21 @@ TEST(OptionalTest, TestDereferenceWithDefault) {
     EXPECT_EQ(b, Optional<Logger>().value_or(b));
     log->push_back("-5-");
   }
-  EXPECT_EQ(
-      V("0:17. explicit constructor", "1:42. explicit constructor",
-        "2:17. copy constructor (from 0:17)", "-1-",
-        "3:42. explicit constructor", "operator== 0:17, 2:17",
-        "3:42. destructor", "-2-", "4:42. explicit constructor",
-        "operator== 1:42, 4:42", "4:42. destructor", "-3-",
-        "5:17. explicit constructor", "6:17. move constructor (from 5:17)",
-        "operator== 0:17, 6:17", "6:17. destructor", "5:17. destructor", "-4-",
-        "operator== 1:42, 1:42", "-5-", "2:17. destructor", "1:42. destructor",
-        "0:17. destructor"),
-      *log);
+  // Expectation disabled because output is compiler-dependent.
+  // i.e. msvc produce different output than clang
+  // Calls above are subject to copy elision that allow to change behavior.
+  // EXPECT_EQ(
+  //      V("0:17. explicit constructor", "1:42. explicit constructor",
+  //      "2:17. copy constructor (from 0:17)", "-1-",
+  //      "3:42. explicit constructor", "operator== 0:17, 2:17",
+  //      "3:42. destructor", "-2-", "4:42. explicit constructor",
+  //      "operator== 1:42, 4:42", "4:42. destructor", "-3-",
+  //      "5:17. explicit constructor", "6:17. move constructor (from 5:17)",
+  //      "operator== 0:17, 6:17", "6:17. destructor", "5:17. destructor",
+  //      "-4-",
+  //     "operator== 1:42, 1:42", "-5-", "2:17. destructor", "1:42. destructor",
+  //    "0:17. destructor"),
+  // *log);
 }
 
 TEST(OptionalTest, TestEquality) {
@@ -872,7 +876,7 @@ TEST(OptionalTest, TestMoveValue) {
 }
 
 TEST(OptionalTest, TestPrintTo) {
-  constexpr char kEmptyOptionalMessage[] = "<empty optional>";
+  constexpr char kEmptyOptionalMessage[] = "(nullopt)";
   const Optional<MyUnprintableType> empty_unprintable;
   const Optional<MyPrintableType> empty_printable;
   const Optional<MyOstreamPrintableType> empty_ostream_printable;
@@ -880,12 +884,20 @@ TEST(OptionalTest, TestPrintTo) {
   EXPECT_EQ(kEmptyOptionalMessage, ::testing::PrintToString(empty_printable));
   EXPECT_EQ(kEmptyOptionalMessage,
             ::testing::PrintToString(empty_ostream_printable));
-  EXPECT_NE("1", ::testing::PrintToString(Optional<MyUnprintableType>({1})));
-  EXPECT_NE("1", ::testing::PrintToString(Optional<MyPrintableType>({1})));
-  EXPECT_EQ("The value is 1",
+  EXPECT_NE("(1)", ::testing::PrintToString(Optional<MyUnprintableType>({1})));
+  EXPECT_NE("(1)", ::testing::PrintToString(Optional<MyPrintableType>({1})));
+  EXPECT_EQ("(The value is 1)",
             ::testing::PrintToString(Optional<MyPrintableType>({1})));
-  EXPECT_EQ("1",
+  EXPECT_EQ("(1)",
             ::testing::PrintToString(Optional<MyOstreamPrintableType>({1})));
+}
+
+TEST(OptionalTest, TestUnprintablePrintTo) {
+  struct UnprintableType {
+    uint8_t value[5];
+  };
+  Optional<UnprintableType> opt({0xa1, 0xb2, 0xc3, 0xd4, 0xe5});
+  EXPECT_EQ("(5-byte object <A1-B2 C3-D4 E5>)", ::testing::PrintToString(opt));
 }
 
 void UnusedFunctionWorkaround() {
