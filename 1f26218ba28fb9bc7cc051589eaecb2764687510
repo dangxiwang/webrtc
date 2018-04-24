@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "392ef4f6_c4c22607",
+        "filename": "call/call.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2018-04-24T11:32:21Z",
+      "side": 1,
+      "message": "I imagine it will be a fairly small and easy-to-review change in audio/ and video/.\n\nI think it\u0027s nice to move use of the GetWorkerQueue method closer to the code that actually needs to do work on the tq.",
+      "parentUuid": "74f4f9aa_12f8bec6",
+      "range": {
+        "startLine": 583,
+        "startChar": 35,
+        "endLine": 583,
+        "endChar": 68
+      },
+      "revId": "1f26218ba28fb9bc7cc051589eaecb2764687510",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "faf8cb50_78379de4",
         "filename": "call/call.cc",
         "patchSetId": 1
@@ -225,6 +249,30 @@
       "side": 1,
       "message": "Do you have a suggestion for such a comment?",
       "parentUuid": "489f1f75_ed2213ac",
+      "range": {
+        "startLine": 102,
+        "startChar": 17,
+        "endLine": 102,
+        "endChar": 30
+      },
+      "revId": "1f26218ba28fb9bc7cc051589eaecb2764687510",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9937b7c4_3d8316f2",
+        "filename": "call/rtp_transport_controller_send.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2018-04-24T11:32:21Z",
+      "side": 1,
+      "message": "Maybe \"Task queue for access to the RTP state shared between send streams.\".\n\nCan any of the current members be annotated as guarded by this task queue? It would be good to both add such annotations where possible, and comment on the cases where we\u0027d like to restrict access to the task queue but for some reason can\u0027t do that yet.",
+      "parentUuid": "077dae08_c2361beb",
       "range": {
         "startLine": 102,
         "startChar": 17,
