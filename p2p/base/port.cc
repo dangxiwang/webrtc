@@ -802,12 +802,9 @@ void Port::SendBindingResponse(StunMessage* request,
     // Log at LS_INFO if we send a stun ping response on an unwritable
     // connection.
     Connection* conn = GetConnection(addr);
-    rtc::LoggingSeverity sev = (conn && !conn->writable()) ?
-        rtc::LS_INFO : rtc::LS_VERBOSE;
-    RTC_LOG_V(sev) << ToString()
-                   << ": Sent STUN ping response, to="
-                   << addr.ToSensitiveString()
-                   << ", id=" << rtc::hex_encode(response.transaction_id());
+    RTC_LOG(INFO) << ToString() << ": Sent STUN ping response, to="
+                  << addr.ToSensitiveString()
+                  << ", id=" << rtc::hex_encode(response.transaction_id());
 
     conn->stats_.sent_ping_responses++;
     conn->LogCandidatePairEvent(
@@ -1589,6 +1586,7 @@ std::string Connection::ToString() const {
      << local.address().ToSensitiveString() << "->" << remote.id() << ":"
      << remote.component() << ":" << remote.priority() << ":" << remote.type()
      << ":" << remote.protocol() << ":" << remote.address().ToSensitiveString()
+     << ":" << port_->Network()->ToString() << ":" << port_->Network()->id()
      << "|" << CONNECT_STATE_ABBREV[connected()]
      << RECEIVE_STATE_ABBREV[receiving()] << WRITE_STATE_ABBREV[write_state()]
      << ICESTATE[static_cast<int>(state())] << "|" << remote_nomination() << "|"
@@ -1693,20 +1691,16 @@ void Connection::OnConnectionRequestErrorResponse(ConnectionRequest* request,
 }
 
 void Connection::OnConnectionRequestTimeout(ConnectionRequest* request) {
-  // Log at LS_INFO if we miss a ping on a writable connection.
-  rtc::LoggingSeverity sev = writable() ? rtc::LS_INFO : rtc::LS_VERBOSE;
-  RTC_LOG_V(sev) << ToString() << ": Timing-out STUN ping "
-                 << rtc::hex_encode(request->id()) << " after "
-                 << request->Elapsed() << " ms";
+  RTC_LOG(INFO) << ToString() << ": Timing-out STUN ping "
+                << rtc::hex_encode(request->id()) << " after "
+                << request->Elapsed() << " ms";
 }
 
 void Connection::OnConnectionRequestSent(ConnectionRequest* request) {
-  // Log at LS_INFO if we send a ping on an unwritable connection.
-  rtc::LoggingSeverity sev = !writable() ? rtc::LS_INFO : rtc::LS_VERBOSE;
-  RTC_LOG_V(sev) << ToString()
-                 << ": Sent STUN ping, id=" << rtc::hex_encode(request->id())
-                 << ", use_candidate=" << use_candidate_attr()
-                 << ", nomination=" << nomination();
+  RTC_LOG(INFO) << ToString()
+                << ": Sent STUN ping, id=" << rtc::hex_encode(request->id())
+                << ", use_candidate=" << use_candidate_attr()
+                << ", nomination=" << nomination();
   stats_.sent_ping_requests_total++;
   LogCandidatePairEvent(webrtc::IceCandidatePairEventType::kCheckSent);
   if (stats_.recv_ping_responses == 0) {
