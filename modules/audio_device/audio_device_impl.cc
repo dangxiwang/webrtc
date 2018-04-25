@@ -20,7 +20,9 @@
 
 #if defined(_WIN32)
 #if defined(WEBRTC_WINDOWS_CORE_AUDIO_BUILD)
+#include "modules/audio_device/win/audio_device_core_audio_win.h"
 #include "modules/audio_device/win/audio_device_core_win.h"
+#include "modules/audio_device/win/core_audio_utility_win.h"
 #endif
 #elif defined(WEBRTC_ANDROID)
 #include <stdlib.h>
@@ -166,6 +168,16 @@ int32_t AudioDeviceModuleImpl::CreatePlatformSpecificObjects() {
       audio_device_.reset(new AudioDeviceWindowsCore());
       RTC_LOG(INFO) << "Windows Core Audio APIs will be utilized";
     }
+  } else if (audio_layer == kWindowsCoreAudio2) {
+    // Creating the object also creates a multi-threaded apartment (MTA), i.e.,
+    // this thread will be associated with the MTA.
+    audio_device_.reset(new win::AudioDeviceCoreAudio());
+    // Given MTA mode, verify that COM based Core Audio is supported.
+    if (!win::CoreAudioUtility::IsSupported()) {
+      RTC_LOG(LS_ERROR) << "Windows Core Audio is not supported";
+      audio_device_.reset(nullptr);
+    }
+    RTC_LOG(INFO) << "Windows Core Audio 2 APIs will be utilized";
   }
 #endif  // defined(WEBRTC_WINDOWS_CORE_AUDIO_BUILD)
 
