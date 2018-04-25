@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5a8d350_26dbc680",
+        "filename": "rtc_base/opensslcommon_unittest.cc",
+        "patchSetId": 21
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 6988
+      },
+      "writtenOn": "2018-04-25T21:43:01Z",
+      "side": 1,
+      "message": "So this is actually violating a *TON* of BoringSSL invariants and also touches private structures that we were previously very close to being able to hide before this landed.\n\nInstead of this, perhaps make openssl::VerifyPeerCertMatchesHost take the X509* directly?",
+      "revId": "9201d1aa8a60ec16962690a0aaac3a7f72acb679",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
