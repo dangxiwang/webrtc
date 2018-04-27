@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "240d98b8_0c115ace",
+        "filename": "modules/congestion_controller/rtp/include/send_side_congestion_controller.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-04-27T10:36:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6acc77eb_63ffad4f",
+      "range": {
+        "startLine": 82,
+        "startChar": 10,
+        "endLine": 82,
+        "endChar": 43
+      },
+      "revId": "b733804b47b87c1477f35d3d8db853096f915c7f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8bdcbe26_60d4813a",
         "filename": "modules/congestion_controller/rtp/send_side_congestion_controller.cc",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2018-04-27T09:49:52Z",
       "side": 1,
       "message": "So BBR experiment overrides application injection? Is that right?\n\nI would expect the application to get what it asks for, and then do its own experiment to be able to switch between application specific controller and webrtc\u0027s bbr.",
+      "range": {
+        "startLine": 56,
+        "startChar": 6,
+        "endLine": 56,
+        "endChar": 58
+      },
+      "revId": "b733804b47b87c1477f35d3d8db853096f915c7f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "378ada82_af16a88d",
+        "filename": "modules/congestion_controller/rtp/send_side_congestion_controller.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-04-27T10:36:01Z",
+      "side": 1,
+      "message": "The experiment itself is set either with the \"BBR\" as argument or with \"Injected\" as argument. so it\u0027s not possible to enable both at once.\n\nI guess this could be better expressed in the interface but returning an enum, but that seems like more work than benefit.",
+      "parentUuid": "8bdcbe26_60d4813a",
       "range": {
         "startLine": 56,
         "startChar": 6,
