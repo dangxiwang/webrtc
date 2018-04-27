@@ -93,6 +93,53 @@
       "revId": "b733804b47b87c1477f35d3d8db853096f915c7f",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22d3b865_64b1f9de",
+        "filename": "modules/congestion_controller/rtp/send_side_congestion_controller.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2018-04-27T12:12:53Z",
+      "side": 1,
+      "message": "Why would you need to pass a BBR factory as an argument, for the experiment?",
+      "parentUuid": "378ada82_af16a88d",
+      "range": {
+        "startLine": 56,
+        "startChar": 6,
+        "endLine": 56,
+        "endChar": 58
+      },
+      "revId": "b733804b47b87c1477f35d3d8db853096f915c7f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7fff9b9_582b1412",
+        "filename": "modules/congestion_controller/rtp/send_side_congestion_controller.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2018-04-27T12:12:53Z",
+      "side": 1,
+      "message": "I\u0027d expect this to be\n\ncontroller_factory_with_feedback_(\n   controller_factory_with_feedback \n      ? std::move(controller_factory_with_feedback)\n      : GetFeedbackFactoryBasedOnExperiment())\n\nI.e., if some factory is injected, use that, period. Otherwise, select a default factory based on experiment settings, which will either be a newly created BBR factory, or null.",
+      "range": {
+        "startLine": 338,
+        "startChar": 6,
+        "endLine": 339,
+        "endChar": 56
+      },
+      "revId": "b733804b47b87c1477f35d3d8db853096f915c7f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
     }
   ]
 }
