@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "4d7936f0_b563c2a7",
+        "filename": "modules/congestion_controller/rtp/send_side_congestion_controller.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2018-04-27T14:02:22Z",
+      "side": 1,
+      "message": "Sorry, I missed the fact that the experiment setting also tri-state. \n\nTo summarize offline discussion: I think this way of doing it is reasonable, but please consider if we could move out ownership of the BBR factory, so that the controller for feedback case is *always* injected. Experiment setup would also move out a bit then, possibly all the way to PeerConnectionFactory, if CreatePeerConnection is a good time to check experment settings.\n\nIt would be nice to handle it consistently, and avoid an organization where an object is sometimes injected, sometimes created and owned internally.",
+      "parentUuid": "e673a703_07ae2169",
+      "range": {
+        "startLine": 56,
+        "startChar": 6,
+        "endLine": 56,
+        "endChar": 58
+      },
+      "revId": "b733804b47b87c1477f35d3d8db853096f915c7f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e7fff9b9_582b1412",
         "filename": "modules/congestion_controller/rtp/send_side_congestion_controller.cc",
         "patchSetId": 1
