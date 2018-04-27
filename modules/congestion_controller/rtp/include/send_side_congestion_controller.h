@@ -71,6 +71,16 @@ class SendSideCongestionController
                                int start_bitrate_bps,
                                int min_bitrate_bps,
                                int max_bitrate_bps);
+  SendSideCongestionController(
+      const Clock* clock,
+      RtcEventLog* event_log,
+      PacedSender* pacer,
+      int start_bitrate_bps,
+      int min_bitrate_bps,
+      int max_bitrate_bps,
+      std::unique_ptr<NetworkControllerFactoryInterface>
+          controller_factory_with_feedback_);
+
   ~SendSideCongestionController() override;
 
   void RegisterPacketFeedbackObserver(
