@@ -78,7 +78,7 @@ class SendSideCongestionController
       int start_bitrate_bps,
       int min_bitrate_bps,
       int max_bitrate_bps,
-      std::unique_ptr<NetworkControllerFactoryInterface>
+      std::shared_ptr<NetworkControllerFactoryInterface>
           controller_factory_with_feedback_);
 
   ~SendSideCongestionController() override;
@@ -179,7 +179,7 @@ class SendSideCongestionController
   // TODO(srte): Move all access to feedback adapter to task queue.
   TransportFeedbackAdapter transport_feedback_adapter_;
 
-  const std::unique_ptr<NetworkControllerFactoryInterface>
+  const std::shared_ptr<NetworkControllerFactoryInterface>
       controller_factory_with_feedback_ RTC_GUARDED_BY(task_queue_ptr_);
   const std::unique_ptr<NetworkControllerFactoryInterface>
       controller_factory_fallback_ RTC_GUARDED_BY(task_queue_ptr_);
