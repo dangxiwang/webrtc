@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a78cada7_38baa7cf",
+        "filename": "call/call_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-04-27T14:32:09Z",
+      "side": 1,
+      "message": "Changed to raw pointer and moved ownership to PeerConnectionFactory.",
+      "parentUuid": "0972c8da_9d34c6b3",
+      "revId": "35b50ebd6addea1b7cd7f97e77d75b7e41ab913e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9349e25f_ec77a34c",
         "filename": "pc/peerconnectionfactory.h",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "35b50ebd6addea1b7cd7f97e77d75b7e41ab913e",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9af6d0f2_1c153f30",
+        "filename": "pc/peerconnectionfactory.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-04-27T14:32:09Z",
+      "side": 1,
+      "message": "Replaced with unique_ptr",
+      "parentUuid": "9349e25f_ec77a34c",
+      "revId": "35b50ebd6addea1b7cd7f97e77d75b7e41ab913e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
