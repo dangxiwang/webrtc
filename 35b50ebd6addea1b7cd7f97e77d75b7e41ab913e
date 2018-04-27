@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0972c8da_9d34c6b3",
+        "filename": "call/call_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 5508
+      },
+      "writtenOn": "2018-04-27T13:04:08Z",
+      "side": 1,
+      "message": "we haven\u0027t started using shared_ptr. Can this be changed to unique_ptr?",
+      "revId": "35b50ebd6addea1b7cd7f97e77d75b7e41ab913e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9349e25f_ec77a34c",
+        "filename": "pc/peerconnectionfactory.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 5508
+      },
+      "writtenOn": "2018-04-27T13:04:08Z",
+      "side": 1,
+      "message": "use something else than shared_ptr. scoped_refptr is probably semantically closest.",
+      "revId": "35b50ebd6addea1b7cd7f97e77d75b7e41ab913e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
