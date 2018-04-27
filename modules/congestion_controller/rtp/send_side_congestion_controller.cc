@@ -50,12 +50,17 @@ bool IsPacerPushbackExperimentEnabled() {
               webrtc::runtime_enabled_features::kDualStreamModeFeatureName));
 }
 
-std::unique_ptr<NetworkControllerFactoryInterface> MaybeCreateBbrFactory() {
+std::shared_ptr<NetworkControllerFactoryInterface>
+GetFeedbackFactoryBasedOnExperiment(
+    std::shared_ptr<NetworkControllerFactoryInterface> injected_factory) {
   if (CongestionControllerExperiment::BbrControllerEnabled()) {
     RTC_LOG(LS_INFO) << "Creating BBR factory";
-    return rtc::MakeUnique<BbrNetworkControllerFactory>();
+    return std::make_shared<BbrNetworkControllerFactory>();
+  } else if (CongestionControllerExperiment::InjectedControllerEnabled()) {
+    RTC_LOG(LS_INFO) << "Using injected factory";
+    return injected_factory;
   } else {
-    RTC_LOG(LS_INFO) << "Not creating BBR factory";
+    RTC_LOG(LS_INFO) << "Not feedback controller factory used";
     return nullptr;
   }
 }
@@ -310,10 +315,27 @@ SendSideCongestionController::SendSideCongestionController(
     int start_bitrate_bps,
     int min_bitrate_bps,
     int max_bitrate_bps)
+    : SendSideCongestionController(clock,
+                                   event_log,
+                                   pacer,
+                                   start_bitrate_bps,
+                                   min_bitrate_bps,
+                                   max_bitrate_bps,
+                                   nullptr) {}
+
+SendSideCongestionController::SendSideCongestionController(
+    const Clock* clock,
+    RtcEventLog* event_log,
+    PacedSender* pacer,
+    int start_bitrate_bps,
+    int min_bitrate_bps,
+    int max_bitrate_bps,
+    std::shared_ptr<NetworkControllerFactoryInterface> controller_factory)
     : clock_(clock),
       pacer_(pacer),
       transport_feedback_adapter_(clock_),
-      controller_factory_with_feedback_(MaybeCreateBbrFactory()),
+      controller_factory_with_feedback_(
+          GetFeedbackFactoryBasedOnExperiment(std::move(controller_factory))),
       controller_factory_fallback_(
           rtc::MakeUnique<GoogCcNetworkControllerFactory>(event_log)),
       pacer_controller_(MakeUnique<PacerController>(pacer_)),
