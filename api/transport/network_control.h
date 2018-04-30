@@ -8,12 +8,12 @@
  *  be found in the AUTHORS file in the root of the source tree.
  */
 
-#ifndef MODULES_CONGESTION_CONTROLLER_NETWORK_CONTROL_INCLUDE_NETWORK_CONTROL_H_
-#define MODULES_CONGESTION_CONTROLLER_NETWORK_CONTROL_INCLUDE_NETWORK_CONTROL_H_
+#ifndef API_TRANSPORT_NETWORK_CONTROL_H_
+#define API_TRANSPORT_NETWORK_CONTROL_H_
 #include <stdint.h>
 #include <memory>
 
-#include "modules/congestion_controller/network_control/include/network_types.h"
+#include "api/transport/network_types.h"
 
 namespace webrtc {
 
@@ -89,4 +89,4 @@ class NetworkControllerFactoryInterface {
 };
 }  // namespace webrtc
 
-#endif  // MODULES_CONGESTION_CONTROLLER_NETWORK_CONTROL_INCLUDE_NETWORK_CONTROL_H_
+#endif  // API_TRANSPORT_NETWORK_CONTROL_H_
