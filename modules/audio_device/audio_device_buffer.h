@@ -21,6 +21,8 @@
 
 namespace webrtc {
 
+// #define AUDIO_DEVICE_PLAYS_SINUS_TONE
+
 // Delta times between two successive playout callbacks are limited to this
 // value before added to an internal array.
 const size_t kMaxDeltaTimeInMs = 500;
