@@ -30,6 +30,8 @@
 #include "test/gmock.h"
 #include "test/gtest.h"
 
+#include "system_wrappers/include/sleep.h"
+
 using ::testing::_;
 using ::testing::AtLeast;
 using ::testing::Ge;
@@ -72,7 +74,7 @@ static constexpr size_t kTestTimeOutInMilliseconds = 10 * 1000;
 // Average number of audio callbacks per second assuming 10ms packet size.
 static constexpr size_t kNumCallbacksPerSecond = 100;
 // Run the full-duplex test during this time (unit is in seconds).
-static constexpr size_t kFullDuplexTimeInSec = 5;
+static constexpr size_t kFullDuplexTimeInSec = 2;
 // Length of round-trip latency measurements. Number of deteced impulses
 // shall be kImpulseFrequencyInHz * kMeasureLatencyTimeInSec - 1 since the
 // last transmitted pulse is not used.
@@ -452,10 +454,12 @@ class AudioDeviceTest : public ::testing::Test {
     !defined(WEBRTC_DUMMY_AUDIO_BUILD)
     rtc::LogMessage::LogToDebug(rtc::LS_INFO);
     // Add extra logging fields here if needed for debugging.
-    // rtc::LogMessage::LogTimestamps();
-    // rtc::LogMessage::LogThreads();
+    rtc::LogMessage::LogTimestamps();
+    rtc::LogMessage::LogThreads();
     audio_device_ =
-        AudioDeviceModule::Create(AudioDeviceModule::kPlatformDefaultAudio);
+        AudioDeviceModule::Create(AudioDeviceModule::kWindowsCoreAudio2);
+    // audio_device_ =
+    //    AudioDeviceModule::Create(AudioDeviceModule::kPlatformDefaultAudio);
     EXPECT_NE(audio_device_.get(), nullptr);
     AudioDeviceModule::AudioLayer audio_layer;
     int got_platform_audio_layer =
@@ -552,22 +556,85 @@ TEST_F(AudioDeviceTest, InitTerminate) {
   EXPECT_FALSE(audio_device()->Initialized());
 }
 
+// Verify playout device enumeration.
+TEST_F(AudioDeviceTest, PlayoutDeviceNames) {
+  SKIP_TEST_IF_NOT(requirements_satisfied());
+  char device_name[kAdmMaxDeviceNameSize];
+  char unique_id[kAdmMaxGuidSize];
+  int num_devices = audio_device()->PlayoutDevices();
+#ifdef WEBRTC_WIN
+  AudioDeviceModule::AudioLayer audio_layer;
+  EXPECT_EQ(0, audio_device()->ActiveAudioLayer(&audio_layer));
+  if (audio_layer == AudioDeviceModule::kWindowsCoreAudio2) {
+    // Default device is always added as first element in the list and the
+    // default communication device as the second element. Hence, the list
+    // contains two extra elements in this case.
+    num_devices += 2;
+  }
+#endif
+  EXPECT_GT(num_devices, 0);
+  for (int i = 0; i < num_devices; ++i) {
+    EXPECT_EQ(0, audio_device()->PlayoutDeviceName(i, device_name, unique_id));
+  }
+  EXPECT_EQ(-1, audio_device()->PlayoutDeviceName(num_devices, device_name,
+                                                  unique_id));
+}
+
+// Verify playout device enumeration.
+TEST_F(AudioDeviceTest, SetPlayoutDevice) {
+  SKIP_TEST_IF_NOT(requirements_satisfied());
+  int num_devices = audio_device()->PlayoutDevices();
+#ifdef WEBRTC_WIN
+  AudioDeviceModule::AudioLayer audio_layer;
+  EXPECT_EQ(0, audio_device()->ActiveAudioLayer(&audio_layer));
+  if (audio_layer == AudioDeviceModule::kWindowsCoreAudio2) {
+    // Default device is always added as first element in the list and the
+    // default communication device as the second element. Hence, the list
+    // contains two extra elements in this case.
+    num_devices += 2;
+  }
+#endif
+  EXPECT_GT(num_devices, 0);
+
+  // Verify that all available playout devices can be set (not enabled yet).
+  for (int i = 0; i < num_devices; ++i) {
+    EXPECT_EQ(0, audio_device()->SetPlayoutDevice(i));
+  }
+  EXPECT_EQ(-1, audio_device()->SetPlayoutDevice(num_devices));
+
+#ifdef WEBRTC_WIN
+  // On Windows, verify the alternative method where the user can select device
+  // by role.
+  EXPECT_EQ(
+      0, audio_device()->SetPlayoutDevice(AudioDeviceModule::kDefaultDevice));
+  EXPECT_EQ(0, audio_device()->SetPlayoutDevice(
+                   AudioDeviceModule::kDefaultCommunicationDevice));
+#endif
+}
+
 // Tests Start/Stop playout without any registered audio callback.
 TEST_F(AudioDeviceTest, StartStopPlayout) {
   SKIP_TEST_IF_NOT(requirements_satisfied());
   StartPlayout();
+
+  webrtc::SleepMs(1000);
+
   StopPlayout();
-  StartPlayout();
-  StopPlayout();
+  // StartPlayout();
+  // StopPlayout();
 }
 
 // Tests Start/Stop recording without any registered audio callback.
 TEST_F(AudioDeviceTest, StartStopRecording) {
   SKIP_TEST_IF_NOT(requirements_satisfied());
   StartRecording();
+
+  webrtc::SleepMs(1000);
+
   StopRecording();
-  StartRecording();
-  StopRecording();
+
+  // StartRecording();
+  // StopRecording();
 }
 
 // Tests Init/Stop/Init recording without any registered audio callback.
