@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a838015_db998cfd",
+        "filename": "call/call_config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2018-05-02T12:28:57Z",
+      "side": 1,
+      "message": "Strike \"Injected\".\n\nLonger term, we should pass an (rtp) transport object to Call.",
+      "range": {
+        "startLine": 52,
+        "startChar": 5,
+        "endLine": 52,
+        "endChar": 14
+      },
+      "revId": "ddece11193d1e37ed77d3bb908f91e6b68039706",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
