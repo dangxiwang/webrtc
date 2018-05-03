@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1ecb8d07_d5d17511",
+        "filename": "p2p/base/port.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 805,
+      "author": {
+        "id": 5887
+      },
+      "writtenOn": "2018-05-03T00:17:02Z",
+      "side": 1,
+      "message": "Thanks for the brief testing, and I should have done that. Sure, if it is going to increase about 20% of logs, I should probably revert it. I have the general impression that sometimes when we are looking into issues like undesirable network switching, if the visualization is unavailable, skipping text logs for connectivity checks like in this case can cause confusion and maybe suspicion of any unknown bugs. I have changed how the reason to sort the candidate pairs is populated. Though this change does not achieve the precision like \"X to Y due to incoming connectivity check being received\", hopefully it adds more information compared to the bare \"sorting\" previously. PTAL. Thanks!",
+      "parentUuid": "a52b3f00_344b2f2b",
+      "revId": "f7d445501898d38af644d4eb61c32c48bcc7a43a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "56fd915e_e41568f0",
         "filename": "p2p/base/port.cc",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2018-05-01T18:35:54Z",
       "side": 1,
       "message": "If the network ID is worth logging, maybe just add it to Network::ToString. That would allow you to match the network from this log statement with other log statements where Network::ToString is logged.",
+      "revId": "f7d445501898d38af644d4eb61c32c48bcc7a43a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "044cae67_66246830",
+        "filename": "p2p/base/port.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1589,
+      "author": {
+        "id": 5887
+      },
+      "writtenOn": "2018-05-03T00:17:02Z",
+      "side": 1,
+      "message": "I didn\u0027t do that because the id field is sort of a dynamic field, and some of our tests explicitly rely on the comparison of Network::ToString to verify the results, where the id may change during the test and fails the tests if we add it to ToString. I can try to refactor the tests if we feel like to. Let me know.",
+      "parentUuid": "56fd915e_e41568f0",
       "revId": "f7d445501898d38af644d4eb61c32c48bcc7a43a",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
