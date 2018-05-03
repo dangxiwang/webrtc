@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "92ed1b81_628c9c20",
+        "filename": "call/call.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-05-03T16:05:44Z",
+      "side": 1,
+      "message": "I think that is appropriate for a followup CL.",
+      "parentUuid": "392ef4f6_c4c22607",
+      "range": {
+        "startLine": 583,
+        "startChar": 35,
+        "endLine": 583,
+        "endChar": 68
+      },
+      "revId": "1f26218ba28fb9bc7cc051589eaecb2764687510",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "faf8cb50_78379de4",
         "filename": "call/call.cc",
         "patchSetId": 1
