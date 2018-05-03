@@ -16,6 +16,24 @@
       "revId": "48ba1b01e0b8adc95d9132c3e12ef5f6d7263d16",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22d3f310_d8875c78",
+        "filename": "pc/peerconnectionfactory.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-05-03T17:29:40Z",
+      "side": 1,
+      "message": "Yes, this is so that the experiment can be controlled per PeerConnection instance. A client might create the PeerConnectionFactory only at start time, but change experiment settings at a later time. This could cause a mismatch between the logged experiment settings and the configuration that was actually used if the experiment is enabled per PeerConnection instance.",
+      "parentUuid": "807afec8_72c85c0a",
+      "revId": "48ba1b01e0b8adc95d9132c3e12ef5f6d7263d16",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
