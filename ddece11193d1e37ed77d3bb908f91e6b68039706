@@ -22,6 +22,30 @@
       "revId": "ddece11193d1e37ed77d3bb908f91e6b68039706",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f657ec56_f6e2dc49",
+        "filename": "call/call_config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-05-03T11:46:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a838015_db998cfd",
+      "range": {
+        "startLine": 52,
+        "startChar": 5,
+        "endLine": 52,
+        "endChar": 14
+      },
+      "revId": "ddece11193d1e37ed77d3bb908f91e6b68039706",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
