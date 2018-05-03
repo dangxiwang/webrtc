@@ -1589,6 +1589,7 @@ std::string Connection::ToString() const {
      << local.address().ToSensitiveString() << "->" << remote.id() << ":"
      << remote.component() << ":" << remote.priority() << ":" << remote.type()
      << ":" << remote.protocol() << ":" << remote.address().ToSensitiveString()
+     << ":" << port_->Network()->ToString() << ":" << port_->Network()->id()
      << "|" << CONNECT_STATE_ABBREV[connected()]
      << RECEIVE_STATE_ABBREV[receiving()] << WRITE_STATE_ABBREV[write_state()]
      << ICESTATE[static_cast<int>(state())] << "|" << remote_nomination() << "|"
