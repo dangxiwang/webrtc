@@ -87,6 +87,24 @@
       "revId": "f7d445501898d38af644d4eb61c32c48bcc7a43a",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "975766bb_762d2534",
+        "filename": "p2p/base/port.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1589,
+      "author": {
+        "id": 5887
+      },
+      "writtenOn": "2018-05-04T22:28:45Z",
+      "side": 1,
+      "message": "Done. Changed the way how two networks are compared. I am wondering if it is worth moving the comparison method to Network as an operator.",
+      "parentUuid": "a79d8190_3d119516",
+      "revId": "f7d445501898d38af644d4eb61c32c48bcc7a43a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }

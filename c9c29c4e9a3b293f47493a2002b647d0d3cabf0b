@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0f576a23_e6277940",
+        "filename": "p2p/base/p2ptransportchannel.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 5887
+      },
+      "writtenOn": "2018-05-04T22:28:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "345deb35_55ed10f1",
+      "revId": "c9c29c4e9a3b293f47493a2002b647d0d3cabf0b",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7066524b_e87e2479",
         "filename": "p2p/base/p2ptransportchannel.cc",
         "patchSetId": 5
@@ -33,6 +51,24 @@
       "revId": "c9c29c4e9a3b293f47493a2002b647d0d3cabf0b",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ceaf999c_f4329df0",
+        "filename": "p2p/base/p2ptransportchannel.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 5887
+      },
+      "writtenOn": "2018-05-04T22:28:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7066524b_e87e2479",
+      "revId": "c9c29c4e9a3b293f47493a2002b647d0d3cabf0b",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "fb6461cb_9e43ff36",
+        "filename": "p2p/base/p2ptransportchannel.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 5887
+      },
+      "writtenOn": "2018-05-04T22:28:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09a20016_d276a2ce",
+      "revId": "c9c29c4e9a3b293f47493a2002b647d0d3cabf0b",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8dd81a63_5816e6a5",
         "filename": "p2p/base/p2ptransportchannel.cc",
         "patchSetId": 5
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "d5a7b9e4_d7e2a9ab",
+        "filename": "p2p/base/p2ptransportchannel.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 755,
+      "author": {
+        "id": 5887
+      },
+      "writtenOn": "2018-05-04T22:28:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8dd81a63_5816e6a5",
+      "revId": "c9c29c4e9a3b293f47493a2002b647d0d3cabf0b",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "804b6a73_218f4dfc",
         "filename": "p2p/base/p2ptransportchannel.cc",
         "patchSetId": 5
@@ -81,6 +153,24 @@
       "writtenOn": "2018-05-04T20:25:37Z",
       "side": 1,
       "message": "nit: Would be nice to use AsyncInvoker instead of using OnMessage directly.\n\nThen instead of:\n\nstruct SortCandidatePairRequest : public rtc::MessageData {\n  explicit SortCandidatePairRequest(const std::string\u0026 reason_to_sort)\n      : reason_to_sort(reason_to_sort) {}\n  const std::string reason_to_sort;\n};\n\n...\n\n    std::unique_ptr\u003cSortCandidatePairRequest\u003e request_message(\n        new SortCandidatePairRequest(\n            \"re-checking candidate pairs in damped switching\"));\n    thread()-\u003ePostDelayed(RTC_FROM_HERE,\n                          config_.receiving_switching_delay_or_default(), this,\n                          MSG_SORT_AND_UPDATE_STATE, request_message.release());\n\n...\n\n    case MSG_SORT_AND_UPDATE_STATE: {\n      std::unique_ptr\u003cSortCandidatePairRequest\u003e request_message(\n          static_cast\u003cSortCandidatePairRequest*\u003e(pmsg-\u003epdata));\n      std::string reason_to_sort(\"unknown reason\");\n      if (request_message) {\n        reason_to_sort \u003d request_message-\u003ereason_to_sort;\n      }\n      SortConnectionsAndUpdateState(reason_to_sort);\n      break;\n    }\n\nYou just need:\n\n  invoker_.AsyncInvokeDelayed\u003cvoid\u003e(\n      RTC_FROM_HERE, thread(),\n      Bind(\u0026P2PTransportChannel::SortConnectionsAndUpdateState, this, reason_to_sort,\n           config_.receiving_switching_delay_or_default());",
+      "revId": "c9c29c4e9a3b293f47493a2002b647d0d3cabf0b",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9b3fbea_3c6afa7d",
+        "filename": "p2p/base/p2ptransportchannel.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1821,
+      "author": {
+        "id": 5887
+      },
+      "writtenOn": "2018-05-04T22:28:45Z",
+      "side": 1,
+      "message": "Ack. Thanks for reminding me of this pattern. I found we could refactor several other places in P2PTransportChannel as well. I will follow up with a stacked CL to change them altogether.",
+      "parentUuid": "804b6a73_218f4dfc",
       "revId": "c9c29c4e9a3b293f47493a2002b647d0d3cabf0b",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
@@ -104,6 +194,24 @@
     },
     {
       "key": {
+        "uuid": "ac44cd71_b40b7538",
+        "filename": "p2p/base/p2ptransportchannel.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 2135,
+      "author": {
+        "id": 5887
+      },
+      "writtenOn": "2018-05-04T22:28:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f39f1240_7688d05a",
+      "revId": "c9c29c4e9a3b293f47493a2002b647d0d3cabf0b",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e945abe5_508ea8cb",
         "filename": "p2p/base/p2ptransportchannel.cc",
         "patchSetId": 5
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "2b83c718_4562db05",
+        "filename": "p2p/base/p2ptransportchannel.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 2167,
+      "author": {
+        "id": 5887
+      },
+      "writtenOn": "2018-05-04T22:28:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e945abe5_508ea8cb",
+      "revId": "c9c29c4e9a3b293f47493a2002b647d0d3cabf0b",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4e9a9dbd_9e805fd8",
         "filename": "p2p/client/basicportallocator.cc",
         "patchSetId": 5
@@ -135,6 +261,24 @@
       "revId": "c9c29c4e9a3b293f47493a2002b647d0d3cabf0b",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64198a77_974b531d",
+        "filename": "p2p/client/basicportallocator.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 5887
+      },
+      "writtenOn": "2018-05-04T22:28:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e9a9dbd_9e805fd8",
+      "revId": "c9c29c4e9a3b293f47493a2002b647d0d3cabf0b",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
