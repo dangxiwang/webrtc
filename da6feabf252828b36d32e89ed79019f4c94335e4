@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "06b45c36_7dfdb82a",
+        "filename": "call/call.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-05-04T12:09:22Z",
+      "side": 1,
+      "message": "Using ptr instead.",
+      "parentUuid": "b223d2fe_39e0658c",
+      "range": {
+        "startLine": 599,
+        "startChar": 0,
+        "endLine": 600,
+        "endChar": 0
+      },
+      "revId": "da6feabf252828b36d32e89ed79019f4c94335e4",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1527d688_e4adefad",
         "filename": "call/rtp_transport_controller_send.cc",
         "patchSetId": 7
@@ -45,6 +69,30 @@
       "revId": "da6feabf252828b36d32e89ed79019f4c94335e4",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "daa49cf0_ae8fa0bc",
+        "filename": "call/rtp_transport_controller_send.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-05-04T12:09:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1527d688_e4adefad",
+      "range": {
+        "startLine": 99,
+        "startChar": 12,
+        "endLine": 99,
+        "endChar": 16
+      },
+      "revId": "da6feabf252828b36d32e89ed79019f4c94335e4",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
