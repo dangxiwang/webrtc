@@ -506,6 +506,9 @@ RtpFrameReferenceFinder::FrameDecision RtpFrameReferenceFinder::ManageFrameVp9(
 
   size_t diff = ForwardDiff<uint16_t, kPicIdLength>(info->gof->pid_start,
                                                     frame->id.picture_id);
+  if (info->gof->num_frames_in_gof == 0) {
+    return kDrop;
+  }
   size_t gof_idx = diff % info->gof->num_frames_in_gof;
 
   // Populate references according to the scalability structure.
@@ -555,6 +558,9 @@ void RtpFrameReferenceFinder::FrameReceivedVp9(uint16_t picture_id,
                                                GofInfo* info) {
   int last_picture_id = info->last_picture_id;
   size_t gof_size = std::min(info->gof->num_frames_in_gof, kMaxVp9FramesInGof);
+  if (gof_size == 0) {
+    return;
+  }
 
   // If there is a gap, find which temporal layer the missing frames
   // belong to and add the frame as missing for that temporal layer.
