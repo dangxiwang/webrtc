@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bcaa1d1a_2f41b29a",
+        "filename": "call/call.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2018-05-04T06:53:53Z",
+      "side": 1,
+      "message": "Does it work to also make internal::Call final? Or do we have test classes inheriting it?",
+      "range": {
+        "startLine": 371,
+        "startChar": 0,
+        "endLine": 373,
+        "endChar": 71
+      },
+      "revId": "dcff91cdf1fed86982ac52c9e526bd3d1f09791a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c3780fe_767abc0f",
+        "filename": "call/rtp_transport_controller_send.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2018-05-04T06:53:53Z",
+      "side": 1,
+      "message": "Comment needs updating, at a minimum, using current names to refer to tq and process thread.",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 42
+      },
+      "revId": "dcff91cdf1fed86982ac52c9e526bd3d1f09791a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}

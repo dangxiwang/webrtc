@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "b1ef60e5_07f86152",
+        "filename": "call/call.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2018-05-04T06:53:53Z",
+      "side": 1,
+      "message": "Ok. Add a TODO item?",
+      "parentUuid": "92ed1b81_628c9c20",
+      "range": {
+        "startLine": 583,
+        "startChar": 35,
+        "endLine": 583,
+        "endChar": 68
+      },
+      "revId": "1f26218ba28fb9bc7cc051589eaecb2764687510",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "faf8cb50_78379de4",
         "filename": "call/call.cc",
         "patchSetId": 1
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "Yes, have that in a followup CL.",
       "parentUuid": "faf8cb50_78379de4",
+      "range": {
+        "startLine": 938,
+        "startChar": 2,
+        "endLine": 938,
+        "endChar": 54
+      },
+      "revId": "1f26218ba28fb9bc7cc051589eaecb2764687510",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "89f0bd39_0024b8bf",
+        "filename": "call/call.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 938,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2018-05-04T06:53:53Z",
+      "side": 1,
+      "message": "Here too, a TODO item briefly explaining that plan would be nice.",
+      "parentUuid": "1c5ebf6c_a3a92c7d",
       "range": {
         "startLine": 938,
         "startChar": 2,
@@ -188,6 +236,30 @@
       "revId": "1f26218ba28fb9bc7cc051589eaecb2764687510",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae499069_281449da",
+        "filename": "call/call.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1072,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2018-05-04T06:53:53Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "672c2285_b329afaf",
+      "range": {
+        "startLine": 1072,
+        "startChar": 2,
+        "endLine": 1072,
+        "endChar": 18
+      },
+      "revId": "1f26218ba28fb9bc7cc051589eaecb2764687510",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     },
     {
       "key": {
