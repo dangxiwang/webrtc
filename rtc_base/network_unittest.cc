@@ -61,6 +61,30 @@ class FakeNetworkMonitorFactory : public NetworkMonitorFactory {
   }
 };
 
+bool TwoNetworksAreIdentical(const rtc::Network& a, const rtc::Network& b) {
+  if (a.name() != b.name()) {
+    RTC_LOG(INFO) << "Different interface names.";
+    return false;
+  }
+  if (a.description() != b.description()) {
+    RTC_LOG(INFO) << "Different Network descriptions.";
+    return false;
+  }
+  if (a.prefix_length() != b.prefix_length() || a.prefix() != b.prefix()) {
+    RTC_LOG(INFO) << "Different IP prefixes.";
+    return false;
+  }
+  if (a.type() != b.type()) {
+    RTC_LOG(INFO) << "Different network types.";
+    return false;
+  }
+  if (a.IsVpn() && a.underlying_type_for_vpn() != b.underlying_type_for_vpn()) {
+    RTC_LOG(INFO) << "Different underlying network types for VPN.";
+    return false;
+  }
+  return true;
+}
+
 }  // namespace
 
 class NetworkTest : public testing::Test, public sigslot::has_slots<>  {
@@ -320,7 +344,7 @@ TEST_F(NetworkTest, TestBasicMergeNetworkList) {
 
   manager.GetNetworks(&list);
   EXPECT_EQ(1U, list.size());
-  EXPECT_EQ(ipv4_network1.ToString(), list[0]->ToString());
+  EXPECT_TRUE(TwoNetworksAreIdentical(ipv4_network1, *list[0]));
   Network* net1 = list[0];
   uint16_t net_id1 = net1->id();
   EXPECT_EQ(1, net_id1);
@@ -336,7 +360,7 @@ TEST_F(NetworkTest, TestBasicMergeNetworkList) {
 
   manager.GetNetworks(&list);
   EXPECT_EQ(1U, list.size());
-  EXPECT_EQ(ipv4_network2.ToString(), list[0]->ToString());
+  EXPECT_TRUE(TwoNetworksAreIdentical(ipv4_network2, *list[0]));
   Network* net2 = list[0];
   uint16_t net_id2 = net2->id();
   // Network id will increase.
@@ -544,7 +568,7 @@ TEST_F(NetworkTest, TestMultipleIPMergeNetworkList) {
   int matchcount = 0;
   for (NetworkManager::NetworkList::iterator it = list.begin();
        it != list.end(); ++it) {
-    if ((*it)->ToString() == original_list[2]->ToString()) {
+    if (TwoNetworksAreIdentical(**it, *original_list[2])) {
       ++matchcount;
       EXPECT_EQ(1, matchcount);
       // This should be the same network object as before.
