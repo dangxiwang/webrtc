@@ -362,19 +362,15 @@ class Call : public webrtc::Call,
   AvgCounter pacer_bitrate_kbps_counter_ RTC_GUARDED_BY(&bitrate_crit_);
 
   RateLimiter retransmission_rate_limiter_;
-  std::unique_ptr<RtpTransportControllerSendInterface> transport_send_;
   ReceiveSideCongestionController receive_side_cc_;
 
   const std::unique_ptr<ReceiveTimeCalculator> receive_time_calculator_;
 
   const std::unique_ptr<SendDelayStats> video_send_delay_stats_;
   const int64_t start_ms_;
-  // TODO(perkj): |worker_queue_| is supposed to replace
-  // |module_process_thread_|.
-  // |worker_queue| is defined last to ensure all pending tasks are cancelled
-  // and deleted before any other members.
-  rtc::TaskQueue worker_queue_;
-
+  // Declared last since it will issue callbacks from a task queue. Declaring it
+  // last ensures that it is destroyed first and any running tasks are finished.
+  std::unique_ptr<RtpTransportControllerSendInterface> transport_send_;
   RTC_DISALLOW_COPY_AND_ASSIGN(Call);
 };
 }  // namespace internal
@@ -444,8 +440,7 @@ Call::Call(const Call::Config& config,
       receive_side_cc_(clock_, transport_send->packet_router()),
       receive_time_calculator_(ReceiveTimeCalculator::CreateFromFieldTrial()),
       video_send_delay_stats_(new SendDelayStats(clock_)),
-      start_ms_(clock_->TimeInMilliseconds()),
-      worker_queue_("call_worker_queue") {
+      start_ms_(clock_->TimeInMilliseconds()) {
   RTC_DCHECK(config.event_log != nullptr);
   transport_send->RegisterTargetTransferRateObserver(this);
   transport_send_ = std::move(transport_send);
@@ -591,10 +586,13 @@ webrtc::AudioSendStream* Call::CreateAudioSendStream(
     }
   }
 
+  // TODO(srte): AudioSendStream should call GetWorkerQueue directly rather than
+  // having it injected.
   AudioSendStream* send_stream = new AudioSendStream(
-      config, config_.audio_state, &worker_queue_, module_process_thread_.get(),
-      transport_send_.get(), bitrate_allocator_.get(), event_log_,
-      call_stats_.get(), suspended_rtp_state, &sent_rtp_audio_timer_ms_);
+      config, config_.audio_state, transport_send_->GetWorkerQueue(),
+      module_process_thread_.get(), transport_send_.get(),
+      bitrate_allocator_.get(), event_log_, call_stats_.get(),
+      suspended_rtp_state, &sent_rtp_audio_timer_ms_);
   {
     WriteLockScoped write_lock(*send_crit_);
     RTC_DCHECK(audio_send_ssrcs_.find(config.rtp.ssrc) ==
@@ -718,9 +716,12 @@ webrtc::VideoSendStream* Call::CreateVideoSendStream(
   // Copy ssrcs from |config| since |config| is moved.
   std::vector<uint32_t> ssrcs = config.rtp.ssrcs;
 
+  // TODO(srte): VideoSendStream should call GetWorkerQueue directly rather than
+  // having it injected.
   VideoSendStream* send_stream = new VideoSendStream(
-      num_cpu_cores_, module_process_thread_.get(), &worker_queue_,
-      call_stats_.get(), transport_send_.get(), bitrate_allocator_.get(),
+      num_cpu_cores_, module_process_thread_.get(),
+      transport_send_->GetWorkerQueue(), call_stats_.get(),
+      transport_send_.get(), bitrate_allocator_.get(),
       video_send_delay_stats_.get(), event_log_, std::move(config),
       std::move(encoder_config), suspended_video_send_ssrcs_,
       suspended_video_payload_states_, std::move(fec_controller),
@@ -945,17 +946,19 @@ Call::Stats Call::GetStats() const {
 void Call::SetBitrateAllocationStrategy(
     std::unique_ptr<rtc::BitrateAllocationStrategy>
         bitrate_allocation_strategy) {
-  if (!worker_queue_.IsCurrent()) {
+  // TODO(srte): This function should be moved to RtpTransportControllerSend
+  // when BitrateAllocator is moved there.
+  if (!transport_send_->GetWorkerQueue()->IsCurrent()) {
     rtc::BitrateAllocationStrategy* strategy_raw =
         bitrate_allocation_strategy.release();
     auto functor = [this, strategy_raw]() {
       SetBitrateAllocationStrategy(
           rtc::WrapUnique<rtc::BitrateAllocationStrategy>(strategy_raw));
     };
-    worker_queue_.PostTask([functor] { functor(); });
+    transport_send_->GetWorkerQueue()->PostTask([functor] { functor(); });
     return;
   }
-  RTC_DCHECK_RUN_ON(&worker_queue_);
+  RTC_DCHECK_RUN_ON(transport_send_->GetWorkerQueue());
   bitrate_allocator_->SetBitrateAllocationStrategy(
       std::move(bitrate_allocation_strategy));
 }
@@ -1060,13 +1063,14 @@ void Call::OnSentPacket(const rtc::SentPacket& sent_packet) {
 }
 
 void Call::OnTargetTransferRate(TargetTransferRate msg) {
-  // TODO(perkj): Consider making sure CongestionController operates on
-  // |worker_queue_|.
-  if (!worker_queue_.IsCurrent()) {
-    worker_queue_.PostTask([this, msg] { OnTargetTransferRate(msg); });
+  // TODO(srte): Ensure that this function is always called from the worker
+  // queue.
+  if (!transport_send_->GetWorkerQueue()->IsCurrent()) {
+    transport_send_->GetWorkerQueue()->PostTask(
+        [this, msg] { OnTargetTransferRate(msg); });
     return;
   }
-  RTC_DCHECK_RUN_ON(&worker_queue_);
+  RTC_DCHECK_RUN_ON(transport_send_->GetWorkerQueue());
   uint32_t target_bitrate_bps = msg.target_rate.bps();
   int loss_ratio_255 = msg.network_estimate.loss_rate_ratio * 255;
   uint8_t fraction_loss =
