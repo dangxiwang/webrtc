@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b223d2fe_39e0658c",
+        "filename": "call/call.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2018-05-04T12:04:33Z",
+      "side": 1,
+      "message": "Looks a bit odd to check that we are *not* on the task queue.",
+      "range": {
+        "startLine": 599,
+        "startChar": 0,
+        "endLine": 600,
+        "endChar": 0
+      },
+      "revId": "da6feabf252828b36d32e89ed79019f4c94335e4",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1527d688_e4adefad",
+        "filename": "call/rtp_transport_controller_send.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2018-05-04T12:04:33Z",
+      "side": 1,
+      "message": "won\u0027t",
+      "range": {
+        "startLine": 99,
+        "startChar": 12,
+        "endLine": 99,
+        "endChar": 16
+      },
+      "revId": "da6feabf252828b36d32e89ed79019f4c94335e4",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
