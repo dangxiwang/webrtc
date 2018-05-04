@@ -1589,9 +1589,10 @@ std::string Connection::ToString() const {
      << local.address().ToSensitiveString() << "->" << remote.id() << ":"
      << remote.component() << ":" << remote.priority() << ":" << remote.type()
      << ":" << remote.protocol() << ":" << remote.address().ToSensitiveString()
-     << "|" << CONNECT_STATE_ABBREV[connected()]
-     << RECEIVE_STATE_ABBREV[receiving()] << WRITE_STATE_ABBREV[write_state()]
-     << ICESTATE[static_cast<int>(state())] << "|" << remote_nomination() << "|"
+     << ":" << port_->Network()->ToString() << "|"
+     << CONNECT_STATE_ABBREV[connected()] << RECEIVE_STATE_ABBREV[receiving()]
+     << WRITE_STATE_ABBREV[write_state()] << ICESTATE[static_cast<int>(state())]
+     << "|sel=" << selected() << "|" << remote_nomination() << "|"
      << nomination() << "|" << priority() << "|";
   if (rtt_ < DEFAULT_RTT) {
     ss << rtt_ << "]";
