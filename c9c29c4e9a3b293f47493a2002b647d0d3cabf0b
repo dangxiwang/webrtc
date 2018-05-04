@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "345deb35_55ed10f1",
+        "filename": "p2p/base/p2ptransportchannel.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2018-05-04T20:25:37Z",
+      "side": 1,
+      "message": "This seems too spammy (it\u0027s ~10% of all P2PTransportChannel test log messages). I think it can be removed since the reason is logged when the selected pair changes, which is the important part.",
+      "revId": "c9c29c4e9a3b293f47493a2002b647d0d3cabf0b",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7066524b_e87e2479",
+        "filename": "p2p/base/p2ptransportchannel.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2018-05-04T20:25:37Z",
+      "side": 1,
+      "message": "Can you add a colon after \"due to\"? Some things sound grammatically strange, like:\n\n  Switching selected connection due to candidate pair destroyed\n\nBut with the colon it becomes less awkward:\n\n  Switching selected connection due to: candidate pair destroyed",
+      "revId": "c9c29c4e9a3b293f47493a2002b647d0d3cabf0b",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09a20016_d276a2ce",
+        "filename": "p2p/base/p2ptransportchannel.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2018-05-04T20:25:37Z",
+      "side": 1,
+      "message": "This loses the original reason string; maybe copy the original reason and add \"(after dampening interval)\"",
+      "revId": "c9c29c4e9a3b293f47493a2002b647d0d3cabf0b",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8dd81a63_5816e6a5",
+        "filename": "p2p/base/p2ptransportchannel.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 755,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2018-05-04T20:25:37Z",
+      "side": 1,
+      "message": "Someone reading the log who\u0027s not familiar with our codebase may not know that \"port\" refers to our Port class. Would suggest \"new candidate pairs created from a new local candidate\" to match the other reason string.",
+      "revId": "c9c29c4e9a3b293f47493a2002b647d0d3cabf0b",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "804b6a73_218f4dfc",
+        "filename": "p2p/base/p2ptransportchannel.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1821,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2018-05-04T20:25:37Z",
+      "side": 1,
+      "message": "nit: Would be nice to use AsyncInvoker instead of using OnMessage directly.\n\nThen instead of:\n\nstruct SortCandidatePairRequest : public rtc::MessageData {\n  explicit SortCandidatePairRequest(const std::string\u0026 reason_to_sort)\n      : reason_to_sort(reason_to_sort) {}\n  const std::string reason_to_sort;\n};\n\n...\n\n    std::unique_ptr\u003cSortCandidatePairRequest\u003e request_message(\n        new SortCandidatePairRequest(\n            \"re-checking candidate pairs in damped switching\"));\n    thread()-\u003ePostDelayed(RTC_FROM_HERE,\n                          config_.receiving_switching_delay_or_default(), this,\n                          MSG_SORT_AND_UPDATE_STATE, request_message.release());\n\n...\n\n    case MSG_SORT_AND_UPDATE_STATE: {\n      std::unique_ptr\u003cSortCandidatePairRequest\u003e request_message(\n          static_cast\u003cSortCandidatePairRequest*\u003e(pmsg-\u003epdata));\n      std::string reason_to_sort(\"unknown reason\");\n      if (request_message) {\n        reason_to_sort \u003d request_message-\u003ereason_to_sort;\n      }\n      SortConnectionsAndUpdateState(reason_to_sort);\n      break;\n    }\n\nYou just need:\n\n  invoker_.AsyncInvokeDelayed\u003cvoid\u003e(\n      RTC_FROM_HERE, thread(),\n      Bind(\u0026P2PTransportChannel::SortConnectionsAndUpdateState, this, reason_to_sort,\n           config_.receiving_switching_delay_or_default());",
+      "revId": "c9c29c4e9a3b293f47493a2002b647d0d3cabf0b",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f39f1240_7688d05a",
+        "filename": "p2p/base/p2ptransportchannel.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 2135,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2018-05-04T20:25:37Z",
+      "side": 1,
+      "message": "From what I can tell, when this is called the state definitely changed in one way or another. Everything that calls it checks \"new_value !\u003d prev_value\". So you can remove \"maybe\".",
+      "revId": "c9c29c4e9a3b293f47493a2002b647d0d3cabf0b",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e945abe5_508ea8cb",
+        "filename": "p2p/base/p2ptransportchannel.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 2167,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2018-05-04T20:25:37Z",
+      "side": 1,
+      "message": "I\u0027d suggest \"selected candidate pair destroyed\"",
+      "revId": "c9c29c4e9a3b293f47493a2002b647d0d3cabf0b",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e9a9dbd_9e805fd8",
+        "filename": "p2p/client/basicportallocator.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2018-05-04T20:25:37Z",
+      "side": 1,
+      "message": "Should skip logging this if nothing was removed, or it could be confusing.",
+      "revId": "c9c29c4e9a3b293f47493a2002b647d0d3cabf0b",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}

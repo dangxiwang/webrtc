@@ -69,6 +69,24 @@
       "revId": "f7d445501898d38af644d4eb61c32c48bcc7a43a",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a79d8190_3d119516",
+        "filename": "p2p/base/port.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1589,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2018-05-04T20:25:37Z",
+      "side": 1,
+      "message": "It\u0027s not really dynamic; the ID of Networks returned by GetNetworks will never change, even if a network goes away and comes back.\n\nWhen I tried adding the ID to ToString, the only test I saw fail was TestBasicMergeNetworkList, which is actually testing exactly that. It\u0027s only using ToString as a convenience to check \"GetNetworks returns a network that matches what was passed into MergeNetworkList\"; the ToString equality is not the main thing it\u0027s intending to test. So I don\u0027t see any potential harm in adding the ID to ToString.",
+      "parentUuid": "044cae67_66246830",
+      "revId": "f7d445501898d38af644d4eb61c32c48bcc7a43a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
     }
   ]
 }
