@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b4536e86_97c00e56",
+        "filename": "call/call.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-05-04T07:12:38Z",
+      "side": 1,
+      "message": "Yes, did that now.",
+      "parentUuid": "bcaa1d1a_2f41b29a",
+      "range": {
+        "startLine": 371,
+        "startChar": 0,
+        "endLine": 373,
+        "endChar": 71
+      },
+      "revId": "dcff91cdf1fed86982ac52c9e526bd3d1f09791a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7c3780fe_767abc0f",
         "filename": "call/rtp_transport_controller_send.h",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "dcff91cdf1fed86982ac52c9e526bd3d1f09791a",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee743305_a2810df8",
+        "filename": "call/rtp_transport_controller_send.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-05-04T07:12:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c3780fe_767abc0f",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 42
+      },
+      "revId": "dcff91cdf1fed86982ac52c9e526bd3d1f09791a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
