@@ -77,7 +77,7 @@ class SendSideCongestionControllerTest : public ::testing::Test {
 
     controller_.reset(new SendSideCongestionControllerForTest(
         &clock_, &event_log_, pacer_.get(), kInitialBitrateBps, 0,
-        5 * kInitialBitrateBps));
+        5 * kInitialBitrateBps, nullptr));
     controller_->DisablePeriodicTasks();
     controller_->RegisterNetworkObserver(&observer_);
     controller_->SignalNetworkState(NetworkState::kNetworkUp);
@@ -96,7 +96,7 @@ class SendSideCongestionControllerTest : public ::testing::Test {
     pacer_.reset(new NiceMock<MockPacedSender>());
     controller_.reset(new SendSideCongestionControllerForTest(
         &clock_, &event_log_, pacer_.get(), kInitialBitrateBps, 0,
-        5 * kInitialBitrateBps));
+        5 * kInitialBitrateBps, nullptr));
     controller_->DisablePeriodicTasks();
     controller_->RegisterNetworkObserver(&target_bitrate_observer_);
     controller_->SignalNetworkState(NetworkState::kNetworkUp);
