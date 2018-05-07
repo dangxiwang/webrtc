@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5baebe40_5d80a832",
+        "filename": "p2p/base/p2ptransportchannel.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 1676,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2018-05-07T21:39:15Z",
+      "side": 1,
+      "message": "If SwitchSelectedConnection(nullptr) is called, this won\u0027t call set_selected(false) on the old connection.",
+      "revId": "5b4a48c8cc3d348a5984d3026fd15e0e15cf37f9",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c7b1c8b_782011fc",
+        "filename": "p2p/base/p2ptransportchannel.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 1827,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2018-05-07T21:39:15Z",
+      "side": 1,
+      "message": "Is it possible for request_message to be null?",
+      "revId": "5b4a48c8cc3d348a5984d3026fd15e0e15cf37f9",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac55f170_624cfab1",
+        "filename": "p2p/base/port.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 1592,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2018-05-07T21:39:15Z",
+      "side": 1,
+      "message": "Since this is the network used by the \"local\" candidate, it probably makes more sense to put it on the left side of the string; maybe after port_-\u003econtent_name(). Otherwise someone may confuse it as being associated with the remote candidate.",
+      "revId": "5b4a48c8cc3d348a5984d3026fd15e0e15cf37f9",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "094f6313_df594147",
+        "filename": "p2p/base/port.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 1595,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2018-05-07T21:39:15Z",
+      "side": 1,
+      "message": "For consistency, maybe do \"SELECTED_STATE_ABBREV\" using \"S\" to represent \"selected\"?",
+      "revId": "5b4a48c8cc3d348a5984d3026fd15e0e15cf37f9",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7615b319_cb1bc201",
+        "filename": "p2p/base/port.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2018-05-07T21:39:15Z",
+      "side": 1,
+      "message": "Should add a comment mentioning that this is expected to be set to true by P2PTransportChannel for its selected connection, and is only used for logging (ToString)",
+      "revId": "5b4a48c8cc3d348a5984d3026fd15e0e15cf37f9",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "717e555c_8f05e694",
+        "filename": "p2p/base/port.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 774,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2018-05-07T21:39:15Z",
+      "side": 1,
+      "message": "\u003d false",
+      "revId": "5b4a48c8cc3d348a5984d3026fd15e0e15cf37f9",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be5183cf_b3d05b89",
+        "filename": "rtc_base/network.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 1016,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2018-05-07T21:39:15Z",
+      "side": 1,
+      "message": "nit: The rest of this string uses \":\" as a delimiter rather than \"|\"",
+      "revId": "5b4a48c8cc3d348a5984d3026fd15e0e15cf37f9",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ecf5a95_12af6599",
+        "filename": "rtc_base/network_unittest.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2018-05-07T21:39:15Z",
+      "side": 1,
+      "message": "It\u0027s not clear what \"identical\" means; someone reading this code may not understand why this particular set of 5 fields are all that matter for \"identical\"-ness.\n\nFor the purposes of the tests that are using this (to test MergeNetworks), I think a \"SameNameAndPrefix\" helper method would be sufficient. The tests just need some way of telling \"which network is which\" for the purposes of the merging logic, they\u0027re not really intending to verify the equality of every field.",
+      "revId": "5b4a48c8cc3d348a5984d3026fd15e0e15cf37f9",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "763ab914_3abe32fb",
+        "filename": "rtc_base/network_unittest.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2018-05-07T21:39:15Z",
+      "side": 1,
+      "message": "Are these log statements used so that when \"EXPECT_TRUE(TwoNetworksAreIdentical(a, b))\" fails, you know the reason why? They create noise in the \"if (TwoNetworksAreIdentical(**it, *original_list[2]))\" case though.\n\nIf this is changed to SameNameAndPrefix I think the log statements could be removed, since the scope of failures would be narrowed.",
+      "revId": "5b4a48c8cc3d348a5984d3026fd15e0e15cf37f9",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
