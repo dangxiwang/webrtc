@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a939b145_8f04e1fc",
+        "filename": "sdk/android/src/java/org/webrtc/audio/WebRtcAudioRecord.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 5091
+      },
+      "writtenOn": "2018-05-08T08:55:09Z",
+      "side": 1,
+      "message": "Is this check really needed given check in init()?",
+      "revId": "93a73f3ff01ac0124109dd4de8a1930a0b1ee87b",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b785f3ed_7cded842",
+        "filename": "sdk/android/src/java/org/webrtc/audio/WebRtcAudioRecord.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 5091
+      },
+      "writtenOn": "2018-05-08T08:55:09Z",
+      "side": 1,
+      "message": "Do we really need this one as well?",
+      "revId": "93a73f3ff01ac0124109dd4de8a1930a0b1ee87b",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21506cc5_3386d461",
+        "filename": "sdk/android/src/java/org/webrtc/audio/WebRtcAudioRecord.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 5091
+      },
+      "writtenOn": "2018-05-08T08:55:09Z",
+      "side": 1,
+      "message": "Do you have any feeling for how common this issue could be or what could possibly trigger it?",
+      "revId": "93a73f3ff01ac0124109dd4de8a1930a0b1ee87b",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
