@@ -19,6 +19,47 @@
     },
     {
       "key": {
+        "uuid": "c11498fc_828ca1c6",
+        "filename": "sdk/android/src/java/org/webrtc/audio/WebRtcAudioRecord.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 5098
+      },
+      "writtenOn": "2018-05-08T09:12:15Z",
+      "side": 1,
+      "message": "Yeah, this looks unnecessary. If this check is needed to suppress warnings, I would recommend storing byteBuffer.array() and byteBuffer.arrayOffset() in separate member variables alongside byteBuffer immediately after you have done the check in initRecording().",
+      "parentUuid": "a939b145_8f04e1fc",
+      "revId": "93a73f3ff01ac0124109dd4de8a1930a0b1ee87b",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b799aca_09335d01",
+        "filename": "sdk/android/src/java/org/webrtc/audio/WebRtcAudioRecord.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 5098
+      },
+      "writtenOn": "2018-05-08T09:12:15Z",
+      "side": 1,
+      "message": "Maybe a more performant and easier interface would have been to just pass the ByteBuffer to the callback.",
+      "range": {
+        "startLine": 119,
+        "startChar": 40,
+        "endLine": 119,
+        "endChar": 71
+      },
+      "revId": "93a73f3ff01ac0124109dd4de8a1930a0b1ee87b",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b785f3ed_7cded842",
         "filename": "sdk/android/src/java/org/webrtc/audio/WebRtcAudioRecord.java",
         "patchSetId": 2
