@@ -88,8 +88,6 @@ class WebRtcAudioRecord {
       super(name);
     }
 
-    // TODO(titovartem) make correct fix during webrtc:9175
-    @SuppressWarnings("ByteBufferBackingArray")
     @Override
     public void run() {
       Process.setThreadPriority(Process.THREAD_PRIORITY_URGENT_AUDIO);
@@ -111,12 +109,20 @@ class WebRtcAudioRecord {
             nativeDataIsRecorded(nativeAudioRecord, bytesRead);
           }
           if (audioSamplesReadyCallback != null) {
-            // Copy the entire byte buffer array.  Assume that the start of the byteBuffer is
-            // at index 0.
-            byte[] data = Arrays.copyOf(byteBuffer.array(), byteBuffer.capacity());
-            audioSamplesReadyCallback.onWebRtcAudioRecordSamplesReady(
-                new JavaAudioDeviceModule.AudioSamples(audioRecord.getAudioFormat(),
-                    audioRecord.getChannelCount(), audioRecord.getSampleRate(), data));
+            // Check to suppress ByteBufferBackingArray warning. Should never fail as this is
+            // checked during init.
+            if (byteBuffer.hasArray()) {
+              // Copy the entire byte buffer array. The start of the byteBuffer is not necessarily
+              // at index 0.
+              byte[] data = Arrays.copyOfRange(byteBuffer.array(), byteBuffer.arrayOffset(),
+                  byteBuffer.capacity() + byteBuffer.arrayOffset());
+              audioSamplesReadyCallback.onWebRtcAudioRecordSamplesReady(
+                  new JavaAudioDeviceModule.AudioSamples(audioRecord.getAudioFormat(),
+                      audioRecord.getChannelCount(), audioRecord.getSampleRate(), data));
+            } else {
+              reportWebRtcAudioRecordError(
+                  "byteBuffer does not have a backing array, data can not be passed to callback.");
+            }
           }
         } else {
           String errorMessage = "AudioRecord.read failed: " + bytesRead;
@@ -208,6 +214,10 @@ class WebRtcAudioRecord {
     final int bytesPerFrame = channels * (BITS_PER_SAMPLE / 8);
     final int framesPerBuffer = sampleRate / BUFFERS_PER_SECOND;
     byteBuffer = ByteBuffer.allocateDirect(bytesPerFrame * framesPerBuffer);
+    if (!(byteBuffer.hasArray())) {
+      reportWebRtcAudioRecordInitError("ByteBuffer does not have backing array.");
+      return -1;
+    }
     Logging.d(TAG, "byteBuffer.capacity: " + byteBuffer.capacity());
     emptyBytes = new byte[byteBuffer.capacity()];
     // Rather than passing the ByteBuffer with every callback (requiring
