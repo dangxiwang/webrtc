@@ -1739,18 +1739,18 @@ void EventLogAnalyzer::CreateAudioJitterBufferGraph(
 
   const uint32_t ssrc = neteq_stats.begin()->first;
 
-  std::vector<float> send_times_s;
+  std::vector<int64_t> send_times_ms;
   std::vector<float> arrival_delay_ms;
   std::vector<float> corrected_arrival_delay_ms;
   std::vector<rtc::Optional<float>> playout_delay_ms;
   std::vector<rtc::Optional<float>> target_delay_ms;
   neteq_stats.at(ssrc)->delay_analyzer()->CreateGraphs(
-      &send_times_s, &arrival_delay_ms, &corrected_arrival_delay_ms,
+      &send_times_ms, &arrival_delay_ms, &corrected_arrival_delay_ms,
       &playout_delay_ms, &target_delay_ms);
-  RTC_DCHECK_EQ(send_times_s.size(), arrival_delay_ms.size());
-  RTC_DCHECK_EQ(send_times_s.size(), corrected_arrival_delay_ms.size());
-  RTC_DCHECK_EQ(send_times_s.size(), playout_delay_ms.size());
-  RTC_DCHECK_EQ(send_times_s.size(), target_delay_ms.size());
+  RTC_DCHECK_EQ(send_times_ms.size(), arrival_delay_ms.size());
+  RTC_DCHECK_EQ(send_times_ms.size(), corrected_arrival_delay_ms.size());
+  RTC_DCHECK_EQ(send_times_ms.size(), playout_delay_ms.size());
+  RTC_DCHECK_EQ(send_times_ms.size(), target_delay_ms.size());
 
   std::map<uint32_t, TimeSeries> time_series_packet_arrival;
   std::map<uint32_t, TimeSeries> time_series_relative_packet_arrival;
@@ -1758,22 +1758,23 @@ void EventLogAnalyzer::CreateAudioJitterBufferGraph(
   std::map<uint32_t, TimeSeries> time_series_target_time;
   float min_y_axis = 0.f;
   float max_y_axis = 0.f;
-  for (size_t i = 0; i < send_times_s.size(); ++i) {
+  for (size_t i = 0; i < send_times_ms.size(); ++i) {
+    const float x = ToCallTime(send_times_ms[i] * 1000);  // ms to us.
     time_series_packet_arrival[ssrc].points.emplace_back(
-        TimeSeriesPoint(send_times_s[i], arrival_delay_ms[i]));
+        TimeSeriesPoint(x, arrival_delay_ms[i]));
     time_series_relative_packet_arrival[ssrc].points.emplace_back(
-        TimeSeriesPoint(send_times_s[i], corrected_arrival_delay_ms[i]));
+        TimeSeriesPoint(x, corrected_arrival_delay_ms[i]));
     min_y_axis = std::min(min_y_axis, corrected_arrival_delay_ms[i]);
     max_y_axis = std::max(max_y_axis, corrected_arrival_delay_ms[i]);
     if (playout_delay_ms[i]) {
       time_series_play_time[ssrc].points.emplace_back(
-          TimeSeriesPoint(send_times_s[i], *playout_delay_ms[i]));
+          TimeSeriesPoint(x, *playout_delay_ms[i]));
       min_y_axis = std::min(min_y_axis, *playout_delay_ms[i]);
       max_y_axis = std::max(max_y_axis, *playout_delay_ms[i]);
     }
     if (target_delay_ms[i]) {
       time_series_target_time[ssrc].points.emplace_back(
-          TimeSeriesPoint(send_times_s[i], *target_delay_ms[i]));
+          TimeSeriesPoint(x, *target_delay_ms[i]));
       min_y_axis = std::min(min_y_axis, *target_delay_ms[i]);
       max_y_axis = std::max(max_y_axis, *target_delay_ms[i]);
     }

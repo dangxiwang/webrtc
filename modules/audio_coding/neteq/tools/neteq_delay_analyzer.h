@@ -37,7 +37,7 @@ class NetEqDelayAnalyzer : public test::NetEqPostInsertPacket,
                      bool muted,
                      NetEq* neteq) override;
 
-  void CreateGraphs(std::vector<float>* send_times_s,
+  void CreateGraphs(std::vector<int64_t>* send_times_s,
                     std::vector<float>* arrival_delay_ms,
                     std::vector<float>* corrected_arrival_delay_ms,
                     std::vector<rtc::Optional<float>>* playout_delay_ms,
@@ -55,8 +55,8 @@ class NetEqDelayAnalyzer : public test::NetEqPostInsertPacket,
 
  private:
   struct TimingData {
-    explicit TimingData(double at) : arrival_time_ms(at) {}
-    double arrival_time_ms;
+    explicit TimingData(int64_t at) : arrival_time_ms(at) {}
+    int64_t arrival_time_ms;
     rtc::Optional<int64_t> decode_get_audio_count;
     rtc::Optional<int64_t> sync_delay_ms;
     rtc::Optional<int> target_delay_ms;

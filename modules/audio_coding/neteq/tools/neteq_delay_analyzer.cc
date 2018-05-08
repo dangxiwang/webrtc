@@ -98,7 +98,7 @@ void NetEqDelayAnalyzer::AfterGetAudio(int64_t time_now_ms,
 }
 
 void NetEqDelayAnalyzer::CreateGraphs(
-    std::vector<float>* send_time_s,
+    std::vector<int64_t>* send_time_ms,
     std::vector<float>* arrival_delay_ms,
     std::vector<float>* corrected_arrival_delay_ms,
     std::vector<rtc::Optional<float>>* playout_delay_ms,
@@ -123,27 +123,21 @@ void NetEqDelayAnalyzer::CreateGraphs(
   // calculates the base offset.
   for (auto& d : data_) {
     rtp_timestamps_ms.push_back(
-        unwrapper.Unwrap(d.first) /
+        static_cast<double>(unwrapper.Unwrap(d.first)) /
         rtc::CheckedDivExact(last_sample_rate_hz_, 1000));
     offset =
         std::min(offset, d.second.arrival_time_ms - rtp_timestamps_ms.back());
+    send_time_ms->push_back(d.second.arrival_time_ms);
   }
 
-  // Calculate send times in seconds for each packet. This is the (unwrapped)
-  // RTP timestamp in ms divided by 1000.
-  send_time_s->resize(rtp_timestamps_ms.size());
-  std::transform(rtp_timestamps_ms.begin(), rtp_timestamps_ms.end(),
-                 send_time_s->begin(), [rtp_timestamps_ms](double x) {
-                   return (x - rtp_timestamps_ms[0]) / 1000.f;
-                 });
-  RTC_DCHECK_EQ(send_time_s->size(), rtp_timestamps_ms.size());
+  RTC_DCHECK_EQ(send_time_ms->size(), rtp_timestamps_ms.size());
 
   // This loop traverses the data again and populates the graph vectors. The
   // reason to have two loops and traverse twice is that the offset cannot be
   // known until the first traversal is done. Meanwhile, the final offset must
   // be known already at the start of this second loop.
   auto data_it = data_.cbegin();
-  for (size_t i = 0; i < send_time_s->size(); ++i, ++data_it) {
+  for (size_t i = 0; i < send_time_ms->size(); ++i, ++data_it) {
     RTC_DCHECK(data_it != data_.end());
     const double offset_send_time_ms = rtp_timestamps_ms[i] + offset;
     const auto& timing = data_it->second;
@@ -172,19 +166,19 @@ void NetEqDelayAnalyzer::CreateGraphs(
     }
   }
   RTC_DCHECK(data_it == data_.end());
-  RTC_DCHECK_EQ(send_time_s->size(), corrected_arrival_delay_ms->size());
-  RTC_DCHECK_EQ(send_time_s->size(), playout_delay_ms->size());
-  RTC_DCHECK_EQ(send_time_s->size(), target_delay_ms->size());
+  RTC_DCHECK_EQ(send_time_ms->size(), corrected_arrival_delay_ms->size());
+  RTC_DCHECK_EQ(send_time_ms->size(), playout_delay_ms->size());
+  RTC_DCHECK_EQ(send_time_ms->size(), target_delay_ms->size());
 }
 
 void NetEqDelayAnalyzer::CreateMatlabScript(
     const std::string& script_name) const {
-  std::vector<float> send_time_s;
+  std::vector<int64_t> send_time_ms;
   std::vector<float> arrival_delay_ms;
   std::vector<float> corrected_arrival_delay_ms;
   std::vector<rtc::Optional<float>> playout_delay_ms;
   std::vector<rtc::Optional<float>> target_delay_ms;
-  CreateGraphs(&send_time_s, &arrival_delay_ms, &corrected_arrival_delay_ms,
+  CreateGraphs(&send_time_ms, &arrival_delay_ms, &corrected_arrival_delay_ms,
                &playout_delay_ms, &target_delay_ms);
 
   // Create an output file stream to Matlab script file.
@@ -192,8 +186,13 @@ void NetEqDelayAnalyzer::CreateMatlabScript(
   // The iterator is used to batch-output comma-separated values from vectors.
   std::ostream_iterator<float> output_iterator(output, ",");
 
+  std::vector<float> relative_send_time_s(send_time_ms.size());
+  std::transform(
+      send_time_ms.cbegin(), send_time_ms.cend(), relative_send_time_s.begin(),
+      [&send_time_ms](int64_t x) { return (x - send_time_ms[0]) / 1000.f; });
   output << "send_time_s = [ ";
-  std::copy(send_time_s.begin(), send_time_s.end(), output_iterator);
+  std::copy(relative_send_time_s.begin(), relative_send_time_s.end(),
+            output_iterator);
   output << "];" << std::endl;
 
   output << "arrival_delay_ms = [ ";
@@ -255,12 +254,12 @@ void NetEqDelayAnalyzer::CreateMatlabScript(
 
 void NetEqDelayAnalyzer::CreatePythonScript(
     const std::string& script_name) const {
-  std::vector<float> send_time_s;
+  std::vector<int64_t> send_time_ms;
   std::vector<float> arrival_delay_ms;
   std::vector<float> corrected_arrival_delay_ms;
   std::vector<rtc::Optional<float>> playout_delay_ms;
   std::vector<rtc::Optional<float>> target_delay_ms;
-  CreateGraphs(&send_time_s, &arrival_delay_ms, &corrected_arrival_delay_ms,
+  CreateGraphs(&send_time_ms, &arrival_delay_ms, &corrected_arrival_delay_ms,
                &playout_delay_ms, &target_delay_ms);
 
   // Create an output file stream to the python script file.
@@ -272,8 +271,13 @@ void NetEqDelayAnalyzer::CreatePythonScript(
   output << "import numpy as np" << std::endl;
   output << "import matplotlib.pyplot as plt" << std::endl;
 
+  std::vector<float> relative_send_time_s(send_time_ms.size());
+  std::transform(
+      send_time_ms.cbegin(), send_time_ms.cend(), relative_send_time_s.begin(),
+      [&send_time_ms](int64_t x) { return (x - send_time_ms[0]) / 1000.f; });
   output << "send_time_s = [";
-  std::copy(send_time_s.begin(), send_time_s.end(), output_iterator);
+  std::copy(relative_send_time_s.begin(), relative_send_time_s.end(),
+            output_iterator);
   output << "]" << std::endl;
 
   output << "arrival_delay_ms = [";
