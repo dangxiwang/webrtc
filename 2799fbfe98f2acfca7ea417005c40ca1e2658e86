@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "52eb996f_51550e67",
+        "filename": "modules/congestion_controller/rtp/send_side_congestion_controller.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 5845
+      },
+      "writtenOn": "2018-05-08T09:43:12Z",
+      "side": 1,
+      "message": "This asymmetry is a bit strange.",
+      "range": {
+        "startLine": 214,
+        "startChar": 6,
+        "endLine": 216,
+        "endChar": 64
+      },
+      "revId": "2799fbfe98f2acfca7ea417005c40ca1e2658e86",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3c6e0e3_a6127109",
+        "filename": "modules/congestion_controller/rtp/send_side_congestion_controller.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 5845
+      },
+      "writtenOn": "2018-05-08T09:43:12Z",
+      "side": 1,
+      "message": "What is the intention here? That pushback never reduces the bandwidth below 30k? That would make sense I think. But implementation now forces target bitrate to 30k, even if original estimate was below that.",
+      "range": {
+        "startLine": 303,
+        "startChar": 1,
+        "endLine": 305,
+        "endChar": 50
+      },
+      "revId": "2799fbfe98f2acfca7ea417005c40ca1e2658e86",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
