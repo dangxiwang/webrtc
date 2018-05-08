@@ -27,16 +27,18 @@ class AudioDeviceModule : public rtc::RefCountInterface {
   };
 
   enum AudioLayer {
-    kPlatformDefaultAudio = 0,
-    kWindowsCoreAudio = 2,
-    kLinuxAlsaAudio = 3,
-    kLinuxPulseAudio = 4,
-    kAndroidJavaAudio = 5,
-    kAndroidOpenSLESAudio = 6,
-    kAndroidJavaInputAndOpenSLESOutputAudio = 7,
-    kAndroidAAudioAudio = 8,
-    kAndroidJavaInputAndAAudioOutputAudio = 9,
-    kDummyAudio = 10
+    kPlatformDefaultAudio,
+    kWindowsCoreAudio,
+    kWindowsCoreAudio2,
+    kWindowsCoreAudioFromInputAndOutput,
+    kLinuxAlsaAudio,
+    kLinuxPulseAudio,
+    kAndroidJavaAudio,
+    kAndroidOpenSLESAudio,
+    kAndroidJavaInputAndOpenSLESOutputAudio,
+    kAndroidAAudioAudio,
+    kAndroidJavaInputAndAAudioOutputAudio,
+    kDummyAudio,
   };
 
   enum WindowsDeviceType {
