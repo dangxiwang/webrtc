@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "690204c3_df87f569",
+        "filename": "sdk/android/src/java/org/webrtc/audio/WebRtcAudioRecord.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 6589
+      },
+      "writtenOn": "2018-05-08T09:36:19Z",
+      "side": 1,
+      "message": "It seems we can get away with not checking here, or in init() for that matter. I think we can keep the check in init() though.",
+      "parentUuid": "c11498fc_828ca1c6",
+      "revId": "93a73f3ff01ac0124109dd4de8a1930a0b1ee87b",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b799aca_09335d01",
         "filename": "sdk/android/src/java/org/webrtc/audio/WebRtcAudioRecord.java",
         "patchSetId": 2
@@ -60,6 +78,30 @@
     },
     {
       "key": {
+        "uuid": "73dbe27c_2d89cda0",
+        "filename": "sdk/android/src/java/org/webrtc/audio/WebRtcAudioRecord.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 6589
+      },
+      "writtenOn": "2018-05-08T09:36:19Z",
+      "side": 1,
+      "message": "I agree, maybe we can change that in a later CL?",
+      "parentUuid": "0b799aca_09335d01",
+      "range": {
+        "startLine": 119,
+        "startChar": 40,
+        "endLine": 119,
+        "endChar": 71
+      },
+      "revId": "93a73f3ff01ac0124109dd4de8a1930a0b1ee87b",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b785f3ed_7cded842",
         "filename": "sdk/android/src/java/org/webrtc/audio/WebRtcAudioRecord.java",
         "patchSetId": 2
@@ -77,6 +119,24 @@
     },
     {
       "key": {
+        "uuid": "0eadb57a_37cd6344",
+        "filename": "sdk/android/src/java/org/webrtc/audio/WebRtcAudioRecord.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 6589
+      },
+      "writtenOn": "2018-05-08T09:36:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b785f3ed_7cded842",
+      "revId": "93a73f3ff01ac0124109dd4de8a1930a0b1ee87b",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "21506cc5_3386d461",
         "filename": "sdk/android/src/java/org/webrtc/audio/WebRtcAudioRecord.java",
         "patchSetId": 2
@@ -91,6 +151,24 @@
       "revId": "93a73f3ff01ac0124109dd4de8a1930a0b1ee87b",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0673277_d7138b2d",
+        "filename": "sdk/android/src/java/org/webrtc/audio/WebRtcAudioRecord.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 6589
+      },
+      "writtenOn": "2018-05-08T09:36:19Z",
+      "side": 1,
+      "message": "ByteBuffer does not guarantee that there is a backing array according to its documentation, but since we haven\u0027t had any problems with this, I would say the frequency of this happening is \"never\". It still feels like having this check would be the safe thing to do.\n\nI originally thought having a backing array was necessary for the \"trick\" where we read the byteBuffer contents directly from memory in native, but I\u0027m starting to think it might just be a Java detail. In that case, we can definitely remove this check if we start passing the ByteBuffer to the callback instead of an array.",
+      "parentUuid": "21506cc5_3386d461",
+      "revId": "93a73f3ff01ac0124109dd4de8a1930a0b1ee87b",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
