@@ -46,6 +46,53 @@
       "revId": "d379921da927b8ae34d65359b3dcfd81c9540a04",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c5d787f_837a8ac6",
+        "filename": "modules/audio_coding/neteq/tools/neteq_delay_analyzer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 5150
+      },
+      "writtenOn": "2018-05-09T09:37:49Z",
+      "side": 1,
+      "message": "If it is only used for the x-axis points it doesn\u0027t actually contain send times, then it soulds like the variable should be renamed?",
+      "parentUuid": "15f549ef_bec4bc27",
+      "range": {
+        "startLine": 130,
+        "startChar": 4,
+        "endLine": 130,
+        "endChar": 53
+      },
+      "revId": "d379921da927b8ae34d65359b3dcfd81c9540a04",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa147889_e4e19373",
+        "filename": "modules/audio_coding/neteq/tools/neteq_delay_analyzer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 5150
+      },
+      "writtenOn": "2018-05-09T09:37:49Z",
+      "side": 1,
+      "message": "This won\u0027t align it with the analyzer graph. ToCallTime subtracts the time of the first event, not the first arrival time.",
+      "range": {
+        "startLine": 277,
+        "startChar": 35,
+        "endLine": 277,
+        "endChar": 74
+      },
+      "revId": "d379921da927b8ae34d65359b3dcfd81c9540a04",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
     }
   ]
 }
