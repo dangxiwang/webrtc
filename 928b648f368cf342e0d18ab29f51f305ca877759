@@ -117,6 +117,30 @@
       "revId": "928b648f368cf342e0d18ab29f51f305ca877759",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a16d6e77_623410ff",
+        "filename": "pc/peerconnectionfactory.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-05-09T11:39:07Z",
+      "side": 1,
+      "message": "Since there are not any expected side effects of enabling the experiment I haven\u0027t figured out a way to do it properly. I have a POC of doing it by reporting the experiment type in call stats, but that is not applied on the PeerConnection level so it wouldn\u0027t have detected this issue.",
+      "parentUuid": "be443a36_4e455e6e",
+      "range": {
+        "startLine": 130,
+        "startChar": 6,
+        "endLine": 130,
+        "endChar": 37
+      },
+      "revId": "928b648f368cf342e0d18ab29f51f305ca877759",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
