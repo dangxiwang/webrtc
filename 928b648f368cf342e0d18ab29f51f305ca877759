@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "72435522_7077848f",
+        "filename": "call/call_config.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2018-05-09T11:24:06Z",
+      "side": 1,
+      "message": "Still needed?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 0
+      },
+      "revId": "928b648f368cf342e0d18ab29f51f305ca877759",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "960e0e3d_7d2a8577",
+        "filename": "pc/peerconnectionfactory.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2018-05-09T11:24:06Z",
+      "side": 1,
+      "message": "I don\u0027t see where this is ever assigned a non-null value? If not, maybe the member doesn\u0027t belong in this cl.",
+      "range": {
+        "startLine": 130,
+        "startChar": 6,
+        "endLine": 130,
+        "endChar": 37
+      },
+      "revId": "928b648f368cf342e0d18ab29f51f305ca877759",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
