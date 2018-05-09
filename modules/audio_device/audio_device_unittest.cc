@@ -10,18 +10,24 @@
 
 #include <algorithm>
 #include <cstring>
+#include <memory>
 #include <numeric>
 
 #include "api/array_view.h"
 #include "api/optional.h"
 #include "modules/audio_device/audio_device_impl.h"
 #include "modules/audio_device/include/audio_device.h"
+#include "modules/audio_device/include/audio_device_factory.h"
 #include "modules/audio_device/include/mock_audio_transport.h"
+#ifdef WEBRTC_WIN
+#include "modules/audio_device/win/core_audio_utility_win.h"
+#endif
 #include "rtc_base/buffer.h"
 #include "rtc_base/criticalsection.h"
 #include "rtc_base/event.h"
 #include "rtc_base/logging.h"
 #include "rtc_base/numerics/safe_conversions.h"
+#include "rtc_base/ptr_util.h"
 #include "rtc_base/race_checker.h"
 #include "rtc_base/scoped_ref_ptr.h"
 #include "rtc_base/thread_annotations.h"
@@ -29,6 +35,8 @@
 #include "rtc_base/timeutils.h"
 #include "test/gmock.h"
 #include "test/gtest.h"
+
+#include "system_wrappers/include/sleep.h"
 
 using ::testing::_;
 using ::testing::AtLeast;
@@ -72,7 +80,7 @@ static constexpr size_t kTestTimeOutInMilliseconds = 10 * 1000;
 // Average number of audio callbacks per second assuming 10ms packet size.
 static constexpr size_t kNumCallbacksPerSecond = 100;
 // Run the full-duplex test during this time (unit is in seconds).
-static constexpr size_t kFullDuplexTimeInSec = 5;
+static constexpr size_t kFullDuplexTimeInSec = 10;
 // Length of round-trip latency measurements. Number of deteced impulses
 // shall be kImpulseFrequencyInHz * kMeasureLatencyTimeInSec - 1 since the
 // last transmitted pulse is not used.
@@ -452,10 +460,10 @@ class AudioDeviceTest : public ::testing::Test {
     !defined(WEBRTC_DUMMY_AUDIO_BUILD)
     rtc::LogMessage::LogToDebug(rtc::LS_INFO);
     // Add extra logging fields here if needed for debugging.
-    // rtc::LogMessage::LogTimestamps();
-    // rtc::LogMessage::LogThreads();
-    audio_device_ =
-        AudioDeviceModule::Create(AudioDeviceModule::kPlatformDefaultAudio);
+    rtc::LogMessage::LogTimestamps();
+    rtc::LogMessage::LogThreads();
+    audio_device_ = CreateAudioDevice(
+        AudioDeviceModule::kWindowsCoreAudioFromInputAndOutput);
     EXPECT_NE(audio_device_.get(), nullptr);
     AudioDeviceModule::AudioLayer audio_layer;
     int got_platform_audio_layer =
@@ -502,6 +510,28 @@ class AudioDeviceTest : public ::testing::Test {
   bool requirements_satisfied() const { return requirements_satisfied_; }
   rtc::Event* event() { return &event_; }
 
+  rtc::scoped_refptr<AudioDeviceModule> CreateAudioDevice(
+      AudioDeviceModule::AudioLayer audio_layer) {
+    if (audio_layer == AudioDeviceModule::kPlatformDefaultAudio) {
+      return AudioDeviceModule::Create(audio_layer);
+    } else if (audio_layer == AudioDeviceModule::kWindowsCoreAudio2) {
+      return AudioDeviceModule::Create(audio_layer);
+    } else if (audio_layer ==
+               AudioDeviceModule::kWindowsCoreAudioFromInputAndOutput) {
+#ifdef WEBRTC_WIN
+      // We must initialize the COM library on a thread before we calling any of
+      // the library functions. All COM functions will return
+      // CO_E_NOTINITIALIZED otherwise.
+      com_initializer_ = rtc::MakeUnique<win::ScopedCOMInitializer>(
+          win::ScopedCOMInitializer::kMTA);
+      EXPECT_TRUE(com_initializer_->Succeeded());
+#endif
+      return CreateWindowsCoreAudioAudioDeviceModule();
+    } else {
+      return nullptr;
+    }
+  }
+
   const rtc::scoped_refptr<AudioDeviceModule>& audio_device() const {
     return audio_device_;
   }
@@ -535,6 +565,9 @@ class AudioDeviceTest : public ::testing::Test {
   }
 
  private:
+#ifdef WEBRTC_WIN
+  std::unique_ptr<win::ScopedCOMInitializer> com_initializer_;
+#endif
   bool requirements_satisfied_ = true;
   rtc::Event event_;
   rtc::scoped_refptr<AudioDeviceModule> audio_device_;
@@ -552,22 +585,141 @@ TEST_F(AudioDeviceTest, InitTerminate) {
   EXPECT_FALSE(audio_device()->Initialized());
 }
 
+// TODO(henrika): add comments...
+TEST_F(AudioDeviceTest, PlayoutDeviceNames) {
+  SKIP_TEST_IF_NOT(requirements_satisfied());
+  char device_name[kAdmMaxDeviceNameSize];
+  char unique_id[kAdmMaxGuidSize];
+  int num_devices = audio_device()->PlayoutDevices();
+#ifdef WEBRTC_WIN
+  AudioDeviceModule::AudioLayer audio_layer;
+  EXPECT_EQ(0, audio_device()->ActiveAudioLayer(&audio_layer));
+  if (audio_layer == AudioDeviceModule::kWindowsCoreAudioFromInputAndOutput) {
+    // Default device is always added as first element in the list and the
+    // default communication device as the second element. Hence, the list
+    // contains two extra elements in this case.
+    num_devices += 2;
+  }
+#endif
+  EXPECT_GT(num_devices, 0);
+  for (int i = 0; i < num_devices; ++i) {
+    EXPECT_EQ(0, audio_device()->PlayoutDeviceName(i, device_name, unique_id));
+  }
+  EXPECT_EQ(-1, audio_device()->PlayoutDeviceName(num_devices, device_name,
+                                                  unique_id));
+}
+
+TEST_F(AudioDeviceTest, RecordingDeviceNames) {
+  SKIP_TEST_IF_NOT(requirements_satisfied());
+  char device_name[kAdmMaxDeviceNameSize];
+  char unique_id[kAdmMaxGuidSize];
+  int num_devices = audio_device()->RecordingDevices();
+#ifdef WEBRTC_WIN
+  AudioDeviceModule::AudioLayer audio_layer;
+  EXPECT_EQ(0, audio_device()->ActiveAudioLayer(&audio_layer));
+  if (audio_layer == AudioDeviceModule::kWindowsCoreAudioFromInputAndOutput) {
+    // Default device is always added as first element in the list and the
+    // default communication device as the second element. Hence, the list
+    // contains two extra elements in this case.
+    num_devices += 2;
+  }
+#endif
+  EXPECT_GT(num_devices, 0);
+  for (int i = 0; i < num_devices; ++i) {
+    EXPECT_EQ(0,
+              audio_device()->RecordingDeviceName(i, device_name, unique_id));
+  }
+  EXPECT_EQ(-1, audio_device()->RecordingDeviceName(num_devices, device_name,
+                                                    unique_id));
+}
+
+// TODO(henrika): add comments...
+TEST_F(AudioDeviceTest, SetPlayoutDevice) {
+  SKIP_TEST_IF_NOT(requirements_satisfied());
+  int num_devices = audio_device()->PlayoutDevices();
+#ifdef WEBRTC_WIN
+  AudioDeviceModule::AudioLayer audio_layer;
+  EXPECT_EQ(0, audio_device()->ActiveAudioLayer(&audio_layer));
+  if (audio_layer == AudioDeviceModule::kWindowsCoreAudioFromInputAndOutput) {
+    // Default device is always added as first element in the list and the
+    // default communication device as the second element. Hence, the list
+    // contains two extra elements in this case.
+    num_devices += 2;
+  }
+#endif
+  EXPECT_GT(num_devices, 0);
+
+  // Verify that all available playout devices can be set (not enabled yet).
+  for (int i = 0; i < num_devices; ++i) {
+    EXPECT_EQ(0, audio_device()->SetPlayoutDevice(i));
+  }
+  EXPECT_EQ(-1, audio_device()->SetPlayoutDevice(num_devices));
+
+#ifdef WEBRTC_WIN
+  // On Windows, verify the alternative method where the user can select device
+  // by role.
+  EXPECT_EQ(
+      0, audio_device()->SetPlayoutDevice(AudioDeviceModule::kDefaultDevice));
+  EXPECT_EQ(0, audio_device()->SetPlayoutDevice(
+                   AudioDeviceModule::kDefaultCommunicationDevice));
+#endif
+}
+
+// TODO(henrika): add comments...
+TEST_F(AudioDeviceTest, SetRecordingDevice) {
+  SKIP_TEST_IF_NOT(requirements_satisfied());
+  int num_devices = audio_device()->RecordingDevices();
+#ifdef WEBRTC_WIN
+  AudioDeviceModule::AudioLayer audio_layer;
+  EXPECT_EQ(0, audio_device()->ActiveAudioLayer(&audio_layer));
+  if (audio_layer == AudioDeviceModule::kWindowsCoreAudioFromInputAndOutput) {
+    // Default device is always added as first element in the list and the
+    // default communication device as the second element. Hence, the list
+    // contains two extra elements in this case.
+    num_devices += 2;
+  }
+#endif
+  EXPECT_GT(num_devices, 0);
+
+  // Verify that all available recording devices can be set (not enabled yet).
+  for (int i = 0; i < num_devices; ++i) {
+    EXPECT_EQ(0, audio_device()->SetRecordingDevice(i));
+  }
+  EXPECT_EQ(-1, audio_device()->SetRecordingDevice(num_devices));
+
+#ifdef WEBRTC_WIN
+  // On Windows, verify the alternative method where the user can select device
+  // by role.
+  EXPECT_EQ(
+      0, audio_device()->SetRecordingDevice(AudioDeviceModule::kDefaultDevice));
+  EXPECT_EQ(0, audio_device()->SetRecordingDevice(
+                   AudioDeviceModule::kDefaultCommunicationDevice));
+#endif
+}
+
 // Tests Start/Stop playout without any registered audio callback.
 TEST_F(AudioDeviceTest, StartStopPlayout) {
   SKIP_TEST_IF_NOT(requirements_satisfied());
   StartPlayout();
+
+  webrtc::SleepMs(3000);
+
   StopPlayout();
-  StartPlayout();
-  StopPlayout();
+  // StartPlayout();
+  // StopPlayout();
 }
 
 // Tests Start/Stop recording without any registered audio callback.
 TEST_F(AudioDeviceTest, StartStopRecording) {
   SKIP_TEST_IF_NOT(requirements_satisfied());
   StartRecording();
+
+  webrtc::SleepMs(1000);
+
   StopRecording();
-  StartRecording();
-  StopRecording();
+
+  // StartRecording();
+  // StopRecording();
 }
 
 // Tests Init/Stop/Init recording without any registered audio callback.
