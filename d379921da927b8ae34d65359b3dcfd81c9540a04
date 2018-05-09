@@ -22,6 +22,30 @@
       "revId": "d379921da927b8ae34d65359b3dcfd81c9540a04",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15f549ef_bec4bc27",
+        "filename": "modules/audio_coding/neteq/tools/neteq_delay_analyzer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 7015
+      },
+      "writtenOn": "2018-05-09T07:47:37Z",
+      "side": 1,
+      "message": "\"Send time\" is only used as x-axis. I am pretty skeptical on why it has to be \"send time\" (presuming that it means when the packets were sent). I think we want to display jitter buffer measures against some \"local time\": arrival time preferably since we calculate the metrics for every received packet -- btw, the loop on line 140 should better loop through data_ to be clearer IMO.",
+      "parentUuid": "bb789adc_69649df3",
+      "range": {
+        "startLine": 130,
+        "startChar": 4,
+        "endLine": 130,
+        "endChar": 53
+      },
+      "revId": "d379921da927b8ae34d65359b3dcfd81c9540a04",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
     }
   ]
 }
