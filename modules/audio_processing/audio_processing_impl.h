@@ -150,6 +150,7 @@ class AudioProcessingImpl : public AudioProcessing {
   static int instance_count_;
 
   SwapQueue<RuntimeSetting> runtime_settings_;
+  SwapQueue<RuntimeSetting> render_runtime_settings_;
 
   // Class providing thread-safe message pipe functionality for
   // |runtime_settings_|.
@@ -162,7 +163,7 @@ class AudioProcessingImpl : public AudioProcessing {
 
    private:
     SwapQueue<RuntimeSetting>& runtime_settings_;
-  } runtime_settings_enqueuer_;
+  } runtime_settings_enqueuer_, render_runtime_settings_enqueuer_;
 
   // Submodule interface implementations.
   std::unique_ptr<HighPassFilter> high_pass_filter_impl_;
@@ -259,6 +260,7 @@ class AudioProcessingImpl : public AudioProcessing {
 
   // Handle all the runtime settings in the queue.
   void HandleRuntimeSettings() RTC_EXCLUSIVE_LOCKS_REQUIRED(crit_capture_);
+  void HandleRenderRuntimeSettings() RTC_EXCLUSIVE_LOCKS_REQUIRED(crit_render_);
 
   void EmptyQueuedRenderAudio();
   void AllocateRenderQueue()

@@ -2888,6 +2888,28 @@ TEST(ApmConfiguration, EnablePreProcessing) {
   apm->ProcessReverseStream(&audio);
 }
 
+TEST(ApmConfiguration, PreProcessingReceivesRuntimeSettings) {
+  // Verify that apm uses a capture post processing module if one is provided.
+  webrtc::Config webrtc_config;
+  auto mock_pre_processor_ptr =
+      new testing::NiceMock<test::MockCustomProcessing>();
+  auto mock_pre_processor =
+      std::unique_ptr<CustomProcessing>(mock_pre_processor_ptr);
+  rtc::scoped_refptr<AudioProcessing> apm =
+      AudioProcessingBuilder()
+          .SetRenderPreProcessing(std::move(mock_pre_processor))
+          .Create(webrtc_config);
+  apm->SetRuntimeSetting(
+      AudioProcessing::RuntimeSetting::CreateRenderSetting(0));
+
+  AudioFrame audio;
+  audio.num_channels_ = 1;
+  SetFrameSampleRate(&audio, AudioProcessing::NativeRate::kSampleRate16kHz);
+
+  EXPECT_CALL(*mock_pre_processor_ptr, SetRuntimeSetting(testing::_)).Times(1);
+  apm->ProcessReverseStream(&audio);
+}
+
 class MyEchoControlFactory : public EchoControlFactory {
  public:
   std::unique_ptr<EchoControl> Create(int sample_rate_hz) {
