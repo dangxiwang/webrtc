@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e09ccbb_cd1b8638",
+        "filename": "modules/audio_coding/codecs/ilbc/do_plc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 5119
+      },
+      "writtenOn": "2018-05-11T12:50:10Z",
+      "side": 0,
+      "message": "This has no effect, since |energy| is never accessed again.",
+      "range": {
+        "startLine": 279,
+        "startChar": 6,
+        "endLine": 279,
+        "endChar": 17
+      },
+      "revId": "e72ea24d884bb842726a0eb9d8d967760144bd64",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    }
+  ]
+}

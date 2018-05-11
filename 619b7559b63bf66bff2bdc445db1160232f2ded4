@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b92405fa_6042295c",
+        "filename": "modules/audio_coding/codecs/ilbc/do_plc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 5119
+      },
+      "writtenOn": "2018-05-11T12:50:10Z",
+      "side": 1,
+      "message": "Since PLCresidual is int16_t and the noise threshold is not ridiculously high, both the threshold and added term will be \u003c 2^30 and we should never overflow.",
+      "range": {
+        "startLine": 274,
+        "startChar": 8,
+        "endLine": 274,
+        "endChar": 58
+      },
+      "revId": "619b7559b63bf66bff2bdc445db1160232f2ded4",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    }
+  ]
+}
