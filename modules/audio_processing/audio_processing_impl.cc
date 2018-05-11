@@ -385,7 +385,9 @@ AudioProcessingImpl::AudioProcessingImpl(
     : data_dumper_(
           new ApmDataDumper(rtc::AtomicOps::Increment(&instance_count_))),
       runtime_settings_(100),
+      render_runtime_settings_(100),
       runtime_settings_enqueuer_(&runtime_settings_),
+      render_runtime_settings_enqueuer_(&render_runtime_settings_),
       high_pass_filter_impl_(new HighPassFilterImpl(this)),
       echo_control_factory_(std::move(echo_control_factory)),
       submodule_states_(!!capture_post_processor, !!render_pre_processor),
@@ -807,7 +809,12 @@ void AudioProcessingImpl::set_output_will_be_muted(bool muted) {
 
 void AudioProcessingImpl::SetRuntimeSetting(RuntimeSetting setting) {
   RTC_DCHECK(setting.type() != RuntimeSetting::Type::kNotSpecified);
-  runtime_settings_enqueuer_.Enqueue(setting);
+  if (setting.type() ==
+      RuntimeSetting::Type::kCustomRenderProcessingRuntimeSetting) {
+    render_runtime_settings_enqueuer_.Enqueue(setting);
+  } else {
+    runtime_settings_enqueuer_.Enqueue(setting);
+  }
 }
 
 AudioProcessingImpl::RuntimeSettingEnqueuer::RuntimeSettingEnqueuer(
@@ -924,6 +931,28 @@ void AudioProcessingImpl::HandleRuntimeSettings() {
           private_submodules_->pre_amplifier->SetGainFactor(value);
         }
         // TODO(bugs.chromium.org/9138): Log setting handling by Aec Dump.
+        break;
+      case RuntimeSetting::Type::kCustomRenderProcessingRuntimeSetting:
+        RTC_NOTREACHED();
+        break;
+      case RuntimeSetting::Type::kNotSpecified:
+        RTC_NOTREACHED();
+        break;
+    }
+  }
+}
+
+void AudioProcessingImpl::HandleRenderRuntimeSettings() {
+  RuntimeSetting setting;
+  while (render_runtime_settings_.Remove(&setting)) {
+    switch (setting.type()) {
+      case RuntimeSetting::Type::kCustomRenderProcessingRuntimeSetting:
+        if (private_submodules_->render_pre_processor) {
+          private_submodules_->render_pre_processor->SetRuntimeSetting(setting);
+        }
+        break;
+      case RuntimeSetting::Type::kCapturePreGain:
+        RTC_NOTREACHED();
         break;
       case RuntimeSetting::Type::kNotSpecified:
         RTC_NOTREACHED();
@@ -1508,6 +1537,8 @@ int AudioProcessingImpl::ProcessRenderStreamLocked() {
   AudioBuffer* render_buffer = render_.render_audio.get();  // For brevity.
 
   QueueNonbandedRenderAudio(render_buffer);
+
+  HandleRenderRuntimeSettings();
 
   if (private_submodules_->render_pre_processor) {
     private_submodules_->render_pre_processor->Process(render_buffer);
