@@ -93,6 +93,30 @@
       "revId": "d379921da927b8ae34d65359b3dcfd81c9540a04",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85440822_131b715b",
+        "filename": "modules/audio_coding/neteq/tools/neteq_delay_analyzer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 7015
+      },
+      "writtenOn": "2018-05-11T11:51:15Z",
+      "side": 1,
+      "message": "Yes, but this function is not used by rtc event log visualizer, and therefore the purpose here is not to align it but just to keep the old behavior.",
+      "parentUuid": "fa147889_e4e19373",
+      "range": {
+        "startLine": 277,
+        "startChar": 35,
+        "endLine": 277,
+        "endChar": 74
+      },
+      "revId": "d379921da927b8ae34d65359b3dcfd81c9540a04",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
     }
   ]
 }
