@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "682fb407_95ca47b3",
+        "filename": "p2p/base/p2ptransportchannel.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 1676,
+      "author": {
+        "id": 5887
+      },
+      "writtenOn": "2018-05-11T22:47:56Z",
+      "side": 1,
+      "message": "Ah, this is bug. Fixed.",
+      "parentUuid": "5baebe40_5d80a832",
+      "revId": "5b4a48c8cc3d348a5984d3026fd15e0e15cf37f9",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1c7b1c8b_782011fc",
         "filename": "p2p/base/p2ptransportchannel.cc",
         "patchSetId": 7
@@ -33,6 +51,24 @@
       "revId": "5b4a48c8cc3d348a5984d3026fd15e0e15cf37f9",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4c1d048_651aed58",
+        "filename": "p2p/base/p2ptransportchannel.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 1827,
+      "author": {
+        "id": 5887
+      },
+      "writtenOn": "2018-05-11T22:47:56Z",
+      "side": 1,
+      "message": "You are right and this is indeed redundant. This pattern is also going to be refactored by the other CL using AsyncInvoker, hopefully improving the readability.",
+      "parentUuid": "1c7b1c8b_782011fc",
+      "revId": "5b4a48c8cc3d348a5984d3026fd15e0e15cf37f9",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "c69e3f67_6646f248",
+        "filename": "p2p/base/port.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 1592,
+      "author": {
+        "id": 5887
+      },
+      "writtenOn": "2018-05-11T22:47:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ac55f170_624cfab1",
+      "revId": "5b4a48c8cc3d348a5984d3026fd15e0e15cf37f9",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "094f6313_df594147",
         "filename": "p2p/base/port.cc",
         "patchSetId": 7
@@ -67,6 +121,24 @@
       "revId": "5b4a48c8cc3d348a5984d3026fd15e0e15cf37f9",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3592d682_7b1c68fa",
+        "filename": "p2p/base/port.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 1595,
+      "author": {
+        "id": 5887
+      },
+      "writtenOn": "2018-05-11T22:47:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "094f6313_df594147",
+      "revId": "5b4a48c8cc3d348a5984d3026fd15e0e15cf37f9",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     },
     {
       "key": {
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "5a3ac69e_b08a2646",
+        "filename": "p2p/base/port.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 5887
+      },
+      "writtenOn": "2018-05-11T22:47:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7615b319_cb1bc201",
+      "revId": "5b4a48c8cc3d348a5984d3026fd15e0e15cf37f9",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "717e555c_8f05e694",
         "filename": "p2p/base/port.h",
         "patchSetId": 7
@@ -101,6 +191,24 @@
       "revId": "5b4a48c8cc3d348a5984d3026fd15e0e15cf37f9",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcc13e42_b32ccd16",
+        "filename": "p2p/base/port.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 774,
+      "author": {
+        "id": 5887
+      },
+      "writtenOn": "2018-05-11T22:47:56Z",
+      "side": 1,
+      "message": "Done. Thanks for spotting this, and this can introduce a subtle bug.",
+      "parentUuid": "717e555c_8f05e694",
+      "revId": "5b4a48c8cc3d348a5984d3026fd15e0e15cf37f9",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     },
     {
       "key": {
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "5d020e0b_a3e3ec1f",
+        "filename": "rtc_base/network.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 1016,
+      "author": {
+        "id": 5887
+      },
+      "writtenOn": "2018-05-11T22:47:56Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "be5183cf_b3d05b89",
+      "revId": "5b4a48c8cc3d348a5984d3026fd15e0e15cf37f9",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ecf5a95_12af6599",
         "filename": "rtc_base/network_unittest.cc",
         "patchSetId": 7
@@ -138,6 +264,24 @@
     },
     {
       "key": {
+        "uuid": "8d3a43e9_583473fd",
+        "filename": "rtc_base/network_unittest.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 5887
+      },
+      "writtenOn": "2018-05-11T22:47:56Z",
+      "side": 1,
+      "message": "Sure, SameNameAndPrefix is sufficient and less confusing. Done.",
+      "parentUuid": "6ecf5a95_12af6599",
+      "revId": "5b4a48c8cc3d348a5984d3026fd15e0e15cf37f9",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "763ab914_3abe32fb",
         "filename": "rtc_base/network_unittest.cc",
         "patchSetId": 7
@@ -152,6 +296,24 @@
       "revId": "5b4a48c8cc3d348a5984d3026fd15e0e15cf37f9",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3792dadf_f41cc89c",
+        "filename": "rtc_base/network_unittest.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 5887
+      },
+      "writtenOn": "2018-05-11T22:47:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "763ab914_3abe32fb",
+      "revId": "5b4a48c8cc3d348a5984d3026fd15e0e15cf37f9",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
