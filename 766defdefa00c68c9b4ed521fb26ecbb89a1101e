@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a77b7412_d9a17574",
+        "filename": "modules/audio_processing/audio_processing_impl.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 5124
+      },
+      "writtenOn": "2018-05-14T12:34:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fdb29cc0_f37c24c8",
+      "range": {
+        "startLine": 388,
+        "startChar": 31,
+        "endLine": 388,
+        "endChar": 34
+      },
+      "revId": "766defdefa00c68c9b4ed521fb26ecbb89a1101e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "82c4fa5e_fb8b42aa",
         "filename": "modules/audio_processing/audio_processing_impl.cc",
         "patchSetId": 5
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "95e2af21_d867b5b4",
+        "filename": "modules/audio_processing/audio_processing_impl.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 812,
+      "author": {
+        "id": 5124
+      },
+      "writtenOn": "2018-05-14T12:34:24Z",
+      "side": 1,
+      "message": "I\u0027ve added another safeguard I learned about from a recent C++ tip-of-the-week. Shall we keep it?",
+      "parentUuid": "82c4fa5e_fb8b42aa",
+      "range": {
+        "startLine": 812,
+        "startChar": 2,
+        "endLine": 812,
+        "endChar": 23
+      },
+      "revId": "766defdefa00c68c9b4ed521fb26ecbb89a1101e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0f8d8742_3d6b10b1",
         "filename": "modules/audio_processing/audio_processing_impl.cc",
         "patchSetId": 5
@@ -59,6 +107,30 @@
       "writtenOn": "2018-05-14T07:59:00Z",
       "side": 1,
       "message": "I like this solution because when the caller of AudioProcessingImpl::SetRuntimeSetting() sends a render side setting, only one lock is acquired. Price to pay, both AudioProcessingImpl::HandleRuntimeSettings() and AudioProcessingImpl::HandleRenderRuntimeSettings() need a case statement for each enum value - also because we want exhaustive switch.\n\nNote that with this impl AudioProcessingImpl::SetRuntimeSetting() must know which settings apply to render and capture side. Also note that in theory we could have settings that apply to both sides (in this case we would acquire two locks - one after each other, not in a nested fashion).\n\nJust wanted to check with you what implications this implementation has.",
+      "range": {
+        "startLine": 814,
+        "startChar": 4,
+        "endLine": 814,
+        "endChar": 55
+      },
+      "revId": "766defdefa00c68c9b4ed521fb26ecbb89a1101e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7311a1c8_fd64a2e2",
+        "filename": "modules/audio_processing/audio_processing_impl.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 814,
+      "author": {
+        "id": 5124
+      },
+      "writtenOn": "2018-05-14T12:34:24Z",
+      "side": 1,
+      "message": "Dunno. We could have two enum types for capture and render. But then we\u0027d need two \u0027SetRuntimeSetting\u0027 functions. I can\u0027t think of anything type-safe that wouldn\u0027t require several exhaustive checks. I vote keeping the 3 we have now, and hoping that they don\u0027t grow very long.",
+      "parentUuid": "0f8d8742_3d6b10b1",
       "range": {
         "startLine": 814,
         "startChar": 4,
@@ -117,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "d81b5d3c_c2304885",
+        "filename": "modules/audio_processing/audio_processing_impl.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 5124
+      },
+      "writtenOn": "2018-05-14T12:34:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2334a157_8fabcfee",
+      "range": {
+        "startLine": 152,
+        "startChar": 28,
+        "endLine": 152,
+        "endChar": 45
+      },
+      "revId": "766defdefa00c68c9b4ed521fb26ecbb89a1101e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "879e05e9_d2faee28",
         "filename": "modules/audio_processing/audio_processing_impl.h",
         "patchSetId": 5
@@ -137,6 +233,30 @@
       "revId": "766defdefa00c68c9b4ed521fb26ecbb89a1101e",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f546f6f2_51680272",
+        "filename": "modules/audio_processing/audio_processing_impl.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 5124
+      },
+      "writtenOn": "2018-05-14T12:34:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "879e05e9_d2faee28",
+      "range": {
+        "startLine": 166,
+        "startChar": 4,
+        "endLine": 166,
+        "endChar": 65
+      },
+      "revId": "766defdefa00c68c9b4ed521fb26ecbb89a1101e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "fb488370_c204616f",
+        "filename": "modules/audio_processing/audio_processing_impl.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 5124
+      },
+      "writtenOn": "2018-05-14T12:34:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a503d1e8_53f248d0",
+      "range": {
+        "startLine": 263,
+        "startChar": 7,
+        "endLine": 263,
+        "endChar": 34
+      },
+      "revId": "766defdefa00c68c9b4ed521fb26ecbb89a1101e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8058aa3_0224f098",
         "filename": "modules/audio_processing/include/audio_processing.h",
         "patchSetId": 5
@@ -186,6 +330,30 @@
     },
     {
       "key": {
+        "uuid": "23029e2c_4bc59793",
+        "filename": "modules/audio_processing/include/audio_processing.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 5124
+      },
+      "writtenOn": "2018-05-14T12:34:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8058aa3_0224f098",
+      "range": {
+        "startLine": 330,
+        "startChar": 26,
+        "endLine": 330,
+        "endChar": 45
+      },
+      "revId": "766defdefa00c68c9b4ed521fb26ecbb89a1101e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bc869e13_bf385512",
         "filename": "modules/audio_processing/include/audio_processing.h",
         "patchSetId": 5
@@ -197,6 +365,30 @@
       "writtenOn": "2018-05-14T07:59:00Z",
       "side": 1,
       "message": "Maybe it\u0027s time to switch to a union which has a float member and one member for custom payloads (e.g., int for the type + float for the payload). We can also do this in a separate CL (add a TODO if so).",
+      "range": {
+        "startLine": 343,
+        "startChar": 4,
+        "endLine": 343,
+        "endChar": 16
+      },
+      "revId": "766defdefa00c68c9b4ed521fb26ecbb89a1101e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32d845ee_aba866b2",
+        "filename": "modules/audio_processing/include/audio_processing.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 5124
+      },
+      "writtenOn": "2018-05-14T12:34:24Z",
+      "side": 1,
+      "message": "I\u0027d like to wait with that until it\u0027s needed. Let\u0027s discuss offline.",
+      "parentUuid": "bc869e13_bf385512",
       "range": {
         "startLine": 343,
         "startChar": 4,
