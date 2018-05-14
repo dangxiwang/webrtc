@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "87bdc080_a9566273",
+        "filename": "modules/video_coding/rtp_frame_reference_finder.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 5527
+      },
+      "writtenOn": "2018-05-14T09:02:56Z",
+      "side": 1,
+      "message": "Please remove {} to keep the style consistent within this file.",
+      "revId": "0e2d152ebe37046d68739b65994bd957f49b2d3f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
