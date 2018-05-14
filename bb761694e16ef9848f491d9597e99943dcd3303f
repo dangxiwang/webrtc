@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4f18e15d_f2c51454",
+        "filename": "modules/audio_processing/audio_processing_impl.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 816,
+      "author": {
+        "id": 5122
+      },
+      "writtenOn": "2018-05-14T12:41:03Z",
+      "side": 1,
+      "message": "does the order of case statements in this switch correspond to that of the enum? I think it reads better if kNotSpecified goes last (less distracting)\n\nin any case, note that in line 946 kNotSpecified is placed last (so be consistent)",
+      "range": {
+        "startLine": 816,
+        "startChar": 4,
+        "endLine": 816,
+        "endChar": 45
+      },
+      "revId": "bb761694e16ef9848f491d9597e99943dcd3303f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4528cfa_ca6344a0",
+        "filename": "modules/audio_processing/audio_processing_impl.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 825,
+      "author": {
+        "id": 5122
+      },
+      "writtenOn": "2018-05-14T12:41:03Z",
+      "side": 1,
+      "message": "great!",
+      "range": {
+        "startLine": 823,
+        "startChar": 2,
+        "endLine": 825,
+        "endChar": 19
+      },
+      "revId": "bb761694e16ef9848f491d9597e99943dcd3303f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "33d6e1ce_6b0670cd",
+        "filename": "modules/audio_processing/audio_processing_impl.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 5122
+      },
+      "writtenOn": "2018-05-14T12:41:03Z",
+      "side": 1,
+      "message": "queue (singular)",
+      "range": {
+        "startLine": 264,
+        "startChar": 55,
+        "endLine": 264,
+        "endChar": 61
+      },
+      "revId": "bb761694e16ef9848f491d9597e99943dcd3303f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
