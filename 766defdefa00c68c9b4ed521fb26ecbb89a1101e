@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fdb29cc0_f37c24c8",
+        "filename": "modules/audio_processing/audio_processing_impl.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 5122
+      },
+      "writtenOn": "2018-05-14T07:59:00Z",
+      "side": 1,
+      "message": "Shall we define a constant used both for runtime_settings_ and render_runtime_settings_?",
+      "range": {
+        "startLine": 388,
+        "startChar": 31,
+        "endLine": 388,
+        "endChar": 34
+      },
+      "revId": "766defdefa00c68c9b4ed521fb26ecbb89a1101e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82c4fa5e_fb8b42aa",
+        "filename": "modules/audio_processing/audio_processing_impl.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 812,
+      "author": {
+        "id": 5122
+      },
+      "writtenOn": "2018-05-14T07:59:00Z",
+      "side": 1,
+      "message": "What about having an exhaustive switch here as well? Probably redundant since both HandleRuntimeSettings() and HandleRenderRuntimeSettings() use that type of switch.",
+      "range": {
+        "startLine": 812,
+        "startChar": 2,
+        "endLine": 812,
+        "endChar": 23
+      },
+      "revId": "766defdefa00c68c9b4ed521fb26ecbb89a1101e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f8d8742_3d6b10b1",
+        "filename": "modules/audio_processing/audio_processing_impl.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 814,
+      "author": {
+        "id": 5122
+      },
+      "writtenOn": "2018-05-14T07:59:00Z",
+      "side": 1,
+      "message": "I like this solution because when the caller of AudioProcessingImpl::SetRuntimeSetting() sends a render side setting, only one lock is acquired. Price to pay, both AudioProcessingImpl::HandleRuntimeSettings() and AudioProcessingImpl::HandleRenderRuntimeSettings() need a case statement for each enum value - also because we want exhaustive switch.\n\nNote that with this impl AudioProcessingImpl::SetRuntimeSetting() must know which settings apply to render and capture side. Also note that in theory we could have settings that apply to both sides (in this case we would acquire two locks - one after each other, not in a nested fashion).\n\nJust wanted to check with you what implications this implementation has.",
+      "range": {
+        "startLine": 814,
+        "startChar": 4,
+        "endLine": 814,
+        "endChar": 55
+      },
+      "revId": "766defdefa00c68c9b4ed521fb26ecbb89a1101e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50cb864f_35fe4070",
+        "filename": "modules/audio_processing/audio_processing_impl.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 937,
+      "author": {
+        "id": 5122
+      },
+      "writtenOn": "2018-05-14T07:59:00Z",
+      "side": 1,
+      "message": "great!",
+      "range": {
+        "startLine": 935,
+        "startChar": 5,
+        "endLine": 937,
+        "endChar": 14
+      },
+      "revId": "766defdefa00c68c9b4ed521fb26ecbb89a1101e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2334a157_8fabcfee",
+        "filename": "modules/audio_processing/audio_processing_impl.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 5122
+      },
+      "writtenOn": "2018-05-14T07:59:00Z",
+      "side": 1,
+      "message": "Not sure if intentional, but good that this has not been renamed into capture_runtime_settings_, since it collects both render and capture settings. The latter are forwarded into render_runtime_settings_ when needed. Should we maybe clarify this in a comment?",
+      "range": {
+        "startLine": 152,
+        "startChar": 28,
+        "endLine": 152,
+        "endChar": 45
+      },
+      "revId": "766defdefa00c68c9b4ed521fb26ecbb89a1101e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "879e05e9_d2faee28",
+        "filename": "modules/audio_processing/audio_processing_impl.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 5122
+      },
+      "writtenOn": "2018-05-14T07:59:00Z",
+      "side": 1,
+      "message": "Maybe better to define RuntimeSettingEnqueuer and then separately declare the two members (as per style guide)",
+      "range": {
+        "startLine": 166,
+        "startChar": 4,
+        "endLine": 166,
+        "endChar": 65
+      },
+      "revId": "766defdefa00c68c9b4ed521fb26ecbb89a1101e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a503d1e8_53f248d0",
+        "filename": "modules/audio_processing/audio_processing_impl.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 5122
+      },
+      "writtenOn": "2018-05-14T07:59:00Z",
+      "side": 1,
+      "message": "Add the following comment between the 2 declarations: \"// Handle the render side runtime settings in the queue.\"",
+      "range": {
+        "startLine": 263,
+        "startChar": 7,
+        "endLine": 263,
+        "endChar": 34
+      },
+      "revId": "766defdefa00c68c9b4ed521fb26ecbb89a1101e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8058aa3_0224f098",
+        "filename": "modules/audio_processing/include/audio_processing.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 5122
+      },
+      "writtenOn": "2018-05-14T07:59:00Z",
+      "side": 1,
+      "message": "CreateCustomRenderSetting",
+      "range": {
+        "startLine": 330,
+        "startChar": 26,
+        "endLine": 330,
+        "endChar": 45
+      },
+      "revId": "766defdefa00c68c9b4ed521fb26ecbb89a1101e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc869e13_bf385512",
+        "filename": "modules/audio_processing/include/audio_processing.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 5122
+      },
+      "writtenOn": "2018-05-14T07:59:00Z",
+      "side": 1,
+      "message": "Maybe it\u0027s time to switch to a union which has a float member and one member for custom payloads (e.g., int for the type + float for the payload). We can also do this in a separate CL (add a TODO if so).",
+      "range": {
+        "startLine": 343,
+        "startChar": 4,
+        "endLine": 343,
+        "endChar": 16
+      },
+      "revId": "766defdefa00c68c9b4ed521fb26ecbb89a1101e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5db7d5a5_f5a2019a",
+        "filename": "modules/audio_processing/include/audio_processing.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1130,
+      "author": {
+        "id": 5122
+      },
+      "writtenOn": "2018-05-14T07:59:00Z",
+      "side": 1,
+      "message": "Just \"Handles...\"",
+      "range": {
+        "startLine": 1130,
+        "startChar": 5,
+        "endLine": 1130,
+        "endChar": 15
+      },
+      "revId": "766defdefa00c68c9b4ed521fb26ecbb89a1101e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
