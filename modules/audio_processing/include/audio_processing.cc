@@ -33,4 +33,6 @@ Beamforming::Beamforming(bool enabled,
 
 Beamforming::~Beamforming() {}
 
+void AudioProcessing::SetRuntimeSetting(RuntimeSetting setting) {}
+
 }  // namespace webrtc
