@@ -25,6 +25,8 @@
 
 namespace webrtc {
 
+// #define AUDIO_DEVICE_PLAYS_SINUS_TONE
+
 static const char kTimerQueueName[] = "AudioDeviceBufferTimer";
 
 // Time between two sucessive calls to LogStats().
