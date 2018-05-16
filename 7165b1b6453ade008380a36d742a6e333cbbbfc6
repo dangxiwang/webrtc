@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8eabfee4_430106b0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2018-05-16T20:11:03Z",
+      "side": 1,
+      "message": "It\u0027s actually deleting an include of fakevideocapturer.h though?",
+      "revId": "7165b1b6453ade008380a36d742a6e333cbbbfc6",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
