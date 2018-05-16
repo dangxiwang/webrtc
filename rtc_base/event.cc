@@ -56,7 +56,13 @@ Event::Event(bool manual_reset, bool initially_signaled)
     : is_manual_reset_(manual_reset),
       event_status_(initially_signaled) {
   RTC_CHECK(pthread_mutex_init(&event_mutex_, nullptr) == 0);
-  RTC_CHECK(pthread_cond_init(&event_cond_, nullptr) == 0);
+  pthread_condattr_t cond_attr;
+  RTC_CHECK(pthread_condattr_init(&cond_attr) == 0);
+#if !defined(WEBRTC_MAC) && !defined(WEBRTC_IOS)
+  RTC_CHECK(pthread_condattr_setclock(&cond_attr, CLOCK_MONOTONIC));
+#endif
+  RTC_CHECK(pthread_cond_init(&event_cond_, &cond_attr) == 0);
+  pthread_condattr_destroy(&cond_attr);
 }
 
 Event::~Event() {
@@ -82,14 +88,22 @@ bool Event::Wait(int milliseconds) {
 
   struct timespec ts;
   if (milliseconds != kForever) {
+#if defined(WEBRTC_MAC) || defined(WEBRTC_IOS)
+    // On MacOS, clock_gettime is available from version 10.12, and on
+    // iOS, from version 10.0. So we can't use it yet.
+
     // Converting from seconds and microseconds (1e-6) plus
     // milliseconds (1e-3) to seconds and nanoseconds (1e-9).
-
     struct timeval tv;
     gettimeofday(&tv, nullptr);
-
     ts.tv_sec = tv.tv_sec + (milliseconds / 1000);
     ts.tv_nsec = tv.tv_usec * 1000 + (milliseconds % 1000) * 1000000;
+#else
+    clock_gettime(CLOCK_MONOTONIC, &ts);
+
+    ts.tv_sec += (milliseconds / 1000);
+    ts.tv_nsec += (milliseconds % 1000) * 1000000;
+#endif
 
     // Handle overflow.
     if (ts.tv_nsec >= 1000000000) {
