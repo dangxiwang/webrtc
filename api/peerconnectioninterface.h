@@ -91,6 +91,7 @@
 #include "api/stats/rtcstatscollectorcallback.h"
 #include "api/statstypes.h"
 #include "api/transport/bitrate_settings.h"
+#include "api/transport/network_control.h"
 #include "api/turncustomizer.h"
 #include "api/umametrics.h"
 #include "logging/rtc_event_log/rtc_event_log_factory_interface.h"
@@ -1430,7 +1431,9 @@ rtc::scoped_refptr<PeerConnectionFactoryInterface> CreatePeerConnectionFactory(
     cricket::WebRtcVideoDecoderFactory* video_decoder_factory,
     rtc::scoped_refptr<AudioMixer> audio_mixer,
     rtc::scoped_refptr<AudioProcessing> audio_processing,
-    std::unique_ptr<FecControllerFactoryInterface> fec_controller_factory);
+    std::unique_ptr<FecControllerFactoryInterface> fec_controller_factory,
+    std::unique_ptr<NetworkControllerFactoryInterface>
+        network_controller_factory = nullptr);
 
 // Create a new instance of PeerConnectionFactoryInterface with optional video
 // codec factories. These video factories represents all video codecs, i.e. no
@@ -1531,7 +1534,9 @@ CreateModularPeerConnectionFactory(
     std::unique_ptr<cricket::MediaEngineInterface> media_engine,
     std::unique_ptr<CallFactoryInterface> call_factory,
     std::unique_ptr<RtcEventLogFactoryInterface> event_log_factory,
-    std::unique_ptr<FecControllerFactoryInterface> fec_controller_factory);
+    std::unique_ptr<FecControllerFactoryInterface> fec_controller_factory,
+    std::unique_ptr<NetworkControllerFactoryInterface>
+        network_controller_factory);
 
 }  // namespace webrtc
 
