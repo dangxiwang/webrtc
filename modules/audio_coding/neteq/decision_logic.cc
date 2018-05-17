@@ -15,6 +15,7 @@
 #include "modules/audio_coding/neteq/buffer_level_filter.h"
 #include "modules/audio_coding/neteq/decision_logic_fax.h"
 #include "modules/audio_coding/neteq/decision_logic_normal.h"
+#include "modules/audio_coding/neteq/decoder_database.h"
 #include "modules/audio_coding/neteq/delay_manager.h"
 #include "modules/audio_coding/neteq/expand.h"
 #include "modules/audio_coding/neteq/packet_buffer.h"
@@ -119,8 +120,10 @@ Operations DecisionLogic::GetDecision(const SyncBuffer& sync_buffer,
 
   const size_t samples_left =
       sync_buffer.FutureLength() - expand.overlap_length();
+  bool dtx_future = false;
   const size_t cur_size_samples =
-      samples_left + packet_buffer_.NumSamplesInBuffer(decoder_frame_length);
+      samples_left + packet_buffer_.NumSamplesInBuffer(
+                         decoder_frame_length, decoder_database_, &dtx_future);
 
   prev_time_scale_ = prev_time_scale_ &&
       (prev_mode == kModeAccelerateSuccess ||
@@ -130,9 +133,9 @@ Operations DecisionLogic::GetDecision(const SyncBuffer& sync_buffer,
 
   FilterBufferLevel(cur_size_samples, prev_mode);
 
-  return GetDecisionSpecialized(sync_buffer, expand, decoder_frame_length,
-                                next_packet, prev_mode, play_dtmf,
-                                reset_decoder, generated_noise_samples);
+  return GetDecisionSpecialized(
+      sync_buffer, expand, decoder_frame_length, next_packet, prev_mode,
+      play_dtmf, reset_decoder, generated_noise_samples, dtx_future);
 }
 
 void DecisionLogic::ExpandDecision(Operations operation) {

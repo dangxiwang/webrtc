@@ -31,7 +31,8 @@ Operations DecisionLogicNormal::GetDecisionSpecialized(
     Modes prev_mode,
     bool play_dtmf,
     bool* reset_decoder,
-    size_t generated_noise_samples) {
+    size_t generated_noise_samples,
+    bool dtx_future) {
   assert(playout_mode_ == kPlayoutOn || playout_mode_ == kPlayoutStreaming);
   // Guard for errors, to avoid getting stuck in error mode.
   if (prev_mode == kModeError) {
@@ -66,6 +67,12 @@ Operations DecisionLogicNormal::GetDecisionSpecialized(
   if (num_consecutive_expands_ > kReinitAfterExpands) {
     *reset_decoder = true;
     return kNormal;
+  }
+
+  // Make sure we don't restart audio too soon after a expansions, to avoid
+  // running out of data right away.
+  if (prev_mode == kModeExpand && !dtx_future && UnderTargetLevel()) {
+    return kExpand;
   }
 
   const uint32_t five_seconds_samples =

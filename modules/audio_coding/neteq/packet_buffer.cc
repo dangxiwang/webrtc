@@ -265,9 +265,14 @@ size_t PacketBuffer::NumPacketsInBuffer() const {
   return buffer_.size();
 }
 
-size_t PacketBuffer::NumSamplesInBuffer(size_t last_decoded_length) const {
+size_t PacketBuffer::NumSamplesInBuffer(size_t last_decoded_length,
+                                        DecoderDatabase* decoder_database,
+                                        bool* contains_dtx_packet) const {
   size_t num_samples = 0;
   size_t last_duration = last_decoded_length;
+  if (contains_dtx_packet) {
+    *contains_dtx_packet = false;
+  }
   for (const Packet& packet : buffer_) {
     if (packet.frame) {
       // TODO(hlundin): Verify that it's fine to count all packets and remove
@@ -279,6 +284,12 @@ size_t PacketBuffer::NumSamplesInBuffer(size_t last_decoded_length) const {
       if (duration > 0) {
         last_duration = duration;  // Save the most up-to-date (valid) duration.
       }
+    }
+    if (contains_dtx_packet && !*contains_dtx_packet) {
+      *contains_dtx_packet =
+          (packet.frame && packet.frame->IsDTXPacket()) ||
+          (decoder_database &&
+           decoder_database->IsComfortNoise(packet.payload_type));
     }
     num_samples += last_duration;
   }
