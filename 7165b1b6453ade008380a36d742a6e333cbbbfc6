@@ -16,6 +16,24 @@
       "revId": "7165b1b6453ade008380a36d742a6e333cbbbfc6",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d5c7f80_517e3cd8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2018-05-17T06:33:07Z",
+      "side": 1,
+      "message": "Right, I\u0027ll correct the commit message.",
+      "parentUuid": "8eabfee4_430106b0",
+      "revId": "7165b1b6453ade008380a36d742a6e333cbbbfc6",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
