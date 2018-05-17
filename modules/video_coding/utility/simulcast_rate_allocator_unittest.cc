@@ -51,7 +51,6 @@ class SimulcastRateAllocatorTest : public ::testing::TestWithParam<bool> {
     codec_.minBitrate = kMinBitrateKbps;
     codec_.targetBitrate = kTargetBitrateKbps;
     codec_.maxBitrate = kMaxBitrateKbps;
-    codec_.active = true;
     CreateAllocator();
   }
   virtual ~SimulcastRateAllocatorTest() {}
@@ -125,7 +124,6 @@ class SimulcastRateAllocatorTest : public ::testing::TestWithParam<bool> {
 
 TEST_F(SimulcastRateAllocatorTest, NoSimulcastBelowMin) {
   uint32_t expected[] = {codec_.minBitrate};
-  codec_.active = true;
   ExpectEqual(expected, GetAllocation(codec_.minBitrate - 1));
   ExpectEqual(expected, GetAllocation(1));
   ExpectEqual(expected, GetAllocation(0));
@@ -133,14 +131,12 @@ TEST_F(SimulcastRateAllocatorTest, NoSimulcastBelowMin) {
 
 TEST_F(SimulcastRateAllocatorTest, NoSimulcastAboveMax) {
   uint32_t expected[] = {codec_.maxBitrate};
-  codec_.active = true;
   ExpectEqual(expected, GetAllocation(codec_.maxBitrate + 1));
   ExpectEqual(expected, GetAllocation(std::numeric_limits<uint32_t>::max()));
 }
 
 TEST_F(SimulcastRateAllocatorTest, NoSimulcastNoMax) {
   const uint32_t kMax = VideoBitrateAllocation::kMaxBitrateBps / 1000;
-  codec_.active = true;
   codec_.maxBitrate = 0;
   CreateAllocator();
 
@@ -149,24 +145,11 @@ TEST_F(SimulcastRateAllocatorTest, NoSimulcastNoMax) {
 }
 
 TEST_F(SimulcastRateAllocatorTest, NoSimulcastWithinLimits) {
-  codec_.active = true;
   for (uint32_t bitrate = codec_.minBitrate; bitrate <= codec_.maxBitrate;
        ++bitrate) {
     uint32_t expected[] = {bitrate};
     ExpectEqual(expected, GetAllocation(bitrate));
   }
-}
-
-// Tests that when we aren't using simulcast and the codec is marked inactive no
-// bitrate will be allocated.
-TEST_F(SimulcastRateAllocatorTest, NoSimulcastInactive) {
-  codec_.active = false;
-  uint32_t expected[] = {0};
-  CreateAllocator();
-
-  ExpectEqual(expected, GetAllocation(kMinBitrateKbps - 10));
-  ExpectEqual(expected, GetAllocation(kTargetBitrateKbps));
-  ExpectEqual(expected, GetAllocation(kMaxBitrateKbps + 10));
 }
 
 TEST_F(SimulcastRateAllocatorTest, SingleSimulcastBelowMin) {
@@ -516,7 +499,6 @@ class ScreenshareRateAllocationTest : public SimulcastRateAllocatorTest {
       codec_.numberOfSimulcastStreams = 0;
       codec_.targetBitrate = kTargetBitrateKbps;
       codec_.VP8()->numberOfTemporalLayers = 2;
-      codec_.active = active;
     }
   }
 };

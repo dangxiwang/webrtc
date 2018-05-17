@@ -99,15 +99,6 @@ VideoCodec VideoCodecInitializer::VideoEncoderConfigToVideoCodec(
   video_codec.numberOfSimulcastStreams =
       static_cast<unsigned char>(streams.size());
   video_codec.minBitrate = streams[0].min_bitrate_bps / 1000;
-  bool codec_active = false;
-  for (const VideoStream& stream : streams) {
-    if (stream.active) {
-      codec_active = true;
-      break;
-    }
-  }
-  // Set active for the entire video codec for the non simulcast case.
-  video_codec.active = codec_active;
   if (video_codec.minBitrate < kEncoderMinBitrateKbps)
     video_codec.minBitrate = kEncoderMinBitrateKbps;
   video_codec.timing_frame_thresholds = {kDefaultTimingFramesDelayMs,
