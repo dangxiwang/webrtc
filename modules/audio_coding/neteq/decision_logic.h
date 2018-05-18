@@ -137,7 +137,8 @@ class DecisionLogic {
                                             Modes prev_mode,
                                             bool play_dtmf,
                                             bool* reset_decoder,
-                                            size_t generated_noise_samples) = 0;
+                                            size_t generated_noise_samples,
+                                            bool dtx_future) = 0;
 
   // Updates the |buffer_level_filter_| with the current buffer level
   // |buffer_size_packets|.
@@ -159,6 +160,7 @@ class DecisionLogic {
   std::unique_ptr<TickTimer::Countdown> timescale_countdown_;
   int num_consecutive_expands_;
   const NetEqPlayoutMode playout_mode_;
+  const bool postpone_decoding_after_expand_;
 
  private:
   RTC_DISALLOW_COPY_AND_ASSIGN(DecisionLogic);
