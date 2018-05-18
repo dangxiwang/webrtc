@@ -333,9 +333,9 @@ int NetEqImpl::CurrentDelayMs() const {
     return 0;
   // Sum up the samples in the packet buffer with the future length of the sync
   // buffer, and divide the sum by the sample rate.
-  const size_t delay_samples =
-      packet_buffer_->NumSamplesInBuffer(decoder_frame_length_) +
-      sync_buffer_->FutureLength();
+  const size_t delay_samples = packet_buffer_->NumSamplesInBufferAndDtx(
+                                   decoder_frame_length_, nullptr, nullptr) +
+                               sync_buffer_->FutureLength();
   // The division below will truncate.
   const int delay_ms =
       static_cast<int>(delay_samples) / rtc::CheckedDivExact(fs_hz_, 1000);
@@ -379,7 +379,8 @@ int NetEqImpl::NetworkStatistics(NetEqNetworkStatistics* stats) {
   rtc::CritScope lock(&crit_sect_);
   assert(decoder_database_.get());
   const size_t total_samples_in_buffers =
-      packet_buffer_->NumSamplesInBuffer(decoder_frame_length_) +
+      packet_buffer_->NumSamplesInBufferAndDtx(decoder_frame_length_, nullptr,
+                                               nullptr) +
       sync_buffer_->FutureLength();
   assert(delay_manager_.get());
   assert(decision_logic_.get());
