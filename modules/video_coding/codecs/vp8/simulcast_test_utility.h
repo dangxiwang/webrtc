@@ -201,7 +201,6 @@ class TestVp8Simulcast : public ::testing::Test {
     settings->width = kDefaultWidth;
     settings->height = kDefaultHeight;
     settings->numberOfSimulcastStreams = kNumberOfSimulcastStreams;
-    settings->active = true;
     ASSERT_EQ(3, kNumberOfSimulcastStreams);
     settings->timing_frame_thresholds = {kDefaultTimingFramesDelayMs,
                                          kDefaultOutlierFrameSizePercent};

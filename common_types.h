@@ -470,10 +470,6 @@ class VideoCodec {
 
   uint32_t maxFramerate;
 
-  // This enables/disables encoding and sending when there aren't multiple
-  // simulcast streams,by allocating 0 bitrate if inactive.
-  bool active;
-
   unsigned int qpMax;
   unsigned char numberOfSimulcastStreams;
   SimulcastStream simulcastStream[kMaxSimulcastStreams];
