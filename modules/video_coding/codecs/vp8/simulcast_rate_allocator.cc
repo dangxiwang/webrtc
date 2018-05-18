@@ -42,10 +42,8 @@ void SimulcastRateAllocator::DistributeAllocationToSimulcastLayers(
 
   if (codec_.numberOfSimulcastStreams == 0) {
     // No simulcast, just set the target as this has been capped already.
-    if (codec_.active) {
-      allocated_bitrates_bps->SetBitrate(
-          0, 0, std::max(codec_.minBitrate * 1000, left_to_allocate));
-    }
+    allocated_bitrates_bps->SetBitrate(
+        0, 0, std::max(codec_.minBitrate * 1000, left_to_allocate));
     return;
   }
   // Find the first active layer. We don't allocate to inactive layers.
