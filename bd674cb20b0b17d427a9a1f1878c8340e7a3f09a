@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2540f523_bec86b41",
+        "filename": "api/audio_codecs/audio_decoder.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 5100
+      },
+      "writtenOn": "2018-05-18T14:15:47Z",
+      "side": 1,
+      "message": "I think our naming convention says this should be named IsDtxPacket.",
+      "range": {
+        "startLine": 52,
+        "startChar": 17,
+        "endLine": 52,
+        "endChar": 28
+      },
+      "revId": "bd674cb20b0b17d427a9a1f1878c8340e7a3f09a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfa14879_fdb94c7b",
+        "filename": "modules/audio_coding/neteq/decision_logic_normal.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 5100
+      },
+      "writtenOn": "2018-05-18T14:15:47Z",
+      "side": 1,
+      "message": "I think this would be easier to parse if you change \"then we should...\" -\u003e \"otherwise we should...\", also to match your second set of parentheses.",
+      "range": {
+        "startLine": 75,
+        "startChar": 32,
+        "endLine": 75,
+        "endChar": 36
+      },
+      "revId": "bd674cb20b0b17d427a9a1f1878c8340e7a3f09a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc5653e3_02139b13",
+        "filename": "modules/audio_coding/neteq/decision_logic_normal.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 5100
+      },
+      "writtenOn": "2018-05-18T14:15:47Z",
+      "side": 1,
+      "message": "While I generally like the use of numeric_limits, in this case I\u0027d prefer literal 16384. The reason is that we are dealing with the Q14 domain, not with the specific width of the variable used to store it.",
+      "range": {
+        "startLine": 80,
+        "startChar": 29,
+        "endLine": 80,
+        "endChar": 64
+      },
+      "revId": "bd674cb20b0b17d427a9a1f1878c8340e7a3f09a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54d2d5c9_98825c0e",
+        "filename": "modules/audio_coding/neteq/packet_buffer.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 5100
+      },
+      "writtenOn": "2018-05-18T14:15:47Z",
+      "side": 1,
+      "message": "Suggest you add\n DCHECK(decoder_database)\nhere as a sanity check that a decoder database is provided when contains_dtx_packet is !nullptr.",
+      "range": {
+        "startLine": 274,
+        "startChar": 4,
+        "endLine": 274,
+        "endChar": 33
+      },
+      "revId": "bd674cb20b0b17d427a9a1f1878c8340e7a3f09a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
