@@ -39,8 +39,6 @@ static void CodecSettings(VideoCodecType codec_type, VideoCodec* settings) {
 
   settings->maxFramerate = kTestFrameRate;
 
-  settings->active = true;
-
   settings->qpMax = 56;  // See webrtcvideoengine.h.
   settings->numberOfSimulcastStreams = 0;
 

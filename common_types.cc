@@ -73,7 +73,6 @@ VideoCodec::VideoCodec()
       minBitrate(0),
       targetBitrate(0),
       maxFramerate(0),
-      active(true),
       qpMax(0),
       numberOfSimulcastStreams(0),
       simulcastStream(),
