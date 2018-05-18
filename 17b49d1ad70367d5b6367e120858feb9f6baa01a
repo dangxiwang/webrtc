@@ -69,6 +69,24 @@
       "revId": "17b49d1ad70367d5b6367e120858feb9f6baa01a",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53371d85_02d9c9c5",
+        "filename": "api/peerconnectioninterface.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 1436,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2018-05-18T20:33:30Z",
+      "side": 1,
+      "message": "Sure, though it could also have been done before this CL was merged.\n\nAlso, I\u0027m noticing now that this is adding the argument to the soon-to-be-deprecated CreatePeerConnectionFactory overload that uses cricket::WebRtcVideoEncoderFactory instead of webrtc::VideoEncoderFactory. Is that intentional?",
+      "parentUuid": "de74f277_35136355",
+      "revId": "17b49d1ad70367d5b6367e120858feb9f6baa01a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
     }
   ]
 }
