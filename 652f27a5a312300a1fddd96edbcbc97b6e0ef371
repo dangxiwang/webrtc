@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d5ffa6f_1a35da20",
+        "filename": "api/audio_codecs/audio_decoder.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 5126
+      },
+      "writtenOn": "2018-05-18T19:46:14Z",
+      "side": 1,
+      "message": "It\u0027s a good idea to have a default implementation for now, but I would prefer to have it removed soon (two weeks?), once all implementations have had time to implement the new method.",
+      "revId": "652f27a5a312300a1fddd96edbcbc97b6e0ef371",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
