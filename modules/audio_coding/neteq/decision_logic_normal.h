@@ -50,7 +50,8 @@ class DecisionLogicNormal : public DecisionLogic {
                                     Modes prev_mode,
                                     bool play_dtmf,
                                     bool* reset_decoder,
-                                    size_t generated_noise_samples) override;
+                                    size_t generated_noise_samples,
+                                    bool dtx_future) override;
 
   // Returns the operation to do given that the expected packet is not
   // available, but a packet further into the future is at hand.
