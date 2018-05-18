@@ -3281,11 +3281,15 @@ DWORD AudioDeviceWindowsCore::DoCaptureThread() {
 
         QueryPerformanceCounter(&t1);
 
+        RTC_DLOG(INFO) << "now: " << (UINT64)t1.QuadPart * _perfCounterFactor;
+        RTC_DLOG(INFO) << "recTime: " << recTime;
+
         // Get the current recording and playout delay.
         uint32_t sndCardRecDelay = (uint32_t)(
             ((((UINT64)t1.QuadPart * _perfCounterFactor) - recTime) / 10000) +
             (10 * syncBufIndex) / _recBlockSize - 10);
         uint32_t sndCardPlayDelay = static_cast<uint32_t>(_sndCardPlayDelay);
+        RTC_DLOG(INFO) << "sndCardRecDelay: " << sndCardRecDelay;
 
         _sndCardRecDelay = sndCardRecDelay;
 
