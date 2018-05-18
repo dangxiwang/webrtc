@@ -51,6 +51,10 @@ class OldStyleEncodedFrame final : public AudioDecoder::EncodedAudioFrame {
 
 }  // namespace
 
+bool AudioDecoder::EncodedAudioFrame::IsDTXPacket() const {
+  return false;
+}
+
 AudioDecoder::ParseResult::ParseResult() = default;
 AudioDecoder::ParseResult::ParseResult(ParseResult&& b) = default;
 AudioDecoder::ParseResult::ParseResult(uint32_t timestamp,

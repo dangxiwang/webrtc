@@ -13,6 +13,7 @@
 #include <assert.h>
 
 #include <algorithm>
+#include <limits>
 
 #include "modules/audio_coding/neteq/buffer_level_filter.h"
 #include "modules/audio_coding/neteq/decoder_database.h"
@@ -31,7 +32,8 @@ Operations DecisionLogicNormal::GetDecisionSpecialized(
     Modes prev_mode,
     bool play_dtmf,
     bool* reset_decoder,
-    size_t generated_noise_samples) {
+    size_t generated_noise_samples,
+    bool dtx_future) {
   assert(playout_mode_ == kPlayoutOn || playout_mode_ == kPlayoutStreaming);
   // Guard for errors, to avoid getting stuck in error mode.
   if (prev_mode == kModeError) {
@@ -66,6 +68,17 @@ Operations DecisionLogicNormal::GetDecisionSpecialized(
   if (num_consecutive_expands_ > kReinitAfterExpands) {
     *reset_decoder = true;
     return kNormal;
+  }
+
+  // Make sure we don't restart audio too soon after an expansion to avoid
+  // running out of data right away again. We should only wait if there are no
+  // DTX packets in the buffer (then we should just play out what we have), and
+  // if the mute factor is low enough (otherwise the expansion was short enough
+  // to not be noticable).
+  if (repeated_audio_fix_ && prev_mode == kModeExpand && !dtx_future &&
+      UnderTargetLevel() &&
+      expand.MuteFactor(0) < std::numeric_limits<int16_t>::max() / 2) {
+    return kExpand;
   }
 
   const uint32_t five_seconds_samples =
