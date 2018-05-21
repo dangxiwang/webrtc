@@ -22,6 +22,30 @@
       "revId": "a420ba9ac21635593593c84db981e948f857fee1",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f33eb3f_3f2f5c0a",
+        "filename": "rtc_base/win/windows_version.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5091
+      },
+      "writtenOn": "2018-05-21T07:40:10Z",
+      "side": 1,
+      "message": "I tried to follow the style we agreed upon here: https://webrtc-review.googlesource.com/c/src/+/76900/9/modules/audio_device/win/core_audio_utility_win.h\n\nFirst, I did\n\nnamespace rtc {\nnamespace win {\n\nsince that is how they do in Chrome.\n\nPlease advice what you feel is best and I\u0027ll change.",
+      "parentUuid": "6751f935_bc320408",
+      "range": {
+        "startLine": 21,
+        "startChar": 10,
+        "endLine": 21,
+        "endChar": 17
+      },
+      "revId": "a420ba9ac21635593593c84db981e948f857fee1",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
     }
   ]
 }
