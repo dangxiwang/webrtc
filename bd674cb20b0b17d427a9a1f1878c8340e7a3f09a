@@ -355,6 +355,30 @@
     },
     {
       "key": {
+        "uuid": "44f77e8e_55d8ce99",
+        "filename": "modules/audio_coding/neteq/packet_buffer.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 5607
+      },
+      "writtenOn": "2018-05-21T13:50:34Z",
+      "side": 1,
+      "message": "After our offline discussions I restructured the code a bit. PTAL.",
+      "parentUuid": "c0695982_47fde701",
+      "range": {
+        "startLine": 126,
+        "startChar": 17,
+        "endLine": 126,
+        "endChar": 41
+      },
+      "revId": "bd674cb20b0b17d427a9a1f1878c8340e7a3f09a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "35f330f3_1745fb27",
         "filename": "modules/audio_coding/neteq/packet_buffer.h",
         "patchSetId": 4
