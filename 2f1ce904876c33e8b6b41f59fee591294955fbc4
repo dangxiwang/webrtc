@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5bd87eaf_6dcb7497",
+        "filename": "modules/audio_coding/neteq/decision_logic.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 7015
+      },
+      "writtenOn": "2018-05-21T14:13:45Z",
+      "side": 1,
+      "message": "since this applies only to decision_logic_normal, can we move it there.",
+      "range": {
+        "startLine": 163,
+        "startChar": 13,
+        "endLine": 163,
+        "endChar": 44
+      },
+      "revId": "2f1ce904876c33e8b6b41f59fee591294955fbc4",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "998a556d_a48be853",
+        "filename": "modules/audio_coding/neteq/packet_buffer.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 7015
+      },
+      "writtenOn": "2018-05-21T14:13:45Z",
+      "side": 1,
+      "message": "does this count for CNG packets too? should the function name reflect this too?\n\nOr does CNG packet has a valid duration and we should not count for it here?",
+      "range": {
+        "startLine": 292,
+        "startChar": 53,
+        "endLine": 293,
+        "endChar": 60
+      },
+      "revId": "2f1ce904876c33e8b6b41f59fee591294955fbc4",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
