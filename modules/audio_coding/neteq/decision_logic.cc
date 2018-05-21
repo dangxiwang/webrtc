@@ -20,6 +20,7 @@
 #include "modules/audio_coding/neteq/packet_buffer.h"
 #include "modules/audio_coding/neteq/sync_buffer.h"
 #include "modules/include/module_common_types.h"
+#include "system_wrappers/include/field_trial.h"
 
 namespace webrtc {
 
@@ -68,7 +69,9 @@ DecisionLogic::DecisionLogic(int fs_hz,
       timescale_countdown_(
           tick_timer_->GetNewCountdown(kMinTimescaleInterval + 1)),
       num_consecutive_expands_(0),
-      playout_mode_(playout_mode) {
+      playout_mode_(playout_mode),
+      postpone_decoding_after_expand_(field_trial::IsEnabled(
+          "WebRTC-Audio-NetEqPostponeDecodingAfterExpand")) {
   delay_manager_->set_streaming_mode(playout_mode_ == kPlayoutStreaming);
   SetSampleRate(fs_hz, output_size_samples);
 }
@@ -130,9 +133,9 @@ Operations DecisionLogic::GetDecision(const SyncBuffer& sync_buffer,
 
   FilterBufferLevel(cur_size_samples, prev_mode);
 
-  return GetDecisionSpecialized(sync_buffer, expand, decoder_frame_length,
-                                next_packet, prev_mode, play_dtmf,
-                                reset_decoder, generated_noise_samples);
+  return GetDecisionSpecialized(
+      sync_buffer, expand, decoder_frame_length, next_packet, prev_mode,
+      play_dtmf, reset_decoder, generated_noise_samples, cur_size_samples);
 }
 
 void DecisionLogic::ExpandDecision(Operations operation) {
