@@ -94,6 +94,30 @@
       "revId": "a420ba9ac21635593593c84db981e948f857fee1",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3584569_e4cac060",
+        "filename": "rtc_base/win/windows_version.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5126
+      },
+      "writtenOn": "2018-05-21T08:24:21Z",
+      "side": 1,
+      "message": "Yes. Both ::rtc::rtc_win and ::webrtc::webrtc_win SGTM.\n\nThanks!",
+      "parentUuid": "2fe5cb04_7c69c20c",
+      "range": {
+        "startLine": 21,
+        "startChar": 10,
+        "endLine": 21,
+        "endChar": 17
+      },
+      "revId": "a420ba9ac21635593593c84db981e948f857fee1",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
     }
   ]
 }
