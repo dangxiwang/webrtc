@@ -46,6 +46,30 @@
       "revId": "a420ba9ac21635593593c84db981e948f857fee1",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7dabb843_4e1b7476",
+        "filename": "rtc_base/win/windows_version.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5126
+      },
+      "writtenOn": "2018-05-21T08:15:55Z",
+      "side": 1,
+      "message": "Oh, it seems like we *thought* we agreed, because I was unclear. My intention was to recommend that you replace ::rtc::win with ::rtc::rtc_win (or ::webrtc::webrtc_win, for example), but I worded it loosely enough that it was also possible to interpret it (as you did) as being a recommendation for just ::rtc_win.\n\nSo, to be explicit, these are things we want to do with namespaces:\n\n1. Not make more top-level namespaces. We already have at least three, and we want that number to go down, not up.\n\n2. Not make sub-namespaces that could collide with other people\u0027s top-level namespaces. Because of how C++ name lookup works, having both ::foo and ::webrtc::foo isn\u0027t guaranteed to always be unproblematic. (See https://google.github.io/styleguide/cppguide.html#Namespace_Names for the current Google C++ style guide rule.)",
+      "parentUuid": "3f33eb3f_3f2f5c0a",
+      "range": {
+        "startLine": 21,
+        "startChar": 10,
+        "endLine": 21,
+        "endChar": 17
+      },
+      "revId": "a420ba9ac21635593593c84db981e948f857fee1",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
     }
   ]
 }
