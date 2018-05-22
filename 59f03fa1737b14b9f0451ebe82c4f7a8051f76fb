@@ -16,6 +16,24 @@
       "revId": "59f03fa1737b14b9f0451ebe82c4f7a8051f76fb",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33a7357a_511ffd14",
+        "filename": "rtc_base/event.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2018-05-22T12:14:08Z",
+      "side": 1,
+      "message": "Dropped outer parenthesis, added a pair around the comparison.",
+      "parentUuid": "fd5aa753_ad0dba76",
+      "revId": "59f03fa1737b14b9f0451ebe82c4f7a8051f76fb",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
     }
   ]
 }
