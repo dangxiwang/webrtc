@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "063762a2_c487ff19",
+        "filename": "rtc_base/event.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 5126
+      },
+      "writtenOn": "2018-05-22T08:21:27Z",
+      "side": 1,
+      "message": "I think the logic here (and elsewhere in the CL) would be easier to follow if you named the preprocessor symbols after the advanced features we want to use, rather than the fallback features we may have to make do with.",
+      "revId": "b0c98fa753d1dc857ef90897a9e5731b1ca3dc4f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ae5acf1_315bc8b2",
+        "filename": "rtc_base/event.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 5126
+      },
+      "writtenOn": "2018-05-22T08:21:27Z",
+      "side": 1,
+      "message": "This comment seems to logically belong outside the #if.",
+      "revId": "b0c98fa753d1dc857ef90897a9e5731b1ca3dc4f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
