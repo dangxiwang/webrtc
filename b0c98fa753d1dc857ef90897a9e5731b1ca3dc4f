@@ -163,6 +163,30 @@
       "revId": "b0c98fa753d1dc857ef90897a9e5731b1ca3dc4f",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "957a75fc_1085bfde",
+        "filename": "rtc_base/event.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 5112
+      },
+      "writtenOn": "2018-05-22T12:21:37Z",
+      "side": 1,
+      "message": "I mean that is the way it was before so we know it at least works reasonably enough. I am worried because pthread_cond_timedwait_monotonic_np has a known bug? If you don\u0027t think the bug is critical for this use case, I guess this is okay.",
+      "parentUuid": "bb0ab35e_82b26fb9",
+      "range": {
+        "startLine": 135,
+        "startChar": 10,
+        "endLine": 135,
+        "endChar": 45
+      },
+      "revId": "b0c98fa753d1dc857ef90897a9e5731b1ca3dc4f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
     }
   ]
 }
