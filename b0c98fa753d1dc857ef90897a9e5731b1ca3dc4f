@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "c4ca7884_bde3117c",
+        "filename": "rtc_base/event.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 5112
+      },
+      "writtenOn": "2018-05-22T08:44:17Z",
+      "side": 1,
+      "message": "nit: I would prefer not to have nested ifs even if that means you have to duplicate \"#define USE_GETTIMEOFDAY\".",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 5
+      },
+      "revId": "b0c98fa753d1dc857ef90897a9e5731b1ca3dc4f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "063762a2_c487ff19",
         "filename": "rtc_base/event.cc",
         "patchSetId": 8
@@ -30,6 +53,29 @@
       "writtenOn": "2018-05-22T08:21:27Z",
       "side": 1,
       "message": "This comment seems to logically belong outside the #if.",
+      "revId": "b0c98fa753d1dc857ef90897a9e5731b1ca3dc4f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "feda9ec7_0b71b517",
+        "filename": "rtc_base/event.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 5112
+      },
+      "writtenOn": "2018-05-22T08:44:17Z",
+      "side": 1,
+      "message": "I wonder if it is worth it to add this option, maybe it would be better just fallback to using the wall clock? Are there any significant problems with that approach?",
+      "range": {
+        "startLine": 135,
+        "startChar": 10,
+        "endLine": 135,
+        "endChar": 45
+      },
       "revId": "b0c98fa753d1dc857ef90897a9e5731b1ca3dc4f",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
