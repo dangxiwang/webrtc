@@ -187,6 +187,30 @@
       "revId": "b0c98fa753d1dc857ef90897a9e5731b1ca3dc4f",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8f7cc8b_8fac0bd2",
+        "filename": "rtc_base/event.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2018-05-22T12:32:17Z",
+      "side": 1,
+      "message": "What known bug? I\u0027m aware of https://bugs.chromium.org/p/webrtc/issues/detail?id\u003d8722, but that\u0027s about pthread_cond_timedwait_relative_np, which is different.",
+      "parentUuid": "957a75fc_1085bfde",
+      "range": {
+        "startLine": 135,
+        "startChar": 10,
+        "endLine": 135,
+        "endChar": 45
+      },
+      "revId": "b0c98fa753d1dc857ef90897a9e5731b1ca3dc4f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
     }
   ]
 }
