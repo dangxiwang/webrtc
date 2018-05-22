@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "27cbcf55_958fe71c",
+        "filename": "modules/audio_coding/neteq/decision_logic.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 5607
+      },
+      "writtenOn": "2018-05-22T11:22:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5bd87eaf_6dcb7497",
+      "range": {
+        "startLine": 163,
+        "startChar": 13,
+        "endLine": 163,
+        "endChar": 44
+      },
+      "revId": "2f1ce904876c33e8b6b41f59fee591294955fbc4",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "998a556d_a48be853",
         "filename": "modules/audio_coding/neteq/packet_buffer.cc",
         "patchSetId": 9
@@ -59,6 +83,30 @@
       "writtenOn": "2018-05-22T10:46:21Z",
       "side": 1,
       "message": "do not miss this.",
+      "parentUuid": "998a556d_a48be853",
+      "range": {
+        "startLine": 292,
+        "startChar": 53,
+        "endLine": 293,
+        "endChar": 60
+      },
+      "revId": "2f1ce904876c33e8b6b41f59fee591294955fbc4",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ec28542_f90d0ad8",
+        "filename": "modules/audio_coding/neteq/packet_buffer.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 5607
+      },
+      "writtenOn": "2018-05-22T11:22:37Z",
+      "side": 1,
+      "message": "Done. I looked a bit more into the CNG code and checked with Henrik to make sure that CNG packets should be treated the same way as DTX, and I\u0027m now convinced that they should.",
       "parentUuid": "998a556d_a48be853",
       "range": {
         "startLine": 292,
