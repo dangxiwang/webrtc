@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fd5aa753_ad0dba76",
+        "filename": "rtc_base/event.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 5126
+      },
+      "writtenOn": "2018-05-22T11:33:47Z",
+      "side": 1,
+      "message": "Nit: You use redundant parentheses here, but not on line 57. I\u0027m fine with either choice, but it\u0027s nice to be consistent.",
+      "revId": "59f03fa1737b14b9f0451ebe82c4f7a8051f76fb",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
