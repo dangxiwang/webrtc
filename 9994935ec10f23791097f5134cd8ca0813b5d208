@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "938766e7_186130ab",
+        "filename": "modules/audio_coding/neteq/decision_logic_normal.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 7015
+      },
+      "writtenOn": "2018-05-22T10:46:21Z",
+      "side": 1,
+      "message": "space on both sides of \u003c",
+      "range": {
+        "startLine": 82,
+        "startChar": 23,
+        "endLine": 82,
+        "endChar": 34
+      },
+      "revId": "9994935ec10f23791097f5134cd8ca0813b5d208",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
