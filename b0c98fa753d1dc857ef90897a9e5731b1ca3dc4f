@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5350dd79_20ef024a",
+        "filename": "rtc_base/event.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2018-05-22T11:26:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4ca7884_bde3117c",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 5
+      },
+      "revId": "b0c98fa753d1dc857ef90897a9e5731b1ca3dc4f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "063762a2_c487ff19",
         "filename": "rtc_base/event.cc",
         "patchSetId": 8
@@ -36,6 +60,24 @@
       "writtenOn": "2018-05-22T08:21:27Z",
       "side": 1,
       "message": "I think the logic here (and elsewhere in the CL) would be easier to follow if you named the preprocessor symbols after the advanced features we want to use, rather than the fallback features we may have to make do with.",
+      "revId": "b0c98fa753d1dc857ef90897a9e5731b1ca3dc4f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c90d3f47_6b36219b",
+        "filename": "rtc_base/event.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2018-05-22T11:26:23Z",
+      "side": 1,
+      "message": "Replaced USE_GETTIMEOFDAY with USE_CLOCK_GET_TIME, but keeping USE_PTHREAD_COND_TIMEDWAIT_MONOTONIC_NP.\n\nConsidered also using USE_PTHREAD_CONDATTR_SETCLOCK, but found that more awkward.",
+      "parentUuid": "063762a2_c487ff19",
       "revId": "b0c98fa753d1dc857ef90897a9e5731b1ca3dc4f",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "e1882ca8_e57387c2",
+        "filename": "rtc_base/event.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2018-05-22T11:26:23Z",
+      "side": 1,
+      "message": "The \"microseconds\" part belongs to the gettimeofday case, while the \"plus milliseconds\" is general.\n\nMaybe just delete the comment, it doesn\u0027t look really helpful?",
+      "parentUuid": "4ae5acf1_315bc8b2",
+      "revId": "b0c98fa753d1dc857ef90897a9e5731b1ca3dc4f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "feda9ec7_0b71b517",
         "filename": "rtc_base/event.cc",
         "patchSetId": 8
@@ -70,6 +130,30 @@
       "writtenOn": "2018-05-22T08:44:17Z",
       "side": 1,
       "message": "I wonder if it is worth it to add this option, maybe it would be better just fallback to using the wall clock? Are there any significant problems with that approach?",
+      "range": {
+        "startLine": 135,
+        "startChar": 10,
+        "endLine": 135,
+        "endChar": 45
+      },
+      "revId": "b0c98fa753d1dc857ef90897a9e5731b1ca3dc4f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb0ab35e_82b26fb9",
+        "filename": "rtc_base/event.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2018-05-22T11:26:23Z",
+      "side": 1,
+      "message": "I\u0027m not sure what the performance implications are.\n\ngettimeofday will cause oddities in the (unlikely) case that some other process calls settimeofday between our calls to gettimeofday and pthread_cond_timedwait. Maybe not a serious problem, but using the monotonic clock is the right way to deal with that.",
+      "parentUuid": "feda9ec7_0b71b517",
       "range": {
         "startLine": 135,
         "startChar": 10,
