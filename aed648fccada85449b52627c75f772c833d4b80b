@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1aac1336_e1efd990",
+        "filename": "modules/congestion_controller/rtp/send_side_congestion_controller.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-05-24T13:35:25Z",
+      "side": 1,
+      "message": "Please try to avoid abbreviations. It can make it harder to understand for people who are not familiar with the code. Also, is only video affected even if audio allocations are controlled by the bitrate allocator? Suggested formulations: \n\n// When CongestionWindowPushback is enabled, the pacer is oblivious to the congestion window. The relation between outstanding data and the congestion window affects encoder allocations directly.\n\n// When PacerPushbackExperiment is enabled, build-up in the pacer due to the congestion window and/or data spikes reduces encoder allocations.",
+      "range": {
+        "startLine": 43,
+        "startChar": 70,
+        "endLine": 44,
+        "endChar": 33
+      },
+      "revId": "aed648fccada85449b52627c75f772c833d4b80b",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26a4409f_54f343a0",
+        "filename": "modules/congestion_controller/rtp/send_side_congestion_controller.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-05-24T13:35:25Z",
+      "side": 1,
+      "message": "Is there a reason why we don\u0027t want to use the configured minimum target bitrate as set in SetBweBitrates?\n\nIf there is, maybe the name could be adjusted so it\u0027s obvious why it is a different value. Otherwise readers might get confused.\n\n(Note that we already have four constants in other places that indicates a min bitrate of 30kbps)",
+      "range": {
+        "startLine": 51,
+        "startChar": 15,
+        "endLine": 51,
+        "endChar": 34
+      },
+      "revId": "aed648fccada85449b52627c75f772c833d4b80b",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
