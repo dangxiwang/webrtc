@@ -262,10 +262,6 @@ if (rtc_include_tests) {
       suppressed_configs += [ "//build/config/clang:find_bad_constructs" ]
     }
 
-    if (is_android) {
-      deps += [ "//base:base" ]
-    }
-
     if (is_ios) {
       deps += [ "../sdk:common_objc" ]
     }
