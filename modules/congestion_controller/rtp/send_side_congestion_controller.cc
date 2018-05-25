@@ -38,14 +38,25 @@ namespace webrtc_cc {
 namespace {
 using send_side_cc_internal::PeriodicTask;
 
+// CongestionWindowPushback: pacer is oblivious to congestion window. CWIN
+// impacts video allocs directly.
+const char kCongestionPushbackExperiment[] = "WebRTC-CongestionWindowPushback";
+
+// PacerPushbackExperiment: build-up in pacer due to CWIN and/or data spikes
+// reduces video allocations.
 const char kPacerPushbackExperiment[] = "WebRTC-PacerPushbackExperiment";
 const int64_t PacerQueueUpdateIntervalMs = 25;
+const uint32_t MinTargetBitrateBps = 30000;
 
 bool IsPacerPushbackExperimentEnabled() {
   return webrtc::field_trial::IsEnabled(kPacerPushbackExperiment) ||
          (!webrtc::field_trial::IsDisabled(kPacerPushbackExperiment) &&
           webrtc::runtime_enabled_features::IsFeatureEnabled(
               webrtc::runtime_enabled_features::kDualStreamModeFeatureName));
+}
+
+bool IsCongestionWindowExperimentEnabled() {
+  return webrtc::field_trial::IsEnabled(kCongestionPushbackExperiment);
 }
 
 void SortPacketFeedbackVector(std::vector<webrtc::PacketFeedback>* input) {
@@ -155,6 +166,7 @@ class ControlHandler {
   void PostUpdates(NetworkControlUpdate update);
 
   void OnNetworkAvailability(NetworkAvailability msg);
+  void OnOutstandingData(DataSize in_flight_data);
   void OnPacerQueueUpdate(TimeDelta expected_queue_time);
 
   rtc::Optional<TargetTransferRate> last_transfer_rate();
@@ -172,11 +184,14 @@ class ControlHandler {
   PacerController* pacer_controller_;
 
   rtc::Optional<TargetTransferRate> current_target_rate_msg_;
+  rtc::Optional<DataSize> congestion_window_;
+  DataSize outstanding_data_ = DataSize::Zero();
   bool network_available_ = true;
   int64_t last_reported_target_bitrate_bps_ = 0;
   uint8_t last_reported_fraction_loss_ = 0;
   int64_t last_reported_rtt_ms_ = 0;
   const bool pacer_pushback_experiment_ = false;
+  const bool congestion_window_pushback_experiemnt_ = false;
   int64_t pacer_expected_queue_ms_ = 0;
   float encoding_rate_ratio_ = 1.0;
 
@@ -189,13 +204,19 @@ ControlHandler::ControlHandler(NetworkChangedObserver* observer,
                                const Clock* clock)
     : observer_(observer),
       pacer_controller_(pacer_controller),
-      pacer_pushback_experiment_(IsPacerPushbackExperimentEnabled()) {
+      pacer_pushback_experiment_(IsPacerPushbackExperimentEnabled()),
+      congestion_window_pushback_experiemnt_(
+          IsCongestionWindowExperimentEnabled()) {
   sequenced_checker_.Detach();
 }
 
 void ControlHandler::PostUpdates(NetworkControlUpdate update) {
   RTC_DCHECK_CALLED_SEQUENTIALLY(&sequenced_checker_);
-  if (update.congestion_window) {
+  if (congestion_window_pushback_experiemnt_) {
+    if (update.congestion_window.has_value()) {
+      congestion_window_ = update.congestion_window;
+    }
+  } else {
     pacer_controller_->OnCongestionWindow(*update.congestion_window);
   }
   if (update.pacer_config) {
@@ -213,6 +234,12 @@ void ControlHandler::PostUpdates(NetworkControlUpdate update) {
 void ControlHandler::OnNetworkAvailability(NetworkAvailability msg) {
   RTC_DCHECK_CALLED_SEQUENTIALLY(&sequenced_checker_);
   network_available_ = msg.network_available;
+  OnNetworkInvalidation();
+}
+
+void ControlHandler::OnOutstandingData(DataSize in_flight_data) {
+  RTC_DCHECK_CALLED_SEQUENTIALLY(&sequenced_checker_);
+  outstanding_data_ = in_flight_data;
   OnNetworkInvalidation();
 }
 
@@ -241,6 +268,28 @@ void ControlHandler::OnNetworkInvalidation() {
 
   if (!network_available_) {
     target_bitrate_bps = 0;
+  } else if (congestion_window_pushback_experiemnt_ && congestion_window_) {
+    double fill_ratio = outstanding_data_.bytes() /
+                        static_cast<double>(congestion_window_->bytes());
+    if (fill_ratio > 1.5) {
+      encoding_rate_ratio_ *= 0.9;
+    } else if (fill_ratio > 1) {
+      encoding_rate_ratio_ *= 0.95;
+    } else if (fill_ratio < 0.1) {
+      encoding_rate_ratio_ = 1.0;
+    } else {
+      encoding_rate_ratio_ *= 1.05;
+      encoding_rate_ratio_ = std::min(encoding_rate_ratio_, 1.0f);
+    }
+
+    uint32_t adjusted_target_bitrate_bps =
+        static_cast<uint32_t>(target_bitrate_bps * encoding_rate_ratio_);
+
+    // If adjusted target bitrate is lower than minimum target bitrate,
+    // does not reduce target bitrate lower than minimum target bitrate.
+    target_bitrate_bps = adjusted_target_bitrate_bps < MinTargetBitrateBps
+                             ? std::min(target_bitrate_bps, MinTargetBitrateBps)
+                             : adjusted_target_bitrate_bps;
   } else if (!pacer_pushback_experiment_) {
     target_bitrate_bps = IsSendQueueFull() ? 0 : target_bitrate_bps;
   } else {
@@ -667,6 +716,8 @@ void SendSideCongestionController::MaybeUpdateOutstandingData() {
   task_queue_->PostTask([this, in_flight_data]() {
     RTC_DCHECK_RUN_ON(task_queue_);
     pacer_controller_->OnOutstandingData(in_flight_data);
+    if (control_handler_)
+      control_handler_->OnOutstandingData(in_flight_data);
   });
 }
 
