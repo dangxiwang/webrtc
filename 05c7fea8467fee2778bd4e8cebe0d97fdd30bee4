@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e6c32515_f3fac879",
+        "filename": "modules/congestion_controller/rtp/send_side_congestion_controller.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 6290
+      },
+      "writtenOn": "2018-05-28T11:44:00Z",
+      "side": 1,
+      "message": "Good catch! Thanks, fixed.",
+      "parentUuid": "d2ffc45c_9377f5fc",
+      "range": {
+        "startLine": 221,
+        "startChar": 0,
+        "endLine": 222,
+        "endChar": 0
+      },
+      "revId": "05c7fea8467fee2778bd4e8cebe0d97fdd30bee4",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "009effa8_5cb6a86b",
         "filename": "modules/congestion_controller/rtp/send_side_congestion_controller.cc",
         "patchSetId": 10
@@ -45,6 +69,30 @@
       "revId": "05c7fea8467fee2778bd4e8cebe0d97fdd30bee4",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "149c8cb0_dd721fec",
+        "filename": "modules/congestion_controller/rtp/send_side_congestion_controller.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 6290
+      },
+      "writtenOn": "2018-05-28T11:44:00Z",
+      "side": 1,
+      "message": "The idea here is that we don\u0027t want to force stopping encoders because of congestion window is getting filled up. The cost of stopping encoders are high so we try to avoid it. The encoders may still be stopped when the target_bitrate_bps is low.",
+      "parentUuid": "009effa8_5cb6a86b",
+      "range": {
+        "startLine": 290,
+        "startChar": 0,
+        "endLine": 290,
+        "endChar": 72
+      },
+      "revId": "05c7fea8467fee2778bd4e8cebe0d97fdd30bee4",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
