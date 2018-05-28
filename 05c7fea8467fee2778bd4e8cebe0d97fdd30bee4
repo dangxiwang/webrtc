@@ -93,6 +93,30 @@
       "revId": "05c7fea8467fee2778bd4e8cebe0d97fdd30bee4",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "743fb18c_0c5ff71c",
+        "filename": "modules/congestion_controller/rtp/send_side_congestion_controller.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 5525
+      },
+      "writtenOn": "2018-05-28T12:34:53Z",
+      "side": 1,
+      "message": "But is that really the case? We may drop a some frames if the bitrate is low, but normally the encoder will hit that bitrate (30 kbps) without any significant problems. That doesn\u0027t help however, since 30 kbps may still be too much?\n\nBasically, if nothing can be delivered onto the network for 1 second, do we really want to buffer 1 second of poor video until the network recovers? I at least think we should have two configurations to experiment with. One which disabled video when the window is full and one which doesn\u0027t. WDYT?",
+      "parentUuid": "149c8cb0_dd721fec",
+      "range": {
+        "startLine": 290,
+        "startChar": 0,
+        "endLine": 290,
+        "endChar": 72
+      },
+      "revId": "05c7fea8467fee2778bd4e8cebe0d97fdd30bee4",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
