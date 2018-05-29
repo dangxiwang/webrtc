@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2f3cc047_9dd0af7c",
+        "filename": "modules/video_coding/codecs/vp9/vp9_impl.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 5023
+      },
+      "writtenOn": "2018-05-29T13:42:03Z",
+      "side": 1,
+      "message": "Configure",
+      "range": {
+        "startLine": 503,
+        "startChar": 7,
+        "endLine": 503,
+        "endChar": 15
+      },
+      "revId": "f6cc8757722b5d731da31b5a870641539c0a698d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
