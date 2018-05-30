@@ -107,6 +107,7 @@ rtc_source_set("macromagic") {
     "basictypes.h",
     "constructormagic.h",
     "format_macros.h",
+    "no_return.h",
     "stringize_macros.h",
     "thread_annotations.h",
   ]
@@ -199,11 +200,8 @@ rtc_source_set("rtc_event") {
 
 rtc_source_set("logging") {
   deps = [
-    ":criticalsection",
     ":macromagic",
     ":platform_thread_types",
-    ":stringutils",
-    ":timeutils",
   ]
 
   if (build_with_chromium) {
@@ -253,6 +251,8 @@ rtc_source_set("checks") {
     "checks.h",
   ]
   deps = [
+    ":logging",
+    ":macromagic",
     ":safe_compare",
     "..:typedefs",
   ]
