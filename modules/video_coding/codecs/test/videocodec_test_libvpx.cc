@@ -416,6 +416,8 @@ TEST(VideoCodecTestLibvpx, MAYBE_SvcVP9) {
   config.filename = "ConferenceMotion_1280_720_50";
   config.filepath = ResourcePath(config.filename, "yuv");
   config.num_frames = 100;
+  config.print_frame_level_stats = true;
+  config.visualization_params.save_decoded_y4m = true;
   config.SetCodecSettings(cricket::kVp9CodecName, 1, 3, 3, true, true, false,
                           1280, 720);
   const auto frame_checker = rtc::MakeUnique<QpFrameChecker>();
@@ -426,7 +428,7 @@ TEST(VideoCodecTestLibvpx, MAYBE_SvcVP9) {
 
   std::vector<RateControlThresholds> rc_thresholds = {
       {5, 1, 5, 0.2, 0.3, 0.1, 0, 1}};
-  std::vector<QualityThresholds> quality_thresholds = {{36, 34, 0.93, 0.91}};
+  std::vector<QualityThresholds> quality_thresholds = {{36, 34, 0.93, 0.90}};
 
   fixture->RunTest(rate_profiles, &rc_thresholds, &quality_thresholds, nullptr);
 }
