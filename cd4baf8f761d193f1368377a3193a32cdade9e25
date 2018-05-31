@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1d148c10_e1e14a08",
+        "filename": "modules/congestion_controller/rtp/send_side_congestion_controller.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-05-31T12:34:37Z",
+      "side": 1,
+      "message": "Is this the only parameter that we think we might want to change? It can be annoying to add parameters later on. Maybe change factors for encoding ratio etc. should be parameters as well?",
+      "range": {
+        "startLine": 52,
+        "startChar": 5,
+        "endLine": 52,
+        "endChar": 52
+      },
+      "revId": "cd4baf8f761d193f1368377a3193a32cdade9e25",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e4635da_88f814ec",
+        "filename": "modules/congestion_controller/rtp/send_side_congestion_controller.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-05-31T12:34:37Z",
+      "side": 1,
+      "message": "I\u0027d suggest requiring all required parameters to be set for the experiment to be active. Then we don\u0027t need fall back constants. Since the constant is unused if the experiment is inactive, this should be safe and the code shorter/simpler.",
+      "range": {
+        "startLine": 228,
+        "startChar": 6,
+        "endLine": 228,
+        "endChar": 47
+      },
+      "revId": "cd4baf8f761d193f1368377a3193a32cdade9e25",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
