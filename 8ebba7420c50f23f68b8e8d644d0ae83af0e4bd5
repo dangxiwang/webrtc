@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ebe000e_7a52826d",
+        "filename": "pc/peerconnection.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1445,
+      "author": {
+        "id": 7275
+      },
+      "writtenOn": "2018-05-31T22:03:01Z",
+      "side": 1,
+      "message": "Does it make sense to indicate \"audio added\" just because the remote side included a m\u003daudio section in SDP?\n\nWe should note in the .h file exactly what each enum means.",
+      "revId": "8ebba7420c50f23f68b8e8d644d0ae83af0e4bd5",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f370feb_4c519bc6",
+        "filename": "pc/peerconnection.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2241,
+      "author": {
+        "id": 7275
+      },
+      "writtenOn": "2018-05-31T22:03:01Z",
+      "side": 1,
+      "message": "Should we wait until success occurs to note this? I feel like we should set the usage counter solely based on whether the API is called (or we should change the name).",
+      "revId": "8ebba7420c50f23f68b8e8d644d0ae83af0e4bd5",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15ac6db1_255c0817",
+        "filename": "pc/peerconnection.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2974,
+      "author": {
+        "id": 7275
+      },
+      "writtenOn": "2018-05-31T22:03:01Z",
+      "side": 1,
+      "message": "See above about when we should call NoteUsageEvent.",
+      "revId": "8ebba7420c50f23f68b8e8d644d0ae83af0e4bd5",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26753c06_a6386aac",
+        "filename": "pc/peerconnection.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 3354,
+      "author": {
+        "id": 7275
+      },
+      "writtenOn": "2018-05-31T22:03:01Z",
+      "side": 1,
+      "message": "See above regarding whether we should consider this AUDIO_ADDED.",
+      "revId": "8ebba7420c50f23f68b8e8d644d0ae83af0e4bd5",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab14ef9d_7abebf10",
+        "filename": "pc/peerconnection.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 5257,
+      "author": {
+        "id": 7275
+      },
+      "writtenOn": "2018-05-31T22:03:01Z",
+      "side": 1,
+      "message": "This should probably move inside the if statement on line 5250.",
+      "revId": "8ebba7420c50f23f68b8e8d644d0ae83af0e4bd5",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54cdc465_fce42a20",
+        "filename": "pc/peerconnection.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 7275
+      },
+      "writtenOn": "2018-05-31T22:03:01Z",
+      "side": 1,
+      "message": "This should probably be called ADD_ICE_CANDIDATE_CALLED, for consistency.",
+      "revId": "8ebba7420c50f23f68b8e8d644d0ae83af0e4bd5",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f437f205_aa2e7f4d",
+        "filename": "pc/peerconnection_integrationtest.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 4506,
+      "author": {
+        "id": 7275
+      },
+      "writtenOn": "2018-05-31T22:03:01Z",
+      "side": 1,
+      "message": "On the callee side, I wouldn\u0027t expect AUDIO/VIDEO_ADDED.\n\nI think it would also be good to add tests at line 4490 and 4491 to cover when SetLD/SetRD haven\u0027t been called, no ICE candidates, etc. The turn of the crank is long enough that we\u0027ll want to spend extra time to ensure the stats are all functioning as expected.",
+      "revId": "8ebba7420c50f23f68b8e8d644d0ae83af0e4bd5",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
