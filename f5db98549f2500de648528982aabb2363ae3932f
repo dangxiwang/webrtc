@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "72a18fc0_a8443e27",
+        "filename": "pc/peerconnection.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 5253,
+      "author": {
+        "id": 5077
+      },
+      "writtenOn": "2018-05-31T08:01:13Z",
+      "side": 1,
+      "message": "ICE_STATE_COMPLETED? or move the usage event up into the above conditional",
+      "revId": "f5db98549f2500de648528982aabb2363ae3932f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18a172fb_81e82858",
+        "filename": "pc/peerconnection.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 5905,
+      "author": {
+        "id": 5077
+      },
+      "writtenOn": "2018-05-31T08:01:13Z",
+      "side": 1,
+      "message": "Use static_assert()",
+      "revId": "f5db98549f2500de648528982aabb2363ae3932f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0fbc5a1_f6a6f55d",
+        "filename": "pc/peerconnection.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 5907,
+      "author": {
+        "id": 5077
+      },
+      "writtenOn": "2018-05-31T08:01:13Z",
+      "side": 1,
+      "message": "If DEBUG, make it an RTC_DLOG?",
+      "revId": "f5db98549f2500de648528982aabb2363ae3932f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf77bb00_b22630bd",
+        "filename": "pc/peerconnection.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 5077
+      },
+      "writtenOn": "2018-05-31T08:01:13Z",
+      "side": 1,
+      "message": "Since these are effectively the usage bits in the information logged, I think it would be more straightforward to use an old-fashioned enum and set these as hex bit masks, instead of doing the conversion in code at run time.",
+      "revId": "f5db98549f2500de648528982aabb2363ae3932f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a37bdd8_60de8770",
+        "filename": "pc/peerconnection.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 5077
+      },
+      "writtenOn": "2018-05-31T08:01:13Z",
+      "side": 1,
+      "message": "nit: why not AUDIO_CHANNEL_ADDED, or DATA_ADDED, for consistency?",
+      "revId": "f5db98549f2500de648528982aabb2363ae3932f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f257ade1_9d2823f2",
+        "filename": "pc/peerconnection_integrationtest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 5077
+      },
+      "writtenOn": "2018-05-31T08:01:13Z",
+      "side": 1,
+      "message": "I don\u0027t feel too good about repeating the loop to build the bit pattern. When interpreting the bits, order in the enum must stay the same for it to be useful. Can we just compare against a hard-coded constant instead?",
+      "revId": "f5db98549f2500de648528982aabb2363ae3932f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
