@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "fb8cfa06_ecad5f3d",
+        "filename": "pc/peerconnection.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1431,
+      "author": {
+        "id": 5142
+      },
+      "writtenOn": "2018-05-31T10:35:38Z",
+      "side": 1,
+      "message": "What about receivers? In Plan B, only receivers are created for receiving remote media.",
+      "revId": "f5db98549f2500de648528982aabb2363ae3932f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "72a18fc0_a8443e27",
         "filename": "pc/peerconnection.cc",
         "patchSetId": 1
@@ -160,6 +177,23 @@
     },
     {
       "key": {
+        "uuid": "a0fd6756_1db5a85c",
+        "filename": "pc/peerconnection.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 5142
+      },
+      "writtenOn": "2018-05-31T10:35:38Z",
+      "side": 1,
+      "message": "Prefer \"\u003d 0,\" on the first entry to highlight the fact that its value does matter.\nBecause it is uploaded to UMA, if someone were to add a new enum value in the middle the UMA reporting would become inconsistent across versions, \"\u003d 0,\" highlights that the enum is also used as a value, as opposed to other enums that are only used as names where insertion and changing order is safe.",
+      "revId": "f5db98549f2500de648528982aabb2363ae3932f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4a37bdd8_60de8770",
         "filename": "pc/peerconnection.h",
         "patchSetId": 1
@@ -206,6 +240,40 @@
       "writtenOn": "2018-05-31T08:01:13Z",
       "side": 1,
       "message": "I don\u0027t feel too good about repeating the loop to build the bit pattern. When interpreting the bits, order in the enum must stay the same for it to be useful. Can we just compare against a hard-coded constant instead?",
+      "revId": "f5db98549f2500de648528982aabb2363ae3932f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2acb003_87641007",
+        "filename": "pc/peerconnection_integrationtest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4479,
+      "author": {
+        "id": 5142
+      },
+      "writtenOn": "2018-05-31T10:35:38Z",
+      "side": 1,
+      "message": "Can you test this in both Plan B and Unified Plan?",
+      "revId": "f5db98549f2500de648528982aabb2363ae3932f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c5c521e_5ce685e4",
+        "filename": "pc/peerconnection_integrationtest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4486,
+      "author": {
+        "id": 5142
+      },
+      "writtenOn": "2018-05-31T10:35:38Z",
+      "side": 1,
+      "message": "How about one side use audio and one side use video to ensure both local and remote tracks count towards audio/video usage?",
       "revId": "f5db98549f2500de648528982aabb2363ae3932f",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
