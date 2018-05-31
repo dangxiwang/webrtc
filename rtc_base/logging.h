@@ -57,6 +57,7 @@
 
 #include "rtc_base/constructormagic.h"
 #include "rtc_base/deprecation.h"
+#include "rtc_base/no_return.h"
 #include "rtc_base/system/inline.h"
 #include "rtc_base/thread_annotations.h"
 
@@ -278,6 +279,7 @@ Val<LogArgType::kStdString, std::string> MakeVal(const T& x) {
 }
 
 void Log(const LogArgType* fmt, ...);
+RTC_NORETURN void FatalLog(const LogArgType* fmt, ...);
 
 // Ephemeral type that represents the result of the logging << operator.
 template <typename... Ts>
@@ -309,6 +311,12 @@ class LogStreamer<> final {
   RTC_FORCE_INLINE static void Call(const Us&... args) {
     static constexpr LogArgType t[] = {Us::Type()..., LogArgType::kEnd};
     Log(t, args.GetVal()...);
+  }
+
+  template <typename... Us>
+  RTC_NORETURN RTC_FORCE_INLINE static void FatalCall(const Us&... args) {
+    static constexpr LogArgType t[] = {Us::Type()..., LogArgType::kEnd};
+    FatalLog(t, args.GetVal()...);
   }
 };
 
@@ -343,6 +351,11 @@ class LogStreamer<T, Ts...> final {
     prior_->Call(arg_, args...);
   }
 
+  template <typename... Us>
+  RTC_NORETURN RTC_FORCE_INLINE void FatalCall(const Us&... args) const {
+    prior_->FatalCall(arg_, args...);
+  }
+
  private:
   // The most recent argument.
   T arg_;
@@ -357,6 +370,16 @@ class LogCall final {
   template <typename... Ts>
   RTC_FORCE_INLINE void operator&(const LogStreamer<Ts...>& streamer) {
     streamer.Call();
+  }
+};
+
+class FatalLogCall final {
+ public:
+  // This can be any binary operator with precedence lower than <<.
+  template <typename... Ts>
+  RTC_NORETURN RTC_FORCE_INLINE void operator&(
+      const LogStreamer<Ts...>& streamer) {
+    streamer.FatalCall();
   }
 };
 
@@ -424,10 +447,6 @@ class LogMessage {
   // which case the logging start time will be the time of the first LogMessage
   // instance is created.
   static int64_t LogStartTime();
-
-  // Returns the wall clock equivalent of |LogStartTime|, in seconds from the
-  // epoch.
-  static uint32_t WallClockStartTime();
 
   //  LogThreads: Display the thread identifier of the current thread
   static void LogThreads(bool on = true);
@@ -500,9 +519,8 @@ class LogMessage {
   const char* tag_ = "libjingle";
 #endif
 
-  // String data generated in the constructor, that should be appended to
-  // the message before output.
-  std::string extra_;
+  const LogErrorContext error_context_;
+  const int error_number_;
 
   const bool is_noop_;
 
