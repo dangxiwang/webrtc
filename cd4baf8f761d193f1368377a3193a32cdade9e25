@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9c82c3b5_300e2e7d",
+        "filename": "modules/congestion_controller/rtp/send_side_congestion_controller.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 6290
+      },
+      "writtenOn": "2018-05-31T13:10:46Z",
+      "side": 1,
+      "message": "We already has the congestion window queue size as parameter, plus this one there would be at least 4 combinations. We could have more parameters, but my feeling is that it might be too many and we won\u0027t be able to try all of them?",
+      "parentUuid": "1d148c10_e1e14a08",
+      "range": {
+        "startLine": 52,
+        "startChar": 5,
+        "endLine": 52,
+        "endChar": 52
+      },
+      "revId": "cd4baf8f761d193f1368377a3193a32cdade9e25",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7e4635da_88f814ec",
         "filename": "modules/congestion_controller/rtp/send_side_congestion_controller.cc",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2018-05-31T12:34:37Z",
       "side": 1,
       "message": "I\u0027d suggest requiring all required parameters to be set for the experiment to be active. Then we don\u0027t need fall back constants. Since the constant is unused if the experiment is inactive, this should be safe and the code shorter/simpler.",
+      "range": {
+        "startLine": 228,
+        "startChar": 6,
+        "endLine": 228,
+        "endChar": 47
+      },
+      "revId": "cd4baf8f761d193f1368377a3193a32cdade9e25",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a512e856_72ea2312",
+        "filename": "modules/congestion_controller/rtp/send_side_congestion_controller.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 6290
+      },
+      "writtenOn": "2018-05-31T13:10:46Z",
+      "side": 1,
+      "message": "I would prefer to have a default value here to avoid this parameter being unset. Same as here: https://cs.chromium.org/chromium/src/third_party/webrtc/modules/congestion_controller/goog_cc/goog_cc_network_control.cc?type\u003dcs\u0026q\u003dmodules/congestion_controller/goog_cc/goog_cc_network_control.cc\u0026sq\u003dpackage:chromium\u0026g\u003d0\u0026l\u003d39\n\nThis value has been tested and it seems working reasonable. With the default value, in the experiments we can avoid setting all parameters all the time (thus have a very complex field trial string).",
+      "parentUuid": "7e4635da_88f814ec",
       "range": {
         "startLine": 228,
         "startChar": 6,
