@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "75750299_ab143041",
+        "filename": "pc/peerconnection.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1431,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2018-05-31T11:19:23Z",
+      "side": 1,
+      "message": "Good point! Will make tests and adjust accordingly.\nMaking the mark more than once is perfectly OK.",
+      "parentUuid": "fb8cfa06_ecad5f3d",
+      "revId": "f5db98549f2500de648528982aabb2363ae3932f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "72a18fc0_a8443e27",
         "filename": "pc/peerconnection.cc",
         "patchSetId": 1
@@ -194,6 +212,24 @@
     },
     {
       "key": {
+        "uuid": "37679cc1_02c6f27a",
+        "filename": "pc/peerconnection.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2018-05-31T11:19:23Z",
+      "side": 1,
+      "message": "Done as part of addressing solenberg\u0027s comment.",
+      "parentUuid": "a0fd6756_1db5a85c",
+      "revId": "f5db98549f2500de648528982aabb2363ae3932f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a37bdd8_60de8770",
         "filename": "pc/peerconnection.h",
         "patchSetId": 1
@@ -263,6 +299,24 @@
     },
     {
       "key": {
+        "uuid": "101cd6e3_45af0954",
+        "filename": "pc/peerconnection_integrationtest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4479,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2018-05-31T11:19:23Z",
+      "side": 1,
+      "message": "That\u0027s what the PeerConnectionIntegrationTest iterates over, so we\u0027re good to go there.",
+      "parentUuid": "e2acb003_87641007",
+      "revId": "f5db98549f2500de648528982aabb2363ae3932f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2c5c521e_5ce685e4",
         "filename": "pc/peerconnection_integrationtest.cc",
         "patchSetId": 1
@@ -274,6 +328,24 @@
       "writtenOn": "2018-05-31T10:35:38Z",
       "side": 1,
       "message": "How about one side use audio and one side use video to ensure both local and remote tracks count towards audio/video usage?",
+      "revId": "f5db98549f2500de648528982aabb2363ae3932f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a32ec835_351fa2e8",
+        "filename": "pc/peerconnection_integrationtest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4486,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2018-05-31T11:19:23Z",
+      "side": 1,
+      "message": "Good point. Will adjust.",
+      "parentUuid": "2c5c521e_5ce685e4",
       "revId": "f5db98549f2500de648528982aabb2363ae3932f",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
