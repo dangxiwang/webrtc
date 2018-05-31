@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "9cdc2362_2463e440",
+        "filename": "modules/congestion_controller/rtp/send_side_congestion_controller.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 5845
+      },
+      "writtenOn": "2018-05-31T14:08:53Z",
+      "side": 1,
+      "message": "Should probaly prepend \"Default\" to name (unless we go by Sebastians proposal and delete it alltogether)",
+      "range": {
+        "startLine": 50,
+        "startChar": 15,
+        "endLine": 50,
+        "endChar": 42
+      },
+      "revId": "cd4baf8f761d193f1368377a3193a32cdade9e25",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1d148c10_e1e14a08",
         "filename": "modules/congestion_controller/rtp/send_side_congestion_controller.cc",
         "patchSetId": 1
@@ -49,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "4644fd0b_ae72bff5",
+        "filename": "modules/congestion_controller/rtp/send_side_congestion_controller.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 5845
+      },
+      "writtenOn": "2018-05-31T14:08:53Z",
+      "side": 1,
+      "message": "What is the typical format for a multi-parameter string? Comma-separated? As long as code can handle a future extension we should be fine.\n\nGiven the lack of a generic structure for multiple complex config I would also stick to one parameter for now. Reading the code below, there are 4 more parameters of equal importance and specifying them all seems overkill, and also leads to complex config.",
+      "parentUuid": "1d148c10_e1e14a08",
+      "range": {
+        "startLine": 52,
+        "startChar": 5,
+        "endLine": 52,
+        "endChar": 52
+      },
+      "revId": "cd4baf8f761d193f1368377a3193a32cdade9e25",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7e4635da_88f814ec",
         "filename": "modules/congestion_controller/rtp/send_side_congestion_controller.cc",
         "patchSetId": 1
@@ -83,6 +130,30 @@
       "writtenOn": "2018-05-31T13:10:46Z",
       "side": 1,
       "message": "I would prefer to have a default value here to avoid this parameter being unset. Same as here: https://cs.chromium.org/chromium/src/third_party/webrtc/modules/congestion_controller/goog_cc/goog_cc_network_control.cc?type\u003dcs\u0026q\u003dmodules/congestion_controller/goog_cc/goog_cc_network_control.cc\u0026sq\u003dpackage:chromium\u0026g\u003d0\u0026l\u003d39\n\nThis value has been tested and it seems working reasonable. With the default value, in the experiments we can avoid setting all parameters all the time (thus have a very complex field trial string).",
+      "parentUuid": "7e4635da_88f814ec",
+      "range": {
+        "startLine": 228,
+        "startChar": 6,
+        "endLine": 228,
+        "endChar": 47
+      },
+      "revId": "cd4baf8f761d193f1368377a3193a32cdade9e25",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0520cb9e_75b95604",
+        "filename": "modules/congestion_controller/rtp/send_side_congestion_controller.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 5845
+      },
+      "writtenOn": "2018-05-31T14:08:53Z",
+      "side": 1,
+      "message": "We should follow the WebRTC tradition here whatever it is. Personally I like defaults, but that is just me.",
       "parentUuid": "7e4635da_88f814ec",
       "range": {
         "startLine": 228,
