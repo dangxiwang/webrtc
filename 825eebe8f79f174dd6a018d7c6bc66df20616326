@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd24e3c0_fec58630",
+        "filename": "pc/peerconnection.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5077
+      },
+      "writtenOn": "2018-05-31T11:44:15Z",
+      "side": 1,
+      "message": "not needed anymore",
+      "revId": "825eebe8f79f174dd6a018d7c6bc66df20616326",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
