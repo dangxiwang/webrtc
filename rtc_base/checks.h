@@ -20,14 +20,7 @@
 #define RTC_DCHECK_IS_ON 0
 #endif
 
-// Annotate a function that will not return control flow to the caller.
-#if defined(_MSC_VER)
-#define RTC_NORETURN __declspec(noreturn)
-#elif defined(__GNUC__)
-#define RTC_NORETURN __attribute__ ((__noreturn__))
-#else
-#define RTC_NORETURN
-#endif
+#include "rtc_base/no_return.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -43,6 +36,7 @@ RTC_NORETURN void rtc_FatalMessage(const char* file, int line, const char* msg);
 #include <sstream>
 #include <string>
 
+#include "rtc_base/logging.h"
 #include "rtc_base/numerics/safe_compare.h"
 
 // The macros here print a message to stderr and abort under various
@@ -87,20 +81,16 @@ RTC_NORETURN void rtc_FatalMessage(const char* file, int line, const char* msg);
 
 namespace rtc {
 
-// Helper macro which avoids evaluating the arguments to a stream if
-// the condition doesn't hold.
-#define RTC_LAZY_STREAM(stream, condition)                                    \
-  !(condition) ? static_cast<void>(0) : rtc::FatalMessageVoidify() & (stream)
-
 // The actual stream used isn't important. We reference |ignored| in the code
 // but don't evaluate it; this is to avoid "unused variable" warnings (we do so
 // in a particularly convoluted way with an extra ?: because that appears to be
 // the simplest construct that keeps Visual Studio from complaining about
 // condition being unused).
-#define RTC_EAT_STREAM_PARAMETERS(ignored) \
-  (true ? true : ((void)(ignored), true))  \
-      ? static_cast<void>(0)               \
-      : rtc::FatalMessageVoidify() & rtc::FatalMessage("", 0).stream()
+#define RTC_EAT_STREAM_PARAMETERS(ignored)         \
+  (true ? true : ((void)(ignored), true))          \
+      ? static_cast<void>(0)                       \
+      : rtc::webrtc_logging_impl::FatalLogCall() & \
+            rtc::webrtc_logging_impl::LogStreamer<>()
 
 // Call RTC_EAT_STREAM_PARAMETERS with an argument that fails to compile if
 // values of the same types as |a| and |b| can't be compared with the given
@@ -112,22 +102,25 @@ namespace rtc {
 // controlled by NDEBUG or anything else, so the check will be executed
 // regardless of compilation mode.
 //
-// We make sure RTC_CHECK et al. always evaluates their arguments, as
+// We make sure RTC_CHECK et al. always evaluates |condition|, as
 // doing RTC_CHECK(FunctionWithSideEffect()) is a common idiom.
-#define RTC_CHECK(condition)                                      \
-  RTC_LAZY_STREAM(rtc::FatalMessage(__FILE__, __LINE__).stream(), \
-                  !(condition))                                   \
-      << "Check failed: " #condition << std::endl << "# "
+#define RTC_CHECK(condition)                                              \
+  while (!(condition))                                                    \
+  rtc::webrtc_logging_impl::FatalLogCall() &                              \
+      rtc::webrtc_logging_impl::LogStreamer<>()                           \
+          << (rtc::webrtc_logging_impl::CheckMetadata{__FILE__, __LINE__, \
+                                                      #condition})
 
 // Helper macro for binary operators.
 // Don't use this macro directly in your code, use RTC_CHECK_EQ et al below.
-//
-// TODO(akalin): Rewrite this so that constructs like if (...)
 // RTC_CHECK_EQ(...) else { ... } work properly.
-#define RTC_CHECK_OP(name, op, val1, val2)                                 \
-  if (std::string* _result =                                               \
-          rtc::Check##name##Impl((val1), (val2), #val1 " " #op " " #val2)) \
-    rtc::FatalMessage(__FILE__, __LINE__, _result).stream()
+#define RTC_CHECK_OP(name, op, val1, val2)                                    \
+  while (std::string* _result =                                               \
+             rtc::Check##name##Impl((val1), (val2), #val1 " " #op " " #val2)) \
+  rtc::webrtc_logging_impl::FatalLogCall() &                                  \
+      rtc::webrtc_logging_impl::LogStreamer<>()                               \
+          << (rtc::webrtc_logging_impl::CheckMetadata{__FILE__, __LINE__,     \
+                                                      (_result->c_str())})
 
 // Build the error message string.  This is separate from the "Impl"
 // function template because it is not performance critical and so can
@@ -135,6 +128,7 @@ namespace rtc {
 // takes ownership of the returned string.
 template<class t1, class t2>
 std::string* MakeCheckOpString(const t1& v1, const t2& v2, const char* names) {
+  // TODO(jonasolsson): Use absl::StrCat() instead.
   std::ostringstream ss;
   ss << names << " (" << v1 << " vs. " << v2 << ")";
   std::string* msg = new std::string(ss.str());
@@ -216,39 +210,18 @@ DEFINE_RTC_CHECK_OP_IMPL(Gt)
 #define RTC_DCHECK_GT(v1, v2) RTC_EAT_STREAM_PARAMETERS_OP(Gt, v1, v2)
 #endif
 
-// This is identical to LogMessageVoidify but in name.
-class FatalMessageVoidify {
- public:
-  FatalMessageVoidify() { }
-  // This has to be an operator with a precedence lower than << but
-  // higher than ?:
-  void operator&(std::ostream&) { }
-};
-
 #define RTC_UNREACHABLE_CODE_HIT false
 #define RTC_NOTREACHED() RTC_DCHECK(RTC_UNREACHABLE_CODE_HIT)
 
 // TODO(bugs.webrtc.org/8454): Add an RTC_ prefix or rename differently.
-#define FATAL() rtc::FatalMessage(__FILE__, __LINE__).stream()
+#define FATAL()                                                        \
+  rtc::webrtc_logging_impl::FatalLogCall() &                           \
+      rtc::webrtc_logging_impl::LogStreamer<>()                        \
+          << rtc::webrtc_logging_impl::LogMetadata(__FILE__, __LINE__, \
+                                                   rtc::LS_ERROR)
 // TODO(ajm): Consider adding RTC_NOTIMPLEMENTED macro when
 // base/logging.h and system_wrappers/logging.h are consolidated such that we
 // can match the Chromium behavior.
-
-// Like a stripped-down LogMessage from logging.h, except that it aborts.
-class FatalMessage {
- public:
-  FatalMessage(const char* file, int line);
-  // Used for RTC_CHECK_EQ(), etc. Takes ownership of the given string.
-  FatalMessage(const char* file, int line, std::string* result);
-  RTC_NORETURN ~FatalMessage();
-
-  std::ostream& stream() { return stream_; }
-
- private:
-  void Init(const char* file, int line);
-
-  std::ostringstream stream_;
-};
 
 // Performs the integer division a/b and returns the result. CHECKs that the
 // remainder is zero.
