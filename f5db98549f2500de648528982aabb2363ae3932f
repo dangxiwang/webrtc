@@ -142,6 +142,24 @@
     },
     {
       "key": {
+        "uuid": "75c62b60_7dd24975",
+        "filename": "pc/peerconnection.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 5077
+      },
+      "writtenOn": "2018-05-31T09:12:09Z",
+      "side": 1,
+      "message": "Just to check I didn\u0027t get the context wrong - here are my assumptions:\n  1. The concatenated bit field is logged as a UMA.\n  2. To interpret the UMA stat, the bit field must be parsed server side, or by the human looking at the stat.\n\nIf I understood correctly then having the masks right here in the enum would serve as documentation so unless there is something I\u0027m missing that\u0027d be my preference. (OTOH I did spend my adolescence poring over hardware reference sheets for chips so I may be biased :)",
+      "parentUuid": "73f9ff20_fda281a7",
+      "revId": "f5db98549f2500de648528982aabb2363ae3932f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4a37bdd8_60de8770",
         "filename": "pc/peerconnection.h",
         "patchSetId": 1
