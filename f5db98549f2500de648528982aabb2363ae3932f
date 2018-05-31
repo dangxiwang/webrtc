@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a0e4e2b6_533ae0e3",
+        "filename": "pc/peerconnection.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 5253,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2018-05-31T09:01:29Z",
+      "side": 1,
+      "message": "There\u0027s a state machine jump here in cricket that jumps from \"checking\" to \"connected\", so we need to have a NoteUsageEvent in this path to cover all instances where it goes to connected.\nBut there\u0027s a bug that means it never gets to \"completed\" in some cases, so we have to be on the \"connected\" path too.\n\nAll we care about on these stats is whether it connects or not. Needs a comment?",
+      "parentUuid": "72a18fc0_a8443e27",
+      "revId": "f5db98549f2500de648528982aabb2363ae3932f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "18a172fb_81e82858",
         "filename": "pc/peerconnection.cc",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "ce61688a_b25e36d1",
+        "filename": "pc/peerconnection.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 5905,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2018-05-31T09:01:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "18a172fb_81e82858",
+      "revId": "f5db98549f2500de648528982aabb2363ae3932f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0fbc5a1_f6a6f55d",
         "filename": "pc/peerconnection.cc",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2018-05-31T08:01:13Z",
       "side": 1,
       "message": "If DEBUG, make it an RTC_DLOG?",
+      "revId": "f5db98549f2500de648528982aabb2363ae3932f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48757ab5_abffaa23",
+        "filename": "pc/peerconnection.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 5907,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2018-05-31T09:01:29Z",
+      "side": 1,
+      "message": "I\u0027ll delete it. Leftover!",
+      "parentUuid": "d0fbc5a1_f6a6f55d",
       "revId": "f5db98549f2500de648528982aabb2363ae3932f",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "73f9ff20_fda281a7",
+        "filename": "pc/peerconnection.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2018-05-31T09:01:29Z",
+      "side": 1,
+      "message": "I was in two minds about this - on the one hand, the representation as an integer is strictly a reporting-side thing and should be invisible at the calling site; on the other hand, hiding the integer-ness of the report is not a terribly important thing either.\n\nComes down to what\u0027s more readable; these operations are so rarely performed that performance doesn\u0027t matter at all.\nDo you want to give definite advice that you find enums with bit values more readable?",
+      "parentUuid": "cf77bb00_b22630bd",
+      "revId": "f5db98549f2500de648528982aabb2363ae3932f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4a37bdd8_60de8770",
         "filename": "pc/peerconnection.h",
         "patchSetId": 1
@@ -81,6 +153,24 @@
       "writtenOn": "2018-05-31T08:01:13Z",
       "side": 1,
       "message": "nit: why not AUDIO_CHANNEL_ADDED, or DATA_ADDED, for consistency?",
+      "revId": "f5db98549f2500de648528982aabb2363ae3932f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f8f3a9b_d69d8a4c",
+        "filename": "pc/peerconnection.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2018-05-31T09:01:29Z",
+      "side": 1,
+      "message": "AUDIO_CHANNEL is not good because AUDIO_{track, stream, channel} is inconsistent throughout the codebase (code of different generations of concepts). DATA_ADDED seems OK.",
+      "parentUuid": "4a37bdd8_60de8770",
       "revId": "f5db98549f2500de648528982aabb2363ae3932f",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
