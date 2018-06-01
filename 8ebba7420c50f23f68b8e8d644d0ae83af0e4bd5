@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2828eec9_a3f64084",
+        "filename": "pc/peerconnection.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1445,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2018-06-01T10:30:05Z",
+      "side": 1,
+      "message": "I can add more info there.\nYes, I think it makes sense - because at this point it is clear that the user desires to have audio in the call. The alternative would be to gate it on actual arrival of audio packets, which would make us unable to tell the difference between a PC that didn\u0027t try to add audio (a possible address harvester) and a PC that wanted audio, but the connection establishment failed.",
+      "parentUuid": "8ebe000e_7a52826d",
+      "revId": "8ebba7420c50f23f68b8e8d644d0ae83af0e4bd5",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9f370feb_4c519bc6",
         "filename": "pc/peerconnection.cc",
         "patchSetId": 4
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "9251d9c5_fc02a132",
+        "filename": "pc/peerconnection.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2241,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2018-06-01T10:30:05Z",
+      "side": 1,
+      "message": "I added these things after success on both SLD and SRD, based on the argument that if someone calls SetRemoteDescription(garbage), they\u0027re probably feature-probing, not attempting to set up a call.\nArgues for changing the name to REMOTE_DESCRIPTION_ADDED, actually.",
+      "parentUuid": "9f370feb_4c519bc6",
+      "revId": "8ebba7420c50f23f68b8e8d644d0ae83af0e4bd5",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "15ac6db1_255c0817",
         "filename": "pc/peerconnection.cc",
         "patchSetId": 4
@@ -47,6 +83,24 @@
       "writtenOn": "2018-05-31T22:03:01Z",
       "side": 1,
       "message": "See above about when we should call NoteUsageEvent.",
+      "revId": "8ebba7420c50f23f68b8e8d644d0ae83af0e4bd5",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec5757ef_025359b9",
+        "filename": "pc/peerconnection.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2974,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2018-06-01T10:30:05Z",
+      "side": 1,
+      "message": "In this case, the remote candidate isn\u0027t added - same argument for placement.",
+      "parentUuid": "15ac6db1_255c0817",
       "revId": "8ebba7420c50f23f68b8e8d644d0ae83af0e4bd5",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
@@ -104,6 +158,24 @@
     },
     {
       "key": {
+        "uuid": "3bd705cf_65dfd0bd",
+        "filename": "pc/peerconnection.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2018-06-01T10:30:05Z",
+      "side": 1,
+      "message": "Actually it\u0027s pretty consistent that information being added has _ADDED, except for the SLD/SRD calls, which are _CALLED. If you want consistency, I\u0027d rather have LOCAL_DESCRIPTION_ADDED and friend, but I don\u0027t see a big argument for being overly consistent, since SLD is such a well known term among the API users.",
+      "parentUuid": "54cdc465_fce42a20",
+      "revId": "8ebba7420c50f23f68b8e8d644d0ae83af0e4bd5",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f437f205_aa2e7f4d",
         "filename": "pc/peerconnection_integrationtest.cc",
         "patchSetId": 4
@@ -115,6 +187,24 @@
       "writtenOn": "2018-05-31T22:03:01Z",
       "side": 1,
       "message": "On the callee side, I wouldn\u0027t expect AUDIO/VIDEO_ADDED.\n\nI think it would also be good to add tests at line 4490 and 4491 to cover when SetLD/SetRD haven\u0027t been called, no ICE candidates, etc. The turn of the crank is long enough that we\u0027ll want to spend extra time to ensure the stats are all functioning as expected.",
+      "revId": "8ebba7420c50f23f68b8e8d644d0ae83af0e4bd5",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cd47eed_9a444075",
+        "filename": "pc/peerconnection_integrationtest.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 4506,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2018-06-01T10:30:05Z",
+      "side": 1,
+      "message": "I would expect it. In the case of one-way video apps (lecture watching, baby monitors), I\u0027d expect to see them recorded as \"using video\".\nMore tests are always good.....",
+      "parentUuid": "f437f205_aa2e7f4d",
       "revId": "8ebba7420c50f23f68b8e8d644d0ae83af0e4bd5",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
