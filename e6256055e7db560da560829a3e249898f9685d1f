@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "e7dd1b1a_1ab02cb4",
+        "filename": "call/rtp_transport_controller_send.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2018-06-04T10:43:34Z",
+      "side": 1,
+      "message": "It would be nice if observer_ were a construction time const, but it isn\u0027t, due to the order things are created, iirc. But it can only change to a non-null value once, so it should be safe to read it out and release the lock (assuming the observer takes responsibility for any additional synchronization it might need internally).",
+      "parentUuid": "150a610b_5efdf0b5",
+      "revId": "e6256055e7db560da560829a3e249898f9685d1f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b87d16b2_fed2cc7c",
         "filename": "call/rtp_transport_controller_send.cc",
         "patchSetId": 9
@@ -64,6 +82,24 @@
       "writtenOn": "2018-06-04T09:57:46Z",
       "side": 1,
       "message": "having this getter here, feels to me like the ownership of the TQ actually belongs elsewhere. A worker queue seems more generic than something explicitly owned by a transport send controller.",
+      "revId": "e6256055e7db560da560829a3e249898f9685d1f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c73de11a_60a7ec61",
+        "filename": "call/rtp_transport_controller_send.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2018-06-04T10:43:34Z",
+      "side": 1,
+      "message": "The idea is that the task queue is used for things related to the RTP send streams, but currently done by VideoSendStream. Ownership in the RtpTransportControllerSend makes sense if this responsibility for those operations are also moved to methods in this class.\n\nThe module_process_thread_, owned by Call, is also passed down on the send side, where it\u0027s used to drive the rtp_rtcp modules. That\u0027s responsibility that should belong with RtpTransportControllerSend, even though they\u0027re currently far apart.",
+      "parentUuid": "c5ab92ed_1957ae65",
       "revId": "e6256055e7db560da560829a3e249898f9685d1f",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
