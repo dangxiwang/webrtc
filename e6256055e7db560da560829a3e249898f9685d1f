@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "25d9c0c2_a8904a82",
+        "filename": "call/rtp_transport_controller_send.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2018-06-04T11:49:51Z",
+      "side": 1,
+      "message": "The observer is Call, and the observer_ pointer is set in RtpTransportControllerSend::RegisterTargetTransferRateObserver, only call from Call\u0027s constructor (so this link implies a circular references between Call and RtpTransportControllerSend).\n\nNot sure if anything will break if RegisterTargetTransferRateObserver is changed to post a task to update the pointer. Sebastian?",
+      "parentUuid": "c574456a_ace03bf7",
+      "revId": "e6256055e7db560da560829a3e249898f9685d1f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "93a8f19b_578c2161",
         "filename": "call/rtp_transport_controller_send.cc",
         "patchSetId": 9
@@ -171,6 +189,24 @@
       "side": 1,
       "message": "As is, the TQ pointer is being handed out to AudioSendStream and VideoSendStream from inside of call.cc. Do you mean that those instances should belong to (or at least created by) RtpTransportControllerSend instead of Call?",
       "parentUuid": "c73de11a_60a7ec61",
+      "revId": "e6256055e7db560da560829a3e249898f9685d1f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "144b8e96_b8f7859f",
+        "filename": "call/rtp_transport_controller_send.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2018-06-04T11:49:51Z",
+      "side": 1,
+      "message": "\u003e As is, the TQ pointer is being handed out to AudioSendStream and VideoSendStream from inside of call.cc. Do you mean that those instances should belong to (or at least created by) RtpTransportControllerSend instead of Call?\n\nThe idea is that RtpTransportControllerSend should encapsulate everything the send stream needs to know about the Rtp transport. RtpTransportControllerSend is passed by Call to the send stream constructors, for this purpose. Now, they also get a pointer to the TQ (and to the module_process_thread). \n\nWhat I mean is that wherever the a send stream posts something directly to this taskqueue, we should design a method on RtpTransportControllerSend (or some per-stream class it\u0027s in control of) to perform the needed operation, and possibly post on the task queue internally.\n\nA possible next step (discussed earlier on this cl) is to delete the tq argument and the GetWorkerQueue call from Call, and instead let the send streams call GetWorkerQueue when they have something to post. I think it\u0027s preferable to move GetWorkerQueue closer to where it is needed.",
+      "parentUuid": "324c6f30_3d3fff75",
       "revId": "e6256055e7db560da560829a3e249898f9685d1f",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
