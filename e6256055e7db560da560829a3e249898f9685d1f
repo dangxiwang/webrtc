@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "554a84a2_f3a550e8",
+        "filename": "call/call.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 5508
+      },
+      "writtenOn": "2018-06-04T09:57:46Z",
+      "side": 1,
+      "message": "this feels strange. The worker queue, according to comments that previously were in this file, was meant to replace module_process_thread_. Now the TQ has been moved into a different class, but module_process_thread_ is still here. Further still here, we\u0027re fetching a pointer to a member variable owned by transport_send_ptr_, and giving it to an object that\u0027s not directly aware of the lifetime of the queue or how it\u0027s managed.\n\nIs there a design doc or something that explains these architectural changes? On the surface, it seems like a step backwards to me but I\u0027m probably missing something.",
+      "revId": "e6256055e7db560da560829a3e249898f9685d1f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "150a610b_5efdf0b5",
+        "filename": "call/rtp_transport_controller_send.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 5508
+      },
+      "writtenOn": "2018-06-04T09:57:46Z",
+      "side": 1,
+      "message": "is holding this lock absolutely necessary? We\u0027re posting a task to a queue and then grabbing the lock there, which seems bad. Further still holding the lock while making a call to an external implementation also doesn\u0027t seem good.",
+      "revId": "e6256055e7db560da560829a3e249898f9685d1f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b87d16b2_fed2cc7c",
+        "filename": "call/rtp_transport_controller_send.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 5508
+      },
+      "writtenOn": "2018-06-04T09:57:46Z",
+      "side": 1,
+      "message": "duplicated code?",
+      "revId": "e6256055e7db560da560829a3e249898f9685d1f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5ab92ed_1957ae65",
+        "filename": "call/rtp_transport_controller_send.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 5508
+      },
+      "writtenOn": "2018-06-04T09:57:46Z",
+      "side": 1,
+      "message": "having this getter here, feels to me like the ownership of the TQ actually belongs elsewhere. A worker queue seems more generic than something explicitly owned by a transport send controller.",
+      "revId": "e6256055e7db560da560829a3e249898f9685d1f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
