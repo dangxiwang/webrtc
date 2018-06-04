@@ -54,6 +54,41 @@
     },
     {
       "key": {
+        "uuid": "c574456a_ace03bf7",
+        "filename": "call/rtp_transport_controller_send.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 5508
+      },
+      "writtenOn": "2018-06-04T11:26:08Z",
+      "side": 1,
+      "message": "Under what circumstance could the pointer be null here?\nThings to consider:\n- We\u0027re not on the TQ. What thread are we on? (same as ctor thread perhaps?)\n- When the task executes, what exactly is the race we\u0027re guarding against with the lock? Can it happen?\n\nIf the race can\u0027t happen, then let\u0027s remove the lock and document + dcheck the expectations.",
+      "parentUuid": "e7dd1b1a_1ab02cb4",
+      "revId": "e6256055e7db560da560829a3e249898f9685d1f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93a8f19b_578c2161",
+        "filename": "call/rtp_transport_controller_send.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 5508
+      },
+      "writtenOn": "2018-06-04T11:26:08Z",
+      "side": 1,
+      "message": "we never dcheck for a pointer that we dereference anyway",
+      "revId": "e6256055e7db560da560829a3e249898f9685d1f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b87d16b2_fed2cc7c",
         "filename": "call/rtp_transport_controller_send.cc",
         "patchSetId": 9
@@ -65,6 +100,24 @@
       "writtenOn": "2018-06-04T09:57:46Z",
       "side": 1,
       "message": "duplicated code?",
+      "revId": "e6256055e7db560da560829a3e249898f9685d1f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49cca977_f717a94d",
+        "filename": "call/rtp_transport_controller_send.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 5508
+      },
+      "writtenOn": "2018-06-04T11:26:08Z",
+      "side": 1,
+      "message": "this bit is identical to the code block above, so should be moved to a separate function so that both places won\u0027t have to be updated or fall out of sync. Also, there, the appropriate checks + documentation can be kept in one place.",
+      "parentUuid": "b87d16b2_fed2cc7c",
       "revId": "e6256055e7db560da560829a3e249898f9685d1f",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
@@ -100,6 +153,24 @@
       "side": 1,
       "message": "The idea is that the task queue is used for things related to the RTP send streams, but currently done by VideoSendStream. Ownership in the RtpTransportControllerSend makes sense if this responsibility for those operations are also moved to methods in this class.\n\nThe module_process_thread_, owned by Call, is also passed down on the send side, where it\u0027s used to drive the rtp_rtcp modules. That\u0027s responsibility that should belong with RtpTransportControllerSend, even though they\u0027re currently far apart.",
       "parentUuid": "c5ab92ed_1957ae65",
+      "revId": "e6256055e7db560da560829a3e249898f9685d1f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "324c6f30_3d3fff75",
+        "filename": "call/rtp_transport_controller_send.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 5508
+      },
+      "writtenOn": "2018-06-04T11:26:08Z",
+      "side": 1,
+      "message": "As is, the TQ pointer is being handed out to AudioSendStream and VideoSendStream from inside of call.cc. Do you mean that those instances should belong to (or at least created by) RtpTransportControllerSend instead of Call?",
+      "parentUuid": "c73de11a_60a7ec61",
       "revId": "e6256055e7db560da560829a3e249898f9685d1f",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
