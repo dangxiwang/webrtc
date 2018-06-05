@@ -17,8 +17,6 @@
 #include <ctime>
 #include <string>
 
-#include "rtc_base/checks.h"
-
 namespace rtc {
 
 static const int64_t kNumMillisecsPerSec = INT64_C(1000);
@@ -132,16 +130,22 @@ class IntervalRange {
  public:
   IntervalRange() : min_(0), max_(0) {}
   IntervalRange(int min, int max) : min_(min), max_(max) {
-    RTC_DCHECK_LE(min, max);
+#ifdef DEBUG
+    if (max < min) {
+      fprintf(stderr, "max(%d) < min(%d)", max, min);
+      fflush(stdout);
+      fflush(stderr);
+      abort();
+    }
+#endif
   }
 
   int min() const { return min_; }
   int max() const { return max_; }
 
   std::string ToString() const {
-    std::stringstream ss;
-    ss << "[" << min_ << "," << max_ << "]";
-    return ss.str();
+    // TODO(jonasolsson) use absl::StrCat() instead.
+    return "[" + std::to_string(min_) + "," + std::to_string(max_) + "]";
   }
 
   bool operator==(const IntervalRange& o) const {
