@@ -57,6 +57,7 @@
 
 #include "rtc_base/constructormagic.h"
 #include "rtc_base/deprecation.h"
+#include "rtc_base/no_return.h"
 #include "rtc_base/system/inline.h"
 #include "rtc_base/thread_annotations.h"
 
@@ -151,6 +152,14 @@ struct LogMetadataErr {
   int err;
 };
 
+struct CheckMetadata {
+  const char* file;
+  int line;
+  const char* message;
+};
+
+static_assert(std::is_trivial<CheckMetadata>::value, "");
+
 #ifdef WEBRTC_ANDROID
 struct LogMetadataTag {
   LoggingSeverity severity;
@@ -174,6 +183,7 @@ enum class LogArgType : int8_t {
   kVoidP,
   kLogMetadata,
   kLogMetadataErr,
+  kCheckMetadata,
 #ifdef WEBRTC_ANDROID
   kLogMetadataTag,
 #endif
@@ -246,6 +256,10 @@ inline Val<LogArgType::kLogMetadataErr, LogMetadataErr> MakeVal(
     const LogMetadataErr& x) {
   return {x};
 }
+inline Val<LogArgType::kCheckMetadata, CheckMetadata> MakeVal(
+    const CheckMetadata& x) {
+  return {x};
+}
 
 #ifdef WEBRTC_ANDROID
 inline Val<LogArgType::kLogMetadataTag, LogMetadataTag> MakeVal(
@@ -275,6 +289,7 @@ Val<LogArgType::kStdString, std::string> MakeVal(const T& x) {
 }
 
 void Log(const LogArgType* fmt, ...);
+RTC_NORETURN void FatalLog(const LogArgType* fmt, ...);
 
 // Ephemeral type that represents the result of the logging << operator.
 template <typename... Ts>
@@ -306,6 +321,12 @@ class LogStreamer<> final {
   RTC_FORCE_INLINE static void Call(const Us&... args) {
     static constexpr LogArgType t[] = {Us::Type()..., LogArgType::kEnd};
     Log(t, args.GetVal()...);
+  }
+
+  template <typename... Us>
+  RTC_NORETURN RTC_FORCE_INLINE static void FatalCall(const Us&... args) {
+    static constexpr LogArgType t[] = {Us::Type()..., LogArgType::kEnd};
+    FatalLog(t, args.GetVal()...);
   }
 };
 
@@ -340,6 +361,11 @@ class LogStreamer<T, Ts...> final {
     prior_->Call(arg_, args...);
   }
 
+  template <typename... Us>
+  RTC_NORETURN RTC_FORCE_INLINE void FatalCall(const Us&... args) const {
+    prior_->FatalCall(arg_, args...);
+  }
+
  private:
   // The most recent argument.
   T arg_;
@@ -354,6 +380,16 @@ class LogCall final {
   template <typename... Ts>
   RTC_FORCE_INLINE void operator&(const LogStreamer<Ts...>& streamer) {
     streamer.Call();
+  }
+};
+
+class FatalLogCall final {
+ public:
+  // This can be any binary operator with precedence lower than <<.
+  template <typename... Ts>
+  RTC_NORETURN RTC_FORCE_INLINE void operator&(
+      const LogStreamer<Ts...>& streamer) {
+    streamer.FatalCall();
   }
 };
 
@@ -422,10 +458,6 @@ class LogMessage {
   // instance is created.
   static int64_t LogStartTime();
 
-  // Returns the wall clock equivalent of |LogStartTime|, in seconds from the
-  // epoch.
-  static uint32_t WallClockStartTime();
-
   //  LogThreads: Display the thread identifier of the current thread
   static void LogThreads(bool on = true);
 
@@ -459,6 +491,10 @@ class LogMessage {
   // Useful for configuring logging from the command line.
   static void ConfigureLogging(const char* params);
 
+  // The ostream that buffers the formatted message before output
+  // Pretend this is private, it's not because LogImpl uses it.
+  std::ostringstream print_stream_;  // no-presubmit-check TODO(webrtc:8982)
+
  private:
   friend class LogMessageForTesting;
   typedef std::pair<LogSink*, LoggingSeverity> StreamAndSeverity;
@@ -486,9 +522,6 @@ class LogMessage {
   // information to the log stream and a newline character.
   void FinishPrintStream();
 
-  // The ostream that buffers the formatted message before output
-  std::ostringstream print_stream_;
-
   // The severity level of this message
   LoggingSeverity severity_;
 
@@ -497,9 +530,8 @@ class LogMessage {
   const char* tag_ = "libjingle";
 #endif
 
-  // String data generated in the constructor, that should be appended to
-  // the message before output.
-  std::string extra_;
+  const LogErrorContext error_context_;
+  const int error_number_;
 
   const bool is_noop_;
 
