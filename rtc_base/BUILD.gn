@@ -106,6 +106,7 @@ rtc_source_set("macromagic") {
     "arraysize.h",
     "constructormagic.h",
     "format_macros.h",
+    "no_return.h",
     "stringize_macros.h",
     "thread_annotations.h",
   ]
@@ -195,14 +196,23 @@ rtc_source_set("rtc_event") {
     ]
   }
 }
+rtc_source_set("logging_internals") {
+  sources = [
+    "logging_internals.cc",
+    "logging_internals.h",
+  ]
+  deps = [
+    ":deprecation",
+    ":macromagic",
+    ":platform_thread_types",
+    ":timeutils",
+    "system:inline",
+  ]
+}
 
 rtc_source_set("logging") {
   deps = [
-    ":criticalsection",
-    ":macromagic",
-    ":platform_thread_types",
-    ":stringutils",
-    ":timeutils",
+    ":logging_internals",
   ]
 
   if (build_with_chromium) {
@@ -252,6 +262,8 @@ rtc_source_set("checks") {
     "checks.h",
   ]
   deps = [
+    ":logging_internals",
+    ":macromagic",
     ":safe_compare",
     "..:typedefs",
   ]
@@ -309,10 +321,7 @@ rtc_source_set("timeutils") {
     "timeutils.cc",
     "timeutils.h",
   ]
-  deps = [
-    ":checks",
-    ":safe_conversions",
-  ]
+  deps = []
 }
 
 rtc_source_set("stringutils") {
