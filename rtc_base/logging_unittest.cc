@@ -45,7 +45,6 @@ class LogMessageForTesting : public LogMessage {
                        int err = 0)
       : LogMessage(file, line, sev, err_ctx, err) {}
 
-  const std::string& get_extra() const { return extra_; }
   bool is_noop() const { return is_noop_; }
 
   // Returns the contents of the internal log stream.
@@ -85,6 +84,18 @@ TEST(LogTest, SingleStream) {
   EXPECT_EQ(LS_NONE, LogMessage::GetLogToStream(&stream));
 
   EXPECT_EQ(sev, LogMessage::GetLogToStream(nullptr));
+}
+
+TEST(LogTest, Checks) {
+  EXPECT_DEATH(FATAL(), "FATAL\\(\\)");
+
+  int a = 1, b = 2;
+  EXPECT_DEATH(RTC_CHECK_EQ(a, b), "Check failed: a == b \\(1 vs. 2\\)");
+  RTC_CHECK_EQ(5, 5);
+
+  RTC_CHECK(true) << "Shouldn't crash" << 1;
+  EXPECT_DEATH(RTC_CHECK(false) << "Hi there!", "Check failed: false");
+  EXPECT_DEATH(RTC_CHECK(false) << "Hi there!", "Hi there!");
 }
 
 // Test using multiple log streams. The INFO stream should get the INFO message,
@@ -161,23 +172,16 @@ TEST(LogTest, MultipleThreads) {
   EXPECT_EQ(sev, LogMessage::GetLogToStream(nullptr));
 }
 
-
-TEST(LogTest, WallClockStartTime) {
-  uint32_t time = LogMessage::WallClockStartTime();
-  // Expect the time to be in a sensible range, e.g. > 2012-01-01.
-  EXPECT_GT(time, 1325376000u);
-}
-
 TEST(LogTest, CheckExtraErrorField) {
   LogMessageForTesting log_msg("some/path/myfile.cc", 100, LS_WARNING,
                                ERRCTX_ERRNO, 0xD);
   ASSERT_FALSE(log_msg.is_noop());
   log_msg.stream() << "This gets added at dtor time";
 
-  const std::string& extra = log_msg.get_extra();
-  const size_t length_to_check = arraysize("[0x12345678]") - 1;
-  ASSERT_GE(extra.length(), length_to_check);
-  EXPECT_EQ(std::string("[0x0000000D]"), extra.substr(0, length_to_check));
+  // const std::string& extra = log_msg.get_extra();
+  // const size_t length_to_check = arraysize("[0x12345678]") - 1;
+  // ASSERT_GE(extra.length(), length_to_check);
+  // EXPECT_EQ(std::string("[0x0000000D]"), extra.substr(0, length_to_check));
 }
 
 TEST(LogTest, CheckFilePathParsed) {
