@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1b44a9df_a7d48a0b",
+        "filename": "rtc_base/checks.cc",
+        "patchSetId": 23
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 6547
+      },
+      "writtenOn": "2018-06-08T11:29:11Z",
+      "side": 1,
+      "message": "Yeah, a goto should work fine. I had assumed that some check somewhere would complain, but I\u0027ll give it a shot. Continuing the processing seems hard, since we don\u0027t know how many bytes we should advance args by.",
+      "parentUuid": "ffe53053_d11a5cc9",
+      "revId": "c1b34697a2c5a87705b33d78ba392bb73b2a5b75",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "00a4254b_aa6572a5",
         "filename": "rtc_base/checks.cc",
         "patchSetId": 23
@@ -33,6 +51,24 @@
       "revId": "c1b34697a2c5a87705b33d78ba392bb73b2a5b75",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5c5acff_7b0f7349",
+        "filename": "rtc_base/checks.cc",
+        "patchSetId": 23
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 6547
+      },
+      "writtenOn": "2018-06-08T11:29:11Z",
+      "side": 1,
+      "message": "Sounds good, I\u0027ll do that.",
+      "parentUuid": "00a4254b_aa6572a5",
+      "revId": "c1b34697a2c5a87705b33d78ba392bb73b2a5b75",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "44d87b75_40698b96",
+        "filename": "rtc_base/checks.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 6547
+      },
+      "writtenOn": "2018-06-08T11:29:11Z",
+      "side": 1,
+      "message": "Oh right, I removed the use cases a while ago. Thanks!",
+      "parentUuid": "01299974_c25d6eaf",
+      "revId": "c1b34697a2c5a87705b33d78ba392bb73b2a5b75",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "716a60d1_1777e007",
         "filename": "rtc_base/logging_unittest.cc",
         "patchSetId": 23
@@ -64,6 +118,24 @@
       "writtenOn": "2018-06-08T08:46:41Z",
       "side": 1,
       "message": "How can the same CHECK call die with two different messages? What am I missing?",
+      "revId": "c1b34697a2c5a87705b33d78ba392bb73b2a5b75",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce43c7fe_72028bf7",
+        "filename": "rtc_base/logging_unittest.cc",
+        "patchSetId": 23
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 6547
+      },
+      "writtenOn": "2018-06-08T11:29:11Z",
+      "side": 1,
+      "message": "The second argument is a regex, it prints a few lines containing both those strings.",
+      "parentUuid": "716a60d1_1777e007",
       "revId": "c1b34697a2c5a87705b33d78ba392bb73b2a5b75",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
