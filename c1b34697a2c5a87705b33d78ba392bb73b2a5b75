@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ffe53053_d11a5cc9",
+        "filename": "rtc_base/checks.cc",
+        "patchSetId": 23
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 5126
+      },
+      "writtenOn": "2018-06-08T08:46:41Z",
+      "side": 1,
+      "message": "It would probably be easier to just use goto here---less state for the reader to keep track of. Or maybe just continue processing arguments... there\u0027s no reason to think that wouldn\u0027t work, is there?",
+      "revId": "c1b34697a2c5a87705b33d78ba392bb73b2a5b75",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00a4254b_aa6572a5",
+        "filename": "rtc_base/checks.cc",
+        "patchSetId": 23
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 5126
+      },
+      "writtenOn": "2018-06-08T08:46:41Z",
+      "side": 1,
+      "message": "Why do you need to flush stdout too? If it\u0027s just to make sure it\u0027s flushed before we abort, why not flush it before printing the CHECK message to stderr?",
+      "revId": "c1b34697a2c5a87705b33d78ba392bb73b2a5b75",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01299974_c25d6eaf",
+        "filename": "rtc_base/checks.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 5126
+      },
+      "writtenOn": "2018-06-08T08:46:41Z",
+      "side": 1,
+      "message": "You never use CheckMetadata and kCheckMetadata.",
+      "revId": "c1b34697a2c5a87705b33d78ba392bb73b2a5b75",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "716a60d1_1777e007",
+        "filename": "rtc_base/logging_unittest.cc",
+        "patchSetId": 23
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 5126
+      },
+      "writtenOn": "2018-06-08T08:46:41Z",
+      "side": 1,
+      "message": "How can the same CHECK call die with two different messages? What am I missing?",
+      "revId": "c1b34697a2c5a87705b33d78ba392bb73b2a5b75",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
