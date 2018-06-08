@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "e83d2a61_7332d507",
+        "filename": "rtc_base/checks.cc",
+        "patchSetId": 23
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 5126
+      },
+      "writtenOn": "2018-06-08T11:34:34Z",
+      "side": 1,
+      "message": "Right, of course. Arguments aren\u0027t all the same size here.\n\nAnd I\u0027m pretty sure we don\u0027t have a goto check.",
+      "parentUuid": "1b44a9df_a7d48a0b",
+      "revId": "c1b34697a2c5a87705b33d78ba392bb73b2a5b75",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "00a4254b_aa6572a5",
         "filename": "rtc_base/checks.cc",
         "patchSetId": 23
@@ -136,6 +154,24 @@
       "side": 1,
       "message": "The second argument is a regex, it prints a few lines containing both those strings.",
       "parentUuid": "716a60d1_1777e007",
+      "revId": "c1b34697a2c5a87705b33d78ba392bb73b2a5b75",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5aca49cb_aecdf71c",
+        "filename": "rtc_base/logging_unittest.cc",
+        "patchSetId": 23
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 5126
+      },
+      "writtenOn": "2018-06-08T11:34:34Z",
+      "side": 1,
+      "message": "I see. Then wouldn\u0027t it be better to call RTC_CHECK(false) just once, and match against a regexp that contains both \"Check failed: false\" and \"Hi there!\"?",
+      "parentUuid": "ce43c7fe_72028bf7",
       "revId": "c1b34697a2c5a87705b33d78ba392bb73b2a5b75",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
