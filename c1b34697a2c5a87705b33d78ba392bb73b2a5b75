@@ -175,6 +175,24 @@
       "revId": "c1b34697a2c5a87705b33d78ba392bb73b2a5b75",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a5640ec_b1ec6dda",
+        "filename": "rtc_base/logging_unittest.cc",
+        "patchSetId": 23
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 6547
+      },
+      "writtenOn": "2018-06-08T12:21:02Z",
+      "side": 1,
+      "message": "Agreed. To better guard against regressions I also added the rest of the message to the regex.",
+      "parentUuid": "5aca49cb_aecdf71c",
+      "revId": "c1b34697a2c5a87705b33d78ba392bb73b2a5b75",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
