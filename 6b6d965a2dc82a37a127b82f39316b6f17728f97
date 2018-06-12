@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae2fcbd1_39ef3f83",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5112
+      },
+      "writtenOn": "2018-06-12T08:34:43Z",
+      "side": 1,
+      "message": "Change this to \"webrtc:7452\" to link to the correct bug.",
+      "range": {
+        "startLine": 9,
+        "startChar": 5,
+        "endLine": 9,
+        "endChar": 9
+      },
+      "revId": "6b6d965a2dc82a37a127b82f39316b6f17728f97",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
