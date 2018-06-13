@@ -10,15 +10,33 @@
 
 #include "api/rtp_headers.h"
 
-#include <string.h>
 #include <algorithm>
-#include <limits>
 #include <type_traits>
 
+#include "absl/strings/ascii.h"
+#include "absl/strings/string_view.h"
 #include "rtc_base/checks.h"
-#include "rtc_base/stringutils.h"
 
 namespace webrtc {
+
+constexpr size_t StringRtpHeaderExtension::kMaxSize;
+
+bool StringRtpHeaderExtension::IsLegalName(absl::string_view name) {
+  return name.size() <= kMaxSize && name.size() > 0 &&
+         std::all_of(name.begin(), name.end(), absl::ascii_isalnum);
+}
+
+void StringRtpHeaderExtension::Set(absl::string_view value) {
+  // If |data| contains \0, the stream id size might become less than |size|.
+  RTC_CHECK_LE(value.size(), kMaxSize);
+  memcpy(value_, value.data(), value.size());
+  if (value.size() < kMaxSize)
+    value_[value.size()] = 0;
+}
+
+// StreamId is used as member of RTPHeader that is sometimes copied with memcpy
+// and thus assume trivial destructibility.
+static_assert(std::is_trivially_destructible<StreamId>::value, "");
 
 RTPHeaderExtension::RTPHeaderExtension()
     : hasTransmissionTimeOffset(false),

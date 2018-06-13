@@ -16,7 +16,7 @@
 #include <string>
 #include <vector>
 
-#include "api/array_view.h"
+#include "absl/strings/string_view.h"
 #include "api/optional.h"
 #include "api/video/video_content_type.h"
 #include "api/video/video_rotation.h"
@@ -40,12 +40,10 @@ class StringRtpHeaderExtension {
   // maximum length that can be encoded with one-byte header extensions.
   static constexpr size_t kMaxSize = 16;
 
-  static bool IsLegalName(rtc::ArrayView<const char> name);
+  static bool IsLegalName(absl::string_view name);
 
   StringRtpHeaderExtension() { value_[0] = 0; }
-  explicit StringRtpHeaderExtension(rtc::ArrayView<const char> value) {
-    Set(value.data(), value.size());
-  }
+  explicit StringRtpHeaderExtension(absl::string_view value) { Set(value); }
   StringRtpHeaderExtension(const StringRtpHeaderExtension&) = default;
   StringRtpHeaderExtension& operator=(const StringRtpHeaderExtension&) =
       default;
@@ -55,9 +53,10 @@ class StringRtpHeaderExtension {
   size_t size() const { return strnlen(value_, kMaxSize); }
 
   void Set(rtc::ArrayView<const uint8_t> value) {
-    Set(reinterpret_cast<const char*>(value.data()), value.size());
+    Set(absl::string_view(reinterpret_cast<const char*>(value.data()),
+                          value.size()));
   }
-  void Set(const char* data, size_t size);
+  void Set(absl::string_view value);
 
   friend bool operator==(const StringRtpHeaderExtension& lhs,
                          const StringRtpHeaderExtension& rhs) {
