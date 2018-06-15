@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "41271076_1207deab",
+        "filename": "api/transport/test/network_control_tester.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 5525
+      },
+      "writtenOn": "2018-06-15T12:02:58Z",
+      "side": 1,
+      "message": "perhaps CHECK that actual_bandwidth \u003e 0",
+      "range": {
+        "startLine": 103,
+        "startChar": 50,
+        "endLine": 103,
+        "endChar": 66
+      },
+      "revId": "daf957a5b36b94ea46cb7a52de0b2d450efb03b6",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "474ab7f6_51b4ebfb",
+        "filename": "api/transport/test/network_control_tester.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 5525
+      },
+      "writtenOn": "2018-06-15T12:02:58Z",
+      "side": 1,
+      "message": "spaces around this",
+      "range": {
+        "startLine": 103,
+        "startChar": 49,
+        "endLine": 103,
+        "endChar": 50
+      },
+      "revId": "daf957a5b36b94ea46cb7a52de0b2d450efb03b6",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
