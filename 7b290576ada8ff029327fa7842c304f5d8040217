@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f331533c_a68b57c3",
+        "filename": "rtc_base/checks.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 5126
+      },
+      "writtenOn": "2018-06-15T13:00:55Z",
+      "side": 1,
+      "message": "You should be able to make a follow-up CL for this right away.",
+      "revId": "7b290576ada8ff029327fa7842c304f5d8040217",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    }
+  ]
+}
