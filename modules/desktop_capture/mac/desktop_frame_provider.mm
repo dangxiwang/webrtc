@@ -18,7 +18,7 @@
 namespace webrtc {
 
 DesktopFrameProvider::DesktopFrameProvider(bool allow_iosurface)
-    : allow_iosurface_(allow_iosurface), io_surfaces_lock_(RWLockWrapper::CreateRWLock()) {}
+    : allow_iosurface_(allow_iosurface) {}
 
 DesktopFrameProvider::~DesktopFrameProvider() {
   // Might be called from a thread which is not the one running the CGDisplayStream
@@ -33,9 +33,6 @@ std::unique_ptr<DesktopFrame> DesktopFrameProvider::TakeLatestFrameForDisplay(
     return DesktopFrameCGImage::CreateForDisplay(display_id);
   }
 
-  // Might be called from a thread which is not the one running the CGDisplayStream
-  // handler. Indeed chromium's content uses a dedicates thread.
-  WriteLockScoped scoped_io_surfaces_lock(*io_surfaces_lock_);
   if (io_surfaces_[display_id]) {
     return io_surfaces_[display_id]->Share();
   }
@@ -52,8 +49,6 @@ void DesktopFrameProvider::InvalidateIOSurface(CGDirectDisplayID display_id,
   std::unique_ptr<DesktopFrameIOSurface> desktop_frame_iosurface =
       DesktopFrameIOSurface::Wrap(io_surface);
 
-  // Call from the thread which runs the CGDisplayStream handler.
-  WriteLockScoped scoped_io_surfaces_lock(*io_surfaces_lock_);
   io_surfaces_[display_id] = desktop_frame_iosurface ?
       SharedDesktopFrame::Wrap(std::move(desktop_frame_iosurface)) :
       nullptr;
@@ -64,7 +59,6 @@ void DesktopFrameProvider::Release() {
     return;
   }
 
-  WriteLockScoped scoped_io_surfaces_lock(*io_surfaces_lock_);
   io_surfaces_.clear();
 }
 

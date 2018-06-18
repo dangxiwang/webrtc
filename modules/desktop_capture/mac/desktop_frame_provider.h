@@ -46,9 +46,6 @@ class DesktopFrameProvider {
  private:
   const bool allow_iosurface_;
 
-  // A lock protecting |io_surfaces_| across threads.
-  const std::unique_ptr<RWLockWrapper> io_surfaces_lock_;
-
   // Most recent IOSurface that contains a capture of matching display.
   std::map<CGDirectDisplayID, std::unique_ptr<SharedDesktopFrame>> io_surfaces_;
 
