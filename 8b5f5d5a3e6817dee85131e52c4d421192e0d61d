@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ca38136e_ffecd161",
+        "filename": "modules/rtp_rtcp/source/rtp_generic_frame_descriptor_extension.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2018-06-18T12:23:12Z",
+      "side": 1,
+      "message": "Done.\nAgree rtc::ArrayView would be better.\nAnd I guess it is better to swtich to ArrayView from raw pointer before adding this extension\n(https://webrtc-review.googlesource.com/c/src/+/83945)",
+      "parentUuid": "1622baa4_f76921db",
+      "revId": "8b5f5d5a3e6817dee85131e52c4d421192e0d61d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cfee7cf8_2c25b88d",
         "filename": "modules/rtp_rtcp/source/rtp_generic_frame_descriptor_extension.cc",
         "patchSetId": 4
@@ -33,6 +51,24 @@
       "revId": "8b5f5d5a3e6817dee85131e52c4d421192e0d61d",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89a0510c_84cdea19",
+        "filename": "modules/rtp_rtcp/source/rtp_generic_frame_descriptor_extension.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2018-06-18T12:23:12Z",
+      "side": 1,
+      "message": "1st 4 bits of data[0] are assigned just before branch just above.\nRewrote to make it clearer.",
+      "parentUuid": "cfee7cf8_2c25b88d",
+      "revId": "8b5f5d5a3e6817dee85131e52c4d421192e0d61d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
