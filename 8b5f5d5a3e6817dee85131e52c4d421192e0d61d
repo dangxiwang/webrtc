@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1622baa4_f76921db",
+        "filename": "modules/rtp_rtcp/source/rtp_generic_frame_descriptor_extension.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 5527
+      },
+      "writtenOn": "2018-06-18T10:54:06Z",
+      "side": 1,
+      "message": "I would suggest using an ArrayView instead of an uint8_t*, that way you can check boundaries in this function.",
+      "revId": "8b5f5d5a3e6817dee85131e52c4d421192e0d61d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfee7cf8_2c25b88d",
+        "filename": "modules/rtp_rtcp/source/rtp_generic_frame_descriptor_extension.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 5527
+      },
+      "writtenOn": "2018-06-18T10:54:06Z",
+      "side": 1,
+      "message": "Either you should document that |*data| has to be 0 initialized before this function is called, or you could simply 0 it at the beginning of this function.",
+      "revId": "8b5f5d5a3e6817dee85131e52c4d421192e0d61d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
