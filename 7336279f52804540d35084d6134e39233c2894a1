@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ce1bd7e_4d03e5fe",
+        "filename": "modules/desktop_capture/mac/desktop_frame_provider.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 6236
+      },
+      "writtenOn": "2018-06-18T19:33:09Z",
+      "side": 1,
+      "message": "#include \"rtc_base/thread_checker.h\"\nThreadChecker thread_checker_;",
+      "revId": "7336279f52804540d35084d6134e39233c2894a1",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a07d47d7_bb480b87",
+        "filename": "modules/desktop_capture/mac/desktop_frame_provider.mm",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 6236
+      },
+      "writtenOn": "2018-06-18T19:33:09Z",
+      "side": 1,
+      "message": "Can you add:\nthread_checker_.DetachFromThread();",
+      "revId": "7336279f52804540d35084d6134e39233c2894a1",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c24c76f5_bde3069a",
+        "filename": "modules/desktop_capture/mac/desktop_frame_provider.mm",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 6236
+      },
+      "writtenOn": "2018-06-18T19:33:09Z",
+      "side": 1,
+      "message": "RTC_DCHECK(io_thread_checker_.CalledOnValidThread());",
+      "revId": "7336279f52804540d35084d6134e39233c2894a1",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a041b16_447272b3",
+        "filename": "modules/desktop_capture/mac/desktop_frame_provider.mm",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 6236
+      },
+      "writtenOn": "2018-06-18T19:33:09Z",
+      "side": 1,
+      "message": "RTC_DCHECK(io_thread_checker_.CalledOnValidThread());",
+      "revId": "7336279f52804540d35084d6134e39233c2894a1",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a86ffa03_1ca29e0b",
+        "filename": "modules/desktop_capture/mac/desktop_frame_provider.mm",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 6236
+      },
+      "writtenOn": "2018-06-18T19:33:09Z",
+      "side": 1,
+      "message": "RTC_DCHECK(io_thread_checker_.CalledOnValidThread());",
+      "revId": "7336279f52804540d35084d6134e39233c2894a1",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cd69d5c_26c2673b",
+        "filename": "modules/desktop_capture/mac/desktop_frame_provider.mm",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 6236
+      },
+      "writtenOn": "2018-06-18T19:33:09Z",
+      "side": 1,
+      "message": "RTC_DCHECK(io_thread_checker_.CalledOnValidThread());",
+      "revId": "7336279f52804540d35084d6134e39233c2894a1",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee36dcdb_f14365e2",
+        "filename": "modules/desktop_capture/mac/screen_capturer_mac.mm",
+        "patchSetId": 3
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 6236
+      },
+      "writtenOn": "2018-06-18T19:33:09Z",
+      "side": 1,
+      "message": "Maybe remove these 3 desktop_config lines (and Init function too) and let ::CaptureFrame do the reconfiguration as it already check desktop_config_ so it should hit its existing reconfiguration block.",
+      "revId": "7336279f52804540d35084d6134e39233c2894a1",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6ca941c_219acb81",
+        "filename": "modules/desktop_capture/mac/screen_capturer_mac.mm",
+        "patchSetId": 3
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 6236
+      },
+      "writtenOn": "2018-06-18T19:33:09Z",
+      "side": 1,
+      "message": "We lose the check of the return value but it is not done on reconfiguration anyway in CaptureFrame. I wonder if you should not add these 2 lines and just let ::CaptureFrame do the reconfiguration.",
+      "revId": "7336279f52804540d35084d6134e39233c2894a1",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c8c3886_d2aba793",
+        "filename": "modules/desktop_capture/mac/screen_capturer_mac.mm",
+        "patchSetId": 3
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 6236
+      },
+      "writtenOn": "2018-06-18T19:33:09Z",
+      "side": 1,
+      "message": "Maybe check return value of this existing call to RegisterRefreshAndMoveHandlers() and if fails add: \n{\n  callback_-\u003eOnCaptureResult(Result::ERROR_PERMANENT, nullptr);\n  return;\n}",
+      "revId": "7336279f52804540d35084d6134e39233c2894a1",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
