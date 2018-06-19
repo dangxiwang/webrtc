@@ -16,6 +16,24 @@
       "revId": "251eb77cb016ce252ebb4f47311dcb6975de6f1f",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71f0f302_53395c3a",
+        "filename": "modules/rtp_rtcp/source/rtp_generic_frame_descriptor_extension.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2018-06-19T12:27:02Z",
+      "side": 1,
+      "message": "Upgraded DCHECKs to CHECK and run it before accessing the buffer.\nchecking it at every byte seems overkill since typically it will be used through RtpPacket that will call ValueSize and pass buffer of that size.",
+      "parentUuid": "88a8cc28_a6190547",
+      "revId": "251eb77cb016ce252ebb4f47311dcb6975de6f1f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
     }
   ]
 }
