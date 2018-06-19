@@ -78,6 +78,42 @@ class NetEqInput {
   virtual rtc::Optional<RTPHeader> NextHeader() const = 0;
 };
 
+// Wrapper class to impose a time limit on a NetEqInput object, typically
+// another time limit that what the object itself provides. For example, an
+// input taken from a file can be cut shorter by wrapping it in this class.
+class InputTimeLimit : public NetEqInput {
+ public:
+  InputTimeLimit(std::unique_ptr<NetEqInput> input, int64_t duration_ms)
+      : input_(std::move(input)),
+        start_time_ms_(input_->NextEventTime()),
+        duration_ms_(duration_ms) {}
+
+  rtc::Optional<int64_t> NextPacketTime() const {
+    return input_->NextPacketTime();
+  }
+  rtc::Optional<int64_t> NextOutputEventTime() const {
+    return input_->NextOutputEventTime();
+  }
+  std::unique_ptr<PacketData> PopPacket() { return input_->PopPacket(); }
+  void AdvanceOutputEvent() { return input_->AdvanceOutputEvent(); }
+  bool ended() const {
+    if (input_->ended()) {
+      return true;
+    }
+    if (NextEventTime() && start_time_ms_ &&
+        *NextEventTime() - *start_time_ms_ > duration_ms_) {
+      return true;
+    }
+    return false;
+  }
+  rtc::Optional<RTPHeader> NextHeader() const { return input_->NextHeader(); }
+
+ private:
+  std::unique_ptr<NetEqInput> input_;
+  const rtc::Optional<int64_t> start_time_ms_;
+  const int64_t duration_ms_;
+};
+
 }  // namespace test
 }  // namespace webrtc
 #endif  // MODULES_AUDIO_CODING_NETEQ_TOOLS_NETEQ_INPUT_H_
