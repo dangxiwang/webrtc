@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1d765aec_b05fcd70",
+        "filename": "modules/audio_coding/neteq/include/neteq.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 5100
+      },
+      "writtenOn": "2018-06-19T15:34:43Z",
+      "side": 0,
+      "message": "I don\u0027t think so. NetEq is not part of the supported API.",
+      "parentUuid": "6d2fa280_e58568b6",
+      "range": {
+        "startLine": 219,
+        "startChar": 15,
+        "endLine": 219,
+        "endChar": 29
+      },
+      "revId": "6cdd546ba2d2af30803031f9bb68a8313637d39b",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "66a76beb_67a6aa93",
         "filename": "modules/audio_coding/neteq/neteq_impl.cc",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2018-06-19T12:29:55Z",
       "side": 0,
       "message": "how are related to FAX, off and streaming?",
+      "range": {
+        "startLine": 943,
+        "startChar": 9,
+        "endLine": 943,
+        "endChar": 24
+      },
+      "revId": "6cdd546ba2d2af30803031f9bb68a8313637d39b",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "927bac08_a4d2da27",
+        "filename": "modules/audio_coding/neteq/neteq_impl.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 943,
+      "author": {
+        "id": 5100
+      },
+      "writtenOn": "2018-06-19T15:34:43Z",
+      "side": 0,
+      "message": "These operations were only selected in these modes. With the DecisionLogicFax class removed, these operations are not chosen anywhere in the code. Dead code.",
+      "parentUuid": "66a76beb_67a6aa93",
       "range": {
         "startLine": 943,
         "startChar": 9,

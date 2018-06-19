@@ -91,6 +91,30 @@
       "revId": "c34785e7ce877a53c2cd541105ee1d5fa4bbf9bf",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bfcb1a8_5a19aad6",
+        "filename": "modules/audio_coding/neteq/neteq_unittest.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1749,
+      "author": {
+        "id": 5100
+      },
+      "writtenOn": "2018-06-19T15:34:43Z",
+      "side": 1,
+      "message": "Good point. I now use it in the NetEq fuzzer tests as well. In neteq_rtpplay it is not straightforward to use it, since that application allows the user to change the payload type on the command line for each codec.",
+      "parentUuid": "75576e0a_71456e93",
+      "range": {
+        "startLine": 1749,
+        "startChar": 27,
+        "endLine": 1749,
+        "endChar": 45
+      },
+      "revId": "c34785e7ce877a53c2cd541105ee1d5fa4bbf9bf",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
