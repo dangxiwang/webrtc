@@ -68,6 +68,29 @@
       "revId": "c34785e7ce877a53c2cd541105ee1d5fa4bbf9bf",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "75576e0a_71456e93",
+        "filename": "modules/audio_coding/neteq/neteq_unittest.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1749,
+      "author": {
+        "id": 7015
+      },
+      "writtenOn": "2018-06-19T12:29:55Z",
+      "side": 1,
+      "message": "may you probably check other uses of NetEqTest and do the same?",
+      "range": {
+        "startLine": 1749,
+        "startChar": 27,
+        "endLine": 1749,
+        "endChar": 45
+      },
+      "revId": "c34785e7ce877a53c2cd541105ee1d5fa4bbf9bf",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
     }
   ]
 }

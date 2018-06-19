@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d2fa280_e58568b6",
+        "filename": "modules/audio_coding/neteq/include/neteq.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 7015
+      },
+      "writtenOn": "2018-06-19T12:29:55Z",
+      "side": 0,
+      "message": "No need for PSA?",
+      "range": {
+        "startLine": 219,
+        "startChar": 15,
+        "endLine": 219,
+        "endChar": 29
+      },
+      "revId": "6cdd546ba2d2af30803031f9bb68a8313637d39b",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66a76beb_67a6aa93",
+        "filename": "modules/audio_coding/neteq/neteq_impl.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 943,
+      "author": {
+        "id": 7015
+      },
+      "writtenOn": "2018-06-19T12:29:55Z",
+      "side": 0,
+      "message": "how are related to FAX, off and streaming?",
+      "range": {
+        "startLine": 943,
+        "startChar": 9,
+        "endLine": 943,
+        "endChar": 24
+      },
+      "revId": "6cdd546ba2d2af30803031f9bb68a8313637d39b",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
