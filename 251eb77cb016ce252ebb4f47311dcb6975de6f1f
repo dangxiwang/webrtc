@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88a8cc28_a6190547",
+        "filename": "modules/rtp_rtcp/source/rtp_generic_frame_descriptor_extension.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 5527
+      },
+      "writtenOn": "2018-06-19T12:14:58Z",
+      "side": 1,
+      "message": "I think having bound checks in this function would be good (which we now can do with the ArrayView parameter)",
+      "revId": "251eb77cb016ce252ebb4f47311dcb6975de6f1f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
