@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c17959b0_66c60e04",
+        "filename": "modules/audio_coding/neteq/tools/neteq_delay_analyzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 7015
+      },
+      "writtenOn": "2018-06-20T20:41:45Z",
+      "side": 1,
+      "message": "Fixed in the patch set 5",
+      "parentUuid": "875a2bc0_fd060dc4",
+      "range": {
+        "startLine": 71,
+        "startChar": 20,
+        "endLine": 71,
+        "endChar": 25
+      },
+      "revId": "8cd062e4d23debbabaf400a87054b71f4545aea0",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "039ec382_c23f83bf",
         "filename": "modules/audio_coding/neteq/tools/neteq_delay_analyzer.cc",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2018-05-11T11:51:15Z",
       "side": 1,
       "message": "not perfect yet, since matlab script should better end with a \";\"",
+      "range": {
+        "startLine": 73,
+        "startChar": 14,
+        "endLine": 73,
+        "endChar": 15
+      },
+      "revId": "8cd062e4d23debbabaf400a87054b71f4545aea0",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07b60d34_93cd3d2a",
+        "filename": "modules/audio_coding/neteq/tools/neteq_delay_analyzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 7015
+      },
+      "writtenOn": "2018-06-20T20:41:45Z",
+      "side": 1,
+      "message": "fixed in patch set 5",
+      "parentUuid": "039ec382_c23f83bf",
       "range": {
         "startLine": 73,
         "startChar": 14,
