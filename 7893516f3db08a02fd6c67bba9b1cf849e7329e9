@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "98379953_ea6b0faf",
+        "filename": "modules/audio_coding/neteq/tools/neteq_input.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 7015
+      },
+      "writtenOn": "2018-06-20T08:55:57Z",
+      "side": 1,
+      "message": "The name might be a bit inexact. how about TimeLimitedNetEqInput",
+      "range": {
+        "startLine": 84,
+        "startChar": 6,
+        "endLine": 84,
+        "endChar": 20
+      },
+      "revId": "7893516f3db08a02fd6c67bba9b1cf849e7329e9",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a64608cc_52e778b8",
+        "filename": "modules/audio_coding/neteq/tools/neteq_input.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 7015
+      },
+      "writtenOn": "2018-06-20T08:55:57Z",
+      "side": 1,
+      "message": "+ override",
+      "range": {
+        "startLine": 91,
+        "startChar": 42,
+        "endLine": 91,
+        "endChar": 47
+      },
+      "revId": "7893516f3db08a02fd6c67bba9b1cf849e7329e9",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccf6018c_57f7cabf",
+        "filename": "modules/audio_coding/neteq/tools/neteq_input.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 7015
+      },
+      "writtenOn": "2018-06-20T08:55:57Z",
+      "side": 1,
+      "message": "+ override",
+      "range": {
+        "startLine": 94,
+        "startChar": 47,
+        "endLine": 94,
+        "endChar": 52
+      },
+      "revId": "7893516f3db08a02fd6c67bba9b1cf849e7329e9",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "630cb8d6_90bca444",
+        "filename": "modules/audio_coding/neteq/tools/neteq_input.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 7015
+      },
+      "writtenOn": "2018-06-20T08:55:57Z",
+      "side": 1,
+      "message": "+ override",
+      "range": {
+        "startLine": 97,
+        "startChar": 30,
+        "endLine": 97,
+        "endChar": 39
+      },
+      "revId": "7893516f3db08a02fd6c67bba9b1cf849e7329e9",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "081a020b_c6f434a4",
+        "filename": "modules/audio_coding/neteq/tools/neteq_input.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 7015
+      },
+      "writtenOn": "2018-06-20T08:55:57Z",
+      "side": 1,
+      "message": "+override",
+      "range": {
+        "startLine": 98,
+        "startChar": 7,
+        "endLine": 98,
+        "endChar": 25
+      },
+      "revId": "7893516f3db08a02fd6c67bba9b1cf849e7329e9",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee0da47b_d158735d",
+        "filename": "modules/audio_coding/neteq/tools/neteq_input.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 7015
+      },
+      "writtenOn": "2018-06-20T08:55:57Z",
+      "side": 1,
+      "message": "+ override",
+      "range": {
+        "startLine": 99,
+        "startChar": 15,
+        "endLine": 99,
+        "endChar": 20
+      },
+      "revId": "7893516f3db08a02fd6c67bba9b1cf849e7329e9",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8feb99d_f0c338e6",
+        "filename": "modules/audio_coding/neteq/tools/neteq_input.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 7015
+      },
+      "writtenOn": "2018-06-20T08:55:57Z",
+      "side": 1,
+      "message": "+override",
+      "range": {
+        "startLine": 109,
+        "startChar": 40,
+        "endLine": 109,
+        "endChar": 45
+      },
+      "revId": "7893516f3db08a02fd6c67bba9b1cf849e7329e9",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
