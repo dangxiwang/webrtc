@@ -2,6 +2,98 @@
   "comments": [
     {
       "key": {
+        "uuid": "9644054f_6e7f19c2",
+        "filename": "modules/audio_coding/neteq/decision_logic.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 5607
+      },
+      "writtenOn": "2018-06-20T09:27:04Z",
+      "side": 1,
+      "message": "Can be removed.",
+      "range": {
+        "startLine": 137,
+        "startChar": 33,
+        "endLine": 137,
+        "endChar": 74
+      },
+      "revId": "7893516f3db08a02fd6c67bba9b1cf849e7329e9",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11a24f16_4c56193e",
+        "filename": "modules/audio_coding/neteq/decision_logic.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 5607
+      },
+      "writtenOn": "2018-06-20T09:27:04Z",
+      "side": 1,
+      "message": "Does it make sense to merge this function with the regular GetDecision function? (maybe not in this CL) Also the \u0027Specialized\u0027 part of the name makes a bit less sense when there is only one implementation.",
+      "range": {
+        "startLine": 138,
+        "startChar": 13,
+        "endLine": 138,
+        "endChar": 35
+      },
+      "revId": "7893516f3db08a02fd6c67bba9b1cf849e7329e9",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "195a8f90_9129b005",
+        "filename": "modules/audio_coding/neteq/decision_logic.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 5607
+      },
+      "writtenOn": "2018-06-20T09:27:04Z",
+      "side": 1,
+      "message": "Do these need to be virtual? There are no deriving classes anymore are there?",
+      "range": {
+        "startLine": 157,
+        "startChar": 2,
+        "endLine": 157,
+        "endChar": 9
+      },
+      "revId": "7893516f3db08a02fd6c67bba9b1cf849e7329e9",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "521f5236_99ef553d",
+        "filename": "modules/audio_coding/neteq/tools/neteq_input.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 5607
+      },
+      "writtenOn": "2018-06-20T09:27:04Z",
+      "side": 1,
+      "message": "than",
+      "range": {
+        "startLine": 82,
+        "startChar": 22,
+        "endLine": 82,
+        "endChar": 26
+      },
+      "revId": "7893516f3db08a02fd6c67bba9b1cf849e7329e9",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "98379953_ea6b0faf",
         "filename": "modules/audio_coding/neteq/tools/neteq_input.h",
         "patchSetId": 3
@@ -41,6 +133,29 @@
         "startChar": 42,
         "endLine": 91,
         "endChar": 47
+      },
+      "revId": "7893516f3db08a02fd6c67bba9b1cf849e7329e9",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af37c954_d14d189c",
+        "filename": "modules/audio_coding/neteq/tools/neteq_input.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 5607
+      },
+      "writtenOn": "2018-06-20T09:27:04Z",
+      "side": 1,
+      "message": "Should there be a call to ended() in this (and other) function and do something different when the time has run out?",
+      "range": {
+        "startLine": 92,
+        "startChar": 4,
+        "endLine": 92,
+        "endChar": 36
       },
       "revId": "7893516f3db08a02fd6c67bba9b1cf849e7329e9",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
