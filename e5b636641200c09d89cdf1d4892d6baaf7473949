@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4050db20_26ab391a",
+        "filename": "rtc_tools/event_log_visualizer/analyzer.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1799,
+      "author": {
+        "id": 5150
+      },
+      "writtenOn": "2018-06-21T08:17:25Z",
+      "side": 1,
+      "message": "I think python will complain if the top and bottom axis limits are equal, which happens if there are no points in the any of the lists. In other places, we solve this by\nfloat min_y_axis \u003d 0.f;\nfloat max_y_axis \u003d 1.f;\n\nThere is also a function SetSuggestedYaxis which does essentially the same thing, so you might be able to drop the min and max calculation completely.",
+      "range": {
+        "startLine": 1799,
+        "startChar": 8,
+        "endLine": 1799,
+        "endChar": 18
+      },
+      "revId": "e5b636641200c09d89cdf1d4892d6baaf7473949",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7a18acc_15fc9b15",
+        "filename": "rtc_tools/event_log_visualizer/analyzer.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1855,
+      "author": {
+        "id": 5150
+      },
+      "writtenOn": "2018-06-21T08:17:25Z",
+      "side": 1,
+      "message": "SetSuggestedYAxis(0, 1, \"Relative delay (ms)\", ...) ?",
+      "range": {
+        "startLine": 1855,
+        "startChar": 8,
+        "endLine": 1855,
+        "endChar": 16
+      },
+      "revId": "e5b636641200c09d89cdf1d4892d6baaf7473949",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
