@@ -22,6 +22,30 @@
       "revId": "c9310f442d24d514ac18b1a92deb335816b5875a",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04411128_56a633b6",
+        "filename": "rtc_tools/event_log_visualizer/main.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 7015
+      },
+      "writtenOn": "2018-06-21T13:20:04Z",
+      "side": 1,
+      "message": "No, they will at least get a title and correct x-limit.\n\nBe noted that this part will also be further modified, since CreateAudioJitterBufferGraph deals only the first SSRC.",
+      "parentUuid": "cabcee2f_97906158",
+      "range": {
+        "startLine": 339,
+        "startChar": 0,
+        "endLine": 339,
+        "endChar": 31
+      },
+      "revId": "c9310f442d24d514ac18b1a92deb335816b5875a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
     }
   ]
 }
