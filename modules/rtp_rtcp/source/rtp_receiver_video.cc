@@ -48,8 +48,7 @@ int32_t RTPReceiverVideo::ParseRtpPacket(WebRtcRTPHeader* rtp_header,
                                          const uint8_t* payload,
                                          size_t payload_length,
                                          int64_t timestamp_ms) {
-  rtp_header->type.Video.codec =
-      specific_payload.video_payload().videoCodecType;
+  rtp_header->video.codec = specific_payload.video_payload().videoCodecType;
 
   RTC_DCHECK_GE(payload_length, rtp_header->header.paddingLength);
   const size_t payload_data_length =
@@ -66,7 +65,7 @@ int32_t RTPReceiverVideo::ParseRtpPacket(WebRtcRTPHeader* rtp_header,
 
   // We are not allowed to hold a critical section when calling below functions.
   std::unique_ptr<RtpDepacketizer> depacketizer(
-      RtpDepacketizer::Create(rtp_header->type.Video.codec));
+      RtpDepacketizer::Create(rtp_header->video.codec));
   if (depacketizer.get() == NULL) {
     RTC_LOG(LS_ERROR) << "Failed to create depacketizer.";
     return -1;
@@ -77,29 +76,26 @@ int32_t RTPReceiverVideo::ParseRtpPacket(WebRtcRTPHeader* rtp_header,
     return -1;
 
   rtp_header->frameType = parsed_payload.frame_type;
-  rtp_header->type = parsed_payload.type;
-  rtp_header->type.Video.rotation = kVideoRotation_0;
-  rtp_header->type.Video.content_type = VideoContentType::UNSPECIFIED;
-  rtp_header->type.Video.video_timing.flags = VideoSendTiming::kInvalid;
+  rtp_header->video = parsed_payload.video;
+  rtp_header->video.rotation = kVideoRotation_0;
+  rtp_header->video.content_type = VideoContentType::UNSPECIFIED;
+  rtp_header->video.video_timing.flags = VideoSendTiming::kInvalid;
 
   // Retrieve the video rotation information.
   if (rtp_header->header.extension.hasVideoRotation) {
-    rtp_header->type.Video.rotation =
-        rtp_header->header.extension.videoRotation;
+    rtp_header->video.rotation = rtp_header->header.extension.videoRotation;
   }
 
   if (rtp_header->header.extension.hasVideoContentType) {
-    rtp_header->type.Video.content_type =
+    rtp_header->video.content_type =
         rtp_header->header.extension.videoContentType;
   }
 
   if (rtp_header->header.extension.has_video_timing) {
-    rtp_header->type.Video.video_timing =
-        rtp_header->header.extension.video_timing;
+    rtp_header->video.video_timing = rtp_header->header.extension.video_timing;
   }
 
-  rtp_header->type.Video.playout_delay =
-      rtp_header->header.extension.playout_delay;
+  rtp_header->video.playout_delay = rtp_header->header.extension.playout_delay;
 
   return data_callback_->OnReceivedPayloadData(parsed_payload.payload,
                                                parsed_payload.payload_length,
