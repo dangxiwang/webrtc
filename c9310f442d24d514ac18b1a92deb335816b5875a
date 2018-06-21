@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cabcee2f_97906158",
+        "filename": "rtc_tools/event_log_visualizer/main.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 5150
+      },
+      "writtenOn": "2018-06-21T13:16:50Z",
+      "side": 1,
+      "message": "Does this apply to the other NetEqStatsGraphs too?",
+      "range": {
+        "startLine": 339,
+        "startChar": 0,
+        "endLine": 339,
+        "endChar": 31
+      },
+      "revId": "c9310f442d24d514ac18b1a92deb335816b5875a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
