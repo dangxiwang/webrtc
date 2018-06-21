@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "82030b98_32c61b64",
+        "filename": "rtc_tools/event_log_visualizer/analyzer.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1822,
+      "author": {
+        "id": 5150
+      },
+      "writtenOn": "2018-06-21T09:33:42Z",
+      "side": 1,
+      "message": "Without the early exit, won\u0027t these DCHECKS fail if the neteq_stats is empty?",
+      "range": {
+        "startLine": 1821,
+        "startChar": 0,
+        "endLine": 1822,
+        "endChar": 0
+      },
+      "revId": "364d1ab9037b6970672238cac3b78358ffb297cc",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f27a064_7fdf5976",
+        "filename": "rtc_tools/event_log_visualizer/analyzer.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1827,
+      "author": {
+        "id": 5150
+      },
+      "writtenOn": "2018-06-21T09:33:42Z",
+      "side": 1,
+      "message": "Same.",
+      "range": {
+        "startLine": 1827,
+        "startChar": 2,
+        "endLine": 1827,
+        "endChar": 15
+      },
+      "revId": "364d1ab9037b6970672238cac3b78358ffb297cc",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "244b4cf6_6e4bb9ee",
+        "filename": "rtc_tools/event_log_visualizer/analyzer.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1833,
+      "author": {
+        "id": 5150
+      },
+      "writtenOn": "2018-06-21T09:33:42Z",
+      "side": 1,
+      "message": "Same.",
+      "range": {
+        "startLine": 1833,
+        "startChar": 2,
+        "endLine": 1833,
+        "endChar": 15
+      },
+      "revId": "364d1ab9037b6970672238cac3b78358ffb297cc",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
