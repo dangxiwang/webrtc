@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "75d83f5e_ee8cf808",
+        "filename": "rtc_tools/event_log_visualizer/analyzer.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1780,
+      "author": {
+        "id": 7015
+      },
+      "writtenOn": "2018-06-21T09:11:26Z",
+      "side": 1,
+      "message": "I also would like to fix a bug in this CL. We should not return early otherwise python generator will fail.",
+      "range": {
+        "startLine": 1780,
+        "startChar": 6,
+        "endLine": 1780,
+        "endChar": 17
+      },
+      "revId": "e5b636641200c09d89cdf1d4892d6baaf7473949",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4050db20_26ab391a",
         "filename": "rtc_tools/event_log_visualizer/analyzer.cc",
         "patchSetId": 5
@@ -25,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "deed2b3b_35867884",
+        "filename": "rtc_tools/event_log_visualizer/analyzer.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1799,
+      "author": {
+        "id": 7015
+      },
+      "writtenOn": "2018-06-21T09:11:26Z",
+      "side": 1,
+      "message": "Ah, you mentioned this earlier, and I kind of missed it, apologies. now fixed.",
+      "parentUuid": "4050db20_26ab391a",
+      "range": {
+        "startLine": 1799,
+        "startChar": 8,
+        "endLine": 1799,
+        "endChar": 18
+      },
+      "revId": "e5b636641200c09d89cdf1d4892d6baaf7473949",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f7a18acc_15fc9b15",
         "filename": "rtc_tools/event_log_visualizer/analyzer.cc",
         "patchSetId": 5
@@ -45,6 +92,30 @@
       "revId": "e5b636641200c09d89cdf1d4892d6baaf7473949",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3921010a_bd9dd744",
+        "filename": "rtc_tools/event_log_visualizer/analyzer.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1855,
+      "author": {
+        "id": 7015
+      },
+      "writtenOn": "2018-06-21T09:11:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7a18acc_15fc9b15",
+      "range": {
+        "startLine": 1855,
+        "startChar": 8,
+        "endLine": 1855,
+        "endChar": 16
+      },
+      "revId": "e5b636641200c09d89cdf1d4892d6baaf7473949",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
