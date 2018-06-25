@@ -40,19 +40,6 @@ enum class CustomEnum {
 };
 }  // namespace
 
-// Providing a custom parser for an enum can make the trial string easier to
-// read, but also adds more code and makes the string more verbose.
-template <>
-absl::optional<CustomEnum> ParseTypedParameter<CustomEnum>(std::string str) {
-  if (str == "default")
-    return CustomEnum::kDefault;
-  else if (str == "red")
-    return CustomEnum::kRed;
-  else if (str == "blue")
-    return CustomEnum::kBlue;
-  return absl::nullopt;
-}
-
 TEST(FieldTrialParserTest, ParsesValidParameters) {
   DummyExperiment exp("Enabled,f:-1.7,r:2,p:1,h:x7c");
   EXPECT_TRUE(exp.enabled.Get());
@@ -122,7 +109,10 @@ TEST(FieldTrialParserTest, ParsesOptionalParameters) {
   EXPECT_FALSE(optional_string.Get().has_value());
 }
 TEST(FieldTrialParserTest, ParsesCustomEnumParameter) {
-  FieldTrialParameter<CustomEnum> my_enum("e", CustomEnum::kDefault);
+  FieldTrialEnum<CustomEnum> my_enum("e", CustomEnum::kDefault,
+                                     {{"default", CustomEnum::kDefault},
+                                      {"red", CustomEnum::kRed},
+                                      {"blue", CustomEnum::kBlue}});
   ParseFieldTrial({&my_enum}, "");
   EXPECT_EQ(my_enum.Get(), CustomEnum::kDefault);
   ParseFieldTrial({&my_enum}, "e:red");
