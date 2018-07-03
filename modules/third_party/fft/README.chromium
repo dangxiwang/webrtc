@@ -1,0 +1,12 @@
+Name: fft
+Short Name: fft
+URL:
+Version: 0
+Date: 2018-02-01
+License: Custome license
+License File: LICENSE
+Security Critical: yes
+
+Description:
+multivariate complex Fourier transform, computed in place
+using mixed-radix Fast Fourier Transform algorithm.
