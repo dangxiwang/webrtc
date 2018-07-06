@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "18291a9f_6851dd63",
+        "filename": "modules/audio_processing/agc/BUILD.gn",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 5087
+      },
+      "writtenOn": "2018-07-06T12:00:31Z",
+      "side": 1,
+      "message": "Nit: 2018",
+      "range": {
+        "startLine": 1,
+        "startChar": 16,
+        "endLine": 1,
+        "endChar": 20
+      },
+      "revId": "cb57a8d984f58838c8462fc5f625ea26d1bb732c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
