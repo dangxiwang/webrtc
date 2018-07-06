@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cae389ba_1f007b34",
+        "filename": "modules/audio_processing/agc/BUILD.gn",
+        "patchSetId": 4
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 5124
+      },
+      "writtenOn": "2018-07-06T11:58:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb3aa942_d1e38a9a",
+      "range": {
+        "startLine": 121,
+        "startChar": 6,
+        "endLine": 121,
+        "endChar": 10
+      },
+      "revId": "50601e6542f85a22f45cc29c674652ac5beae589",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7910e2f2_44171f50",
         "filename": "rtc_tools/BUILD.gn",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "50601e6542f85a22f45cc29c674652ac5beae589",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "815a02c7_6be2034b",
+        "filename": "rtc_tools/BUILD.gn",
+        "patchSetId": 4
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 5124
+      },
+      "writtenOn": "2018-07-06T11:58:39Z",
+      "side": 1,
+      "message": "Thanks! Turns out it wasn\u0027t needed.",
+      "parentUuid": "7910e2f2_44171f50",
+      "range": {
+        "startLine": 293,
+        "startChar": 6,
+        "endLine": 293,
+        "endChar": 36
+      },
+      "revId": "50601e6542f85a22f45cc29c674652ac5beae589",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
