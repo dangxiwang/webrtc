@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb3aa942_d1e38a9a",
+        "filename": "modules/audio_processing/agc/BUILD.gn",
+        "patchSetId": 4
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 5087
+      },
+      "writtenOn": "2018-07-06T11:48:45Z",
+      "side": 1,
+      "message": "Please use \":agc\".",
+      "range": {
+        "startLine": 121,
+        "startChar": 6,
+        "endLine": 121,
+        "endChar": 10
+      },
+      "revId": "50601e6542f85a22f45cc29c674652ac5beae589",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7910e2f2_44171f50",
+        "filename": "rtc_tools/BUILD.gn",
+        "patchSetId": 4
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 5087
+      },
+      "writtenOn": "2018-07-06T11:48:45Z",
+      "side": 1,
+      "message": "Is this dependency still needed? Since we are moving agc stuff out of the main audio_processing main build target, maybe we can remove this one.",
+      "range": {
+        "startLine": 293,
+        "startChar": 6,
+        "endLine": 293,
+        "endChar": 36
+      },
+      "revId": "50601e6542f85a22f45cc29c674652ac5beae589",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
