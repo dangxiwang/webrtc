@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d5f3a2a_404fa05b",
+        "filename": "modules/congestion_controller/pcc/bitrate_controller.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-07-09T12:29:00Z",
+      "side": 1,
+      "message": "Applies for several of the classes in this file:\n\nThe names are a bit too generic. To avoid name confusion, make sure that the names are likely to be globally unique. Adding Pcc in the name is a good start, but also making the names more descriptive makes sense.\n\nClasses should in general have a comment explaining what they do and how they integrate with the system.\n\nMany short classes that do very little can make the code harder to follow. Consider if some of the classes could be integrated into the calling class without making the calling class too large/complex.",
+      "range": {
+        "startLine": 29,
+        "startChar": 6,
+        "endLine": 29,
+        "endChar": 25
+      },
+      "revId": "2367e1dbc2a8aa1f2bc6425df431c3a0a9a46650",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b76bd45c_188c1785",
+        "filename": "modules/congestion_controller/pcc/pcc_network_controller.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-07-09T12:29:00Z",
+      "side": 1,
+      "message": "Maybe the constants could be moved to the BitrateController class to reduce the constructor signature?",
+      "range": {
+        "startLine": 52,
+        "startChar": 26,
+        "endLine": 52,
+        "endChar": 50
+      },
+      "revId": "2367e1dbc2a8aa1f2bc6425df431c3a0a9a46650",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b949cfb4_f3fb3c22",
+        "filename": "modules/congestion_controller/pcc/pcc_network_controller.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-07-09T12:29:00Z",
+      "side": 1,
+      "message": "Add a TODO about adding a correct estimate of this.",
+      "range": {
+        "startLine": 86,
+        "startChar": 35,
+        "endLine": 86,
+        "endChar": 50
+      },
+      "revId": "2367e1dbc2a8aa1f2bc6425df431c3a0a9a46650",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79c16929_848af2c9",
+        "filename": "modules/congestion_controller/pcc/pcc_network_controller.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-07-09T12:29:00Z",
+      "side": 1,
+      "message": "This value should indicate a time period over which the target bitrate will be stable if the bitrate estimate is stable. Not sure what happens if this is set to zero, but it can affect audio, so I would set it to something longer just to be safe if it\u0027s not easy to set it correctly.",
+      "range": {
+        "startLine": 87,
+        "startChar": 35,
+        "endLine": 87,
+        "endChar": 45
+      },
+      "revId": "2367e1dbc2a8aa1f2bc6425df431c3a0a9a46650",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b7efe05_c493c022",
+        "filename": "modules/congestion_controller/pcc/pcc_network_controller.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-07-09T12:29:00Z",
+      "side": 1,
+      "message": "I don\u0027t think these functions add any value since they force the reader to check their definition to know what they actually do. Move the checks inline to improve readability and reduce the amount of code.",
+      "range": {
+        "startLine": 179,
+        "startChar": 27,
+        "endLine": 179,
+        "endChar": 38
+      },
+      "revId": "2367e1dbc2a8aa1f2bc6425df431c3a0a9a46650",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5df9cf36_d85db043",
+        "filename": "modules/congestion_controller/pcc/pcc_network_controller.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-07-09T12:29:00Z",
+      "side": 1,
+      "message": "Add a comment explaining what PCC is so a reader can find out more about it. A paper reference seems appropriate here as well.",
+      "range": {
+        "startLine": 30,
+        "startChar": 6,
+        "endLine": 30,
+        "endChar": 26
+      },
+      "revId": "2367e1dbc2a8aa1f2bc6425df431c3a0a9a46650",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5202250_37490056",
+        "filename": "modules/congestion_controller/pcc/pcc_network_controller.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-07-09T12:29:00Z",
+      "side": 1,
+      "message": "spelling/grammar",
+      "range": {
+        "startLine": 39,
+        "startChar": 22,
+        "endLine": 39,
+        "endChar": 44
+      },
+      "revId": "2367e1dbc2a8aa1f2bc6425df431c3a0a9a46650",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02beadaf_b71fc88f",
+        "filename": "modules/congestion_controller/pcc/pcc_network_controller.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-07-09T12:29:00Z",
+      "side": 1,
+      "message": "Why not webrtc::Random?",
+      "range": {
+        "startLine": 89,
+        "startChar": 2,
+        "endLine": 91,
+        "endChar": 48
+      },
+      "revId": "2367e1dbc2a8aa1f2bc6425df431c3a0a9a46650",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
