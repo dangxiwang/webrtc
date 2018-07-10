@@ -13,7 +13,6 @@
 #include "test/ios/test_support.h"
 #include "test/testsupport/perf_test.h"
 
-#import "sdk/objc/Framework/Classes/Common/RTCUIApplicationStatusObserver.h"
 #include "sdk/objc/Framework/Classes/Common/helpers.h"
 
 // Springboard will kill any iOS app that fails to check in after launch within
@@ -64,11 +63,6 @@ static bool g_save_chartjson_result;
   // An NSInternalInconsistencyException is thrown if the app doesn't have a
   // root view controller. Set an empty one here.
   [_window setRootViewController:[[UIViewController alloc] init]];
-
-  // We want to call `RTCUIApplicationStatusObserver sharedInstance` as early as
-  // possible in the application lifecycle to set observation properly.
-  __unused RTCUIApplicationStatusObserver *observer =
-      [RTCUIApplicationStatusObserver sharedInstance];
 
   // Queue up the test run.
   [self performSelector:@selector(runTests) withObject:nil afterDelay:0.1];

@@ -15,7 +15,6 @@
 #include <vector>
 
 #if defined(WEBRTC_IOS)
-#import "Common/RTCUIApplicationStatusObserver.h"
 #import "WebRTC/UIDevice+RTCDevice.h"
 #endif
 #import "PeerConnection/RTCVideoCodec+Private.h"
@@ -306,10 +305,6 @@ CFStringRef ExtractProfile(webrtc::SdpVideoFormat videoFormat) {
     _profile = ExtractProfile([codecInfo nativeSdpVideoFormat]);
     RTC_LOG(LS_INFO) << "Using profile " << CFStringToString(_profile);
     RTC_CHECK([codecInfo.name isEqualToString:kRTCVideoCodecH264Name]);
-
-#if defined(WEBRTC_IOS) && !defined(RTC_APPRTCMOBILE_BROADCAST_EXTENSION)
-    [RTCUIApplicationStatusObserver prepareForUse];
-#endif
   }
   return self;
 }
@@ -345,13 +340,6 @@ CFStringRef ExtractProfile(webrtc::SdpVideoFormat videoFormat) {
   if (!_callback || !_compressionSession) {
     return WEBRTC_VIDEO_CODEC_UNINITIALIZED;
   }
-#if defined(WEBRTC_IOS) && !defined(RTC_APPRTCMOBILE_BROADCAST_EXTENSION)
-  if (![[RTCUIApplicationStatusObserver sharedInstance] isApplicationActive]) {
-    // Ignore all encode requests when app isn't active. In this state, the
-    // hardware encoder has been invalidated by the OS.
-    return WEBRTC_VIDEO_CODEC_OK;
-  }
-#endif
   BOOL isKeyframeRequired = NO;
 
   // Get a pixel buffer from the pool and copy frame data over.
