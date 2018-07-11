@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cab66b4e_5870823c",
+        "filename": "rtc_base/BUILD.gn",
+        "patchSetId": 2
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 5087
+      },
+      "writtenOn": "2018-07-11T15:41:55Z",
+      "side": 1,
+      "message": "I think \"third_party/base64\" is enough and it is the format we should follow (this applies to other places too).",
+      "range": {
+        "startLine": 503,
+        "startChar": 5,
+        "endLine": 503,
+        "endChar": 23
+      },
+      "revId": "048cdcf2df355e42d5c7934df5defb895960c2d4",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "baa451b6_d72f09bc",
+        "filename": "rtc_base/base64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5087
+      },
+      "writtenOn": "2018-07-11T15:41:55Z",
+      "side": 1,
+      "message": "Why not moving also base64.cc to the new location?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 71
+      },
+      "revId": "048cdcf2df355e42d5c7934df5defb895960c2d4",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
