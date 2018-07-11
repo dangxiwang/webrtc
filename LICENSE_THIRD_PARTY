@@ -3,7 +3,7 @@ party licenses. Paths to the files and associated licenses are collected here.
 
 Files governed by third party licenses:
 rtc_base/base64.cc
-rtc_base/base64.h
+rtc_base/third_party/base64/base64.h
 rtc_base/sigslot.cc
 rtc_base/sigslot.h
 common_audio/fft4g.c
@@ -23,7 +23,7 @@ Individual licenses for each file:
 -------------------------------------------------------------------------------
 Files:
 rtc_base/base64.cc
-rtc_base/base64.h
+rtc_base/third_party/base64/base64.h
 
 License:
 //*********************************************************************
