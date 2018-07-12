@@ -390,6 +390,7 @@ rtc_source_set("rtc_base_approved_generic") {
     ":type_traits",
     "../:typedefs",
     "system:arch",
+    "third_party/base64",
   ]
 
   sources = [
@@ -497,6 +498,9 @@ rtc_source_set("base64") {
   sources = [
     "base64.cc",
     "base64.h",
+  ]
+  deps = [
+    "third_party/base64",
   ]
 }
 
@@ -728,6 +732,7 @@ rtc_static_library("rtc_base_generic") {
     ":stringutils",
     "..:webrtc_common",
     "../api:array_view",
+    "third_party/base64",
     "//third_party/abseil-cpp/absl/memory",
     "//third_party/abseil-cpp/absl/types:optional",
   ]
@@ -1177,6 +1182,7 @@ if (rtc_include_tests) {
       "../test:fileutils",
       "../test:test_support",
       "memory:unittests",
+      "third_party/base64",
       "//third_party/abseil-cpp/absl/memory",
     ]
   }
