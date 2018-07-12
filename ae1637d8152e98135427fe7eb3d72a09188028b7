@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d158c0e1_0cf7e9db",
+        "filename": "LICENSE_THIRD_PARTY",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 7332
+      },
+      "writtenOn": "2018-07-12T19:19:10Z",
+      "side": 1,
+      "message": "It has moved, hasn\u0027t it?",
+      "revId": "ae1637d8152e98135427fe7eb3d72a09188028b7",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83800898_5e5551e3",
+        "filename": "media/BUILD.gn",
+        "patchSetId": 4
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 7332
+      },
+      "writtenOn": "2018-07-12T19:19:10Z",
+      "side": 1,
+      "message": "Still needed?",
+      "revId": "ae1637d8152e98135427fe7eb3d72a09188028b7",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83d8cf89_66764b5b",
+        "filename": "rtc_base/BUILD.gn",
+        "patchSetId": 4
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 7332
+      },
+      "writtenOn": "2018-07-12T19:19:10Z",
+      "side": 1,
+      "message": "Question: Why do we still need this line?",
+      "revId": "ae1637d8152e98135427fe7eb3d72a09188028b7",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc582004_233ab6f3",
+        "filename": "rtc_base/base64_unittest.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 7332
+      },
+      "writtenOn": "2018-07-12T19:19:10Z",
+      "side": 1,
+      "message": "For some reason this include hasn\u0027t be sorted.",
+      "revId": "ae1637d8152e98135427fe7eb3d72a09188028b7",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
