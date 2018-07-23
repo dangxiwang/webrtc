@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ccb1ab0f_c63e0c91",
+        "filename": "LICENSE_THIRD_PARTY",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 6337
+      },
+      "writtenOn": "2018-07-23T12:00:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d158c0e1_0cf7e9db",
+      "revId": "ae1637d8152e98135427fe7eb3d72a09188028b7",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83800898_5e5551e3",
         "filename": "media/BUILD.gn",
         "patchSetId": 4
