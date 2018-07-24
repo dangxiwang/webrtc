@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c68dad5b_7abc52ae",
+        "filename": "modules/audio_coding/codecs/isac/main/source/transform.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 6337
+      },
+      "writtenOn": "2018-07-24T12:44:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a86d2f9c_f7b6c9e5",
+      "revId": "010ded5f24e64447f2b093ad84a74d6c312bf242",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba64bf92_88ac83f7",
         "filename": "modules/third_party/fft/BUILD.gn",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "010ded5f24e64447f2b093ad84a74d6c312bf242",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76d7858e_86513a97",
+        "filename": "modules/third_party/fft/BUILD.gn",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 6337
+      },
+      "writtenOn": "2018-07-24T12:44:25Z",
+      "side": 1,
+      "message": "Looks like here it will be very hard to avoid it right now because of strong usage of webrtc types inside dep. Personally I don\u0027t like it, so it will be better to untangle in future.",
+      "parentUuid": "ba64bf92_88ac83f7",
+      "revId": "010ded5f24e64447f2b093ad84a74d6c312bf242",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     },
     {
       "key": {
