@@ -22,6 +22,30 @@
       "revId": "010ded5f24e64447f2b093ad84a74d6c312bf242",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6698b600_ce473d2a",
+        "filename": "modules/third_party/fft/fft.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 6337
+      },
+      "writtenOn": "2018-07-24T12:32:21Z",
+      "side": 1,
+      "message": "Discussed offline. Doc changes will be landed in future CL.",
+      "parentUuid": "8f010a2e_b615267f",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 32
+      },
+      "revId": "010ded5f24e64447f2b093ad84a74d6c312bf242",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
