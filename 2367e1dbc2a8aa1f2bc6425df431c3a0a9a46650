@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9c138759_dd9e82bd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 7296
+      },
+      "writtenOn": "2018-07-27T09:38:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19480d14_09be06ce",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 46
+      },
+      "revId": "2367e1dbc2a8aa1f2bc6425df431c3a0a9a46650",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d5f3a2a_404fa05b",
         "filename": "modules/congestion_controller/pcc/bitrate_controller.h",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "8bf49e16_b7d6199c",
+        "filename": "modules/congestion_controller/pcc/bitrate_controller.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 7296
+      },
+      "writtenOn": "2018-07-27T09:38:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d5f3a2a_404fa05b",
+      "range": {
+        "startLine": 29,
+        "startChar": 6,
+        "endLine": 29,
+        "endChar": 25
+      },
+      "revId": "2367e1dbc2a8aa1f2bc6425df431c3a0a9a46650",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b76bd45c_188c1785",
         "filename": "modules/congestion_controller/pcc/pcc_network_controller.cc",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2018-07-09T12:29:00Z",
       "side": 1,
       "message": "Maybe the constants could be moved to the BitrateController class to reduce the constructor signature?",
+      "range": {
+        "startLine": 52,
+        "startChar": 26,
+        "endLine": 52,
+        "endChar": 50
+      },
+      "revId": "2367e1dbc2a8aa1f2bc6425df431c3a0a9a46650",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b31dfd70_e448290a",
+        "filename": "modules/congestion_controller/pcc/pcc_network_controller.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 7296
+      },
+      "writtenOn": "2018-07-27T09:38:13Z",
+      "side": 1,
+      "message": "This way we have all the constants and default values defined in one place, which is more convenient to look up.",
+      "parentUuid": "b76bd45c_188c1785",
       "range": {
         "startLine": 52,
         "startChar": 26,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "250fe987_d64f8984",
+        "filename": "modules/congestion_controller/pcc/pcc_network_controller.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 7296
+      },
+      "writtenOn": "2018-07-27T09:38:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b949cfb4_f3fb3c22",
+      "range": {
+        "startLine": 86,
+        "startChar": 35,
+        "endLine": 86,
+        "endChar": 50
+      },
+      "revId": "2367e1dbc2a8aa1f2bc6425df431c3a0a9a46650",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79c16929_848af2c9",
         "filename": "modules/congestion_controller/pcc/pcc_network_controller.cc",
         "patchSetId": 1
@@ -114,6 +210,30 @@
       "revId": "2367e1dbc2a8aa1f2bc6425df431c3a0a9a46650",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df198a04_9cd07383",
+        "filename": "modules/congestion_controller/pcc/pcc_network_controller.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 7296
+      },
+      "writtenOn": "2018-07-27T09:38:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79c16929_848af2c9",
+      "range": {
+        "startLine": 87,
+        "startChar": 35,
+        "endLine": 87,
+        "endChar": 45
+      },
+      "revId": "2367e1dbc2a8aa1f2bc6425df431c3a0a9a46650",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "6d80c767_f83bcfba",
+        "filename": "modules/congestion_controller/pcc/pcc_network_controller.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 7296
+      },
+      "writtenOn": "2018-07-27T09:38:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b7efe05_c493c022",
+      "range": {
+        "startLine": 179,
+        "startChar": 27,
+        "endLine": 179,
+        "endChar": 38
+      },
+      "revId": "2367e1dbc2a8aa1f2bc6425df431c3a0a9a46650",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5df9cf36_d85db043",
         "filename": "modules/congestion_controller/pcc/pcc_network_controller.h",
         "patchSetId": 1
@@ -160,6 +304,30 @@
       "revId": "2367e1dbc2a8aa1f2bc6425df431c3a0a9a46650",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da66a890_a63ed5bb",
+        "filename": "modules/congestion_controller/pcc/pcc_network_controller.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 7296
+      },
+      "writtenOn": "2018-07-27T09:38:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5df9cf36_d85db043",
+      "range": {
+        "startLine": 30,
+        "startChar": 6,
+        "endLine": 30,
+        "endChar": 26
+      },
+      "revId": "2367e1dbc2a8aa1f2bc6425df431c3a0a9a46650",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     },
     {
       "key": {
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "9e953a07_21665dc8",
+        "filename": "modules/congestion_controller/pcc/pcc_network_controller.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 7296
+      },
+      "writtenOn": "2018-07-27T09:38:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5202250_37490056",
+      "range": {
+        "startLine": 39,
+        "startChar": 22,
+        "endLine": 39,
+        "endChar": 44
+      },
+      "revId": "2367e1dbc2a8aa1f2bc6425df431c3a0a9a46650",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "02beadaf_b71fc88f",
         "filename": "modules/congestion_controller/pcc/pcc_network_controller.h",
         "patchSetId": 1
@@ -206,6 +398,30 @@
       "revId": "2367e1dbc2a8aa1f2bc6425df431c3a0a9a46650",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26231a8d_c5a8b808",
+        "filename": "modules/congestion_controller/pcc/pcc_network_controller.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 7296
+      },
+      "writtenOn": "2018-07-27T09:38:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02beadaf_b71fc88f",
+      "range": {
+        "startLine": 89,
+        "startChar": 2,
+        "endLine": 91,
+        "endChar": 48
+      },
+      "revId": "2367e1dbc2a8aa1f2bc6425df431c3a0a9a46650",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
