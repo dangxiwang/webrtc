@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "06776cfa_f5a7b990",
+        "filename": "video/rtp_video_stream_receiver.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 5524
+      },
+      "writtenOn": "2018-07-30T14:34:18Z",
+      "side": 1,
+      "message": "nit: {} with multi-line if",
+      "range": {
+        "startLine": 192,
+        "startChar": 25,
+        "endLine": 192,
+        "endChar": 0
+      },
+      "revId": "016fe6d24e50fccac0d0a4d877573fad2ad38c61",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
