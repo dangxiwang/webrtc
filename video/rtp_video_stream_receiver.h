@@ -18,6 +18,7 @@
 #include <vector>
 
 #include "call/rtp_packet_sink_interface.h"
+#include "call/syncable.h"
 #include "call/video_receive_stream.h"
 #include "modules/include/module_common_types.h"
 #include "modules/rtp_rtcp/include/receive_statistics.h"
@@ -78,11 +79,10 @@ class RtpVideoStreamReceiver : public RtpData,
   uint32_t GetRemoteSsrc() const;
   int GetCsrcs(uint32_t* csrcs) const;
 
-  RtpReceiver* GetRtpReceiver() const;
-  RtpRtcp* rtp_rtcp() const { return rtp_rtcp_.get(); }
-
   void StartReceive();
   void StopReceive();
+
+  absl::optional<Syncable::Info> GetSyncInfo() const;
 
   bool DeliverRtcp(const uint8_t* rtcp_packet, size_t rtcp_packet_length);
 

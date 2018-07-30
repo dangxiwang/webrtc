@@ -183,8 +183,22 @@ int RtpVideoStreamReceiver::GetCsrcs(uint32_t* csrcs) const {
   return rtp_receiver_->CSRCs(csrcs);
 }
 
-RtpReceiver* RtpVideoStreamReceiver::GetRtpReceiver() const {
-  return rtp_receiver_.get();
+absl::optional<Syncable::Info> RtpVideoStreamReceiver::GetSyncInfo() const {
+  Syncable::Info info;
+
+  if (!rtp_receiver_->GetLatestTimestamps(
+          &info.latest_received_capture_timestamp,
+          &info.latest_receive_time_ms))
+    return absl::nullopt;
+
+  if (rtp_rtcp_->RemoteNTP(&info.capture_time_ntp_secs,
+                           &info.capture_time_ntp_frac, nullptr, nullptr,
+                           &info.capture_time_source_clock) != 0) {
+    return absl::nullopt;
+  }
+
+  // Leaves info.current_delay_ms uninitialized.
+  return info;
 }
 
 int32_t RtpVideoStreamReceiver::OnReceivedPayloadData(
