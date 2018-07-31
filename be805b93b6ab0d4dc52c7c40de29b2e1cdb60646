@@ -1,0 +1,395 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5107948d_3f7024e8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-07-31T14:20:43Z",
+      "side": 1,
+      "message": "Line lengths (55 for title, 73 for message)",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 7
+      },
+      "revId": "be805b93b6ab0d4dc52c7c40de29b2e1cdb60646",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccf1438b_811b8d4d",
+        "filename": "modules/congestion_controller/pcc/bitrate_controller.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-07-31T14:20:43Z",
+      "side": 1,
+      "message": "rate or step size adjustments?",
+      "range": {
+        "startLine": 61,
+        "startChar": 36,
+        "endLine": 61,
+        "endChar": 40
+      },
+      "revId": "be805b93b6ab0d4dc52c7c40de29b2e1cdb60646",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "997a1d85_53f031aa",
+        "filename": "modules/congestion_controller/pcc/bitrate_controller.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-07-31T14:20:43Z",
+      "side": 1,
+      "message": "Suggestion: Split this into two methods, one for slow start mode and one for online mode. Removes the need for the comments and makes the code easier to follow here and at the call site.",
+      "range": {
+        "startLine": 110,
+        "startChar": 31,
+        "endLine": 110,
+        "endChar": 48
+      },
+      "revId": "be805b93b6ab0d4dc52c7c40de29b2e1cdb60646",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e951f486_580bcc15",
+        "filename": "modules/congestion_controller/pcc/bitrate_controller.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-07-31T14:20:43Z",
+      "side": 1,
+      "message": "Unless \u003cdouble\u003e is specified, kbps() will return a rounded integer.\n\nI suggest using .bps() and do calculations in bps. The kbps interface is more appropriate for use in tests and constants where it makes the constants easier to read.",
+      "range": {
+        "startLine": 128,
+        "startChar": 62,
+        "endLine": 128,
+        "endChar": 66
+      },
+      "revId": "be805b93b6ab0d4dc52c7c40de29b2e1cdb60646",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07f61ddd_3dcd4f68",
+        "filename": "modules/congestion_controller/pcc/bitrate_controller.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-07-31T14:20:43Z",
+      "side": 1,
+      "message": "Is this needed?",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 25
+      },
+      "revId": "be805b93b6ab0d4dc52c7c40de29b2e1cdb60646",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e444c9ed_c2c26e25",
+        "filename": "modules/congestion_controller/pcc/bitrate_controller.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-07-31T14:20:43Z",
+      "side": 1,
+      "message": "previous_utility_",
+      "range": {
+        "startLine": 62,
+        "startChar": 25,
+        "endLine": 62,
+        "endChar": 48
+      },
+      "revId": "be805b93b6ab0d4dc52c7c40de29b2e1cdb60646",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1dc476a_72e661fb",
+        "filename": "modules/congestion_controller/pcc/bitrate_controller_unittest.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-07-31T14:20:43Z",
+      "side": 1,
+      "message": "MonitorInterval?",
+      "range": {
+        "startLine": 40,
+        "startChar": 17,
+        "endLine": 40,
+        "endChar": 19
+      },
+      "revId": "be805b93b6ab0d4dc52c7c40de29b2e1cdb60646",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1ac99c2_a2526f71",
+        "filename": "modules/congestion_controller/pcc/bitrate_controller_unittest.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-07-31T14:20:43Z",
+      "side": 1,
+      "message": "*MonitorIntervalUtility[Value]",
+      "range": {
+        "startLine": 139,
+        "startChar": 25,
+        "endLine": 140,
+        "endChar": 39
+      },
+      "revId": "be805b93b6ab0d4dc52c7c40de29b2e1cdb60646",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c802670_63a5e447",
+        "filename": "modules/congestion_controller/pcc/pcc_network_controller.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-07-31T14:20:43Z",
+      "side": 1,
+      "message": "Replace comment with RTC_DCHECK_EQ(monitor_interval_length_strategy_, FIXED);",
+      "range": {
+        "startLine": 142,
+        "startChar": 14,
+        "endLine": 142,
+        "endChar": 59
+      },
+      "revId": "be805b93b6ab0d4dc52c7c40de29b2e1cdb60646",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f467e28_48181c72",
+        "filename": "modules/congestion_controller/pcc/pcc_network_controller.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-07-31T14:20:43Z",
+      "side": 1,
+      "message": "Replace comment with RTC_DCHECK_EQ(mode_, ONLINE_LEARNING);",
+      "range": {
+        "startLine": 153,
+        "startChar": 13,
+        "endLine": 153,
+        "endChar": 37
+      },
+      "revId": "be805b93b6ab0d4dc52c7c40de29b2e1cdb60646",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "138d2cab_61ccb731",
+        "filename": "modules/congestion_controller/pcc/pcc_network_controller.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-07-31T14:20:43Z",
+      "side": 1,
+      "message": "Since URLs risk becoming stale,use a classic paper reference here. Or just remove the URL, the description above is probably enough to be able to find it.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 0
+      },
+      "revId": "be805b93b6ab0d4dc52c7c40de29b2e1cdb60646",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d623e30a_549968b5",
+        "filename": "modules/congestion_controller/pcc/pcc_network_controller.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-07-31T14:20:43Z",
+      "side": 1,
+      "message": "I recommend using enum class to reduce the risk of name collisions from the constants.",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 11
+      },
+      "revId": "be805b93b6ab0d4dc52c7c40de29b2e1cdb60646",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34b70808_e5216e69",
+        "filename": "modules/congestion_controller/pcc/pcc_network_controller.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-07-31T14:20:43Z",
+      "side": 1,
+      "message": "PCC",
+      "range": {
+        "startLine": 37,
+        "startChar": 27,
+        "endLine": 37,
+        "endChar": 30
+      },
+      "revId": "be805b93b6ab0d4dc52c7c40de29b2e1cdb60646",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06d7b839_3ff8b6b4",
+        "filename": "modules/congestion_controller/pcc/pcc_network_controller.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-07-31T14:20:43Z",
+      "side": 1,
+      "message": "nit: Avoid introducing abbreviations, write out monitor interval.",
+      "range": {
+        "startLine": 37,
+        "startChar": 57,
+        "endLine": 37,
+        "endChar": 59
+      },
+      "revId": "be805b93b6ab0d4dc52c7c40de29b2e1cdb60646",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "505ccfe1_3d027221",
+        "filename": "modules/congestion_controller/pcc/pcc_network_controller.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-07-31T14:20:43Z",
+      "side": 1,
+      "message": "Prefer kSlowStart naming standard for enum values in new code. https://google.github.io/styleguide/cppguide.html#Enumerator_Names",
+      "range": {
+        "startLine": 38,
+        "startChar": 4,
+        "endLine": 38,
+        "endChar": 14
+      },
+      "revId": "be805b93b6ab0d4dc52c7c40de29b2e1cdb60646",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4431c8fc_4057544a",
+        "filename": "modules/congestion_controller/pcc/pcc_network_controller.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-07-31T14:20:43Z",
+      "side": 1,
+      "message": "measurements are unreliable and we need",
+      "range": {
+        "startLine": 43,
+        "startChar": 22,
+        "endLine": 43,
+        "endChar": 54
+      },
+      "revId": "be805b93b6ab0d4dc52c7c40de29b2e1cdb60646",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9abcd12_80f9d5f4",
+        "filename": "modules/congestion_controller/pcc/pcc_network_controller.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-07-31T14:20:43Z",
+      "side": 1,
+      "message": "enum class to reduce the risk of name collisions from the constants.",
+      "range": {
+        "startLine": 47,
+        "startChar": 2,
+        "endLine": 47,
+        "endChar": 7
+      },
+      "revId": "be805b93b6ab0d4dc52c7c40de29b2e1cdb60646",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
