@@ -1,0 +1,372 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "35fbfdc7_8adf6871",
+        "filename": "modules/congestion_controller/pcc/bitrate_controller.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-08-10T08:57:42Z",
+      "side": 1,
+      "message": "nit: Call the other constructor instead. (makes it easier to see that there are no differences other than the utility function)",
+      "range": {
+        "startLine": 35,
+        "startChar": 6,
+        "endLine": 46,
+        "endChar": 59
+      },
+      "revId": "46dd9575b8fd884b932de36e7aae63128344f55a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bb837c5_37866a0e",
+        "filename": "modules/congestion_controller/pcc/bitrate_controller.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-08-10T08:57:42Z",
+      "side": 1,
+      "message": "Since bandwidth_estimate is only used as fallback. I suggest making this function return \nabsl::optional\u003cDataRate\u003e and not and not accept bandwidth_estimate as parameter. Doing the fallback at the callsite.",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 33
+      },
+      "revId": "46dd9575b8fd884b932de36e7aae63128344f55a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45b826f7_75c769d6",
+        "filename": "modules/congestion_controller/pcc/bitrate_controller.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-08-10T08:57:42Z",
+      "side": 1,
+      "message": "utility_value",
+      "range": {
+        "startLine": 115,
+        "startChar": 9,
+        "endLine": 115,
+        "endChar": 23
+      },
+      "revId": "46dd9575b8fd884b932de36e7aae63128344f55a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f42a7bc3_a7ea46db",
+        "filename": "modules/congestion_controller/pcc/bitrate_controller.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-08-10T08:57:42Z",
+      "side": 1,
+      "message": "Suggestion:\n\nif (!previous_utility_.has_value() || function_value \u003e previous_utility_ ) {\n\nOr even:\nif (previous_utility_ \u0026\u0026 function_value \u003c\u003d previous_utility_ ){\n  return bandwith_estimate;\n} else {\n  previous_utility_ \u003d function_value;\n  return monitor_interval.GetTargetSendingRate();\n}",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 43
+      },
+      "revId": "46dd9575b8fd884b932de36e7aae63128344f55a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c47593bf_99291985",
+        "filename": "modules/congestion_controller/pcc/bitrate_controller.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-08-10T08:57:42Z",
+      "side": 1,
+      "message": "nit: blocks",
+      "range": {
+        "startLine": 129,
+        "startChar": 43,
+        "endLine": 129,
+        "endChar": 48
+      },
+      "revId": "46dd9575b8fd884b932de36e7aae63128344f55a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61bce379_27f0302c",
+        "filename": "modules/congestion_controller/pcc/bitrate_controller.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-08-10T08:57:42Z",
+      "side": 1,
+      "message": "nit: utility",
+      "range": {
+        "startLine": 131,
+        "startChar": 15,
+        "endLine": 131,
+        "endChar": 20
+      },
+      "revId": "46dd9575b8fd884b932de36e7aae63128344f55a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a448586_7e50b81e",
+        "filename": "modules/congestion_controller/pcc/bitrate_controller.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-08-10T08:57:42Z",
+      "side": 1,
+      "message": "Can also be written as std::max(0.0, ...",
+      "range": {
+        "startLine": 141,
+        "startChar": 14,
+        "endLine": 141,
+        "endChar": 24
+      },
+      "revId": "46dd9575b8fd884b932de36e7aae63128344f55a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bf5f1fb_c796acaa",
+        "filename": "modules/congestion_controller/pcc/bitrate_controller.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-08-10T08:57:42Z",
+      "side": 1,
+      "message": "If any of these can be made const, make them const.",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 0
+      },
+      "revId": "46dd9575b8fd884b932de36e7aae63128344f55a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9acb7d64_f25f4a89",
+        "filename": "modules/congestion_controller/pcc/bitrate_controller_unittest.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-08-10T08:57:42Z",
+      "side": 1,
+      "message": "Comparison is implemented for DataRates, should not need conversion to bps() here.",
+      "range": {
+        "startLine": 105,
+        "startChar": 16,
+        "endLine": 105,
+        "endChar": 22
+      },
+      "revId": "46dd9575b8fd884b932de36e7aae63128344f55a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "057c6455_4bbd26e1",
+        "filename": "modules/congestion_controller/pcc/pcc_network_controller.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-08-10T08:57:42Z",
+      "side": 1,
+      "message": "This seems surprising based on the function name. Maybe the initial and mode toggles in this function could be moved to the call site? (making this function const in the process)\n\nOtherwise, update the name to indicate that it updates the mode to both enter and leave double check mode.\n\nIn general it\u0027s a good idea to separate side effects and return value as much as possible. It makes it easier to follow code since you don\u0027t have to read every called function to see if it changes something.",
+      "range": {
+        "startLine": 253,
+        "startChar": 1,
+        "endLine": 254,
+        "endChar": 29
+      },
+      "revId": "46dd9575b8fd884b932de36e7aae63128344f55a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fc3aeca_9b217c4b",
+        "filename": "modules/congestion_controller/pcc/pcc_network_controller.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-08-10T08:57:42Z",
+      "side": 1,
+      "message": "UpdateSendingRateAndMode or refactor.",
+      "range": {
+        "startLine": 270,
+        "startChar": 27,
+        "endLine": 270,
+        "endChar": 44
+      },
+      "revId": "46dd9575b8fd884b932de36e7aae63128344f55a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "039441d8_2853b55b",
+        "filename": "modules/congestion_controller/pcc/pcc_network_controller.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-08-10T08:57:42Z",
+      "side": 1,
+      "message": "With suggested change ob bitrate controller class this becomes:\n        bandwidth_estimate_ \u003d bitrate_controller_.ComputeRateUpdateForOnlineLearningMode(monitor_intervals_).value_or(bandwidth_estimate_);",
+      "range": {
+        "startLine": 283,
+        "startChar": 9,
+        "endLine": 284,
+        "endChar": 52
+      },
+      "revId": "46dd9575b8fd884b932de36e7aae63128344f55a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c54ff789_679a3930",
+        "filename": "modules/congestion_controller/pcc/pcc_network_controller.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-08-10T08:57:42Z",
+      "side": 1,
+      "message": "Should these be done repeatedly? Otherwise, move to constructor.",
+      "range": {
+        "startLine": 300,
+        "startChar": 0,
+        "endLine": 305,
+        "endChar": 35
+      },
+      "revId": "46dd9575b8fd884b932de36e7aae63128344f55a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35585a16_aded3ed2",
+        "filename": "modules/congestion_controller/pcc/pcc_network_controller.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-08-10T08:57:42Z",
+      "side": 1,
+      "message": "I don\u0027t understand this comment.",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 16
+      },
+      "revId": "46dd9575b8fd884b932de36e7aae63128344f55a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9159e2ca_671b8375",
+        "filename": "modules/congestion_controller/pcc/pcc_network_controller.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-08-10T08:57:42Z",
+      "side": 1,
+      "message": "Make any variables that are constant const.",
+      "range": {
+        "startLine": 98,
+        "startChar": 2,
+        "endLine": 98,
+        "endChar": 37
+      },
+      "revId": "46dd9575b8fd884b932de36e7aae63128344f55a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55e2667d_e21a6d00",
+        "filename": "modules/congestion_controller/pcc/pcc_network_controller.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-08-10T08:57:42Z",
+      "side": 1,
+      "message": "monitor_interval",
+      "range": {
+        "startLine": 106,
+        "startChar": 27,
+        "endLine": 106,
+        "endChar": 29
+      },
+      "revId": "46dd9575b8fd884b932de36e7aae63128344f55a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
