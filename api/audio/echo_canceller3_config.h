@@ -166,6 +166,8 @@ struct EchoCanceller3Config {
     };
     MaskingThresholds mask_lf = {.2f, .3f, .3f};
     MaskingThresholds mask_hf = {.07f, .1f, .3f};
+    bool pass_linear_filter_output = false;
+    bool pass_higher_bands = false;
   } suppressor;
 };
 }  // namespace webrtc
