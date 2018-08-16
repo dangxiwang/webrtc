@@ -295,6 +295,8 @@ EchoCanceller3Config ParseAec3Parameters(const std::string& filename) {
               &cfg.echo_removal_control.has_clock_drift);
     ReadParam(section, "linear_and_stable_echo_path",
               &cfg.echo_removal_control.linear_and_stable_echo_path);
+    ReadParam(section, "use_linear_filter",
+              &cfg.echo_removal_control.use_linear_filter);
   }
 
   if (rtc::GetValueFromJsonObject(root, "echo_model", &section)) {
@@ -325,6 +327,10 @@ EchoCanceller3Config ParseAec3Parameters(const std::string& filename) {
               &cfg.suppressor.nearend_average_blocks);
     ReadParam(section, "mask_lf", &cfg.suppressor.mask_lf);
     ReadParam(section, "mask_hf", &cfg.suppressor.mask_hf);
+    ReadParam(section, "enforce_transparent",
+              &cfg.suppressor.enforce_transparent);
+    ReadParam(section, "enforce_empty_higher_bands",
+              &cfg.suppressor.enforce_empty_higher_bands);
   }
 
   std::cout << std::endl;

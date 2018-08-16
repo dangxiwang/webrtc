@@ -137,6 +137,7 @@ struct EchoCanceller3Config {
     } gain_rampup;
     bool has_clock_drift = false;
     bool linear_and_stable_echo_path = false;
+    bool use_linear_filter = true;
   } echo_removal_control;
 
   struct EchoModel {
@@ -166,6 +167,8 @@ struct EchoCanceller3Config {
     };
     MaskingThresholds mask_lf = {.2f, .3f, .3f};
     MaskingThresholds mask_hf = {.07f, .1f, .3f};
+    bool enforce_transparent = false;
+    bool enforce_empty_higher_bands = false;
   } suppressor;
 };
 }  // namespace webrtc

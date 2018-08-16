@@ -337,6 +337,11 @@ void AecState::Update(
   use_linear_filter_output_ = usable_linear_estimate_ && !TransparentMode();
   diverged_linear_filter_ = diverged_filter;
 
+  if (!config_.echo_removal_control.use_linear_filter) {
+    use_linear_filter_output_ = false;
+    usable_linear_estimate_ = false;
+  }
+
   const bool stationary_block =
       use_stationary_properties_ && echo_audibility_.IsBlockStationary();
 
