@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "facbcd62_fea7fb75",
+        "filename": "modules/congestion_controller/pcc/bitrate_controller.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 5150
+      },
+      "writtenOn": "2018-08-17T20:56:37Z",
+      "side": 1,
+      "message": "nit: End with period.",
+      "range": {
+        "startLine": 70,
+        "startChar": 24,
+        "endLine": 70,
+        "endChar": 33
+      },
+      "revId": "180a7dc32106c64eeb4d4a6c05881e694ea572a6",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f075bf15_5bef3bc6",
+        "filename": "modules/congestion_controller/pcc/bitrate_controller.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 5150
+      },
+      "writtenOn": "2018-08-17T20:56:37Z",
+      "side": 1,
+      "message": "nit: rename to consecutive_boundary_adjustments_number_ to emphasize the difference from step_size_adjustments_number_?",
+      "range": {
+        "startLine": 86,
+        "startChar": 4,
+        "endLine": 86,
+        "endChar": 40
+      },
+      "revId": "180a7dc32106c64eeb4d4a6c05881e694ea572a6",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2606832e_b23ab062",
+        "filename": "modules/congestion_controller/pcc/bitrate_controller.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 5150
+      },
+      "writtenOn": "2018-08-17T20:56:37Z",
+      "side": 1,
+      "message": "Maybe a comment along the lines of:\n\"Rate change smaller than boundary. Reset boundary to the smallest possible that would allow the change.\"",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 39
+      },
+      "revId": "180a7dc32106c64eeb4d4a6c05881e694ea572a6",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c77054d_b008e71e",
+        "filename": "modules/congestion_controller/pcc/bitrate_controller_unittest.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 5150
+      },
+      "writtenOn": "2018-08-17T20:56:37Z",
+      "side": 1,
+      "message": "nit: s/Block/block or s/Block/interval ?\nSame below.",
+      "range": {
+        "startLine": 123,
+        "startChar": 52,
+        "endLine": 123,
+        "endChar": 57
+      },
+      "revId": "180a7dc32106c64eeb4d4a6c05881e694ea572a6",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fec90a7_2211addf",
+        "filename": "modules/congestion_controller/pcc/bitrate_controller_unittest.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 5150
+      },
+      "writtenOn": "2018-08-17T20:56:37Z",
+      "side": 1,
+      "message": "nit: moving?",
+      "range": {
+        "startLine": 279,
+        "startChar": 15,
+        "endLine": 279,
+        "endChar": 21
+      },
+      "revId": "180a7dc32106c64eeb4d4a6c05881e694ea572a6",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6db21e1e_b1fb4967",
+        "filename": "modules/congestion_controller/pcc/pcc_network_controller.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5150
+      },
+      "writtenOn": "2018-08-17T20:56:37Z",
+      "side": 1,
+      "message": "You don\u0027t need to include headers in the .cc file if the same header has to be included in the .h file.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 28
+      },
+      "revId": "180a7dc32106c64eeb4d4a6c05881e694ea572a6",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc9d4dc8_ea46a055",
+        "filename": "modules/congestion_controller/pcc/pcc_network_controller.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 5150
+      },
+      "writtenOn": "2018-08-17T20:56:37Z",
+      "side": 1,
+      "message": "nit: kStartupDuration?",
+      "range": {
+        "startLine": 128,
+        "startChar": 34,
+        "endLine": 128,
+        "endChar": 50
+      },
+      "revId": "180a7dc32106c64eeb4d4a6c05881e694ea572a6",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45b6036e_78386f15",
+        "filename": "modules/congestion_controller/pcc/pcc_network_controller.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 5150
+      },
+      "writtenOn": "2018-08-17T20:56:37Z",
+      "side": 1,
+      "message": "nit: Add comment \"Start new monitor interval\".",
+      "range": {
+        "startLine": 142,
+        "startChar": 71,
+        "endLine": 142,
+        "endChar": 0
+      },
+      "revId": "180a7dc32106c64eeb4d4a6c05881e694ea572a6",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d69d18a5_f35f5b5f",
+        "filename": "modules/congestion_controller/pcc/pcc_network_controller.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 5150
+      },
+      "writtenOn": "2018-08-17T20:56:37Z",
+      "side": 1,
+      "message": "nit: receiving_rate",
+      "range": {
+        "startLine": 156,
+        "startChar": 13,
+        "endLine": 156,
+        "endChar": 26
+      },
+      "revId": "180a7dc32106c64eeb4d4a6c05881e694ea572a6",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a20db7a_1d4c970c",
+        "filename": "modules/congestion_controller/pcc/pcc_network_controller.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 5150
+      },
+      "writtenOn": "2018-08-17T20:56:37Z",
+      "side": 1,
+      "message": "nit: receiving_rate",
+      "range": {
+        "startLine": 174,
+        "startChar": 13,
+        "endLine": 174,
+        "endChar": 26
+      },
+      "revId": "180a7dc32106c64eeb4d4a6c05881e694ea572a6",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ef937a2_932f566a",
+        "filename": "modules/congestion_controller/pcc/pcc_network_controller.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 5150
+      },
+      "writtenOn": "2018-08-17T20:56:37Z",
+      "side": 1,
+      "message": "nit: s/special/predefined",
+      "range": {
+        "startLine": 53,
+        "startChar": 7,
+        "endLine": 53,
+        "endChar": 14
+      },
+      "revId": "180a7dc32106c64eeb4d4a6c05881e694ea572a6",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
