@@ -78,8 +78,81 @@ TEST(PccVivaceUtilityFunctionTest,
                        std::pow(kSendingBitrate.bps(), kThroughputPower));
 }
 
+TEST(PccVivaceUtilityFunctionTest, DelayGradientIsZeroIfNoChangeInPacketDelay) {
+  VivaceUtilityFunction utility_function(
+      kDelayGradientCoefficient, 0, kThroughputCoefficient, kThroughputPower, 0,
+      kDelayGradientNegativeBound);
+  PccMonitorInterval monitor_interval(kSendingBitrate, kStartTime,
+                                      kIntervalDuration);
+  monitor_interval.OnPacketsFeedback(CreatePacketResults(
+      {kStartTime + kPacketsDelta, kStartTime + 2 * kPacketsDelta,
+       kStartTime + 3 * kPacketsDelta, kStartTime + 2 * kIntervalDuration},
+      {kStartTime + kDefaultDelay, Timestamp::Infinity(),
+       kStartTime + kDefaultDelay + 2 * kPacketsDelta, Timestamp::Infinity()},
+      {kDefaultDataSize, kDefaultDataSize, kDefaultDataSize,
+       kDefaultDataSize}));
+  // Delay gradient should be zero, because both received packets have the
+  // same one way delay.
+  EXPECT_DOUBLE_EQ(utility_function.Compute(monitor_interval),
+                   kThroughputCoefficient *
+                       std::pow(kSendingBitrate.bps(), kThroughputPower));
+}
+
 TEST(PccVivaceUtilityFunctionTest,
-     LossTermIsNonZeroIfLossCoefficientIsNonZero) {
+     DelayGradientIsZeroWhenOnePacketSentInMonitorInterval) {
+  VivaceUtilityFunction utility_function(
+      kDelayGradientCoefficient, 0, kThroughputCoefficient, kThroughputPower, 0,
+      kDelayGradientNegativeBound);
+  PccMonitorInterval monitor_interval(kSendingBitrate, kStartTime,
+                                      kIntervalDuration);
+  monitor_interval.OnPacketsFeedback(CreatePacketResults(
+      {kStartTime + kPacketsDelta, kStartTime + 2 * kIntervalDuration},
+      {kStartTime + kDefaultDelay, kStartTime + 3 * kIntervalDuration}, {}));
+  // Only one received packet belongs to the monitor_interval, delay gradient
+  // should be zero in this case.
+  EXPECT_DOUBLE_EQ(utility_function.Compute(monitor_interval),
+                   kThroughputCoefficient *
+                       std::pow(kSendingBitrate.bps(), kThroughputPower));
+}
+
+TEST(PccVivaceUtilityFunctionTest, DelayGradientIsOne) {
+  VivaceUtilityFunction utility_function(
+      kDelayGradientCoefficient, 0, kThroughputCoefficient, kThroughputPower, 0,
+      kDelayGradientNegativeBound);
+  PccMonitorInterval monitor_interval(kSendingBitrate, kStartTime,
+                                      kIntervalDuration);
+  monitor_interval.OnPacketsFeedback(CreatePacketResults(
+      {kStartTime + kPacketsDelta, kStartTime + 2 * kPacketsDelta,
+       kStartTime + 3 * kPacketsDelta, kStartTime + 3 * kIntervalDuration},
+      {kStartTime + kDefaultDelay, Timestamp::Infinity(),
+       kStartTime + 4 * kPacketsDelta + kDefaultDelay,
+       kStartTime + 3 * kIntervalDuration},
+      {}));
+  EXPECT_DOUBLE_EQ(utility_function.Compute(monitor_interval),
+                   kThroughputCoefficient *
+                           std::pow(kSendingBitrate.bps(), kThroughputPower) -
+                       kDelayGradientCoefficient * kSendingBitrate.bps());
+}
+
+TEST(PccVivaceUtilityFunctionTest, DelayGradientIsMinusOne) {
+  VivaceUtilityFunction utility_function(
+      kDelayGradientCoefficient, 0, kThroughputCoefficient, kThroughputPower, 0,
+      kDelayGradientNegativeBound);
+  PccMonitorInterval monitor_interval(kSendingBitrate, kStartTime,
+                                      kIntervalDuration);
+  monitor_interval.OnPacketsFeedback(CreatePacketResults(
+      {kStartTime + kPacketsDelta, kStartTime + 2 * kPacketsDelta,
+       kStartTime + 5 * kPacketsDelta, kStartTime + 2 * kIntervalDuration},
+      {kStartTime + kDefaultDelay, Timestamp::Infinity(),
+       kStartTime + kDefaultDelay, kStartTime + 3 * kIntervalDuration},
+      {}));
+  EXPECT_DOUBLE_EQ(utility_function.Compute(monitor_interval),
+                   kThroughputCoefficient *
+                           std::pow(kSendingBitrate.bps(), kThroughputPower) +
+                       kDelayGradientCoefficient * kSendingBitrate.bps());
+}
+
+TEST(PccVivaceUtilityFunctionTest, LosTermIsNonZeroIfLossCoefficientIsNonZero) {
   VivaceUtilityFunction utility_function(
       0, kLossCoefficient, kThroughputCoefficient, kThroughputPower, 0,
       kDelayGradientNegativeBound);
@@ -92,6 +165,51 @@ TEST(PccVivaceUtilityFunctionTest,
        kStartTime + kDefaultDelay, kStartTime + 3 * kIntervalDuration},
       {}));
   // The second packet was lost.
+  EXPECT_DOUBLE_EQ(utility_function.Compute(monitor_interval),
+                   kThroughputCoefficient *
+                           std::pow(kSendingBitrate.bps(), kThroughputPower) -
+                       kLossCoefficient * kSendingBitrate.bps() *
+                           monitor_interval.GetLossRate());
+}
+
+TEST(PccVivaceUtilityFunctionTest,
+     DelayGradientIsZeroIfItSmallerWhenGradientThreshold) {
+  VivaceUtilityFunction utility_function(
+      kDelayGradientCoefficient, kLossCoefficient, kThroughputCoefficient,
+      kThroughputPower, kDelayGradientThreshold, kDelayGradientNegativeBound);
+  PccMonitorInterval monitor_interval(kSendingBitrate, kStartTime,
+                                      kIntervalDuration);
+  monitor_interval.OnPacketsFeedback(CreatePacketResults(
+      {kStartTime + kPacketsDelta, kStartTime + kPacketsDelta,
+       kStartTime + 102 * kPacketsDelta, kStartTime + 2 * kIntervalDuration},
+      {kStartTime + kDefaultDelay, Timestamp::Infinity(),
+       kStartTime + kDefaultDelay + kPacketsDelta,
+       kStartTime + 3 * kIntervalDuration},
+      {}));
+  // Delay gradient is less than 0.01 hence should be treated as zero.
+  EXPECT_DOUBLE_EQ(utility_function.Compute(monitor_interval),
+                   kThroughputCoefficient *
+                           std::pow(kSendingBitrate.bps(), kThroughputPower) -
+                       kLossCoefficient * kSendingBitrate.bps() *
+                           monitor_interval.GetLossRate());
+}
+
+TEST(PccVivaceUtilityFunctionTest,
+     DelayGradientIsZeroWhenAllPacketsSentAtTheSameTime) {
+  VivaceUtilityFunction utility_function(
+      kDelayGradientCoefficient, kLossCoefficient, kThroughputCoefficient,
+      kThroughputPower, kDelayGradientThreshold, kDelayGradientNegativeBound);
+  PccMonitorInterval monitor_interval(kSendingBitrate, kStartTime,
+                                      kIntervalDuration);
+  monitor_interval.OnPacketsFeedback(CreatePacketResults(
+      {kStartTime + kPacketsDelta, kStartTime + kPacketsDelta,
+       kStartTime + kPacketsDelta, kStartTime + 2 * kIntervalDuration},
+      {kStartTime + kDefaultDelay, Timestamp::Infinity(),
+       kStartTime + kDefaultDelay + kPacketsDelta,
+       kStartTime + 3 * kIntervalDuration},
+      {}));
+  // If all packets were sent at the same time, then delay gradient should be
+  // zero.
   EXPECT_DOUBLE_EQ(utility_function.Compute(monitor_interval),
                    kThroughputCoefficient *
                            std::pow(kSendingBitrate.bps(), kThroughputPower) -
