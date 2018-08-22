@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "524e2d99_803fd819",
+        "filename": "webrtc.gni",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 5087
+      },
+      "writtenOn": "2018-08-22T08:12:03Z",
+      "side": 1,
+      "message": "In the previous CL (https://webrtc-review.googlesource.com/c/src/+/95105) I\u0027ve set the wrong default.",
+      "range": {
+        "startLine": 50,
+        "startChar": 4,
+        "endLine": 50,
+        "endChar": 43
+      },
+      "revId": "5917edb855c4d2b892449974dd11bb712f273abf",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    }
+  ]
+}
