@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "785c538f_7b511b5d",
+        "filename": "modules/video_coding/codecs/test/videocodec_test_fixture_impl.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 5023
+      },
+      "writtenOn": "2018-08-23T14:29:54Z",
+      "side": 1,
+      "message": "I think we should remove this, and put the burden on the test cases themselves. When this was written, we had full control of the Android encoder and we knew that it was pipelining. But now when we have injectable encoder factories in the test, we shouldn\u0027t make the same assumption. Would you mind updating our android tests for this?",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 6
+      },
+      "revId": "e7bdfbf131e1415ff1bd0a94e94b0dbfd0701b3d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
