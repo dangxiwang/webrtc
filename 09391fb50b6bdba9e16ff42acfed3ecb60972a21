@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "81b469ca_d5592ffd",
+        "filename": "modules/video_coding/codecs/test/videocodec_test_fixture_impl.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 5520
+      },
+      "writtenOn": "2018-08-24T11:14:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0477ac7f_01fbcb93",
+      "range": {
+        "startLine": 301,
+        "startChar": 0,
+        "endLine": 303,
+        "endChar": 1
+      },
+      "revId": "09391fb50b6bdba9e16ff42acfed3ecb60972a21",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b730f90d_5537a7ce",
         "filename": "modules/video_coding/codecs/test/videocodec_test_fixture_impl.cc",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "09391fb50b6bdba9e16ff42acfed3ecb60972a21",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ade7ed57_9b43f71b",
+        "filename": "modules/video_coding/codecs/test/videocodec_test_fixture_impl.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 5520
+      },
+      "writtenOn": "2018-08-24T11:14:50Z",
+      "side": 1,
+      "message": "Makes sense to me to just always sleep.\n\nSince some pipelining is allowed in the test even when not running realtime we probably always want to give the codecs a chance to finish.",
+      "parentUuid": "b730f90d_5537a7ce",
+      "range": {
+        "startLine": 458,
+        "startChar": 2,
+        "endLine": 458,
+        "endChar": 31
+      },
+      "revId": "09391fb50b6bdba9e16ff42acfed3ecb60972a21",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
