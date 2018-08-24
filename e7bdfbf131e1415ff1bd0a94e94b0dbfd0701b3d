@@ -22,6 +22,30 @@
       "revId": "e7bdfbf131e1415ff1bd0a94e94b0dbfd0701b3d",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d678aa4c_64f39eed",
+        "filename": "modules/video_coding/codecs/test/videocodec_test_fixture_impl.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 5520
+      },
+      "writtenOn": "2018-08-24T09:06:34Z",
+      "side": 1,
+      "message": "Agree that that is a better way to do this. Fixed!",
+      "parentUuid": "785c538f_7b511b5d",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 6
+      },
+      "revId": "e7bdfbf131e1415ff1bd0a94e94b0dbfd0701b3d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
