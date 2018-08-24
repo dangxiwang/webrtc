@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0477ac7f_01fbcb93",
+        "filename": "modules/video_coding/codecs/test/videocodec_test_fixture_impl.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 5023
+      },
+      "writtenOn": "2018-08-24T09:16:02Z",
+      "side": 1,
+      "message": "Let\u0027s remove this...",
+      "range": {
+        "startLine": 301,
+        "startChar": 0,
+        "endLine": 303,
+        "endChar": 1
+      },
+      "revId": "09391fb50b6bdba9e16ff42acfed3ecb60972a21",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b730f90d_5537a7ce",
+        "filename": "modules/video_coding/codecs/test/videocodec_test_fixture_impl.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 5023
+      },
+      "writtenOn": "2018-08-24T09:16:02Z",
+      "side": 1,
+      "message": "... and sleep here when we run in real-time. Or always sleep maybe, I\u0027m not sure what is best.",
+      "range": {
+        "startLine": 458,
+        "startChar": 2,
+        "endLine": 458,
+        "endChar": 31
+      },
+      "revId": "09391fb50b6bdba9e16ff42acfed3ecb60972a21",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
