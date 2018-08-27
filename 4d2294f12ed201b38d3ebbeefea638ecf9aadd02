@@ -16,6 +16,24 @@
       "revId": "4d2294f12ed201b38d3ebbeefea638ecf9aadd02",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45046dda_564d0f4c",
+        "filename": "api/test/videocodec_test_fixture.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 5520
+      },
+      "writtenOn": "2018-08-27T13:28:32Z",
+      "side": 1,
+      "message": "Real-time here means \"as if being captured by a running camera at 30 fps\". That is, pretending that we don\u0027t have all the frames beforehand and that they are arriving in real-time from a camera.\n\nDoes that clarify things?",
+      "parentUuid": "8d24e36a_9a4db21a",
+      "revId": "4d2294f12ed201b38d3ebbeefea638ecf9aadd02",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
     }
   ]
 }
