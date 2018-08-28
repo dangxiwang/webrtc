@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "20ac3f30_e6bbdea1",
+        "filename": "api/crypto/framecryptoparams.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 6930
+      },
+      "writtenOn": "2018-08-28T22:16:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ceec25aa_5bfdfc22",
+      "revId": "3a8a1cb2ab9ebc8a91fcd7d94368fa3961ed8b96",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e848f801_2bed7c09",
         "filename": "api/crypto/framecryptoparams.h",
         "patchSetId": 5
@@ -33,6 +51,24 @@
       "revId": "3a8a1cb2ab9ebc8a91fcd7d94368fa3961ed8b96",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3da224e_393a1e07",
+        "filename": "api/crypto/framecryptoparams.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 6930
+      },
+      "writtenOn": "2018-08-28T22:16:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e848f801_2bed7c09",
+      "revId": "3a8a1cb2ab9ebc8a91fcd7d94368fa3961ed8b96",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     },
     {
       "key": {
@@ -70,6 +106,24 @@
     },
     {
       "key": {
+        "uuid": "67650e52_7bc095d3",
+        "filename": "api/crypto/framecryptoparams.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 6930
+      },
+      "writtenOn": "2018-08-28T22:16:21Z",
+      "side": 1,
+      "message": "No because clients can implement any encryption they want.",
+      "parentUuid": "c562c757_4ff14bf5",
+      "revId": "3a8a1cb2ab9ebc8a91fcd7d94368fa3961ed8b96",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1bfe3176_00c822d2",
         "filename": "api/crypto/framedecryptorinterface.h",
         "patchSetId": 5
@@ -84,6 +138,24 @@
       "revId": "3a8a1cb2ab9ebc8a91fcd7d94368fa3961ed8b96",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f183895d_4a48593d",
+        "filename": "api/crypto/framedecryptorinterface.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 6930
+      },
+      "writtenOn": "2018-08-28T22:16:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1bfe3176_00c822d2",
+      "revId": "3a8a1cb2ab9ebc8a91fcd7d94368fa3961ed8b96",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     },
     {
       "key": {
@@ -110,6 +182,30 @@
     },
     {
       "key": {
+        "uuid": "adb9a4e4_6cb21da3",
+        "filename": "api/crypto/framedecryptorinterface.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 6930
+      },
+      "writtenOn": "2018-08-28T22:16:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfd8d775_cc63ccef",
+      "range": {
+        "startLine": 21,
+        "startChar": 35,
+        "endLine": 21,
+        "endChar": 41
+      },
+      "revId": "3a8a1cb2ab9ebc8a91fcd7d94368fa3961ed8b96",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0e21e73_e999c2f4",
         "filename": "api/crypto/framedecryptorinterface.h",
         "patchSetId": 5
@@ -124,6 +220,24 @@
       "revId": "3a8a1cb2ab9ebc8a91fcd7d94368fa3961ed8b96",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc96041b_07242674",
+        "filename": "api/crypto/framedecryptorinterface.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 6930
+      },
+      "writtenOn": "2018-08-28T22:16:21Z",
+      "side": 1,
+      "message": "It is useful for some test stuff.",
+      "parentUuid": "b0e21e73_e999c2f4",
+      "revId": "3a8a1cb2ab9ebc8a91fcd7d94368fa3961ed8b96",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     },
     {
       "key": {
@@ -147,6 +261,30 @@
       "revId": "3a8a1cb2ab9ebc8a91fcd7d94368fa3961ed8b96",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39e89fae_00599e71",
+        "filename": "api/crypto/frameencryptorinterface.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 6930
+      },
+      "writtenOn": "2018-08-28T22:16:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d27987d7_23dabd48",
+      "range": {
+        "startLine": 21,
+        "startChar": 42,
+        "endLine": 21,
+        "endChar": 48
+      },
+      "revId": "3a8a1cb2ab9ebc8a91fcd7d94368fa3961ed8b96",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
