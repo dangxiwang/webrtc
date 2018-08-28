@@ -99,6 +99,7 @@ rtc_static_library("libjingle_peerconnection_api") {
     ":array_view",
     ":audio_options_api",
     ":callfactory_api",
+    ":crypto_api",
     ":fec_controller_api",
     ":libjingle_logging_api",
     ":rtc_stats_api",
@@ -238,6 +239,20 @@ rtc_source_set("audio_options_api") {
   deps = [
     "../rtc_base:rtc_base_approved",
     "//third_party/abseil-cpp/absl/types:optional",
+  ]
+}
+
+rtc_source_set("crypto_api") {
+  visibility = [ "*" ]
+  sources = [
+    "crypto/framecryptoparams.cc",
+    "crypto/framecryptoparams.h",
+    "crypto/framedecryptorinterface.h",
+    "crypto/frameencryptorinterface.h",
+  ]
+  deps = [
+    "../rtc_base:rtc_base_approved",
+    "//api:array_view",
   ]
 }
 
