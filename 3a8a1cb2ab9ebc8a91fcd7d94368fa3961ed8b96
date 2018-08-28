@@ -1,0 +1,152 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ceec25aa_5bfdfc22",
+        "filename": "api/crypto/framecryptoparams.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5039
+      },
+      "writtenOn": "2018-08-28T21:53:34Z",
+      "side": 1,
+      "message": "nit: newline between these",
+      "revId": "3a8a1cb2ab9ebc8a91fcd7d94368fa3961ed8b96",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e848f801_2bed7c09",
+        "filename": "api/crypto/framecryptoparams.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5039
+      },
+      "writtenOn": "2018-08-28T21:53:34Z",
+      "side": 1,
+      "message": "nit: newline between these",
+      "revId": "3a8a1cb2ab9ebc8a91fcd7d94368fa3961ed8b96",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e2d8662_661663c1",
+        "filename": "api/crypto/framecryptoparams.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5039
+      },
+      "writtenOn": "2018-08-28T21:53:34Z",
+      "side": 1,
+      "message": "Why introduce another media type? What about cricket::MediaType.",
+      "revId": "3a8a1cb2ab9ebc8a91fcd7d94368fa3961ed8b96",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c562c757_4ff14bf5",
+        "filename": "api/crypto/framecryptoparams.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 5039
+      },
+      "writtenOn": "2018-08-28T21:53:34Z",
+      "side": 1,
+      "message": "Would it make sense to have an enum for cipher suite?",
+      "revId": "3a8a1cb2ab9ebc8a91fcd7d94368fa3961ed8b96",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bfe3176_00c822d2",
+        "filename": "api/crypto/framedecryptorinterface.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5039
+      },
+      "writtenOn": "2018-08-28T21:53:34Z",
+      "side": 1,
+      "message": "Also mention that implementations are stateful (same for FrameEncryptor).",
+      "revId": "3a8a1cb2ab9ebc8a91fcd7d94368fa3961ed8b96",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfd8d775_cc63ccef",
+        "filename": "api/crypto/framedecryptorinterface.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5039
+      },
+      "writtenOn": "2018-08-28T21:53:34Z",
+      "side": 1,
+      "message": "audio and video?",
+      "range": {
+        "startLine": 21,
+        "startChar": 35,
+        "endLine": 21,
+        "endChar": 41
+      },
+      "revId": "3a8a1cb2ab9ebc8a91fcd7d94368fa3961ed8b96",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0e21e73_e999c2f4",
+        "filename": "api/crypto/framedecryptorinterface.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 5039
+      },
+      "writtenOn": "2018-08-28T21:53:34Z",
+      "side": 1,
+      "message": "Is this needed?",
+      "revId": "3a8a1cb2ab9ebc8a91fcd7d94368fa3961ed8b96",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d27987d7_23dabd48",
+        "filename": "api/crypto/frameencryptorinterface.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5039
+      },
+      "writtenOn": "2018-08-28T21:53:34Z",
+      "side": 1,
+      "message": "audio and video?",
+      "range": {
+        "startLine": 21,
+        "startChar": 42,
+        "endLine": 21,
+        "endChar": 48
+      },
+      "revId": "3a8a1cb2ab9ebc8a91fcd7d94368fa3961ed8b96",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
