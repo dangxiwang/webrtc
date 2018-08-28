@@ -125,6 +125,24 @@
     },
     {
       "key": {
+        "uuid": "52b961b9_78721939",
+        "filename": "api/crypto/framecryptoparams.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5039
+      },
+      "writtenOn": "2018-08-28T22:44:33Z",
+      "side": 1,
+      "message": "I agree it would be nice to have a MediaType that only includes audio and video. There\u0027s a lot of places that take a cricket::MediaType or webrtc::MediaType but only work for audio or video. They usually will DCHECK in that case, but it is kind of annoying.\n\nI think though it\u0027s still worth more to avoid the need to convert between media types.",
+      "parentUuid": "39bc11af_5f0ad0be",
+      "revId": "3a8a1cb2ab9ebc8a91fcd7d94368fa3961ed8b96",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c562c757_4ff14bf5",
         "filename": "api/crypto/framecryptoparams.h",
         "patchSetId": 5

@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8fddd3a6_968c8dc4",
+        "filename": "api/crypto/framedecryptorinterface.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 5039
+      },
+      "writtenOn": "2018-08-28T22:44:33Z",
+      "side": 1,
+      "message": "Maybe actually document the statefulness in the Decrypt method. Also leave out the comment about RTPReceiver.\n\nWhat is the stateful behavior around Decrypt? What happens if frames are passed out of order? I think those behaviors are important to document in the interface.",
+      "range": {
+        "startLine": 25,
+        "startChar": 15,
+        "endLine": 26,
+        "endChar": 58
+      },
+      "revId": "a6ddf8af8098bb6ab0752888e738cebb63b7bac8",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46c506aa_1b9be41c",
+        "filename": "api/crypto/frameencryptorinterface.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 5039
+      },
+      "writtenOn": "2018-08-28T22:44:33Z",
+      "side": 1,
+      "message": "Same as above: remove the RTPSender comment and move the statefulness comments to Encrypt. Also would be useful to document how the ssrc is expected to be used.",
+      "range": {
+        "startLine": 25,
+        "startChar": 15,
+        "endLine": 26,
+        "endChar": 51
+      },
+      "revId": "a6ddf8af8098bb6ab0752888e738cebb63b7bac8",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
