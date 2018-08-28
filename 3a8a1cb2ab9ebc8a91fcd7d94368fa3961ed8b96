@@ -107,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "39bc11af_5f0ad0be",
+        "filename": "api/crypto/framecryptoparams.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 6930
+      },
+      "writtenOn": "2018-08-28T22:24:56Z",
+      "side": 1,
+      "message": "Ah I tried implementing this but ran into a circular dependency issue with libjingle.\n\nOne reasonable reason to do this is because we cannot support all media types. Data for example will never be sent to encrypt.",
+      "parentUuid": "53def2a6_5de264d7",
+      "revId": "3a8a1cb2ab9ebc8a91fcd7d94368fa3961ed8b96",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c562c757_4ff14bf5",
         "filename": "api/crypto/framecryptoparams.h",
         "patchSetId": 5
