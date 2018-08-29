@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "45b13a0f_53b7f5e5",
+        "filename": "api/crypto/framedecryptorinterface.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 7702
+      },
+      "writtenOn": "2018-08-29T19:53:42Z",
+      "side": 1,
+      "message": "ditto comments about DTLS-SRTP and attached to only one RtpReceiver.",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 15
+      },
+      "revId": "b4e649e5c4914220c55d5f74c78b86998c4f8bbf",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1cc3be2_e02bacf8",
+        "filename": "api/crypto/framedecryptorinterface.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 7702
+      },
+      "writtenOn": "2018-08-29T19:53:42Z",
+      "side": 1,
+      "message": "nit: RtpReceiver typo.",
+      "range": {
+        "startLine": 28,
+        "startChar": 3,
+        "endLine": 28,
+        "endChar": 14
+      },
+      "revId": "b4e649e5c4914220c55d5f74c78b86998c4f8bbf",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a208cb83_7a2bbc3f",
+        "filename": "api/crypto/framedecryptorinterface.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 7702
+      },
+      "writtenOn": "2018-08-29T19:53:42Z",
+      "side": 1,
+      "message": "ditto RotateKey/SetKey.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 65
+      },
+      "revId": "b4e649e5c4914220c55d5f74c78b86998c4f8bbf",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9af4d2ba_b0e3cb50",
+        "filename": "api/crypto/framedecryptorinterface.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 7702
+      },
+      "writtenOn": "2018-08-29T19:53:42Z",
+      "side": 1,
+      "message": "nit: receiver typo.",
+      "range": {
+        "startLine": 42,
+        "startChar": 5,
+        "endLine": 42,
+        "endChar": 13
+      },
+      "revId": "b4e649e5c4914220c55d5f74c78b86998c4f8bbf",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0bc3d33b_59c17613",
+        "filename": "api/crypto/frameencryptorinterface.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 7702
+      },
+      "writtenOn": "2018-08-29T19:53:42Z",
+      "side": 1,
+      "message": "nit: provide typo.",
+      "range": {
+        "startLine": 23,
+        "startChar": 8,
+        "endLine": 23,
+        "endChar": 14
+      },
+      "revId": "b4e649e5c4914220c55d5f74c78b86998c4f8bbf",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d883b6c7_ec789e2d",
+        "filename": "api/crypto/frameencryptorinterface.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 7702
+      },
+      "writtenOn": "2018-08-29T19:53:42Z",
+      "side": 1,
+      "message": "nit: Maybe just refer to SRTP? This isn\u0027t necessarily tied to just DTLS-SRTP.",
+      "range": {
+        "startLine": 25,
+        "startChar": 28,
+        "endLine": 25,
+        "endChar": 37
+      },
+      "revId": "b4e649e5c4914220c55d5f74c78b86998c4f8bbf",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e12ad0d_a3cdae6e",
+        "filename": "api/crypto/frameencryptorinterface.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 7702
+      },
+      "writtenOn": "2018-08-29T19:53:42Z",
+      "side": 1,
+      "message": "I don\u0027t think this is true. Encrypt indicates the SSRC, which can be used to distinguish between streams and avoid IV re-use type issues.\n\nMaybe note instead that its lifetime should be tied to a PeerConnection\u0027s lifetime?",
+      "range": {
+        "startLine": 27,
+        "startChar": 36,
+        "endLine": 27,
+        "endChar": 77
+      },
+      "revId": "b4e649e5c4914220c55d5f74c78b86998c4f8bbf",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a66a16b_8dc25b61",
+        "filename": "api/crypto/frameencryptorinterface.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 7702
+      },
+      "writtenOn": "2018-08-29T19:53:42Z",
+      "side": 1,
+      "message": "Is there any need to define a RotateKey/SetKey in this interface? Seems like something that could be defined within the implementation - WebRTC will never set keys, anyway.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 62
+      },
+      "revId": "b4e649e5c4914220c55d5f74c78b86998c4f8bbf",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d232f36_e7eda817",
+        "filename": "api/crypto/frameencryptorinterface.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 7702
+      },
+      "writtenOn": "2018-08-29T19:53:42Z",
+      "side": 1,
+      "message": "nit: Maybe add a TODO indicating that the return type will be changed to an error status?",
+      "range": {
+        "startLine": 41,
+        "startChar": 10,
+        "endLine": 41,
+        "endChar": 14
+      },
+      "revId": "b4e649e5c4914220c55d5f74c78b86998c4f8bbf",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
