@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e72791fc_561d8404",
+        "filename": "api/crypto/framedecryptorinterface.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 6930
+      },
+      "writtenOn": "2018-08-29T18:38:50Z",
+      "side": 1,
+      "message": "Great points Steve. I have documented the frame ordering. I am removing the statefulness comments and replacing them with lifetime guarantees. It is up to the implementor to define statefullness",
+      "parentUuid": "8fddd3a6_968c8dc4",
+      "range": {
+        "startLine": 25,
+        "startChar": 15,
+        "endLine": 26,
+        "endChar": 58
+      },
+      "revId": "a6ddf8af8098bb6ab0752888e738cebb63b7bac8",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "46c506aa_1b9be41c",
         "filename": "api/crypto/frameencryptorinterface.h",
         "patchSetId": 6
