@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5367b96a_ab46aa2a",
+        "filename": "api/crypto/framedecryptorinterface.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 7702
+      },
+      "writtenOn": "2018-08-29T20:10:43Z",
+      "side": 1,
+      "message": "Same comment as for frameencryptorinterface - It may be attached to more than one RtpReceiver.",
+      "range": {
+        "startLine": 26,
+        "startChar": 41,
+        "endLine": 27,
+        "endChar": 15
+      },
+      "revId": "3a5a6e71e8c687ca37ae6bdb4ec02ca21febf4b1",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
