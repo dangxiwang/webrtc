@@ -1,0 +1,377 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a1eecd7_50ecdba3",
+        "filename": "modules/audio_processing/test/py_quality_assessment/apm_quality_assessment.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5122
+      },
+      "writtenOn": "2018-08-31T12:11:02Z",
+      "side": 1,
+      "message": "this also looks like a local change",
+      "range": {
+        "startLine": 23,
+        "startChar": 17,
+        "endLine": 23,
+        "endChar": 40
+      },
+      "revId": "bcbec42ca3335fe4f805c0e9ee2bfb8f05ce36e5",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c00b2f09_f587c9b1",
+        "filename": "modules/audio_processing/test/py_quality_assessment/apm_quality_assessment.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 5122
+      },
+      "writtenOn": "2018-08-31T12:11:02Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 60,
+        "startChar": 21,
+        "endLine": 60,
+        "endChar": 30
+      },
+      "revId": "bcbec42ca3335fe4f805c0e9ee2bfb8f05ce36e5",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "778d2c21_01d7a224",
+        "filename": "modules/audio_processing/test/py_quality_assessment/quality_assessment/export.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5122
+      },
+      "writtenOn": "2018-08-31T12:11:02Z",
+      "side": 1,
+      "message": "also say that this is not meant to run APM with subprocess, but only for debugging/visualization\n\nI added this comment because this script is export.py, so all the analyses must be done by the dedicated script",
+      "range": {
+        "startLine": 30,
+        "startChar": 5,
+        "endLine": 30,
+        "endChar": 63
+      },
+      "revId": "bcbec42ca3335fe4f805c0e9ee2bfb8f05ce36e5",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41c7959f_58a85f6b",
+        "filename": "modules/audio_processing/test/py_quality_assessment/quality_assessment/export.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5122
+      },
+      "writtenOn": "2018-08-31T12:11:02Z",
+      "side": 1,
+      "message": "could you use AudioProcConfigFile defined in /modules/audio_processing/test/py_quality_assessment/quality_assessment/data_access.py instead?\n\neven better, do you think it\u0027s easy to readapt AudioProcWrapper?",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 37,
+        "endChar": 28
+      },
+      "revId": "bcbec42ca3335fe4f805c0e9ee2bfb8f05ce36e5",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db0f7646_79a1d9f0",
+        "filename": "modules/audio_processing/test/py_quality_assessment/quality_assessment/export.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 5122
+      },
+      "writtenOn": "2018-08-31T12:11:02Z",
+      "side": 1,
+      "message": "rm empty line",
+      "revId": "bcbec42ca3335fe4f805c0e9ee2bfb8f05ce36e5",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "873a8fc4_97f38458",
+        "filename": "modules/audio_processing/test/py_quality_assessment/quality_assessment/export.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 5122
+      },
+      "writtenOn": "2018-08-31T12:11:02Z",
+      "side": 1,
+      "message": "input tag not closed",
+      "range": {
+        "startLine": 312,
+        "startChar": 14,
+        "endLine": 312,
+        "endChar": 77
+      },
+      "revId": "bcbec42ca3335fe4f805c0e9ee2bfb8f05ce36e5",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0c79d61_a95bb0f0",
+        "filename": "modules/audio_processing/test/py_quality_assessment/quality_assessment/export.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 5122
+      },
+      "writtenOn": "2018-08-31T12:11:02Z",
+      "side": 1,
+      "message": "if scores has many rows, this first creates the whole list to only select the first one; is there a more efficient way (e.g., using next())?",
+      "range": {
+        "startLine": 317,
+        "startChar": 8,
+        "endLine": 317,
+        "endChar": 38
+      },
+      "revId": "bcbec42ca3335fe4f805c0e9ee2bfb8f05ce36e5",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddc9d3ec_70afe802",
+        "filename": "modules/audio_processing/test/py_quality_assessment/quality_assessment/results.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 5122
+      },
+      "writtenOn": "2018-08-31T12:11:02Z",
+      "side": 1,
+      "message": "I think you can combine everything in line 31 with document.querySelectorAll(\u0027button.copy-code-button\u0027). In this way, no need to check target and return if not matching.",
+      "range": {
+        "startLine": 31,
+        "startChar": 3,
+        "endLine": 33,
+        "endChar": 35
+      },
+      "revId": "bcbec42ca3335fe4f805c0e9ee2bfb8f05ce36e5",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38439582_815ca0c7",
+        "filename": "modules/audio_processing/test/py_quality_assessment/quality_assessment/results.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 5122
+      },
+      "writtenOn": "2018-08-31T12:11:02Z",
+      "side": 1,
+      "message": "either log to debug or remove (the 2nd I\u0027d say)",
+      "range": {
+        "startLine": 36,
+        "startChar": 6,
+        "endLine": 36,
+        "endChar": 28
+      },
+      "revId": "bcbec42ca3335fe4f805c0e9ee2bfb8f05ce36e5",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06f8ca05_825a5659",
+        "filename": "modules/audio_processing/test/py_quality_assessment/quality_assessment/results.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5122
+      },
+      "writtenOn": "2018-08-31T12:11:02Z",
+      "side": 1,
+      "message": "debug or rmv",
+      "range": {
+        "startLine": 37,
+        "startChar": 14,
+        "endLine": 37,
+        "endChar": 17
+      },
+      "revId": "bcbec42ca3335fe4f805c0e9ee2bfb8f05ce36e5",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f19b78b_611e7d54",
+        "filename": "modules/audio_processing/test/py_quality_assessment/quality_assessment/results.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 5122
+      },
+      "writtenOn": "2018-08-31T12:11:02Z",
+      "side": 1,
+      "message": "duplicate + rmv empty lines",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 0
+      },
+      "revId": "bcbec42ca3335fe4f805c0e9ee2bfb8f05ce36e5",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e2d2ab7_68537404",
+        "filename": "modules/audio_processing/test/py_quality_assessment/quality_assessment/results.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 5122
+      },
+      "writtenOn": "2018-08-31T12:11:02Z",
+      "side": 1,
+      "message": "debug or rmv",
+      "range": {
+        "startLine": 44,
+        "startChar": 14,
+        "endLine": 44,
+        "endChar": 17
+      },
+      "revId": "bcbec42ca3335fe4f805c0e9ee2bfb8f05ce36e5",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2eacda26_6063c670",
+        "filename": "modules/audio_processing/test/py_quality_assessment/quality_assessment/results.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 5122
+      },
+      "writtenOn": "2018-08-31T12:11:02Z",
+      "side": 1,
+      "message": "rmv",
+      "range": {
+        "startLine": 49,
+        "startChar": 6,
+        "endLine": 49,
+        "endChar": 25
+      },
+      "revId": "bcbec42ca3335fe4f805c0e9ee2bfb8f05ce36e5",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11c1accc_048502fc",
+        "filename": "modules/audio_processing/test/py_quality_assessment/quality_assessment/results.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 5122
+      },
+      "writtenOn": "2018-08-31T12:11:02Z",
+      "side": 1,
+      "message": "rm",
+      "revId": "bcbec42ca3335fe4f805c0e9ee2bfb8f05ce36e5",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb443f89_c34ae6c6",
+        "filename": "modules/audio_processing/test/py_quality_assessment/quality_assessment/signal_processing.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 5122
+      },
+      "writtenOn": "2018-08-31T12:11:02Z",
+      "side": 1,
+      "message": "unfinished comment",
+      "range": {
+        "startLine": 231,
+        "startChar": 4,
+        "endLine": 231,
+        "endChar": 60
+      },
+      "revId": "bcbec42ca3335fe4f805c0e9ee2bfb8f05ce36e5",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b187f282_dce9d4b5",
+        "filename": "modules/audio_processing/test/py_quality_assessment/quality_assessment/signal_processing.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 5122
+      },
+      "writtenOn": "2018-08-31T12:11:02Z",
+      "side": 1,
+      "message": "you may want to specify the type:\n\nnp.zeros(480, impulse_response.dtype)",
+      "range": {
+        "startLine": 232,
+        "startChar": 47,
+        "endLine": 232,
+        "endChar": 52
+      },
+      "revId": "bcbec42ca3335fe4f805c0e9ee2bfb8f05ce36e5",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48c52910_bd4cec2c",
+        "filename": "modules/audio_processing/test/py_quality_assessment/quality_assessment/simulation.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 5122
+      },
+      "writtenOn": "2018-08-31T12:11:02Z",
+      "side": 1,
+      "message": "rm empty line",
+      "revId": "bcbec42ca3335fe4f805c0e9ee2bfb8f05ce36e5",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
