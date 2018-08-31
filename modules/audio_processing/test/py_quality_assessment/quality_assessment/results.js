@@ -27,6 +27,32 @@ function closeScoreStatsInspector() {
   dialog.close();
 }
 
+function addEventListenersToCopyCodeButtons() {
+  document.querySelectorAll('button').forEach(function(element) {
+    var target = element.querySelector('.copy-code-button');
+    if (target == null) { return; }
+    console.log(target);
+    element.onclick = function() {
+      console.log("Click!");
+      console.log(target);
+      var textArea = element.closest('dialog').querySelector(
+          'textarea.url-copy');
+
+      var textArea = element.closest('dialog').querySelector(
+            'textarea.url-copy');
+
+      console.log(target.getAttribute('value'));
+
+      // Copy.
+      textArea.value = target.getAttribute('value');
+      textArea.select();
+      // target.select();
+
+      document.execCommand('copy');
+    };
+  });
+}
+
 /**
  * Audio inspector class.
  * @constructor
@@ -341,6 +367,7 @@ AudioInspector.prototype.initializeEventHandlers_ = function() {
       }
     };
   });
+
 
   // Dialog close handlers.
   var dialogs = document.querySelectorAll('dialog').forEach(function(element) {

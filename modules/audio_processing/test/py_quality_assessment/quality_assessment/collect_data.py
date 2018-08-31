@@ -192,6 +192,7 @@ def FindScores(src_path, args):
 
     # Add a score with its descriptor fields.
     scores.append((
+        metadata['apm_config_filepath'],
         metadata['clean_capture_input_filepath'],
         metadata['echo_free_capture_filepath'],
         metadata['echo_filepath'],
@@ -212,6 +213,7 @@ def FindScores(src_path, args):
   return pd.DataFrame(
       data=scores,
       columns=(
+          'apm_config_filepath',
           'clean_capture_input_filepath',
           'echo_free_capture_filepath',
           'echo_filepath',

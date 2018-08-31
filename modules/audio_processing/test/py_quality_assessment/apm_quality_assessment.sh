@@ -7,18 +7,6 @@
 # in the file PATENTS.  All contributing project authors may
 # be found in the AUTHORS file in the root of the source tree.
 
-# Path to the POLQA tool.
-if [ -z ${POLQA_PATH} ]; then  # Check if defined.
-  # Default location.
-  export POLQA_PATH='/var/opt/PolqaOem64'
-fi
-if [ -d "${POLQA_PATH}" ]; then
-  echo "POLQA found in ${POLQA_PATH}"
-else
-  echo "POLQA not found in ${POLQA_PATH}"
-  exit 1
-fi
-
 # Path to the Aechen IR database.
 if [ -z ${AECHEN_IR_DATABASE_PATH} ]; then  # Check if defined.
   # Default location.
@@ -32,7 +20,7 @@ else
 fi
 
 # Customize probing signals, test data generators and scores if needed.
-CAPTURE_SIGNALS=(probing_signals/*.wav)
+CAPTURE_SIGNALS=(~/conversational_speech/*.wav)
 TEST_DATA_GENERATORS=( \
     "identity" \
     "white_noise" \
@@ -69,7 +57,7 @@ for capture_signal_filepath in "${CAPTURE_SIGNALS[@]}" ; do
     echo "Starting ${probing_signal_name} ${test_data_gen_name} "`
          `"(see ${LOG_FILE})"
     ./apm_quality_assessment.py \
-        --polqa_path ${POLQA_PATH}\
+        --polqa_path /dev/null \
         --air_db_path ${AECHEN_IR_DATABASE_PATH}\
         -i ${capture_signal_filepath} \
         -o ${OUTPUT_PATH} \

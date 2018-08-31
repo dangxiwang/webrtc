@@ -228,6 +228,9 @@ class SignalProcessingUtils(object):
         'multiple-channel recordings not supported')
     samples = signal.get_array_of_samples()
 
+    # Some of the impulse responses introduce no delay. That
+    impulse_response = np.concatenate((np.zeros(480), impulse_response))
+
     # Convolve.
     logging.info('applying %d order impulse response to a signal lasting %d ms',
                  len(impulse_response), len(signal))

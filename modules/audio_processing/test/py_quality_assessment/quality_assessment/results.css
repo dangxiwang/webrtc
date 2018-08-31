@@ -30,3 +30,25 @@ td.single-score-cell{
   padding-bottom: 0;
   padding-top: 0;
 }
+
+.code {
+  overflow: scroll;
+  width: 300px;
+}
+
+code {
+  /* border:1px solid black; */
+  /* background-color:#EEEEFF; */
+  /* width:300px; */
+  font-size:0.9em;
+  overflow:auto;
+  /* padding:10px; */
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  margin: 0;
+  vertical-align: middle;
+}

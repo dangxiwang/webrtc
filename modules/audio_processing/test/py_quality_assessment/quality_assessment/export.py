@@ -12,6 +12,7 @@ import logging
 import os
 import re
 import sys
+import json
 
 try:
   import csscompressor
@@ -24,6 +25,24 @@ try:
 except ImportError:
   logging.critical('Cannot import the third-party Python package jsmin')
   sys.exit(1)
+
+def BuildApmCommand(scores_data_entry):
+  """Constructs the APM simulator command using for this entry.
+
+  Returns:
+      A string with the audioproc_f invocation.
+  """
+  d = dict(scores_data_entry.items())
+  with open(d['apm_config_filepath']) as f:
+    x = json.loads(f.read())
+    res = "audioproc_f"
+    for param in x:
+      res += (" {} {} ".format(param, x[param]))
+  res += (" -i {} ".format(d['capture_filepath']))
+  res += (" -o {} ".format(d['apm_output_filepath']))
+  if d['render_filepath'] is not None:
+    res += (" -ri {} ".format(d['render_filepath']))
+  return res
 
 
 class HtmlExport(object):
@@ -48,6 +67,7 @@ class HtmlExport(object):
     Args:
       scores_data_frame: DataFrame instance.
     """
+
     self._scores_data_frame = scores_data_frame
     html = ['<html>',
             self._BuildHeader(),
@@ -55,6 +75,7 @@ class HtmlExport(object):
               '(function () {'
                 'window.addEventListener(\'load\', function () {'
                   'var inspector = new AudioInspector();'
+                  'addEventListenersToCopyCodeButtons();'
                 '});'
              '})();'
              '</script>'),
@@ -277,6 +298,25 @@ class HtmlExport(object):
     echo_simulators = sorted(self._FindUniqueTuples(scores, ['echo_simulator']))
 
     html = ['<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">']
+    html.append('''
+    <thead>
+        <tr>
+          <td>
+            <div class="code">
+              <code>{content}</code>
+            </div>
+          </td>
+          <td>
+            <button class="mdl-button mdl-js-button mdl-button--icon">
+              <i class="material-icons mdl-color-text--blue-grey">file_copy</i>
+              <input type="hidden" class="copy-code-button" value="{content}"
+            </button>
+          </td>
+        </tr>
+    </thead>'''.format(content=BuildApmCommand(
+        list(scores.iterrows())[0][-1])))
+
+
 
     # Header.
     html.append('<thead><tr><th>Capture-Render / Echo simulator</th>')
