@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae0bbbd8_956d424d",
+        "filename": "modules/audio_processing/test/py_quality_assessment/quality_assessment/echo_path_simulation_factory.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5124
+      },
+      "writtenOn": "2018-09-03T12:30:55Z",
+      "side": 1,
+      "message": "The delay was too short for the AEC. I\u0027m adding some more.",
+      "range": {
+        "startLine": 21,
+        "startChar": 50,
+        "endLine": 21,
+        "endChar": 52
+      },
+      "revId": "56833d44aae0eee102728a62f2ad6a8075bc1552",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
