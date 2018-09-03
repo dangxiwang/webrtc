@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0162977_7460e403",
+        "filename": "pc/webrtcsdp.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 7641
+      },
+      "writtenOn": "2018-09-03T14:56:52Z",
+      "side": 1,
+      "message": "Not sure how space should be handled. The standard says that there are no spaces before the attribute name, i.e., a\u003d something is not allowed, but I couldn\u0027t find anything saying that a\u003dsomething : parameters is not allowed.",
+      "range": {
+        "startLine": 539,
+        "startChar": 54,
+        "endLine": 539,
+        "endChar": 73
+      },
+      "revId": "26bcc509922b8268e8b5710cb9630962deb2abef",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
