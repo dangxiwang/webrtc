@@ -22,6 +22,30 @@
       "revId": "a0027dd2f44be4ca048c84426b52f55db005eaec",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ed1710b_68b62709",
+        "filename": "pc/webrtcsdp.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 7641
+      },
+      "writtenOn": "2018-09-04T15:16:19Z",
+      "side": 1,
+      "message": "Initially I had the test as part of the if condition. I then realized that it always will be true if (line.compare() \u003d\u003d 0) is true. So it\u0027s there to catch the case if someone would alter the first if condition.\n\nIf you think it\u0027s better I could move it to the second if condition again.",
+      "parentUuid": "5953200c_747592bc",
+      "range": {
+        "startLine": 538,
+        "startChar": 68,
+        "endLine": 538,
+        "endChar": 0
+      },
+      "revId": "a0027dd2f44be4ca048c84426b52f55db005eaec",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
     }
   ]
 }
