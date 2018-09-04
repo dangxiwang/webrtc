@@ -70,6 +70,30 @@
       "revId": "a0027dd2f44be4ca048c84426b52f55db005eaec",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bd584e9_8b0d367e",
+        "filename": "pc/webrtcsdp.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2018-09-04T16:13:29Z",
+      "side": 1,
+      "message": "https://stackoverflow.com/questions/11752705/does-stdstring-contain-null-terminator - no, line[line.size() + 1] isn\u0027t guaranteed to be null.",
+      "parentUuid": "d5c79e99_06785f4c",
+      "range": {
+        "startLine": 538,
+        "startChar": 68,
+        "endLine": 538,
+        "endChar": 0
+      },
+      "revId": "a0027dd2f44be4ca048c84426b52f55db005eaec",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
     }
   ]
 }
