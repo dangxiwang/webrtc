@@ -22,6 +22,30 @@
       "revId": "26bcc509922b8268e8b5710cb9630962deb2abef",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16f49992_4a0c0f49",
+        "filename": "pc/webrtcsdp.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 7641
+      },
+      "writtenOn": "2018-09-04T13:54:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0162977_7460e403",
+      "range": {
+        "startLine": 539,
+        "startChar": 54,
+        "endLine": 539,
+        "endChar": 73
+      },
+      "revId": "26bcc509922b8268e8b5710cb9630962deb2abef",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
