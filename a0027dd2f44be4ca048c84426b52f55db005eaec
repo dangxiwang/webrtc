@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5953200c_747592bc",
+        "filename": "pc/webrtcsdp.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 5524
+      },
+      "writtenOn": "2018-09-04T14:26:13Z",
+      "side": 1,
+      "message": "When can we hit this check?\nCrashing on a non-null-terminated string might be a bit harsh?",
+      "range": {
+        "startLine": 538,
+        "startChar": 68,
+        "endLine": 538,
+        "endChar": 0
+      },
+      "revId": "a0027dd2f44be4ca048c84426b52f55db005eaec",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
