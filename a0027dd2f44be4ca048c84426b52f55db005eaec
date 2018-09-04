@@ -46,6 +46,30 @@
       "revId": "a0027dd2f44be4ca048c84426b52f55db005eaec",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5c79e99_06785f4c",
+        "filename": "pc/webrtcsdp.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 5524
+      },
+      "writtenOn": "2018-09-04T16:07:38Z",
+      "side": 1,
+      "message": "I think I might be confusing myself too. Shouldn\u0027t the test be RTC_CHECK_LT?\nSimple example:\n  line \u003d \"a\u003dextmap\"\n  attribute \u003d \"extmap\"\nnow\n  kLinePrefixLength + attribute.size() \u003d\u003d line.size()\nwhich is ok.\n\nWouldn\u0027t that result in line[kLinePrefixLength + attribute.size()] going out of bounds?\n\nOr does some other part of the code already guaranteed that |line| has at least on termination character?",
+      "parentUuid": "0ed1710b_68b62709",
+      "range": {
+        "startLine": 538,
+        "startChar": 68,
+        "endLine": 538,
+        "endChar": 0
+      },
+      "revId": "a0027dd2f44be4ca048c84426b52f55db005eaec",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
     }
   ]
 }
