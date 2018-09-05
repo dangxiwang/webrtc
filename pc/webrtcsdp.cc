@@ -530,7 +530,19 @@ static bool GetLineWithType(const std::string& message,
 
 static bool HasAttribute(const std::string& line,
                          const std::string& attribute) {
-  return (line.compare(kLinePrefixLength, attribute.size(), attribute) == 0);
+  if (line.compare(kLinePrefixLength, attribute.size(), attribute) == 0) {
+    // Make sure that the match is not only a partial match. If length of
+    // of strings doesn't match, the next character of line must be ':' or ' '.
+    // This function is also used for media descriptions (e.g., "m=audio 9..."),
+    // hence the need to also allow space in the end.
+    RTC_CHECK_LE(kLinePrefixLength + attribute.size(), line.size());
+    if ((kLinePrefixLength + attribute.size()) == line.size() ||
+        line[kLinePrefixLength + attribute.size()] == kSdpDelimiterColon ||
+        line[kLinePrefixLength + attribute.size()] == kSdpDelimiterSpace) {
+      return true;
+    }
+  }
+  return false;
 }
 
 static bool AddSsrcLine(uint32_t ssrc_id,
