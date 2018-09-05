@@ -118,6 +118,30 @@
       "revId": "a0027dd2f44be4ca048c84426b52f55db005eaec",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b1c9c5d1_140bdb51",
+        "filename": "pc/webrtcsdp.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 5524
+      },
+      "writtenOn": "2018-09-05T12:02:01Z",
+      "side": 1,
+      "message": "Ah, I\u0027d missed that aspect of c++11.\nThanks for making it more explicit though :)",
+      "parentUuid": "61d4975b_80513f52",
+      "range": {
+        "startLine": 538,
+        "startChar": 68,
+        "endLine": 538,
+        "endChar": 0
+      },
+      "revId": "a0027dd2f44be4ca048c84426b52f55db005eaec",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
