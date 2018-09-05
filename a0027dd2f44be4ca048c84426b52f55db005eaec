@@ -94,6 +94,30 @@
       "revId": "a0027dd2f44be4ca048c84426b52f55db005eaec",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61d4975b_80513f52",
+        "filename": "pc/webrtcsdp.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 7641
+      },
+      "writtenOn": "2018-09-05T08:21:41Z",
+      "side": 1,
+      "message": "Strings in C++11 actually do have null character termination (see second answer at stackoverflow).\n\nHowever, I agree that the code is hard to read. Thanks for pointing that out!\n\nI have updated to compare the length of the strings and hope that makes more sense.",
+      "parentUuid": "7bd584e9_8b0d367e",
+      "range": {
+        "startLine": 538,
+        "startChar": 68,
+        "endLine": 538,
+        "endChar": 0
+      },
+      "revId": "a0027dd2f44be4ca048c84426b52f55db005eaec",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
