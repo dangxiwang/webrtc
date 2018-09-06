@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "edc43bc4_300a70a0",
+        "filename": "pc/webrtcsdp.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2018-09-06T09:45:32Z",
+      "side": 1,
+      "message": "nit: \"length of of\" - please remove one of",
+      "revId": "3183eeb62f111ba192420a73484ccfc7c09a582f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e117f2a5_8aada0f6",
+        "filename": "pc/webrtcsdp.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2018-09-06T09:45:32Z",
+      "side": 1,
+      "message": "Englsh nit: \"the next character of the line\"",
+      "revId": "3183eeb62f111ba192420a73484ccfc7c09a582f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
