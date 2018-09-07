@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2e165cd1_b8973c7f",
+        "filename": "pc/webrtcsdp.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1653,
+      "author": {
+        "id": 5039
+      },
+      "writtenOn": "2018-09-07T23:14:44Z",
+      "side": 1,
+      "message": "I think it\u0027s more clear to name them and spell out the type.",
+      "parentUuid": "867e72ce_920f9ed5",
+      "range": {
+        "startLine": 1653,
+        "startChar": 4,
+        "endLine": 1653,
+        "endChar": 26
+      },
+      "revId": "23159cc7fca87551d455c5cb0e178ac993527b77",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5fe9d9b2_68946c4a",
         "filename": "pc/webrtcsdp.cc",
         "patchSetId": 2
