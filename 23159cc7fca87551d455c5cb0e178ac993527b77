@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "867e72ce_920f9ed5",
+        "filename": "pc/webrtcsdp.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1653,
+      "author": {
+        "id": 5800
+      },
+      "writtenOn": "2018-09-07T23:08:13Z",
+      "side": 1,
+      "message": "nit: Are these local variables necessary? Can you just use entry.first/second below?",
+      "range": {
+        "startLine": 1653,
+        "startChar": 4,
+        "endLine": 1653,
+        "endChar": 26
+      },
+      "revId": "23159cc7fca87551d455c5cb0e178ac993527b77",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fe9d9b2_68946c4a",
+        "filename": "pc/webrtcsdp.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2555,
+      "author": {
+        "id": 5800
+      },
+      "writtenOn": "2018-09-07T23:08:13Z",
+      "side": 1,
+      "message": "Didn\u0027t know about all_of or find_if. Good to know!",
+      "range": {
+        "startLine": 2555,
+        "startChar": 9,
+        "endLine": 2555,
+        "endChar": 20
+      },
+      "revId": "23159cc7fca87551d455c5cb0e178ac993527b77",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    }
+  ]
+}
