@@ -33,6 +33,7 @@
 #include "rtc_base/ignore_wundef.h"
 #include "rtc_base/numerics/safe_conversions.h"
 #include "rtc_base/numerics/safe_minmax.h"
+#include "rtc_base/pathutils.h"
 #include "rtc_base/protobuf_utils.h"
 #include "rtc_base/refcountedobject.h"
 #include "rtc_base/strings/string_builder.h"
@@ -43,6 +44,7 @@
 #include "system_wrappers/include/event_wrapper.h"
 #include "test/gtest.h"
 #include "test/testsupport/fileutils.h"
+#include "test/testsupport/test_artifacts.h"
 
 RTC_PUSH_IGNORING_WUNDEF()
 #ifdef WEBRTC_ANDROID_PLATFORM_BUILD
@@ -64,7 +66,7 @@ namespace {
 // When false, this will compare the output data with the results stored to
 // file. This is the typical case. When the file should be updated, it can
 // be set to true with the command-line switch --write_ref_data.
-bool write_ref_data = false;
+bool write_ref_data = true;
 const int32_t kChannels[] = {1, 2};
 const int kSampleRates[] = {8000, 16000, 32000, 48000};
 
@@ -2233,8 +2235,13 @@ TEST_F(ApmTest, Process) {
     rewind(near_file_);
   }
 
+  std::string output_dir;
+  test::GetTestArtifactsDir(&output_dir);
+  std::string output_fn = rtc::Pathname(ref_filename_).filename();
+  std::string output_path = rtc::Pathname(output_dir, output_fn).pathname();
+  printf("Writing to %s\n", output_path.c_str());
   if (write_ref_data) {
-    OpenFileAndWriteMessage(ref_filename_, ref_data);
+    OpenFileAndWriteMessage(output_path, ref_data);
   }
 }
 
