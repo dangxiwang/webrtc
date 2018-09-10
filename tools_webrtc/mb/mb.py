@@ -875,6 +875,9 @@ class MetaBuildWrapper(object):
             # interrupted by swarming and not reporting anything.
             '--timeout=%s' % timeout,
             '--retry_failed=3',
+            # Use more workers than actual cores, since most tests waste time
+            # waiting/sleeping.
+            '--workers=96',
         ]
         if test_type == 'non_parallel_console_test_launcher':
           # Still use the gtest-parallel-wrapper.py script since we need it to
