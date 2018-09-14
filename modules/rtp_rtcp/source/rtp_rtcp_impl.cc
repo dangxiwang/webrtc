@@ -642,6 +642,11 @@ int32_t ModuleRtpRtcpImpl::RegisterSendRtpHeaderExtension(
   return rtp_sender_->RegisterRtpHeaderExtension(type, id);
 }
 
+bool ModuleRtpRtcpImpl::RegisterRtpHeaderExtension(absl::string_view uri,
+                                                   int id) {
+  return rtp_sender_->RegisterRtpHeaderExtension(uri, id);
+}
+
 int32_t ModuleRtpRtcpImpl::DeregisterSendRtpHeaderExtension(
     const RTPExtensionType type) {
   return rtp_sender_->DeregisterRtpHeaderExtension(type);
