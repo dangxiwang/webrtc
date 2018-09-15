@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b2586ed2_75bfdd66",
+        "filename": "logging/rtc_event_log/encoder/delta_encoding.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2018-09-15T00:58:35Z",
+      "side": 1,
+      "message": "Bjorn, this is the point we had discussed offline.",
+      "revId": "d80d9307f7cb46d70f2d388bc3577b12f04423db",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
