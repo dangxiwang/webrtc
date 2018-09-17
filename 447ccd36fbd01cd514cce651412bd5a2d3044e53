@@ -22,6 +22,30 @@
       "revId": "447ccd36fbd01cd514cce651412bd5a2d3044e53",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4623d808_dc507b6e",
+        "filename": "modules/rtp_rtcp/source/rtp_sender.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2018-09-17T08:03:31Z",
+      "side": 1,
+      "message": "may be there will be more kind errors (e.g. \"too many extensions are unsupported\": with two-byte header extensions it might make sense to limit number of used extension to something smaller than number of ids)\n\nthere is a WARNING log message with details why it failed,\nfor now I\u0027m not aware of use case for propagating exact error.",
+      "parentUuid": "0b41f251_9682b3ca",
+      "range": {
+        "startLine": 240,
+        "startChar": 0,
+        "endLine": 241,
+        "endChar": 4
+      },
+      "revId": "447ccd36fbd01cd514cce651412bd5a2d3044e53",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
