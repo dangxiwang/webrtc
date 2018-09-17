@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b41f251_9682b3ca",
+        "filename": "modules/rtp_rtcp/source/rtp_sender.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2018-09-17T07:02:43Z",
+      "side": 1,
+      "message": "And it fails if\n\n* id is out of range, or\n\n* id already registered, or\n\n* uri not on list of known uris further down (kExtensions, rtp_header_extension_map.cc)\n\nRight? Should probably be a documenting comment somewhere, not sure if this is the right place, though.",
+      "range": {
+        "startLine": 240,
+        "startChar": 0,
+        "endLine": 241,
+        "endChar": 4
+      },
+      "revId": "447ccd36fbd01cd514cce651412bd5a2d3044e53",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
