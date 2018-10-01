@@ -29,6 +29,8 @@ rtc_static_library("rtc_p2p") {
     "base/dtlstransport.h",
     "base/dtlstransportinternal.cc",
     "base/dtlstransportinternal.h",
+    "base/icecredentialsfactory.cc",
+    "base/icecredentialsfactory.h",
     "base/icetransportinternal.cc",
     "base/icetransportinternal.h",
     "base/mdns_message.cc",

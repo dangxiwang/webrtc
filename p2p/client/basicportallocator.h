@@ -33,7 +33,8 @@ class BasicPortAllocator : public PortAllocator {
   BasicPortAllocator(rtc::NetworkManager* network_manager,
                      rtc::PacketSocketFactory* socket_factory,
                      webrtc::TurnCustomizer* customizer = nullptr,
-                     RelayPortFactoryInterface* relay_port_factory = nullptr);
+                     RelayPortFactoryInterface* relay_port_factory = nullptr,
+                     IceCredentialsFactory* ice_credentials_factory = nullptr);
   explicit BasicPortAllocator(rtc::NetworkManager* network_manager);
   BasicPortAllocator(rtc::NetworkManager* network_manager,
                      rtc::PacketSocketFactory* socket_factory,

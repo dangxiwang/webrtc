@@ -14,10 +14,12 @@
 #include <deque>
 #include <memory>
 #include <string>
+#include <utility>
 #include <vector>
 
 #include "p2p/base/port.h"
 #include "p2p/base/portinterface.h"
+#include "p2p/base/icecredentialsfactory.h"
 #include "rtc_base/helpers.h"
 #include "rtc_base/proxyinfo.h"
 #include "rtc_base/sslcertificate.h"
@@ -328,7 +330,8 @@ class PortAllocatorSession : public sigslot::has_slots<> {
 // thread, and passed into an object that uses it on a different thread.
 class PortAllocator : public sigslot::has_slots<> {
  public:
-  PortAllocator();
+  explicit PortAllocator(
+      IceCredentialsFactory* ice_credentials_factory = nullptr);
   ~PortAllocator() override;
 
   // This MUST be called on the PortAllocator's thread after finishing
@@ -569,6 +572,9 @@ class PortAllocator : public sigslot::has_slots<> {
     RTC_DCHECK(initialized_ && thread_checker_.CalledOnValidThread());
   }
 
+  // Create ice credentials (ufrag/passwd) when pooling sessions.
+  std::pair<std::string, std::string> CreateIceCredentials();
+
   bool initialized_ = false;
   uint32_t flags_;
   std::string agent_;
@@ -596,6 +602,9 @@ class PortAllocator : public sigslot::has_slots<> {
   webrtc::TurnCustomizer* turn_customizer_ = nullptr;
 
   absl::optional<int> stun_candidate_keepalive_interval_;
+
+  // Used to create Ice credentials (ufrag/passwd) when pooling sessions.
+  IceCredentialsFactory *ice_credentials_factory_ = nullptr;
 };
 
 }  // namespace cricket

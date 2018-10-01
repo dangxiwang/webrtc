@@ -100,14 +100,15 @@ void PortAllocatorSession::set_generation(uint32_t generation) {
   generation_ = generation;
 }
 
-PortAllocator::PortAllocator()
+PortAllocator::PortAllocator(IceCredentialsFactory* ice_credentials_factory)
     : flags_(kDefaultPortAllocatorFlags),
       min_port_(0),
       max_port_(0),
       max_ipv6_networks_(kDefaultMaxIPv6Networks),
       step_delay_(kDefaultStepDelay),
       allow_tcp_listen_(true),
-      candidate_filter_(CF_ALL) {
+      candidate_filter_(CF_ALL),
+      ice_credentials_factory_(ice_credentials_factory) {
   // The allocator will be attached to a thread in Initialize.
   thread_checker_.DetachFromThread();
 }
@@ -179,7 +180,9 @@ bool PortAllocator::SetConfiguration(
   // If |candidate_pool_size_| is greater than the number of pooled sessions,
   // create new sessions.
   while (static_cast<int>(pooled_sessions_.size()) < candidate_pool_size_) {
-    PortAllocatorSession* pooled_session = CreateSessionInternal("", 0, "", "");
+    std::pair<std::string, std::string> iceCredentials = CreateIceCredentials();
+    PortAllocatorSession* pooled_session = CreateSessionInternal(
+        "", 0, iceCredentials.first, iceCredentials.second);
     pooled_session->StartGettingPorts();
     pooled_sessions_.push_back(
         std::unique_ptr<PortAllocatorSession>(pooled_session));
@@ -244,6 +247,15 @@ void PortAllocator::GetCandidateStatsFromPooledSessions(
   for (const auto& session : pooled_sessions()) {
     session->GetCandidateStatsFromReadyPorts(candidate_stats_list);
   }
+}
+
+std::pair<std::string, std::string> PortAllocator::CreateIceCredentials() {
+  if (ice_credentials_factory_ != nullptr) {
+    return ice_credentials_factory_->CreateIceCredentials();
+  }
+  return std::pair<std::string, std::string>(
+      rtc::CreateRandomString(ICE_UFRAG_LENGTH),
+      rtc::CreateRandomString(ICE_PWD_LENGTH));
 }
 
 }  // namespace cricket

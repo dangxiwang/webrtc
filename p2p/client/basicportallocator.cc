@@ -123,8 +123,10 @@ BasicPortAllocator::BasicPortAllocator(
     rtc::NetworkManager* network_manager,
     rtc::PacketSocketFactory* socket_factory,
     webrtc::TurnCustomizer* customizer,
-    RelayPortFactoryInterface* relay_port_factory)
-    : network_manager_(network_manager), socket_factory_(socket_factory) {
+    RelayPortFactoryInterface* relay_port_factory,
+    IceCredentialsFactory* ice_credentials_factory)
+    : PortAllocator(ice_credentials_factory),
+      network_manager_(network_manager), socket_factory_(socket_factory) {
   InitRelayPortFactory(relay_port_factory);
   RTC_DCHECK(relay_port_factory_ != nullptr);
   RTC_DCHECK(network_manager_ != nullptr);

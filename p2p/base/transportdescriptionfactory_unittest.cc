@@ -19,6 +19,7 @@
 #include "rtc_base/gunit.h"
 #include "rtc_base/ssladapter.h"
 
+using cricket::IceCredentialsFactory;
 using cricket::TransportDescriptionFactory;
 using cricket::TransportDescription;
 using cricket::TransportOptions;
@@ -26,7 +27,9 @@ using cricket::TransportOptions;
 class TransportDescriptionFactoryTest : public testing::Test {
  public:
   TransportDescriptionFactoryTest()
-      : cert1_(rtc::RTCCertificate::Create(std::unique_ptr<rtc::SSLIdentity>(
+      : f1_(&ice_credentials_factory_),
+        f2_(&ice_credentials_factory_),
+        cert1_(rtc::RTCCertificate::Create(std::unique_ptr<rtc::SSLIdentity>(
             new rtc::FakeSSLIdentity("User1")))),
         cert2_(rtc::RTCCertificate::Create(std::unique_ptr<rtc::SSLIdentity>(
             new rtc::FakeSSLIdentity("User2")))) {}
@@ -145,6 +148,7 @@ class TransportDescriptionFactoryTest : public testing::Test {
     }
   }
 
+  IceCredentialsFactory ice_credentials_factory_;
   TransportDescriptionFactory f1_;
   TransportDescriptionFactory f2_;
 
