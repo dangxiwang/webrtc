@@ -1015,7 +1015,8 @@ bool PeerConnection::Initialize(
 
   webrtc_session_desc_factory_.reset(new WebRtcSessionDescriptionFactory(
       signaling_thread(), channel_manager(), this, session_id(),
-      std::move(dependencies.cert_generator), certificate));
+      std::move(dependencies.cert_generator), certificate,
+      &ice_credentials_factory_));
   webrtc_session_desc_factory_->SignalCertificateReady.connect(
       this, &PeerConnection::OnCertificateReady);
 

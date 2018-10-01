@@ -74,7 +74,8 @@ class WebRtcSessionDescriptionFactory : public rtc::MessageHandler,
       PeerConnectionInternal* pc,
       const std::string& session_id,
       std::unique_ptr<rtc::RTCCertificateGeneratorInterface> cert_generator,
-      const rtc::scoped_refptr<rtc::RTCCertificate>& certificate);
+      const rtc::scoped_refptr<rtc::RTCCertificate>& certificate,
+      cricket::IceCredentialsFactory* ice_credentials_factory);
   virtual ~WebRtcSessionDescriptionFactory();
 
   static void CopyCandidatesFromSessionDescription(

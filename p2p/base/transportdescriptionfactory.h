@@ -11,7 +11,11 @@
 #ifndef P2P_BASE_TRANSPORTDESCRIPTIONFACTORY_H_
 #define P2P_BASE_TRANSPORTDESCRIPTIONFACTORY_H_
 
+#include <string>
+#include <utility>
+
 #include "p2p/base/transportdescription.h"
+#include "p2p/base/icecredentialsfactory.h"
 #include "rtc_base/rtccertificate.h"
 
 namespace rtc {
@@ -34,7 +38,8 @@ struct TransportOptions {
 class TransportDescriptionFactory {
  public:
   // Default ctor; use methods below to set configuration.
-  TransportDescriptionFactory();
+  explicit TransportDescriptionFactory(
+      IceCredentialsFactory* ice_credentials_factory);
   ~TransportDescriptionFactory();
 
   SecurePolicy secure() const { return secure_; }
@@ -68,12 +73,16 @@ class TransportDescriptionFactory {
       bool require_transport_attributes,
       const TransportDescription* current_description) const;
 
+  void CreateIceCredentials(int n);
+  std::pair<std::string, std::string> GetIceCredentials();
+
  private:
   bool SetSecurityInfo(TransportDescription* description,
                        ConnectionRole role) const;
 
   SecurePolicy secure_;
   rtc::scoped_refptr<rtc::RTCCertificate> certificate_;
+  IceCredentialsFactory* ice_credentials_factory_;
 };
 
 }  // namespace cricket

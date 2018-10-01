@@ -1033,6 +1033,8 @@ class PeerConnection : public PeerConnectionInternal,
 
   int usage_event_accumulator_ = 0;
   bool return_histogram_very_quickly_ = false;
+
+  cricket::IceCredentialsFactory ice_credentials_factory_;
 };
 
 }  // namespace webrtc

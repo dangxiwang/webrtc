@@ -14,6 +14,7 @@
 
 #include "media/base/codec.h"
 #include "media/base/testutils.h"
+#include "p2p/base/icecredentialsfactory.h"
 #include "p2p/base/p2pconstants.h"
 #include "p2p/base/transportdescription.h"
 #include "p2p/base/transportinfo.h"
@@ -33,6 +34,7 @@
 
 typedef std::vector<cricket::Candidate> Candidates;
 
+using cricket::IceCredentialsFactory;
 using cricket::MediaContentDescription;
 using cricket::MediaSessionDescriptionFactory;
 using cricket::MediaDescriptionOptions;
@@ -347,7 +349,10 @@ static MediaSessionOptions CreatePlanBMediaSessionOptions() {
 // these tests may be obsolete as a result, and should be refactored or removed.
 class MediaSessionDescriptionFactoryTest : public testing::Test {
  public:
-  MediaSessionDescriptionFactoryTest() : f1_(&tdf1_), f2_(&tdf2_) {
+  MediaSessionDescriptionFactoryTest() :
+      tdf1_(&ice_credentials_factory_),
+      tdf2_(&ice_credentials_factory_),
+      f1_(&tdf1_), f2_(&tdf2_) {
     f1_.set_audio_codecs(MAKE_VECTOR(kAudioCodecs1),
                          MAKE_VECTOR(kAudioCodecs1));
     f1_.set_video_codecs(MAKE_VECTOR(kVideoCodecs1));
@@ -653,10 +658,11 @@ class MediaSessionDescriptionFactoryTest : public testing::Test {
   }
 
  protected:
-  MediaSessionDescriptionFactory f1_;
-  MediaSessionDescriptionFactory f2_;
+  IceCredentialsFactory ice_credentials_factory_;
   TransportDescriptionFactory tdf1_;
   TransportDescriptionFactory tdf2_;
+  MediaSessionDescriptionFactory f1_;
+  MediaSessionDescriptionFactory f2_;
 };
 
 // Create a typical audio offer, and ensure it matches what we expect.
@@ -3407,7 +3413,9 @@ TEST_F(MediaSessionDescriptionFactoryTest,
 
 class MediaProtocolTest : public ::testing::TestWithParam<const char*> {
  public:
-  MediaProtocolTest() : f1_(&tdf1_), f2_(&tdf2_) {
+  MediaProtocolTest() : tdf1_(&ice_credentials_factory_),
+                        tdf2_(&ice_credentials_factory_),
+                        f1_(&tdf1_), f2_(&tdf2_) {
     f1_.set_audio_codecs(MAKE_VECTOR(kAudioCodecs1),
                          MAKE_VECTOR(kAudioCodecs1));
     f1_.set_video_codecs(MAKE_VECTOR(kVideoCodecs1));
@@ -3427,10 +3435,11 @@ class MediaProtocolTest : public ::testing::TestWithParam<const char*> {
   }
 
  protected:
-  MediaSessionDescriptionFactory f1_;
-  MediaSessionDescriptionFactory f2_;
+  IceCredentialsFactory ice_credentials_factory_;
   TransportDescriptionFactory tdf1_;
   TransportDescriptionFactory tdf2_;
+  MediaSessionDescriptionFactory f1_;
+  MediaSessionDescriptionFactory f2_;
 };
 
 TEST_P(MediaProtocolTest, TestAudioVideoAcceptance) {
@@ -3464,7 +3473,8 @@ INSTANTIATE_TEST_CASE_P(MediaProtocolDtlsPatternTest,
                         ::testing::ValuesIn(kMediaProtocolsDtls));
 
 TEST_F(MediaSessionDescriptionFactoryTest, TestSetAudioCodecs) {
-  TransportDescriptionFactory tdf;
+  IceCredentialsFactory ice_credentials_factory;
+  TransportDescriptionFactory tdf(&ice_credentials_factory);
   MediaSessionDescriptionFactory sf(&tdf);
   std::vector<AudioCodec> send_codecs = MAKE_VECTOR(kAudioCodecs1);
   std::vector<AudioCodec> recv_codecs = MAKE_VECTOR(kAudioCodecs2);
@@ -3533,7 +3543,8 @@ bool CodecsMatch(const std::vector<Codec>& codecs1,
 }
 
 void TestAudioCodecsOffer(RtpTransceiverDirection direction) {
-  TransportDescriptionFactory tdf;
+  IceCredentialsFactory ice_credentials_factory;
+  TransportDescriptionFactory tdf(&ice_credentials_factory);
   MediaSessionDescriptionFactory sf(&tdf);
   const std::vector<AudioCodec> send_codecs = MAKE_VECTOR(kAudioCodecs1);
   const std::vector<AudioCodec> recv_codecs = MAKE_VECTOR(kAudioCodecs2);
@@ -3628,8 +3639,9 @@ std::vector<T> VectorFromIndices(const T* array, const int (&indices)[IDXS]) {
 void TestAudioCodecsAnswer(RtpTransceiverDirection offer_direction,
                            RtpTransceiverDirection answer_direction,
                            bool add_legacy_stream) {
-  TransportDescriptionFactory offer_tdf;
-  TransportDescriptionFactory answer_tdf;
+  IceCredentialsFactory ice_credentials_factory;
+  TransportDescriptionFactory offer_tdf(&ice_credentials_factory);
+  TransportDescriptionFactory answer_tdf(&ice_credentials_factory);
   MediaSessionDescriptionFactory offer_factory(&offer_tdf);
   MediaSessionDescriptionFactory answer_factory(&answer_tdf);
   offer_factory.set_audio_codecs(
