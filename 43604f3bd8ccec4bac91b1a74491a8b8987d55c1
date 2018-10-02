@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a308afe_d65a6373",
+        "filename": "modules/audio_coding/neteq/buffer_level_filter.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 5126
+      },
+      "writtenOn": "2018-10-02T09:51:06Z",
+      "side": 1,
+      "message": "Why are these unsigned now?",
+      "range": {
+        "startLine": 46,
+        "startChar": 57,
+        "endLine": 46,
+        "endChar": 65
+      },
+      "revId": "43604f3bd8ccec4bac91b1a74491a8b8987d55c1",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2dd47718_7bdb493d",
+        "filename": "modules/audio_coding/neteq/buffer_level_filter.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 5126
+      },
+      "writtenOn": "2018-10-02T09:51:06Z",
+      "side": 1,
+      "message": "Prefer `int64_t{time_stretched_samples}` if possible; see style guide: https://google.github.io/styleguide/cppguide.html#Casting",
+      "range": {
+        "startLine": 46,
+        "startChar": 9,
+        "endLine": 46,
+        "endChar": 53
+      },
+      "revId": "43604f3bd8ccec4bac91b1a74491a8b8987d55c1",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90d56df3_3435be49",
+        "filename": "modules/audio_coding/neteq/buffer_level_filter.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 5126
+      },
+      "writtenOn": "2018-10-02T09:51:06Z",
+      "side": 1,
+      "message": "Can this ever overflow? If no, dchecked_cast is probably appropriate. If yes, would saturated_cast be better than static_cast?",
+      "range": {
+        "startLine": 49,
+        "startChar": 30,
+        "endLine": 49,
+        "endChar": 46
+      },
+      "revId": "43604f3bd8ccec4bac91b1a74491a8b8987d55c1",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
