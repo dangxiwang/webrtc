@@ -20,8 +20,10 @@
 
 namespace cricket {
 
-TransportDescriptionFactory::TransportDescriptionFactory()
-    : secure_(SEC_DISABLED) {}
+TransportDescriptionFactory::TransportDescriptionFactory(
+    IceCredentialsFactory *ice_credentials_factory)
+    : secure_(SEC_DISABLED),
+      ice_credentials_factory_(ice_credentials_factory) {}
 
 TransportDescriptionFactory::~TransportDescriptionFactory() = default;
 
@@ -32,8 +34,10 @@ TransportDescription* TransportDescriptionFactory::CreateOffer(
 
   // Generate the ICE credentials if we don't already have them.
   if (!current_description || options.ice_restart) {
-    desc->ice_ufrag = rtc::CreateRandomString(ICE_UFRAG_LENGTH);
-    desc->ice_pwd = rtc::CreateRandomString(ICE_PWD_LENGTH);
+    std::pair<std::string, std::string> ice_credentials =
+        ice_credentials_factory_->GetIceCredentials();
+    desc->ice_ufrag = ice_credentials.first;
+    desc->ice_pwd = ice_credentials.second;
   } else {
     desc->ice_ufrag = current_description->ice_ufrag;
     desc->ice_pwd = current_description->ice_pwd;
@@ -71,8 +75,10 @@ TransportDescription* TransportDescriptionFactory::CreateAnswer(
   // Generate the ICE credentials if we don't already have them or ice is
   // being restarted.
   if (!current_description || options.ice_restart) {
-    desc->ice_ufrag = rtc::CreateRandomString(ICE_UFRAG_LENGTH);
-    desc->ice_pwd = rtc::CreateRandomString(ICE_PWD_LENGTH);
+    std::pair<std::string, std::string> ice_credentials =
+        ice_credentials_factory_->GetIceCredentials();
+    desc->ice_ufrag = ice_credentials.first;
+    desc->ice_pwd = ice_credentials.second;
   } else {
     desc->ice_ufrag = current_description->ice_ufrag;
     desc->ice_pwd = current_description->ice_pwd;
