@@ -41,9 +41,13 @@ void BufferLevelFilter::Update(size_t buffer_size_packets,
     // value of |time_stretched_samples| from |filtered_current_level_| after
     // converting |time_stretched_samples| from samples to packets in Q8.
     // Make sure that the filtered value remains non-negative.
-    filtered_current_level_ = std::max(
-        0, filtered_current_level_ - (time_stretched_samples * (1 << 8)) /
-                                         static_cast<int>(packet_len_samples));
+
+    int64_t time_stretched_packets =
+        (static_cast<int64_t>(time_stretched_samples) * (1u << 8u)) /
+        static_cast<int64_t>(packet_len_samples);
+
+    filtered_current_level_ = static_cast<int>(
+        std::max<int64_t>(0, filtered_current_level_ - time_stretched_packets));
   }
 }
 
