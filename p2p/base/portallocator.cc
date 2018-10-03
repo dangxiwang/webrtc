@@ -121,6 +121,15 @@ PortAllocator::~PortAllocator() {
   CheckRunOnValidThreadIfInitialized();
 }
 
+void PortAllocator::SetRestrictIceCredentialsChange(bool value) {
+  restrict_ice_credentials_change_ = value;
+}
+
+void PortAllocator::SetIceCredentialsFactory(
+    IceCredentialsFactory* ice_credentials_factory) {
+  ice_credentials_factory_ = ice_credentials_factory;
+}
+
 bool PortAllocator::SetConfiguration(
     const ServerAddresses& stun_servers,
     const std::vector<RelayServerConfig>& turn_servers,
@@ -162,8 +171,8 @@ bool PortAllocator::SetConfiguration(
   // If |candidate_pool_size_| is less than the number of pooled sessions, get
   // rid of the extras.
   while (candidate_pool_size_ < static_cast<int>(pooled_sessions_.size())) {
-    pooled_sessions_.front().reset(nullptr);
-    pooled_sessions_.pop_front();
+    pooled_sessions_.back().reset(nullptr);
+    pooled_sessions_.pop_back();
   }
 
   // |stun_candidate_keepalive_interval_| will be used in STUN port allocation
@@ -179,7 +188,9 @@ bool PortAllocator::SetConfiguration(
   // If |candidate_pool_size_| is greater than the number of pooled sessions,
   // create new sessions.
   while (static_cast<int>(pooled_sessions_.size()) < candidate_pool_size_) {
-    PortAllocatorSession* pooled_session = CreateSessionInternal("", 0, "", "");
+    std::pair<std::string, std::string> iceCredentials = CreateIceCredentials();
+    PortAllocatorSession* pooled_session = CreateSessionInternal(
+        "", 0, iceCredentials.first, iceCredentials.second);
     pooled_session->StartGettingPorts();
     pooled_sessions_.push_back(
         std::unique_ptr<PortAllocatorSession>(pooled_session));
@@ -210,14 +221,33 @@ std::unique_ptr<PortAllocatorSession> PortAllocator::TakePooledSession(
   if (pooled_sessions_.empty()) {
     return nullptr;
   }
-  std::unique_ptr<PortAllocatorSession> ret =
-      std::move(pooled_sessions_.front());
-  ret->SetIceParameters(content_name, component, ice_ufrag, ice_pwd);
-  // According to JSEP, a pooled session should filter candidates only after
-  // it's taken out of the pool.
-  ret->SetCandidateFilter(candidate_filter());
-  pooled_sessions_.pop_front();
-  return ret;
+
+  if (!restrict_ice_credentials_change_) {
+    std::unique_ptr<PortAllocatorSession> ret =
+        std::move(pooled_sessions_.back());
+    ret->SetIceParameters(content_name, component, ice_ufrag, ice_pwd);
+    // According to JSEP, a pooled session should filter candidates only after
+    // it's taken out of the pool.
+    ret->SetCandidateFilter(candidate_filter());
+    pooled_sessions_.pop_back();
+    return ret;
+  }
+
+  // If we don't support changing ice credentials...check if we
+  // have a cached one with the requested credentials.
+  for (auto it = pooled_sessions_.begin(); it != pooled_sessions_.end(); ++it) {
+    if ((*it)->ice_ufrag() == ice_ufrag && (*it)->ice_pwd() == ice_pwd) {
+      std::unique_ptr<PortAllocatorSession> ret = std::move(*it);
+      // We must still update the content_name.
+      ret->SetIceParameters(content_name, component, ice_ufrag, ice_pwd);
+      // According to JSEP, a pooled session should filter candidates only
+      // after it's taken out of the pool.
+      ret->SetCandidateFilter(candidate_filter());
+      pooled_sessions_.erase(it);
+      return ret;
+    }
+  }
+  return nullptr;
 }
 
 const PortAllocatorSession* PortAllocator::GetPooledSession() const {
@@ -225,7 +255,7 @@ const PortAllocatorSession* PortAllocator::GetPooledSession() const {
   if (pooled_sessions_.empty()) {
     return nullptr;
   }
-  return pooled_sessions_.front().get();
+  return pooled_sessions_.back().get();
 }
 
 void PortAllocator::FreezeCandidatePool() {
@@ -244,6 +274,15 @@ void PortAllocator::GetCandidateStatsFromPooledSessions(
   for (const auto& session : pooled_sessions()) {
     session->GetCandidateStatsFromReadyPorts(candidate_stats_list);
   }
+}
+
+std::pair<std::string, std::string> PortAllocator::CreateIceCredentials() {
+  if (ice_credentials_factory_ != nullptr) {
+    return ice_credentials_factory_->CreateIceCredentials();
+  }
+  return std::pair<std::string, std::string>(
+      rtc::CreateRandomString(ICE_UFRAG_LENGTH),
+      rtc::CreateRandomString(ICE_PWD_LENGTH));
 }
 
 }  // namespace cricket
