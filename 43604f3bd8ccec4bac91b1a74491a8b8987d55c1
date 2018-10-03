@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "8c988d1d_21be2e4e",
+        "filename": "modules/audio_coding/neteq/buffer_level_filter.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 5126
+      },
+      "writtenOn": "2018-10-03T10:43:43Z",
+      "side": 1,
+      "message": "As on line 49, consider using either dchecked_cast or saturated_cast for `packet_len_samples`, depending on whether overflow is allowed to happen or not. static_cast is seldom the optimal choice.",
+      "parentUuid": "b6cc46b4_d94f9ba1",
+      "range": {
+        "startLine": 46,
+        "startChar": 9,
+        "endLine": 46,
+        "endChar": 53
+      },
+      "revId": "43604f3bd8ccec4bac91b1a74491a8b8987d55c1",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "90d56df3_3435be49",
         "filename": "modules/audio_coding/neteq/buffer_level_filter.cc",
         "patchSetId": 1
