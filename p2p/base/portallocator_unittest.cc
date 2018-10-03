@@ -71,8 +71,7 @@ class PortAllocatorTest : public testing::Test, public sigslot::has_slots<> {
 
   int GetAllPooledSessionsReturnCount() {
     int count = 0;
-    while (GetPooledSession()) {
-      TakePooledSession();
+    while (TakePooledSession() != nullptr) {
       ++count;
     }
     return count;
@@ -274,4 +273,33 @@ TEST_F(PortAllocatorTest, DiscardCandidatePool) {
   SetConfigurationWithPoolSize(1);
   allocator_->DiscardCandidatePool();
   EXPECT_EQ(0, GetAllPooledSessionsReturnCount());
+}
+
+class FakeIceCredentialsFactory : public cricket::IceCredentialsFactory {
+ public:
+  std::pair<std::string, std::string> CreateIceCredentials() override {
+    return std::pair<std::string, std::string>(kIceUfrag, kIcePwd);
+  }
+};
+
+TEST_F(PortAllocatorTest, IceCredentialsFactory) {
+  SetConfigurationWithPoolSize(1);
+  EXPECT_EQ(1, GetAllPooledSessionsReturnCount());
+  allocator_->DiscardCandidatePool();
+
+  // Only return pooled sessions with the ice credentials that
+  // match those requested in TakePooledSession().
+  allocator_->SetRestrictIceCredentialsChange(true);
+  SetConfigurationWithPoolSize(1);
+  EXPECT_EQ(0, GetAllPooledSessionsReturnCount());
+  allocator_->DiscardCandidatePool();
+
+  // Now the credentials match as the FakeIceCredentialsFactory returns
+  // same as requested in TakePooledSession.
+  FakeIceCredentialsFactory factory;
+  allocator_->SetIceCredentialsFactory(&factory);
+  allocator_->SetRestrictIceCredentialsChange(true);
+  SetConfigurationWithPoolSize(1);
+  EXPECT_EQ(1, GetAllPooledSessionsReturnCount());
+  allocator_->DiscardCandidatePool();
 }
