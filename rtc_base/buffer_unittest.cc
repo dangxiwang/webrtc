@@ -25,7 +25,7 @@ const uint8_t kTestData[] = {0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7,
                              0x8, 0x9, 0xa, 0xb, 0xc, 0xd, 0xe, 0xf};
 // clang-format on
 
-void TestBuf(const Buffer& b1, size_t size, size_t capacity) {
+void TestBuf(const BufferT<uint8_t>& b1, size_t size, size_t capacity) {
   EXPECT_EQ(b1.size(), size);
   EXPECT_EQ(b1.capacity(), capacity);
 }
@@ -33,20 +33,20 @@ void TestBuf(const Buffer& b1, size_t size, size_t capacity) {
 }  // namespace
 
 TEST(BufferTest, TestConstructEmpty) {
-  TestBuf(Buffer(), 0, 0);
-  TestBuf(Buffer(Buffer()), 0, 0);
-  TestBuf(Buffer(0), 0, 0);
+  TestBuf(BufferT<uint8_t>(), 0, 0);
+  TestBuf(BufferT<uint8_t>(BufferT<uint8_t>()), 0, 0);
+  TestBuf(BufferT<uint8_t>(0), 0, 0);
 
   // We can't use a literal 0 for the first argument, because C++ will allow
   // that to be considered a null pointer, which makes the call ambiguous.
-  TestBuf(Buffer(0 + 0, 10), 0, 10);
+  TestBuf(BufferT<uint8_t>(0 + 0, 10), 0, 10);
 
-  TestBuf(Buffer(kTestData, 0), 0, 0);
-  TestBuf(Buffer(kTestData, 0, 20), 0, 20);
+  TestBuf(BufferT<uint8_t>(kTestData, 0), 0, 0);
+  TestBuf(BufferT<uint8_t>(kTestData, 0, 20), 0, 20);
 }
 
 TEST(BufferTest, TestConstructData) {
-  Buffer buf(kTestData, 7);
+  BufferT<uint8_t> buf(kTestData, 7);
   EXPECT_EQ(buf.size(), 7u);
   EXPECT_EQ(buf.capacity(), 7u);
   EXPECT_FALSE(buf.empty());
@@ -54,7 +54,7 @@ TEST(BufferTest, TestConstructData) {
 }
 
 TEST(BufferTest, TestConstructDataWithCapacity) {
-  Buffer buf(kTestData, 7, 14);
+  BufferT<uint8_t> buf(kTestData, 7, 14);
   EXPECT_EQ(buf.size(), 7u);
   EXPECT_EQ(buf.capacity(), 14u);
   EXPECT_FALSE(buf.empty());
@@ -62,7 +62,7 @@ TEST(BufferTest, TestConstructDataWithCapacity) {
 }
 
 TEST(BufferTest, TestConstructArray) {
-  Buffer buf(kTestData);
+  BufferT<uint8_t> buf(kTestData);
   EXPECT_EQ(buf.size(), 16u);
   EXPECT_EQ(buf.capacity(), 16u);
   EXPECT_FALSE(buf.empty());
@@ -70,13 +70,13 @@ TEST(BufferTest, TestConstructArray) {
 }
 
 TEST(BufferTest, TestSetData) {
-  Buffer buf(kTestData + 4, 7);
+  BufferT<uint8_t> buf(kTestData + 4, 7);
   buf.SetData(kTestData, 9);
   EXPECT_EQ(buf.size(), 9u);
   EXPECT_EQ(buf.capacity(), 7u * 3 / 2);
   EXPECT_FALSE(buf.empty());
   EXPECT_EQ(0, memcmp(buf.data(), kTestData, 9));
-  Buffer buf2;
+  BufferT<uint8_t> buf2;
   buf2.SetData(buf);
   EXPECT_EQ(buf.size(), 9u);
   EXPECT_EQ(buf.capacity(), 7u * 3 / 2);
@@ -84,15 +84,15 @@ TEST(BufferTest, TestSetData) {
 }
 
 TEST(BufferTest, TestAppendData) {
-  Buffer buf(kTestData + 4, 3);
+  BufferT<uint8_t> buf(kTestData + 4, 3);
   buf.AppendData(kTestData + 10, 2);
   const int8_t exp[] = {0x4, 0x5, 0x6, 0xa, 0xb};
-  EXPECT_EQ(buf, Buffer(exp));
-  Buffer buf2;
+  EXPECT_EQ(buf, BufferT<uint8_t>(exp));
+  BufferT<uint8_t> buf2;
   buf2.AppendData(buf);
   buf2.AppendData(rtc::ArrayView<uint8_t>(buf));
   const int8_t exp2[] = {0x4, 0x5, 0x6, 0xa, 0xb, 0x4, 0x5, 0x6, 0xa, 0xb};
-  EXPECT_EQ(buf2, Buffer(exp2));
+  EXPECT_EQ(buf2, BufferT<uint8_t>(exp2));
 }
 
 TEST(BufferTest, TestSetAndAppendWithUnknownArg) {
@@ -100,10 +100,10 @@ TEST(BufferTest, TestSetAndAppendWithUnknownArg) {
     size_t size() const { return 3; }
     const uint8_t* data() const { return kTestData; }
   };
-  Buffer buf;
+  BufferT<uint8_t> buf;
   buf.SetData(TestDataContainer());
   EXPECT_EQ(3u, buf.size());
-  EXPECT_EQ(Buffer(kTestData, 3), buf);
+  EXPECT_EQ(BufferT<uint8_t>(kTestData, 3), buf);
   buf.AppendData(TestDataContainer());
   EXPECT_EQ(6u, buf.size());
   EXPECT_EQ(0, memcmp(buf.data(), kTestData, 3));
@@ -111,17 +111,17 @@ TEST(BufferTest, TestSetAndAppendWithUnknownArg) {
 }
 
 TEST(BufferTest, TestSetSizeSmaller) {
-  Buffer buf;
+  BufferT<uint8_t> buf;
   buf.SetData(kTestData, 15);
   buf.SetSize(10);
   EXPECT_EQ(buf.size(), 10u);
   EXPECT_EQ(buf.capacity(), 15u);  // Hasn't shrunk.
   EXPECT_FALSE(buf.empty());
-  EXPECT_EQ(buf, Buffer(kTestData, 10));
+  EXPECT_EQ(buf, BufferT<uint8_t>(kTestData, 10));
 }
 
 TEST(BufferTest, TestSetSizeLarger) {
-  Buffer buf;
+  BufferT<uint8_t> buf;
   buf.SetData(kTestData, 15);
   EXPECT_EQ(buf.size(), 15u);
   EXPECT_EQ(buf.capacity(), 15u);
@@ -134,30 +134,30 @@ TEST(BufferTest, TestSetSizeLarger) {
 }
 
 TEST(BufferTest, TestEnsureCapacitySmaller) {
-  Buffer buf(kTestData);
+  BufferT<uint8_t> buf(kTestData);
   const char* data = buf.data<char>();
   buf.EnsureCapacity(4);
   EXPECT_EQ(buf.capacity(), 16u);     // Hasn't shrunk.
   EXPECT_EQ(buf.data<char>(), data);  // No reallocation.
   EXPECT_FALSE(buf.empty());
-  EXPECT_EQ(buf, Buffer(kTestData));
+  EXPECT_EQ(buf, BufferT<uint8_t>(kTestData));
 }
 
 TEST(BufferTest, TestEnsureCapacityLarger) {
-  Buffer buf(kTestData, 5);
+  BufferT<uint8_t> buf(kTestData, 5);
   buf.EnsureCapacity(10);
   const int8_t* data = buf.data<int8_t>();
   EXPECT_EQ(buf.capacity(), 10u);
   buf.AppendData(kTestData + 5, 5);
   EXPECT_EQ(buf.data<int8_t>(), data);  // No reallocation.
   EXPECT_FALSE(buf.empty());
-  EXPECT_EQ(buf, Buffer(kTestData, 10));
+  EXPECT_EQ(buf, BufferT<uint8_t>(kTestData, 10));
 }
 
 TEST(BufferTest, TestMoveConstruct) {
-  Buffer buf1(kTestData, 3, 40);
+  BufferT<uint8_t> buf1(kTestData, 3, 40);
   const uint8_t* data = buf1.data();
-  Buffer buf2(std::move(buf1));
+  BufferT<uint8_t> buf2(std::move(buf1));
   EXPECT_EQ(buf2.size(), 3u);
   EXPECT_EQ(buf2.capacity(), 40u);
   EXPECT_EQ(buf2.data(), data);
@@ -170,9 +170,9 @@ TEST(BufferTest, TestMoveConstruct) {
 }
 
 TEST(BufferTest, TestMoveAssign) {
-  Buffer buf1(kTestData, 3, 40);
+  BufferT<uint8_t> buf1(kTestData, 3, 40);
   const uint8_t* data = buf1.data();
-  Buffer buf2(kTestData);
+  BufferT<uint8_t> buf2(kTestData);
   buf2 = std::move(buf1);
   EXPECT_EQ(buf2.size(), 3u);
   EXPECT_EQ(buf2.capacity(), 40u);
@@ -186,8 +186,8 @@ TEST(BufferTest, TestMoveAssign) {
 }
 
 TEST(BufferTest, TestSwap) {
-  Buffer buf1(kTestData, 3);
-  Buffer buf2(kTestData, 6, 40);
+  BufferT<uint8_t> buf1(kTestData, 3);
+  BufferT<uint8_t> buf2(kTestData, 6, 40);
   uint8_t* data1 = buf1.data();
   uint8_t* data2 = buf2.data();
   using std::swap;
@@ -203,7 +203,7 @@ TEST(BufferTest, TestSwap) {
 }
 
 TEST(BufferTest, TestClear) {
-  Buffer buf;
+  BufferT<uint8_t> buf;
   buf.SetData(kTestData, 15);
   EXPECT_EQ(buf.size(), 15u);
   EXPECT_EQ(buf.capacity(), 15u);
@@ -223,11 +223,11 @@ TEST(BufferTest, TestLambdaSetAppend) {
     return 15;
   };
 
-  Buffer buf1;
+  BufferT<uint8_t> buf1;
   buf1.SetData(kTestData, 15);
   buf1.AppendData(kTestData, 15);
 
-  Buffer buf2;
+  BufferT<uint8_t> buf2;
   EXPECT_EQ(buf2.SetData(15, setter), 15u);
   EXPECT_EQ(buf2.AppendData(15, setter), 15u);
   EXPECT_EQ(buf1, buf2);
@@ -243,11 +243,11 @@ TEST(BufferTest, TestLambdaSetAppendSigned) {
     return 15;
   };
 
-  Buffer buf1;
+  BufferT<uint8_t> buf1;
   buf1.SetData(kTestData, 15);
   buf1.AppendData(kTestData, 15);
 
-  Buffer buf2;
+  BufferT<uint8_t> buf2;
   EXPECT_EQ(buf2.SetData<int8_t>(15, setter), 15u);
   EXPECT_EQ(buf2.AppendData<int8_t>(15, setter), 15u);
   EXPECT_EQ(buf1, buf2);
@@ -263,10 +263,10 @@ TEST(BufferTest, TestLambdaAppendEmpty) {
     return 15;
   };
 
-  Buffer buf1;
+  BufferT<uint8_t> buf1;
   buf1.SetData(kTestData, 15);
 
-  Buffer buf2;
+  BufferT<uint8_t> buf2;
   EXPECT_EQ(buf2.AppendData(15, setter), 15u);
   EXPECT_EQ(buf1, buf2);
   EXPECT_EQ(buf1.capacity(), buf2.capacity());
@@ -281,7 +281,7 @@ TEST(BufferTest, TestLambdaAppendPartial) {
     return 7;
   };
 
-  Buffer buf;
+  BufferT<uint8_t> buf;
   EXPECT_EQ(buf.AppendData(15, setter), 7u);
   EXPECT_EQ(buf.size(), 7u);             // Size is exactly what we wrote.
   EXPECT_GE(buf.capacity(), 7u);         // Capacity is valid.
@@ -301,7 +301,7 @@ TEST(BufferTest, TestMutableLambdaSetAppend) {
 
   EXPECT_EQ(magic_number, 17);
 
-  Buffer buf;
+  BufferT<uint8_t> buf;
   EXPECT_EQ(buf.SetData(15, setter), 15u);
   EXPECT_EQ(buf.AppendData(15, setter), 15u);
   EXPECT_EQ(buf.size(), 30u);            // Size is exactly what we wrote.
@@ -315,7 +315,7 @@ TEST(BufferTest, TestMutableLambdaSetAppend) {
 }
 
 TEST(BufferTest, TestBracketRead) {
-  Buffer buf(kTestData, 7);
+  BufferT<uint8_t> buf(kTestData, 7);
   EXPECT_EQ(buf.size(), 7u);
   EXPECT_EQ(buf.capacity(), 7u);
   EXPECT_NE(buf.data(), nullptr);
@@ -327,13 +327,13 @@ TEST(BufferTest, TestBracketRead) {
 }
 
 TEST(BufferTest, TestBracketReadConst) {
-  Buffer buf(kTestData, 7);
+  BufferT<uint8_t> buf(kTestData, 7);
   EXPECT_EQ(buf.size(), 7u);
   EXPECT_EQ(buf.capacity(), 7u);
   EXPECT_NE(buf.data(), nullptr);
   EXPECT_FALSE(buf.empty());
 
-  const Buffer& cbuf = buf;
+  const BufferT<uint8_t>& cbuf = buf;
 
   for (size_t i = 0; i != 7u; ++i) {
     EXPECT_EQ(cbuf[i], kTestData[i]);
@@ -341,7 +341,7 @@ TEST(BufferTest, TestBracketReadConst) {
 }
 
 TEST(BufferTest, TestBracketWrite) {
-  Buffer buf(7);
+  BufferT<uint8_t> buf(7);
   EXPECT_EQ(buf.size(), 7u);
   EXPECT_EQ(buf.capacity(), 7u);
   EXPECT_NE(buf.data(), nullptr);
@@ -357,8 +357,8 @@ TEST(BufferTest, TestBracketWrite) {
 }
 
 TEST(BufferTest, TestBeginEnd) {
-  const Buffer cbuf(kTestData);
-  Buffer buf(kTestData);
+  const BufferT<uint8_t> cbuf(kTestData);
+  BufferT<uint8_t> buf(kTestData);
   auto* b1 = cbuf.begin();
   for (auto& x : buf) {
     EXPECT_EQ(*b1, x);
