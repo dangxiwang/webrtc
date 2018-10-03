@@ -156,7 +156,7 @@ class ByteBufferReader : public ByteBuffer {
   // Initializes buffer from a zero-terminated string.
   explicit ByteBufferReader(const char* bytes);
 
-  explicit ByteBufferReader(const Buffer& buf);
+  explicit ByteBufferReader(const BufferT<uint8_t>& buf);
 
   explicit ByteBufferReader(const ByteBufferWriter& buf);
 
