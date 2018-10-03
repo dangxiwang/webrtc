@@ -121,6 +121,11 @@ PortAllocator::~PortAllocator() {
   CheckRunOnValidThreadIfInitialized();
 }
 
+void PortAllocator::SetIceCredentialsFactory(
+    IceCredentialsFactory* ice_credentials_factory) {
+  ice_credentials_factory_ = ice_credentials_factory;
+}
+
 bool PortAllocator::SetConfiguration(
     const ServerAddresses& stun_servers,
     const std::vector<RelayServerConfig>& turn_servers,
@@ -179,7 +184,9 @@ bool PortAllocator::SetConfiguration(
   // If |candidate_pool_size_| is greater than the number of pooled sessions,
   // create new sessions.
   while (static_cast<int>(pooled_sessions_.size()) < candidate_pool_size_) {
-    PortAllocatorSession* pooled_session = CreateSessionInternal("", 0, "", "");
+    std::pair<std::string, std::string> iceCredentials = CreateIceCredentials();
+    PortAllocatorSession* pooled_session = CreateSessionInternal(
+        "", 0, iceCredentials.first, iceCredentials.second);
     pooled_session->StartGettingPorts();
     pooled_sessions_.push_back(
         std::unique_ptr<PortAllocatorSession>(pooled_session));
@@ -244,6 +251,15 @@ void PortAllocator::GetCandidateStatsFromPooledSessions(
   for (const auto& session : pooled_sessions()) {
     session->GetCandidateStatsFromReadyPorts(candidate_stats_list);
   }
+}
+
+std::pair<std::string, std::string> PortAllocator::CreateIceCredentials() {
+  if (ice_credentials_factory_ != nullptr) {
+    return ice_credentials_factory_->CreateIceCredentials();
+  }
+  return std::pair<std::string, std::string>(
+      rtc::CreateRandomString(ICE_UFRAG_LENGTH),
+      rtc::CreateRandomString(ICE_PWD_LENGTH));
 }
 
 }  // namespace cricket

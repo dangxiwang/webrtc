@@ -123,8 +123,10 @@ WebRtcSessionDescriptionFactory::WebRtcSessionDescriptionFactory(
     PeerConnectionInternal* pc,
     const std::string& session_id,
     std::unique_ptr<rtc::RTCCertificateGeneratorInterface> cert_generator,
-    const rtc::scoped_refptr<rtc::RTCCertificate>& certificate)
+    const rtc::scoped_refptr<rtc::RTCCertificate>& certificate,
+    cricket::IceCredentialsFactory* ice_credentials_factory)
     : signaling_thread_(signaling_thread),
+      transport_desc_factory_(ice_credentials_factory),
       session_desc_factory_(channel_manager, &transport_desc_factory_),
       // RFC 4566 suggested a Network Time Protocol (NTP) format timestamp
       // as the session id and session version. To simplify, it should be fine

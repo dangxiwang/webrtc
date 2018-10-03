@@ -14,8 +14,10 @@
 #include <deque>
 #include <memory>
 #include <string>
+#include <utility>
 #include <vector>
 
+#include "p2p/base/icecredentialsfactory.h"
 #include "p2p/base/port.h"
 #include "p2p/base/portinterface.h"
 #include "rtc_base/helpers.h"
@@ -335,6 +337,10 @@ class PortAllocator : public sigslot::has_slots<> {
   // constructing and configuring the PortAllocator subclasses.
   virtual void Initialize();
 
+  // Set IceCredentialsFactory that is used when creating pooled sessions.
+  virtual void SetIceCredentialsFactory(
+      IceCredentialsFactory* ice_credentials_factory);
+
   // Set STUN and TURN servers to be used in future sessions, and set
   // candidate pool size, as described in JSEP.
   //
@@ -569,6 +575,9 @@ class PortAllocator : public sigslot::has_slots<> {
     RTC_DCHECK(initialized_ && thread_checker_.CalledOnValidThread());
   }
 
+  // Create ice credentials (ufrag/passwd) when pooling sessions.
+  std::pair<std::string, std::string> CreateIceCredentials();
+
   bool initialized_ = false;
   uint32_t flags_;
   std::string agent_;
@@ -596,6 +605,9 @@ class PortAllocator : public sigslot::has_slots<> {
   webrtc::TurnCustomizer* turn_customizer_ = nullptr;
 
   absl::optional<int> stun_candidate_keepalive_interval_;
+
+  // Used to create Ice credentials (ufrag/passwd) when pooling sessions.
+  IceCredentialsFactory* ice_credentials_factory_ = nullptr;
 };
 
 }  // namespace cricket
