@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "b6cc46b4_d94f9ba1",
+        "filename": "modules/audio_coding/neteq/buffer_level_filter.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 7967
+      },
+      "writtenOn": "2018-10-03T10:27:46Z",
+      "side": 1,
+      "message": "Thanks. I will change time_stretched_samples cast but keep original cast in packet_len_samples, that can not be narrowed down without information lost (therefore without a compiler error).",
+      "parentUuid": "2dd47718_7bdb493d",
+      "range": {
+        "startLine": 46,
+        "startChar": 9,
+        "endLine": 46,
+        "endChar": 53
+      },
+      "revId": "43604f3bd8ccec4bac91b1a74491a8b8987d55c1",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "11e8ad76_6f4466be",
+        "filename": "modules/audio_coding/neteq/buffer_level_filter.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 7967
+      },
+      "writtenOn": "2018-10-03T10:27:46Z",
+      "side": 1,
+      "message": "Changing. It was a manual reflex of using unsigned numbers while applying bitwise operations.",
+      "parentUuid": "9a308afe_d65a6373",
+      "range": {
+        "startLine": 46,
+        "startChar": 57,
+        "endLine": 46,
+        "endChar": 65
+      },
+      "revId": "43604f3bd8ccec4bac91b1a74491a8b8987d55c1",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90d56df3_3435be49",
         "filename": "modules/audio_coding/neteq/buffer_level_filter.cc",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "43604f3bd8ccec4bac91b1a74491a8b8987d55c1",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8378cb2b_ccb0c325",
+        "filename": "modules/audio_coding/neteq/buffer_level_filter.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 7967
+      },
+      "writtenOn": "2018-10-03T10:27:46Z",
+      "side": 1,
+      "message": "Checking this again there is the case where time_stretched_samples is a big negative number, which can let to overflow in the casting. Changing to saturated_cast.\n\nThanks for the tip.",
+      "parentUuid": "90d56df3_3435be49",
+      "range": {
+        "startLine": 49,
+        "startChar": 30,
+        "endLine": 49,
+        "endChar": 46
+      },
+      "revId": "43604f3bd8ccec4bac91b1a74491a8b8987d55c1",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
