@@ -1015,7 +1015,8 @@ bool PeerConnection::Initialize(
 
   webrtc_session_desc_factory_.reset(new WebRtcSessionDescriptionFactory(
       signaling_thread(), channel_manager(), this, session_id(),
-      std::move(dependencies.cert_generator), certificate));
+      std::move(dependencies.cert_generator), certificate,
+      &ice_credentials_factory_));
   webrtc_session_desc_factory_->SignalCertificateReady.connect(
       this, &PeerConnection::OnCertificateReady);
 
@@ -4712,6 +4713,9 @@ bool PeerConnection::InitializePortAllocator_n(
   for (auto& turn_server : turn_servers_copy) {
     turn_server.tls_cert_verifier = tls_cert_verifier_.get();
   }
+
+  port_allocator_->SetIceCredentialsFactory(&ice_credentials_factory_);
+
   // Call this last since it may create pooled allocator sessions using the
   // properties set above.
   port_allocator_->SetConfiguration(
