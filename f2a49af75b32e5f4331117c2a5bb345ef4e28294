@@ -1,0 +1,187 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e55a494e_5f556e95",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5039
+      },
+      "writtenOn": "2018-10-04T18:24:42Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 14,
+        "startChar": 4,
+        "endLine": 14,
+        "endChar": 10
+      },
+      "revId": "f2a49af75b32e5f4331117c2a5bb345ef4e28294",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31c37fee_31c70b4e",
+        "filename": "p2p/base/icecredentialsfactory.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5039
+      },
+      "writtenOn": "2018-10-04T18:24:42Z",
+      "side": 1,
+      "message": "Factor out the ICE credential generation into a helper method.",
+      "revId": "f2a49af75b32e5f4331117c2a5bb345ef4e28294",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57446982_bc2e9d58",
+        "filename": "p2p/base/icecredentialsfactory.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5039
+      },
+      "writtenOn": "2018-10-04T18:24:42Z",
+      "side": 1,
+      "message": "Comment suggestion:\n\n// The IceCredentialsFactory creates randomly-generated ICE credentials\n// (ufrag/pwd) with additional support for pre-generating credentials that\n// can be used later.\n//\n// Clients who need ICE credentials should use |GetIceCredentials()|.\n// Clients who wish to pre-generate ICE credentials should use |CreateIceCredentials()|.",
+      "revId": "f2a49af75b32e5f4331117c2a5bb345ef4e28294",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93e14ff3_120c01f6",
+        "filename": "p2p/base/icecredentialsfactory.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5039
+      },
+      "writtenOn": "2018-10-04T18:24:42Z",
+      "side": 1,
+      "message": "Please add a couple unit tests for this class.",
+      "revId": "f2a49af75b32e5f4331117c2a5bb345ef4e28294",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5ee815b_22ea3efc",
+        "filename": "p2p/base/icecredentialsfactory.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5039
+      },
+      "writtenOn": "2018-10-04T18:24:42Z",
+      "side": 1,
+      "message": "Naming suggestion: AllocateIceCredentials()",
+      "range": {
+        "startLine": 27,
+        "startChar": 46,
+        "endLine": 27,
+        "endChar": 66
+      },
+      "revId": "f2a49af75b32e5f4331117c2a5bb345ef4e28294",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0cc9894_b54d0f53",
+        "filename": "p2p/base/icecredentialsfactory.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5039
+      },
+      "writtenOn": "2018-10-04T18:24:42Z",
+      "side": 1,
+      "message": "Use cricket::IceParameters instead of std::pair",
+      "range": {
+        "startLine": 27,
+        "startChar": 10,
+        "endLine": 27,
+        "endChar": 45
+      },
+      "revId": "f2a49af75b32e5f4331117c2a5bb345ef4e28294",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "698f5520_8d574cc6",
+        "filename": "p2p/base/icecredentialsfactory.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 5039
+      },
+      "writtenOn": "2018-10-04T18:24:42Z",
+      "side": 1,
+      "message": "Also mention that this will \"consume\" the credentials from the cache.",
+      "revId": "f2a49af75b32e5f4331117c2a5bb345ef4e28294",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bb62fe2_25564403",
+        "filename": "p2p/base/icecredentialsfactory.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5039
+      },
+      "writtenOn": "2018-10-04T18:24:42Z",
+      "side": 1,
+      "message": "Naming suggestion: ConsumeIceCredentials()",
+      "range": {
+        "startLine": 30,
+        "startChar": 46,
+        "endLine": 30,
+        "endChar": 63
+      },
+      "revId": "f2a49af75b32e5f4331117c2a5bb345ef4e28294",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12d1d363_192d3d59",
+        "filename": "p2p/base/icecredentialsfactory.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 5039
+      },
+      "writtenOn": "2018-10-04T18:24:42Z",
+      "side": 1,
+      "message": "cached_ice_credentials_? or generated_ice_credentials_?",
+      "range": {
+        "startLine": 33,
+        "startChar": 50,
+        "endLine": 33,
+        "endChar": 66
+      },
+      "revId": "f2a49af75b32e5f4331117c2a5bb345ef4e28294",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
