@@ -20,20 +20,24 @@
 
 namespace cricket {
 
-TransportDescriptionFactory::TransportDescriptionFactory()
-    : secure_(SEC_DISABLED) {}
+TransportDescriptionFactory::TransportDescriptionFactory(
+    IceCredentialsFactory* ice_credentials_factory)
+    : secure_(SEC_DISABLED),
+      ice_credentials_factory_(ice_credentials_factory) {}
 
 TransportDescriptionFactory::~TransportDescriptionFactory() = default;
 
 TransportDescription* TransportDescriptionFactory::CreateOffer(
     const TransportOptions& options,
-    const TransportDescription* current_description) const {
+    const TransportDescription* current_description,
+    IceCredentialsIterator* ice_credentials) const {
   std::unique_ptr<TransportDescription> desc(new TransportDescription());
 
   // Generate the ICE credentials if we don't already have them.
   if (!current_description || options.ice_restart) {
-    desc->ice_ufrag = rtc::CreateRandomString(ICE_UFRAG_LENGTH);
-    desc->ice_pwd = rtc::CreateRandomString(ICE_PWD_LENGTH);
+    IceParameters credentials = GetIceCredentials(ice_credentials);
+    desc->ice_ufrag = credentials.ufrag;
+    desc->ice_pwd = credentials.pwd;
   } else {
     desc->ice_ufrag = current_description->ice_ufrag;
     desc->ice_pwd = current_description->ice_pwd;
@@ -59,7 +63,8 @@ TransportDescription* TransportDescriptionFactory::CreateAnswer(
     const TransportDescription* offer,
     const TransportOptions& options,
     bool require_transport_attributes,
-    const TransportDescription* current_description) const {
+    const TransportDescription* current_description,
+    IceCredentialsIterator* ice_credentials) const {
   // TODO(juberti): Figure out why we get NULL offers, and fix this upstream.
   if (!offer) {
     RTC_LOG(LS_WARNING) << "Failed to create TransportDescription answer "
@@ -71,8 +76,9 @@ TransportDescription* TransportDescriptionFactory::CreateAnswer(
   // Generate the ICE credentials if we don't already have them or ice is
   // being restarted.
   if (!current_description || options.ice_restart) {
-    desc->ice_ufrag = rtc::CreateRandomString(ICE_UFRAG_LENGTH);
-    desc->ice_pwd = rtc::CreateRandomString(ICE_PWD_LENGTH);
+    IceParameters credentials = GetIceCredentials(ice_credentials);
+    desc->ice_ufrag = credentials.ufrag;
+    desc->ice_pwd = credentials.pwd;
   } else {
     desc->ice_ufrag = current_description->ice_ufrag;
     desc->ice_pwd = current_description->ice_pwd;
@@ -125,6 +131,22 @@ bool TransportDescriptionFactory::SetSecurityInfo(TransportDescription* desc,
   // Assign security role.
   desc->connection_role = role;
   return true;
+}
+
+std::unique_ptr<IceCredentialsIterator>
+TransportDescriptionFactory::GetIceCredentialsIterator() const {
+  if (ice_credentials_factory_ == nullptr) {
+    return nullptr;
+  }
+  return ice_credentials_factory_->GetIceCredentialsIterator();
+}
+
+IceParameters TransportDescriptionFactory::GetIceCredentials(
+    IceCredentialsIterator* ice_credentials_iterator) const {
+  if (ice_credentials_iterator != nullptr) {
+    return ice_credentials_iterator->GetIceCredentials();
+  }
+  return IceCredentialsFactory::CreateRandomIceCredentials();
 }
 
 }  // namespace cricket

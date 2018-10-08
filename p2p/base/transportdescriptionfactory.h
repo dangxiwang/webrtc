@@ -11,6 +11,11 @@
 #ifndef P2P_BASE_TRANSPORTDESCRIPTIONFACTORY_H_
 #define P2P_BASE_TRANSPORTDESCRIPTIONFACTORY_H_
 
+#include <memory>
+#include <string>
+#include <utility>
+
+#include "p2p/base/icecredentialsfactory.h"
 #include "p2p/base/transportdescription.h"
 #include "rtc_base/rtccertificate.h"
 
@@ -34,7 +39,8 @@ struct TransportOptions {
 class TransportDescriptionFactory {
  public:
   // Default ctor; use methods below to set configuration.
-  TransportDescriptionFactory();
+  explicit TransportDescriptionFactory(
+      IceCredentialsFactory* ice_credentials_factory);
   ~TransportDescriptionFactory();
 
   SecurePolicy secure() const { return secure_; }
@@ -54,7 +60,8 @@ class TransportDescriptionFactory {
   // Creates a transport description suitable for use in an offer.
   TransportDescription* CreateOffer(
       const TransportOptions& options,
-      const TransportDescription* current_description) const;
+      const TransportDescription* current_description,
+      IceCredentialsIterator* ice_credentials = nullptr) const;
   // Create a transport description that is a response to an offer.
   //
   // If |require_transport_attributes| is true, then TRANSPORT category
@@ -66,14 +73,20 @@ class TransportDescriptionFactory {
       const TransportDescription* offer,
       const TransportOptions& options,
       bool require_transport_attributes,
-      const TransportDescription* current_description) const;
+      const TransportDescription* current_description,
+      IceCredentialsIterator* ice_credentials = nullptr) const;
+
+  std::unique_ptr<IceCredentialsIterator> GetIceCredentialsIterator() const;
 
  private:
   bool SetSecurityInfo(TransportDescription* description,
                        ConnectionRole role) const;
 
+  IceParameters GetIceCredentials(IceCredentialsIterator*) const;
+
   SecurePolicy secure_;
   rtc::scoped_refptr<rtc::RTCCertificate> certificate_;
+  IceCredentialsFactory* ice_credentials_factory_;
 };
 
 }  // namespace cricket

@@ -186,14 +186,16 @@ class MediaSessionDescriptionFactory {
   bool AddTransportOffer(const std::string& content_name,
                          const TransportOptions& transport_options,
                          const SessionDescription* current_desc,
-                         SessionDescription* offer) const;
+                         SessionDescription* offer,
+                         IceCredentialsIterator* ice_credentials) const;
 
   TransportDescription* CreateTransportAnswer(
       const std::string& content_name,
       const SessionDescription* offer_desc,
       const TransportOptions& transport_options,
       const SessionDescription* current_desc,
-      bool require_transport_attributes) const;
+      bool require_transport_attributes,
+      IceCredentialsIterator* ice_credentials) const;
 
   bool AddTransportAnswer(const std::string& content_name,
                           const TransportDescription& transport_desc,
@@ -211,7 +213,8 @@ class MediaSessionDescriptionFactory {
       const RtpHeaderExtensions& audio_rtp_extensions,
       const AudioCodecs& audio_codecs,
       StreamParamsVec* current_streams,
-      SessionDescription* desc) const;
+      SessionDescription* desc,
+      IceCredentialsIterator* ice_credentials) const;
 
   bool AddVideoContentForOffer(
       const MediaDescriptionOptions& media_description_options,
@@ -221,7 +224,8 @@ class MediaSessionDescriptionFactory {
       const RtpHeaderExtensions& video_rtp_extensions,
       const VideoCodecs& video_codecs,
       StreamParamsVec* current_streams,
-      SessionDescription* desc) const;
+      SessionDescription* desc,
+      IceCredentialsIterator* ice_credentials) const;
 
   bool AddDataContentForOffer(
       const MediaDescriptionOptions& media_description_options,
@@ -230,7 +234,8 @@ class MediaSessionDescriptionFactory {
       const SessionDescription* current_description,
       const DataCodecs& data_codecs,
       StreamParamsVec* current_streams,
-      SessionDescription* desc) const;
+      SessionDescription* desc,
+      IceCredentialsIterator* ice_credentials) const;
 
   bool AddAudioContentForAnswer(
       const MediaDescriptionOptions& media_description_options,
@@ -242,7 +247,8 @@ class MediaSessionDescriptionFactory {
       const TransportInfo* bundle_transport,
       const AudioCodecs& audio_codecs,
       StreamParamsVec* current_streams,
-      SessionDescription* answer) const;
+      SessionDescription* answer,
+      IceCredentialsIterator* ice_credentials) const;
 
   bool AddVideoContentForAnswer(
       const MediaDescriptionOptions& media_description_options,
@@ -254,7 +260,8 @@ class MediaSessionDescriptionFactory {
       const TransportInfo* bundle_transport,
       const VideoCodecs& video_codecs,
       StreamParamsVec* current_streams,
-      SessionDescription* answer) const;
+      SessionDescription* answer,
+      IceCredentialsIterator* ice_credentials) const;
 
   bool AddDataContentForAnswer(
       const MediaDescriptionOptions& media_description_options,
@@ -266,7 +273,8 @@ class MediaSessionDescriptionFactory {
       const TransportInfo* bundle_transport,
       const DataCodecs& data_codecs,
       StreamParamsVec* current_streams,
-      SessionDescription* answer) const;
+      SessionDescription* answer,
+      IceCredentialsIterator* ice_credentials) const;
 
   void ComputeAudioCodecsIntersectionAndUnion();
 
