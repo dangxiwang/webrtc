@@ -1,0 +1,158 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c85bbccd_750778bd",
+        "filename": "p2p/base/icecredentialsfactory.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5039
+      },
+      "writtenOn": "2018-10-09T00:43:11Z",
+      "side": 1,
+      "message": "Do we anticipate any subclasses? Can there classes just be final then?",
+      "revId": "3df22eb42c75b6efde629fcef69a1569028d1dea",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd9cc470_3eb6f375",
+        "filename": "p2p/base/icecredentialsfactory_unittest.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 5039
+      },
+      "writtenOn": "2018-10-09T00:43:11Z",
+      "side": 1,
+      "message": "I don\u0027t think these tests need to introspect the internal state via GetCount. It should be sufficient to test that the first `n` GetIceCredentials return the pre-allocated credentials, then the next call returns a random credential.",
+      "revId": "3df22eb42c75b6efde629fcef69a1569028d1dea",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35b93e72_be32c102",
+        "filename": "p2p/base/icecredentialsfactory_unittest.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5039
+      },
+      "writtenOn": "2018-10-09T00:43:11Z",
+      "side": 1,
+      "message": "Verify that it\u0027s not credentials1 or credentials2? Rather than just checking that it does not crash.",
+      "revId": "3df22eb42c75b6efde629fcef69a1569028d1dea",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbfb97e7_f195aa37",
+        "filename": "p2p/base/icecredentialsfactory_unittest.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 5039
+      },
+      "writtenOn": "2018-10-09T00:43:11Z",
+      "side": 1,
+      "message": "nit: taken",
+      "range": {
+        "startLine": 59,
+        "startChar": 22,
+        "endLine": 59,
+        "endChar": 26
+      },
+      "revId": "3df22eb42c75b6efde629fcef69a1569028d1dea",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a782126_0cd1e660",
+        "filename": "p2p/base/icecredentialsfactory_unittest.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 5039
+      },
+      "writtenOn": "2018-10-09T00:43:11Z",
+      "side": 1,
+      "message": "nit: capitalize",
+      "range": {
+        "startLine": 72,
+        "startChar": 5,
+        "endLine": 72,
+        "endChar": 6
+      },
+      "revId": "3df22eb42c75b6efde629fcef69a1569028d1dea",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d02fde74_760fec57",
+        "filename": "p2p/base/portallocator.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 5039
+      },
+      "writtenOn": "2018-10-09T00:43:11Z",
+      "side": 1,
+      "message": "Note to self: It would be kind of nice to merge CreateSession/TakePooledSession. I don\u0027t see why the client needs to know about pooled sessions.",
+      "revId": "3df22eb42c75b6efde629fcef69a1569028d1dea",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99231b1e_0df802bb",
+        "filename": "p2p/base/portallocator.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 5039
+      },
+      "writtenOn": "2018-10-09T00:43:11Z",
+      "side": 1,
+      "message": "These two cases can be merged by changing the condition in the if to:\n\nif (!restrict_ice_credentials_change_ || (ufrag \u003d\u003d \u0026\u0026 pwd \u003d\u003d) {",
+      "revId": "3df22eb42c75b6efde629fcef69a1569028d1dea",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c525b796_cea5d920",
+        "filename": "p2p/base/portallocator.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 5039
+      },
+      "writtenOn": "2018-10-09T00:43:11Z",
+      "side": 1,
+      "message": "const reference",
+      "range": {
+        "startLine": 583,
+        "startChar": 29,
+        "endLine": 583,
+        "endChar": 42
+      },
+      "revId": "3df22eb42c75b6efde629fcef69a1569028d1dea",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
