@@ -653,10 +653,10 @@ class MediaSessionDescriptionFactoryTest : public testing::Test {
   }
 
  protected:
-  MediaSessionDescriptionFactory f1_;
-  MediaSessionDescriptionFactory f2_;
   TransportDescriptionFactory tdf1_;
   TransportDescriptionFactory tdf2_;
+  MediaSessionDescriptionFactory f1_;
+  MediaSessionDescriptionFactory f2_;
 };
 
 // Create a typical audio offer, and ensure it matches what we expect.
@@ -3427,10 +3427,10 @@ class MediaProtocolTest : public ::testing::TestWithParam<const char*> {
   }
 
  protected:
-  MediaSessionDescriptionFactory f1_;
-  MediaSessionDescriptionFactory f2_;
   TransportDescriptionFactory tdf1_;
   TransportDescriptionFactory tdf2_;
+  MediaSessionDescriptionFactory f1_;
+  MediaSessionDescriptionFactory f2_;
 };
 
 TEST_P(MediaProtocolTest, TestAudioVideoAcceptance) {
