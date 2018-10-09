@@ -201,7 +201,7 @@ class PortAllocatorSession : public sigslot::has_slots<> {
   int component() const { return component_; }
   const std::string& ice_ufrag() const { return ice_ufrag_; }
   const std::string& ice_pwd() const { return ice_pwd_; }
-  bool pooled() const { return ice_ufrag_.empty(); }
+  bool pooled() const { return content_name_.empty(); }
 
   // Setting this filter should affect not only candidates gathered in the
   // future, but candidates already gathered and ports already "ready",
@@ -334,6 +334,9 @@ class PortAllocator : public sigslot::has_slots<> {
   // This MUST be called on the PortAllocator's thread after finishing
   // constructing and configuring the PortAllocator subclasses.
   virtual void Initialize();
+
+  // Set to TRUE if ports don't support changing ice credentials.
+  virtual void SetRestrictIceCredentialsChange(bool value);
 
   // Set STUN and TURN servers to be used in future sessions, and set
   // candidate pool size, as described in JSEP.
@@ -548,6 +551,8 @@ class PortAllocator : public sigslot::has_slots<> {
   virtual void GetCandidateStatsFromPooledSessions(
       CandidateStatsList* candidate_stats_list);
 
+  std::vector<IceParameters> GetPooledIceCredentials();
+
  protected:
   virtual PortAllocatorSession* CreateSessionInternal(
       const std::string& content_name,
@@ -555,7 +560,7 @@ class PortAllocator : public sigslot::has_slots<> {
       const std::string& ice_ufrag,
       const std::string& ice_pwd) = 0;
 
-  const std::deque<std::unique_ptr<PortAllocatorSession>>& pooled_sessions() {
+  const std::vector<std::unique_ptr<PortAllocatorSession>>& pooled_sessions() {
     return pooled_sessions_;
   }
 
@@ -586,7 +591,7 @@ class PortAllocator : public sigslot::has_slots<> {
   ServerAddresses stun_servers_;
   std::vector<RelayServerConfig> turn_servers_;
   int candidate_pool_size_ = 0;  // Last value passed into SetConfiguration.
-  std::deque<std::unique_ptr<PortAllocatorSession>> pooled_sessions_;
+  std::vector<std::unique_ptr<PortAllocatorSession>> pooled_sessions_;
   bool candidate_pool_frozen_ = false;
   bool prune_turn_ports_ = false;
 
@@ -596,6 +601,11 @@ class PortAllocator : public sigslot::has_slots<> {
   webrtc::TurnCustomizer* turn_customizer_ = nullptr;
 
   absl::optional<int> stun_candidate_keepalive_interval_;
+
+  // TakePooledSession() will only return sessions that has
+  // same ice credentials as requested. Used together with
+  // IceCredentialsFactory.
+  bool restrict_ice_credentials_change_ = false;
 };
 
 }  // namespace cricket
