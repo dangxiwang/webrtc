@@ -1,0 +1,303 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e7ff7701_6bcc39c5",
+        "filename": "p2p/base/icecredentialsiterator.cc",
+        "patchSetId": 17
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 6646
+      },
+      "writtenOn": "2018-10-09T22:51:34Z",
+      "side": 1,
+      "message": "or \u003d default",
+      "range": {
+        "startLine": 20,
+        "startChar": 50,
+        "endLine": 20,
+        "endChar": 52
+      },
+      "revId": "b63d694ff28270fc8a4a3e091022711dfb775df3",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b497ad8_fe2966b6",
+        "filename": "p2p/base/icecredentialsiterator.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 6646
+      },
+      "writtenOn": "2018-10-09T22:51:34Z",
+      "side": 1,
+      "message": "nit: Gets and consumes",
+      "range": {
+        "startLine": 25,
+        "startChar": 5,
+        "endLine": 25,
+        "endChar": 20
+      },
+      "revId": "b63d694ff28270fc8a4a3e091022711dfb775df3",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c2b95f7_66d77cf6",
+        "filename": "p2p/base/icecredentialsiterator.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 6646
+      },
+      "writtenOn": "2018-10-09T22:51:34Z",
+      "side": 1,
+      "message": "nit: how about \"Returns a new random credential if the pool is empty\"",
+      "range": {
+        "startLine": 26,
+        "startChar": 13,
+        "endLine": 26,
+        "endChar": 19
+      },
+      "revId": "b63d694ff28270fc8a4a3e091022711dfb775df3",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0270be2c_50126573",
+        "filename": "p2p/base/portallocator.cc",
+        "patchSetId": 17
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 6646
+      },
+      "writtenOn": "2018-10-09T22:51:34Z",
+      "side": 1,
+      "message": "nit: I think it is a style convention that we place the corresponding header before the system headers.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 8
+      },
+      "revId": "b63d694ff28270fc8a4a3e091022711dfb775df3",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e69216af_0ac709bb",
+        "filename": "p2p/base/portallocator.cc",
+        "patchSetId": 17
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 6646
+      },
+      "writtenOn": "2018-10-09T22:51:34Z",
+      "side": 1,
+      "message": "There is a slight change in the logic after changing pooled_sessions_ from a queue to a stack. We could remove the more recently pooled sessions, though I don\u0027t think there is going to concerning performance impact.",
+      "range": {
+        "startLine": 169,
+        "startChar": 21,
+        "endLine": 169,
+        "endChar": 25
+      },
+      "revId": "b63d694ff28270fc8a4a3e091022711dfb775df3",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d090481_06e3a722",
+        "filename": "p2p/base/portallocator.cc",
+        "patchSetId": 17
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 6646
+      },
+      "writtenOn": "2018-10-09T22:51:34Z",
+      "side": 1,
+      "message": "There is an inconsistency between TakePooled and GetPooled. GetPooled is supposed to be the peek version of TakePool without ownership transfer.",
+      "range": {
+        "startLine": 245,
+        "startChar": 26,
+        "endLine": 245,
+        "endChar": 31
+      },
+      "revId": "b63d694ff28270fc8a4a3e091022711dfb775df3",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e3cb5da_025c060d",
+        "filename": "p2p/base/portallocator.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 6646
+      },
+      "writtenOn": "2018-10-09T22:51:34Z",
+      "side": 1,
+      "message": "I am not sure if this is robust to determine if it is pooled, since I feel content_name_ has a slightly looser relation to if candidates gathered is used compared to ufrag. Defining an explicit flag for pooled may be better after we change the timeline when ufrag is set after this CL.",
+      "range": {
+        "startLine": 204,
+        "startChar": 31,
+        "endLine": 204,
+        "endChar": 44
+      },
+      "revId": "b63d694ff28270fc8a4a3e091022711dfb775df3",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c59c184b_0ba05347",
+        "filename": "p2p/base/portallocator.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 6646
+      },
+      "writtenOn": "2018-10-09T22:51:34Z",
+      "side": 1,
+      "message": "nit: we usually have \"set_value\" if it is a simple setter for the var named \"value\".",
+      "range": {
+        "startLine": 339,
+        "startChar": 15,
+        "endLine": 339,
+        "endChar": 46
+      },
+      "revId": "b63d694ff28270fc8a4a3e091022711dfb775df3",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52192fb9_9721fd95",
+        "filename": "p2p/base/portallocator.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 6646
+      },
+      "writtenOn": "2018-10-09T22:51:34Z",
+      "side": 1,
+      "message": "Please update the comment for the new behavior.",
+      "range": {
+        "startLine": 399,
+        "startChar": 40,
+        "endLine": 399,
+        "endChar": 57
+      },
+      "revId": "b63d694ff28270fc8a4a3e091022711dfb775df3",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3ff8080_ec6394ab",
+        "filename": "p2p/base/portallocator.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 6646
+      },
+      "writtenOn": "2018-10-09T22:51:34Z",
+      "side": 1,
+      "message": "nit: you may need to merge some rows and cl format to have the 80 column width.",
+      "range": {
+        "startLine": 605,
+        "startChar": 56,
+        "endLine": 605,
+        "endChar": 59
+      },
+      "revId": "b63d694ff28270fc8a4a3e091022711dfb775df3",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cdf485d_7141ca43",
+        "filename": "p2p/base/portallocator.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 6646
+      },
+      "writtenOn": "2018-10-09T22:51:34Z",
+      "side": 1,
+      "message": "if true?",
+      "range": {
+        "startLine": 606,
+        "startChar": 38,
+        "endLine": 606,
+        "endChar": 39
+      },
+      "revId": "b63d694ff28270fc8a4a3e091022711dfb775df3",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94e3a430_3718333e",
+        "filename": "p2p/base/portallocator_unittest.cc",
+        "patchSetId": 17
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 6646
+      },
+      "writtenOn": "2018-10-09T22:51:34Z",
+      "side": 1,
+      "message": "Maybe add comments for this placeholder about when it is supposed to be included.",
+      "range": {
+        "startLine": 278,
+        "startChar": 0,
+        "endLine": 278,
+        "endChar": 5
+      },
+      "revId": "b63d694ff28270fc8a4a3e091022711dfb775df3",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "004ecd41_a912ad8a",
+        "filename": "p2p/base/transportdescriptionfactory.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 6646
+      },
+      "writtenOn": "2018-10-09T22:51:34Z",
+      "side": 1,
+      "message": "IIUC, ice_credentials is passed as a pointer because of the nullptr default or it could be a const ref, since we do not change anything in it. Another option is to pass const ref of an optional.",
+      "range": {
+        "startLine": 59,
+        "startChar": 46,
+        "endLine": 59,
+        "endChar": 55
+      },
+      "revId": "b63d694ff28270fc8a4a3e091022711dfb775df3",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
