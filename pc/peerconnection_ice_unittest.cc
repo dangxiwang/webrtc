@@ -114,6 +114,7 @@ class PeerConnectionIceBaseTest : public ::testing::Test {
     RTCConfiguration modified_config = config;
     modified_config.sdp_semantics = sdp_semantics_;
     auto observer = absl::make_unique<MockPeerConnectionObserver>();
+    port_allocator_ = port_allocator.get();
     auto pc = pc_factory_->CreatePeerConnection(
         modified_config, std::move(port_allocator), nullptr, observer.get());
     if (!pc) {
@@ -239,6 +240,7 @@ class PeerConnectionIceBaseTest : public ::testing::Test {
     return fake_network;
   }
 
+  cricket::PortAllocator* port_allocator_;
   std::unique_ptr<rtc::VirtualSocketServer> vss_;
   rtc::AutoSocketServerThread main_;
   rtc::scoped_refptr<PeerConnectionFactoryInterface> pc_factory_;
@@ -1005,6 +1007,43 @@ TEST_F(PeerConnectionIceConfigTest, SetStunCandidateKeepaliveInterval) {
   actual_stun_keepalive_interval =
       port_allocator_->stun_candidate_keepalive_interval();
   EXPECT_EQ(actual_stun_keepalive_interval.value_or(-1), 321);
+}
+
+TEST_P(PeerConnectionIceTest, IceCredentialsCreateOffer) {
+  RTCConfiguration config;
+  config.ice_candidate_pool_size = 1;
+  auto pc = CreatePeerConnectionWithAudioVideo(config);
+  ASSERT_NE(port_allocator_, nullptr);
+  auto offer = pc->CreateOffer();
+  auto credentials = port_allocator_->GetPooledIceCredentials();
+  ASSERT_EQ(1u, credentials.size());
+
+  auto* desc = offer->description();
+  for (const auto& content : desc->contents()) {
+    auto* transport_info = desc->GetTransportInfoByName(content.name);
+    EXPECT_EQ(transport_info->description.ice_ufrag, credentials[0].ufrag);
+    EXPECT_EQ(transport_info->description.ice_pwd, credentials[0].pwd);
+  }
+}
+
+TEST_P(PeerConnectionIceTest, IceCredentialsCreateAnswer) {
+  RTCConfiguration config;
+  config.ice_candidate_pool_size = 1;
+  auto pc = CreatePeerConnectionWithAudioVideo(config);
+  ASSERT_NE(port_allocator_, nullptr);
+  auto offer = pc->CreateOffer();
+  ASSERT_TRUE(pc->SetRemoteDescription(std::move(offer)));
+  auto answer = pc->CreateAnswer();
+
+  auto credentials = port_allocator_->GetPooledIceCredentials();
+  ASSERT_EQ(1u, credentials.size());
+
+  auto* desc = answer->description();
+  for (const auto& content : desc->contents()) {
+    auto* transport_info = desc->GetTransportInfoByName(content.name);
+    EXPECT_EQ(transport_info->description.ice_ufrag, credentials[0].ufrag);
+    EXPECT_EQ(transport_info->description.ice_pwd, credentials[0].pwd);
+  }
 }
 
 }  // namespace webrtc
