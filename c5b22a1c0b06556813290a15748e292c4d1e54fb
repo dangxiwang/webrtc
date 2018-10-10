@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e105fbda_9e6e627b",
+        "filename": "p2p/base/portallocator.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 5039
+      },
+      "writtenOn": "2018-10-10T18:18:13Z",
+      "side": 1,
+      "message": "Isn\u0027t cit \u003d\u003d it?",
+      "revId": "c5b22a1c0b06556813290a15748e292c4d1e54fb",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31c4d2f9_4dfb2f03",
+        "filename": "p2p/base/portallocator_unittest.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 5039
+      },
+      "writtenOn": "2018-10-10T18:18:13Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 278,
+        "startChar": 26,
+        "endLine": 278,
+        "endChar": 34
+      },
+      "revId": "c5b22a1c0b06556813290a15748e292c4d1e54fb",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7235666_8fd2636b",
+        "filename": "pc/peerconnection_ice_unittest.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 5039
+      },
+      "writtenOn": "2018-10-10T18:18:13Z",
+      "side": 1,
+      "message": "Store this point in the PeerConnectionWrapperForIceTest object, since it\u0027s PeerConnection-specific.",
+      "revId": "c5b22a1c0b06556813290a15748e292c4d1e54fb",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
