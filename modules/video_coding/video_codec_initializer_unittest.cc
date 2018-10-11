@@ -12,7 +12,7 @@
 #include "api/video/video_bitrate_allocator.h"
 #include "api/video_codecs/video_encoder.h"
 #include "common_types.h"  // NOLINT(build/include)
-#include "modules/video_coding/codecs/vp8/include/vp8_temporal_layers.h"
+#include "modules/video_coding/codecs/vp8/include/vp8_buffer_reference_controller.h"
 #include "modules/video_coding/codecs/vp9/include/vp9_globals.h"
 #include "rtc_base/refcountedobject.h"
 #include "test/gtest.h"

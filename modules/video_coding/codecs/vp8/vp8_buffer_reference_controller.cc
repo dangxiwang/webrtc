@@ -7,7 +7,7 @@
  *  be found in the AUTHORS file in the root of the source tree.
  */
 
-#include "modules/video_coding/codecs/vp8/include/vp8_temporal_layers.h"
+#include "modules/video_coding/codecs/vp8/include/vp8_buffer_reference_controller.h"
 
 #include "absl/memory/memory.h"
 #include "modules/video_coding/codecs/vp8/default_temporal_layers.h"
@@ -16,7 +16,8 @@
 
 namespace webrtc {
 
-bool TemporalLayers::FrameConfig::operator==(const FrameConfig& o) const {
+bool Vp8BufferReferenceController::FrameConfig::operator==(
+    const FrameConfig& o) const {
   return drop_frame == o.drop_frame &&
          last_buffer_flags == o.last_buffer_flags &&
          golden_buffer_flags == o.golden_buffer_flags &&
@@ -26,13 +27,15 @@ bool TemporalLayers::FrameConfig::operator==(const FrameConfig& o) const {
          packetizer_temporal_idx == o.packetizer_temporal_idx;
 }
 
-std::unique_ptr<TemporalLayers> TemporalLayers::CreateTemporalLayers(
-    TemporalLayersType type,
+std::unique_ptr<Vp8BufferReferenceController>
+Vp8BufferReferenceController::CreateVp8BufferReferenceController(
+    Vp8BufferReferenceControllerType type,
     int num_temporal_layers) {
   switch (type) {
-    case TemporalLayersType::kFixedPattern:
-      return absl::make_unique<DefaultTemporalLayers>(num_temporal_layers);
-    case TemporalLayersType::kBitrateDynamic:
+    case Vp8BufferReferenceControllerType::kFixedPattern:
+      return absl::make_unique<DefaultVp8BufferReferenceController>(
+          num_temporal_layers);
+    case Vp8BufferReferenceControllerType::kBitrateDynamic:
       // Conference mode temporal layering for screen content in base stream.
       return absl::make_unique<ScreenshareLayers>(num_temporal_layers,
                                                   Clock::GetRealTimeClock());

@@ -15,10 +15,11 @@
 
 #include <memory>
 
-#include "modules/video_coding/codecs/vp8/include/vp8_temporal_layers.h"
+#include "modules/video_coding/codecs/vp8/include/vp8_buffer_reference_controller.h"
 
 namespace webrtc {
 
+// TODO: !!!
 // Interface for a class that verifies correctness of temporal layer
 // configurations (dependencies, sync flag, etc).
 // Intended to be used in tests as well as with real apps in debug mode.
@@ -29,10 +30,11 @@ class TemporalLayersChecker {
 
   virtual bool CheckTemporalConfig(
       bool frame_is_keyframe,
-      const TemporalLayers::FrameConfig& frame_config);
+      const Vp8BufferReferenceController::FrameConfig& frame_config);
 
+  // TODO: !!!
   static std::unique_ptr<TemporalLayersChecker> CreateTemporalLayersChecker(
-      TemporalLayersType type,
+      Vp8BufferReferenceControllerType type,
       int num_temporal_layers);
 
  private:
@@ -42,13 +44,14 @@ class TemporalLayersChecker {
     uint8_t temporal_layer;
     uint32_t sequence_number;
   };
-  bool CheckAndUpdateBufferState(BufferState* state,
-                                 bool* need_sync,
-                                 bool frame_is_keyframe,
-                                 uint8_t temporal_layer,
-                                 webrtc::TemporalLayers::BufferFlags flags,
-                                 uint32_t sequence_number,
-                                 uint32_t* lowest_sequence_referenced);
+  bool CheckAndUpdateBufferState(
+      BufferState* state,
+      bool* need_sync,
+      bool frame_is_keyframe,
+      uint8_t temporal_layer,
+      Vp8BufferReferenceController::BufferFlags flags,
+      uint32_t sequence_number,
+      uint32_t* lowest_sequence_referenced);
   BufferState last_;
   BufferState arf_;
   BufferState golden_;

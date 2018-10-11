@@ -14,7 +14,7 @@
 #include <vector>
 
 #include "modules/video_coding/codecs/vp8/include/temporal_layers_checker.h"
-#include "modules/video_coding/codecs/vp8/include/vp8_temporal_layers.h"
+#include "modules/video_coding/codecs/vp8/include/vp8_buffer_reference_controller.h"
 #include "modules/video_coding/utility/frame_dropper.h"
 #include "rtc_base/rate_statistics.h"
 #include "rtc_base/timeutils.h"
@@ -24,7 +24,7 @@ namespace webrtc {
 struct CodecSpecificInfoVP8;
 class Clock;
 
-class ScreenshareLayers : public TemporalLayers {
+class ScreenshareLayers : public Vp8BufferReferenceController {
  public:
   static const double kMaxTL0FpsReduction;
   static const double kAcceptableTargetOvershoot;
@@ -38,7 +38,7 @@ class ScreenshareLayers : public TemporalLayers {
 
   // Returns the recommended VP8 encode flags needed. May refresh the decoder
   // and/or update the reference buffers.
-  TemporalLayers::FrameConfig UpdateLayerConfig(
+  Vp8BufferReferenceController::FrameConfig UpdateLayerConfig(
       uint32_t rtp_timestamp) override;
 
   // New target bitrate, per temporal layer.
@@ -74,7 +74,8 @@ class ScreenshareLayers : public TemporalLayers {
   int max_qp_;
   uint32_t max_debt_bytes_;
 
-  std::map<uint32_t, TemporalLayers::FrameConfig> pending_frame_configs_;
+  std::map<uint32_t, Vp8BufferReferenceController::FrameConfig>
+      pending_frame_configs_;
 
   // Configured max framerate.
   absl::optional<uint32_t> target_framerate_;
