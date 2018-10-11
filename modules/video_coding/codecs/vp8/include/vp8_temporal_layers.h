@@ -16,9 +16,10 @@
 
 namespace webrtc {
 
-// Some notes on the prerequisites of the TemporalLayers interface.
-// * Implementations of TemporalLayers may not contain internal synchronization
-//   so caller must make sure doing so thread safe.
+// Some notes on the prerequisites of the Vp8BufferReferenceController
+// interface.
+// * Implementations of Vp8BufferReferenceController may not contain internal
+//   synchronization so caller must make sure doing so thread safe.
 // * The encoder is assumed to encode all frames in order, and callbacks to
 //   PopulateCodecSpecific() / FrameEncoded() must happen in the same order.
 //
@@ -36,7 +37,7 @@ namespace webrtc {
 // FrameEncoded() for a previous one, but calls themselves must be both
 // synchronized (e.g. run on a task queue) and in order (per type).
 
-enum class TemporalLayersType { kFixedPattern, kBitrateDynamic };
+enum class Vp8BufferReferenceControllerType { kFixedPattern, kBitrateDynamic };
 
 struct CodecSpecificInfoVP8;
 enum class Vp8BufferReference : uint8_t {
@@ -74,7 +75,7 @@ struct Vp8EncoderConfig {
 
 // This interface defines a way of getting the encoder settings needed to
 // realize a temporal layer structure of predefined size.
-class TemporalLayers {
+class Vp8BufferReferenceController {
  public:
   enum BufferFlags : int {
     kNone = 0,
@@ -84,6 +85,7 @@ class TemporalLayers {
   };
   enum FreezeEntropy { kFreezeEntropy };
 
+  // TODO: !!! Rename?
   struct FrameConfig {
     FrameConfig();
 
@@ -135,12 +137,13 @@ class TemporalLayers {
   };
 
   // Factory for TemporalLayer strategy. Default behavior is a fixed pattern
-  // of temporal layers. See default_temporal_layers.cc
-  static std::unique_ptr<TemporalLayers> CreateTemporalLayers(
-      TemporalLayersType type,
-      int num_temporal_layers);
+  // of temporal layers. See default_temporal_layers.cc  // TODO: !!!
+  // TODO: !!! Move |num_temporal_layers|
+  static std::unique_ptr<Vp8BufferReferenceController>
+  CreateVp8BufferReferenceController(Vp8BufferReferenceControllerType type,
+                                     int num_temporal_layers);
 
-  virtual ~TemporalLayers() = default;
+  virtual ~Vp8BufferReferenceController() = default;
 
   // If this method returns true, the encoder is free to drop frames for
   // instance in an effort to uphold encoding bitrate.
@@ -158,12 +161,13 @@ class TemporalLayers {
                               int framerate_fps) = 0;
 
   // Called by the encoder before encoding a frame. |cfg| contains the current
-  // configuration. If the TemporalLayers instance wishes any part of that
-  // to be changed before the encode step, |cfg| should be changed and then
-  // return true. If false is returned, the encoder will proceed without
+  // configuration. If the Vp8BufferReferenceController instance wishes any part
+  // of that to be changed before the encode step, |cfg| should be changed and
+  // then return true. If false is returned, the encoder will proceed without
   // updating the configuration.
   virtual bool UpdateConfiguration(Vp8EncoderConfig* cfg) = 0;
 
+  // TODO: !!!
   // Returns the recommended VP8 encode flags needed, and moves the temporal
   // pattern to the next frame.
   // The timestamp may be used as both a time and a unique identifier, and so
@@ -179,10 +183,10 @@ class TemporalLayers {
   // a keyframe.
   // If the encoder decided to drop this frame, |size_bytes| must be set to 0,
   // otherwise it should indicate the size in bytes of the encoded frame.
-  // If |size_bytes| > 0, and |vp8_info| is not null, the TemporalLayers
-  // instance my update |vp8_info| with codec specific data such as temporal id.
-  // Some fields of this struct may have already been populated by the encoder,
-  // check before overwriting.
+  // If |size_bytes| > 0, and |vp8_info| is not null, the
+  // Vp8BufferReferenceController instance my update |vp8_info| with codec
+  // specific data such as temporal id. Some fields of this struct may have
+  // already been populated by the encoder, check before overwriting.
   // If |size_bytes| > 0, |qp| should indicate the frame-level QP this frame was
   // encoded at. If the encoder does not support extracting this, |qp| should be
   // set to 0.

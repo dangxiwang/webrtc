@@ -25,16 +25,18 @@
 
 namespace webrtc {
 
-class DefaultTemporalLayers : public TemporalLayers {
+class DefaultVp8BufferReferenceController
+    : public Vp8BufferReferenceController {
  public:
-  explicit DefaultTemporalLayers(int number_of_temporal_layers);
-  virtual ~DefaultTemporalLayers() {}
+  explicit DefaultVp8BufferReferenceController(int number_of_temporal_layers);
+  virtual ~DefaultVp8BufferReferenceController() {}
 
   bool SupportsEncoderFrameDropping() const override;
 
   // Returns the recommended VP8 encode flags needed. May refresh the decoder
   // and/or update the reference buffers.
-  TemporalLayers::FrameConfig UpdateLayerConfig(uint32_t timestamp) override;
+  Vp8BufferReferenceController::FrameConfig UpdateLayerConfig(
+      uint32_t timestamp) override;
 
   // New target bitrate, per temporal layer.
   void OnRatesUpdated(const std::vector<uint32_t>& bitrates_bps,
@@ -50,15 +52,16 @@ class DefaultTemporalLayers : public TemporalLayers {
 
  private:
   static constexpr size_t kKeyframeBuffer = std::numeric_limits<size_t>::max();
-  static std::vector<TemporalLayers::FrameConfig> GetTemporalPattern(
-      size_t num_layers);
+  static std::vector<Vp8BufferReferenceController::FrameConfig>
+  GetTemporalPattern(size_t num_layers);
   bool IsSyncFrame(const FrameConfig& config) const;
   void ValidateReferences(BufferFlags* flags, Vp8BufferReference ref) const;
   void UpdateSearchOrder(FrameConfig* config);
 
   const size_t num_layers_;
   const std::vector<unsigned int> temporal_ids_;
-  const std::vector<TemporalLayers::FrameConfig> temporal_pattern_;
+  const std::vector<Vp8BufferReferenceController::FrameConfig>
+      temporal_pattern_;
   // Set of buffers that are never updated except by keyframes.
   const std::set<Vp8BufferReference> kf_buffers_;
 
@@ -92,12 +95,13 @@ class DefaultTemporalLayers : public TemporalLayers {
   std::unique_ptr<TemporalLayersChecker> checker_;
 };
 
+// TODO: !!!
 class DefaultTemporalLayersChecker : public TemporalLayersChecker {
  public:
   explicit DefaultTemporalLayersChecker(int number_of_temporal_layers);
   bool CheckTemporalConfig(
       bool frame_is_keyframe,
-      const TemporalLayers::FrameConfig& frame_config) override;
+      const Vp8BufferReferenceController::FrameConfig& frame_config) override;
 
  private:
   struct BufferState {

@@ -57,10 +57,10 @@ class LibvpxVp8Encoder : public VideoEncoder {
   const char* ImplementationName() const override;
 
   static vpx_enc_frame_flags_t EncodeFlags(
-      const TemporalLayers::FrameConfig& references);
+      const Vp8BufferReferenceController::FrameConfig& references);
 
  private:
-  void SetupTemporalLayers(const VideoCodec& codec);
+  void SetupVp8BufferReferenceController(const VideoCodec& codec);
 
   // Set the cpu_speed setting for encoder based on resolution and/or platform.
   int SetCpuSpeed(int width, int height);
@@ -97,7 +97,7 @@ class LibvpxVp8Encoder : public VideoEncoder {
   int cpu_speed_default_;
   int number_of_cores_;
   uint32_t rc_max_intra_target_;
-  std::vector<std::unique_ptr<TemporalLayers>> temporal_layers_;
+  std::vector<std::unique_ptr<Vp8BufferReferenceController>> temporal_layers_;
   std::vector<std::unique_ptr<TemporalLayersChecker>> temporal_layers_checkers_;
   std::vector<bool> key_frame_request_;
   std::vector<bool> send_stream_;

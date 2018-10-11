@@ -47,7 +47,7 @@ int32_t FakeVP8Encoder::InitEncode(const VideoCodec* config,
     return result;
   }
 
-  SetupTemporalLayers(*config);
+  SetupVp8BufferReferenceController(*config);
 
   return WEBRTC_VIDEO_CODEC_OK;
 }
@@ -58,23 +58,25 @@ int32_t FakeVP8Encoder::Release() {
   return result;
 }
 
-void FakeVP8Encoder::SetupTemporalLayers(const VideoCodec& codec) {
+void FakeVP8Encoder::SetupVp8BufferReferenceController(
+    const VideoCodec& codec) {
   RTC_DCHECK_CALLED_SEQUENTIALLY(&sequence_checker_);
 
   int num_streams = SimulcastUtility::NumberOfSimulcastStreams(codec);
   for (int i = 0; i < num_streams; ++i) {
-    TemporalLayersType type;
+    Vp8BufferReferenceControllerType type;
     int num_temporal_layers =
         SimulcastUtility::NumberOfTemporalLayers(codec, i);
     if (SimulcastUtility::IsConferenceModeScreenshare(codec) && i == 0) {
-      type = TemporalLayersType::kBitrateDynamic;
+      type = Vp8BufferReferenceControllerType::kBitrateDynamic;
       // Legacy screenshare layers supports max 2 layers.
       num_temporal_layers = std::max<int>(2, num_temporal_layers);
     } else {
-      type = TemporalLayersType::kFixedPattern;
+      type = Vp8BufferReferenceControllerType::kFixedPattern;
     }
     temporal_layers_.emplace_back(
-        TemporalLayers::CreateTemporalLayers(type, num_temporal_layers));
+        Vp8BufferReferenceController::CreateVp8BufferReferenceController(
+            type, num_temporal_layers));
   }
 }
 

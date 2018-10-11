@@ -113,7 +113,8 @@ static void FillInEncoderConfig(vpx_codec_enc_cfg* vpx_config,
   vpx_config->rc_max_quantizer = config.rc_max_quantizer;
 }
 
-bool UpdateVpxConfiguration(TemporalLayers* temporal_layers,
+// TODO: !!!
+bool UpdateVpxConfiguration(Vp8BufferReferenceController* temporal_layers,
                             vpx_codec_enc_cfg_t* cfg) {
   Vp8EncoderConfig config = GetEncoderConfig(cfg);
   const bool res = temporal_layers->UpdateConfiguration(&config);
@@ -129,22 +130,28 @@ std::unique_ptr<VideoEncoder> VP8Encoder::Create() {
 }
 
 vpx_enc_frame_flags_t LibvpxVp8Encoder::EncodeFlags(
-    const TemporalLayers::FrameConfig& references) {
+    const Vp8BufferReferenceController::FrameConfig& references) {
   RTC_DCHECK(!references.drop_frame);
 
   vpx_enc_frame_flags_t flags = 0;
 
-  if ((references.last_buffer_flags & TemporalLayers::kReference) == 0)
+  if ((references.last_buffer_flags &
+       Vp8BufferReferenceController::kReference) == 0)
     flags |= VP8_EFLAG_NO_REF_LAST;
-  if ((references.last_buffer_flags & TemporalLayers::kUpdate) == 0)
+  if ((references.last_buffer_flags & Vp8BufferReferenceController::kUpdate) ==
+      0)
     flags |= VP8_EFLAG_NO_UPD_LAST;
-  if ((references.golden_buffer_flags & TemporalLayers::kReference) == 0)
+  if ((references.golden_buffer_flags &
+       Vp8BufferReferenceController::kReference) == 0)
     flags |= VP8_EFLAG_NO_REF_GF;
-  if ((references.golden_buffer_flags & TemporalLayers::kUpdate) == 0)
+  if ((references.golden_buffer_flags &
+       Vp8BufferReferenceController::kUpdate) == 0)
     flags |= VP8_EFLAG_NO_UPD_GF;
-  if ((references.arf_buffer_flags & TemporalLayers::kReference) == 0)
+  if ((references.arf_buffer_flags &
+       Vp8BufferReferenceController::kReference) == 0)
     flags |= VP8_EFLAG_NO_REF_ARF;
-  if ((references.arf_buffer_flags & TemporalLayers::kUpdate) == 0)
+  if ((references.arf_buffer_flags & Vp8BufferReferenceController::kUpdate) ==
+      0)
     flags |= VP8_EFLAG_NO_UPD_ARF;
   if (references.freeze_entropy)
     flags |= VP8_EFLAG_NO_UPD_ENTROPY;
@@ -290,22 +297,25 @@ void LibvpxVp8Encoder::SetStreamState(bool send_stream, int stream_idx) {
   send_stream_[stream_idx] = send_stream;
 }
 
-void LibvpxVp8Encoder::SetupTemporalLayers(const VideoCodec& codec) {
+// TODO: !!!
+void LibvpxVp8Encoder::SetupVp8BufferReferenceController(
+    const VideoCodec& codec) {
   RTC_DCHECK(temporal_layers_.empty());
   int num_streams = SimulcastUtility::NumberOfSimulcastStreams(codec);
   for (int i = 0; i < num_streams; ++i) {
-    TemporalLayersType type;
+    Vp8BufferReferenceControllerType type;
     int num_temporal_layers =
         SimulcastUtility::NumberOfTemporalLayers(codec, i);
     if (SimulcastUtility::IsConferenceModeScreenshare(codec) && i == 0) {
-      type = TemporalLayersType::kBitrateDynamic;
+      type = Vp8BufferReferenceControllerType::kBitrateDynamic;
       // Legacy screenshare layers supports max 2 layers.
       num_temporal_layers = std::max<int>(2, num_temporal_layers);
     } else {
-      type = TemporalLayersType::kFixedPattern;
+      type = Vp8BufferReferenceControllerType::kFixedPattern;
     }
     temporal_layers_.emplace_back(
-        TemporalLayers::CreateTemporalLayers(type, num_temporal_layers));
+        Vp8BufferReferenceController::CreateVp8BufferReferenceController(
+            type, num_temporal_layers));
     temporal_layers_checkers_.emplace_back(
         TemporalLayersChecker::CreateTemporalLayersChecker(
             type, num_temporal_layers));
@@ -347,7 +357,7 @@ int LibvpxVp8Encoder::InitEncode(const VideoCodec* inst,
     return WEBRTC_VIDEO_CODEC_ERR_SIMULCAST_PARAMETERS_NOT_SUPPORTED;
   }
 
-  SetupTemporalLayers(*inst);
+  SetupVp8BufferReferenceController(*inst);
 
   number_of_cores_ = number_of_cores;
   timestamp_ = 0;
@@ -677,8 +687,8 @@ uint32_t LibvpxVp8Encoder::FrameDropThreshold(size_t spatial_idx) const {
   bool enable_frame_dropping = codec_.VP8().frameDroppingOn;
   // If temporal layers are used, they get to override the frame dropping
   // setting, as eg. ScreenshareLayers does not work as intended with frame
-  // dropping on and DefaultTemporalLayers will have performance issues with
-  // frame dropping off.
+  // dropping on and DefaultVp8BufferReferenceController will have performance
+  // issues with frame dropping off.
   if (temporal_layers_.size() <= spatial_idx) {
     enable_frame_dropping =
         temporal_layers_[spatial_idx]->SupportsEncoderFrameDropping();
@@ -750,7 +760,7 @@ int LibvpxVp8Encoder::Encode(const VideoFrame& frame,
     }
   }
   vpx_enc_frame_flags_t flags[kMaxSimulcastStreams];
-  TemporalLayers::FrameConfig tl_configs[kMaxSimulcastStreams];
+  Vp8BufferReferenceController::FrameConfig tl_configs[kMaxSimulcastStreams];
   for (size_t i = 0; i < encoders_.size(); ++i) {
     tl_configs[i] = temporal_layers_[i]->UpdateLayerConfig(frame.timestamp());
     if (tl_configs[i].drop_frame) {
