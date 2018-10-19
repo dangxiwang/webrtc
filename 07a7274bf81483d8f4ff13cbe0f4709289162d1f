@@ -1,0 +1,239 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7977952b_205f1296",
+        "filename": "logging/rtc_event_log/encoder/delta_encoding.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5150
+      },
+      "writtenOn": "2018-10-19T21:13:05Z",
+      "side": 1,
+      "message": "I\u0027d like to get rid of SignedDelta because it is rather long and I\u0027m having a hard time understanding it. This propagates minor changes elsewhere in the code, so for context please start at the calls to SignedDelta().\n\nuint64_t SignedBitWidth(int64_t max_pos_magnitude, max_neg_magnitude) {\n  uint64_t bitwidth_pos \u003d UnsignedBitWidth(max_pos_magnitude);\n  uint64_t bitwidth_neg \u003d UnsignedBitWidth(max_neg_magnitude \u003e 0 ? max_neg_magnitude - 1 : 0);\n  return 1 + std::max(bitwidth_pos, bitwidth_neg);\n}",
+      "range": {
+        "startLine": 47,
+        "startChar": 9,
+        "endLine": 47,
+        "endChar": 23
+      },
+      "revId": "07a7274bf81483d8f4ff13cbe0f4709289162d1f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09ac52cb_238eb6d5",
+        "filename": "logging/rtc_event_log/encoder/delta_encoding.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 5150
+      },
+      "writtenOn": "2018-10-19T21:13:05Z",
+      "side": 1,
+      "message": "This function can be removed after applying other changes below.",
+      "range": {
+        "startLine": 71,
+        "startChar": 9,
+        "endLine": 71,
+        "endChar": 19
+      },
+      "revId": "07a7274bf81483d8f4ff13cbe0f4709289162d1f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4dc7f320_4ada157b",
+        "filename": "logging/rtc_event_log/encoder/delta_encoding.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 5150
+      },
+      "writtenOn": "2018-10-19T21:13:05Z",
+      "side": 1,
+      "message": "This function can be removed after applying other changes below.",
+      "range": {
+        "startLine": 79,
+        "startChar": 9,
+        "endLine": 79,
+        "endChar": 19
+      },
+      "revId": "07a7274bf81483d8f4ff13cbe0f4709289162d1f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f32ff92_933f7030",
+        "filename": "logging/rtc_event_log/encoder/delta_encoding.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 5150
+      },
+      "writtenOn": "2018-10-19T21:13:05Z",
+      "side": 1,
+      "message": "The int64_t might not be able to represent the delta between all unsigned numbers.\nIn particular, a sign-magnitude representation ranges from -2^63+1 to 2^63-1 which can\u0027t represent the delta between 0 and 2^63.\n\nIf you specifically want the result to behave as 2-complement, then you could just return uin64_t instead. However, I suggest removing this entirely and adding a couple of lines at each call site.",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 7
+      },
+      "revId": "07a7274bf81483d8f4ff13cbe0f4709289162d1f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98d599bf_ebde3508",
+        "filename": "logging/rtc_event_log/encoder/delta_encoding.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 5150
+      },
+      "writtenOn": "2018-10-19T21:13:05Z",
+      "side": 1,
+      "message": "nit:remove",
+      "range": {
+        "startLine": 370,
+        "startChar": 0,
+        "endLine": 371,
+        "endChar": 47
+      },
+      "revId": "07a7274bf81483d8f4ff13cbe0f4709289162d1f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7def5b9e_1ee17e98",
+        "filename": "logging/rtc_event_log/encoder/delta_encoding.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 5150
+      },
+      "writtenOn": "2018-10-19T21:13:05Z",
+      "side": 1,
+      "message": "SignedBitWidth(max_pos_magnitude, max_neg_magnitude);",
+      "range": {
+        "startLine": 372,
+        "startChar": 43,
+        "endLine": 373,
+        "endChar": 74
+      },
+      "revId": "07a7274bf81483d8f4ff13cbe0f4709289162d1f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a829e0ae_8e6fc27d",
+        "filename": "logging/rtc_event_log/encoder/delta_encoding.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 5150
+      },
+      "writtenOn": "2018-10-19T21:13:05Z",
+      "side": 1,
+      "message": "const uint64_t forward_delta \u003d UnsignedDelta(previous, current, width);\nconst uint64_t backward_delta \u003d UnsignedDelta(current, previous, width);\nif (forward_delta \u003c backward_delta) {\n  max_pos_signed_delta \u003d std::max(forward_delta, max_pos_signed_delta);\n} else {\n  max_neg_signed_delta \u003d std::max(backward_delta, max_pos_signed_delta);\n}\ninstead of the 4 lines below.",
+      "revId": "07a7274bf81483d8f4ff13cbe0f4709289162d1f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b136e877_80d9ddd6",
+        "filename": "logging/rtc_event_log/encoder/delta_encoding.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 5150
+      },
+      "writtenOn": "2018-10-19T21:13:05Z",
+      "side": 1,
+      "message": "This function can be removed.",
+      "revId": "07a7274bf81483d8f4ff13cbe0f4709289162d1f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e674d7b_14efdefb",
+        "filename": "logging/rtc_event_log/encoder/delta_encoding.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 5150
+      },
+      "writtenOn": "2018-10-19T21:13:05Z",
+      "side": 1,
+      "message": "const uint64_t forward_delta \u003d UnsignedDelta(previous, current, params_.original_width_bits);\nconst uint64_t backward_delta \u003d UnsignedDelta(current, previous, params_.original_width_bits);\nif (forward_delta \u003c backward_delta) {\n  writer_-\u003eWriteBits(forward_delta, params_.delta_width_bits);\n  return;\n}\n// Generate a 2s-complement representation of -backward_delta.\n// i.e. a number x such that x + backward_delta \u003d 2^delta_width_bits.\n// Let delta_mask be 2^delta_width_bits - 1\nconst uint64_t representation \u003d delta_mask - backwards_delta + 1\nwriter_-\u003eWriteBits(representation, params_.delta_width_bits);",
+      "range": {
+        "startLine": 565,
+        "startChar": 0,
+        "endLine": 568,
+        "endChar": 47
+      },
+      "revId": "07a7274bf81483d8f4ff13cbe0f4709289162d1f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d095861_dec530d7",
+        "filename": "logging/rtc_event_log/encoder/delta_encoding.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 864,
+      "author": {
+        "id": 5150
+      },
+      "writtenOn": "2018-10-19T21:13:05Z",
+      "side": 1,
+      "message": "This could be precomputed, like value_mask.",
+      "range": {
+        "startLine": 861,
+        "startChar": 2,
+        "endLine": 864,
+        "endChar": 71
+      },
+      "revId": "07a7274bf81483d8f4ff13cbe0f4709289162d1f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2dbfcf73_2b9e3705",
+        "filename": "logging/rtc_event_log/encoder/delta_encoding.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 865,
+      "author": {
+        "id": 5150
+      },
+      "writtenOn": "2018-10-19T21:13:05Z",
+      "side": 1,
+      "message": "Alternatively\n// delta \u003d 2^w - delta_abs and delta_mask \u003d 2^w - 1\nreturn (base + delta - delta_mask - 1) \u0026 value_mask",
+      "revId": "07a7274bf81483d8f4ff13cbe0f4709289162d1f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}

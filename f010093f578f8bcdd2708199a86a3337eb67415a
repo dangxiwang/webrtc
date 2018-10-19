@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91040bff_2308baba",
+        "filename": "logging/rtc_event_log/encoder/delta_encoding.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 5150
+      },
+      "writtenOn": "2018-10-19T21:13:05Z",
+      "side": 1,
+      "message": "(current - prev) \u0026 bitwidth_mask\nshould be correct in all situations",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 3
+      },
+      "revId": "f010093f578f8bcdd2708199a86a3337eb67415a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "642c344a_2d949dd7",
+        "filename": "logging/rtc_event_log/encoder/delta_encoding.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 5150
+      },
+      "writtenOn": "2018-10-19T21:13:05Z",
+      "side": 1,
+      "message": "It is not immediately clear to me whether this is the wrap width of the values or the bitwidth of the deltas.",
+      "range": {
+        "startLine": 99,
+        "startChar": 66,
+        "endLine": 99,
+        "endChar": 71
+      },
+      "revId": "f010093f578f8bcdd2708199a86a3337eb67415a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
