@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cf902026_9a294ee3",
+        "filename": "logging/rtc_event_log/encoder/delta_encoding.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 667,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2018-10-23T12:44:56Z",
+      "side": 1,
+      "message": "It\u0027s a bit of a long block; I\u0027d like readers to know they can skip it all if they\u0027re not interested in how these three values are read.",
+      "parentUuid": "78cdac46_d58d6283",
+      "range": {
+        "startLine": 667,
+        "startChar": 0,
+        "endLine": 667,
+        "endChar": 53
+      },
+      "revId": "3657b44bcfda21fd4e87838486b05ec379c45d6f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6cc1816b_9aff7845",
         "filename": "logging/rtc_event_log/encoder/delta_encoding.cc",
         "patchSetId": 12
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "931b4fb3_f089c6cd",
+        "filename": "logging/rtc_event_log/encoder/delta_encoding.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 698,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2018-10-23T12:44:56Z",
+      "side": 1,
+      "message": "Probably a left-over from when git-cl-format aligned the first line\u0027s comment to the second\u0027s, and then it just stuck around.\nThanks for catching.",
+      "parentUuid": "6cc1816b_9aff7845",
+      "range": {
+        "startLine": 698,
+        "startChar": 39,
+        "endLine": 698,
+        "endChar": 44
+      },
+      "revId": "3657b44bcfda21fd4e87838486b05ec379c45d6f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5dcd81d5_e0153873",
         "filename": "logging/rtc_event_log/encoder/delta_encoding_unittest.cc",
         "patchSetId": 12
@@ -68,6 +116,30 @@
       "revId": "3657b44bcfda21fd4e87838486b05ec379c45d6f",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "113ee2de_c1a596d9",
+        "filename": "logging/rtc_event_log/encoder/delta_encoding_unittest.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2018-10-23T12:44:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5dcd81d5_e0153873",
+      "range": {
+        "startLine": 495,
+        "startChar": 43,
+        "endLine": 495,
+        "endChar": 58
+      },
+      "revId": "3657b44bcfda21fd4e87838486b05ec379c45d6f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
