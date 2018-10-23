@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e933e285_8d7f3e60",
+        "filename": "logging/rtc_event_log/encoder/delta_encoding.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2018-10-23T11:21:02Z",
+      "side": 1,
+      "message": "I\u0027ve taken your general idea.",
+      "parentUuid": "7977952b_205f1296",
+      "range": {
+        "startLine": 47,
+        "startChar": 9,
+        "endLine": 47,
+        "endChar": 23
+      },
+      "revId": "07a7274bf81483d8f4ff13cbe0f4709289162d1f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "09ac52cb_238eb6d5",
         "filename": "logging/rtc_event_log/encoder/delta_encoding.cc",
         "patchSetId": 8
@@ -45,6 +69,30 @@
       "revId": "07a7274bf81483d8f4ff13cbe0f4709289162d1f",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8dd48ee_fce1f085",
+        "filename": "logging/rtc_event_log/encoder/delta_encoding.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2018-10-23T11:21:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09ac52cb_238eb6d5",
+      "range": {
+        "startLine": 71,
+        "startChar": 9,
+        "endLine": 71,
+        "endChar": 19
+      },
+      "revId": "07a7274bf81483d8f4ff13cbe0f4709289162d1f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "b1421a99_882a7327",
+        "filename": "logging/rtc_event_log/encoder/delta_encoding.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2018-10-23T11:21:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4dc7f320_4ada157b",
+      "range": {
+        "startLine": 79,
+        "startChar": 9,
+        "endLine": 79,
+        "endChar": 19
+      },
+      "revId": "07a7274bf81483d8f4ff13cbe0f4709289162d1f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1f32ff92_933f7030",
         "filename": "logging/rtc_event_log/encoder/delta_encoding.cc",
         "patchSetId": 8
@@ -91,6 +163,30 @@
       "revId": "07a7274bf81483d8f4ff13cbe0f4709289162d1f",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c13cc6de_bc10c03c",
+        "filename": "logging/rtc_event_log/encoder/delta_encoding.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2018-10-23T11:21:02Z",
+      "side": 1,
+      "message": "So long as two\u0027s complement is used, and not some representation with positive/negative zeros, a int64_t is sufficient (in the way we use it). But that\u0027s academic now that we\u0027ve agreed to go with your suggested change.",
+      "parentUuid": "1f32ff92_933f7030",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 7
+      },
+      "revId": "07a7274bf81483d8f4ff13cbe0f4709289162d1f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "e9f55887_22804289",
+        "filename": "logging/rtc_event_log/encoder/delta_encoding.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2018-10-23T11:21:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98d599bf_ebde3508",
+      "range": {
+        "startLine": 370,
+        "startChar": 0,
+        "endLine": 371,
+        "endChar": 47
+      },
+      "revId": "07a7274bf81483d8f4ff13cbe0f4709289162d1f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7def5b9e_1ee17e98",
         "filename": "logging/rtc_event_log/encoder/delta_encoding.cc",
         "patchSetId": 8
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "6b2274e9_ce1065d3",
+        "filename": "logging/rtc_event_log/encoder/delta_encoding.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2018-10-23T11:21:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7def5b9e_1ee17e98",
+      "range": {
+        "startLine": 372,
+        "startChar": 43,
+        "endLine": 373,
+        "endChar": 74
+      },
+      "revId": "07a7274bf81483d8f4ff13cbe0f4709289162d1f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a829e0ae_8e6fc27d",
         "filename": "logging/rtc_event_log/encoder/delta_encoding.cc",
         "patchSetId": 8
@@ -157,6 +301,24 @@
     },
     {
       "key": {
+        "uuid": "4a70c6f1_281251e7",
+        "filename": "logging/rtc_event_log/encoder/delta_encoding.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2018-10-23T11:21:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a829e0ae_8e6fc27d",
+      "revId": "07a7274bf81483d8f4ff13cbe0f4709289162d1f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b136e877_80d9ddd6",
         "filename": "logging/rtc_event_log/encoder/delta_encoding.cc",
         "patchSetId": 8
@@ -171,6 +333,24 @@
       "revId": "07a7274bf81483d8f4ff13cbe0f4709289162d1f",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25c7410d_8a8243b6",
+        "filename": "logging/rtc_event_log/encoder/delta_encoding.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2018-10-23T11:21:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b136e877_80d9ddd6",
+      "revId": "07a7274bf81483d8f4ff13cbe0f4709289162d1f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     },
     {
       "key": {
@@ -197,6 +377,30 @@
     },
     {
       "key": {
+        "uuid": "133f6d83_14bc6546",
+        "filename": "logging/rtc_event_log/encoder/delta_encoding.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2018-10-23T11:21:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e674d7b_14efdefb",
+      "range": {
+        "startLine": 565,
+        "startChar": 0,
+        "endLine": 568,
+        "endChar": 47
+      },
+      "revId": "07a7274bf81483d8f4ff13cbe0f4709289162d1f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d095861_dec530d7",
         "filename": "logging/rtc_event_log/encoder/delta_encoding.cc",
         "patchSetId": 8
@@ -220,6 +424,30 @@
     },
     {
       "key": {
+        "uuid": "5b969ca8_24be49f2",
+        "filename": "logging/rtc_event_log/encoder/delta_encoding.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 864,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2018-10-23T11:21:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d095861_dec530d7",
+      "range": {
+        "startLine": 861,
+        "startChar": 2,
+        "endLine": 864,
+        "endChar": 71
+      },
+      "revId": "07a7274bf81483d8f4ff13cbe0f4709289162d1f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2dbfcf73_2b9e3705",
         "filename": "logging/rtc_event_log/encoder/delta_encoding.cc",
         "patchSetId": 8
@@ -234,6 +462,24 @@
       "revId": "07a7274bf81483d8f4ff13cbe0f4709289162d1f",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c0f5152_31b48078",
+        "filename": "logging/rtc_event_log/encoder/delta_encoding.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 865,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2018-10-23T11:21:02Z",
+      "side": 1,
+      "message": "I prefer to keep it as is.",
+      "parentUuid": "2dbfcf73_2b9e3705",
+      "revId": "07a7274bf81483d8f4ff13cbe0f4709289162d1f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
