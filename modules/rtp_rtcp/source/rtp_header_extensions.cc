@@ -433,6 +433,31 @@ bool FrameMarkingExtension::Write(rtc::ArrayView<uint8_t> data,
   return true;
 }
 
+// CSRCAudioLevel
+//  Sample Audio Level Encoding Using the One-Byte Header Format
+//  Note that the range of len is 1 to 15 which is encoded as 0 to 14
+//  0                   1                   2                   3
+//  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+// |  ID   | len=2 |0|   level 1   |0|   level 2   |0|   level 3   |
+// +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+
+constexpr RTPExtensionType CsrcAudioLevel::kId;
+constexpr const char CsrcAudioLevel::kUri[];
+
+bool CsrcAudioLevel::Parse(rtc::ArrayView<const uint8_t> data,
+                           CsrcAudioLevelList* csrcAudioLevels) {
+  if (data.size() < 1 || data.size() > kRtpCsrcSize)
+    return false;
+  csrcAudioLevels->num_audio_levels = data.size();
+  for (uint8_t i = 0; i < csrcAudioLevels->num_audio_levels; i++) {
+    // Ensure range is 0 to 127 inclusive
+    csrcAudioLevels->arr_of_audio_levels[i] = 0x7f & data[i];
+  }
+  return true;
+}
+
 bool BaseRtpStringExtension::Parse(rtc::ArrayView<const uint8_t> data,
                                    StringRtpHeaderExtension* str) {
   if (data.empty() || data[0] == 0)  // Valid string extension can't be empty.
@@ -484,5 +509,20 @@ constexpr const char RepairedRtpStreamId::kUri[];
 
 constexpr RTPExtensionType RtpMid::kId;
 constexpr const char RtpMid::kUri[];
+
+size_t CsrcAudioLevel::ValueSize(const CsrcAudioLevelList& csrcAudioLevels) {
+  return csrcAudioLevels.num_audio_levels;
+}
+
+bool CsrcAudioLevel::Write(rtc::ArrayView<uint8_t> data,
+                           const CsrcAudioLevelList& csrcAudioLevels) {
+  RTC_DCHECK_GE(csrcAudioLevels.num_audio_levels, 0);
+  for (uint8_t i = 0; i < csrcAudioLevels.num_audio_levels; i++) {
+    ByteWriter<uint8_t>::WriteBigEndian(data.data() + i,
+      csrcAudioLevels.arr_of_audio_levels[i] & 0x7f);
+  }
+  // This extension if used must have at least one audio level
+  return csrcAudioLevels.num_audio_levels;
+}
 
 }  // namespace webrtc

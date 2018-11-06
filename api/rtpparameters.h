@@ -305,6 +305,12 @@ struct RtpExtension {
   static const char kMidUri[];
   static const int kMidDefaultId;
 
+  // Header extension for receiving audio level information from participants
+  // in a mixed stream.
+  // https://tools.ietf.org/html/rfc6465
+  static const char kCsrcAudioLevelUri[];
+  static const int kCsrcAudioLevelDefaultId;
+
   // Encryption of Header Extensions, see RFC 6904 for details:
   // https://tools.ietf.org/html/rfc6904
   static const char kEncryptHeaderExtensionsUri[];

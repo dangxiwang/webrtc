@@ -137,6 +137,10 @@ const char RtpExtension::kGenericFrameDescriptorUri[] =
     "http://www.webrtc.org/experiments/rtp-hdrext/generic-frame-descriptor-00";
 const int RtpExtension::kGenericFrameDescriptorDefaultId = 11;
 
+const char RtpExtension::kCsrcAudioLevelUri[] =
+    "urn:ietf:params:rtp-hdrext:csrc-audio-level";
+const int RtpExtension::kCsrcAudioLevelDefaultId = 12;
+
 const char RtpExtension::kEncryptHeaderExtensionsUri[] =
     "urn:ietf:params:rtp-hdrext:encrypt";
 
@@ -149,7 +153,8 @@ constexpr int RtpExtension::kOneByteHeaderExtensionMaxValueSize;
 bool RtpExtension::IsSupportedForAudio(const std::string& uri) {
   return uri == webrtc::RtpExtension::kAudioLevelUri ||
          uri == webrtc::RtpExtension::kTransportSequenceNumberUri ||
-         uri == webrtc::RtpExtension::kMidUri;
+         uri == webrtc::RtpExtension::kMidUri ||
+         uri == webrtc::RtpExtension::kCsrcAudioLevelUri;
 }
 
 bool RtpExtension::IsSupportedForVideo(const std::string& uri) {

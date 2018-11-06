@@ -80,6 +80,18 @@ typedef StringRtpHeaderExtension StreamId;
 // Mid represents RtpMid which is a string.
 typedef StringRtpHeaderExtension Mid;
 
+// Represents an ordered list of audio levels of CSRCs.
+// Each level corresponds a CSRC received in the RTP header.
+// See: https://tools.ietf.org/html/rfc6465
+struct CsrcAudioLevelList {
+  CsrcAudioLevelList() = default;
+  CsrcAudioLevelList(const CsrcAudioLevelList&) = default;
+  CsrcAudioLevelList& operator=(const CsrcAudioLevelList&) = default;
+  uint8_t num_audio_levels = 0;
+  // arr_of_audio_levels has the same ordering as RTPHeader.arrOfCSRCs
+  uint8_t arr_of_audio_levels[kRtpCsrcSize];
+};
+
 struct RTPHeaderExtension {
   RTPHeaderExtension();
   RTPHeaderExtension(const RTPHeaderExtension& other);
@@ -126,6 +138,10 @@ struct RTPHeaderExtension {
   // For identifying the media section used to interpret this RTP packet. See
   // https://tools.ietf.org/html/draft-ietf-mmusic-sdp-bundle-negotiation-38
   Mid mid;
+
+  // For carrying the audio levels of individual participants in a mixed stream
+  // https://tools.ietf.org/html/rfc6465
+  CsrcAudioLevelList csrc_audio_levels;
 };
 
 struct RTPHeader {

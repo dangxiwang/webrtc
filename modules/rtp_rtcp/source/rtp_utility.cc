@@ -503,10 +503,25 @@ void RtpHeaderParser::ParseOneByteExtensionHeader(
           header->extension.mid.Set(rtc::MakeArrayView(ptr, len + 1));
           break;
         }
-        case kRtpExtensionGenericFrameDescriptor:
+        case kRtpExtensionGenericFrameDescriptor: {
           RTC_LOG(WARNING)
               << "RtpGenericFrameDescriptor unsupported by rtp header parser.";
           break;
+        }
+        case kRtpExtensionCsrcAudioLevel: {
+          auto& levels = header->extension.csrc_audio_levels;
+          levels.num_audio_levels = static_cast<uint8_t>(len + 1);
+          if (levels.num_audio_levels > kRtpCsrcSize)  {
+            RTC_LOG(WARNING) << "Incorrect number of CSRC audio levels: " <<
+                levels.num_audio_levels;
+            levels.num_audio_levels = 0;
+            return;
+          }
+          for (uint8_t i = 0; i < levels.num_audio_levels; i++) {
+            levels.arr_of_audio_levels[i] = ptr[i] & 0x7f;
+          }
+          break;
+        }
         case kRtpExtensionNone:
         case kRtpExtensionNumberOfExtensions: {
           RTC_NOTREACHED() << "Invalid extension type: " << type;

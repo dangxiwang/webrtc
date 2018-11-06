@@ -120,6 +120,18 @@ constexpr uint8_t kPacketWithMid[] = {
     0xbe, 0xde, 0x00, 0x01,
     0xb2, 'm', 'i', 'd'};
 
+constexpr uint8_t kCsrcAudioLevelExtensionId = 0xc;
+constexpr uint8_t kCsrcAudioLevelsSize = 4;
+constexpr uint8_t kCsrcAudioLevels[] = {0x7f, 0x00, 0x10, 0x08};
+constexpr uint8_t kPacketWithCsrcAudioLevels[] = {
+    0x90, kPayloadType, kSeqNumFirstByte, kSeqNumSecondByte,
+    0x65, 0x43, 0x12, 0x78,
+    0x12, 0x34, 0x56, 0x78,
+    0xbe, 0xde, 0x00, 0x02,
+    (kCsrcAudioLevelExtensionId << 4) | (kCsrcAudioLevelsSize - 1),
+          0x7f, 0x00, 0x10,
+    0x08, 0x00, 0x00, 0x00};
+
 constexpr uint32_t kCsrcs[] = {0x34567890, 0x32435465};
 constexpr uint8_t kPayload[] = {'p', 'a', 'y', 'l', 'o', 'a', 'd'};
 constexpr uint8_t kPacketPaddingSize = 8;
@@ -310,6 +322,24 @@ TEST(RtpPacketTest, TryToCreateWithLongMid) {
   extensions.Register<RtpMid>(kRtpMidExtensionId);
   RtpPacketToSend packet(&extensions);
   EXPECT_FALSE(packet.SetExtension<RtpMid>(kLongMid));
+}
+
+TEST(RtpPacketTest, CreateWithDynamicSizedExtensionCsrcAudioLevel) {
+  RtpPacketToSend::ExtensionManager extensions;
+  extensions.Register<CsrcAudioLevel>(kCsrcAudioLevelExtensionId);
+  RtpPacketToSend packet(&extensions);
+  packet.SetPayloadType(kPayloadType);
+  packet.SetSequenceNumber(kSeqNum);
+  packet.SetTimestamp(kTimestamp);
+  packet.SetSsrc(kSsrc);
+  CsrcAudioLevelList levels;
+  levels.num_audio_levels = kCsrcAudioLevelsSize;
+  for (uint8_t i = 0; i < kCsrcAudioLevelsSize; i++) {
+    levels.arr_of_audio_levels[i] = kCsrcAudioLevels[i];
+  }
+  packet.SetExtension<CsrcAudioLevel>(levels);
+  EXPECT_THAT(kPacketWithCsrcAudioLevels,
+    ElementsAreArray(packet.data(), packet.size()));
 }
 
 TEST(RtpPacketTest, TryToCreateTwoByteHeaderNotSupported) {
@@ -698,10 +728,23 @@ TEST(RtpPacketTest, ParseDynamicSizeExtension) {
     0xbe, 0xde, 0x00, 0x01,  // Extensions block of size 1x32bit words.
     0x11, 'H', 'D',          // Extension with id = 1, size = (1+1).
     0x00};  // Extension padding.
+  const uint8_t kPacket3[] = {
+    0x90, kPayloadType, kSeqNumFirstByte, kSeqNumSecondByte,
+    0x65, 0x43, 0x12, 0x78,  // Timestamp.
+    0x12, 0x34, 0x56, 0x78,  // Ssrc.
+    0xbe, 0xde, 0x00, 0x05,  // Extensions block of size 5x32bit words.
+    0x21, 'H', 'D',          // Extension with id = 2, size = (1+1).
+    0x12, 'r', 't', 'x',     // Extension with id = 1, size = (2+1).
+    0x35, 'm', 'i', 'd', 'v', 'a', 'l',  // Extension with id = 3, size = (5+1).
+    0x43, 0x01, 0x10, 0x00,  // Extenstionwith id = 4, size = (3+1)
+    0x7f, 0x00};  // Extension 4 cont. 1 byte of padding.
   // clang-format on
   RtpPacketReceived::ExtensionManager extensions;
   extensions.Register<RtpStreamId>(1);
   extensions.Register<RepairedRtpStreamId>(2);
+  extensions.Register<RtpMid>(3);
+  extensions.Register<CsrcAudioLevel>(4);
+
   RtpPacketReceived packet(&extensions);
   ASSERT_TRUE(packet.Parse(kPacket1, sizeof(kPacket1)));
 
@@ -718,6 +761,25 @@ TEST(RtpPacketTest, ParseDynamicSizeExtension) {
   EXPECT_TRUE(packet.GetExtension<RtpStreamId>(&rsid));
   EXPECT_EQ(rsid, "HD");
   EXPECT_FALSE(packet.GetExtension<RepairedRtpStreamId>(&repaired_rsid));
+
+
+  // Parse another packet with RtpStreamId, RepairedRtpStreamId, MId,
+  // CsrcAudioLevels
+  std::string mid;
+  ASSERT_TRUE(packet.Parse(kPacket3, sizeof(kPacket3)));
+  EXPECT_TRUE(packet.GetExtension<RtpStreamId>(&rsid));
+  EXPECT_EQ(rsid, "rtx");
+  EXPECT_TRUE(packet.GetExtension<RepairedRtpStreamId>(&repaired_rsid));
+  EXPECT_EQ(repaired_rsid, "HD");
+  EXPECT_TRUE(packet.GetExtension<RtpMid>(&mid));
+  EXPECT_EQ(mid, "midval");
+  CsrcAudioLevelList csrcAudioLevels;
+  EXPECT_TRUE(packet.GetExtension<CsrcAudioLevel>(&csrcAudioLevels));
+  EXPECT_EQ(csrcAudioLevels.num_audio_levels, 4);
+  EXPECT_EQ(csrcAudioLevels.arr_of_audio_levels[0], 0x01);
+  EXPECT_EQ(csrcAudioLevels.arr_of_audio_levels[1], 0x10);
+  EXPECT_EQ(csrcAudioLevels.arr_of_audio_levels[2], 0x00);
+  EXPECT_EQ(csrcAudioLevels.arr_of_audio_levels[3], 0x7f);
 }
 
 TEST(RtpPacketTest, ParseWithMid) {
