@@ -39,6 +39,25 @@ struct RttBasedBackoffConfig {
   FieldTrialParameter<TimeDelta> drop_interval;
 };
 
+struct LossBasedControlConfig {
+  LossBasedControlConfig();
+  LossBasedControlConfig(const LossBasedControlConfig&);
+  LossBasedControlConfig& operator=(const LossBasedControlConfig&) = default;
+  ~LossBasedControlConfig();
+  bool enabled;
+  FieldTrialParameter<double> min_increase_factor;
+  FieldTrialParameter<double> max_increase_factor;
+  FieldTrialParameter<TimeDelta> increase_low_rtt;
+  FieldTrialParameter<TimeDelta> increase_high_rtt;
+  FieldTrialParameter<double> decrease_factor;
+  FieldTrialParameter<double> smoothing_factor;
+  FieldTrialParameter<double> maxtrack_forgetting_factor;
+  FieldTrialParameter<DataRate> increase_offset;
+  FieldTrialParameter<double> increase_threshold_scaler;
+  FieldTrialParameter<double> decrease_threshold_scaler;
+  FieldTrialParameter<bool> allow_resets;
+};
+
 class SendSideBandwidthEstimation {
  public:
   SendSideBandwidthEstimation() = delete;
@@ -79,6 +98,7 @@ class SendSideBandwidthEstimation {
   void SetSendBitrate(DataRate bitrate, Timestamp at_time);
   void SetMinMaxBitrate(DataRate min_bitrate, DataRate max_bitrate);
   int GetMinBitrate() const;
+  void UpdateAcknowledgedBitrate(DataRate bitrate);
 
  private:
   enum UmaState { kNoUpdate, kFirstDone, kDone };
@@ -92,11 +112,16 @@ class SendSideBandwidthEstimation {
   // min bitrate used during last kBweIncreaseIntervalMs.
   void UpdateMinHistory(Timestamp at_time);
 
+  void UpdateLossBasedBandwidth(Timestamp at_time);
+  void UpdateLossStatistics(float loss);
+  DataRate MaybeRampupOrBackoff(DataRate new_bitrate, Timestamp at_time);
+
   // Cap |bitrate| to [min_bitrate_configured_, max_bitrate_configured_] and
   // set |current_bitrate_| to the capped value and updates the event log.
   void CapBitrateToThresholds(Timestamp at_time, DataRate bitrate);
 
   RttBasedBackoffConfig rtt_backoff_config_;
+  LossBasedControlConfig loss_based_control_config_;
 
   std::deque<std::pair<Timestamp, DataRate> > min_bitrate_history_;
 
@@ -116,12 +141,16 @@ class SendSideBandwidthEstimation {
   uint8_t last_fraction_loss_;
   uint8_t last_logged_fraction_loss_;
   TimeDelta last_round_trip_time_;
+  float average_loss_;
+  float average_loss_max_;
+  DataRate loss_based_bitrate_;
 
   Timestamp last_propagation_rtt_update_;
   TimeDelta last_propagation_rtt_;
 
   DataRate bwe_incoming_;
   DataRate delay_based_bitrate_;
+  DataRate acknowledged_bitrate_;
   Timestamp time_last_decrease_;
   Timestamp first_report_time_;
   int initially_lost_packets_;
