@@ -165,6 +165,11 @@ void BitrateControllerImpl::OnDelayBasedBweResult(
   MaybeTriggerOnNetworkChanged();
 }
 
+void BitrateControllerImpl::UpdateAcknowledgedBitrate(int bitrate_bps) {
+  rtc::CritScope cs(&critsect_);
+  bandwidth_estimation_.UpdateAcknowledgedBitrate(DataRate::bps(bitrate_bps));
+}
+
 int64_t BitrateControllerImpl::TimeUntilNextProcess() {
   const int64_t kBitrateControllerUpdateIntervalMs = 25;
   rtc::CritScope cs(&critsect_);
