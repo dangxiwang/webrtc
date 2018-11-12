@@ -60,6 +60,7 @@ class BitrateControllerImpl : public BitrateController {
                             int64_t* rtt) override;
 
   void OnDelayBasedBweResult(const DelayBasedBwe::Result& result) override;
+  void UpdateAcknowledgedBitrate(int bitrate_bps) override;
 
   int64_t TimeUntilNextProcess() override;
   void Process() override;
