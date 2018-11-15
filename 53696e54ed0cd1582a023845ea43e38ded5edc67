@@ -255,6 +255,30 @@
     },
     {
       "key": {
+        "uuid": "02a7926d_d7ed6359",
+        "filename": "logging/rtc_event_log/rtc_event_log_parser_new.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1268,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2018-11-15T14:55:30Z",
+      "side": 1,
+      "message": "IMHO, it would be good to support both the legacy as well as the new encoding. Otherwise, when it\u0027s time to compare the compression factor achieved by the new format over the old, we\u0027ll be thrown off by new information contained in the new, but not the old.",
+      "parentUuid": "a4f8f722_7cbe2b9d",
+      "range": {
+        "startLine": 1268,
+        "startChar": 0,
+        "endLine": 1268,
+        "endChar": 53
+      },
+      "revId": "53696e54ed0cd1582a023845ea43e38ded5edc67",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4bacf69b_0d1f8850",
         "filename": "logging/rtc_event_log/rtc_event_log_parser_new.cc",
         "patchSetId": 2
@@ -359,6 +383,30 @@
       "side": 1,
       "message": "Isn\u0027t this the same order as elsewhere?",
       "parentUuid": "71c5a512_20d7f03a",
+      "range": {
+        "startLine": 187,
+        "startChar": 7,
+        "endLine": 187,
+        "endChar": 31
+      },
+      "revId": "53696e54ed0cd1582a023845ea43e38ded5edc67",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35c552b8_37332ce8",
+        "filename": "logging/rtc_event_log/rtc_event_log_parser_new.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2018-11-15T14:55:30Z",
+      "side": 1,
+      "message": "Not really. It might be consistent with a few places, but not with all. I think the most common order is for this to follow the last BweUpdate variant.",
+      "parentUuid": "350bb0b0_8b14d4c4",
       "range": {
         "startLine": 187,
         "startChar": 7,
