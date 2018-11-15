@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "853817bd_91308eb4",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5845
+      },
+      "writtenOn": "2018-11-15T14:37:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "181a324c_79c71f8a",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 39
+      },
+      "revId": "ebc724e08270b8234482786aaf44b8a8308e9951",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb048b98_b59bd927",
         "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
         "patchSetId": 7
@@ -71,6 +95,54 @@
     },
     {
       "key": {
+        "uuid": "3839e513_4bc447e2",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5845
+      },
+      "writtenOn": "2018-11-15T14:37:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb048b98_b59bd927",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 5
+      },
+      "revId": "ebc724e08270b8234482786aaf44b8a8308e9951",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "785f11ae_3ab3d5e5",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5845
+      },
+      "writtenOn": "2018-11-15T14:37:46Z",
+      "side": 1,
+      "message": "It is dimensionless - it is a factor multiplied onto a DataRate.",
+      "parentUuid": "dd9ab2a3_be43ecbe",
+      "range": {
+        "startLine": 24,
+        "startChar": 6,
+        "endLine": 24,
+        "endChar": 23
+      },
+      "revId": "ebc724e08270b8234482786aaf44b8a8308e9951",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d7dedab_22e9a1f7",
         "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
         "patchSetId": 7
@@ -111,6 +183,48 @@
     },
     {
       "key": {
+        "uuid": "cf044ac5_f7505edd",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 5845
+      },
+      "writtenOn": "2018-11-15T14:37:46Z",
+      "side": 1,
+      "message": "See above. But renamed the factor to something more explicit.",
+      "parentUuid": "7d7dedab_22e9a1f7",
+      "revId": "ebc724e08270b8234482786aaf44b8a8308e9951",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e253b4e8_96127aaa",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 5845
+      },
+      "writtenOn": "2018-11-15T14:37:46Z",
+      "side": 1,
+      "message": "Strictly speaking, the dimension of this paramter is:\n loss_rate^(1/exponent) * kbps.\nSeems a little hardcore to reflect that. But if we say that loss_rate is itself dimensionless, true, this is a DataRate. However, if anyone reads its value and tries to interpret it as a DataRate, it makes no sense. \n\nIt comes from field trial where the defaults are 0.5 and 4 - these make no sense as bitrates [kbps] in this context.",
+      "parentUuid": "d49ff11b_3c53cc21",
+      "range": {
+        "startLine": 36,
+        "startChar": 48,
+        "endLine": 36,
+        "endChar": 54
+      },
+      "revId": "ebc724e08270b8234482786aaf44b8a8308e9951",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0ff31d45_b35638f4",
         "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
         "patchSetId": 7
@@ -125,6 +239,24 @@
       "revId": "ebc724e08270b8234482786aaf44b8a8308e9951",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96f719b4_333ce502",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5845
+      },
+      "writtenOn": "2018-11-15T14:37:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ff31d45_b35638f4",
+      "revId": "ebc724e08270b8234482786aaf44b8a8308e9951",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     },
     {
       "key": {
@@ -151,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "53dd5d93_c3802015",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 5845
+      },
+      "writtenOn": "2018-11-15T14:37:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da7d3753_bba094ef",
+      "range": {
+        "startLine": 41,
+        "startChar": 44,
+        "endLine": 41,
+        "endChar": 48
+      },
+      "revId": "ebc724e08270b8234482786aaf44b8a8308e9951",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "248c7b1f_e47c26ab",
         "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
         "patchSetId": 7
@@ -171,6 +327,30 @@
       "revId": "ebc724e08270b8234482786aaf44b8a8308e9951",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bfbb368_a2e58378",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 5845
+      },
+      "writtenOn": "2018-11-15T14:37:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "248c7b1f_e47c26ab",
+      "range": {
+        "startLine": 45,
+        "startChar": 36,
+        "endLine": 45,
+        "endChar": 57
+      },
+      "revId": "ebc724e08270b8234482786aaf44b8a8308e9951",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     },
     {
       "key": {
@@ -197,6 +377,30 @@
     },
     {
       "key": {
+        "uuid": "7f937445_b2d0d773",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 5845
+      },
+      "writtenOn": "2018-11-15T14:37:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c926d05b_c55d8f7c",
+      "range": {
+        "startLine": 163,
+        "startChar": 27,
+        "endLine": 163,
+        "endChar": 31
+      },
+      "revId": "ebc724e08270b8234482786aaf44b8a8308e9951",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e2ceb04e_5d86c185",
         "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
         "patchSetId": 7
@@ -217,6 +421,30 @@
       "revId": "ebc724e08270b8234482786aaf44b8a8308e9951",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "976e45a0_61f7d553",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 5845
+      },
+      "writtenOn": "2018-11-15T14:37:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2ceb04e_5d86c185",
+      "range": {
+        "startLine": 164,
+        "startChar": 10,
+        "endLine": 167,
+        "endChar": 34
+      },
+      "revId": "ebc724e08270b8234482786aaf44b8a8308e9951",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     },
     {
       "key": {
@@ -243,6 +471,30 @@
     },
     {
       "key": {
+        "uuid": "b763fe6b_f705d502",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 5845
+      },
+      "writtenOn": "2018-11-15T14:37:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ce94197_f68ef038",
+      "range": {
+        "startLine": 180,
+        "startChar": 27,
+        "endLine": 180,
+        "endChar": 31
+      },
+      "revId": "ebc724e08270b8234482786aaf44b8a8308e9951",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "857764ee_2b727d08",
         "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
         "patchSetId": 7
@@ -257,6 +509,24 @@
       "revId": "ebc724e08270b8234482786aaf44b8a8308e9951",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6c88ef9_15d5c9c9",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 5845
+      },
+      "writtenOn": "2018-11-15T14:37:46Z",
+      "side": 1,
+      "message": "Renamed",
+      "parentUuid": "857764ee_2b727d08",
+      "revId": "ebc724e08270b8234482786aaf44b8a8308e9951",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
