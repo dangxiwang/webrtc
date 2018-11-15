@@ -279,6 +279,30 @@
     },
     {
       "key": {
+        "uuid": "a22a0f4d_3815b337",
+        "filename": "logging/rtc_event_log/rtc_event_log_parser_new.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1268,
+      "author": {
+        "id": 5150
+      },
+      "writtenOn": "2018-11-15T16:17:49Z",
+      "side": 1,
+      "message": "Comment removed by: Patrik Höglund; Reason: Deleted on request from terelius@",
+      "parentUuid": "02a7926d_d7ed6359",
+      "range": {
+        "startLine": 1268,
+        "startChar": 0,
+        "endLine": 1268,
+        "endChar": 53
+      },
+      "revId": "53696e54ed0cd1582a023845ea43e38ded5edc67",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4bacf69b_0d1f8850",
         "filename": "logging/rtc_event_log/rtc_event_log_parser_new.cc",
         "patchSetId": 2
