@@ -48,6 +48,86 @@
     },
     {
       "key": {
+        "uuid": "dd9ab2a3_be43ecbe",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-11-15T11:41:35Z",
+      "side": 1,
+      "message": "Please add the unit to the name. Is it BpsPerSecond?\n\nIf it is something unit less like Ms/Second, you can still add that. Makes it easier to follow the code.",
+      "range": {
+        "startLine": 24,
+        "startChar": 6,
+        "endLine": 24,
+        "endChar": 23
+      },
+      "revId": "ebc724e08270b8234482786aaf44b8a8308e9951",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d7dedab_22e9a1f7",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-11-15T11:41:35Z",
+      "side": 1,
+      "message": "Should this be a DataRate, if you divide two datarates, the result is a double, seems like what you want, then you don\u0027t have to keep track of the size.",
+      "revId": "ebc724e08270b8234482786aaf44b8a8308e9951",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d49ff11b_3c53cc21",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-11-15T11:41:35Z",
+      "side": 1,
+      "message": "By the usage, it doesn\u0027t look like a factor? Should have a unit since it\u0027s combined with a data rate.",
+      "range": {
+        "startLine": 36,
+        "startChar": 48,
+        "endLine": 36,
+        "endChar": 54
+      },
+      "revId": "ebc724e08270b8234482786aaf44b8a8308e9951",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ff31d45_b35638f4",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-11-15T11:41:35Z",
+      "side": 1,
+      "message": "I recommend using bps\u003cdouble\u003e() for internal computations. kbps is better for user readable constants etc.",
+      "revId": "ebc724e08270b8234482786aaf44b8a8308e9951",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "da7d3753_bba094ef",
         "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
         "patchSetId": 7
@@ -157,6 +237,23 @@
         "endLine": 180,
         "endChar": 31
       },
+      "revId": "ebc724e08270b8234482786aaf44b8a8308e9951",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "857764ee_2b727d08",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-11-15T11:41:35Z",
+      "side": 1,
+      "message": "Not sure if I follow what by_bound means here.",
       "revId": "ebc724e08270b8234482786aaf44b8a8308e9951",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
