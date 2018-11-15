@@ -303,6 +303,30 @@
     },
     {
       "key": {
+        "uuid": "cefcaa67_35d1e06d",
+        "filename": "logging/rtc_event_log/rtc_event_log_parser_new.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1268,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2018-11-15T16:25:11Z",
+      "side": 1,
+      "message": "It depends on the cost, and the way you\u0027d like to evaluate the new encoding. I guess we could make a few calls under realistic conditions and dual-encode them, then compare the results. If we do it like that, we can just comment out handling of the new event types, to get more more fair comparison (\"fair\" being subject to the caveats you\u0027ve mentioned in #3).",
+      "parentUuid": "a22a0f4d_3815b337",
+      "range": {
+        "startLine": 1268,
+        "startChar": 0,
+        "endLine": 1268,
+        "endChar": 53
+      },
+      "revId": "53696e54ed0cd1582a023845ea43e38ded5edc67",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4bacf69b_0d1f8850",
         "filename": "logging/rtc_event_log/rtc_event_log_parser_new.cc",
         "patchSetId": 2
