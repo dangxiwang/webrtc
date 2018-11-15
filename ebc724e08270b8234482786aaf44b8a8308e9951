@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "181a324c_79c71f8a",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-11-15T11:34:17Z",
+      "side": 1,
+      "message": "As you only use this once I\u0027d say that it doesn\u0027t provide much value.(",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 39
+      },
+      "revId": "ebc724e08270b8234482786aaf44b8a8308e9951",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb048b98_b59bd927",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-11-15T11:34:17Z",
+      "side": 1,
+      "message": "Suggestion s/float/double/, there\u0027s not really any benefits to using float unless you are storing a lot of values in an array.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 5
+      },
+      "revId": "ebc724e08270b8234482786aaf44b8a8308e9951",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da7d3753_bba094ef",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-11-15T11:34:17Z",
+      "side": 1,
+      "message": "Maybe name this. I\u0027m guessing it\u0027s an epsilon?",
+      "range": {
+        "startLine": 41,
+        "startChar": 44,
+        "endLine": 41,
+        "endChar": 48
+      },
+      "revId": "ebc724e08270b8234482786aaf44b8a8308e9951",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "248c7b1f_e47c26ab",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-11-15T11:34:17Z",
+      "side": 1,
+      "message": "interval.seconds\u003cdouble\u003e()",
+      "range": {
+        "startLine": 45,
+        "startChar": 36,
+        "endLine": 45,
+        "endChar": 57
+      },
+      "revId": "ebc724e08270b8234482786aaf44b8a8308e9951",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c926d05b_c55d8f7c",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-11-15T11:34:17Z",
+      "side": 1,
+      "message": "increment?",
+      "range": {
+        "startLine": 163,
+        "startChar": 27,
+        "endLine": 163,
+        "endChar": 31
+      },
+      "revId": "ebc724e08270b8234482786aaf44b8a8308e9951",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2ceb04e_5d86c185",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-11-15T11:34:17Z",
+      "side": 1,
+      "message": "DataRate supports multiplication, you should be able to use that here, so you don\u0027t have to covert back and forth.\n\nDataRate new_bitrate_incr\u003d min_bitrate*GetIncreaseFactor(config_, last_round_trip_time)+config_.increase_offset",
+      "range": {
+        "startLine": 164,
+        "startChar": 10,
+        "endLine": 167,
+        "endChar": 34
+      },
+      "revId": "ebc724e08270b8234482786aaf44b8a8308e9951",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ce94197_f68ef038",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-11-15T11:34:17Z",
+      "side": 1,
+      "message": "decreased_bitrate?",
+      "range": {
+        "startLine": 180,
+        "startChar": 27,
+        "endLine": 180,
+        "endChar": 31
+      },
+      "revId": "ebc724e08270b8234482786aaf44b8a8308e9951",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
