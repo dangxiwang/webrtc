@@ -1,0 +1,303 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3acace74_5545ef02",
+        "filename": "logging/rtc_event_log/encoder/rtc_event_log_encoder_legacy.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2018-11-15T14:22:37Z",
+      "side": 1,
+      "message": "auto\u0026",
+      "range": {
+        "startLine": 312,
+        "startChar": 6,
+        "endLine": 312,
+        "endChar": 10
+      },
+      "revId": "53696e54ed0cd1582a023845ea43e38ded5edc67",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "637b4410_032b464b",
+        "filename": "logging/rtc_event_log/encoder/rtc_event_log_encoder_new_format.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2018-11-15T14:22:37Z",
+      "side": 1,
+      "message": "(Pertaining to my next comment:) Yes, I see that the order here is already different than in the next files.",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 33
+      },
+      "revId": "53696e54ed0cd1582a023845ea43e38ded5edc67",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8157a842_f5f8ed99",
+        "filename": "logging/rtc_event_log/encoder/rtc_event_log_encoder_new_format.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2018-11-15T14:22:37Z",
+      "side": 1,
+      "message": "nit: In other files the order was different. Namely, you put DtlsTransport-stuff after BweUpdateLossBased stuff. Maybe do this consistently through all files?",
+      "range": {
+        "startLine": 123,
+        "startChar": 7,
+        "endLine": 123,
+        "endChar": 31
+      },
+      "revId": "53696e54ed0cd1582a023845ea43e38ded5edc67",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd3304be_47f9e279",
+        "filename": "logging/rtc_event_log/events/rtc_event_dtls_transport_state.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2018-11-15T14:22:37Z",
+      "side": 1,
+      "message": "Back to the future! (Elsewhere, too.)",
+      "range": {
+        "startLine": 2,
+        "startChar": 18,
+        "endLine": 2,
+        "endChar": 22
+      },
+      "revId": "53696e54ed0cd1582a023845ea43e38ded5edc67",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c55fcfd9_5806f1fd",
+        "filename": "logging/rtc_event_log/events/rtc_event_dtls_transport_state.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2018-11-15T14:22:37Z",
+      "side": 1,
+      "message": "The namespace \"cricket\" has an enum by the same name. What about moving this enum (the one you\u0027ve created, that is) into RtcEventDtlsTransportState, maybe under the shorter name State?",
+      "range": {
+        "startLine": 18,
+        "startChar": 11,
+        "endLine": 18,
+        "endChar": 29
+      },
+      "revId": "53696e54ed0cd1582a023845ea43e38ded5edc67",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c282d95_b223f84f",
+        "filename": "logging/rtc_event_log/events/rtc_event_dtls_transport_state.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2018-11-15T14:22:37Z",
+      "side": 1,
+      "message": "1.\nWould you not need to add -\n  std::unique_ptr\u003cRtcEventDtlsTransportState\u003e Copy() const;\n- for unit tests?\n\n2. Please add unit tests.",
+      "range": {
+        "startLine": 26,
+        "startChar": 6,
+        "endLine": 26,
+        "endChar": 32
+      },
+      "revId": "53696e54ed0cd1582a023845ea43e38ded5edc67",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a05d4b5_3f61597c",
+        "filename": "logging/rtc_event_log/events/rtc_event_dtls_transport_state.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2018-11-15T14:22:37Z",
+      "side": 1,
+      "message": "nit: Other RtcEvent-subclasses name the parameter to the ctor.",
+      "range": {
+        "startLine": 28,
+        "startChar": 38,
+        "endLine": 28,
+        "endChar": 56
+      },
+      "revId": "53696e54ed0cd1582a023845ea43e38ded5edc67",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea23ff86_193662d0",
+        "filename": "logging/rtc_event_log/events/rtc_event_dtls_transport_state.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2018-11-15T14:22:37Z",
+      "side": 1,
+      "message": "Could you please put this last? Specifically, after all virtual methods?",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 3
+      },
+      "revId": "53696e54ed0cd1582a023845ea43e38ded5edc67",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bacf69b_0d1f8850",
+        "filename": "logging/rtc_event_log/rtc_event_log_parser_new.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1665,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2018-11-15T14:22:37Z",
+      "side": 1,
+      "message": "1. Relative order of events.\n2. I don\u0027t see a version for the new format (rtclog2).",
+      "range": {
+        "startLine": 1665,
+        "startChar": 47,
+        "endLine": 1665,
+        "endChar": 68
+      },
+      "revId": "53696e54ed0cd1582a023845ea43e38ded5edc67",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71c5a512_20d7f03a",
+        "filename": "logging/rtc_event_log/rtc_event_log_parser_new.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2018-11-15T14:22:37Z",
+      "side": 1,
+      "message": "Please maintain the same relative order between the events as in other files.",
+      "range": {
+        "startLine": 187,
+        "startChar": 7,
+        "endLine": 187,
+        "endChar": 31
+      },
+      "revId": "53696e54ed0cd1582a023845ea43e38ded5edc67",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a714fed0_693d06d3",
+        "filename": "logging/rtc_event_log/rtc_event_log_parser_new.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 919,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2018-11-15T14:22:37Z",
+      "side": 1,
+      "message": "Same request.",
+      "range": {
+        "startLine": 919,
+        "startChar": 27,
+        "endLine": 919,
+        "endChar": 48
+      },
+      "revId": "53696e54ed0cd1582a023845ea43e38ded5edc67",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27df076d_edccec0a",
+        "filename": "logging/rtc_event_log/rtc_event_log_parser_new.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1040,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2018-11-15T14:22:37Z",
+      "side": 1,
+      "message": "Same request.",
+      "range": {
+        "startLine": 1040,
+        "startChar": 40,
+        "endLine": 1040,
+        "endChar": 62
+      },
+      "revId": "53696e54ed0cd1582a023845ea43e38ded5edc67",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1cc207ad_ace98b6e",
+        "filename": "p2p/base/dtlstransport.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2018-11-15T14:22:37Z",
+      "side": 1,
+      "message": "webrtc::RtcEventLog* const event_log_;",
+      "range": {
+        "startLine": 248,
+        "startChar": 23,
+        "endLine": 248,
+        "endChar": 33
+      },
+      "revId": "53696e54ed0cd1582a023845ea43e38ded5edc67",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
