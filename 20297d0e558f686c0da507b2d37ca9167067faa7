@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae7a8b50_17f6218a",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-11-15T16:49:30Z",
+      "side": 1,
+      "message": "If possible, see if you can rewrite this using clamping and just one return statement, to make it more obviously correct. at the end points. (The \"extra overhead\" of always doing the calculation below is insignificant, so it\u0027s worth repeating to make the code easier to follow.",
+      "range": {
+        "startLine": 24,
+        "startChar": 7,
+        "endLine": 24,
+        "endChar": 24
+      },
+      "revId": "20297d0e558f686c0da507b2d37ca9167067faa7",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b907e037_a28165e9",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-11-15T16:49:30Z",
+      "side": 1,
+      "message": "Why is zero specially treated? And isn\u0027t zero generally _lower_ than the low_rtt -\u003e we should return max_increase factor.",
+      "range": {
+        "startLine": 26,
+        "startChar": 40,
+        "endLine": 26,
+        "endChar": 53
+      },
+      "revId": "20297d0e558f686c0da507b2d37ca9167067faa7",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7282b014_76636170",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-11-15T16:49:30Z",
+      "side": 1,
+      "message": "Unless you intend to round to nearest ms, I suggest using .ms\u003cdouble\u003e(), if you do intend to round, you should add a comment about it.",
+      "range": {
+        "startLine": 33,
+        "startChar": 72,
+        "endLine": 33,
+        "endChar": 74
+      },
+      "revId": "20297d0e558f686c0da507b2d37ca9167067faa7",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fd58ce1_476aab89",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-11-15T16:49:30Z",
+      "side": 1,
+      "message": "unit: per_ms, (but I suggest using _per_second and using .seconds\u003cdouble\u003e() instead.\n\nAlso, this is expected to be negative? I suggest reversing the sign of this, and having a minus in the expression would be nice, as it better shows the intent that we go down from the max (I though this was a bug at first)",
+      "range": {
+        "startLine": 33,
+        "startChar": 16,
+        "endLine": 33,
+        "endChar": 37
+      },
+      "revId": "20297d0e558f686c0da507b2d37ca9167067faa7",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b24e6f5d_8da92b22",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-11-15T16:49:30Z",
+      "side": 1,
+      "message": "This should be [Get]LossFromBitrate right?",
+      "range": {
+        "startLine": 36,
+        "startChar": 7,
+        "endLine": 36,
+        "endChar": 24
+      },
+      "revId": "20297d0e558f686c0da507b2d37ca9167067faa7",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "145a35c8_3080afff",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-11-15T16:49:30Z",
+      "side": 1,
+      "message": "I suggest doing this check outside (or rather, check that this is already done, I\u0027m pretty sure it is) )and DCHECK here instead.",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 11
+      },
+      "revId": "20297d0e558f686c0da507b2d37ca9167067faa7",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7349e9a6_d2511ae3",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-11-15T16:49:30Z",
+      "side": 1,
+      "message": "Could these be inverted to be able to express them as time periods?",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 67
+      },
+      "revId": "20297d0e558f686c0da507b2d37ca9167067faa7",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33ca3409_74701675",
+        "filename": "modules/bitrate_controller/send_side_bandwidth_estimation.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-11-15T16:49:30Z",
+      "side": 1,
+      "message": "Not very clear to me. Could you rephrase this so it\u0027s more generally understandable?",
+      "range": {
+        "startLine": 475,
+        "startChar": 20,
+        "endLine": 476,
+        "endChar": 18
+      },
+      "revId": "20297d0e558f686c0da507b2d37ca9167067faa7",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "057c26a9_f0a693cc",
+        "filename": "modules/congestion_controller/goog_cc/goog_cc_network_control.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-11-15T16:49:30Z",
+      "side": 1,
+      "message": "(This should imply that you don\u0027t need to check this in the loss controller)",
+      "range": {
+        "startLine": 381,
+        "startChar": 2,
+        "endLine": 392,
+        "endChar": 0
+      },
+      "revId": "20297d0e558f686c0da507b2d37ca9167067faa7",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
