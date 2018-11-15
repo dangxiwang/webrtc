@@ -73,6 +73,27 @@ BandwidthUsage GetRuntimeDetectorState(
   return BandwidthUsage::kBwNormal;
 }
 
+DtlsTransportState GetRuntimeDtlsTransportState(
+    rtclog::DtlsTransportStateEvent::DtlsTransportState state) {
+  switch (state) {
+    case rtclog::DtlsTransportStateEvent::DTLS_TRANSPORT_NEW:
+      return DtlsTransportState::kNew;
+    case rtclog::DtlsTransportStateEvent::DTLS_TRANSPORT_CONNECTING:
+      return DtlsTransportState::kConnecting;
+    case rtclog::DtlsTransportStateEvent::DTLS_TRANSPORT_CONNECTED:
+      return DtlsTransportState::kConnected;
+    case rtclog::DtlsTransportStateEvent::DTLS_TRANSPORT_CLOSED:
+      return DtlsTransportState::kClosed;
+    case rtclog::DtlsTransportStateEvent::DTLS_TRANSPORT_FAILED:
+      return DtlsTransportState::kFailed;
+    case rtclog::DtlsTransportStateEvent::UNKNOWN_DTLS_TRANSPORT_STATE:
+      RTC_NOTREACHED();
+      return DtlsTransportState::kNew;
+  }
+  RTC_NOTREACHED();
+  return DtlsTransportState::kNew;
+}
+
 IceCandidatePairConfigType GetRuntimeIceCandidatePairConfigType(
     rtclog::IceCandidatePairConfig::IceCandidatePairConfigType type) {
   switch (type) {
@@ -1244,6 +1265,10 @@ void ParsedRtcEventLogNew::StoreParsedLegacyEvent(const rtclog::Event& event) {
       ice_candidate_pair_events_.push_back(GetIceCandidatePairEvent(event));
       break;
     }
+    case rtclog::Event::DTLS_TRANSPORT_STATE_EVENT: {
+      dtls_transport_states_.push_back(GetDtlsTransportState(event));
+      break;
+    }
     case rtclog::Event::UNKNOWN_EVENT: {
       break;
     }
@@ -1634,6 +1659,20 @@ LoggedAlrStateEvent ParsedRtcEventLogNew::GetAlrState(
   RTC_CHECK(alr_event.has_in_alr());
   res.in_alr = alr_event.in_alr();
 
+  return res;
+}
+
+LoggedDtlsTransportState ParsedRtcEventLogNew::GetDtlsTransportState(
+    const rtclog::Event& event) const {
+  RTC_CHECK(event.has_type());
+  RTC_CHECK_EQ(event.type(), rtclog::Event::DTLS_TRANSPORT_STATE_EVENT);
+  const rtclog::DtlsTransportStateEvent& dtls_event =
+      event.dtls_transport_state_event();
+  LoggedDtlsTransportState res;
+  res.timestamp_us = GetTimestamp(event);
+  RTC_CHECK(dtls_event.has_dtls_transport_state());
+  res.dtls_transport_state =
+      GetRuntimeDtlsTransportState(dtls_event.dtls_transport_state());
   return res;
 }
 
