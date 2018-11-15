@@ -20,6 +20,7 @@
 
 #include "call/video_receive_stream.h"
 #include "call/video_send_stream.h"
+#include "logging/rtc_event_log/events/rtc_event_dtls_transport_state.h"
 #include "logging/rtc_event_log/events/rtc_event_ice_candidate_pair.h"
 #include "logging/rtc_event_log/events/rtc_event_ice_candidate_pair_config.h"
 #include "logging/rtc_event_log/events/rtc_event_probe_result_failure.h"
@@ -181,6 +182,14 @@ struct LoggedBweProbeFailureEvent {
   int64_t timestamp_us;
   int32_t id;
   ProbeFailureReason failure_reason;
+};
+
+struct LoggedDtlsTransportState {
+  int64_t log_time_us() const { return timestamp_us; }
+  int64_t log_time_ms() const { return timestamp_us / 1000; }
+
+  int64_t timestamp_us;
+  DtlsTransportState dtls_transport_state;
 };
 
 struct LoggedIceCandidatePairConfig {
@@ -907,6 +916,9 @@ class ParsedRtcEventLogNew {
 
   LoggedAlrStateEvent GetAlrState(const rtclog::Event& event) const;
 
+  LoggedDtlsTransportState GetDtlsTransportState(
+      const rtclog::Event& event) const;
+
   LoggedIceCandidatePairConfig GetIceCandidatePairConfig(
       const rtclog::Event& event) const;
   LoggedIceCandidatePairEvent GetIceCandidatePairEvent(
@@ -1024,6 +1036,8 @@ class ParsedRtcEventLogNew {
   std::vector<LoggedBweLossBasedUpdate> bwe_loss_updates_;
 
   std::vector<LoggedAlrStateEvent> alr_state_events_;
+
+  std::vector<LoggedDtlsTransportState> dtls_transport_states_;
 
   std::vector<LoggedIceCandidatePairConfig> ice_candidate_pair_configs_;
 
