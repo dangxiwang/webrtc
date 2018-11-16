@@ -464,6 +464,19 @@ TEST_P(RtcEventLogEncoderTest, RtcEventBweUpdateLossBased) {
   }
 }
 
+TEST_P(RtcEventLogEncoderTest, RtcEventDtlsTransportState) {
+  std::unique_ptr<RtcEventDtlsTransportState> event =
+      gen_.NewDtlsTransportState();
+  history_.push_back(event->Copy());
+
+  std::string encoded = encoder_->EncodeBatch(history_.begin(), history_.end());
+  ASSERT_TRUE(parsed_log_.ParseString(encoded));
+  const auto& dtls_transport_states = parsed_log_.dtls_transport_states();
+
+  ASSERT_EQ(dtls_transport_states.size(), 1u);
+  verifier_.VerifyLoggedDtlsTransportState(*event, dtls_transport_states[0]);
+}
+
 // TODO(eladalon/terelius): Test with multiple events in the batch.
 TEST_P(RtcEventLogEncoderTest, RtcEventIceCandidatePairConfig) {
   std::unique_ptr<RtcEventIceCandidatePairConfig> event =
