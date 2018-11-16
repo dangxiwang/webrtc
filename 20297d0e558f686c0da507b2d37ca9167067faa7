@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8a4f09ca_5f5e553a",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5845
+      },
+      "writtenOn": "2018-11-16T12:31:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae7a8b50_17f6218a",
+      "range": {
+        "startLine": 24,
+        "startChar": 7,
+        "endLine": 24,
+        "endChar": 24
+      },
+      "revId": "20297d0e558f686c0da507b2d37ca9167067faa7",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b907e037_a28165e9",
         "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
         "patchSetId": 8
@@ -45,6 +69,30 @@
       "revId": "20297d0e558f686c0da507b2d37ca9167067faa7",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86e89d81_88707ff5",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 5845
+      },
+      "writtenOn": "2018-11-16T12:31:13Z",
+      "side": 1,
+      "message": "Thought RTT\u003d0 was some default - got rid of it.",
+      "parentUuid": "b907e037_a28165e9",
+      "range": {
+        "startLine": 26,
+        "startChar": 40,
+        "endLine": 26,
+        "endChar": 53
+      },
+      "revId": "20297d0e558f686c0da507b2d37ca9167067faa7",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +142,54 @@
     },
     {
       "key": {
+        "uuid": "25c1ad8d_0adb2413",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 5845
+      },
+      "writtenOn": "2018-11-16T12:31:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7282b014_76636170",
+      "range": {
+        "startLine": 33,
+        "startChar": 72,
+        "endLine": 33,
+        "endChar": 74
+      },
+      "revId": "20297d0e558f686c0da507b2d37ca9167067faa7",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fdb2cb8_8a277598",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 5845
+      },
+      "writtenOn": "2018-11-16T12:31:13Z",
+      "side": 1,
+      "message": "Used inline calc instead.",
+      "parentUuid": "5fd58ce1_476aab89",
+      "range": {
+        "startLine": 33,
+        "startChar": 16,
+        "endLine": 33,
+        "endChar": 37
+      },
+      "revId": "20297d0e558f686c0da507b2d37ca9167067faa7",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b24e6f5d_8da92b22",
         "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
         "patchSetId": 8
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "e3705a45_0fb6ef2f",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 5845
+      },
+      "writtenOn": "2018-11-16T12:31:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b24e6f5d_8da92b22",
+      "range": {
+        "startLine": 36,
+        "startChar": 7,
+        "endLine": 36,
+        "endChar": 24
+      },
+      "revId": "20297d0e558f686c0da507b2d37ca9167067faa7",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "145a35c8_3080afff",
         "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
         "patchSetId": 8
@@ -128,6 +248,30 @@
       "writtenOn": "2018-11-15T16:49:30Z",
       "side": 1,
       "message": "I suggest doing this check outside (or rather, check that this is already done, I\u0027m pretty sure it is) )and DCHECK here instead.",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 11
+      },
+      "revId": "20297d0e558f686c0da507b2d37ca9167067faa7",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "573dbbb8_524270b7",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 5845
+      },
+      "writtenOn": "2018-11-16T12:31:13Z",
+      "side": 1,
+      "message": "Disagree here: there is a division by size below. Do not think reader should have to check two layers above if this can happen. This is a cheap, simple save.",
+      "parentUuid": "145a35c8_3080afff",
       "range": {
         "startLine": 106,
         "startChar": 0,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "a944aa8c_353dc7e0",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5845
+      },
+      "writtenOn": "2018-11-16T12:31:13Z",
+      "side": 1,
+      "message": "Indeed possible, and quite elegant solution.",
+      "parentUuid": "7349e9a6_d2511ae3",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 67
+      },
+      "revId": "20297d0e558f686c0da507b2d37ca9167067faa7",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "33ca3409_74701675",
         "filename": "modules/bitrate_controller/send_side_bandwidth_estimation.cc",
         "patchSetId": 8
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "87f68696_2545e112",
+        "filename": "modules/bitrate_controller/send_side_bandwidth_estimation.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 5845
+      },
+      "writtenOn": "2018-11-16T12:31:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33ca3409_74701675",
+      "range": {
+        "startLine": 475,
+        "startChar": 20,
+        "endLine": 476,
+        "endChar": 18
+      },
+      "revId": "20297d0e558f686c0da507b2d37ca9167067faa7",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "057c26a9_f0a693cc",
         "filename": "modules/congestion_controller/goog_cc/goog_cc_network_control.cc",
         "patchSetId": 8
@@ -206,6 +398,30 @@
       "revId": "20297d0e558f686c0da507b2d37ca9167067faa7",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce21652e_9c1ea976",
+        "filename": "modules/congestion_controller/goog_cc/goog_cc_network_control.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 5845
+      },
+      "writtenOn": "2018-11-16T12:31:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "057c26a9_f0a693cc",
+      "range": {
+        "startLine": 381,
+        "startChar": 2,
+        "endLine": 392,
+        "endChar": 0
+      },
+      "revId": "20297d0e558f686c0da507b2d37ca9167067faa7",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
