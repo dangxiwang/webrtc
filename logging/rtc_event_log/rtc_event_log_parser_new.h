@@ -20,6 +20,7 @@
 
 #include "call/video_receive_stream.h"
 #include "call/video_send_stream.h"
+#include "logging/rtc_event_log/events/rtc_event_dtls_transport_state.h"
 #include "logging/rtc_event_log/events/rtc_event_ice_candidate_pair.h"
 #include "logging/rtc_event_log/events/rtc_event_ice_candidate_pair_config.h"
 #include "logging/rtc_event_log/events/rtc_event_probe_result_failure.h"
@@ -128,6 +129,14 @@ struct LoggedBweLossBasedUpdate {
   int32_t bitrate_bps;
   uint8_t fraction_lost;
   int32_t expected_packets;
+};
+
+struct LoggedDtlsTransportState {
+  int64_t log_time_us() const { return timestamp_us; }
+  int64_t log_time_ms() const { return timestamp_us / 1000; }
+
+  int64_t timestamp_us;
+  DtlsTransportState dtls_transport_state;
 };
 
 struct LoggedBweProbeClusterCreatedEvent {
@@ -760,6 +769,11 @@ class ParsedRtcEventLogNew {
     return alr_state_events_;
   }
 
+  // DTLS
+  const std::vector<LoggedDtlsTransportState>& dtls_transport_states() const {
+    return dtls_transport_states_;
+  }
+
   // ICE events
   const std::vector<LoggedIceCandidatePairConfig>& ice_candidate_pair_configs()
       const {
@@ -895,6 +909,9 @@ class ParsedRtcEventLogNew {
   LoggedBweDelayBasedUpdate GetDelayBasedBweUpdate(
       const rtclog::Event& event) const;
 
+  LoggedDtlsTransportState GetDtlsTransportState(
+      const rtclog::Event& event) const;
+
   LoggedAudioNetworkAdaptationEvent GetAudioNetworkAdaptation(
       const rtclog::Event& event) const;
 
@@ -929,6 +946,7 @@ class ParsedRtcEventLogNew {
   void StoreBweProbeSuccessEvent(const rtclog2::BweProbeResultSuccess& proto);
   void StoreBweProbeFailureEvent(const rtclog2::BweProbeResultFailure& proto);
   void StoreAlrStateEvent(const rtclog2::AlrState& proto);
+  void StoreDtlsTransportState(const rtclog2::DtlsTransportStateEvent& proto);
   void StoreIceCandidatePairConfig(
       const rtclog2::IceCandidatePairConfig& proto);
   void StoreIceCandidateEvent(const rtclog2::IceCandidatePairEvent& proto);
@@ -1022,6 +1040,8 @@ class ParsedRtcEventLogNew {
 
   // A list of all updates from the send-side loss-based bandwidth estimator.
   std::vector<LoggedBweLossBasedUpdate> bwe_loss_updates_;
+
+  std::vector<LoggedDtlsTransportState> dtls_transport_states_;
 
   std::vector<LoggedAlrStateEvent> alr_state_events_;
 

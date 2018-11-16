@@ -14,6 +14,8 @@
 
 #include "p2p/base/dtlstransport.h"
 
+#include "logging/rtc_event_log/events/rtc_event_dtls_transport_state.h"
+#include "logging/rtc_event_log/rtc_event_log.h"
 #include "p2p/base/packettransportinternal.h"
 #include "rtc_base/buffer.h"
 #include "rtc_base/checks.h"
@@ -122,14 +124,16 @@ DtlsTransport::DtlsTransport(IceTransportInternal* ice_transport,
       downward_(NULL),
       srtp_ciphers_(crypto_options.GetSupportedDtlsSrtpCryptoSuites()),
       ssl_max_version_(rtc::SSL_PROTOCOL_DTLS_12),
-      crypto_options_(crypto_options) {
+      crypto_options_(crypto_options),
+      event_log_(nullptr) {
   RTC_DCHECK(ice_transport_);
   ConnectToIceTransport();
 }
 
 DtlsTransport::DtlsTransport(
     std::unique_ptr<IceTransportInternal> ice_transport,
-    const webrtc::CryptoOptions& crypto_options)
+    const webrtc::CryptoOptions& crypto_options,
+    webrtc::RtcEventLog* event_log)
     : transport_name_(ice_transport->transport_name()),
       component_(ice_transport->component()),
       ice_transport_(ice_transport.get()),
@@ -137,7 +141,8 @@ DtlsTransport::DtlsTransport(
       downward_(NULL),
       srtp_ciphers_(crypto_options.GetSupportedDtlsSrtpCryptoSuites()),
       ssl_max_version_(rtc::SSL_PROTOCOL_DTLS_12),
-      crypto_options_(crypto_options) {
+      crypto_options_(crypto_options),
+      event_log_(event_log) {
   RTC_DCHECK(owned_ice_transport_);
   ConnectToIceTransport();
 }
@@ -767,9 +772,31 @@ void DtlsTransport::set_writable(bool writable) {
   SignalWritableState(this);
 }
 
+webrtc::DtlsTransportState ConvertDtlsTransportState(
+    cricket::DtlsTransportState cricket_state) {
+  switch (cricket_state) {
+    case DtlsTransportState::DTLS_TRANSPORT_NEW:
+      return webrtc::DtlsTransportState::kNew;
+    case DtlsTransportState::DTLS_TRANSPORT_CONNECTING:
+      return webrtc::DtlsTransportState::kConnecting;
+    case DtlsTransportState::DTLS_TRANSPORT_CONNECTED:
+      return webrtc::DtlsTransportState::kConnected;
+    case DtlsTransportState::DTLS_TRANSPORT_CLOSED:
+      return webrtc::DtlsTransportState::kClosed;
+    case DtlsTransportState::DTLS_TRANSPORT_FAILED:
+      return webrtc::DtlsTransportState::kFailed;
+  }
+  RTC_NOTREACHED();
+  return webrtc::DtlsTransportState::kNew;
+}
+
 void DtlsTransport::set_dtls_state(DtlsTransportState state) {
   if (dtls_state_ == state) {
     return;
+  }
+  if (event_log_) {
+    event_log_->Log(absl::make_unique<webrtc::RtcEventDtlsTransportState>(
+        ConvertDtlsTransportState(state)));
   }
   RTC_LOG(LS_VERBOSE) << ToString() << ": set_dtls_state from:" << dtls_state_
                       << " to " << state;

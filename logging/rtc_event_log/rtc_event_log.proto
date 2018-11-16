@@ -43,6 +43,7 @@ message Event {
     ALR_STATE_EVENT = 19;
     ICE_CANDIDATE_PAIR_CONFIG = 20;
     ICE_CANDIDATE_PAIR_EVENT = 21;
+    DTLS_TRANSPORT_STATE_EVENT = 22;
   }
 
   // required - Indicates the type of this event
@@ -93,6 +94,9 @@ message Event {
 
     // required if type == ICE_CANDIDATE_PAIR_EVENT
     IceCandidatePairEvent ice_candidate_pair_event = 21;
+
+    // required if type == DTLS_TRANSPORT_STATE
+    DtlsTransportStateEvent dtls_transport_state_event = 22;
   }
 }
 
@@ -412,4 +416,18 @@ message IceCandidatePairEvent {
 
   // required
   optional uint32 candidate_pair_id = 2;
+}
+
+message DtlsTransportStateEvent {
+  enum DtlsTransportState {
+    UNKNOWN_DTLS_TRANSPORT_STATE = 0;
+    DTLS_TRANSPORT_NEW = 1;
+    DTLS_TRANSPORT_CONNECTING = 2;
+    DTLS_TRANSPORT_CONNECTED = 3;
+    DTLS_TRANSPORT_CLOSED = 4;
+    DTLS_TRANSPORT_FAILED = 5;
+  }
+
+  // required
+  optional DtlsTransportState dtls_transport_state = 1;
 }

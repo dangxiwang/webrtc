@@ -17,6 +17,7 @@
 #include "logging/rtc_event_log/events/rtc_event_audio_send_stream_config.h"
 #include "logging/rtc_event_log/events/rtc_event_bwe_update_delay_based.h"
 #include "logging/rtc_event_log/events/rtc_event_bwe_update_loss_based.h"
+#include "logging/rtc_event_log/events/rtc_event_dtls_transport_state.h"
 #include "logging/rtc_event_log/events/rtc_event_ice_candidate_pair.h"
 #include "logging/rtc_event_log/events/rtc_event_ice_candidate_pair_config.h"
 #include "logging/rtc_event_log/events/rtc_event_probe_cluster_created.h"
@@ -103,6 +104,26 @@ rtclog::VideoReceiveConfig_RtcpMode ConvertRtcpMode(RtcpMode rtcp_mode) {
   }
   RTC_NOTREACHED();
   return rtclog::VideoReceiveConfig::RTCP_COMPOUND;
+}
+
+rtclog::DtlsTransportStateEvent::DtlsTransportState ConvertDtlsTransportState(
+    webrtc::DtlsTransportState state) {
+  switch (state) {
+    case webrtc::DtlsTransportState::kNew:
+      return rtclog::DtlsTransportStateEvent::DTLS_TRANSPORT_NEW;
+    case webrtc::DtlsTransportState::kConnecting:
+      return rtclog::DtlsTransportStateEvent::DTLS_TRANSPORT_CONNECTING;
+    case webrtc::DtlsTransportState::kConnected:
+      return rtclog::DtlsTransportStateEvent::DTLS_TRANSPORT_CONNECTED;
+    case webrtc::DtlsTransportState::kClosed:
+      return rtclog::DtlsTransportStateEvent::DTLS_TRANSPORT_CLOSED;
+    case webrtc::DtlsTransportState::kFailed:
+      return rtclog::DtlsTransportStateEvent::DTLS_TRANSPORT_FAILED;
+    case webrtc::DtlsTransportState::kNumValues:
+      RTC_NOTREACHED();
+  }
+  RTC_NOTREACHED();
+  return rtclog::DtlsTransportStateEvent::UNKNOWN_DTLS_TRANSPORT_STATE;
 }
 
 rtclog::IceCandidatePairConfig::IceCandidatePairConfigType
@@ -289,6 +310,11 @@ std::string RtcEventLogEncoderLegacy::Encode(const RtcEvent& event) {
       return EncodeBweUpdateLossBased(rtc_event);
     }
 
+    case RtcEvent::Type::DtlsTransportState: {
+      auto& rtc_event = static_cast<const RtcEventDtlsTransportState&>(event);
+      return EncodeDtlsTransportState(rtc_event);
+    }
+
     case RtcEvent::Type::IceCandidatePairConfig: {
       auto& rtc_event =
           static_cast<const RtcEventIceCandidatePairConfig&>(event);
@@ -469,6 +495,18 @@ std::string RtcEventLogEncoderLegacy::EncodeBweUpdateLossBased(
   bwe_event->set_fraction_loss(event.fraction_loss());
   bwe_event->set_total_packets(event.total_packets());
 
+  return Serialize(&rtclog_event);
+}
+
+std::string RtcEventLogEncoderLegacy::EncodeDtlsTransportState(
+    const RtcEventDtlsTransportState& event) {
+  rtclog::Event rtclog_event;
+  rtclog_event.set_timestamp_us(event.timestamp_us());
+  rtclog_event.set_type(rtclog::Event::DTLS_TRANSPORT_STATE_EVENT);
+
+  auto* dtls_event = rtclog_event.mutable_dtls_transport_state_event();
+  dtls_event->set_dtls_transport_state(
+      ConvertDtlsTransportState(event.dtls_transport_state()));
   return Serialize(&rtclog_event);
 }
 

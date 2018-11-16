@@ -57,6 +57,8 @@ class EventGenerator {
 
   std::unique_ptr<RtcEventBweUpdateLossBased> NewBweUpdateLossBased();
 
+  std::unique_ptr<RtcEventDtlsTransportState> NewDtlsTransportState();
+
   std::unique_ptr<RtcEventProbeClusterCreated> NewProbeClusterCreated();
 
   std::unique_ptr<RtcEventProbeResultFailure> NewProbeResultFailure();
@@ -151,6 +153,10 @@ void VerifyLoggedBweProbeFailureEvent(
 void VerifyLoggedBweProbeSuccessEvent(
     const RtcEventProbeResultSuccess& original_event,
     const LoggedBweProbeSuccessEvent& logged_event);
+
+void VerifyLoggedDtlsTransportState(
+    const RtcEventDtlsTransportState& original_event,
+    const LoggedDtlsTransportState& logged_event);
 
 void VerifyLoggedIceCandidatePairConfig(
     const RtcEventIceCandidatePairConfig& original_event,
