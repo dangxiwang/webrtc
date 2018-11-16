@@ -284,6 +284,30 @@
     },
     {
       "key": {
+        "uuid": "2a5f761c_5b50f7a2",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-11-16T14:52:23Z",
+      "side": 1,
+      "message": "If you add a DCHECK the reader doesn\u0027t have to check anything above. And if we, for some reason, cause a regression where it always is empty, the DCHECK will trigger directly, instead of this component just behaving weirdly (doesn\u0027t update even though it\u0027s called)\n\nIn general, we want to cause crashes early rather than being forgiving in low level code. Otherwise we end up in a situation where: 1. All components have to sanity check all their inputs all the time. 2. It becomes really hard to detect where an error initially occurs as we\u0027ll get a downstream error (no loss being detected) instead of a crash in early testing.\n\nIf you want it to handle regressions gracefully in production, you can keep the early return, but also add a DCHECK to show that we don\u0027t expect this to ever happen. (I don\u0027t think it\u0027s needed here. But it\u0027s better than having no check and silently failing to update the loss)",
+      "parentUuid": "573dbbb8_524270b7",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 11
+      },
+      "revId": "20297d0e558f686c0da507b2d37ca9167067faa7",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7349e9a6_d2511ae3",
         "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.h",
         "patchSetId": 8

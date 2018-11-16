@@ -1,0 +1,228 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c379b34_f2cf0f66",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-11-16T14:52:23Z",
+      "side": 1,
+      "message": "Much better, now I can see the full context here. Makes much more sense!\nSuggestion that makes the linear interpolation behavior more visible, and makes the clamping behavior from the ifs more obvious: (note how it\u0027s made explicit that the relative_offset is never more than 1)\n\n  auto rtt_range \u003d config.increase_high_rtt.Get() - config.increase_low_rtt;\n  auto rtt_offset \u003d rtt-config.increase_low_rtt;\n  auto relative_offset \u003d std::max(0, std::min(rtt_offset/rtt_range, 1));\n  auto factor_range \u003d config.max_increase_factor - config.min_increase_factor;\n  return config.min_increase_factor + (1-relative_offset)*factor_range;",
+      "range": {
+        "startLine": 25,
+        "startChar": 7,
+        "endLine": 25,
+        "endChar": 24
+      },
+      "revId": "a6905143e7237203b32bc89ae5478da55c9a9442",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac2915be_e34710d5",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-11-16T14:52:23Z",
+      "side": 1,
+      "message": "Does it make sense that loss can be \u003e1? Maybe it would make sense to skip the epsilon below, and instead detect the state that the return value would be \u003e 1 and return 1 then?\n\nif(bitrate\u003eloss_bandwidth_balance)\n  return 1.0;\n\n... code without need of epsilon.",
+      "range": {
+        "startLine": 41,
+        "startChar": 15,
+        "endLine": 41,
+        "endChar": 22
+      },
+      "revId": "a6905143e7237203b32bc89ae5478da55c9a9442",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "879b8807_ddb527eb",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-11-16T14:52:23Z",
+      "side": 1,
+      "message": "I really would like this to be a DataRate to indicate that it is dependent on a bitrate. It\u0027s really preferable to avoid using the kbps() accessor in algorithm code.\n\nIn the current code, it looks completely dimensionless, but if this line would be updated to use bps, the loss_bandwidth_balance config would be wrong. While if it was specified as a DataRate, this code wouldn\u0027t even have to use an accessor.",
+      "range": {
+        "startLine": 42,
+        "startChar": 13,
+        "endLine": 42,
+        "endChar": 35
+      },
+      "revId": "a6905143e7237203b32bc89ae5478da55c9a9442",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94edb758_78414567",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-11-16T14:52:23Z",
+      "side": 1,
+      "message": "You should ensure that this is a reasonable value to represent as a DataRate.\n\nI suggest returning DataRate::Infinity() if the loss is lower than some reasonably low threshold (we probably don\u0027t want really want to react to loss rates below 1 ppm for instance, but we can probably safely choose a higher threshold, like 0.1% or so). That way you can skip the epsilon and you avoid risking returning values that are too large for DataRate.",
+      "range": {
+        "startLine": 50,
+        "startChar": 24,
+        "endLine": 51,
+        "endChar": 59
+      },
+      "revId": "a6905143e7237203b32bc89ae5478da55c9a9442",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92ffe8b1_9f992840",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-11-16T14:52:23Z",
+      "side": 1,
+      "message": "Exuivalent to exp(-interval/window), right?",
+      "range": {
+        "startLine": 58,
+        "startChar": 16,
+        "endLine": 58,
+        "endChar": 50
+      },
+      "revId": "a6905143e7237203b32bc89ae5478da55c9a9442",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61eead43_4debcb8a",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-11-16T14:52:23Z",
+      "side": 1,
+      "message": "\u003e TimeDelta::Zero()\n\nAre you sure you want the client to crash if these are invalid. If you really think it\u0027s expected that someone might enter negative values in an experiment, you probably don\u0027t want all clients in the experiment to crash.\n\nUsually I figure that we can expect such values to be correct. We wouldn\u0027t get meaningful debug information about it either way, better to be careful when you enter the values, it\u0027s probably more likely to add an extra 0 than a - sign anyways.\n\nIf you don\u0027t expect the values to be correct add DCHECKS and clamp the values to reasonable defaults for prod.",
+      "range": {
+        "startLine": 91,
+        "startChar": 29,
+        "endLine": 91,
+        "endChar": 38
+      },
+      "revId": "a6905143e7237203b32bc89ae5478da55c9a9442",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5297d7fc_f7568c10",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-11-16T14:52:23Z",
+      "side": 1,
+      "message": "Do we need to do these updates even if the loss rate hasn\u0027t been updated? Otherwise we could combine the call with UpdateLossStatistics.",
+      "range": {
+        "startLine": 155,
+        "startChar": 35,
+        "endLine": 155,
+        "endChar": 41
+      },
+      "revId": "a6905143e7237203b32bc89ae5478da55c9a9442",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46265434_f4cdfd9c",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-11-16T14:52:23Z",
+      "side": 1,
+      "message": "Is this needed? I think previously it was needed as we based it on the RTCP receiver reports. But as you use per packet feedback, I\u0027d guess that this can be skipped now? Possibly in combination with combining this function with UpdateLossStatistics as mentioned above.",
+      "range": {
+        "startLine": 161,
+        "startChar": 6,
+        "endLine": 161,
+        "endChar": 65
+      },
+      "revId": "a6905143e7237203b32bc89ae5478da55c9a9442",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a4366e6_c3a3ed68",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-11-16T14:52:23Z",
+      "side": 1,
+      "message": "loss_estimate_for_increase?",
+      "revId": "a6905143e7237203b32bc89ae5478da55c9a9442",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "874cdf5c_21f90900",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-11-16T14:52:23Z",
+      "side": 1,
+      "message": "Please use std:min/max and DataRate::Clamp/Clamped when you want to clamp a value. Much easier to read.",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 7
+      },
+      "revId": "a6905143e7237203b32bc89ae5478da55c9a9442",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
