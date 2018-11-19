@@ -1,0 +1,176 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bf5e193e_07415fdf",
+        "filename": "logging/rtc_event_log/encoder/rtc_event_log_encoder_unittest.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2018-11-19T13:37:40Z",
+      "side": 1,
+      "message": "Please produce a series of events, rather than just one.\nYes, I am aware many of the tests in this file do not follow this advice.",
+      "range": {
+        "startLine": 470,
+        "startChar": 0,
+        "endLine": 470,
+        "endChar": 36
+      },
+      "revId": "6852baeda98c2cb3721e8fe34a172d3ccce9724d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b1e1e57_4bf76916",
+        "filename": "logging/rtc_event_log/encoder/rtc_event_log_encoder_unittest.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2018-11-19T13:37:40Z",
+      "side": 1,
+      "message": "nit: const",
+      "revId": "6852baeda98c2cb3721e8fe34a172d3ccce9724d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efbb9bc6_1181cfd9",
+        "filename": "logging/rtc_event_log/events/rtc_event_dtls_transport_state.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2018-11-19T13:37:40Z",
+      "side": 1,
+      "message": "Sorry, I am not sure I understood - why do we need to add this, rather than use cricket::DtlsTransportState? Is this file not allowed to see headers from that particular module?",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 2
+      },
+      "revId": "6852baeda98c2cb3721e8fe34a172d3ccce9724d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07fc2059_aa4edcec",
+        "filename": "logging/rtc_event_log/rtc_event_log_parser_new.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2018-11-19T13:37:40Z",
+      "side": 1,
+      "message": "nit: The cases do not follow the same order as the values of the enum. Perhaps move this to the top? Also, would the resulting binary not be a bit smaller if you broke and allowed the same code to be reached outside of the switch-block? Wdyt?",
+      "range": {
+        "startLine": 89,
+        "startChar": 42,
+        "endLine": 89,
+        "endChar": 70
+      },
+      "revId": "6852baeda98c2cb3721e8fe34a172d3ccce9724d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd79e9c7_d2fdb5e8",
+        "filename": "logging/rtc_event_log/rtc_event_log_parser_new.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2018-11-19T13:37:40Z",
+      "side": 1,
+      "message": "The other functions in this file return something that\u0027s still legal. I am not sure what the rationale is; perhaps so as not to cause an error further down the line? Could you either explain to me your rationale in doing this differently, or do the same thing as the neighboring code? Or... wdyt about introducing DtlsTransportState::kUnknown? (Not sure if it\u0027s a good idea; it\u0027s up to you.)",
+      "range": {
+        "startLine": 94,
+        "startChar": 29,
+        "endLine": 94,
+        "endChar": 39
+      },
+      "revId": "6852baeda98c2cb3721e8fe34a172d3ccce9724d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c69d74a7_344ee3a0",
+        "filename": "logging/rtc_event_log/rtc_event_log_parser_new.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2018-11-19T13:37:40Z",
+      "side": 1,
+      "message": "Similarly",
+      "range": {
+        "startLine": 232,
+        "startChar": 0,
+        "endLine": 251,
+        "endChar": 1
+      },
+      "revId": "6852baeda98c2cb3721e8fe34a172d3ccce9724d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5e935bc_f0a9a90a",
+        "filename": "logging/rtc_event_log/rtc_event_log_parser_new.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1290,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2018-11-19T13:37:40Z",
+      "side": 1,
+      "message": "nit: Relative order.",
+      "range": {
+        "startLine": 1290,
+        "startChar": 0,
+        "endLine": 1290,
+        "endChar": 53
+      },
+      "revId": "6852baeda98c2cb3721e8fe34a172d3ccce9724d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b782fb4_5f05eba2",
+        "filename": "logging/rtc_event_log/rtc_event_log_unittest_helper.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2018-11-19T13:37:40Z",
+      "side": 1,
+      "message": "Validate the timestamp?",
+      "revId": "6852baeda98c2cb3721e8fe34a172d3ccce9724d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
