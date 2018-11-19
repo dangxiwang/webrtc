@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5407180d_1c038ddf",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5845
+      },
+      "writtenOn": "2018-11-19T10:13:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c379b34_f2cf0f66",
+      "range": {
+        "startLine": 25,
+        "startChar": 7,
+        "endLine": 25,
+        "endChar": 24
+      },
+      "revId": "a6905143e7237203b32bc89ae5478da55c9a9442",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ac2915be_e34710d5",
         "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
         "patchSetId": 9
@@ -45,6 +69,30 @@
       "revId": "a6905143e7237203b32bc89ae5478da55c9a9442",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e031372a_3b40783e",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 5845
+      },
+      "writtenOn": "2018-11-19T10:13:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac2915be_e34710d5",
+      "range": {
+        "startLine": 41,
+        "startChar": 15,
+        "endLine": 41,
+        "endChar": 22
+      },
+      "revId": "a6905143e7237203b32bc89ae5478da55c9a9442",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "b83a8f23_19649b27",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5845
+      },
+      "writtenOn": "2018-11-19T10:13:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "879b8807_ddb527eb",
+      "range": {
+        "startLine": 42,
+        "startChar": 13,
+        "endLine": 42,
+        "endChar": 35
+      },
+      "revId": "a6905143e7237203b32bc89ae5478da55c9a9442",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "94edb758_78414567",
         "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
         "patchSetId": 9
@@ -91,6 +163,30 @@
       "revId": "a6905143e7237203b32bc89ae5478da55c9a9442",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f70dcf7f_1b5f2c7b",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 5845
+      },
+      "writtenOn": "2018-11-19T10:13:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94edb758_78414567",
+      "range": {
+        "startLine": 50,
+        "startChar": 24,
+        "endLine": 51,
+        "endChar": 59
+      },
+      "revId": "a6905143e7237203b32bc89ae5478da55c9a9442",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "ea217466_63e7cea1",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 5845
+      },
+      "writtenOn": "2018-11-19T10:13:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92ffe8b1_9f992840",
+      "range": {
+        "startLine": 58,
+        "startChar": 16,
+        "endLine": 58,
+        "endChar": 50
+      },
+      "revId": "a6905143e7237203b32bc89ae5478da55c9a9442",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "61eead43_4debcb8a",
         "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
         "patchSetId": 9
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "738a24fe_e11e32e7",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 5845
+      },
+      "writtenOn": "2018-11-19T10:13:07Z",
+      "side": 1,
+      "message": "Agree, these are completely pointless. Clamping would be sensible, but field trial parameters seem to have only a const Get() method, so I cannot do that. Added inline checks where the parameters are used instead. \nAs these are online configurable, I think we should ensure somewhat graceful handling of a broken config.",
+      "parentUuid": "61eead43_4debcb8a",
+      "range": {
+        "startLine": 91,
+        "startChar": 29,
+        "endLine": 91,
+        "endChar": 38
+      },
+      "revId": "a6905143e7237203b32bc89ae5478da55c9a9442",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5297d7fc_f7568c10",
         "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
         "patchSetId": 9
@@ -151,6 +295,30 @@
       "writtenOn": "2018-11-16T14:52:23Z",
       "side": 1,
       "message": "Do we need to do these updates even if the loss rate hasn\u0027t been updated? Otherwise we could combine the call with UpdateLossStatistics.",
+      "range": {
+        "startLine": 155,
+        "startChar": 35,
+        "endLine": 155,
+        "endChar": 41
+      },
+      "revId": "a6905143e7237203b32bc89ae5478da55c9a9442",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f46e494e_94de4913",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 5845
+      },
+      "writtenOn": "2018-11-19T10:13:07Z",
+      "side": 1,
+      "message": "As is yes, as we do allow multiple increase steps for the same loss report. It is possible that this is irrelevant as we are now based on the much more frequent packet feedback. But we also new min_bitrate to be calculated before entering here.",
+      "parentUuid": "5297d7fc_f7568c10",
       "range": {
         "startLine": 155,
         "startChar": 35,
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "38858bb6_dce286ef",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 5845
+      },
+      "writtenOn": "2018-11-19T10:13:07Z",
+      "side": 1,
+      "message": "See above. We allow multiple increase steps for the same loss report; this works as a save to stop the increases when loss feedback ceases to arrive. How often it becomes active in practice is questionable though.",
+      "parentUuid": "46265434_f4cdfd9c",
+      "range": {
+        "startLine": 161,
+        "startChar": 6,
+        "endLine": 161,
+        "endChar": 65
+      },
+      "revId": "a6905143e7237203b32bc89ae5478da55c9a9442",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1a4366e6_c3a3ed68",
         "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
         "patchSetId": 9
@@ -200,6 +392,24 @@
       "revId": "a6905143e7237203b32bc89ae5478da55c9a9442",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbf66a99_9e962b16",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 5845
+      },
+      "writtenOn": "2018-11-19T10:13:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a4366e6_c3a3ed68",
+      "revId": "a6905143e7237203b32bc89ae5478da55c9a9442",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     },
     {
       "key": {
@@ -223,6 +433,30 @@
       "revId": "a6905143e7237203b32bc89ae5478da55c9a9442",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65566ecb_b356c3e2",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 5845
+      },
+      "writtenOn": "2018-11-19T10:13:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "874cdf5c_21f90900",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 7
+      },
+      "revId": "a6905143e7237203b32bc89ae5478da55c9a9442",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
