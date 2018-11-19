@@ -331,6 +331,30 @@
     },
     {
       "key": {
+        "uuid": "f5c53a38_5c10994a",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-11-19T13:50:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f46e494e_94de4913",
+      "range": {
+        "startLine": 155,
+        "startChar": 35,
+        "endLine": 155,
+        "endChar": 41
+      },
+      "revId": "a6905143e7237203b32bc89ae5478da55c9a9442",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "46265434_f4cdfd9c",
         "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
         "patchSetId": 9
@@ -366,6 +390,30 @@
       "side": 1,
       "message": "See above. We allow multiple increase steps for the same loss report; this works as a save to stop the increases when loss feedback ceases to arrive. How often it becomes active in practice is questionable though.",
       "parentUuid": "46265434_f4cdfd9c",
+      "range": {
+        "startLine": 161,
+        "startChar": 6,
+        "endLine": 161,
+        "endChar": 65
+      },
+      "revId": "a6905143e7237203b32bc89ae5478da55c9a9442",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0b568f9_19c0b375",
+        "filename": "modules/bitrate_controller/loss_based_bandwidth_estimation.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2018-11-19T13:50:37Z",
+      "side": 1,
+      "message": "If we don\u0027t get loss feedback, we don\u0027t get normal feedback either, meaning, the underlying target will not increase. If we want to avoid following the underlying target when there\u0027s no traffic, maybe we should check that explicitly?",
+      "parentUuid": "38858bb6_dce286ef",
       "range": {
         "startLine": 161,
         "startChar": 6,
