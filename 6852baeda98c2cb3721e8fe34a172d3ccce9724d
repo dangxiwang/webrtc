@@ -111,6 +111,30 @@
     },
     {
       "key": {
+        "uuid": "815ec5c1_b2f864f6",
+        "filename": "logging/rtc_event_log/rtc_event_log_parser_new.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 5150
+      },
+      "writtenOn": "2018-11-19T13:56:25Z",
+      "side": 1,
+      "message": "The other functions just returns something to make the compiler happy. The value should not matter per the NOTREACHED() statement. I think this is fine as-is.\n\nAs I understand it, the plan is to merge the webrtc::DtlsTransportState and cricket::DtlsTransportState. I don\u0027t think it\u0027s a good idea to introduce a kUnknown into the production code just to handle a feature designed to make protobufs forwards compatible.",
+      "parentUuid": "bd79e9c7_d2fdb5e8",
+      "range": {
+        "startLine": 94,
+        "startChar": 29,
+        "endLine": 94,
+        "endChar": 39
+      },
+      "revId": "6852baeda98c2cb3721e8fe34a172d3ccce9724d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c69d74a7_344ee3a0",
         "filename": "logging/rtc_event_log/rtc_event_log_parser_new.cc",
         "patchSetId": 4
