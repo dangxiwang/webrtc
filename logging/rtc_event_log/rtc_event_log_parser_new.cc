@@ -73,6 +73,24 @@ BandwidthUsage GetRuntimeDetectorState(
   return BandwidthUsage::kBwNormal;
 }
 
+DtlsTransportState GetRuntimeDtlsTransportState(
+    rtclog::DtlsTransportStateEvent::DtlsTransportState state) {
+  switch (state) {
+    case rtclog::DtlsTransportStateEvent::DTLS_TRANSPORT_NEW:
+      return DtlsTransportState::kNew;
+    case rtclog::DtlsTransportStateEvent::DTLS_TRANSPORT_CONNECTING:
+      return DtlsTransportState::kConnecting;
+    case rtclog::DtlsTransportStateEvent::DTLS_TRANSPORT_CONNECTED:
+      return DtlsTransportState::kConnected;
+    case rtclog::DtlsTransportStateEvent::DTLS_TRANSPORT_CLOSED:
+      return DtlsTransportState::kClosed;
+    case rtclog::DtlsTransportStateEvent::DTLS_TRANSPORT_FAILED:
+      return DtlsTransportState::kFailed;
+  }
+  RTC_NOTREACHED();
+  return DtlsTransportState::kNumValues;
+}
+
 IceCandidatePairConfigType GetRuntimeIceCandidatePairConfigType(
     rtclog::IceCandidatePairConfig::IceCandidatePairConfigType type) {
   switch (type) {
@@ -206,6 +224,27 @@ ProbeFailureReason GetRuntimeProbeFailureReason(
   }
   RTC_NOTREACHED();
   return ProbeFailureReason::kTimeout;
+}
+
+DtlsTransportState GetRuntimeDtlsTransportState(
+    rtclog2::DtlsTransportStateEvent::DtlsTransportState state) {
+  switch (state) {
+    case rtclog2::DtlsTransportStateEvent::DTLS_TRANSPORT_NEW:
+      return DtlsTransportState::kNew;
+    case rtclog2::DtlsTransportStateEvent::DTLS_TRANSPORT_CONNECTING:
+      return DtlsTransportState::kConnecting;
+    case rtclog2::DtlsTransportStateEvent::DTLS_TRANSPORT_CONNECTED:
+      return DtlsTransportState::kConnected;
+    case rtclog2::DtlsTransportStateEvent::DTLS_TRANSPORT_CLOSED:
+      return DtlsTransportState::kClosed;
+    case rtclog2::DtlsTransportStateEvent::DTLS_TRANSPORT_FAILED:
+      return DtlsTransportState::kFailed;
+    case rtclog2::DtlsTransportStateEvent::UNKNOWN_DTLS_TRANSPORT_STATE:
+      RTC_NOTREACHED();
+      return DtlsTransportState::kNumValues;
+  }
+  RTC_NOTREACHED();
+  return DtlsTransportState::kNumValues;
 }
 
 IceCandidatePairConfigType GetRuntimeIceCandidatePairConfigType(
@@ -839,6 +878,7 @@ void ParsedRtcEventLogNew::Clear() {
   bwe_probe_success_events_.clear();
   bwe_delay_updates_.clear();
   bwe_loss_updates_.clear();
+  dtls_transport_states_.clear();
   alr_state_events_.clear();
   ice_candidate_pair_configs_.clear();
   ice_candidate_pair_events_.clear();
@@ -1208,6 +1248,10 @@ void ParsedRtcEventLogNew::StoreParsedLegacyEvent(const rtclog::Event& event) {
       bwe_delay_updates_.push_back(GetDelayBasedBweUpdate(event));
       break;
     }
+    case rtclog::Event::DTLS_TRANSPORT_STATE_EVENT: {
+      dtls_transport_states_.push_back(GetDtlsTransportState(event));
+      break;
+    }
     case rtclog::Event::AUDIO_NETWORK_ADAPTATION_EVENT: {
       LoggedAudioNetworkAdaptationEvent ana_event =
           GetAudioNetworkAdaptation(event);
@@ -1527,6 +1571,20 @@ LoggedBweDelayBasedUpdate ParsedRtcEventLogNew::GetDelayBasedBweUpdate(
   return res;
 }
 
+LoggedDtlsTransportState ParsedRtcEventLogNew::GetDtlsTransportState(
+    const rtclog::Event& event) const {
+  RTC_CHECK(event.has_type());
+  RTC_CHECK_EQ(event.type(), rtclog::Event::DTLS_TRANSPORT_STATE_EVENT);
+  const rtclog::DtlsTransportStateEvent& dtls_event =
+      event.dtls_transport_state_event();
+  LoggedDtlsTransportState res;
+  res.timestamp_us = GetTimestamp(event);
+  RTC_CHECK(dtls_event.has_dtls_transport_state());
+  res.dtls_transport_state =
+      GetRuntimeDtlsTransportState(dtls_event.dtls_transport_state());
+  return res;
+}
+
 LoggedAudioNetworkAdaptationEvent
 ParsedRtcEventLogNew::GetAudioNetworkAdaptation(
     const rtclog::Event& event) const {
@@ -1809,6 +1867,7 @@ void ParsedRtcEventLogNew::StoreParsedNewFormatEvent(
           stream.audio_playout_events_size() + stream.begin_log_events_size() +
           stream.end_log_events_size() + stream.loss_based_bwe_updates_size() +
           stream.delay_based_bwe_updates_size() +
+          stream.dtls_transport_state_events_size() +
           stream.audio_network_adaptations_size() +
           stream.probe_clusters_size() + stream.probe_success_size() +
           stream.probe_failure_size() + stream.alr_states_size() +
@@ -1838,6 +1897,8 @@ void ParsedRtcEventLogNew::StoreParsedNewFormatEvent(
     StoreBweLossBasedUpdate(stream.loss_based_bwe_updates(0));
   } else if (stream.delay_based_bwe_updates_size() == 1) {
     StoreBweDelayBasedUpdate(stream.delay_based_bwe_updates(0));
+  } else if (stream.dtls_transport_state_events_size() == 1) {
+    StoreDtlsTransportState(stream.dtls_transport_state_events(0));
   } else if (stream.audio_network_adaptations_size() == 1) {
     StoreAudioNetworkAdaptationEvent(stream.audio_network_adaptations(0));
   } else if (stream.probe_clusters_size() == 1) {
@@ -2284,6 +2345,19 @@ void ParsedRtcEventLogNew::StoreAudioNetworkAdaptationEvent(
     audio_network_adaptation_events_.emplace_back(1000 * timestamp_ms,
                                                   runtime_config);
   }
+}
+
+void ParsedRtcEventLogNew::StoreDtlsTransportState(
+    const rtclog2::DtlsTransportStateEvent& proto) {
+  LoggedDtlsTransportState dtls_state;
+  RTC_CHECK(proto.has_timestamp_ms());
+  dtls_state.timestamp_us = proto.timestamp_ms() * 1000;
+
+  RTC_CHECK(proto.has_dtls_transport_state());
+  dtls_state.dtls_transport_state =
+      GetRuntimeDtlsTransportState(proto.dtls_transport_state());
+
+  dtls_transport_states_.push_back(dtls_state);
 }
 
 void ParsedRtcEventLogNew::StoreIceCandidatePairConfig(
