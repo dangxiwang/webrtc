@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0e34d605_caa2c5dc",
+        "filename": "logging/rtc_event_log/encoder/rtc_event_log_encoder_unittest.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 5281
+      },
+      "writtenOn": "2018-11-20T00:51:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf5e193e_07415fdf",
+      "range": {
+        "startLine": 470,
+        "startChar": 0,
+        "endLine": 470,
+        "endChar": 36
+      },
+      "revId": "6852baeda98c2cb3721e8fe34a172d3ccce9724d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b1e1e57_4bf76916",
         "filename": "logging/rtc_event_log/encoder/rtc_event_log_encoder_unittest.cc",
         "patchSetId": 4
@@ -39,6 +63,24 @@
       "revId": "6852baeda98c2cb3721e8fe34a172d3ccce9724d",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "154b465a_ec457250",
+        "filename": "logging/rtc_event_log/encoder/rtc_event_log_encoder_unittest.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 5281
+      },
+      "writtenOn": "2018-11-20T00:51:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b1e1e57_4bf76916",
+      "revId": "6852baeda98c2cb3721e8fe34a172d3ccce9724d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "0cd0fe9e_5aa25bc4",
+        "filename": "logging/rtc_event_log/events/rtc_event_dtls_transport_state.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5281
+      },
+      "writtenOn": "2018-11-20T00:51:20Z",
+      "side": 1,
+      "message": "cricket::DtlsTransportState is defined in p2p/base/dtlstransportinternal.h, which this build target currently doesn\u0027t depend on. We could let this code depend on the necessary p2p target, but I don\u0027t think we want clients depending on p2p internals.",
+      "parentUuid": "efbb9bc6_1181cfd9",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 2
+      },
+      "revId": "6852baeda98c2cb3721e8fe34a172d3ccce9724d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "07fc2059_aa4edcec",
         "filename": "logging/rtc_event_log/rtc_event_log_parser_new.cc",
         "patchSetId": 4
@@ -85,6 +151,30 @@
       "revId": "6852baeda98c2cb3721e8fe34a172d3ccce9724d",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b62197f_815bcdb2",
+        "filename": "logging/rtc_event_log/rtc_event_log_parser_new.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 5281
+      },
+      "writtenOn": "2018-11-20T00:51:20Z",
+      "side": 1,
+      "message": "Looking again, I don\u0027t think we need UNKNOWN_DTLS_TRANSPORT_STATE in the proto. Most of the ICE related enums include it, except for IceCandidatePairConfigType. I think I was just copying the ICE enums (which put UNKNOWN first in the switch, even though they are the last value in the definition...). I think it is more consistent with the rest of the enums to just remove it.",
+      "parentUuid": "07fc2059_aa4edcec",
+      "range": {
+        "startLine": 89,
+        "startChar": 42,
+        "endLine": 89,
+        "endChar": 70
+      },
+      "revId": "6852baeda98c2cb3721e8fe34a172d3ccce9724d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     },
     {
       "key": {
@@ -135,6 +225,30 @@
     },
     {
       "key": {
+        "uuid": "4956fd3b_00be274d",
+        "filename": "logging/rtc_event_log/rtc_event_log_parser_new.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 5281
+      },
+      "writtenOn": "2018-11-20T00:51:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "815ec5c1_b2f864f6",
+      "range": {
+        "startLine": 94,
+        "startChar": 29,
+        "endLine": 94,
+        "endChar": 39
+      },
+      "revId": "6852baeda98c2cb3721e8fe34a172d3ccce9724d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c69d74a7_344ee3a0",
         "filename": "logging/rtc_event_log/rtc_event_log_parser_new.cc",
         "patchSetId": 4
@@ -155,6 +269,30 @@
       "revId": "6852baeda98c2cb3721e8fe34a172d3ccce9724d",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "665f2866_64d11a32",
+        "filename": "logging/rtc_event_log/rtc_event_log_parser_new.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 5281
+      },
+      "writtenOn": "2018-11-20T00:51:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c69d74a7_344ee3a0",
+      "range": {
+        "startLine": 232,
+        "startChar": 0,
+        "endLine": 251,
+        "endChar": 1
+      },
+      "revId": "6852baeda98c2cb3721e8fe34a172d3ccce9724d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     },
     {
       "key": {
@@ -181,6 +319,30 @@
     },
     {
       "key": {
+        "uuid": "0e457f41_b4caadc2",
+        "filename": "logging/rtc_event_log/rtc_event_log_parser_new.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1290,
+      "author": {
+        "id": 5281
+      },
+      "writtenOn": "2018-11-20T00:51:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5e935bc_f0a9a90a",
+      "range": {
+        "startLine": 1290,
+        "startChar": 0,
+        "endLine": 1290,
+        "endChar": 53
+      },
+      "revId": "6852baeda98c2cb3721e8fe34a172d3ccce9724d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b782fb4_5f05eba2",
         "filename": "logging/rtc_event_log/rtc_event_log_unittest_helper.cc",
         "patchSetId": 4
@@ -195,6 +357,24 @@
       "revId": "6852baeda98c2cb3721e8fe34a172d3ccce9724d",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c484aab_9b14b2c0",
+        "filename": "logging/rtc_event_log/rtc_event_log_unittest_helper.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 5281
+      },
+      "writtenOn": "2018-11-20T00:51:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b782fb4_5f05eba2",
+      "revId": "6852baeda98c2cb3721e8fe34a172d3ccce9724d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
