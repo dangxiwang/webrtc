@@ -178,6 +178,30 @@
     },
     {
       "key": {
+        "uuid": "085f85b8_6f7ebe8a",
+        "filename": "logging/rtc_event_log/rtc_event_log_parser_new.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 5150
+      },
+      "writtenOn": "2018-11-21T12:51:18Z",
+      "side": 1,
+      "message": "Having an UNKNOWN value first in every enum is standard practice for protobuf. C.f. http://androiddevblog.com/protocol-buffers-pitfall-adding-enum-values/\n\nPlease keep.",
+      "parentUuid": "7b62197f_815bcdb2",
+      "range": {
+        "startLine": 89,
+        "startChar": 42,
+        "endLine": 89,
+        "endChar": 70
+      },
+      "revId": "6852baeda98c2cb3721e8fe34a172d3ccce9724d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bd79e9c7_d2fdb5e8",
         "filename": "logging/rtc_event_log/rtc_event_log_parser_new.cc",
         "patchSetId": 4
