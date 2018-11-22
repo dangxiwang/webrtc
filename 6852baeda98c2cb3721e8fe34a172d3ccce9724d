@@ -131,6 +131,30 @@
     },
     {
       "key": {
+        "uuid": "cdfb3673_b57bfe8a",
+        "filename": "logging/rtc_event_log/events/rtc_event_dtls_transport_state.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2018-11-22T08:12:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0cd0fe9e_5aa25bc4",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 2
+      },
+      "revId": "6852baeda98c2cb3721e8fe34a172d3ccce9724d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "07fc2059_aa4edcec",
         "filename": "logging/rtc_event_log/rtc_event_log_parser_new.cc",
         "patchSetId": 4
