@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c4f0a91_c538bdeb",
+        "filename": "api/peerconnectioninterface.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1402,
+      "author": {
+        "id": 5087
+      },
+      "writtenOn": "2018-11-23T15:02:55Z",
+      "side": 0,
+      "message": "Was this referred to rtc::Thread raw pointers?",
+      "range": {
+        "startLine": 1401,
+        "startChar": 0,
+        "endLine": 1402,
+        "endChar": 52
+      },
+      "revId": "88ce4ef46e0d9cb3be04ed5516d5ab8b10a62518",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
