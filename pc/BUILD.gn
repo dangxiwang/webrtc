@@ -453,6 +453,7 @@ if (rtc_include_tests) {
     deps = [
       ":peerconnection",
       ":rtc_pc_base",
+      "../api:create_modular_peerconnection_factory",
       "../api:create_peerconnection_factory",
       "../api:fake_frame_decryptor",
       "../api:fake_frame_encryptor",
