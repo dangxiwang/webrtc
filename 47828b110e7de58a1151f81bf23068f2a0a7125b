@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "748ab58a_fa7963cf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2018-11-27T09:01:48Z",
+      "side": 1,
+      "message": "Rephrase, to clarify what the change is?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 40
+      },
+      "revId": "47828b110e7de58a1151f81bf23068f2a0a7125b",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37a2cb71_a66d71fb",
+        "filename": "call/call_unittest.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2018-11-27T09:01:48Z",
+      "side": 1,
+      "message": "We shouldn\u0027t need any rtp transport for this media transport test. Could you either do what\u0027s needed to allow null send_transport in this test, or add a TODO comment?",
+      "range": {
+        "startLine": 304,
+        "startChar": 0,
+        "endLine": 305,
+        "endChar": 49
+      },
+      "revId": "47828b110e7de58a1151f81bf23068f2a0a7125b",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
