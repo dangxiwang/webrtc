@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ac3ff79c_bb031c31",
+        "filename": "p2p/base/dtlstransport.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 762,
+      "author": {
+        "id": 5039
+      },
+      "writtenOn": "2018-11-27T18:16:23Z",
+      "side": 1,
+      "message": "static",
+      "revId": "b5e300c05e9365e2f7fb63f70f64d46cc479c325",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ce5e844_eef0e83b",
+        "filename": "p2p/base/dtlstransport.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 5039
+      },
+      "writtenOn": "2018-11-27T18:16:23Z",
+      "side": 1,
+      "message": "Add comment about |event_log|\n\ne.g.\n\nCan it be null?\nWhat are the lifetime requirements?",
+      "revId": "b5e300c05e9365e2f7fb63f70f64d46cc479c325",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23279c51_01865818",
+        "filename": "p2p/base/dtlstransport_unittest.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 5039
+      },
+      "writtenOn": "2018-11-27T18:16:23Z",
+      "side": 1,
+      "message": "nit: /*event_log\u003d*/nullptr",
+      "range": {
+        "startLine": 91,
+        "startChar": 64,
+        "endLine": 91,
+        "endChar": 71
+      },
+      "revId": "b5e300c05e9365e2f7fb63f70f64d46cc479c325",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
