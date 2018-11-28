@@ -105,6 +105,24 @@
       "revId": "88ce4ef46e0d9cb3be04ed5516d5ab8b10a62518",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "467f5c0a_b2abaf0c",
+        "filename": "api/peerconnectioninterface.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1431,
+      "author": {
+        "id": 5126
+      },
+      "writtenOn": "2018-11-28T09:34:28Z",
+      "side": 0,
+      "message": "Sounds good. But be sure to add a comment in each place pointing out the other definition, and a link to the bug that keeps track of the removal.",
+      "parentUuid": "a009597d_51824900",
+      "revId": "88ce4ef46e0d9cb3be04ed5516d5ab8b10a62518",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
     }
   ]
 }
