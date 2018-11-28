@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4e908815_6e5a02f1",
+        "filename": "pc/peerconnection_integrationtest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2646,
+      "author": {
+        "id": 5142
+      },
+      "writtenOn": "2018-11-28T14:25:40Z",
+      "side": 1,
+      "message": "What about NewGetStats()? Is it not affected because it iterates senders/receivers/transceivers?\nhttps://cs.chromium.org/chromium/src/third_party/webrtc/pc/rtcstatscollector.cc?sq\u003dpackage:chromium\u0026dr\u0026g\u003d0\u0026l\u003d1423\n\nShould we add another test to make sure we have \"track\"/\"outbound-rtp\"/\"inbound-rtp\" stats from new getStats while we\u0027re at it?",
+      "revId": "212ea0fb68581535a38783c63833e83f2fbb850b",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
