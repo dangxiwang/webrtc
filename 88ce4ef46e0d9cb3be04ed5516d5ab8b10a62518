@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "49e8f447_918407d1",
+        "filename": "api/peerconnectioninterface.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1402,
+      "author": {
+        "id": 5087
+      },
+      "writtenOn": "2018-11-28T08:08:26Z",
+      "side": 0,
+      "message": "Agreed, I don\u0027t move it to the new location especially after our talk about exposing something else than rtc::Thread in the future.",
+      "parentUuid": "d275172b_1150f203",
+      "range": {
+        "startLine": 1401,
+        "startChar": 0,
+        "endLine": 1402,
+        "endChar": 52
+      },
+      "revId": "88ce4ef46e0d9cb3be04ed5516d5ab8b10a62518",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ebed641a_4bbbbbe3",
         "filename": "api/peerconnectioninterface.h",
         "patchSetId": 1
@@ -60,6 +84,24 @@
       "writtenOn": "2018-11-27T13:24:47Z",
       "side": 0,
       "message": "You don\u0027t add a compat #include here. Will that break users\u0027 code?",
+      "revId": "88ce4ef46e0d9cb3be04ed5516d5ab8b10a62518",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a009597d_51824900",
+        "filename": "api/peerconnectioninterface.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1431,
+      "author": {
+        "id": 5087
+      },
+      "writtenOn": "2018-11-28T08:08:26Z",
+      "side": 0,
+      "message": "Unfortunately it will... :(\n\nI cannot add an #include of \"api/create_modular_peerconnection_factory.h\" because it will in turn include this header back and that is a circular dependency.\n\nI can try to use \"// nogncheck\" and see if we can get away with it.\n\nProposal, what if I don\u0027t delete these declaration for 2 weeks to keep backwards compatibility?\nIt should be safe, since I don\u0027t expect them to change and having a function defined two times in the same way should not be a problem.",
+      "parentUuid": "ebed641a_4bbbbbe3",
       "revId": "88ce4ef46e0d9cb3be04ed5516d5ab8b10a62518",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
