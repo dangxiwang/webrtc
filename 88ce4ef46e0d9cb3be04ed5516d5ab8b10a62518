@@ -177,6 +177,24 @@
       "revId": "88ce4ef46e0d9cb3be04ed5516d5ab8b10a62518",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7757326_978ffee0",
+        "filename": "api/peerconnectioninterface.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1431,
+      "author": {
+        "id": 5087
+      },
+      "writtenOn": "2018-12-03T10:22:21Z",
+      "side": 0,
+      "message": "Nice idea. Done it in PS#4.\n\nWell, to be 100% backwards compatible let me also move the definition back to where it was. Then I will send out PSA and set a \"next action in the bug\" so then I will be able to switch everything without breaking downstream clients out of nowhere.",
+      "parentUuid": "31d414dc_b4233e91",
+      "revId": "88ce4ef46e0d9cb3be04ed5516d5ab8b10a62518",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
     }
   ]
 }
