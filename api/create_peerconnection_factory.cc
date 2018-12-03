@@ -17,6 +17,7 @@
 #include "api/audio_codecs/audio_decoder_factory.h"
 #include "api/audio_codecs/audio_encoder_factory.h"
 #include "api/call/callfactoryinterface.h"
+#include "api/create_modular_peerconnection_factory.h"
 #include "api/fec_controller.h"
 #include "api/peerconnectioninterface.h"
 #include "api/transport/network_control.h"
