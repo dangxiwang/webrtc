@@ -39,6 +39,30 @@
       "revId": "903edc555205df0a6522b3860762b99dd3861e33",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7991132e_4c2a32aa",
+        "filename": "api/create_modular_peerconnection_factory.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5087
+      },
+      "writtenOn": "2018-12-03T08:07:24Z",
+      "side": 1,
+      "message": "Done, I ended up removing some outdated comments. I am not sure it is enough to be considered good documentation but this is beyond the scope of this CL.",
+      "parentUuid": "0b5788bf_bf85d997",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 78
+      },
+      "revId": "903edc555205df0a6522b3860762b99dd3861e33",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
