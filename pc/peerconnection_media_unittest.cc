@@ -15,6 +15,7 @@
 #include <tuple>
 
 #include "api/call/callfactoryinterface.h"
+#include "api/create_modular_peerconnection_factory.h"
 #include "api/test/fake_media_transport.h"
 #include "logging/rtc_event_log/rtc_event_log_factory.h"
 #include "media/base/fakemediaengine.h"

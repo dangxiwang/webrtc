@@ -479,6 +479,7 @@ if (rtc_include_tests) {
       ":rtc_pc_base",
       "../api:array_view",
       "../api:audio_options_api",
+      "../api:create_modular_peerconnection_factory",
       "../api:create_peerconnection_factory",
       "../api:fake_frame_decryptor",
       "../api:fake_frame_encryptor",
