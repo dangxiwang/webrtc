@@ -141,6 +141,24 @@
       "revId": "88ce4ef46e0d9cb3be04ed5516d5ab8b10a62518",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "574bec0a_f8458eae",
+        "filename": "api/peerconnectioninterface.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1431,
+      "author": {
+        "id": 5087
+      },
+      "writtenOn": "2018-12-03T08:30:56Z",
+      "side": 0,
+      "message": "Unfortunately this doesn\u0027t work:\n\nIn file included from ../../api/create_modular_peerconnection_factory.cc:11:\n../../api/create_modular_peerconnection_factory.h:77:9: error: redefinition of default argument\n        network_controller_factory \u003d nullptr);\n        ^                            ~~~~~~~\n../../api/peerconnectioninterface.h:1410:9: note: previous definition is here\n        network_controller_factory \u003d nullptr);\n\nEven if I try to use forward declarations, there are situations where we end up including both the declarations, for example in create_modular_peerconnection_factory.cc, since we include api/peerconnectionfactoryproxy.h.\n\nThis sounds like a breaking change (considering also the move of the definition, which will cause linker errors).\n\nProposal: send out a PSA to notify about this breaking change (or update https://groups.google.com/d/msg/discuss-webrtc/F__pbaZxxS0/tP8bMo7GAQAJ) and land in 2 weeks?",
+      "parentUuid": "6a5674f6_0279a108",
+      "revId": "88ce4ef46e0d9cb3be04ed5516d5ab8b10a62518",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
     }
   ]
 }
