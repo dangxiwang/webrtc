@@ -46,6 +46,30 @@
       "revId": "1a43dca337ab9c6ce30e51fc436c8cbbb9becb49",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "997aa60e_4224c9f2",
+        "filename": "rtc_tools/event_log_visualizer/analyzer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1964,
+      "author": {
+        "id": 6646
+      },
+      "writtenOn": "2018-12-03T23:12:45Z",
+      "side": 1,
+      "message": "Or maybe we could define it in an anonymous namespace. Either works for me; the inlined constexpr may read better.",
+      "parentUuid": "cbde72a4_f3740805",
+      "range": {
+        "startLine": 1964,
+        "startChar": 4,
+        "endLine": 1964,
+        "endChar": 16
+      },
+      "revId": "1a43dca337ab9c6ce30e51fc436c8cbbb9becb49",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
