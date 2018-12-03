@@ -159,6 +159,24 @@
       "revId": "88ce4ef46e0d9cb3be04ed5516d5ab8b10a62518",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31d414dc_b4233e91",
+        "filename": "api/peerconnectioninterface.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1431,
+      "author": {
+        "id": 5126
+      },
+      "writtenOn": "2018-12-03T09:38:50Z",
+      "side": 0,
+      "message": "Alternatively, you could enclose both declarations in faux header guards:\n\n  #ifndef WEBRTC_MODULAR_PEER_CONNECTION_FACTORY_DECLARED\n  #define WEBRTC_MODULAR_PEER_CONNECTION_FACTORY_DECLARED\n  ... declarations go here ...\n  #endif  // WEBRTC_MODULAR_PEER_CONNECTION_FACTORY_DECLARED",
+      "parentUuid": "574bec0a_f8458eae",
+      "revId": "88ce4ef46e0d9cb3be04ed5516d5ab8b10a62518",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
     }
   ]
 }
