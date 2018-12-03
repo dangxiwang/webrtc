@@ -53,6 +53,7 @@ rtc_static_library("create_peerconnection_factory") {
   ]
   deps = [
     ":callfactory_api",
+    ":create_modular_peerconnection_factory",
     ":fec_controller_api",
     ":libjingle_peerconnection_api",
     "../logging:rtc_event_log_api",
@@ -70,6 +71,30 @@ rtc_static_library("create_peerconnection_factory") {
     "transport:network_control",
     "video_codecs:video_codecs_api",
   ]
+}
+
+rtc_static_library("create_modular_peerconnection_factory") {
+  visibility = [ "*" ]
+  sources = [
+    "create_modular_peerconnection_factory.cc",
+    "create_modular_peerconnection_factory.h",
+  ]
+  deps = [
+    ":callfactory_api",
+    ":fec_controller_api",
+    ":libjingle_peerconnection_api",
+    ":scoped_refptr",
+    "../logging:rtc_event_log_api",
+    "../media:rtc_media_base",
+    "../pc:peerconnection",
+    "../rtc_base:refcount",
+    "../rtc_base:rtc_base",
+    "transport:network_control",
+  ]
+  if (!build_with_chromium && is_clang) {
+    # Suppress warnings from the Chromium Clang plugin (bugs.webrtc.org/163).
+    suppressed_configs += [ "//build/config/clang:find_bad_constructs" ]
+  }
 }
 
 rtc_static_library("libjingle_peerconnection_api") {
