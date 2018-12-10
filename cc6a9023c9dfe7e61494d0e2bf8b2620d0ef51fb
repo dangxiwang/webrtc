@@ -16,6 +16,24 @@
       "revId": "cc6a9023c9dfe7e61494d0e2bf8b2620d0ef51fb",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0533cb1c_33cdc2d3",
+        "filename": "api/media_transport_interface.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2018-12-10T12:34:08Z",
+      "side": 1,
+      "message": "I think it should go away. A transport could possibly get away without implementing it only if it\u0027s highly reliable.",
+      "parentUuid": "6fafa320_74e87f5e",
+      "revId": "cc6a9023c9dfe7e61494d0e2bf8b2620d0ef51fb",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
     }
   ]
 }
