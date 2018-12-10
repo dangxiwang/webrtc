@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6fafa320_74e87f5e",
+        "filename": "api/media_transport_interface.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 5126
+      },
+      "writtenOn": "2018-12-10T11:03:40Z",
+      "side": 1,
+      "message": "Will the default implementation go away, or remain indefinitely?",
+      "revId": "cc6a9023c9dfe7e61494d0e2bf8b2620d0ef51fb",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
