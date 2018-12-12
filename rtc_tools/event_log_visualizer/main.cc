@@ -23,6 +23,7 @@
 #include "rtc_base/checks.h"
 #include "rtc_base/flags.h"
 #include "rtc_tools/event_log_visualizer/analyzer.h"
+#include "rtc_tools/event_log_visualizer/joiner.h"
 #include "rtc_tools/event_log_visualizer/plot_base.h"
 #include "rtc_tools/event_log_visualizer/plot_protobuf.h"
 #include "rtc_tools/event_log_visualizer/plot_python.h"
@@ -229,6 +230,76 @@ int main(int argc, char* argv[]) {
     FLAG_plot_simulated_receiveside_bwe = true;
   } else if (strcmp(FLAG_plot_profile, "default") == 0) {
     // Do nothing.
+  } else if (strcmp(FLAG_plot_profile, "ice") == 0) {
+    // out/Default/event_log_visualizer --plot_profile=ice
+    // ~/IceVizLogs/DuoLocal/* | python
+    SetAllPlotFlags(false);
+    FLAG_plot_ice_candidate_pair_config = true;
+    FLAG_plot_ice_connectivity_check = true;
+
+    if (argc != 4) {
+      std::cout << "Expected: event_log_visualizer --plot_profile=ice "
+                   "<logfile1> <logfile2>"
+                << std::endl;
+      return 0;
+    }
+    std::string filename1 = argv[2];
+    std::string filename2 = argv[3];
+
+    webrtc::ParsedRtcEventLogNew::UnconfiguredHeaderExtensions
+        header_extensions = webrtc::ParsedRtcEventLogNew::
+            UnconfiguredHeaderExtensions::kDontParse;
+    webrtc::ParsedRtcEventLogNew parsed_log1(header_extensions);
+    if (!parsed_log1.ParseFile(filename1)) {
+      std::cerr << "Could not parse all of filename1: " << filename1
+                << std::endl;
+      std::cerr << "Only the parsable events will be analyzed." << std::endl;
+    }
+    webrtc::ParsedRtcEventLogNew parsed_log2(header_extensions);
+    if (!parsed_log2.ParseFile(filename2)) {
+      std::cerr << "Could not parse all of filename2: " << filename2
+                << std::endl;
+      std::cerr << "Only the parsable events will be analyzed." << std::endl;
+    }
+
+    std::unique_ptr<webrtc::PlotCollection> collection(
+        new webrtc::PythonPlotCollection());
+
+    webrtc::EventLogAnalyzer analyzer1(parsed_log1, FLAG_normalize_time);
+    if (FLAG_plot_ice_candidate_pair_config) {
+      analyzer1.CreateIceCandidatePairConfigGraph(collection->AppendNewPlot());
+    }
+    if (FLAG_plot_ice_connectivity_check) {
+      analyzer1.CreateIceConnectivityCheckGraph(collection->AppendNewPlot());
+    }
+    webrtc::EventLogAnalyzer analyzer2(parsed_log1, FLAG_normalize_time);
+    if (FLAG_plot_ice_candidate_pair_config) {
+      analyzer2.CreateIceCandidatePairConfigGraph(collection->AppendNewPlot());
+    }
+    if (FLAG_plot_ice_connectivity_check) {
+      analyzer2.CreateIceConnectivityCheckGraph(collection->AppendNewPlot());
+    }
+
+    webrtc::EventLogJoiner joiner(parsed_log1, parsed_log2);
+
+    /*
+    joiner.CreateIceSequenceGraph(collection.get());
+    //*/
+
+    //*
+    joiner.CreateIceTransactionStateReached(collection.get());
+    //*/
+
+    //*
+    joiner.CreateIceTransactionPlots(collection.get());
+    //*/
+
+    //*
+    joiner.CreateActualIceSequenceDiagram(collection.get());
+    //*/
+
+    collection->Draw();
+    return 0;
   } else {
     rtc::Flag* plot_profile_flag = rtc::FlagList::Lookup("plot_profile");
     RTC_CHECK(plot_profile_flag);
