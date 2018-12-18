@@ -45,6 +45,30 @@
       "revId": "47828b110e7de58a1151f81bf23068f2a0a7125b",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de9d40bd_ad06442c",
+        "filename": "call/call_unittest.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 5077
+      },
+      "writtenOn": "2018-12-18T08:38:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37a2cb71_a66d71fb",
+      "range": {
+        "startLine": 304,
+        "startChar": 0,
+        "endLine": 305,
+        "endChar": 49
+      },
+      "revId": "47828b110e7de58a1151f81bf23068f2a0a7125b",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
