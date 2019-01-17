@@ -28,6 +28,10 @@ namespace webrtc {
 
 class EventLogAnalyzer {
  public:
+  // TODO(zstein): Refactor out of this class
+  static std::string GetCandidatePairLogDescriptionAsString(
+      const LoggedIceCandidatePairConfig& config);
+
   // The EventLogAnalyzer keeps a reference to the ParsedRtcEventLogNew for the
   // duration of its lifetime. The ParsedRtcEventLogNew must not be destroyed or
   // modified while the EventLogAnalyzer is being used.

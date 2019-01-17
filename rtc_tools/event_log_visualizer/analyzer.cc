@@ -402,7 +402,26 @@ std::string GetNetworkTypeAsString(webrtc::IceCandidateNetworkType type) {
   }
 }
 
-std::string GetCandidatePairLogDescriptionAsString(
+std::string GetDirectionAsString(PacketDirection direction) {
+  if (direction == kIncomingPacket) {
+    return "Incoming";
+  } else {
+    return "Outgoing";
+  }
+}
+
+std::string GetDirectionAsShortString(PacketDirection direction) {
+  if (direction == kIncomingPacket) {
+    return "In";
+  } else {
+    return "Out";
+  }
+}
+
+}  // namespace
+
+/* static*/
+std::string EventLogAnalyzer::GetCandidatePairLogDescriptionAsString(
     const LoggedIceCandidatePairConfig& config) {
   // Example: stun:wifi->relay(tcp):cellular@udp:ipv4
   // represents a pair of a local server-reflexive candidate on a WiFi network
@@ -425,24 +444,6 @@ std::string GetCandidatePairLogDescriptionAsString(
      << GetProtocolAsString(config.candidate_pair_protocol);
   return ss.Release();
 }
-
-std::string GetDirectionAsString(PacketDirection direction) {
-  if (direction == kIncomingPacket) {
-    return "Incoming";
-  } else {
-    return "Outgoing";
-  }
-}
-
-std::string GetDirectionAsShortString(PacketDirection direction) {
-  if (direction == kIncomingPacket) {
-    return "In";
-  } else {
-    return "Out";
-  }
-}
-
-}  // namespace
 
 EventLogAnalyzer::EventLogAnalyzer(const ParsedRtcEventLogNew& log,
                                    bool normalize_time)
