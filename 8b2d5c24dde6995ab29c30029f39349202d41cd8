@@ -22,6 +22,30 @@
       "revId": "8b2d5c24dde6995ab29c30029f39349202d41cd8",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20cba5a6_4e45198e",
+        "filename": "call/call_perf_tests.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 851,
+      "author": {
+        "id": 5117
+      },
+      "writtenOn": "2019-01-22T10:52:36Z",
+      "side": 1,
+      "message": "I tested it a lot, the test always passes. It only needs to get an rtt measurement after 10 x 10ms, which always happens in this test with ~0 rtt.\n\nIf the test becomes flacky, I\u0027ll also disable the checks.",
+      "parentUuid": "327091f6_759f3505",
+      "range": {
+        "startLine": 851,
+        "startChar": 39,
+        "endLine": 851,
+        "endChar": 41
+      },
+      "revId": "8b2d5c24dde6995ab29c30029f39349202d41cd8",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
