@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63ae871d_e93fed67",
+        "filename": "modules/audio_coding/neteq/delay_manager.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 5607
+      },
+      "writtenOn": "2019-02-04T15:02:12Z",
+      "side": 1,
+      "message": "const",
+      "range": {
+        "startLine": 486,
+        "startChar": 2,
+        "endLine": 486,
+        "endChar": 5
+      },
+      "revId": "a4b07c5389cdb8baf8d8e0f57b9d66ee4015a2e0",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25dd4f9d_1ee25e9a",
+        "filename": "modules/audio_coding/neteq/delay_manager.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 5607
+      },
+      "writtenOn": "2019-02-04T15:02:12Z",
+      "side": 1,
+      "message": "Is the dcheck necessary? It would only trigger if the result doesn\u0027t fit in an int.",
+      "range": {
+        "startLine": 487,
+        "startChar": 6,
+        "endLine": 487,
+        "endChar": 29
+      },
+      "revId": "a4b07c5389cdb8baf8d8e0f57b9d66ee4015a2e0",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1a8f1e9_de245851",
+        "filename": "modules/audio_coding/neteq/delay_manager.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 5607
+      },
+      "writtenOn": "2019-02-04T15:02:12Z",
+      "side": 1,
+      "message": "Are you planning to use the return value for anything? If not, I suggest to make this into a void function to make things simpler.",
+      "range": {
+        "startLine": 515,
+        "startChar": 0,
+        "endLine": 515,
+        "endChar": 4
+      },
+      "revId": "a4b07c5389cdb8baf8d8e0f57b9d66ee4015a2e0",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
