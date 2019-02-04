@@ -188,6 +188,30 @@
       "revId": "a4b07c5389cdb8baf8d8e0f57b9d66ee4015a2e0",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1abae9f_1e5001c2",
+        "filename": "modules/audio_coding/neteq/delay_manager.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 8286
+      },
+      "writtenOn": "2019-02-04T15:34:58Z",
+      "side": 1,
+      "message": "I think there is confusion with two similarly named calls.\nI am talking about this one:\n```\n  int SetBaseMinimumPlayoutDelay(int delay_ms) {\n    RTC_DCHECK(worker_thread_checker_.CalledOnValidThread());\n    int error_code \u003d stream_-\u003eSetBaseMinimumPlayoutDelay(delay_ms);\n    if (error_code \u003d\u003d 0) {\n      // Memorize only valid delay.\n      config_.jitter_buffer_min_delay_ms \u003d delay_ms;\n    }\n    return error_code;\n  }\n\n```\nwhich is method for inner class\nclass WebRtcVoiceMediaChannel::WebRtcAudioReceiveStream\n\nthrough several layers it will be holding instance of NetEq eventually.",
+      "parentUuid": "1baf8f01_ee7b611a",
+      "range": {
+        "startLine": 515,
+        "startChar": 0,
+        "endLine": 515,
+        "endChar": 4
+      },
+      "revId": "a4b07c5389cdb8baf8d8e0f57b9d66ee4015a2e0",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
     }
   ]
 }
