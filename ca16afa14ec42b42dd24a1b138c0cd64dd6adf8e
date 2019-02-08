@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "48bcc330_de22d6c9",
+        "filename": "rtc_base/unique_id_generator.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2019-02-08T01:09:09Z",
+      "side": 1,
+      "message": "I\u0027ve not had time to look closer, but I am guessing the trybots are failing because this ends up being 0.",
+      "range": {
+        "startLine": 24,
+        "startChar": 12,
+        "endLine": 24,
+        "endChar": 29
+      },
+      "revId": "ca16afa14ec42b42dd24a1b138c0cd64dd6adf8e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
