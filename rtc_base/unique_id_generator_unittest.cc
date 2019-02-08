@@ -13,8 +13,8 @@
 #include "vector"
 
 #include "api/array_view.h"
+#include "rtc_base/fake_clock.h"
 #include "rtc_base/gunit.h"
-#include "rtc_base/helpers.h"
 #include "rtc_base/unique_id_generator.h"
 #include "test/gmock.h"
 
@@ -24,7 +24,13 @@ using ::testing::Test;
 namespace rtc {
 
 template <typename Generator>
-class UniqueIdGeneratorTest : public Test {};
+class UniqueIdGeneratorTest : public Test {
+ public:
+  UniqueIdGeneratorTest() { clock_.SetTimeMicros(1); }
+
+ private:
+  ScopedFakeClock clock_;
+};
 
 using test_types = ::testing::Types<UniqueNumberGenerator<uint8_t>,
                                     UniqueNumberGenerator<uint16_t>,
@@ -52,7 +58,6 @@ TYPED_TEST(UniqueIdGeneratorTest, ElementsDoNotRepeat) {
 TYPED_TEST(UniqueIdGeneratorTest, KnownElementsAreNotGenerated) {
   typedef TypeParam Generator;
   const size_t num_elements = 100;
-  rtc::InitRandom(0);
   Generator generator1;
   std::vector<typename Generator::value_type> known_values;
   for (size_t i = 0; i < num_elements; i++) {
@@ -60,7 +65,6 @@ TYPED_TEST(UniqueIdGeneratorTest, KnownElementsAreNotGenerated) {
   }
   EXPECT_EQ(num_elements, known_values.size());
 
-  rtc::InitRandom(0);
   Generator generator2(known_values);
 
   std::vector<typename Generator::value_type> values;
@@ -79,7 +83,6 @@ TYPED_TEST(UniqueIdGeneratorTest, KnownElementsAreNotGenerated) {
 TYPED_TEST(UniqueIdGeneratorTest, AddedElementsAreNotGenerated) {
   typedef TypeParam Generator;
   const size_t num_elements = 100;
-  rtc::InitRandom(0);
   Generator generator1;
   std::vector<typename Generator::value_type> known_values;
   for (size_t i = 0; i < num_elements; i++) {
@@ -87,7 +90,6 @@ TYPED_TEST(UniqueIdGeneratorTest, AddedElementsAreNotGenerated) {
   }
   EXPECT_EQ(num_elements, known_values.size());
 
-  rtc::InitRandom(0);
   Generator generator2;
 
   for (const typename Generator::value_type& value : known_values) {

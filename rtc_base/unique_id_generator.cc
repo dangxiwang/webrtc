@@ -13,22 +13,24 @@
 #include <limits>
 #include <vector>
 
-#include "rtc_base/helpers.h"
 #include "rtc_base/string_encode.h"
 #include "rtc_base/string_to_number.h"
+#include "rtc_base/time_utils.h"
 
 namespace rtc {
 
-UniqueRandomIdGenerator::UniqueRandomIdGenerator() : known_ids_() {}
+UniqueRandomIdGenerator::UniqueRandomIdGenerator() : rand_(rtc::TimeMicros()) {}
 UniqueRandomIdGenerator::UniqueRandomIdGenerator(ArrayView<uint32_t> known_ids)
-    : known_ids_(known_ids.begin(), known_ids.end()) {}
+    : rand_(rtc::TimeMicros()),
+      known_ids_(known_ids.begin(), known_ids.end()) {}
 
 UniqueRandomIdGenerator::~UniqueRandomIdGenerator() = default;
 
 uint32_t UniqueRandomIdGenerator::GenerateId() {
   while (true) {
     RTC_CHECK_LT(known_ids_.size(), std::numeric_limits<uint32_t>::max());
-    auto pair = known_ids_.insert(CreateRandomNonZeroId());
+    auto pair =
+        known_ids_.insert(rand_.Rand(1u, std::numeric_limits<uint32_t>::max()));
     if (pair.second) {
       return *pair.first;
     }

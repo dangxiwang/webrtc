@@ -16,6 +16,7 @@
 #include <string>
 
 #include "api/array_view.h"
+#include "rtc_base/random.h"
 
 namespace rtc {
 
@@ -74,6 +75,7 @@ class UniqueRandomIdGenerator {
   void AddKnownId(uint32_t value);
 
  private:
+  webrtc::Random rand_;
   std::set<uint32_t> known_ids_;
 };
 
