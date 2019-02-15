@@ -1144,6 +1144,7 @@ RTCError PeerConnection::ValidateConfiguration(
 }
 
 rtc::scoped_refptr<StreamCollectionInterface> PeerConnection::local_streams() {
+  RTC_DCHECK_RUN_ON(signaling_thread());
   RTC_CHECK(!IsUnifiedPlan()) << "local_streams is not available with Unified "
                                  "Plan SdpSemantics. Please use GetSenders "
                                  "instead.";
@@ -1151,6 +1152,7 @@ rtc::scoped_refptr<StreamCollectionInterface> PeerConnection::local_streams() {
 }
 
 rtc::scoped_refptr<StreamCollectionInterface> PeerConnection::remote_streams() {
+  RTC_DCHECK_RUN_ON(signaling_thread());
   RTC_CHECK(!IsUnifiedPlan()) << "remote_streams is not available with Unified "
                                  "Plan SdpSemantics. Please use GetReceivers "
                                  "instead.";
@@ -1597,6 +1599,7 @@ void PeerConnection::OnNegotiationNeeded() {
 rtc::scoped_refptr<RtpSenderInterface> PeerConnection::CreateSender(
     const std::string& kind,
     const std::string& stream_id) {
+  RTC_DCHECK_RUN_ON(signaling_thread());
   RTC_CHECK(!IsUnifiedPlan()) << "CreateSender is not available with Unified "
                                  "Plan SdpSemantics. Please use AddTransceiver "
                                  "instead.";
@@ -1687,6 +1690,7 @@ PeerConnection::GetReceiversInternal() const {
 
 std::vector<rtc::scoped_refptr<RtpTransceiverInterface>>
 PeerConnection::GetTransceivers() const {
+  RTC_DCHECK_RUN_ON(signaling_thread());
   RTC_CHECK(IsUnifiedPlan())
       << "GetTransceivers is only supported with Unified Plan SdpSemantics.";
   std::vector<rtc::scoped_refptr<RtpTransceiverInterface>> all_transceivers;
@@ -1840,6 +1844,7 @@ rtc::scoped_refptr<DataChannelInterface> PeerConnection::CreateDataChannel(
 
 void PeerConnection::CreateOffer(CreateSessionDescriptionObserver* observer,
                                  const RTCOfferAnswerOptions& options) {
+  RTC_DCHECK_RUN_ON(signaling_thread());
   TRACE_EVENT0("webrtc", "PeerConnection::CreateOffer");
 
   if (!observer) {
@@ -1996,6 +2001,7 @@ void PeerConnection::CreateAnswer(CreateSessionDescriptionObserver* observer,
 void PeerConnection::SetLocalDescription(
     SetSessionDescriptionObserver* observer,
     SessionDescriptionInterface* desc_ptr) {
+  RTC_DCHECK_RUN_ON(signaling_thread());
   TRACE_EVENT0("webrtc", "PeerConnection::SetLocalDescription");
 
   // The SetLocalDescription contract is that we take ownership of the session
@@ -2355,6 +2361,7 @@ void PeerConnection::SetRemoteDescription(
 void PeerConnection::SetRemoteDescription(
     std::unique_ptr<SessionDescriptionInterface> desc,
     rtc::scoped_refptr<SetRemoteDescriptionObserverInterface> observer) {
+  RTC_DCHECK_RUN_ON(signaling_thread());
   TRACE_EVENT0("webrtc", "PeerConnection::SetRemoteDescription");
 
   if (!observer) {
@@ -3196,11 +3203,13 @@ const cricket::ContentInfo* PeerConnection::FindMediaSectionForTransceiver(
 }
 
 PeerConnectionInterface::RTCConfiguration PeerConnection::GetConfiguration() {
+  RTC_DCHECK_RUN_ON(signaling_thread());
   return configuration_;
 }
 
 bool PeerConnection::SetConfiguration(const RTCConfiguration& configuration,
                                       RTCError* error) {
+  RTC_DCHECK_RUN_ON(signaling_thread());
   TRACE_EVENT0("webrtc", "PeerConnection::SetConfiguration");
   if (IsClosed()) {
     RTC_LOG(LS_ERROR) << "SetConfiguration: PeerConnection is closed.";
@@ -6899,6 +6908,7 @@ bool PeerConnection::OnTransportChanged(
     RtpTransportInternal* rtp_transport,
     cricket::DtlsTransportInternal* dtls_transport,
     MediaTransportInterface* media_transport) {
+  RTC_DCHECK_RUN_ON(signaling_thread());
   bool ret = true;
   auto base_channel = GetChannel(mid);
   if (base_channel) {
