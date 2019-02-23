@@ -107,6 +107,9 @@ class RtcpSenderTest : public ::testing::Test {
     return rtp_rtcp_impl_->GetFeedbackState();
   }
 
+  // Test-specific.
+  void SendLossNotification(RtcpMode mode);
+
   SimulatedClock clock_;
   TestTransport test_transport_;
   std::unique_ptr<ReceiveStatistics> receive_statistics_;
@@ -374,6 +377,27 @@ TEST_F(RtcpSenderTest, SendNack) {
   EXPECT_EQ(kSenderSsrc, parser()->nack()->sender_ssrc());
   EXPECT_EQ(kRemoteSsrc, parser()->nack()->media_ssrc());
   EXPECT_THAT(parser()->nack()->packet_ids(), ElementsAre(0, 1, 16));
+}
+
+void RtcpSenderTest::SendLossNotification(RtcpMode mode) {
+  rtcp_sender_->SetRTCPStatus(mode);
+  constexpr uint16_t kLastDecoded = 0x1234;
+  constexpr uint16_t kLastReceived = 0x4321;
+  constexpr bool kDecodabilityFlag = true;
+  const int32_t result = rtcp_sender_->SendLossNotification(
+      feedback_state(), kLastDecoded, kLastReceived, kDecodabilityFlag);
+  EXPECT_EQ(result, 0);
+  EXPECT_EQ(1, parser()->loss_notification()->num_packets());
+  EXPECT_EQ(kSenderSsrc, parser()->loss_notification()->sender_ssrc());
+  EXPECT_EQ(kRemoteSsrc, parser()->loss_notification()->media_ssrc());
+}
+
+TEST_F(RtcpSenderTest, SendLossNotificationReducedSize) {
+  SendLossNotification(RtcpMode::kReducedSize);
+}
+
+TEST_F(RtcpSenderTest, SendLossNotificationCompound) {
+  SendLossNotification(RtcpMode::kCompound);
 }
 
 TEST_F(RtcpSenderTest, RembNotIncludedBeforeSet) {
