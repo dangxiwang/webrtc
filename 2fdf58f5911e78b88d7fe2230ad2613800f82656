@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "11d70e61_ae786196",
+        "filename": "modules/audio_coding/neteq/delay_manager.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 8038
+      },
+      "writtenOn": "2019-02-25T15:15:07Z",
+      "side": 1,
+      "message": "This will reduce the precision of iat_ms, especially for larger packet lengths, since we round down to whole packets.",
+      "parentUuid": "408a26cc_be1b96f6",
+      "range": {
+        "startLine": 220,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 5
+      },
+      "revId": "2fdf58f5911e78b88d7fe2230ad2613800f82656",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8d8f5833_a6b8bfcf",
         "filename": "modules/audio_coding/neteq/delay_manager.cc",
         "patchSetId": 2
