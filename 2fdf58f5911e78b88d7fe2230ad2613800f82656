@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "acff9ba7_46527cda",
+        "filename": "modules/audio_coding/neteq/delay_manager.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 7015
+      },
+      "writtenOn": "2019-02-25T14:28:15Z",
+      "side": 1,
+      "message": "I would not touch this part unless it is not necessary. Can we only convert to ms inside enable_delay_histogram_?",
+      "range": {
+        "startLine": 220,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 5
+      },
+      "revId": "2fdf58f5911e78b88d7fe2230ad2613800f82656",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8d8f5833_a6b8bfcf",
         "filename": "modules/audio_coding/neteq/delay_manager.cc",
         "patchSetId": 2
@@ -37,6 +60,30 @@
       "side": 1,
       "message": "Not sure if I follow. You mean when we compensate for gap in sequence numbers and reordering?",
       "parentUuid": "8d8f5833_a6b8bfcf",
+      "range": {
+        "startLine": 244,
+        "startChar": 0,
+        "endLine": 244,
+        "endChar": 31
+      },
+      "revId": "2fdf58f5911e78b88d7fe2230ad2613800f82656",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0517cca7_deb10096",
+        "filename": "modules/audio_coding/neteq/delay_manager.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 7015
+      },
+      "writtenOn": "2019-02-25T14:28:15Z",
+      "side": 1,
+      "message": "Oh, not actually on this line. I put this on the right lines.",
+      "parentUuid": "55c479d2_70f3103b",
       "range": {
         "startLine": 244,
         "startChar": 0,
