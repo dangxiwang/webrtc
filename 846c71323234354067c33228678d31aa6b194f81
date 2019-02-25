@@ -84,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "3d288373_fc47a02f",
+        "filename": "modules/rtp_rtcp/source/rtcp_sender.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-02-25T12:22:53Z",
+      "side": 1,
+      "message": "no, it is not enabled on presubmit (it might be in the future).\nIt is likely possible to setup local environment to give you such warnings.\n\nThere is also a different light reason: let\u0027t say you need to pass false as value, how would you do it with a constant?\nconstexpr bool is_volatile \u003d false;\nSetFlag(kRtcpLossNotification, is_volatile);\n\nconstexpr bool is_not_volatile \u003d false;\nSetFlag(kRtcpLossNotification, is_not_volatile);\n\nmay be clearest is \nconstexpr bool is_volatile \u003d true;\nSetFlag(kRtcpLossNotification, !is_volatile);\n\nBut with comment documentation, it is obvious:\nSetFlag(kRtcpLossNotification, /*is_volatile\u003d*/false);",
+      "parentUuid": "77e5cb56_fa6b4a6b",
+      "range": {
+        "startLine": 227,
+        "startChar": 33,
+        "endLine": 227,
+        "endChar": 44
+      },
+      "revId": "846c71323234354067c33228678d31aa6b194f81",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6bb8be7c_fe4e6968",
         "filename": "modules/rtp_rtcp/source/rtcp_sender.h",
         "patchSetId": 3
@@ -119,6 +143,30 @@
       "side": 1,
       "message": "1. My compiler does not complain about an unused private struct. By moving this struct definition somewhere else in the file, we increase the risk of leaving behind a relic if |loss_notification_state_| is refactored.\n2. Moving this struct would not be consistent with the rest of this file. See for instance ReportFlag below.",
       "parentUuid": "6bb8be7c_fe4e6968",
+      "range": {
+        "startLine": 226,
+        "startChar": 9,
+        "endLine": 226,
+        "endChar": 30
+      },
+      "revId": "846c71323234354067c33228678d31aa6b194f81",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa74fbcf_dde732c7",
+        "filename": "modules/rtp_rtcp/source/rtcp_sender.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-02-25T12:22:53Z",
+      "side": 1,
+      "message": "Yep, this class is too large and already breaks the style guide.\nWon\u0027t insist on making it cleaner.",
+      "parentUuid": "0668f942_b82b4d6c",
       "range": {
         "startLine": 226,
         "startChar": 9,
