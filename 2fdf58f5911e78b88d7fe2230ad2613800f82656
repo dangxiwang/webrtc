@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d8f5833_a6b8bfcf",
+        "filename": "modules/audio_coding/neteq/delay_manager.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 7015
+      },
+      "writtenOn": "2019-02-25T12:16:55Z",
+      "side": 1,
+      "message": "I would not touch this part unless it is not necessary. Can we only convert to ms inside enable_delay_histogram_?",
+      "range": {
+        "startLine": 244,
+        "startChar": 0,
+        "endLine": 244,
+        "endChar": 31
+      },
+      "revId": "2fdf58f5911e78b88d7fe2230ad2613800f82656",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b31b248d_b0f79b14",
+        "filename": "modules/audio_coding/neteq/delay_manager.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 7015
+      },
+      "writtenOn": "2019-02-25T12:16:55Z",
+      "side": 1,
+      "message": "can we use https://cs.chromium.org/chromium/src/third_party/webrtc/rtc_base/numerics/moving_average.h\nor at least the O(1) sum in that?",
+      "range": {
+        "startLine": 280,
+        "startChar": 18,
+        "endLine": 280,
+        "endChar": 53
+      },
+      "revId": "2fdf58f5911e78b88d7fe2230ad2613800f82656",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db3f3012_fa949aa4",
+        "filename": "modules/audio_coding/neteq/delay_manager.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 7015
+      },
+      "writtenOn": "2019-02-25T12:16:55Z",
+      "side": 1,
+      "message": "I think it makes it clearer to introduce a\n\nenum HistogramMode {\n  INTER_ARRIVAL_TIME,\n  RELATIVE_ARRIVAL_DELAY,\n}",
+      "range": {
+        "startLine": 31,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 14
+      },
+      "revId": "2fdf58f5911e78b88d7fe2230ad2613800f82656",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
