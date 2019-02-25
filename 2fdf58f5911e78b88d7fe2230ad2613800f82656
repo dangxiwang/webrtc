@@ -263,6 +263,30 @@
     },
     {
       "key": {
+        "uuid": "21b30919_235b7c0c",
+        "filename": "modules/audio_coding/neteq/delay_manager.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 7015
+      },
+      "writtenOn": "2019-02-25T15:21:45Z",
+      "side": 1,
+      "message": "So we allow a negative value to cancel out positives if there are enough positives in the time window before a negative, which, I think, makes good sense. But it means earlier negatives have less chance to cancel out any positives.\n\n-1, -1, -1, 1, 1, 1 -\u003e 3\n1, 1, 1, -1, -1, -1 -\u003e 0\n\nWould you help to judge my following alternative:\n\nvoid UpdateDelayHistory(new_value) {\n  oldest \u003d histogram_.pop_front();\n  sum_ -\u003d oldest;\n  if (sum_ + new_value \u003c 0) {\n    histogram_.push_back(-sum_); // Clamp new_value to ensure the sum is greater than 0. \n    sum_ \u003d 0;\n  } else {\n    histogram_ \u003d push_back(new_value);\n    sum_ +\u003d new_value;\n  }\n  RTC_DCHECK_EQ(sum_, std::accumulate(histogram_.begin(), histogram_.end(), 0));\n}",
+      "parentUuid": "14ee098d_0a4cec5f",
+      "range": {
+        "startLine": 280,
+        "startChar": 18,
+        "endLine": 280,
+        "endChar": 53
+      },
+      "revId": "2fdf58f5911e78b88d7fe2230ad2613800f82656",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "db3f3012_fa949aa4",
         "filename": "modules/audio_coding/neteq/delay_manager.h",
         "patchSetId": 2
