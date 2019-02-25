@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e335a0a7_03a7f42e",
+        "filename": "modules/rtp_rtcp/include/rtp_rtcp.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2019-02-25T12:01:25Z",
+      "side": 1,
+      "message": "Done.\nI\u0027m keeping it int32_t, although I prefer bool, because I want it to be similar to RequestKeyFrame.",
+      "parentUuid": "48077475_0cfe9707",
+      "revId": "846c71323234354067c33228678d31aa6b194f81",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d7995364_04d54cee",
         "filename": "modules/rtp_rtcp/source/rtcp_sender.cc",
         "patchSetId": 3
@@ -30,6 +48,30 @@
       "writtenOn": "2019-02-25T11:44:15Z",
       "side": 1,
       "message": "prefer to document with the comment:\n, /*is_volatile\u003d*/true);\nSince (unlike variable name) that format can be validated with clang-tidy:\nhttps://clang.llvm.org/extra/clang-tidy/checks/bugprone-argument-comment.html",
+      "range": {
+        "startLine": 227,
+        "startChar": 33,
+        "endLine": 227,
+        "endChar": 44
+      },
+      "revId": "846c71323234354067c33228678d31aa6b194f81",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77e5cb56_fa6b4a6b",
+        "filename": "modules/rtp_rtcp/source/rtcp_sender.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2019-02-25T12:01:25Z",
+      "side": 1,
+      "message": "I did not know about this validation. Cool. Changed.\nI don\u0027t think it\u0027s currently used by us as part of the presubmit checks, though?",
+      "parentUuid": "d7995364_04d54cee",
       "range": {
         "startLine": 227,
         "startChar": 33,
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "0668f942_b82b4d6c",
+        "filename": "modules/rtp_rtcp/source/rtcp_sender.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2019-02-25T12:01:25Z",
+      "side": 1,
+      "message": "1. My compiler does not complain about an unused private struct. By moving this struct definition somewhere else in the file, we increase the risk of leaving behind a relic if |loss_notification_state_| is refactored.\n2. Moving this struct would not be consistent with the rest of this file. See for instance ReportFlag below.",
+      "parentUuid": "6bb8be7c_fe4e6968",
+      "range": {
+        "startLine": 226,
+        "startChar": 9,
+        "endLine": 226,
+        "endChar": 30
+      },
+      "revId": "846c71323234354067c33228678d31aa6b194f81",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "508bb68f_27f6089f",
         "filename": "modules/rtp_rtcp/source/rtcp_sender_unittest.cc",
         "patchSetId": 3
@@ -76,6 +142,24 @@
       "writtenOn": "2019-02-25T11:44:15Z",
       "side": 1,
       "message": "I do not understand what is special about SendLossNotification to test it both in ReducedSize and Compound modes. I\u0027m ok with just one mode (any will do, may be ReducedSize is a bit better since it is more popular)",
+      "revId": "846c71323234354067c33228678d31aa6b194f81",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d597057c_a6a217c0",
+        "filename": "modules/rtp_rtcp/source/rtcp_sender_unittest.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2019-02-25T12:01:25Z",
+      "side": 1,
+      "message": "Removed SendLossNotificationCompound, then.",
+      "parentUuid": "508bb68f_27f6089f",
       "revId": "846c71323234354067c33228678d31aa6b194f81",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": false
