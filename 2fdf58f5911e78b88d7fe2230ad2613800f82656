@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "55c479d2_70f3103b",
+        "filename": "modules/audio_coding/neteq/delay_manager.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 8038
+      },
+      "writtenOn": "2019-02-25T14:22:46Z",
+      "side": 1,
+      "message": "Not sure if I follow. You mean when we compensate for gap in sequence numbers and reordering?",
+      "parentUuid": "8d8f5833_a6b8bfcf",
+      "range": {
+        "startLine": 244,
+        "startChar": 0,
+        "endLine": 244,
+        "endChar": 31
+      },
+      "revId": "2fdf58f5911e78b88d7fe2230ad2613800f82656",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b31b248d_b0f79b14",
         "filename": "modules/audio_coding/neteq/delay_manager.cc",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2019-02-25T12:16:55Z",
       "side": 1,
       "message": "can we use https://cs.chromium.org/chromium/src/third_party/webrtc/rtc_base/numerics/moving_average.h\nor at least the O(1) sum in that?",
+      "range": {
+        "startLine": 280,
+        "startChar": 18,
+        "endLine": 280,
+        "endChar": 53
+      },
+      "revId": "2fdf58f5911e78b88d7fe2230ad2613800f82656",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e38e3e9_d708a27f",
+        "filename": "modules/audio_coding/neteq/delay_manager.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 8038
+      },
+      "writtenOn": "2019-02-25T14:22:46Z",
+      "side": 1,
+      "message": "No, since we do max(sum, 0) in each iteration. This is basically sliding window minimum. Not sure if there is a container implementing that? Otherwise I can implement it but it would add complexity (and it\u0027s only 100 elements).",
+      "parentUuid": "b31b248d_b0f79b14",
       "range": {
         "startLine": 280,
         "startChar": 18,
@@ -68,6 +116,30 @@
       "revId": "2fdf58f5911e78b88d7fe2230ad2613800f82656",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3d4e9a9_517131c9",
+        "filename": "modules/audio_coding/neteq/delay_manager.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 8038
+      },
+      "writtenOn": "2019-02-25T14:22:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db3f3012_fa949aa4",
+      "range": {
+        "startLine": 31,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 14
+      },
+      "revId": "2fdf58f5911e78b88d7fe2230ad2613800f82656",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
