@@ -211,6 +211,29 @@
       "revId": "846c71323234354067c33228678d31aa6b194f81",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e83bd51e_a9d430ed",
+        "filename": "video/rtp_video_stream_receiver.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 5524
+      },
+      "writtenOn": "2019-02-25T14:08:09Z",
+      "side": 1,
+      "message": "Nit: Do we need to warn about this? If we don\u0027t expect fec and this to be enabled at the same time, perhaps warn when that condition is detected instead? If we do expect it and it\u0027s not an error than maybe a lower log level is in order.",
+      "range": {
+        "startLine": 258,
+        "startChar": 14,
+        "endLine": 258,
+        "endChar": 24
+      },
+      "revId": "846c71323234354067c33228678d31aa6b194f81",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
     }
   ]
 }
