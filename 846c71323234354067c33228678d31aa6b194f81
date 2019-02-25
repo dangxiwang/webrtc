@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "48077475_0cfe9707",
+        "filename": "modules/rtp_rtcp/include/rtp_rtcp.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-02-25T11:44:15Z",
+      "side": 1,
+      "message": "Can you also describe the return value\n(or change it to void - it seems it is not used.\nchanging to bool is another reasonable option, though that one still need a comment)",
+      "revId": "846c71323234354067c33228678d31aa6b194f81",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7995364_04d54cee",
+        "filename": "modules/rtp_rtcp/source/rtcp_sender.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-02-25T11:44:15Z",
+      "side": 1,
+      "message": "prefer to document with the comment:\n, /*is_volatile\u003d*/true);\nSince (unlike variable name) that format can be validated with clang-tidy:\nhttps://clang.llvm.org/extra/clang-tidy/checks/bugprone-argument-comment.html",
+      "range": {
+        "startLine": 227,
+        "startChar": 33,
+        "endLine": 227,
+        "endChar": 44
+      },
+      "revId": "846c71323234354067c33228678d31aa6b194f81",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bb8be7c_fe4e6968",
+        "filename": "modules/rtp_rtcp/source/rtcp_sender.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-02-25T11:44:15Z",
+      "side": 1,
+      "message": "prefer to put the nested type at the beginning of the (private) section.\nhttps://google.github.io/styleguide/cppguide.html#Declaration_Order",
+      "range": {
+        "startLine": 226,
+        "startChar": 9,
+        "endLine": 226,
+        "endChar": 30
+      },
+      "revId": "846c71323234354067c33228678d31aa6b194f81",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "508bb68f_27f6089f",
+        "filename": "modules/rtp_rtcp/source/rtcp_sender_unittest.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-02-25T11:44:15Z",
+      "side": 1,
+      "message": "I do not understand what is special about SendLossNotification to test it both in ReducedSize and Compound modes. I\u0027m ok with just one mode (any will do, may be ReducedSize is a bit better since it is more popular)",
+      "revId": "846c71323234354067c33228678d31aa6b194f81",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    }
+  ]
+}
