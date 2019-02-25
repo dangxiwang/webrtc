@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "408a26cc_be1b96f6",
+        "filename": "modules/audio_coding/neteq/delay_manager.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 8038
+      },
+      "writtenOn": "2019-02-25T14:49:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acff9ba7_46527cda",
+      "range": {
+        "startLine": 220,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 5
+      },
+      "revId": "2fdf58f5911e78b88d7fe2230ad2613800f82656",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d8f5833_a6b8bfcf",
         "filename": "modules/audio_coding/neteq/delay_manager.cc",
         "patchSetId": 2
@@ -96,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "6c7fd8bc_e73906d2",
+        "filename": "modules/audio_coding/neteq/delay_manager.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 8038
+      },
+      "writtenOn": "2019-02-25T14:49:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0517cca7_deb10096",
+      "range": {
+        "startLine": 244,
+        "startChar": 0,
+        "endLine": 244,
+        "endChar": 31
+      },
+      "revId": "2fdf58f5911e78b88d7fe2230ad2613800f82656",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b31b248d_b0f79b14",
         "filename": "modules/audio_coding/neteq/delay_manager.cc",
         "patchSetId": 2
@@ -155,6 +203,30 @@
       "side": 1,
       "message": "Ok. But any reason for delay_history_ to have negative values?",
       "parentUuid": "5e38e3e9_d708a27f",
+      "range": {
+        "startLine": 280,
+        "startChar": 18,
+        "endLine": 280,
+        "endChar": 53
+      },
+      "revId": "2fdf58f5911e78b88d7fe2230ad2613800f82656",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14ee098d_0a4cec5f",
+        "filename": "modules/audio_coding/neteq/delay_manager.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 8038
+      },
+      "writtenOn": "2019-02-25T14:49:06Z",
+      "side": 1,
+      "message": "Yes, we store the iat delays in the history. If a packet comes in with iat \u003c packet_len then the delay will be negative. This will e.g. happen when network queues are drained.",
+      "parentUuid": "7dd970a2_53d9e3aa",
       "range": {
         "startLine": 280,
         "startChar": 18,
