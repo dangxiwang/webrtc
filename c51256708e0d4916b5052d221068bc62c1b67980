@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "187fd66b_84f18f25",
+        "filename": "modules/audio_coding/neteq/delay_manager.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 7015
+      },
+      "writtenOn": "2019-02-26T15:11:19Z",
+      "side": 1,
+      "message": "use switch...case",
+      "range": {
+        "startLine": 237,
+        "startChar": 4,
+        "endLine": 237,
+        "endChar": 6
+      },
+      "revId": "c51256708e0d4916b5052d221068bc62c1b67980",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b87ef88_a706818e",
+        "filename": "modules/audio_coding/neteq/delay_manager.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 7015
+      },
+      "writtenOn": "2019-02-26T15:11:19Z",
+      "side": 1,
+      "message": "Add some comments like\n\n\"This effectively calculates arrival delay of a packet relative to the packet preceding the history window. If the arrival delay ever becomes smaller than zero, it means the reference packet is invalid, and we move the reference.\"",
+      "range": {
+        "startLine": 286,
+        "startChar": 0,
+        "endLine": 286,
+        "endChar": 25
+      },
+      "revId": "c51256708e0d4916b5052d221068bc62c1b67980",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "156f9c2d_f2b0936f",
+        "filename": "modules/audio_coding/neteq/delay_manager.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 7015
+      },
+      "writtenOn": "2019-02-26T15:11:19Z",
+      "side": 1,
+      "message": "use switch ... case, since it goes well with enum.",
+      "range": {
+        "startLine": 358,
+        "startChar": 2,
+        "endLine": 358,
+        "endChar": 4
+      },
+      "revId": "c51256708e0d4916b5052d221068bc62c1b67980",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8104f041_bfa562c1",
+        "filename": "modules/audio_coding/neteq/delay_manager.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 7015
+      },
+      "writtenOn": "2019-02-26T15:11:19Z",
+      "side": 1,
+      "message": "I think deque has better performance.",
+      "range": {
+        "startLine": 204,
+        "startChar": 7,
+        "endLine": 204,
+        "endChar": 11
+      },
+      "revId": "c51256708e0d4916b5052d221068bc62c1b67980",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edb3bb79_4983aade",
+        "filename": "modules/audio_coding/neteq/delay_manager_unittest.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 7015
+      },
+      "writtenOn": "2019-02-26T15:11:19Z",
+      "side": 1,
+      "message": "can we add a few more invalid cases:\n\n\"WebRTC-Audio-NetEqDelayHistogram/Enabled-96/\"\n\n\"WebRTC-Audio-NetEqDelayHistogram/Disabled/\"\n\n\"WebRTC-Audio-NetEqDelayHistogram/Enabled-96-0.998/WebRTC-Audio-NetEqForceTargetDelayPercentile/Enabled-99.95/\"",
+      "range": {
+        "startLine": 636,
+        "startChar": 0,
+        "endLine": 636,
+        "endChar": 6
+      },
+      "revId": "c51256708e0d4916b5052d221068bc62c1b67980",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
