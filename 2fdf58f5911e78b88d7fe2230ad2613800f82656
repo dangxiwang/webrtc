@@ -407,6 +407,30 @@
     },
     {
       "key": {
+        "uuid": "6f66af3f_f7a4a3e8",
+        "filename": "modules/audio_coding/neteq/delay_manager.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 8038
+      },
+      "writtenOn": "2019-02-26T12:31:04Z",
+      "side": 1,
+      "message": "If the lowest point is now then we add 0 (the packet was probably not delayed in that case, if we have a reasonable large history).\n\nAre we worried about the performance or about the correctness? Because a) the number of elements we iterate over is constant. b) we already iterate over at least 100 elements in the histogram. c) The above algorithm is also O(n) worst case because of min_element. What is the improvement we are looking for?\n\nBare in mind that the minimum value is also changing with each element that we remove from the history.",
+      "parentUuid": "0c7f8e97_f18671e6",
+      "range": {
+        "startLine": 280,
+        "startChar": 18,
+        "endLine": 280,
+        "endChar": 53
+      },
+      "revId": "2fdf58f5911e78b88d7fe2230ad2613800f82656",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "db3f3012_fa949aa4",
         "filename": "modules/audio_coding/neteq/delay_manager.h",
         "patchSetId": 2
