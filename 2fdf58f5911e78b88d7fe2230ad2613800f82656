@@ -383,6 +383,30 @@
     },
     {
       "key": {
+        "uuid": "0c7f8e97_f18671e6",
+        "filename": "modules/audio_coding/neteq/delay_manager.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 7015
+      },
+      "writtenOn": "2019-02-26T09:15:25Z",
+      "side": 1,
+      "message": "Ok. \"calculating the relative delay from the lowest point in the history until now\" is a clear explanation. But what if the lowest point is now?\n\nAnyway, taking that definition, how do you like the following (I am not super careful, there can be bugs.)\n\nclass RelativeDelay {\n public:\n  // Calculates the relative delay from the lowest point in the history until now\n  int CurrentDelay() const {\n    return relative_delays_.back() - *min_delay_it_;\n  }\n\n  void NewPacket(int iat_ms) {\n    bool min_out_dated \u003d min_delay_it_ \u003d\u003d relative_delays_.cbegin();\n \n    const int oldest_delay \u003d relative_delays_.pop_front();\n    const int oldest_iat \u003d relative_delays_.front() - oldest_delay;\n    const int latest_relative_delay \u003d relative_delays_.back() - oldest_iat + iat_ms;\n    relative_delays_.push_back(latest_relative_delay);\n\n    if (min_out_dated) {\n      min_delay_it_ \u003d std::min_element(relative_delays_.cbegin(), relative_delays_.cend());\n    } else if (latest_relative_delay \u003c *min_delay_it) {\n       min_delay_it_ \u003d relative_delays_.cend();\n    } else {\n       --min_delay_it_;\n    }\n  }\n private:\n  std::deque\u003cint\u003e relative_delays_;\n  std::deque\u003cint\u003e::const_iterator min_delay_it_;\n}",
+      "parentUuid": "fbf93814_9f8ac28d",
+      "range": {
+        "startLine": 280,
+        "startChar": 18,
+        "endLine": 280,
+        "endChar": 53
+      },
+      "revId": "2fdf58f5911e78b88d7fe2230ad2613800f82656",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "db3f3012_fa949aa4",
         "filename": "modules/audio_coding/neteq/delay_manager.h",
         "patchSetId": 2
