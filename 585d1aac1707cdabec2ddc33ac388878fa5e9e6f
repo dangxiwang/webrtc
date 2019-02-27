@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e0245906_9927c0b0",
+        "filename": "call/rtp_video_sender.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2019-02-27T12:28:20Z",
+      "side": 1,
+      "message": "This looks like an odd thing to CHECK on. Perhaps:\n  const bool result \u003d rtp_rtcp-\u003eRegisterRtpHeaderExtension(extension, id);\n  RTC_DCHECK(result);",
+      "revId": "585d1aac1707cdabec2ddc33ac388878fa5e9e6f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
