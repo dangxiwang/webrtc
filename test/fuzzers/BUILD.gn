@@ -558,3 +558,12 @@ webrtc_fuzzer_test("url_decode_fuzzer") {
     "../../rtc_base:rtc_base_approved",
   ]
 }
+
+webrtc_fuzzer_test("string_to_number_fuzzer") {
+  sources = [
+    "string_to_number_fuzzer.cc",
+  ]
+  deps = [
+    "../../rtc_base:rtc_base_approved",
+  ]
+}
