@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a987d926_ab2fee96",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5087
+      },
+      "writtenOn": "2019-03-12T12:48:30Z",
+      "side": 1,
+      "message": "Can you mention the command used to generate the .cfg files in the CL description?",
+      "range": {
+        "startLine": 7,
+        "startChar": 11,
+        "endLine": 7,
+        "endChar": 25
+      },
+      "revId": "81b70274ce949e1166d4d95426ae8eefc1bcb486",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7678817b_9d974dcd",
+        "filename": "config.star",
+        "patchSetId": 12
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5087
+      },
+      "writtenOn": "2019-03-12T12:48:30Z",
+      "side": 1,
+      "message": "It looks like it is possible to use a glob. I am not sure it is a good idea, but maybe it will help with maintenance.",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 22,
+        "endChar": 22
+      },
+      "revId": "81b70274ce949e1166d4d95426ae8eefc1bcb486",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1be7eecc_882629a9",
+        "filename": "config.star",
+        "patchSetId": 12
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5087
+      },
+      "writtenOn": "2019-03-12T12:48:30Z",
+      "side": 1,
+      "message": "No \"fail_on_warnings\"?\n\nIs it a good idea to turn this on?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 1
+      },
+      "revId": "81b70274ce949e1166d4d95426ae8eefc1bcb486",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f31f690_baa96914",
+        "filename": "cr-buildbucket.cfg",
+        "patchSetId": 12
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 5087
+      },
+      "writtenOn": "2019-03-12T12:48:30Z",
+      "side": 1,
+      "message": "Is this changed from 29 to 30?\n\nOther didn\u0027t have \"priority\" so probably this is OK, just checking the diff.",
+      "range": {
+        "startLine": 692,
+        "startChar": 6,
+        "endLine": 692,
+        "endChar": 18
+      },
+      "revId": "81b70274ce949e1166d4d95426ae8eefc1bcb486",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
