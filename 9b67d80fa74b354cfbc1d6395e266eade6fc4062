@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "9c9da969_0305a71b",
+        "filename": "config.star",
+        "patchSetId": 14
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 5114
+      },
+      "writtenOn": "2019-03-13T20:27:57Z",
+      "side": 1,
+      "message": "Will do",
+      "parentUuid": "f667c630_0d6344c7",
+      "range": {
+        "startLine": 246,
+        "startChar": 9,
+        "endLine": 246,
+        "endChar": 18
+      },
+      "revId": "9b67d80fa74b354cfbc1d6395e266eade6fc4062",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e2af08c_627071e0",
         "filename": "config.star",
         "patchSetId": 14
@@ -140,6 +164,30 @@
       "revId": "9b67d80fa74b354cfbc1d6395e266eade6fc4062",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73b3eea4_08bf00d4",
+        "filename": "config.star",
+        "patchSetId": 14
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 5114
+      },
+      "writtenOn": "2019-03-13T20:27:57Z",
+      "side": 1,
+      "message": "It\u0027s cool and may help with readability of the function but I don\u0027t like how it changes the usage.\nIn particular, \"linux\" is not really a thing even if \"linux.builder\" happens to make sense.\n\n(also seems that `lambda` doesn\u0027t support `*args, **kwargs`...)",
+      "parentUuid": "3e2af08c_627071e0",
+      "range": {
+        "startLine": 320,
+        "startChar": 4,
+        "endLine": 320,
+        "endChar": 26
+      },
+      "revId": "9b67d80fa74b354cfbc1d6395e266eade6fc4062",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
