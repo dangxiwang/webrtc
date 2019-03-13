@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "33c986c1_eb4de329",
+        "filename": "config.star",
+        "patchSetId": 14
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5114
+      },
+      "writtenOn": "2019-03-13T20:19:52Z",
+      "side": 1,
+      "message": "Nice. But I still prefer this, to prevent accidents",
+      "parentUuid": "f906348b_efca9762",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 22,
+        "endChar": 22
+      },
+      "revId": "9b67d80fa74b354cfbc1d6395e266eade6fc4062",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a723f858_66dbe3de",
         "filename": "config.star",
         "patchSetId": 14
@@ -36,6 +60,30 @@
       "writtenOn": "2019-03-13T20:08:24Z",
       "side": 1,
       "message": "this looks odd",
+      "range": {
+        "startLine": 246,
+        "startChar": 9,
+        "endLine": 246,
+        "endChar": 18
+      },
+      "revId": "9b67d80fa74b354cfbc1d6395e266eade6fc4062",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e7f935f_7b815253",
+        "filename": "config.star",
+        "patchSetId": 14
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 5114
+      },
+      "writtenOn": "2019-03-13T20:19:52Z",
+      "side": 1,
+      "message": "Umm I suppose it does... But there is no mistake here.\nWould it be better if I just replaced \"False\" with \"None\"?",
+      "parentUuid": "a723f858_66dbe3de",
       "range": {
         "startLine": 246,
         "startChar": 9,
