@@ -45,6 +45,29 @@
       "revId": "9b67d80fa74b354cfbc1d6395e266eade6fc4062",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e2af08c_627071e0",
+        "filename": "config.star",
+        "patchSetId": 14
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 6878
+      },
+      "writtenOn": "2019-03-13T20:11:03Z",
+      "side": 1,
+      "message": "oh, for this it might be more readable to use a struct:\n\ndef normal_builder_factory(...):\n    return struct(\n        builder \u003d lambda ...,\n        try_job \u003d lambda ..., \n    )\n\nlinux \u003d normal_builder_factory(...)\n\nlinux.builder(...)\nlinux.try_job(...)",
+      "range": {
+        "startLine": 320,
+        "startChar": 4,
+        "endLine": 320,
+        "endChar": 26
+      },
+      "revId": "9b67d80fa74b354cfbc1d6395e266eade6fc4062",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
     }
   ]
 }
