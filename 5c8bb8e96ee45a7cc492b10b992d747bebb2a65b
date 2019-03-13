@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b9d20218_03c4387c",
+        "filename": "test/scenario/network/network_emulation_pc_unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2019-03-13T09:41:15Z",
+      "side": 1,
+      "message": "Since this is in a very local scope, could we use a shorter name? Maybe just \"emulation\"?",
+      "range": {
+        "startLine": 103,
+        "startChar": 26,
+        "endLine": 103,
+        "endChar": 51
+      },
+      "revId": "5c8bb8e96ee45a7cc492b10b992d747bebb2a65b",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
