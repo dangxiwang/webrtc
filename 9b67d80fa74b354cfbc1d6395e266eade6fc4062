@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f906348b_efca9762",
+        "filename": "config.star",
+        "patchSetId": 14
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 6878
+      },
+      "writtenOn": "2019-03-13T20:08:24Z",
+      "side": 1,
+      "message": "note this can also use negative patterns, e.g. [\"*.cfg\", \"!luci-notify.cfg\"].",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 22,
+        "endChar": 22
+      },
+      "revId": "9b67d80fa74b354cfbc1d6395e266eade6fc4062",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a723f858_66dbe3de",
+        "filename": "config.star",
+        "patchSetId": 14
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 6878
+      },
+      "writtenOn": "2019-03-13T20:08:24Z",
+      "side": 1,
+      "message": "this looks odd",
+      "range": {
+        "startLine": 246,
+        "startChar": 9,
+        "endLine": 246,
+        "endChar": 18
+      },
+      "revId": "9b67d80fa74b354cfbc1d6395e266eade6fc4062",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
