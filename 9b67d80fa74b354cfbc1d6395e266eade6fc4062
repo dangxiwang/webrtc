@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "f667c630_0d6344c7",
+        "filename": "config.star",
+        "patchSetId": 14
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 6878
+      },
+      "writtenOn": "2019-03-13T20:23:43Z",
+      "side": 1,
+      "message": "Yeah. It is odd because \u0027cq\u0027 is treated like a dict (it has {} as default, and later used in **cq). So comparing it to False looks odd... None is less odd.",
+      "parentUuid": "5e7f935f_7b815253",
+      "range": {
+        "startLine": 246,
+        "startChar": 9,
+        "endLine": 246,
+        "endChar": 18
+      },
+      "revId": "9b67d80fa74b354cfbc1d6395e266eade6fc4062",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3e2af08c_627071e0",
         "filename": "config.star",
         "patchSetId": 14
