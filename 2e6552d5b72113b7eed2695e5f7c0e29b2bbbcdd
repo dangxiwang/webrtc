@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "205a08df_3ee0d05a",
+        "filename": "pc/peer_connection_factory_unittest.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2019-03-18T14:41:31Z",
+      "side": 0,
+      "message": "Not sure if using a different username here improved test coverage in some way. With this cl, kTurnUsername is used everywhere.",
+      "range": {
+        "startLine": 67,
+        "startChar": 11,
+        "endLine": 67,
+        "endChar": 28
+      },
+      "revId": "2e6552d5b72113b7eed2695e5f7c0e29b2bbbcdd",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
