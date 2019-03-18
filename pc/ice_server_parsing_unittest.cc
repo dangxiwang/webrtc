@@ -200,18 +200,6 @@ TEST_F(IceServerParsingTest, ParseTransport) {
   EXPECT_FALSE(ParseTurnUrl("?"));
 }
 
-// Test parsing ICE username contained in URL.
-TEST_F(IceServerParsingTest, ParseUsername) {
-  EXPECT_TRUE(ParseTurnUrl("turn:user@hostname"));
-  EXPECT_EQ(1U, turn_servers_.size());
-  EXPECT_EQ("user", turn_servers_[0].credentials.username);
-
-  EXPECT_FALSE(ParseTurnUrl("turn:@hostname"));
-  EXPECT_FALSE(ParseTurnUrl("turn:username@"));
-  EXPECT_FALSE(ParseTurnUrl("turn:@"));
-  EXPECT_FALSE(ParseTurnUrl("turn:user@name@hostname"));
-}
-
 // Test that username and password from IceServer is copied into the resulting
 // RelayServerConfig.
 TEST_F(IceServerParsingTest, CopyUsernameAndPasswordFromIceServer) {
