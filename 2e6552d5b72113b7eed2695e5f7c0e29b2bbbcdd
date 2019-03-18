@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1c37c955_ec9da669",
+        "filename": "pc/ice_server_parsing_unittest.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2019-03-18T15:14:28Z",
+      "side": 0,
+      "message": "Where should the validation code go? Currently there\u0027s nothing in ice_server_parsing.cc that really checks if the syntax of the host part matches \n\n  IP-literal / IPv4address / reg-name\n\nand doing that isn\u0027t entirely trivial. I\u0027d guess this is checked elsewhere, where the address is used, e.g, checking for errors from getaddrinfo.\n\nSo the call \n   \n   ParseTurnUrl(\"turn:user@hostname\")\n\nstill returns true, and at some later point we\u0027d attempt to connect to a host named \"user@hostname\".\n\nThe closest thing to syntax validation is ParseHostnameAndPortFromString, but it only splits the string based on location of \u0027[\u0027, \u0027]\u0027 and \u0027:\u0027 characters, and checks that the port-part consists of decimal digits only. I could add an explicit check to reject any input that contains a @ character, would that make sense?",
+      "parentUuid": "3b708f0c_11a4843d",
+      "revId": "2e6552d5b72113b7eed2695e5f7c0e29b2bbbcdd",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "205a08df_3ee0d05a",
         "filename": "pc/peer_connection_factory_unittest.cc",
         "patchSetId": 3
