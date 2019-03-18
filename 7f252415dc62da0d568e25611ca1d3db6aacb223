@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5a2f852_371ecbcc",
+        "filename": "pc/ice_server_parsing.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2019-03-18T15:57:10Z",
+      "side": 1,
+      "message": "I think SYNTAX_ERROR is still the right error code, rather than, e.g., INVALID_PARAMETER.",
+      "range": {
+        "startLine": 198,
+        "startChar": 25,
+        "endLine": 198,
+        "endChar": 37
+      },
+      "revId": "7f252415dc62da0d568e25611ca1d3db6aacb223",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
