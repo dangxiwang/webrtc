@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9499045a_03c7de2c",
+        "filename": "common_video/generic_frame_descriptor/generic_frame_info.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-03-27T16:16:01Z",
+      "side": 1,
+      "message": "DecodeTarget or OperatingPoint?\ncan you please use only one of those names to avoid confusion.",
+      "range": {
+        "startLine": 25,
+        "startChar": 22,
+        "endLine": 25,
+        "endChar": 38
+      },
+      "revId": "3b8829f32cf64fc40df74173e3b5d2a21ef8e1bf",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e51f1027_298c5916",
+        "filename": "modules/video_coding/codecs/vp8/default_temporal_layers.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-03-27T16:16:01Z",
+      "side": 1,
+      "message": "that line is surprising.\nspecially since it is not obvious if DecodeTargetInfo is a type of function.\nyou probably can instead use\nusing Dti \u003d GenericFrameInfo::DecodeTargetInfo;\nto indicate it is just an alias.\n\nIf you do not see how to alias the function in less surprising way, explain this line with a comment\n(also, if you keep copying the function, then dti is a variable and thus should be lower_case)",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 48
+      },
+      "revId": "3b8829f32cf64fc40df74173e3b5d2a21ef8e1bf",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4e7c9b7_e57c99db",
+        "filename": "modules/video_coding/codecs/vp8/default_temporal_layers.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-03-27T16:16:01Z",
+      "side": 1,
+      "message": "shouldn\u0027t it be \"-SS\"?\n(as I understand there should be no \u0027R\u0027 for T2 in this case)",
+      "range": {
+        "startLine": 185,
+        "startChar": 20,
+        "endLine": 185,
+        "endChar": 21
+      },
+      "revId": "3b8829f32cf64fc40df74173e3b5d2a21ef8e1bf",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be4d7919_7bb44998",
+        "filename": "modules/video_coding/codecs/vp8/default_temporal_layers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-03-27T16:16:01Z",
+      "side": 1,
+      "message": "no empty line between c and c++ headers\nhttps://google.github.io/styleguide/cppguide.html#Names_and_Order_of_Includes",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 0
+      },
+      "revId": "3b8829f32cf64fc40df74173e3b5d2a21ef8e1bf",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a21d7781_a074e717",
+        "filename": "modules/video_coding/codecs/vp8/libvpx_vp8_encoder.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-03-27T16:16:01Z",
+      "side": 1,
+      "message": "Since I\u0027m not very familiar with this code I would appreciate smaller change,\ni.e. avoiding unnecssary renames and other minor changes (or rather having those cleanups in a dedicated change)",
+      "range": {
+        "startLine": 74,
+        "startChar": 15,
+        "endLine": 74,
+        "endChar": 24
+      },
+      "revId": "3b8829f32cf64fc40df74173e3b5d2a21ef8e1bf",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1dc4e407_e8e36bcf",
+        "filename": "modules/video_coding/codecs/vp8/screenshare_layers.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-03-27T16:16:01Z",
+      "side": 1,
+      "message": "are there exactly 2 operating points?, i.e. it should probably be \"--\"\n(at least in other switch cases there are always two)",
+      "range": {
+        "startLine": 209,
+        "startChar": 29,
+        "endLine": 209,
+        "endChar": 31
+      },
+      "revId": "3b8829f32cf64fc40df74173e3b5d2a21ef8e1bf",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c9691fd_fa0c7d01",
+        "filename": "modules/video_coding/codecs/vp8/screenshare_layers.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-03-27T16:16:01Z",
+      "side": 1,
+      "message": "is it \u0027S\u0027 for 2nd operating point? looking at kTl1 case I suspect it is only \u0027R\u0027\n(it might be \u0027S\u0027 if next frame is kTl1Sync, otherwise better to promise less)",
+      "range": {
+        "startLine": 213,
+        "startChar": 31,
+        "endLine": 213,
+        "endChar": 32
+      },
+      "revId": "3b8829f32cf64fc40df74173e3b5d2a21ef8e1bf",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63347089_a8d364d0",
+        "filename": "modules/video_coding/codecs/vp8/screenshare_layers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-03-27T16:16:01Z",
+      "side": 1,
+      "message": "how about taking avsl::string_view here as parameter and then calling the conversion function:\n\nDependencyInfo(absl::string_view operating_point_information,\n               Vp8FrameConfig frame_config)\n    : operating_points(GenericFrameInfo::DecodeTargetInfo(operating_point_information)),\n      frame_config(frame_config) {}\n\nThat would avoid surprising Dti aliasing.",
+      "range": {
+        "startLine": 74,
+        "startChar": 19,
+        "endLine": 74,
+        "endChar": 71
+      },
+      "revId": "3b8829f32cf64fc40df74173e3b5d2a21ef8e1bf",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
