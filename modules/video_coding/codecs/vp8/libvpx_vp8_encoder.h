@@ -71,11 +71,11 @@ class LibvpxVp8Encoder : public VideoEncoder {
   // Call encoder initialize function and set control settings.
   int InitAndSetControlSettings();
 
-  void PopulateCodecSpecific(CodecSpecificInfo* codec_specific,
-                             const vpx_codec_cx_pkt& pkt,
-                             int stream_idx,
-                             int encoder_idx,
-                             uint32_t timestamp);
+  void PopulateFrameInfo(CodecSpecificInfo* codec_specific,
+                         const vpx_codec_cx_pkt& pkt,
+                         int stream_idx,
+                         int encoder_idx,
+                         uint32_t timestamp);
 
   int GetEncodedPartitions(const VideoFrame& input_image);
 

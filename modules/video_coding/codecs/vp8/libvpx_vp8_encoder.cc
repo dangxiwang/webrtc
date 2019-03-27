@@ -899,11 +899,11 @@ int LibvpxVp8Encoder::Encode(const VideoFrame& frame,
   return error;
 }
 
-void LibvpxVp8Encoder::PopulateCodecSpecific(CodecSpecificInfo* codec_specific,
-                                             const vpx_codec_cx_pkt_t& pkt,
-                                             int stream_idx,
-                                             int encoder_idx,
-                                             uint32_t timestamp) {
+void LibvpxVp8Encoder::PopulateFrameInfo(CodecSpecificInfo* codec_specific,
+                                         const vpx_codec_cx_pkt_t& pkt,
+                                         int stream_idx,
+                                         int encoder_idx,
+                                         uint32_t timestamp) {
   assert(codec_specific != NULL);
   codec_specific->codecType = kVideoCodecVP8;
   codec_specific->codecSpecific.VP8.keyIdx =
@@ -950,8 +950,8 @@ int LibvpxVp8Encoder::GetEncodedPartitions(const VideoFrame& input_image) {
           encoded_images_[encoder_idx]._frameType = kVideoFrameKey;
         }
         encoded_images_[encoder_idx].SetSpatialIndex(stream_idx);
-        PopulateCodecSpecific(&codec_specific, *pkt, stream_idx, encoder_idx,
-                              input_image.timestamp());
+        PopulateFrameInfo(&codec_specific, *pkt, stream_idx, encoder_idx,
+                          input_image.timestamp());
         break;
       }
     }
