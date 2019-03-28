@@ -40,7 +40,8 @@ class AudioDeviceModuleImpl : public AudioDeviceModuleForTest {
   int32_t CreatePlatformSpecificObjects();
   int32_t AttachAudioBuffer();
 
-  AudioDeviceModuleImpl(const AudioLayer audioLayer);
+  AudioDeviceModuleImpl(AudioLayer audio_layer,
+                        TaskQueueFactory* task_queue_factory);
   ~AudioDeviceModuleImpl() override;
 
   // Retrieve the currently utilized audio layer
