@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "512ad6fe_9fd81c71",
+        "filename": "common_video/generic_frame_descriptor/generic_frame_info.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5527
+      },
+      "writtenOn": "2019-03-28T12:25:04Z",
+      "side": 1,
+      "message": "Renamed OperatingPointIndication to DecodeTargetIndication.",
+      "parentUuid": "9499045a_03c7de2c",
+      "range": {
+        "startLine": 25,
+        "startChar": 22,
+        "endLine": 25,
+        "endChar": 38
+      },
+      "revId": "3b8829f32cf64fc40df74173e3b5d2a21ef8e1bf",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e51f1027_298c5916",
         "filename": "modules/video_coding/codecs/vp8/default_temporal_layers.cc",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "3b8829f32cf64fc40df74173e3b5d2a21ef8e1bf",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "039b4789_d78f6787",
+        "filename": "modules/video_coding/codecs/vp8/default_temporal_layers.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 5527
+      },
+      "writtenOn": "2019-03-28T12:25:04Z",
+      "side": 1,
+      "message": "You can bring a function into scope, but you can\u0027t alias a function with the \u0027using\u0027 keyword.\n\nI changed the DependencyInfo so the alias is no longer needed.",
+      "parentUuid": "e51f1027_298c5916",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 48
+      },
+      "revId": "3b8829f32cf64fc40df74173e3b5d2a21ef8e1bf",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "65e143c5_df53f87f",
+        "filename": "modules/video_coding/codecs/vp8/default_temporal_layers.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 5527
+      },
+      "writtenOn": "2019-03-28T12:25:04Z",
+      "side": 1,
+      "message": "Good catch, fixed.",
+      "parentUuid": "a4e7c9b7_e57c99db",
+      "range": {
+        "startLine": 185,
+        "startChar": 20,
+        "endLine": 185,
+        "endChar": 21
+      },
+      "revId": "3b8829f32cf64fc40df74173e3b5d2a21ef8e1bf",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "be4d7919_7bb44998",
         "filename": "modules/video_coding/codecs/vp8/default_temporal_layers.h",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "3b8829f32cf64fc40df74173e3b5d2a21ef8e1bf",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a775d65_3faee372",
+        "filename": "modules/video_coding/codecs/vp8/default_temporal_layers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5527
+      },
+      "writtenOn": "2019-03-28T12:25:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be4d7919_7bb44998",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 0
+      },
+      "revId": "3b8829f32cf64fc40df74173e3b5d2a21ef8e1bf",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "343383e9_f0740495",
+        "filename": "modules/video_coding/codecs/vp8/libvpx_vp8_encoder.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 5527
+      },
+      "writtenOn": "2019-03-28T12:25:04Z",
+      "side": 1,
+      "message": "I will do this in a followup CL, reverted.",
+      "parentUuid": "a21d7781_a074e717",
+      "range": {
+        "startLine": 74,
+        "startChar": 15,
+        "endLine": 74,
+        "endChar": 24
+      },
+      "revId": "3b8829f32cf64fc40df74173e3b5d2a21ef8e1bf",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1dc4e407_e8e36bcf",
         "filename": "modules/video_coding/codecs/vp8/screenshare_layers.cc",
         "patchSetId": 2
@@ -128,6 +248,30 @@
       "writtenOn": "2019-03-27T16:16:01Z",
       "side": 1,
       "message": "are there exactly 2 operating points?, i.e. it should probably be \"--\"\n(at least in other switch cases there are always two)",
+      "range": {
+        "startLine": 209,
+        "startChar": 29,
+        "endLine": 209,
+        "endChar": 31
+      },
+      "revId": "3b8829f32cf64fc40df74173e3b5d2a21ef8e1bf",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5251e45_7f13e003",
+        "filename": "modules/video_coding/codecs/vp8/screenshare_layers.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 5527
+      },
+      "writtenOn": "2019-03-28T12:25:04Z",
+      "side": 1,
+      "message": "We will drop the frame, what DTI we assign it is not really relevant I think.",
+      "parentUuid": "1dc4e407_e8e36bcf",
       "range": {
         "startLine": 209,
         "startChar": 29,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "408109ef_ca1cce3d",
+        "filename": "modules/video_coding/codecs/vp8/screenshare_layers.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 5527
+      },
+      "writtenOn": "2019-03-28T12:25:04Z",
+      "side": 1,
+      "message": "In the case of screensharing a TL1 frame never reference past a TL0 frame, so every TL0 frame is a switch to the second decode target.",
+      "parentUuid": "3c9691fd_fa0c7d01",
+      "range": {
+        "startLine": 213,
+        "startChar": 31,
+        "endLine": 213,
+        "endChar": 32
+      },
+      "revId": "3b8829f32cf64fc40df74173e3b5d2a21ef8e1bf",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "63347089_a8d364d0",
         "filename": "modules/video_coding/codecs/vp8/screenshare_layers.h",
         "patchSetId": 2
@@ -183,6 +351,30 @@
       "revId": "3b8829f32cf64fc40df74173e3b5d2a21ef8e1bf",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11d25a9a_c2624cbb",
+        "filename": "modules/video_coding/codecs/vp8/screenshare_layers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 5527
+      },
+      "writtenOn": "2019-03-28T12:25:04Z",
+      "side": 1,
+      "message": "Yes, that\u0027s much cleaner, updated.",
+      "parentUuid": "63347089_a8d364d0",
+      "range": {
+        "startLine": 74,
+        "startChar": 19,
+        "endLine": 74,
+        "endChar": 71
+      },
+      "revId": "3b8829f32cf64fc40df74173e3b5d2a21ef8e1bf",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }

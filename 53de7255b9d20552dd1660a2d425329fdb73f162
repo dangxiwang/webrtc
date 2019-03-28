@@ -22,6 +22,30 @@
       "revId": "53de7255b9d20552dd1660a2d425329fdb73f162",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "436a8a02_ad4509bc",
+        "filename": "modules/video_coding/codecs/vp8/default_temporal_layers.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 5527
+      },
+      "writtenOn": "2019-03-28T12:25:04Z",
+      "side": 0,
+      "message": "This non-memeber function took a vector or Vp8FrameConfigs, but now the function GetDependencyInfo returns a vector of DependencyInfos. This type is private and so it is now known in this scope. Therefor I moved it to the ctor instead.",
+      "parentUuid": "f4389c42_c94ab61f",
+      "range": {
+        "startLine": 104,
+        "startChar": 43,
+        "endLine": 104,
+        "endChar": 0
+      },
+      "revId": "53de7255b9d20552dd1660a2d425329fdb73f162",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
     }
   ]
 }
