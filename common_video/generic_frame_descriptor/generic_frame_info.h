@@ -21,12 +21,15 @@
 namespace webrtc {
 
 struct GenericFrameInfo {
-  enum class OperatingPointIndication {
-    kNotPresent,   // GenericFrameInfo::Builder symbol '-'
-    kDiscardable,  // GenericFrameInfo::Builder symbol 'D'
-    kSwitch,       // GenericFrameInfo::Builder symbol 'S'
-    kRequired      // GenericFrameInfo::Builder symbol 'R'
+  enum class DecodeTargetIndication {
+    kNotPresent,   // DecodeTargetInfo symbol '-'
+    kDiscardable,  // DecodeTargetInfo symbol 'D'
+    kSwitch,       // DecodeTargetInfo symbol 'S'
+    kRequired      // DecodeTargetInfo symbol 'R'
   };
+
+  static absl::InlinedVector<DecodeTargetIndication, 10> DecodeTargetInfo(
+      absl::string_view indication_symbols);
 
   class Builder;
 
@@ -37,7 +40,7 @@ struct GenericFrameInfo {
   int temporal_id = 0;
   int spatial_id = 0;
   absl::InlinedVector<int, 10> frame_diffs;
-  absl::InlinedVector<OperatingPointIndication, 10> operating_points;
+  absl::InlinedVector<DecodeTargetIndication, 10> operating_points;
 };
 
 class GenericFrameInfo::Builder {
