@@ -355,6 +355,30 @@
     },
     {
       "key": {
+        "uuid": "35e58ebc_7a56e666",
+        "filename": "modules/video_coding/codecs/vp8/screenshare_layers.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-03-28T13:12:37Z",
+      "side": 1,
+      "message": "oh, so the pattern is?\nkTl0, kTl1Sync, kTl1, kTl1, ..., kTl0, kTl1Sync, kTl1, ...",
+      "parentUuid": "408109ef_ca1cce3d",
+      "range": {
+        "startLine": 213,
+        "startChar": 31,
+        "endLine": 213,
+        "endChar": 32
+      },
+      "revId": "3b8829f32cf64fc40df74173e3b5d2a21ef8e1bf",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "63347089_a8d364d0",
         "filename": "modules/video_coding/codecs/vp8/screenshare_layers.h",
         "patchSetId": 2
