@@ -76,7 +76,8 @@ class AudioOutput {
 rtc::scoped_refptr<AudioDeviceModuleForTest>
 CreateWindowsCoreAudioAudioDeviceModuleFromInputAndOutput(
     std::unique_ptr<AudioInput> audio_input,
-    std::unique_ptr<AudioOutput> audio_output);
+    std::unique_ptr<AudioOutput> audio_output,
+    TaskQueueFactory* task_queue_factory);
 
 }  // namespace webrtc_win
 
