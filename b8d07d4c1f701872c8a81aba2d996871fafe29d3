@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "15fa6828_e1319714",
+        "filename": "modules/audio_device/include/audio_device.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 5126
+      },
+      "writtenOn": "2019-03-31T11:19:19Z",
+      "side": 1,
+      "message": "\"Remove\"?",
+      "revId": "b8d07d4c1f701872c8a81aba2d996871fafe29d3",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0a182cd_6ea25e00",
+        "filename": "modules/audio_device/include/audio_device_data_observer.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 5126
+      },
+      "writtenOn": "2019-03-31T11:19:19Z",
+      "side": 1,
+      "message": "\"Remove\"?",
+      "revId": "b8d07d4c1f701872c8a81aba2d996871fafe29d3",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
