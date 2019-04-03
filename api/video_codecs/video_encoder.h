@@ -194,6 +194,13 @@ class RTC_EXPORT VideoEncoder {
   };
 
   struct RateControlParameters {
+    RateControlParameters();
+    RateControlParameters(const VideoBitrateAllocation& bitrate,
+                          double framerate_fps,
+                          DataRate bandwidth_allocation);
+    RateControlParameters(const RateControlParameters& copy);
+    virtual ~RateControlParameters();
+
     // Target bitrate, per spatial/temporal layer.
     // A target bitrate of 0bps indicates a layer should not be encoded at all.
     VideoBitrateAllocation bitrate;

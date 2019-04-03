@@ -109,6 +109,22 @@ class VideoStreamEncoder : public VideoStreamEncoderInterface,
     int pixel_count() const { return width * height; }
   };
 
+  struct EncoderRateSettings : public VideoEncoder::RateControlParameters {
+    EncoderRateSettings();
+    EncoderRateSettings(const VideoBitrateAllocation& bitrate,
+                        double framerate_fps,
+                        DataRate bandwidth_allocation,
+                        DataRate encoder_target);
+    bool operator==(const EncoderRateSettings& rhs) const;
+    bool operator!=(const EncoderRateSettings& rhs) const;
+
+    // This is the scalar target bitrate before the VideoBitrateAllocator. This
+    // is needed the bitrate allocator may truncate the bitrate and a later
+    // call to the same allocator may trick it into thinking the bitrate has
+    // decreased since the last call.
+    DataRate encoder_target;
+  };
+
   void ConfigureEncoderOnTaskQueue(VideoEncoderConfig config,
                                    size_t max_data_payload_length);
   void ReconfigureEncoder() RTC_RUN_ON(&encoder_queue_);
@@ -140,12 +156,15 @@ class VideoStreamEncoder : public VideoStreamEncoderInterface,
   void TraceFrameDropStart();
   void TraceFrameDropEnd();
 
-  VideoBitrateAllocation GetBitrateAllocationAndNotifyObserver(
-      const uint32_t target_bitrate_bps,
-      uint32_t framerate_fps) RTC_RUN_ON(&encoder_queue_);
+  // Returns a copy of |rate_settings| with the |bitrate| field updated using
+  // the current VideoBitrateAllocator, and notifies any listeners of the new
+  // allocation.
+  EncoderRateSettings UpdateBitrateAllocationAndNotifyObserver(
+      const EncoderRateSettings& rate_settings) RTC_RUN_ON(&encoder_queue_);
+
   uint32_t GetInputFramerateFps() RTC_RUN_ON(&encoder_queue_);
-  void SetEncoderRates(const VideoBitrateAllocation& bitrate_allocation,
-                       uint32_t framerate_fps) RTC_RUN_ON(&encoder_queue_);
+  void SetEncoderRates(const EncoderRateSettings& rate_settings)
+      RTC_RUN_ON(&encoder_queue_);
 
   // Class holding adaptation information.
   class AdaptCounter final {
@@ -242,7 +261,8 @@ class VideoStreamEncoder : public VideoStreamEncoderInterface,
   int crop_height_ RTC_GUARDED_BY(&encoder_queue_);
   uint32_t encoder_start_bitrate_bps_ RTC_GUARDED_BY(&encoder_queue_);
   size_t max_data_payload_length_ RTC_GUARDED_BY(&encoder_queue_);
-  uint32_t last_observed_bitrate_bps_ RTC_GUARDED_BY(&encoder_queue_);
+  absl::optional<EncoderRateSettings> last_encoder_rate_setings_
+      RTC_GUARDED_BY(&encoder_queue_);
   bool encoder_paused_and_dropped_frame_ RTC_GUARDED_BY(&encoder_queue_);
   Clock* const clock_;
   // Counters used for deciding if the video resolution or framerate is
@@ -294,9 +314,6 @@ class VideoStreamEncoder : public VideoStreamEncoderInterface,
 
   VideoEncoder::EncoderInfo encoder_info_ RTC_GUARDED_BY(&encoder_queue_);
   VideoEncoderFactory::CodecInfo codec_info_ RTC_GUARDED_BY(&encoder_queue_);
-  VideoBitrateAllocation last_bitrate_allocation_
-      RTC_GUARDED_BY(&encoder_queue_);
-  uint32_t last_framerate_fps_ RTC_GUARDED_BY(&encoder_queue_);
   VideoCodec send_codec_ RTC_GUARDED_BY(&encoder_queue_);
 
   FrameDropper frame_dropper_ RTC_GUARDED_BY(&encoder_queue_);
