@@ -22,6 +22,30 @@
       "revId": "6d9843b0a16dc018d38fcb66f963d748f776c63d",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ea15381_b358be9d",
+        "filename": "modules/rtp_rtcp/source/rtp_sender_video.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2019-04-04T14:19:17Z",
+      "side": 1,
+      "message": "I\u0027m very surprised that it works for std::unique_ptr! I had expected it to treat std::unique_ptr::operator-bool as any old function, and disallow its invocation.",
+      "parentUuid": "f9536f70_f3d151e5",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 80
+      },
+      "revId": "6d9843b0a16dc018d38fcb66f963d748f776c63d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
