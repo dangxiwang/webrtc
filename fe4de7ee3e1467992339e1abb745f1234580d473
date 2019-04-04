@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "063c4502_9aca641b",
+        "filename": "modules/rtp_rtcp/source/rtp_sender_video.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 652,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-04-04T14:50:01Z",
+      "side": 1,
+      "message": "alternatively record just the 1st sequence number and the rtp timestamp.\npackets in a frame MUST have consecutive sequence numbers.\n\nThen later loop can be:\n   for (uint16_t i \u003d 0; i \u003c num_packets; ++i) {\n     map_-\u003eInsert(first_sequence_number + i,\n                  {rtp_timestamp, /*first\u003d*/i\u003d\u003d0, /*last\u003d*/i \u003d\u003d num_packets - 1});\n   }",
+      "range": {
+        "startLine": 651,
+        "startChar": 2,
+        "endLine": 652,
+        "endChar": 34
+      },
+      "revId": "fe4de7ee3e1467992339e1abb745f1234580d473",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aefc7cfb_4e26d8d5",
+        "filename": "modules/rtp_rtcp/source/rtp_sender_video.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 740,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-04-04T14:50:01Z",
+      "side": 1,
+      "message": "const auto\u0026\nif you still want this kind of vector.",
+      "range": {
+        "startLine": 740,
+        "startChar": 15,
+        "endLine": 740,
+        "endChar": 19
+      },
+      "revId": "fe4de7ee3e1467992339e1abb745f1234580d473",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
