@@ -80,8 +80,11 @@ class VideoStreamEncoderInterface : public rtc::VideoSinkInterface<VideoFrame> {
 
   // Set the currently estimated network properties. A |bitrate_bps|
   // of zero pauses the encoder.
+  // |link_allocation| is the bandwidth available for this video stream on the
+  // network link. It is always at least |target_bitrate| but may be higher
+  // if we are not network constrained.
   virtual void OnBitrateUpdated(DataRate target_bitrate,
-                                DataRate target_headroom,
+                                DataRate link_allocation,
                                 uint8_t fraction_lost,
                                 int64_t round_trip_time_ms) = 0;
 
