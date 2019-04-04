@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f9536f70_f3d151e5",
+        "filename": "modules/rtp_rtcp/source/rtp_sender_video.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-04-04T12:13:43Z",
+      "side": 1,
+      "message": "rtp_sequence_number_map_ is const, you do not have to hold crit_ to check if it is null,\nbut you want to protect pointer context instead, i.e. replace RTC_GUARDED_BY(crit_) with RTC_PT_GUARDED_BY(crit_)",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 80
+      },
+      "revId": "6d9843b0a16dc018d38fcb66f963d748f776c63d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
