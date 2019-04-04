@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d72b1652_580613b6",
+        "filename": "api/video_codecs/video_encoder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2019-04-04T07:49:42Z",
+      "side": 1,
+      "message": "Do you get an assignment operator by default? Otherwise, maybe add together with the copy constructor; I think they usually go together. (I\u0027m always confused by C++ defaults).",
+      "range": {
+        "startLine": 201,
+        "startChar": 4,
+        "endLine": 201,
+        "endChar": 61
+      },
+      "revId": "4dc3278e83d10abb556288e3ae2cc22d813d3163",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27a18e36_9a845d47",
+        "filename": "video/video_stream_encoder.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1516,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2019-04-04T07:49:42Z",
+      "side": 1,
+      "message": "Move to top of function, so any failures get a stack trace before the jump to the task queue.",
+      "range": {
+        "startLine": 1516,
+        "startChar": 1,
+        "endLine": 1516,
+        "endChar": 48
+      },
+      "revId": "4dc3278e83d10abb556288e3ae2cc22d813d3163",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2543a885_42514a40",
+        "filename": "video/video_stream_encoder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2019-04-04T07:49:42Z",
+      "side": 1,
+      "message": "Some word is missing. And I don\u0027t quite understand the explanation. Maybe rephrase to make it clearer what the member means?",
+      "range": {
+        "startLine": 122,
+        "startChar": 7,
+        "endLine": 122,
+        "endChar": 38
+      },
+      "revId": "4dc3278e83d10abb556288e3ae2cc22d813d3163",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
