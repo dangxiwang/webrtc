@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8edc4b7d_a562e1f6",
+        "filename": "call/rtp_video_sender.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 747,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2019-04-05T09:43:47Z",
+      "side": 1,
+      "message": "In principle, you could instead search for the ssrc in rtp_config_.ssrcs, let |i| be the right index, and then use rtp_streams_[i]. So there\u0027s no real need to call SSRC.\n\nBut I won\u0027t insist, if you find the current way simpler.\n\nHow often will this method be called?",
+      "range": {
+        "startLine": 746,
+        "startChar": 0,
+        "endLine": 747,
+        "endChar": 46
+      },
+      "revId": "e785143cf222a27df80ac9bf7e5c30e273ec3e1a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3da75ed8_c091844c",
+        "filename": "modules/rtp_rtcp/source/rtp_sender_video.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 739,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2019-04-05T09:43:47Z",
+      "side": 1,
+      "message": "It seems a bit awkward to have an extra loop here. If all insertions are for a range of packets corresponding to one frame, change Insert to take a timestamp, first seqno, and packet count instead?\n\nAlternatively, if you really want to do only one packet at a time, call Insert as part of the per-packet loop above.",
+      "range": {
+        "startLine": 731,
+        "startChar": 0,
+        "endLine": 739,
+        "endChar": 5
+      },
+      "revId": "e785143cf222a27df80ac9bf7e5c30e273ec3e1a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
