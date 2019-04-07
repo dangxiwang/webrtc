@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1368e6c4_eed556d9",
+        "filename": "call/rtp_video_sender.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 747,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2019-04-07T21:03:47Z",
+      "side": 1,
+      "message": "I think the way it\u0027s done in PS4 is simpler than in PS5 - please compare and let me know what you think. (I think it is simpler in PS4 even if we shave off the DCHECKs in PS5; but I think we should keep them.)\n\nThis method will be called once per incoming LossNotification RTCP message. We should expect to see roughly as many of those on the one direction, as we lose RTP packets on the other direction. With video at 15 FPS, and assuming 10% packet loss, that would 1.5 such packet per second. (Also, I don\u0027t expect that the list of SSRCs is very long, or do you think it could be?) So efficiency is probably not a major concern here.",
+      "parentUuid": "8edc4b7d_a562e1f6",
+      "range": {
+        "startLine": 746,
+        "startChar": 0,
+        "endLine": 747,
+        "endChar": 46
+      },
+      "revId": "e785143cf222a27df80ac9bf7e5c30e273ec3e1a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3da75ed8_c091844c",
         "filename": "modules/rtp_rtcp/source/rtp_sender_video.cc",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "e785143cf222a27df80ac9bf7e5c30e273ec3e1a",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92a4db40_a117e459",
+        "filename": "modules/rtp_rtcp/source/rtp_sender_video.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 739,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2019-04-07T21:03:47Z",
+      "side": 1,
+      "message": "1. One packet at a time in the loop above is not a viable solution because of |crit_|; please see line #730 in PS4.\n2. I avoided Insert() for a range because Yves has expressed some interest in templatizing RtpSequenceNumberMap, and a generic version would not be able to produce the values. However, since this is in the future, and since it\u0027s solvable, I\u0027ll add that.\n3. CL #131386 adds InsertFrame, then.",
+      "parentUuid": "3da75ed8_c091844c",
+      "range": {
+        "startLine": 731,
+        "startChar": 0,
+        "endLine": 739,
+        "endChar": 5
+      },
+      "revId": "e785143cf222a27df80ac9bf7e5c30e273ec3e1a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
