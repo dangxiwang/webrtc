@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f2976243_319f0324",
+        "filename": "modules/rtp_rtcp/source/rtp_sender_video.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 728,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2019-04-08T10:51:05Z",
+      "side": 1,
+      "message": "The way the randomizing timestamp offset is applied is currently a bit confusing. I think it would be clearest if the timestamps recorded in the mapping are the ones appearing on the wire; if there\u0027s a good reason to do it differently, please write a comment on that. The code owning the RtpSequenceNumberMap may be a good place for documenting such details of the map usage.",
+      "range": {
+        "startLine": 728,
+        "startChar": 4,
+        "endLine": 728,
+        "endChar": 78
+      },
+      "revId": "1fec5a9d587ecd7ca8d64eb0ce7fd6dbcf48148f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
