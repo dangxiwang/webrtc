@@ -46,6 +46,30 @@
       "revId": "1fec5a9d587ecd7ca8d64eb0ce7fd6dbcf48148f",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a8bb5bf2_5a14773c",
+        "filename": "modules/rtp_rtcp/source/rtp_sender_video.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 728,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2019-04-08T12:24:43Z",
+      "side": 1,
+      "message": "The confusion I mentioned is in the caller, see comment here: https://cs.chromium.org/chromium/src/third_party/webrtc/call/rtp_video_sender.cc?rcl\u003d59e875ce18bb24aa6d1ec5cdf128d7ef244fa37a\u0026l\u003d411",
+      "parentUuid": "c24c6809_bef6505e",
+      "range": {
+        "startLine": 728,
+        "startChar": 4,
+        "endLine": 728,
+        "endChar": 78
+      },
+      "revId": "1fec5a9d587ecd7ca8d64eb0ce7fd6dbcf48148f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
