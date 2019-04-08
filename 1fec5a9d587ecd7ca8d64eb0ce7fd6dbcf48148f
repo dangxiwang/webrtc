@@ -22,6 +22,30 @@
       "revId": "1fec5a9d587ecd7ca8d64eb0ce7fd6dbcf48148f",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c24c6809_bef6505e",
+        "filename": "modules/rtp_rtcp/source/rtp_sender_video.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 728,
+      "author": {
+        "id": 5147
+      },
+      "writtenOn": "2019-04-08T12:15:15Z",
+      "side": 1,
+      "message": "I\u0027ve added the comment in the header file, as discussed.",
+      "parentUuid": "f2976243_319f0324",
+      "range": {
+        "startLine": 728,
+        "startChar": 4,
+        "endLine": 728,
+        "endChar": 78
+      },
+      "revId": "1fec5a9d587ecd7ca8d64eb0ce7fd6dbcf48148f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
