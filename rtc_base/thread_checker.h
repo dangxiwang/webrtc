@@ -17,10 +17,7 @@
 
 namespace rtc {
 // TODO(srte): Replace usages of this with SequenceChecker.
-class ThreadChecker : public webrtc::SequenceChecker {
- public:
-  bool CalledOnValidThread() const { return IsCurrent(); }
-  void DetachFromThread() { Detach(); }
-};
+using ThreadChecker = webrtc::SequenceChecker;
+
 }  // namespace rtc
 #endif  // RTC_BASE_THREAD_CHECKER_H_
