@@ -15,7 +15,6 @@
 
 #include "common_audio/signal_processing/include/signal_processing_library.h"
 #include "modules/audio_device/audio_device_buffer.h"
-#include "rtc_base/bind.h"
 #include "rtc_base/checks.h"
 #include "rtc_base/logging.h"
 #include "rtc_base/time_utils.h"
@@ -348,13 +347,11 @@ int32_t AudioDeviceBuffer::GetPlayoutData(void* audio_buffer) {
 }
 
 void AudioDeviceBuffer::StartPeriodicLogging() {
-  task_queue_.PostTask(rtc::Bind(&AudioDeviceBuffer::LogStats, this,
-                                 AudioDeviceBuffer::LOG_START));
+  task_queue_.PostTask([this] { LogStats(LOG_START); });
 }
 
 void AudioDeviceBuffer::StopPeriodicLogging() {
-  task_queue_.PostTask(rtc::Bind(&AudioDeviceBuffer::LogStats, this,
-                                 AudioDeviceBuffer::LOG_STOP));
+  task_queue_.PostTask([this] { LogStats(LOG_STOP); });
 }
 
 void AudioDeviceBuffer::LogStats(LogState state) {
@@ -443,8 +440,7 @@ void AudioDeviceBuffer::LogStats(LogState state) {
   RTC_DCHECK_GT(time_to_wait_ms, 0) << "Invalid timer interval";
 
   // Keep posting new (delayed) tasks until state is changed to kLogStop.
-  task_queue_.PostDelayedTask(rtc::Bind(&AudioDeviceBuffer::LogStats, this,
-                                        AudioDeviceBuffer::LOG_ACTIVE),
+  task_queue_.PostDelayedTask([this] { LogStats(LOG_ACTIVE); },
                               time_to_wait_ms);
 }
 
