@@ -21,6 +21,7 @@
 #include "logging/rtc_event_log/rtc_event_log_factory.h"
 #include "media/engine/webrtc_media_engine.h"
 #include "modules/audio_device/include/audio_device.h"
+#include "modules/audio_processing/aec_dump/aec_dump_factory.h"
 #include "modules/audio_processing/include/audio_processing.h"
 #include "p2p/client/basic_port_allocator.h"
 #include "rtc_base/location.h"
@@ -133,10 +134,12 @@ std::unique_ptr<VideoDecoderFactory> CreateVideoDecoderFactory(
 std::unique_ptr<cricket::MediaEngineInterface> CreateMediaEngine(
     PeerConnectionFactoryComponents* pcf_dependencies,
     absl::optional<AudioConfig> audio_config,
+    absl::optional<std::string> aec_dump_path,
     double bitrate_multiplier,
     std::map<std::string, absl::optional<int>> stream_required_spatial_index,
     VideoQualityAnalyzerInjectionHelper* video_analyzer_helper,
-    absl::optional<std::string> audio_output_file_name) {
+    absl::optional<std::string> audio_output_file_name,
+    rtc::TaskQueue* task_queue) {
   rtc::scoped_refptr<AudioDeviceModule> adm = CreateAudioDeviceModule(
       std::move(audio_config), std::move(audio_output_file_name));
 
@@ -147,11 +150,16 @@ std::unique_ptr<cricket::MediaEngineInterface> CreateMediaEngine(
   std::unique_ptr<VideoDecoderFactory> video_decoder_factory =
       CreateVideoDecoderFactory(pcf_dependencies, video_analyzer_helper);
 
+  AudioProcessing* apm = webrtc::AudioProcessingBuilder().Create();
+  if (aec_dump_path) {
+    apm->AttachAecDump(AecDumpFactory::Create(*aec_dump_path, -1, task_queue));
+  }
+
   return cricket::WebRtcMediaEngineFactory::Create(
       adm, webrtc::CreateBuiltinAudioEncoderFactory(),
       webrtc::CreateBuiltinAudioDecoderFactory(),
       std::move(video_encoder_factory), std::move(video_decoder_factory),
-      /*audio_mixer=*/nullptr, webrtc::AudioProcessingBuilder().Create());
+      /*audio_mixer=*/nullptr, apm);
 }
 
 // Creates PeerConnectionFactoryDependencies objects, providing entities
@@ -161,19 +169,21 @@ std::unique_ptr<cricket::MediaEngineInterface> CreateMediaEngine(
 PeerConnectionFactoryDependencies CreatePCFDependencies(
     std::unique_ptr<PeerConnectionFactoryComponents> pcf_dependencies,
     absl::optional<AudioConfig> audio_config,
+    absl::optional<std::string> aec_dump_path,
     double bitrate_multiplier,
     std::map<std::string, absl::optional<int>> stream_required_spatial_index,
     VideoQualityAnalyzerInjectionHelper* video_analyzer_helper,
     rtc::Thread* network_thread,
     rtc::Thread* signaling_thread,
-    absl::optional<std::string> audio_output_file_name) {
+    absl::optional<std::string> audio_output_file_name,
+    rtc::TaskQueue* task_queue) {
   PeerConnectionFactoryDependencies pcf_deps;
   pcf_deps.network_thread = network_thread;
   pcf_deps.signaling_thread = signaling_thread;
   pcf_deps.media_engine = CreateMediaEngine(
-      pcf_dependencies.get(), std::move(audio_config), bitrate_multiplier,
-      std::move(stream_required_spatial_index), video_analyzer_helper,
-      std::move(audio_output_file_name));
+      pcf_dependencies.get(), std::move(audio_config), std::move(aec_dump_path),
+      bitrate_multiplier, std::move(stream_required_spatial_index),
+      video_analyzer_helper, std::move(audio_output_file_name), task_queue);
 
   pcf_deps.call_factory = std::move(pcf_dependencies->call_factory);
   pcf_deps.event_log_factory = std::move(pcf_dependencies->event_log_factory);
@@ -232,7 +242,8 @@ std::unique_ptr<TestPeer> TestPeer::CreateTestPeer(
     VideoQualityAnalyzerInjectionHelper* video_analyzer_helper,
     rtc::Thread* signaling_thread,
     absl::optional<std::string> audio_output_file_name,
-    double bitrate_multiplier) {
+    double bitrate_multiplier,
+    rtc::TaskQueue* task_queue) {
   RTC_DCHECK(components);
   RTC_DCHECK(params);
   SetMandatoryEntities(components.get());
@@ -253,9 +264,10 @@ std::unique_ptr<TestPeer> TestPeer::CreateTestPeer(
   // Create peer connection factory.
   PeerConnectionFactoryDependencies pcf_deps = CreatePCFDependencies(
       std::move(components->pcf_dependencies), params->audio_config,
-      bitrate_multiplier, std::move(stream_required_spatial_index),
-      video_analyzer_helper, components->network_thread, signaling_thread,
-      std::move(audio_output_file_name));
+      params->aec_dump_path, bitrate_multiplier,
+      std::move(stream_required_spatial_index), video_analyzer_helper,
+      components->network_thread, signaling_thread,
+      std::move(audio_output_file_name), task_queue);
   rtc::scoped_refptr<PeerConnectionFactoryInterface> pcf =
       CreateModularPeerConnectionFactory(std::move(pcf_deps));
 

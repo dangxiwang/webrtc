@@ -22,6 +22,7 @@
 #include "pc/peer_connection_wrapper.h"
 #include "pc/test/mock_peer_connection_observers.h"
 #include "rtc_base/network.h"
+#include "rtc_base/task_queue.h"
 #include "rtc_base/thread.h"
 #include "test/pc/e2e/analyzer/video/video_quality_analyzer_injection_helper.h"
 #include "test/pc/e2e/peer_connection_quality_test_params.h"
@@ -54,7 +55,8 @@ class TestPeer final : public PeerConnectionWrapper {
       VideoQualityAnalyzerInjectionHelper* video_analyzer_helper,
       rtc::Thread* signaling_thread,
       absl::optional<std::string> audio_output_file_name,
-      double bitrate_multiplier);
+      double bitrate_multiplier,
+      rtc::TaskQueue* task_queue);
 
   Params* params() const { return params_.get(); }
 

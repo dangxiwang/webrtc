@@ -37,7 +37,8 @@ TEST(PeerConnectionE2EQualityTestSmokeTest, RunWithEmulatedNetwork) {
 
   auto alice_network_behavior =
       absl::make_unique<SimulatedNetwork>(BuiltInNetworkBehaviorConfig());
-  SimulatedNetwork* alice_network_behavior_ptr = alice_network_behavior.get();
+  // SimulatedNetwork* alice_network_behavior_ptr =
+  // alice_network_behavior.get();
   EmulatedNetworkNode* alice_node =
       network_emulation_manager->CreateEmulatedNode(
           std::move(alice_network_behavior));
@@ -66,27 +67,32 @@ TEST(PeerConnectionE2EQualityTestSmokeTest, RunWithEmulatedNetwork) {
   auto fixture = CreatePeerConnectionE2EQualityTestFixture(
       "smoke_test", std::move(audio_quality_analyzer),
       std::move(video_quality_analyzer));
-  fixture->ExecuteAt(TimeDelta::seconds(2),
-                     [alice_network_behavior_ptr](TimeDelta) {
-                       BuiltInNetworkBehaviorConfig config;
-                       config.loss_percent = 5;
-                       alice_network_behavior_ptr->SetConfig(config);
-                     });
+  // fixture->ExecuteAt(TimeDelta::seconds(2),
+  //                    [alice_network_behavior_ptr](TimeDelta) {
+  //                      BuiltInNetworkBehaviorConfig config;
+  //                      config.loss_percent = 5;
+  //                      alice_network_behavior_ptr->SetConfig(config);
+  //                    });
 
   // Setup components. We need to provide rtc::NetworkManager compatible with
   // emulated network layer.
   EmulatedNetworkManagerInterface* alice_network =
       network_emulation_manager->CreateEmulatedNetworkManagerInterface(
           {alice_endpoint});
-  fixture->AddPeer(alice_network->network_thread(),
-                   alice_network->network_manager(), [](PeerConfigurer* alice) {
-                     VideoConfig video_config(640, 360, 30);
-                     video_config.stream_label = "alice-video";
-                     alice->AddVideoConfig(std::move(video_config));
-                     AudioConfig audio_config;
-                     audio_config.stream_label = "alice-audio";
-                     alice->SetAudioConfig(std::move(audio_config));
-                   });
+  fixture->AddPeer(
+      alice_network->network_thread(), alice_network->network_manager(),
+      [](PeerConfigurer* alice) {
+        VideoConfig video_config(640, 360, 30);
+        video_config.stream_label = "alice-video";
+        alice->AddVideoConfig(std::move(video_config));
+        AudioConfig audio_config;
+        audio_config.mode = AudioConfig::Mode::kFile;
+        audio_config.input_file_name = "/tmp/alice_source.wav";
+        audio_config.input_dump_file_name = "/tmp/alice_captured_audio.wav";
+        audio_config.output_dump_file_name = "/tmp/alice_rendered_audio.wav";
+        audio_config.stream_label = "alice-audio";
+        alice->SetAudioConfig(std::move(audio_config));
+      });
 
   EmulatedNetworkManagerInterface* bob_network =
       network_emulation_manager->CreateEmulatedNetworkManagerInterface(
@@ -99,9 +105,11 @@ TEST(PeerConnectionE2EQualityTestSmokeTest, RunWithEmulatedNetwork) {
                      AudioConfig audio_config;
                      audio_config.stream_label = "bob-audio";
                      bob->SetAudioConfig(std::move(audio_config));
+                     bob->SetRtcEventLogPath("/tmp/bob-rtc-log");
+                     bob->SetAecDumpPath("/tmp/bob-aec-dump");
                    });
 
-  RunParams run_params(TimeDelta::seconds(5));
+  RunParams run_params(TimeDelta::seconds(10));
   run_params.video_encoder_bitrate_multiplier = 1.1;
   fixture->Run(run_params);
 
