@@ -35,7 +35,6 @@ if (rtc_include_tests) {
 
     deps = [
       ":default_encoded_image_data_injector_unittest",
-      ":peer_connection_e2e_smoke_test",
       ":single_process_encoded_image_data_injector_unittest",
     ]
   }
@@ -208,11 +207,13 @@ if (rtc_include_tests) {
       "../../../modules/audio_device:audio_device_api",
       "../../../modules/audio_device:audio_device_impl",
       "../../../modules/audio_processing:api",
+      "../../../modules/audio_processing/aec_dump:aec_dump",
       "../../../p2p:rtc_p2p",
       "../../../pc:pc_test_utils",
       "../../../pc:peerconnection_wrapper",
       "../../../rtc_base",
       "../../../rtc_base:rtc_base_approved",
+      "../../../rtc_base:rtc_task_queue",
       "../../../test:copy_to_file_audio_capturer",
       "../../../test:video_test_common",
       "//third_party/abseil-cpp/absl/memory",
@@ -320,6 +321,10 @@ if (rtc_include_tests) {
       "../../../test:fileutils",
       "../../../test:test_support",
       "//third_party/abseil-cpp/absl/memory",
+    ]
+    data = [
+      "../../../resources/pc_quality_smoke_test_alice_source.wav",
+      "../../../resources/pc_quality_smoke_test_bob_source.wav",
     ]
   }
 

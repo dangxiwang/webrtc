@@ -528,6 +528,7 @@ if (rtc_include_tests) {
       "modules/congestion_controller/goog_cc:goog_cc_slow_tests",
       "rtc_base/task_utils:repeating_task_unittests",
       "test:test_main",
+      "test/pc/e2e:peer_connection_e2e_smoke_test",
     ]
   }
 
