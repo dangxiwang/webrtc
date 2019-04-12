@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e2625ee1_74e0d748",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5087
+      },
+      "writtenOn": "2019-04-12T07:18:01Z",
+      "side": 1,
+      "message": "This CL also adds conversational speech files for the smoke tests (and uses them).\n\nMaybe it worth pointing that out in the CL description.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 70
+      },
+      "revId": "8b0db416f6324a4e6fd1de4e0cd623f5ec86e542",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
