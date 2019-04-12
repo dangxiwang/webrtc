@@ -342,6 +342,8 @@ if (rtc_include_tests) {
     "../resources/video_coding/pltype103_header_only.rtp",
     "../resources/video_coding/ssrcs-2.pcap",
     "../resources/video_coding/ssrcs-3.pcap",
+    "../resources/pc_quality_smoke_test_alice_source.wav",
+    "../resources/pc_quality_smoke_test_bob_source.wav",
   ]
 
   if (is_ios) {
