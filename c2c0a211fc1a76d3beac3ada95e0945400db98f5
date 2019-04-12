@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "473b3f24_85b035ab",
+        "filename": "test/BUILD.gn",
+        "patchSetId": 9
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 5087
+      },
+      "writtenOn": "2019-04-12T09:38:55Z",
+      "side": 1,
+      "message": "A possible solution to this duplication and keep resources closer to the place of usage is to create a bundle_data next to the rtc_source_set like we do for the scenario framework: https://cs.chromium.org/chromium/src/third_party/webrtc/test/scenario/BUILD.gn?l\u003d34-157\u0026rcl\u003d7150d8c60f35806d4a4e0164821e874fec0b0caa.\n\nThat way I think the iOS tests should pass as well, but I am not 100% sure.\n\nNote that the rtc_source_set will have both the `data` field and the `deps` to the `bundle_data`.",
+      "range": {
+        "startLine": 345,
+        "startChar": 4,
+        "endLine": 346,
+        "endChar": 56
+      },
+      "revId": "c2c0a211fc1a76d3beac3ada95e0945400db98f5",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
