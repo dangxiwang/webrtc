@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "359ffb42_c65612cc",
+        "filename": "modules/audio_processing/aec3/echo_remover.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 5125
+      },
+      "writtenOn": "2019-04-15T15:08:05Z",
+      "side": 1,
+      "message": "I think this should be changed to\n\n  // Suppressor nearend estimate.\n  std::array\u003cfloat, kFftLengthBy2Plus1\u003e nearend_spectrum_bounded;\n  if (aec_state_.UsableLinearEstimate()) {\n    std::transform(E2.begin(), E2.end(), Y2.begin(), nearend_spectrum_bounded.begin(),\n                   [](float a, float b) { return std::min(a, b); });\n  } \n  auto\u0026 nearend_spectrum \u003d aec_state_.UsableLinearEstimate() ? nearend_spectrum_bounded : Y2; \n\n  That will avoid an extra memcpy.",
+      "range": {
+        "startLine": 297,
+        "startChar": 1,
+        "endLine": 304,
+        "endChar": 3
+      },
+      "revId": "9f2ff05389bd2e82e4bf18db34c0cfeeacd031c0",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
