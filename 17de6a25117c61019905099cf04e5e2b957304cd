@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "942dd51a_a0b92d81",
+        "filename": "video/video_stream_encoder.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1340,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2019-05-06T07:24:48Z",
+      "side": 1,
+      "message": "The way I had expected this to work would be to call GetI420() first, use that buffer if it\u0027s non-null, and only call ToI420() if GetI420() failed.\n\nBut that won\u0027t work here, since we need ownership to construct out_frame.\n\nIt could be done differently if/when responsibility for ToI420 conversion is pushed down to the encoders.",
+      "range": {
+        "startLine": 1339,
+        "startChar": 0,
+        "endLine": 1340,
+        "endChar": 63
+      },
+      "revId": "17de6a25117c61019905099cf04e5e2b957304cd",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    }
+  ]
+}
