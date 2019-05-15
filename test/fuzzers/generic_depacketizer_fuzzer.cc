@@ -14,7 +14,7 @@
 namespace webrtc {
 
 void FuzzOneInput(const uint8_t* data, size_t size) {
-  RtpDepacketizerGeneric depacketizer;
+  RtpDepacketizerGeneric depacketizer(/*parse_generic_header=*/true);
   RtpDepacketizer::ParsedPayload parsed_payload;
   depacketizer.Parse(&parsed_payload, data, size);
 }
