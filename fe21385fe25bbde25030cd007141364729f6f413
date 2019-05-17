@@ -22,6 +22,30 @@
       "revId": "fe21385fe25bbde25030cd007141364729f6f413",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5784e3c_c7f76807",
+        "filename": "api/transport/test/feedback_generator_interface.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2019-05-17T15:44:09Z",
+      "side": 1,
+      "message": "Not anymore.",
+      "parentUuid": "345f42dd_b6e6309d",
+      "range": {
+        "startLine": 22,
+        "startChar": 4,
+        "endLine": 22,
+        "endChar": 23
+      },
+      "revId": "fe21385fe25bbde25030cd007141364729f6f413",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
