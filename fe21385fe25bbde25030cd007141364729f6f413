@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "345f42dd_b6e6309d",
+        "filename": "api/transport/test/feedback_generator_interface.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 6547
+      },
+      "writtenOn": "2019-05-17T14:15:13Z",
+      "side": 1,
+      "message": "Is this needed?",
+      "range": {
+        "startLine": 22,
+        "startChar": 4,
+        "endLine": 22,
+        "endChar": 23
+      },
+      "revId": "fe21385fe25bbde25030cd007141364729f6f413",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
