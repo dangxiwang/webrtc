@@ -129,6 +129,10 @@ TEST(SessionDescriptionTest, AddContentTransfersExtmapAllowMixedSetting) {
             data_desc->extmap_allow_mixed_enum());
 }
 
+#if 0
+// Test for DataContentDescription have been commented out per
+// TODO(bugs.webrtc.org/10597): Declare this class obsolete and remove it
+
 TEST(SessionDescriptionTest, DataContentDescriptionCanAddStream) {
   auto description = absl::make_unique<DataContentDescription>();
   // Adding a stream without setting protocol first should work.
@@ -186,5 +190,6 @@ TEST(SessionDescriptionTest,
   description->set_protocol(kMediaProtocolDtlsSavpf);
   EXPECT_EQ(1UL, description->streams().size());
 }
+#endif
 
 }  // namespace cricket
