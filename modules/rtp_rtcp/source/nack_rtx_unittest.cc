@@ -135,11 +135,12 @@ class RtpRtcpRtxNackTest : public ::testing::Test {
     configuration.receive_statistics = receive_statistics_.get();
     configuration.outgoing_transport = &transport_;
     configuration.retransmission_rate_limiter = &retransmission_rate_limiter_;
+    configuration.media_send_ssrc = kTestSsrc;
+    configuration.rtx_send_ssrc = kTestRtxSsrc;
     rtp_rtcp_module_ = RtpRtcp::Create(configuration);
     rtp_sender_video_ = absl::make_unique<RTPSenderVideo>(
         &fake_clock, rtp_rtcp_module_->RtpSender(), nullptr,
         &playout_delay_oracle_, nullptr, false, false, FieldTrialBasedConfig());
-    rtp_rtcp_module_->SetSSRC(kTestSsrc);
     rtp_rtcp_module_->SetRTCPStatus(RtcpMode::kCompound);
     rtp_rtcp_module_->SetStorePacketsStatus(true, 600);
     EXPECT_EQ(0, rtp_rtcp_module_->SetSendingStatus(true));
@@ -200,7 +201,6 @@ class RtpRtcpRtxNackTest : public ::testing::Test {
     rtx_receiver_ = transport_.stream_receiver_controller_.CreateReceiver(
         kTestRtxSsrc, &rtx_stream_);
     rtp_rtcp_module_->SetRtxSendStatus(rtx_method);
-    rtp_rtcp_module_->SetRtxSsrc(kTestRtxSsrc);
     transport_.DropEveryNthPacket(loss);
     uint32_t timestamp = 3000;
     uint16_t nack_list[kVideoNackListSize];

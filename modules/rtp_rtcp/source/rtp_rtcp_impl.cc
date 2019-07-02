@@ -69,7 +69,8 @@ ModuleRtpRtcpImpl::ModuleRtpRtcpImpl(const Configuration& configuration)
                    configuration.rtcp_report_interval_ms > 0
                        ? configuration.rtcp_report_interval_ms
                        : (configuration.audio ? kDefaultAudioReportInterval
-                                              : kDefaultVideoReportInterval)),
+                                              : kDefaultVideoReportInterval),
+                   configuration.media_send_ssrc.value_or(0)),
       rtcp_receiver_(configuration.clock,
                      configuration.receiver_only,
                      configuration.rtcp_packet_type_counter_observer,
