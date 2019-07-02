@@ -80,12 +80,13 @@ class RtcpSenderTest : public ::testing::Test {
     configuration.outgoing_transport = &test_transport_;
     configuration.retransmission_rate_limiter = &retransmission_rate_limiter_;
     configuration.rtcp_report_interval_ms = 1000;
+    configuration.media_send_ssrc = kSenderSsrc;
 
     rtp_rtcp_impl_.reset(new ModuleRtpRtcpImpl(configuration));
     rtcp_sender_.reset(new RTCPSender(false, &clock_, receive_statistics_.get(),
                                       nullptr, nullptr, &test_transport_,
-                                      configuration.rtcp_report_interval_ms));
-    rtcp_sender_->SetSSRC(kSenderSsrc);
+                                      configuration.rtcp_report_interval_ms,
+                                      *configuration.media_send_ssrc));
     rtcp_sender_->SetRemoteSSRC(kRemoteSsrc);
     rtcp_sender_->SetTimestampOffset(kStartRtpTimestamp);
     rtcp_sender_->SetLastRtpTime(kRtpTimestamp, clock_.TimeInMilliseconds(),
@@ -187,8 +188,8 @@ TEST_F(RtcpSenderTest, SendConsecutiveSrWithExactSlope) {
 
 TEST_F(RtcpSenderTest, DoNotSendSrBeforeRtp) {
   rtcp_sender_.reset(new RTCPSender(false, &clock_, receive_statistics_.get(),
-                                    nullptr, nullptr, &test_transport_, 1000));
-  rtcp_sender_->SetSSRC(kSenderSsrc);
+                                    nullptr, nullptr, &test_transport_, 1000,
+                                    kSenderSsrc));
   rtcp_sender_->SetRemoteSSRC(kRemoteSsrc);
   rtcp_sender_->SetRTCPStatus(RtcpMode::kReducedSize);
   rtcp_sender_->SetSendingStatus(feedback_state(), true);
@@ -205,8 +206,8 @@ TEST_F(RtcpSenderTest, DoNotSendSrBeforeRtp) {
 
 TEST_F(RtcpSenderTest, DoNotSendCompundBeforeRtp) {
   rtcp_sender_.reset(new RTCPSender(false, &clock_, receive_statistics_.get(),
-                                    nullptr, nullptr, &test_transport_, 1000));
-  rtcp_sender_->SetSSRC(kSenderSsrc);
+                                    nullptr, nullptr, &test_transport_, 1000,
+                                    kSenderSsrc));
   rtcp_sender_->SetRemoteSSRC(kRemoteSsrc);
   rtcp_sender_->SetRTCPStatus(RtcpMode::kCompound);
   rtcp_sender_->SetSendingStatus(feedback_state(), true);
@@ -551,8 +552,8 @@ TEST_F(RtcpSenderTest, TestNoXrRrtrSentIfNotEnabled) {
 TEST_F(RtcpSenderTest, TestRegisterRtcpPacketTypeObserver) {
   RtcpPacketTypeCounterObserverImpl observer;
   rtcp_sender_.reset(new RTCPSender(false, &clock_, receive_statistics_.get(),
-                                    &observer, nullptr, &test_transport_,
-                                    1000));
+                                    &observer, nullptr, &test_transport_, 1000,
+                                    kSenderSsrc));
   rtcp_sender_->SetRemoteSSRC(kRemoteSsrc);
   rtcp_sender_->SetRTCPStatus(RtcpMode::kReducedSize);
   EXPECT_EQ(0, rtcp_sender_->SendRTCP(feedback_state(), kRtcpPli));
@@ -674,8 +675,8 @@ TEST_F(RtcpSenderTest, ByeMustBeLast) {
 
   // Re-configure rtcp_sender_ with mock_transport_
   rtcp_sender_.reset(new RTCPSender(false, &clock_, receive_statistics_.get(),
-                                    nullptr, nullptr, &mock_transport, 1000));
-  rtcp_sender_->SetSSRC(kSenderSsrc);
+                                    nullptr, nullptr, &mock_transport, 1000,
+                                    kSenderSsrc));
   rtcp_sender_->SetRemoteSSRC(kRemoteSsrc);
   rtcp_sender_->SetTimestampOffset(kStartRtpTimestamp);
   rtcp_sender_->SetLastRtpTime(kRtpTimestamp, clock_.TimeInMilliseconds(),

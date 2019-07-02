@@ -113,7 +113,8 @@ AudioSendStream::AudioSendStream(
                                              config.frame_encryptor,
                                              config.crypto_options,
                                              config.rtp.extmap_allow_mixed,
-                                             config.rtcp_report_interval_ms)) {}
+                                             config.rtcp_report_interval_ms,
+                                             config.rtp.ssrc)) {}
 
 AudioSendStream::AudioSendStream(
     Clock* clock,
@@ -239,7 +240,8 @@ void AudioSendStream::ConfigureStream(
   RTC_DCHECK(first_time ||
              old_config.send_transport == new_config.send_transport);
 
-  if (first_time || old_config.rtp.ssrc != new_config.rtp.ssrc) {
+  RTC_DCHECK_EQ(old_config.rtp.ssrc, new_config.rtp.ssrc);
+  if (first_time) {
     channel_send->SetLocalSSRC(new_config.rtp.ssrc);
     if (stream->suspended_rtp_state_) {
       stream->rtp_rtcp_module_->SetRtpState(*stream->suspended_rtp_state_);

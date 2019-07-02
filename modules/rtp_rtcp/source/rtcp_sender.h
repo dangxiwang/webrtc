@@ -68,7 +68,8 @@ class RTCPSender {
              RtcpPacketTypeCounterObserver* packet_type_counter_observer,
              RtcEventLog* event_log,
              Transport* outgoing_transport,
-             int report_interval_ms);
+             int report_interval_ms,
+             uint32_t ssrc);
   virtual ~RTCPSender();
 
   RtcpMode Status() const;
