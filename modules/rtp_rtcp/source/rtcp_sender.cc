@@ -119,7 +119,8 @@ RTCPSender::RTCPSender(
     RtcpPacketTypeCounterObserver* packet_type_counter_observer,
     RtcEventLog* event_log,
     Transport* outgoing_transport,
-    int report_interval_ms)
+    int report_interval_ms,
+    uint32_t ssrc)
     : audio_(audio),
       clock_(clock),
       random_(clock_->TimeInMicroseconds()),
@@ -132,7 +133,7 @@ RTCPSender::RTCPSender(
       timestamp_offset_(0),
       last_rtp_timestamp_(0),
       last_frame_capture_time_ms_(-1),
-      ssrc_(0),
+      ssrc_(ssrc),
       remote_ssrc_(0),
       receive_statistics_(receive_statistics),
 
