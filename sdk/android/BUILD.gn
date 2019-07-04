@@ -95,12 +95,11 @@ if (is_android) {
   }
 
   rtc_android_library("libjingle_peerconnection_metrics_default_java") {
-    java_files = [ "api/org/webrtc/Metrics.java" ]
+    java_files = [ "src/java/org/webrtc/Empty2.java" ]
 
     deps = [
-      ":base_java",
       ":libjingle_peerconnection_java",
-      "../../rtc_base:base_java",
+      ":metrics_java",
     ]
   }
 
@@ -123,18 +122,11 @@ if (is_android) {
     ]
   }
 
+  # TODO(sakal): Remove.
   rtc_static_library("libjingle_peerconnection_metrics_default_jni") {
     visibility = [ "*" ]
-    sources = [
-      "src/jni/android_metrics.cc",
-    ]
     deps = [
-      ":base_jni",
-      ":generated_metrics_jni",
-      ":native_api_jni",
-      ":peerconnection_jni",
-      "../../pc:peerconnection",
-      "../../system_wrappers:metrics",
+      ":metrics_jni",
     ]
   }
 
@@ -521,6 +513,15 @@ if (is_android) {
     ]
   }
 
+  rtc_android_library("metrics_java") {
+    visibility = [ "*" ]
+    java_files = [ "api/org/webrtc/Metrics.java" ]
+
+    deps = [
+      ":base_java",
+    ]
+  }
+
   ################################
   # JNI targets for Java modules #
   ################################
@@ -838,6 +839,19 @@ if (is_android) {
     deps = [
       ":libvpx_vp8_jni",
       ":libvpx_vp9_jni",
+    ]
+  }
+
+  rtc_static_library("metrics_jni") {
+    visibility = [ "*" ]
+    sources = [
+      "src/jni/android_metrics.cc",
+    ]
+    deps = [
+      ":base_jni",
+      ":generated_metrics_jni",
+      ":native_api_jni",
+      "../../system_wrappers:metrics",
     ]
   }
 
