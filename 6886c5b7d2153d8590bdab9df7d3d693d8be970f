@@ -22,6 +22,30 @@
       "revId": "6886c5b7d2153d8590bdab9df7d3d693d8be970f",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b659daa_97cf9b5a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5524
+      },
+      "writtenOn": "2019-07-19T10:28:34Z",
+      "side": 1,
+      "message": "That was really the case before too, but would result in warnings being logged if setting failed - so that was just a minor perf fix.",
+      "parentUuid": "df12b9bc_55d8fb5a",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 19
+      },
+      "revId": "6886c5b7d2153d8590bdab9df7d3d693d8be970f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
