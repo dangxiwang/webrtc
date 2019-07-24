@@ -121,7 +121,12 @@ bool CroppingWindowCapturer::IsOccluded(const DesktopVector& pos) {
 // static
 std::unique_ptr<DesktopCapturer> CroppingWindowCapturer::CreateCapturer(
     const DesktopCaptureOptions& options) {
-  return DesktopCapturer::CreateWindowCapturer(options);
+  std::unique_ptr<DesktopCapturer> capturer = CreateRawWindowCapturer(options);
+  if (capturer && options.detect_updated_region()) {
+    capturer.reset(new DesktopCapturerDifferWrapper(std::move(capturer)));
+  }
+
+  return capturer;
 }
 #endif
 
