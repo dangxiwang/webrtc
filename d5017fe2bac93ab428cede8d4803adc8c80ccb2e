@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e4d0e53c_bcbdf060",
+        "filename": "modules/desktop_capture/desktop_capturer.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 5166
+      },
+      "writtenOn": "2019-07-26T18:26:36Z",
+      "side": 1,
+      "message": "Sorry for not spotting this earlier (one of the benefits of small CLs, i guess), but now I see this in isolation, the asymmetry bothers me a bit. Why handle detect_updated_region in different places depending on the allow_cropping_window_capturer setting? If you instead move the above check into screen_capturer_win.cc:CreateRawScreenCapturer then you don\u0027t need to handle the differ in the cropping capturer, just like it\u0027s not handled in any of the other capturers. Then, the right way of adding differ support to existing users of the cropping capturer is to change them to call this method with appropriate capturer options.\n\nWDYT? It seems a bit more symmetric to me, and this CL essentially becomes \"deprecate CroppingWindowCapturer::CreateCapturer in favour of  DesktopCapturer::CreateWindowCapturer with suitable options\", and you get diffing for free. It might be a bit more far-reaching though--I don\u0027t know how many places the previous method is called.",
+      "revId": "d5017fe2bac93ab428cede8d4803adc8c80ccb2e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
