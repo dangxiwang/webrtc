@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3341ab01_ccc790f7",
+        "filename": "modules/desktop_capture/desktop_capture_options.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 9572
+      },
+      "writtenOn": "2019-07-26T00:54:48Z",
+      "side": 1,
+      "message": "Thoughts on whether the new flag belongs behind the WEBRTC_WIN #ifdef? Currently only has an effect on Windows, but I don\u0027t know how likely that is to change in the future...",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 6
+      },
+      "revId": "5d401cf393b938a9f05247d8dfe739f70d3279b6",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
