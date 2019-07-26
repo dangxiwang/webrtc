@@ -16,6 +16,24 @@
       "revId": "d5017fe2bac93ab428cede8d4803adc8c80ccb2e",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b2be0a7_162b3ab8",
+        "filename": "modules/desktop_capture/desktop_capturer.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 9572
+      },
+      "writtenOn": "2019-07-26T23:45:37Z",
+      "side": 1,
+      "message": "No problem. One challenge with moving this check into CreateRawWindowCapturer is that the CroppingWindowCapturer c\u0027tor calls that to create its fallback window capturer. I suppose the resulting stack overflow could be avoided by having that c\u0027tor clear the allow_cropping_window_capturer flag on its copy of the provided DesktopCaptureOptions, then pass that down instead.\n\nI think the asymmetry \u0026 inconsistency with the other capturers around detect_updated_region handling is due to CroppingWindowCapturer being the only capturer declared RTC_EXPORT with its own publicly-exposed factory method.\n\nIt may be possible to move this Windows-specific branch from here down to screen_capturer_win.cc:CreateRawWindowCapturer while still having direct calls to CroppingWindowCapturer::CreateCapturer apply the differ wrapper when appropriate. Potential approaches that come to mind:\n1) Have CreateRawScreenCapturer copy the DesktopCaptureOptions \u0026 clear the detect_updated_region flag before passing it along (to avoid double-wrapping).\n2) Add a CroppingWindowCapturer::CreateCapturerInternal (or ::CreateRawCapturer?) called from CreateRawWindowCapturer, then have the existing public-facing CreateCapturer call DesktopCapturer::CreateWindowCapturer (irrespective of platform)\n\nApproach (2) seems cleaner and would centralize the detect_updated_region handling. Thoughts on that? I may give it a try on Monday if it sounds good to you. Thanks.",
+      "parentUuid": "e4d0e53c_bcbdf060",
+      "revId": "d5017fe2bac93ab428cede8d4803adc8c80ccb2e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
     }
   ]
 }
