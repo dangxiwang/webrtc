@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a69266c_eb808b24",
+        "filename": "api/rtp_packet_infos.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 8392
+      },
+      "writtenOn": "2019-08-08T15:07:25Z",
+      "side": 1,
+      "message": "Could you test the perf without the `\u0026\u0026` here and below?\n\nThe regular Google style is very strict on either just using `SomeType` or implementing both `const SomeType\u0026\u0026` and `SomeType\u0026\u0026` together.",
+      "range": {
+        "startLine": 49,
+        "startChar": 37,
+        "endLine": 49,
+        "endChar": 39
+      },
+      "revId": "23a567094f467a6ea5ed311c184f5cb2cecb4b03",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
