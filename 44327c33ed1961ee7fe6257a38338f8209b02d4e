@@ -46,6 +46,30 @@
       "revId": "44327c33ed1961ee7fe6257a38338f8209b02d4e",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb3c05d3_ed57aaf4",
+        "filename": "api/rtp_packet_infos.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 8392
+      },
+      "writtenOn": "2019-08-08T12:32:46Z",
+      "side": 0,
+      "message": "That\u0027s strange. The cost should be negligible (i.e. a few vector swaps) in optimized release builds.\n\nIn either case, I don\u0027t think that copy construction is cheaper for all cases:\n\nhttps://cs.chromium.org/chromium/src/third_party/webrtc/modules/video_coding/packet_buffer.cc?l\u003d425\u0026rcl\u003defffd0a5fa22c3eb5c3182d44cfe2917563cedbc\n\nThe video side will \"definitely\" have one more memory allocation with the copy construction approach versus the move construction one. If we really want to care about the performance for both sides, then I suggest that we do `const vector_type\u0026` + `vector_type\u0026\u0026` pairs. That will let each call site do what\u0027s optimal for itself (in a way that\u0027s optimal too).",
+      "parentUuid": "dfe3cf57_0cf37f32",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 80
+      },
+      "revId": "44327c33ed1961ee7fe6257a38338f8209b02d4e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
     }
   ]
 }
