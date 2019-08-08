@@ -70,6 +70,30 @@
       "revId": "23a567094f467a6ea5ed311c184f5cb2cecb4b03",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88a4a9de_481129b9",
+        "filename": "api/rtp_packet_infos.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 7015
+      },
+      "writtenOn": "2019-08-08T20:17:04Z",
+      "side": 1,
+      "message": "I think either 1 or 2 should be good in this case.\n\nAs far as I understand, it does not make sense to define pairs of overloads on ctors. see\nhttps://google.github.io/styleguide/cppguide.html#Copyable_Movable_Types\n\nMove ctor is suppressed by copy ctor (a copiable type must be movable).\n\nWhether we want a copy ctor (or only move ctor) depends on whether we want RtpPacketInfos to be movable-only.\n\nData::Create(), as non-ctor, may worth the pairs of overloads. To me, since it is a nested type, and only use case is with move, a rvalue version can be enough.",
+      "parentUuid": "e5cd3b18_b0f7c7c9",
+      "range": {
+        "startLine": 49,
+        "startChar": 37,
+        "endLine": 49,
+        "endChar": 39
+      },
+      "revId": "23a567094f467a6ea5ed311c184f5cb2cecb4b03",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
     }
   ]
 }
