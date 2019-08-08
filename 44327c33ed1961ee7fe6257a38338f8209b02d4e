@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7504deaa_f5879bb1",
+        "filename": "api/rtp_packet_infos.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 8392
+      },
+      "writtenOn": "2019-08-08T11:24:17Z",
+      "side": 0,
+      "message": "Oh, wait! Did I rewrite the code so many times that I forgot the `std::move()` for in this class? Grrrr...\n\nPlease keep the `vector_type` and do `std::move(entries)` everywhere instead. All other external call-sites should be doing the right thing already.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 80
+      },
+      "revId": "44327c33ed1961ee7fe6257a38338f8209b02d4e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
