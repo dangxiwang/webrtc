@@ -22,6 +22,30 @@
       "revId": "23a567094f467a6ea5ed311c184f5cb2cecb4b03",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "786718b1_9785aac6",
+        "filename": "api/rtp_packet_infos.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 7015
+      },
+      "writtenOn": "2019-08-08T19:12:33Z",
+      "side": 1,
+      "message": "From efficiency point of view, the order is\n1. const vector_type\u0026\n2. vector_type\u0026\u0026\n3. vector_type\n\n1,2 are similar, though.\n\nI don\u0027t think \"const vector_type\u0026\u0026\" makes much sense (I may be wrong). As a temporal variable, \"const vector_type\u0026\u0026\" is similar to \"const vector_type\" in a way that it is detached from the original variable.",
+      "parentUuid": "4a69266c_eb808b24",
+      "range": {
+        "startLine": 49,
+        "startChar": 37,
+        "endLine": 49,
+        "endChar": 39
+      },
+      "revId": "23a567094f467a6ea5ed311c184f5cb2cecb4b03",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
     }
   ]
 }
