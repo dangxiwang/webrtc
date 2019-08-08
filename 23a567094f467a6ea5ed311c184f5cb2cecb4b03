@@ -46,6 +46,30 @@
       "revId": "23a567094f467a6ea5ed311c184f5cb2cecb4b03",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5cd3b18_b0f7c7c9",
+        "filename": "api/rtp_packet_infos.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 8392
+      },
+      "writtenOn": "2019-08-08T19:36:49Z",
+      "side": 1,
+      "message": "I meant the copy constructor. I.e. we either have to do (1) + (2) or (3). See:\n\n    https://google.github.io/styleguide/cppguide.html#Rvalue_references\n\nSpecifically this part:\n\n    You may use rvalue references to define pairs of overloads, one taking Foo\u0026\u0026 and the other taking const Foo\u0026. Usually the preferred solution is just to pass by value, ...",
+      "parentUuid": "786718b1_9785aac6",
+      "range": {
+        "startLine": 49,
+        "startChar": 37,
+        "endLine": 49,
+        "endChar": 39
+      },
+      "revId": "23a567094f467a6ea5ed311c184f5cb2cecb4b03",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
     }
   ]
 }
