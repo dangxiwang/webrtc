@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "486f8236_1d3f634c",
+        "filename": "call/call.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 5509
+      },
+      "writtenOn": "2019-08-09T23:44:51Z",
+      "side": 1,
+      "message": "I don\u0027t understand this comment, and neither does trunk clang (https://bugs.chromium.org/p/chromium/issues/detail?id\u003d992640). Can you expand on this a bit? Why isn\u0027t putting transport_send_ last and using that everywhere we currently use transport_send_prt_ sufficient?",
+      "revId": "e6256055e7db560da560829a3e249898f9685d1f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "554a84a2_f3a550e8",
         "filename": "call/call.cc",
         "patchSetId": 9
