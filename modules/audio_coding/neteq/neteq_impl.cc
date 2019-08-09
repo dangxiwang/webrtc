@@ -896,11 +896,6 @@ int NetEqImpl::GetAudioInternal(AudioFrame* audio_frame,
     comfort_noise_->Reset();
   }
 
-  // We treat it as if all packets referenced to by |last_decoded_packet_infos_|
-  // were mashed together when creating the samples in |algorithm_buffer_|.
-  RtpPacketInfos packet_infos(std::move(last_decoded_packet_infos_));
-  last_decoded_packet_infos_.clear();
-
   // Copy samples from |algorithm_buffer_| to |sync_buffer_|.
   //
   // TODO(bugs.webrtc.org/10757):
@@ -923,13 +918,17 @@ int NetEqImpl::GetAudioInternal(AudioFrame* audio_frame,
   sync_buffer_->GetNextAudioInterleaved(num_output_samples_per_channel,
                                         audio_frame);
   audio_frame->sample_rate_hz_ = fs_hz_;
+
+  // We treat it as if all packets referenced to by |last_decoded_packet_infos_|
+  // were mashed together when creating the samples in |algorithm_buffer_|.
   // TODO(bugs.webrtc.org/10757):
   //   We don't have the ability to properly track individual packets once their
   //   audio samples have entered |sync_buffer_|. So for now, treat it as if
   //   |packet_infos| from packets decoded by the current |GetAudioInternal()|
   //   call were all consumed assembling the current audio frame and the current
   //   audio frame only.
-  audio_frame->packet_infos_ = std::move(packet_infos);
+  audio_frame->packet_infos_ = RtpPacketInfos(last_decoded_packet_infos_);
+
   if (sync_buffer_->FutureLength() < expand_->overlap_length()) {
     // The sync buffer should always contain |overlap_length| samples, but now
     // too many samples have been extracted. Reinstall the |overlap_length|
