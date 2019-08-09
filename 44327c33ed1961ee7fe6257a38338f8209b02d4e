@@ -70,6 +70,29 @@
       "revId": "44327c33ed1961ee7fe6257a38338f8209b02d4e",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b75f470_fab88654",
+        "filename": "modules/audio_coding/neteq/neteq_impl.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 903,
+      "author": {
+        "id": 8392
+      },
+      "writtenOn": "2019-08-09T11:05:01Z",
+      "side": 0,
+      "message": "I don\u0027t think that this code should be moved. The `std::move()` of `RtpPacketInfos` is designed to be super cheap and the ideal implementation (that pushes `packet_infos` to `sync_buffer_` - see the comments on the lines below) would need the construction of `RtpPacketInfos` to happen here.\n\nI would get rid of the `last_decoded_packet_infos_.clear();` though.",
+      "range": {
+        "startLine": 899,
+        "startChar": 0,
+        "endLine": 903,
+        "endChar": 0
+      },
+      "revId": "44327c33ed1961ee7fe6257a38338f8209b02d4e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
     }
   ]
 }
