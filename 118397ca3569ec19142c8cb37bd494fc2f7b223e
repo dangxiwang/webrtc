@@ -22,6 +22,47 @@
       "revId": "118397ca3569ec19142c8cb37bd494fc2f7b223e",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28a4e4c5_db945781",
+        "filename": "api/rtp_packet_infos.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 5126
+      },
+      "writtenOn": "2019-08-09T11:14:02Z",
+      "side": 1,
+      "message": "Yes please.",
+      "parentUuid": "1907c18b_e7392009",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 39
+      },
+      "revId": "118397ca3569ec19142c8cb37bd494fc2f7b223e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dba119c6_f6d67ef8",
+        "filename": "modules/audio_coding/neteq/neteq_impl.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 930,
+      "author": {
+        "id": 5126
+      },
+      "writtenOn": "2019-08-09T11:14:02Z",
+      "side": 1,
+      "message": "Doesn\u0027t this change the behavior? You used to move from last_decoded_packet_infos_ and then clear it, but after this change you just copy from it.",
+      "revId": "118397ca3569ec19142c8cb37bd494fc2f7b223e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
     }
   ]
 }
