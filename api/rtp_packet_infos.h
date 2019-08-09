@@ -46,7 +46,11 @@ class RtpPacketInfos {
   using reverse_iterator = const_reverse_iterator;
 
   RtpPacketInfos() {}
-  explicit RtpPacketInfos(vector_type entries) : data_(Data::Create(entries)) {}
+  explicit RtpPacketInfos(const vector_type& entries)
+      : data_(Data::Create(entries)) {}
+
+  explicit RtpPacketInfos(vector_type&& entries)
+      : data_(Data::Create(std::move(entries))) {}
 
   RtpPacketInfos(const RtpPacketInfos& other) = default;
   RtpPacketInfos(RtpPacketInfos&& other) = default;
@@ -75,7 +79,7 @@ class RtpPacketInfos {
  private:
   class Data : public rtc::RefCountedBase {
    public:
-    static rtc::scoped_refptr<Data> Create(vector_type entries) {
+    static rtc::scoped_refptr<Data> Create(const vector_type& entries) {
       // Performance optimization for the empty case.
       if (entries.empty()) {
         return nullptr;
@@ -84,10 +88,20 @@ class RtpPacketInfos {
       return new Data(entries);
     }
 
+    static rtc::scoped_refptr<Data> Create(vector_type&& entries) {
+      // Performance optimization for the empty case.
+      if (entries.empty()) {
+        return nullptr;
+      }
+
+      return new Data(std::move(entries));
+    }
+
     const vector_type& entries() const { return entries_; }
 
    private:
-    explicit Data(vector_type entries) : entries_(entries) {}
+    explicit Data(const vector_type& entries) : entries_(entries) {}
+    explicit Data(vector_type&& entries) : entries_(std::move(entries)) {}
     ~Data() override {}
 
     const vector_type entries_;
