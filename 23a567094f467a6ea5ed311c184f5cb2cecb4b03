@@ -94,6 +94,30 @@
       "revId": "23a567094f467a6ea5ed311c184f5cb2cecb4b03",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "488b0c57_ec9284fd",
+        "filename": "api/rtp_packet_infos.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 5126
+      },
+      "writtenOn": "2019-08-09T08:05:47Z",
+      "side": 1,
+      "message": "Some points:\n\n  * Passing by reference is going to be cheaper than passing by value even if the latter moves rather than copies, because temporary objects are created and destroyed; whereas passing by reference is essentially the same as passing a pointer when you look at the compiler output.\n\n  * As the style guide quote above says, if you accept T\u0026\u0026 there should also be a corresponding overload that accepts const T\u0026.\n\n  * There\u0027s no reason not to define a pair of constructors that take T\u0026\u0026 and const T\u0026. So in this particular case, consider defining one that takes vector_type\u0026\u0026 and one that takes const vector_type\u0026, and ensure that Data::Create() (and whatever things *it* end up calling) do the same.",
+      "parentUuid": "88a4a9de_481129b9",
+      "range": {
+        "startLine": 49,
+        "startChar": 37,
+        "endLine": 49,
+        "endChar": 39
+      },
+      "revId": "23a567094f467a6ea5ed311c184f5cb2cecb4b03",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
     }
   ]
 }
