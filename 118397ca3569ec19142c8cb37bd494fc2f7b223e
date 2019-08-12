@@ -63,6 +63,24 @@
       "revId": "118397ca3569ec19142c8cb37bd494fc2f7b223e",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9bc171d_28669cee",
+        "filename": "modules/audio_coding/neteq/neteq_impl.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 930,
+      "author": {
+        "id": 8392
+      },
+      "writtenOn": "2019-08-12T07:54:12Z",
+      "side": 1,
+      "message": "That should be fine. The original reason for the `last_decoded_packet_infos_.clear()` was just to put the object back into a known state after the `std::move()`. From a design perspective, it actually makes more sense to make a copy and not clear it (i.e. so that it behaves like the other `last_` member variables).",
+      "parentUuid": "dba119c6_f6d67ef8",
+      "revId": "118397ca3569ec19142c8cb37bd494fc2f7b223e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
