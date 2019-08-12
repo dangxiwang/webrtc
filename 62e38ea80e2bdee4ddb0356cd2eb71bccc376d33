@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0cbb91dc_810c3d1a",
+        "filename": "modules/audio_coding/neteq/neteq_impl.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 901,
+      "author": {
+        "id": 7015
+      },
+      "writtenOn": "2019-08-12T08:16:11Z",
+      "side": 1,
+      "message": "please note that no clear is needed after this line because last_decoded_packet_infos_ is cleared before in line 773.",
+      "range": {
+        "startLine": 901,
+        "startChar": 17,
+        "endLine": 901,
+        "endChar": 29
+      },
+      "revId": "62e38ea80e2bdee4ddb0356cd2eb71bccc376d33",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
