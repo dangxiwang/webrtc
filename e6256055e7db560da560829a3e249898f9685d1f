@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6e3748df_6f7032dd",
+        "filename": "call/call.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2019-08-12T07:27:20Z",
+      "side": 1,
+      "message": "This was a while ago. If I remember correctly, the issues was related to the fact that unique_ptr will set the member to nullptr _before_ deleting the member. That meant that the task queue in RTCS would continue running even as it was being destroyed, meaning that it would continue issuing callbacks that, due to unlucky circumstances, would access members of RTCS causing segfaults due to null pointer access.\n\nIt\u0027s possible that this no longer can happen doe to restructuring of the code and that this therefore could be improved. An option would be to add a custom deleter that avoids this issue. I\u0027m not sure that would be more readable, but it avoids a compiler error it might be a reasonable tradeoff?",
+      "parentUuid": "486f8236_1d3f634c",
+      "revId": "e6256055e7db560da560829a3e249898f9685d1f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "554a84a2_f3a550e8",
         "filename": "call/call.cc",
         "patchSetId": 9
