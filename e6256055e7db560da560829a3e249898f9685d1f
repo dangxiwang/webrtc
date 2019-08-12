@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "b0736e95_e9dfddee",
+        "filename": "call/call.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2019-08-12T08:30:41Z",
+      "side": 1,
+      "message": "\u003e This was a while ago. If I remember correctly, the issues was related to the fact that unique_ptr will set the member to nullptr _before_ deleting the member. That meant that the task queue in RTCS would continue running even as it was being destroyed, meaning that it would continue issuing callbacks that, due to unlucky circumstances, would access members of RTCS causing segfaults due to null pointer access.\n\nAs I remember, it was a data race tsan warned about, issue rather than crashes. But anyway, the race was there, and likely still is. The destruction sequence was:\n\n1. unique_ptr destructor assigns null to its internal raw pointer.\n\n2. The pointed too object is destructed. This objects owns a TaskQueue with running tasks, which is stopped on destruction. However, as long as some task is still running, it can accessed the same unique_ptr, racing with the assignment in (1).\n\nI agree the current code looks a bit strange; it makes the tasks get the cached pointer to the object being destructed, and leaves to the implementation of TransportControllerSend to do whatever destruct synchronization is needed with its tasks. That was deemed reasonable and safe at the time.\n\nLooking at the current code, Call now has only one place where it posts to the task queue in question (violating the rule that one shouldn\u0027t post to taks queues one doesn\u0027t own): The OnStartRateUpdate method, posting a task to call the bitrate_allocator_. If that can be refactored, then we probably don\u0027t need the cached pointer anymore, at least not in this class.",
+      "parentUuid": "6e3748df_6f7032dd",
+      "revId": "e6256055e7db560da560829a3e249898f9685d1f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "554a84a2_f3a550e8",
         "filename": "call/call.cc",
         "patchSetId": 9
