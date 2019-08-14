@@ -46,6 +46,30 @@
       "revId": "62e38ea80e2bdee4ddb0356cd2eb71bccc376d33",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d1ebb8c_c463193a",
+        "filename": "modules/audio_coding/neteq/neteq_impl.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 901,
+      "author": {
+        "id": 7015
+      },
+      "writtenOn": "2019-08-14T10:51:17Z",
+      "side": 1,
+      "message": "no, they are not empty. I meant that compare with tip-of-tree, a clear() after this line is removed in this CL, and this removing should not affect anything.",
+      "parentUuid": "e3a4baa2_aa6594c0",
+      "range": {
+        "startLine": 901,
+        "startChar": 17,
+        "endLine": 901,
+        "endChar": 29
+      },
+      "revId": "62e38ea80e2bdee4ddb0356cd2eb71bccc376d33",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
     }
   ]
 }
