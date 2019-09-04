@@ -70,6 +70,30 @@
       "revId": "8b7c5e41f102e57196e888bd0cd81d16f5936dd5",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b27ddc7e_a08c8f7d",
+        "filename": "modules/audio_coding/acm2/audio_coding_module_unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 5100
+      },
+      "writtenOn": "2019-09-04T08:47:51Z",
+      "side": 0,
+      "message": "LGTM.",
+      "parentUuid": "be808b2c_822e68a4",
+      "range": {
+        "startLine": 254,
+        "startChar": 0,
+        "endLine": 315,
+        "endChar": 1
+      },
+      "revId": "8b7c5e41f102e57196e888bd0cd81d16f5936dd5",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
