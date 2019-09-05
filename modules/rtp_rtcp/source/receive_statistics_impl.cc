@@ -182,28 +182,6 @@ RtpReceiveStats StreamStatisticianImpl::GetStats() const {
   return stats;
 }
 
-bool StreamStatisticianImpl::GetStatistics(RtcpStatistics* statistics,
-                                           bool reset) {
-  rtc::CritScope cs(&stream_lock_);
-  if (!ReceivedRtpPacket()) {
-    return false;
-  }
-
-  if (!reset) {
-    if (!ReceivedRtpPacket()) {
-      // No report.
-      return false;
-    }
-    // Just get last report.
-    *statistics = last_reported_statistics_;
-    return true;
-  }
-
-  *statistics = CalculateRtcpStatistics();
-
-  return true;
-}
-
 bool StreamStatisticianImpl::GetActiveStatisticsAndReset(
     RtcpStatistics* statistics) {
   rtc::CritScope cs(&stream_lock_);
