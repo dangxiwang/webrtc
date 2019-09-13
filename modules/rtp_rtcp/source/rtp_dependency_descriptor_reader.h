@@ -11,29 +11,61 @@
 #define MODULES_RTP_RTCP_SOURCE_RTP_DEPENDENCY_DESCRIPTOR_READER_H_
 
 #include <cstdint>
+#include <memory>
+#include <vector>
 
 #include "api/array_view.h"
 #include "common_video/generic_frame_descriptor/generic_frame_info.h"
+#include "rtc_base/bit_buffer.h"
 
 namespace webrtc {
-// Keeps and updates state required to deserialize DependencyDescriptor
-// rtp header extension.
+// Deserializes DependencyDescriptor rtp header extension.
 class RtpDependencyDescriptorReader {
  public:
-  // Parses the dependency descriptor. Returns false on failure.
-  // Updates frame dependency structures if parsed descriptor has a new one.
-  // Doesn't update own state when Parse fails.
-  bool Parse(rtc::ArrayView<const uint8_t> raw_data,
-             DependencyDescriptor* descriptor) {
-    // TODO(bugs.webrtc.org/10342): Implement.
-    return false;
-  }
+  // Parses the dependency descriptor.
+  RtpDependencyDescriptorReader(
+      rtc::ArrayView<const uint8_t> raw_data,
+      const FrameDependencyStructure* latest_structure,
+      DependencyDescriptor* descriptor);
+  RtpDependencyDescriptorReader(const RtpDependencyDescriptorReader&) = delete;
+  RtpDependencyDescriptorReader& operator=(
+      const RtpDependencyDescriptorReader&) = delete;
 
-  // Returns latest valid parsed structure or nullptr if none was parsed so far.
-  const FrameDependencyStructure* GetStructure() const {
-    // TODO(bugs.webrtc.org/10342): Implement.
-    return nullptr;
-  }
+  // Returns if parse was successful.
+  bool Parsed() { return parsed_; }
+
+ private:
+  uint32_t ReadBits(size_t bit_count);
+  uint32_t ReadNonSymmetric(size_t num_values);
+
+  // Functions to read template dependency structure.
+  std::unique_ptr<FrameDependencyStructure> ReadTemplateDependencyStructure();
+  std::vector<FrameDependencyTemplate> ReadTemplateLayers();
+  void ReadTemplateDtis(FrameDependencyStructure* structure);
+  void ReadTemplateFdiffs(FrameDependencyStructure* structure);
+  void ReadTemplateChains(FrameDependencyStructure* structure);
+  void ReadResolutions(FrameDependencyStructure* structure);
+
+  // Function to read details for the current frame.
+  void ReadMandatoryFields();
+  void ReadExtendedFields();
+  void ReadFrameDependencyDefinition();
+
+  void ReadFrameDtis(FrameDependencyTemplate* frame);
+  void ReadFrameFdiffs(FrameDependencyTemplate* frame);
+  void ReadFrameChains(FrameDependencyTemplate* frame);
+
+  // Output.
+  bool parsed_ = true;
+  DependencyDescriptor* const descriptor_;
+  // Values that are needed while reading the descriptor, but can be discarded
+  // when reading is complete.
+  rtc::BitBuffer buffer_;
+  int frame_dependency_template_id_ = 0;
+  bool custom_dtis_flag_ = false;
+  bool custom_fdiffs_flag_ = false;
+  bool custom_chains_flag_ = false;
+  const FrameDependencyStructure* structure_ = nullptr;
 };
 
 }  // namespace webrtc
