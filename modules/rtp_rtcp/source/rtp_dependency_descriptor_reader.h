@@ -14,26 +14,39 @@
 
 #include "api/array_view.h"
 #include "common_video/generic_frame_descriptor/generic_frame_info.h"
+#include "rtc_base/bit_buffer.h"
 
 namespace webrtc {
-// Keeps and updates state required to deserialize DependencyDescriptor
-// rtp header extension.
+// Deserializes DependencyDescriptor rtp header extension.
 class RtpDependencyDescriptorReader {
  public:
-  // Parses the dependency descriptor. Returns false on failure.
-  // Updates frame dependency structures if parsed descriptor has a new one.
-  // Doesn't update own state when Parse fails.
-  bool Parse(rtc::ArrayView<const uint8_t> raw_data,
-             DependencyDescriptor* descriptor) {
-    // TODO(bugs.webrtc.org/10342): Implement.
-    return false;
-  }
+  RtpDependencyDescriptorReader() = default;
+  RtpDependencyDescriptorReader(const RtpDependencyDescriptorReader&) = delete;
+  RtpDependencyDescriptorReader& operator=(
+      const RtpDependencyDescriptorReader&) = delete;
 
-  // Returns latest valid parsed structure or nullptr if none was parsed so far.
-  const FrameDependencyStructure* GetStructure() const {
-    // TODO(bugs.webrtc.org/10342): Implement.
-    return nullptr;
-  }
+  // Parses the dependency descriptor. Returns false on failure.
+  // value of |descriptor| might be in inconsistent state if parse failed.
+  bool Parse(rtc::ArrayView<const uint8_t> raw_data,
+             const FrameDependencyStructure* latest_structure,
+             DependencyDescriptor* descriptor);
+
+ private:
+  bool ReadMandatoryFields(rtc::BitBuffer* buffer,
+                           DependencyDescriptor* descriptor);
+
+  bool ReadExtendedFields(rtc::BitBuffer* buffer,
+                          DependencyDescriptor* descriptor);
+  bool ReadFrameDependencyDefinition(rtc::BitBuffer* buffer,
+                                     DependencyDescriptor* descriptor);
+
+  // Values that are needed while reading the descriptor, but can be discarded
+  // when reading is complete.
+  int frame_dependency_template_id_ = 0;
+  bool custom_dtis_flag_ = false;
+  bool custom_fdiffs_flag_ = false;
+  bool custom_chains_flag_ = false;
+  const FrameDependencyStructure* structure_ = nullptr;
 };
 
 }  // namespace webrtc
