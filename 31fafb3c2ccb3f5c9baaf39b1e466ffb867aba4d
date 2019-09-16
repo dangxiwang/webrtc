@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ddeed30c_ced774ec",
+        "filename": "modules/rtp_rtcp/source/rtp_dependency_descriptor_extension.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5527
+      },
+      "writtenOn": "2019-09-16T07:43:24Z",
+      "side": 1,
+      "message": "When we try to parse we might not always use the latest structure. WDYT about \"context\"?",
+      "range": {
+        "startLine": 34,
+        "startChar": 52,
+        "endLine": 34,
+        "endChar": 68
+      },
+      "revId": "31fafb3c2ccb3f5c9baaf39b1e466ffb867aba4d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89d45121_99487529",
+        "filename": "modules/rtp_rtcp/source/rtp_dependency_descriptor_reader.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 5527
+      },
+      "writtenOn": "2019-09-16T07:43:24Z",
+      "side": 1,
+      "message": "It looks like there are three type of functions:\n - void functions that update the state directly, like ReadMandatoryField()\n - void functions that update the state indirectly, like ReadTemplateDtis(\u003cpointer\u003e)\n - functions that return a value to be assigned from some other function, like ReadTemplateLayers()\n\nSomething that is true for all of them is that they all update the |buffer_| state, so WDYT about making all functions void and just let them update the state directly?",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 36
+      },
+      "revId": "31fafb3c2ccb3f5c9baaf39b1e466ffb867aba4d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a337df1_cf9179f2",
+        "filename": "modules/rtp_rtcp/source/rtp_dependency_descriptor_reader.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5527
+      },
+      "writtenOn": "2019-09-16T07:43:24Z",
+      "side": 1,
+      "message": "Returns true if ...",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 36
+      },
+      "revId": "31fafb3c2ccb3f5c9baaf39b1e466ffb867aba4d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e505772_b8f150a3",
+        "filename": "modules/rtp_rtcp/source/rtp_dependency_descriptor_reader.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 5527
+      },
+      "writtenOn": "2019-09-16T07:43:24Z",
+      "side": 1,
+      "message": "WDYT about ParseSuccessful?",
+      "range": {
+        "startLine": 35,
+        "startChar": 7,
+        "endLine": 35,
+        "endChar": 13
+      },
+      "revId": "31fafb3c2ccb3f5c9baaf39b1e466ffb867aba4d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
