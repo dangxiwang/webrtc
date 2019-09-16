@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7ebb1bc9_f87de82d",
+        "filename": "modules/rtp_rtcp/source/rtp_dependency_descriptor_extension.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-09-16T08:20:35Z",
+      "side": 1,
+      "message": "true, it doesn\u0027t have to be latest. (and I can imaging a use case where caller would pass not the latest one. It is up to the caller.).\ncontext seems too vague. I do not think vague is bad, but then I would prefer to call it \u0027structure\u0027, \u0027context\u0027 feels misleading to me.",
+      "parentUuid": "ddeed30c_ced774ec",
+      "range": {
+        "startLine": 34,
+        "startChar": 52,
+        "endLine": 34,
+        "endChar": 68
+      },
+      "revId": "31fafb3c2ccb3f5c9baaf39b1e466ffb867aba4d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "89d45121_99487529",
         "filename": "modules/rtp_rtcp/source/rtp_dependency_descriptor_reader.cc",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "31fafb3c2ccb3f5c9baaf39b1e466ffb867aba4d",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22b6e343_afa47208",
+        "filename": "modules/rtp_rtcp/source/rtp_dependency_descriptor_reader.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-09-16T08:20:35Z",
+      "side": 1,
+      "message": "I\u0027m a bit worried about using structure_ instead of structure.\nThough that bug will be quickly caught: structure_ should be nullptr while structure is parsed.\n\nmade all functions void without parameters, for consistency. [not sure it is best, since I like signature to me more explicit what exactly is parsed. but yep, I see how mixed style is confusing].",
+      "parentUuid": "89d45121_99487529",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 36
+      },
+      "revId": "31fafb3c2ccb3f5c9baaf39b1e466ffb867aba4d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "326458a2_6f47c8ac",
+        "filename": "modules/rtp_rtcp/source/rtp_dependency_descriptor_reader.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-09-16T08:20:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a337df1_cf9179f2",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 36
+      },
+      "revId": "31fafb3c2ccb3f5c9baaf39b1e466ffb867aba4d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e505772_b8f150a3",
         "filename": "modules/rtp_rtcp/source/rtp_dependency_descriptor_reader.h",
         "patchSetId": 5
@@ -91,6 +163,30 @@
       "revId": "31fafb3c2ccb3f5c9baaf39b1e466ffb867aba4d",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "653282e8_428b8739",
+        "filename": "modules/rtp_rtcp/source/rtp_dependency_descriptor_reader.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-09-16T08:20:35Z",
+      "side": 1,
+      "message": "looks better.",
+      "parentUuid": "3e505772_b8f150a3",
+      "range": {
+        "startLine": 35,
+        "startChar": 7,
+        "endLine": 35,
+        "endChar": 13
+      },
+      "revId": "31fafb3c2ccb3f5c9baaf39b1e466ffb867aba4d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
