@@ -30,6 +30,7 @@
 #include "rtc_base/arraysize.h"
 #include "rtc_base/checks.h"
 #include "rtc_base/logging.h"
+#include "rtc_base/numerics/divide_round.h"
 #include "rtc_base/numerics/safe_minmax.h"
 #include "rtc_base/rate_limiter.h"
 #include "rtc_base/time_utils.h"
@@ -756,12 +757,12 @@ void RTPSender::UpdateDelayStatistics(int64_t capture_time_ms,
     size_t num_delays = send_delays_.size();
     RTC_DCHECK(max_delay_it_ != send_delays_.end());
     max_delay_ms = rtc::dchecked_cast<int>(max_delay_it_->second);
-    int64_t avg_ms = (sum_delays_ms_ + num_delays / 2) / num_delays;
+    int64_t avg_ms = DivideRoundToNearest(sum_delays_ms_, num_delays);
     RTC_DCHECK_GE(avg_ms, static_cast<int64_t>(0));
     RTC_DCHECK_LE(avg_ms,
                   static_cast<int64_t>(std::numeric_limits<int>::max()));
-    avg_delay_ms =
-        rtc::dchecked_cast<int>((sum_delays_ms_ + num_delays / 2) / num_delays);
+    avg_delay_ms = rtc::dchecked_cast<int>(
+        DivideRoundToNearest(sum_delays_ms_, num_delays));
   }
   send_side_delay_observer_->SendSideDelayUpdated(
       avg_delay_ms, max_delay_ms, total_packet_send_delay_ms, ssrc);
