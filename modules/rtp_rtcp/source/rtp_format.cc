@@ -21,6 +21,7 @@
 #include "modules/video_coding/codecs/vp8/include/vp8_globals.h"
 #include "modules/video_coding/codecs/vp9/include/vp9_globals.h"
 #include "rtc_base/checks.h"
+#include "rtc_base/numerics/divide_round.h"
 
 namespace webrtc {
 
@@ -87,9 +88,7 @@ std::vector<int> RtpPacketizer::SplitAboutEqually(
   // of first and last packets reductions.
   int total_bytes = payload_len + limits.first_packet_reduction_len +
                     limits.last_packet_reduction_len;
-  // Integer divisions with rounding up.
-  int num_packets_left =
-      (total_bytes + limits.max_payload_len - 1) / limits.max_payload_len;
+  int num_packets_left = DivideRoundUp(total_bytes, limits.max_payload_len);
   if (num_packets_left == 1) {
     // Single packet is a special case handled above.
     num_packets_left = 2;
