@@ -32,6 +32,7 @@
 #include "modules/rtp_rtcp/source/rtp_sender_video.h"
 #include "modules/rtp_rtcp/source/rtp_utility.h"
 #include "rtc_base/arraysize.h"
+#include "rtc_base/numerics/divide_round.h"
 #include "rtc_base/rate_limiter.h"
 #include "test/field_trial.h"
 #include "test/gmock.h"
@@ -1761,8 +1762,7 @@ TEST_P(RtpSenderTest, BitrateCallbacks) {
   const uint32_t kExpectedWindowMs = kNumPackets * kPacketInterval + 1;
   const uint32_t kExpectedBitsAccumulated = kTotalPacketSize * kNumPackets * 8;
   const uint32_t kExpectedRateBps =
-      (kExpectedBitsAccumulated * 1000 + (kExpectedWindowMs / 2)) /
-      kExpectedWindowMs;
+      DivideRoundToNearest(kExpectedBitsAccumulated * 1000, kExpectedWindowMs);
   EXPECT_EQ(kExpectedRateBps, callback.total_bitrate_);
 
   rtp_sender_.reset();

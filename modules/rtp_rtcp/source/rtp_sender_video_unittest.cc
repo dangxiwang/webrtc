@@ -25,6 +25,7 @@
 #include "modules/rtp_rtcp/source/rtp_packet_received.h"
 #include "modules/rtp_rtcp/source/rtp_sender.h"
 #include "rtc_base/arraysize.h"
+#include "rtc_base/numerics/divide_round.h"
 #include "rtc_base/rate_limiter.h"
 #include "test/gmock.h"
 #include "test/gtest.h"
@@ -434,9 +435,8 @@ TEST_P(RtpSenderVideoTest, ConditionalRetransmit) {
   header.codec = kVideoCodecVP8;
 
   // Fill averaging window to prevent rounding errors.
-  constexpr int kNumRepetitions =
-      (RTPSenderVideo::kTLRateWindowSizeMs + (kFrameIntervalMs / 2)) /
-      kFrameIntervalMs;
+  constexpr int kNumRepetitions = DivideRoundToNearest(
+      RTPSenderVideo::kTLRateWindowSizeMs, kFrameIntervalMs);
   constexpr int kPattern[] = {0, 2, 1, 2};
   auto& vp8_header = header.video_type_header.emplace<RTPVideoHeaderVP8>();
   for (size_t i = 0; i < arraysize(kPattern) * kNumRepetitions; ++i) {
@@ -489,9 +489,8 @@ TEST_P(RtpSenderVideoTest, ConditionalRetransmitLimit) {
   header.codec = kVideoCodecVP8;
 
   // Fill averaging window to prevent rounding errors.
-  constexpr int kNumRepetitions =
-      (RTPSenderVideo::kTLRateWindowSizeMs + (kFrameIntervalMs / 2)) /
-      kFrameIntervalMs;
+  constexpr int kNumRepetitions = DivideRoundToNearest(
+      RTPSenderVideo::kTLRateWindowSizeMs, kFrameIntervalMs);
   constexpr int kPattern[] = {0, 2, 2, 2};
   auto& vp8_header = header.video_type_header.emplace<RTPVideoHeaderVP8>();
   for (size_t i = 0; i < arraysize(kPattern) * kNumRepetitions; ++i) {
