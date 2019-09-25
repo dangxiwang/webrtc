@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6c35cf35_1badf6eb",
+        "filename": "modules/congestion_controller/goog_cc/send_side_bandwidth_estimation.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2019-09-25T14:21:16Z",
+      "side": 1,
+      "message": "A bit unclear both what \"ensure this\" means and what should be DCHECKed. Suggested rephrase: \"Ensure caller passes PlusInfinity, not zero, to represent no limitation\"",
+      "range": {
+        "startLine": 308,
+        "startChar": 17,
+        "endLine": 308,
+        "endChar": 73
+      },
+      "revId": "de3aefbe1d270414f0341bccc5cf48082bc35232",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94d53d34_114389ed",
+        "filename": "modules/congestion_controller/goog_cc/send_side_bandwidth_estimation.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2019-09-25T14:21:16Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 317,
+        "startChar": 0,
+        "endLine": 317,
+        "endChar": 73
+      },
+      "revId": "de3aefbe1d270414f0341bccc5cf48082bc35232",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "462e7f7a_c2d8dea0",
+        "filename": "modules/congestion_controller/goog_cc/send_side_bandwidth_estimation.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2019-09-25T14:21:16Z",
+      "side": 1,
+      "message": "Please rephrase for clarity.\n\nI also find the logic a bit strange, if |new_bitrate| is 20 kbps, |delay_based_limit_| is 100 kbps, and |remote_based_limit_| is 50 kbps, the result is 100 kbps. I would think 50 kbps is more appropriate. It seems wrong to exceed the rate given to us by the receiver. But not changed in this cl, as far as I can tell.",
+      "range": {
+        "startLine": 431,
+        "startChar": 0,
+        "endLine": 432,
+        "endChar": 47
+      },
+      "revId": "de3aefbe1d270414f0341bccc5cf48082bc35232",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2eeae84f_fb7fe7c2",
+        "filename": "modules/congestion_controller/goog_cc/send_side_bandwidth_estimation.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2019-09-25T14:21:16Z",
+      "side": 1,
+      "message": "I this and the similar check below still needed? Or do we we use zero to represent no limit is some cases?",
+      "range": {
+        "startLine": 571,
+        "startChar": 6,
+        "endLine": 571,
+        "endChar": 44
+      },
+      "revId": "de3aefbe1d270414f0341bccc5cf48082bc35232",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ca50ca0_d1bdba42",
+        "filename": "modules/congestion_controller/goog_cc/send_side_bandwidth_estimation.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2019-09-25T14:21:16Z",
+      "side": 1,
+      "message": "I think at least the first deserves a comment. And maybe name it |receiver_limit_|?",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 30
+      },
+      "revId": "de3aefbe1d270414f0341bccc5cf48082bc35232",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
