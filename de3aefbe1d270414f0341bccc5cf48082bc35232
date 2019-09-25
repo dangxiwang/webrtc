@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "202dd7fa_51055a07",
+        "filename": "modules/congestion_controller/goog_cc/send_side_bandwidth_estimation.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2019-09-25T14:42:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c35cf35_1badf6eb",
+      "range": {
+        "startLine": 308,
+        "startChar": 17,
+        "endLine": 308,
+        "endChar": 73
+      },
+      "revId": "de3aefbe1d270414f0341bccc5cf48082bc35232",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "94d53d34_114389ed",
         "filename": "modules/congestion_controller/goog_cc/send_side_bandwidth_estimation.cc",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "de3aefbe1d270414f0341bccc5cf48082bc35232",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b34d01d_fe18d156",
+        "filename": "modules/congestion_controller/goog_cc/send_side_bandwidth_estimation.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2019-09-25T14:42:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94d53d34_114389ed",
+      "range": {
+        "startLine": 317,
+        "startChar": 0,
+        "endLine": 317,
+        "endChar": 73
+      },
+      "revId": "de3aefbe1d270414f0341bccc5cf48082bc35232",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "0c0ec9c8_85ef66a8",
+        "filename": "modules/congestion_controller/goog_cc/send_side_bandwidth_estimation.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2019-09-25T14:42:12Z",
+      "side": 1,
+      "message": "Done\n\nYes, I agree, I want to change it, but keeping this CL \"bug-compatible\".",
+      "parentUuid": "462e7f7a_c2d8dea0",
+      "range": {
+        "startLine": 431,
+        "startChar": 0,
+        "endLine": 432,
+        "endChar": 47
+      },
+      "revId": "de3aefbe1d270414f0341bccc5cf48082bc35232",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2eeae84f_fb7fe7c2",
         "filename": "modules/congestion_controller/goog_cc/send_side_bandwidth_estimation.cc",
         "patchSetId": 1
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "7c7406aa_4147310c",
+        "filename": "modules/congestion_controller/goog_cc/send_side_bandwidth_estimation.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2019-09-25T14:42:12Z",
+      "side": 1,
+      "message": "Ah, missed it as I\u0027m replacing this in a followup CL.",
+      "parentUuid": "2eeae84f_fb7fe7c2",
+      "range": {
+        "startLine": 571,
+        "startChar": 6,
+        "endLine": 571,
+        "endChar": 44
+      },
+      "revId": "de3aefbe1d270414f0341bccc5cf48082bc35232",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2ca50ca0_d1bdba42",
         "filename": "modules/congestion_controller/goog_cc/send_side_bandwidth_estimation.h",
         "patchSetId": 1
@@ -114,6 +210,30 @@
       "revId": "de3aefbe1d270414f0341bccc5cf48082bc35232",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db94706c_f14b8ba2",
+        "filename": "modules/congestion_controller/goog_cc/send_side_bandwidth_estimation.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 5531
+      },
+      "writtenOn": "2019-09-25T14:42:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ca50ca0_d1bdba42",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 30
+      },
+      "revId": "de3aefbe1d270414f0341bccc5cf48082bc35232",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
