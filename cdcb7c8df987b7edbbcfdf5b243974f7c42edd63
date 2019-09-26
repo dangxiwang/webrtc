@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e26483b_5e352f2b",
+        "filename": "modules/congestion_controller/goog_cc/send_side_bandwidth_estimation.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2019-09-26T07:27:14Z",
+      "side": 1,
+      "message": "I\u0027d expect this check to be redundant, and that bitrate \u003e PlusInfínity being a valid and false comparison. But I haven\u0027t looked at the details of these infinities.",
+      "range": {
+        "startLine": 572,
+        "startChar": 6,
+        "endLine": 572,
+        "endChar": 33
+      },
+      "revId": "cdcb7c8df987b7edbbcfdf5b243974f7c42edd63",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
