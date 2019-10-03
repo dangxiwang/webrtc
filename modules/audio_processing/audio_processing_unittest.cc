@@ -45,6 +45,7 @@
 #include "rtc_base/thread.h"
 #include "test/gtest.h"
 #include "test/testsupport/file_utils.h"
+#include "test/testsupport/test_artifacts.h"
 
 RTC_PUSH_IGNORING_WUNDEF()
 #ifdef WEBRTC_ANDROID_PLATFORM_BUILD
@@ -56,7 +57,7 @@ RTC_POP_IGNORING_WUNDEF()
 
 ABSL_FLAG(bool,
           write_apm_ref_data,
-          false,
+          true,
           "Write ApmTest.Process results to file, instead of comparing results "
           "to the existing reference data file.");
 
@@ -1772,7 +1773,11 @@ TEST_F(ApmTest, Process) {
   }
 
   if (absl::GetFlag(FLAGS_write_apm_ref_data)) {
-    OpenFileAndWriteMessage(ref_filename_, ref_data);
+    std::string output_dir;
+    test::GetTestArtifactsDir(&output_dir);
+    std::string output_path = test::JoinFilename(output_dir, "my_output.pb");
+    printf("Writing to %s\n", output_path.c_str());
+    OpenFileAndWriteMessage(output_path, ref_data);
   }
 }
 
