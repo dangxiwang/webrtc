@@ -395,6 +395,17 @@ AudioProcessingImpl::AudioProcessingImpl(
       capture_(config.Get<ExperimentalNs>().enabled),
 #endif
       capture_nonlocked_() {
+  RTC_LOG(LS_INFO) << "Injected APM submodules:"
+                   << "\nEcho control factory: " << !!echo_control_factory_
+                   << "\nEcho detector: "
+                   << !!private_submodules_->echo_detector
+                   << "\nCapture analyzer: "
+                   << !!private_submodules_->capture_analyzer
+                   << "\nCapture post processor: "
+                   << !!private_submodules_->capture_post_processor
+                   << "\nRender pre processor: "
+                   << !!private_submodules_->render_pre_processor;
+
   // Mark Echo Controller enabled if a factory is injected.
   capture_nonlocked_.echo_controller_enabled =
       static_cast<bool>(echo_control_factory_);
@@ -660,6 +671,8 @@ int AudioProcessingImpl::InitializeLocked(const ProcessingConfig& config) {
 }
 
 void AudioProcessingImpl::ApplyConfig(const AudioProcessing::Config& config) {
+  RTC_LOG(LS_INFO) << "AudioProcessing::ApplyConfig: " << config.ToString();
+
   // Run in a single-threaded manner when applying the settings.
   rtc::CritScope cs_render(&crit_render_);
   rtc::CritScope cs_capture(&crit_capture_);
@@ -710,9 +723,6 @@ void AudioProcessingImpl::ApplyConfig(const AudioProcessing::Config& config) {
 
   InitializeHighPassFilter();
 
-  RTC_LOG(LS_INFO) << "Highpass filter activated: "
-                   << config_.high_pass_filter.enabled;
-
   if (agc1_config_changed) {
     ApplyAgc1Config(config_.gain_controller1);
   }
@@ -728,10 +738,6 @@ void AudioProcessingImpl::ApplyConfig(const AudioProcessing::Config& config) {
   InitializeGainController2();
   InitializePreAmplifier();
   private_submodules_->gain_controller2->ApplyConfig(config_.gain_controller2);
-  RTC_LOG(LS_INFO) << "Gain Controller 2 activated: "
-                   << config_.gain_controller2.enabled;
-  RTC_LOG(LS_INFO) << "Pre-amplifier activated: "
-                   << config_.pre_amplifier.enabled;
 
   if (config_.level_estimation.enabled &&
       !private_submodules_->output_level_estimator) {
