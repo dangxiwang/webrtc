@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a09f4d9_25089984",
+        "filename": "modules/video_coding/h264_sps_pps_tracker.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 5527
+      },
+      "writtenOn": "2019-10-28T11:50:04Z",
+      "side": 1,
+      "message": "unnecessary",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 17
+      },
+      "revId": "0d180c2c57c939e4238ca146f38f0098a10ad0a2",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf2d9265_fa64ec37",
+        "filename": "modules/video_coding/h264_sps_pps_tracker.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 5527
+      },
+      "writtenOn": "2019-10-28T11:50:04Z",
+      "side": 1,
+      "message": "std::vector instead?",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 20
+      },
+      "revId": "0d180c2c57c939e4238ca146f38f0098a10ad0a2",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d0ea433_6d985cf5",
+        "filename": "video/rtp_video_stream_receiver.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 5527
+      },
+      "writtenOn": "2019-10-28T11:50:04Z",
+      "side": 1,
+      "message": "H264SpsPpsTracker::FixedBitstream",
+      "range": {
+        "startLine": 446,
+        "startChar": 4,
+        "endLine": 446,
+        "endChar": 8
+      },
+      "revId": "0d180c2c57c939e4238ca146f38f0098a10ad0a2",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
