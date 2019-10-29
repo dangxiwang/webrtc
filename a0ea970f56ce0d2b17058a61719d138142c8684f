@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39931a9b_87e6689b",
+        "filename": "modules/video_coding/h264_sps_pps_tracker.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 5117
+      },
+      "writtenOn": "2019-10-29T09:26:03Z",
+      "side": 1,
+      "message": "nit:\n\nI can\u0027t quite find the code style section, but I vividly remember a lot of reviewers in the past asking me to use a pointer instead of a non-const reference in that exact use-case (using it as an alias for making code more readable).",
+      "range": {
+        "startLine": 64,
+        "startChar": 8,
+        "endLine": 64,
+        "endChar": 25
+      },
+      "revId": "a0ea970f56ce0d2b17058a61719d138142c8684f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    }
+  ]
+}
