@@ -106,6 +106,8 @@ rtc_library("video_coding") {
     "frame_object.h",
     "generic_decoder.cc",
     "generic_decoder.h",
+    "generic_video_rtp_depacketizer.cc",
+    "generic_video_rtp_depacketizer.h",
     "h264_sprop_parameter_sets.cc",
     "h264_sprop_parameter_sets.h",
     "h264_sps_pps_tracker.cc",
@@ -124,6 +126,9 @@ rtc_library("video_coding") {
     "packet_buffer.h",
     "rtp_frame_reference_finder.cc",
     "rtp_frame_reference_finder.h",
+    "rtp_video_depacketizer.h",
+    "rtp_video_depacketizer_raw.cc",
+    "rtp_video_depacketizer_raw.h",
     "rtt_filter.cc",
     "rtt_filter.h",
     "timestamp_map.cc",
@@ -135,6 +140,8 @@ rtc_library("video_coding") {
     "video_codec_initializer.cc",
     "video_receiver2.cc",
     "video_receiver2.h",
+    "video_rtp_packet_buffer.cc",
+    "video_rtp_packet_buffer.h",
   ]
 
   deps += [
@@ -328,6 +335,8 @@ rtc_library("webrtc_h264") {
     "codecs/h264/h264_decoder_impl.h",
     "codecs/h264/h264_encoder_impl.cc",
     "codecs/h264/h264_encoder_impl.h",
+    "codecs/h264/h264_rtp_depacketizer.cc",
+    "codecs/h264/h264_rtp_depacketizer.h",
     "codecs/h264/include/h264.h",
   ]
 
