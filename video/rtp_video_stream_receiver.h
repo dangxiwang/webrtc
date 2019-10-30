@@ -38,6 +38,7 @@
 #include "modules/video_coding/packet_buffer.h"
 #include "modules/video_coding/rtp_frame_reference_finder.h"
 #include "modules/video_coding/unique_timestamp_counter.h"
+#include "modules/video_coding/video_rtp_packet_buffer.h"
 #include "rtc_base/constructor_magic.h"
 #include "rtc_base/critical_section.h"
 #include "rtc_base/numerics/sequence_number_util.h"
@@ -244,8 +245,7 @@ class RtpVideoStreamReceiver : public LossNotificationSender,
   void NotifyReceiverOfEmptyPacket(uint16_t seq_num);
   void UpdateHistograms();
   bool IsRedEnabled() const;
-  void InsertSpsPpsIntoTracker(uint8_t payload_type);
-  void OnInsertedPacket(video_coding::PacketBuffer::InsertResult result);
+  void OnInsertedPacket(VideoRtpPacketBuffer::InsertResult result);
   void OnAssembledFrame(std::unique_ptr<video_coding::RtpFrameObject> frame);
 
   Clock* const clock_;
@@ -273,7 +273,7 @@ class RtpVideoStreamReceiver : public LossNotificationSender,
   std::unique_ptr<NackModule> nack_module_;
   std::unique_ptr<LossNotificationController> loss_notification_controller_;
 
-  video_coding::PacketBuffer packet_buffer_;
+  VideoRtpPacketBuffer packet_buffer_;
   UniqueTimestampCounter frame_counter_ RTC_GUARDED_BY(worker_task_checker_);
 
   rtc::CriticalSection reference_finder_lock_;
@@ -285,7 +285,6 @@ class RtpVideoStreamReceiver : public LossNotificationSender,
   rtc::CriticalSection last_seq_num_cs_;
   std::map<int64_t, uint16_t> last_seq_num_for_pic_id_
       RTC_GUARDED_BY(last_seq_num_cs_);
-  video_coding::H264SpsPpsTracker tracker_;
 
   // Maps payload type to codec type, for packetization.
   std::map<uint8_t, absl::optional<VideoCodecType>> payload_type_map_;

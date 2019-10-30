@@ -91,6 +91,7 @@ rtc_library("video") {
     "../modules/utility",
     "../modules/video_coding",
     "../modules/video_coding:codec_globals_headers",
+    "../modules/video_coding:h264_rtp_depacketizer",
     "../modules/video_coding:nack_module",
     "../modules/video_coding:packet",
     "../modules/video_coding:video_codec_interface",
