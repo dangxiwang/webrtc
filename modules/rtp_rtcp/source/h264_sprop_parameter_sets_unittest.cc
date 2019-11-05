@@ -8,7 +8,7 @@
  *  be found in the AUTHORS file in the root of the source tree.
  */
 
-#include "modules/video_coding/h264_sprop_parameter_sets.h"
+#include "modules/rtp_rtcp/source/h264_sprop_parameter_sets.h"
 
 #include <vector>
 
