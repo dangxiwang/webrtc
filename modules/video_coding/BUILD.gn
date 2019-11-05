@@ -106,6 +106,8 @@ rtc_library("video_coding") {
     "frame_object.h",
     "generic_decoder.cc",
     "generic_decoder.h",
+    "generic_video_rtp_depacketizer.cc",
+    "generic_video_rtp_depacketizer.h",
     "h264_sprop_parameter_sets.cc",
     "h264_sprop_parameter_sets.h",
     "h264_sps_pps_tracker.cc",
@@ -124,6 +126,9 @@ rtc_library("video_coding") {
     "packet_buffer.h",
     "rtp_frame_reference_finder.cc",
     "rtp_frame_reference_finder.h",
+    "rtp_video_depacketizer.h",
+    "rtp_video_depacketizer_raw.cc",
+    "rtp_video_depacketizer_raw.h",
     "rtt_filter.cc",
     "rtt_filter.h",
     "timestamp_map.cc",
@@ -135,6 +140,8 @@ rtc_library("video_coding") {
     "video_codec_initializer.cc",
     "video_receiver2.cc",
     "video_receiver2.h",
+    "video_rtp_packet_buffer.cc",
+    "video_rtp_packet_buffer.h",
   ]
 
   deps += [
@@ -147,6 +154,7 @@ rtc_library("video_coding") {
     "..:module_api",
     "..:module_api_public",
     "../../api:fec_controller_api",
+    "../../api:function_view",
     "../../api:rtp_headers",
     "../../api/units:data_rate",
     "../../api/units:time_delta",
@@ -158,6 +166,7 @@ rtc_library("video_coding") {
     "../../api/video:video_rtp_headers",
     "../../api/video_codecs:video_codecs_api",
     "../../common_video",
+    "../../common_video/generic_frame_descriptor",
     "../../rtc_base",
     "../../rtc_base:checks",
     "../../rtc_base:rtc_base_approved",
@@ -363,6 +372,42 @@ rtc_library("webrtc_h264") {
       deps += [ "../../media:rtc_media_base" ]
     }
   }
+}
+
+rtc_library("vp8_rtp_depacketizer") {
+  visibility = [ "*" ]
+  sources = [
+    "codecs/vp8/vp8_rtp_depacketizer.cc",
+    "codecs/vp8/vp8_rtp_depacketizer.h",
+  ]
+
+  deps = [
+    ":video_coding",
+    "../../api:array_view",
+    "../../api:function_view",
+    "../../media:rtc_media_base",
+    "../../system_wrappers:field_trial",
+    "../rtp_rtcp:rtp_rtcp_format",
+    "//third_party/abseil-cpp/absl/types:optional",
+  ]
+}
+
+rtc_library("h264_rtp_depacketizer") {
+  visibility = [ "*" ]
+  sources = [
+    "codecs/h264/h264_rtp_depacketizer.cc",
+    "codecs/h264/h264_rtp_depacketizer.h",
+  ]
+
+  deps = [
+    ":video_coding",
+    "../../api:array_view",
+    "../../api:function_view",
+    "../../media:rtc_media_base",
+    "../../system_wrappers:field_trial",
+    "../rtp_rtcp:rtp_rtcp_format",
+    "//third_party/abseil-cpp/absl/types:optional",
+  ]
 }
 
 rtc_library("webrtc_multiplex") {
