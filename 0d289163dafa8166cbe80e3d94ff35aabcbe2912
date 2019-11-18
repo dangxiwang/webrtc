@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "b4c7ace9_ddcf1e9a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2019-11-18T14:15:40Z",
+      "side": 1,
+      "message": "Nice. Please also update description.",
+      "parentUuid": "fba7281f_f00ebe15",
+      "range": {
+        "startLine": 10,
+        "startChar": 18,
+        "endLine": 10,
+        "endChar": 53
+      },
+      "revId": "0d289163dafa8166cbe80e3d94ff35aabcbe2912",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "941729f7_0432cb63",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
