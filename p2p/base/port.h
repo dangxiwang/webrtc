@@ -20,6 +20,7 @@
 
 #include "absl/types/optional.h"
 #include "api/candidate.h"
+#include "api/networking/stun.h"
 #include "api/packet_socket_factory.h"
 #include "api/rtc_error.h"
 #include "logging/rtc_event_log/events/rtc_event_ice_candidate_pair.h"
@@ -30,7 +31,6 @@
 #include "p2p/base/connection_info.h"
 #include "p2p/base/p2p_constants.h"
 #include "p2p/base/port_interface.h"
-#include "p2p/base/stun.h"
 #include "p2p/base/stun_request.h"
 #include "rtc_base/async_packet_socket.h"
 #include "rtc_base/checks.h"
