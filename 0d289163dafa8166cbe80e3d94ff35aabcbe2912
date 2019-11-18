@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e0b51981_234834be",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2019-11-18T10:22:49Z",
+      "side": 1,
+      "message": "Maybe better in api/transport/ or api/transport/ice/. If we have both api/networking/ and api/transport, we should have some idea on what belongs in each dir. At least I have no such idea...\n\nMakes some sense for stun.h to be close to ice_transport_*.h (related components but on different levels of abstraction).",
+      "range": {
+        "startLine": 10,
+        "startChar": 18,
+        "endLine": 10,
+        "endChar": 53
+      },
+      "revId": "0d289163dafa8166cbe80e3d94ff35aabcbe2912",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "941729f7_0432cb63",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2019-11-18T10:22:49Z",
+      "side": 1,
+      "message": "Could be more explicit: \"delete stun.h header and build target at old location.\"",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 16
+      },
+      "revId": "0d289163dafa8166cbe80e3d94ff35aabcbe2912",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb81d206_fd112fd9",
+        "filename": "api/networking/stun.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2019-11-18T10:22:49Z",
+      "side": 1,
+      "message": "IIRC correctly, I had some difficulty removing these with the rest of gturn support, probably one of the constants were used in an unexpected place. But shouldn\u0027t be too hard to delete.",
+      "range": {
+        "startLine": 511,
+        "startChar": 0,
+        "endLine": 543,
+        "endChar": 0
+      },
+      "revId": "0d289163dafa8166cbe80e3d94ff35aabcbe2912",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
