@@ -278,6 +278,36 @@ rtc_library("rtp_rtcp") {
   ]
 }
 
+rtc_library("rtp_video_depacketizer") {
+  visibility = [ "*" ]
+  sources = [
+    "source/h264_sprop_parameter_sets.cc",
+    "source/h264_sprop_parameter_sets.h",
+    "source/rtp_video_depacketizer.h",
+    "source/rtp_video_depacketizer_generic.cc",
+    "source/rtp_video_depacketizer_generic.h",
+    "source/rtp_video_depacketizer_h264.cc",
+    "source/rtp_video_depacketizer_h264.h",
+    "source/rtp_video_depacketizer_raw.cc",
+    "source/rtp_video_depacketizer_raw.h",
+    "source/rtp_video_depacketizer_vp8.cc",
+    "source/rtp_video_depacketizer_vp8.h",
+  ]
+  deps = [
+    ":rtp_rtcp_format",
+    ":rtp_video_header",
+    "../../api:array_view",
+    "../../api/video:encoded_image",
+    "../../common_video/generic_frame_descriptor",
+    "../../rtc_base:checks",
+    "../../rtc_base:logging",
+    "../../rtc_base/third_party/base64",
+    "../../system_wrappers:field_trial",
+    "//third_party/abseil-cpp/absl/strings",
+    "//third_party/abseil-cpp/absl/types:optional",
+  ]
+}
+
 rtc_library("rtcp_transceiver") {
   visibility = [ "*" ]
   public = [
@@ -396,6 +426,7 @@ if (rtc_include_tests) {
     deps = [
       ":rtp_rtcp",
       ":rtp_rtcp_format",
+      ":rtp_video_depacketizer",
       "../../rtc_base:rtc_base_approved",
       "../../test:fileutils",
       "../../test:test_support",
@@ -413,6 +444,7 @@ if (rtc_include_tests) {
       "source/flexfec_header_reader_writer_unittest.cc",
       "source/flexfec_receiver_unittest.cc",
       "source/flexfec_sender_unittest.cc",
+      "source/h264_sprop_parameter_sets_unittest.cc",
       "source/nack_rtx_unittest.cc",
       "source/packet_loss_stats_unittest.cc",
       "source/playout_delay_oracle_unittest.cc",
@@ -480,6 +512,7 @@ if (rtc_include_tests) {
       ":rtcp_transceiver",
       ":rtp_rtcp",
       ":rtp_rtcp_format",
+      ":rtp_video_depacketizer",
       "..:module_api",
       "../..:webrtc_common",
       "../../api:array_view",
