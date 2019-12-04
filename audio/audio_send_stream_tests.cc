@@ -79,15 +79,15 @@ TEST_F(AudioSendStreamCallTest, NoExtensionsByDefault) {
 
    private:
     Action OnSendRtp(const uint8_t* packet, size_t length) override {
-      RTPHeader header;
-      EXPECT_TRUE(parser_->Parse(packet, length, &header));
+      webrtc::RtpPacket rtp_packet(&extensions_);
+      EXPECT_TRUE(rtp_packet.Parse(packet, length));
 
-      EXPECT_FALSE(header.extension.hasTransmissionTimeOffset);
-      EXPECT_FALSE(header.extension.hasAbsoluteSendTime);
-      EXPECT_FALSE(header.extension.hasTransportSequenceNumber);
-      EXPECT_FALSE(header.extension.hasAudioLevel);
-      EXPECT_FALSE(header.extension.hasVideoRotation);
-      EXPECT_FALSE(header.extension.hasVideoContentType);
+      EXPECT_FALSE(rtp_packet.HasExtension<TransmissionOffset>());
+      EXPECT_FALSE(rtp_packet.HasExtension<AbsoluteSendTime>());
+      EXPECT_FALSE(rtp_packet.HasExtension<TransportSequenceNumber>());
+      EXPECT_FALSE(rtp_packet.HasExtension<AudioLevel>());
+      EXPECT_FALSE(rtp_packet.HasExtension<VideoOrientation>());
+      EXPECT_FALSE(rtp_packet.HasExtension<VideoContentTypeExtension>());
       observation_complete_.Set();
 
       return SEND_PACKET;
@@ -111,16 +111,17 @@ TEST_F(AudioSendStreamCallTest, SupportsAudioLevel) {
   class AudioLevelObserver : public AudioSendTest {
    public:
     AudioLevelObserver() : AudioSendTest() {
-      EXPECT_TRUE(parser_->RegisterRtpHeaderExtension(kRtpExtensionAudioLevel,
-                                                      kAudioLevelExtensionId));
+      extensions_.Register<AudioLevel>(kAudioLevelExtensionId);
     }
 
     Action OnSendRtp(const uint8_t* packet, size_t length) override {
-      RTPHeader header;
-      EXPECT_TRUE(parser_->Parse(packet, length, &header));
+      RtpPacket rtp_packet(&extensions_);
+      EXPECT_TRUE(rtp_packet.Parse(packet, length));
 
-      EXPECT_TRUE(header.extension.hasAudioLevel);
-      if (header.extension.audioLevel != 0) {
+      uint8_t audio_level = 0;
+      bool voice = false;
+      EXPECT_TRUE(rtp_packet.GetExtension<AudioLevel>(&voice, &audio_level));
+      if (audio_level != 0) {
         // Wait for at least one packet with a non-zero level.
         observation_complete_.Set();
       } else {
@@ -151,20 +152,19 @@ class TransportWideSequenceNumberObserver : public AudioSendTest {
  public:
   explicit TransportWideSequenceNumberObserver(bool expect_sequence_number)
       : AudioSendTest(), expect_sequence_number_(expect_sequence_number) {
-    EXPECT_TRUE(parser_->RegisterRtpHeaderExtension(
-        kRtpExtensionTransportSequenceNumber,
-        kTransportSequenceNumberExtensionId));
+    extensions_.Register<TransportSequenceNumber>(
+        kTransportSequenceNumberExtensionId);
   }
 
  private:
   Action OnSendRtp(const uint8_t* packet, size_t length) override {
-    RTPHeader header;
-    EXPECT_TRUE(parser_->Parse(packet, length, &header));
+    RtpPacket rtp_packet(&extensions_);
+    EXPECT_TRUE(rtp_packet.Parse(packet, length));
 
-    EXPECT_EQ(header.extension.hasTransportSequenceNumber,
+    EXPECT_EQ(rtp_packet.HasExtension<TransportSequenceNumber>(),
               expect_sequence_number_);
-    EXPECT_FALSE(header.extension.hasTransmissionTimeOffset);
-    EXPECT_FALSE(header.extension.hasAbsoluteSendTime);
+    EXPECT_FALSE(rtp_packet.HasExtension<TransmissionOffset>());
+    EXPECT_FALSE(rtp_packet.HasExtension<AbsoluteSendTime>());
 
     observation_complete_.Set();
 
@@ -210,13 +210,13 @@ TEST_F(AudioSendStreamCallTest, SendDtmf) {
 
    private:
     Action OnSendRtp(const uint8_t* packet, size_t length) override {
-      RTPHeader header;
-      EXPECT_TRUE(parser_->Parse(packet, length, &header));
+      RtpPacket rtp_packet(&extensions_);
+      EXPECT_TRUE(rtp_packet.Parse(packet, length));
 
-      if (header.payloadType == kDtmfPayloadType) {
-        EXPECT_EQ(12u, header.headerLength);
-        EXPECT_EQ(16u, length);
-        const int event = packet[12];
+      if (rtp_packet.PayloadType() == kDtmfPayloadType) {
+        EXPECT_EQ(rtp_packet.headers_size(), 12u);
+        EXPECT_EQ(rtp_packet.size(), 16u);
+        const int event = rtp_packet.payload()[0];
         if (event != expected_dtmf_event_) {
           ++expected_dtmf_event_;
           EXPECT_EQ(event, expected_dtmf_event_);
