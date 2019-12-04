@@ -80,27 +80,26 @@ class PictureIdObserver : public test::RtpRtcpObserver {
   bool ParsePayload(const uint8_t* packet,
                     size_t length,
                     ParsedPacket* parsed) const {
-    RTPHeader header;
-    EXPECT_TRUE(parser_->Parse(packet, length, &header));
-    EXPECT_TRUE(header.ssrc == test::CallTest::kVideoSendSsrcs[0] ||
-                header.ssrc == test::CallTest::kVideoSendSsrcs[1] ||
-                header.ssrc == test::CallTest::kVideoSendSsrcs[2])
+    RtpPacket rtp_packet(&extensions_);
+    EXPECT_TRUE(rtp_packet.Parse(packet, length));
+    EXPECT_TRUE(rtp_packet.Ssrc() == test::CallTest::kVideoSendSsrcs[0] ||
+                rtp_packet.Ssrc() == test::CallTest::kVideoSendSsrcs[1] ||
+                rtp_packet.Ssrc() == test::CallTest::kVideoSendSsrcs[2])
         << "Unknown SSRC sent.";
 
-    EXPECT_GE(length, header.headerLength + header.paddingLength);
-    size_t payload_length = length - header.headerLength - header.paddingLength;
-    if (payload_length == 0) {
+    if (rtp_packet.payload_size() == 0) {
       return false;  // Padding packet.
     }
 
-    parsed->timestamp = header.timestamp;
-    parsed->ssrc = header.ssrc;
+    parsed->timestamp = rtp_packet.Timestamp();
+    parsed->ssrc = rtp_packet.Ssrc();
 
     std::unique_ptr<RtpDepacketizer> depacketizer(
         RtpDepacketizer::Create(codec_type_));
     RtpDepacketizer::ParsedPayload parsed_payload;
-    EXPECT_TRUE(depacketizer->Parse(
-        &parsed_payload, &packet[header.headerLength], payload_length));
+    EXPECT_TRUE(depacketizer->Parse(&parsed_payload,
+                                    rtp_packet.payload().data(),
+                                    rtp_packet.payload().size()));
 
     switch (codec_type_) {
       case kVideoCodecVP8: {

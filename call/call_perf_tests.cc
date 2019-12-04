@@ -435,22 +435,23 @@ void CallPerfTest::TestCaptureNtpTime(
 
     Action OnSendRtp(const uint8_t* packet, size_t length) override {
       rtc::CritScope lock(&crit_);
-      RTPHeader header;
-      EXPECT_TRUE(parser_->Parse(packet, length, &header));
+      RtpPacket rtp_packet(&extensions_);
+      EXPECT_TRUE(rtp_packet.Parse(packet, length));
 
       if (!rtp_start_timestamp_set_) {
         // Calculate the rtp timestamp offset in order to calculate the real
         // capture time.
         uint32_t first_capture_timestamp =
             90 * static_cast<uint32_t>(capturer_->first_frame_capture_time());
-        rtp_start_timestamp_ = header.timestamp - first_capture_timestamp;
+        rtp_start_timestamp_ = rtp_packet.Timestamp() - first_capture_timestamp;
         rtp_start_timestamp_set_ = true;
       }
 
-      uint32_t capture_timestamp = header.timestamp - rtp_start_timestamp_;
+      uint32_t capture_timestamp =
+          rtp_packet.Timestamp() - rtp_start_timestamp_;
       capture_time_list_.insert(
           capture_time_list_.end(),
-          std::make_pair(header.timestamp, capture_timestamp));
+          std::make_pair(rtp_packet.Timestamp(), capture_timestamp));
       return SEND_PACKET;
     }
 
