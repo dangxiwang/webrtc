@@ -177,9 +177,9 @@ TEST_F(NetworkStateEndToEndTest, RespectsNetworkState) {
 
     Action OnSendRtp(const uint8_t* packet, size_t length) override {
       rtc::CritScope lock(&test_crit_);
-      RTPHeader header;
-      EXPECT_TRUE(parser_->Parse(packet, length, &header));
-      if (length == header.headerLength + header.paddingLength)
+      RtpPacket rtp_packet(&extensions_);
+      EXPECT_TRUE(rtp_packet.Parse(packet, length));
+      if (rtp_packet.payload_size() == 0)
         ++sender_padding_;
       ++sender_rtp_;
       packet_event_.Set();
