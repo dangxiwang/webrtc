@@ -22,6 +22,30 @@
       "revId": "503c09cfb542268749f64e37ae73c3e4a7488acc",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74ee452d_ee052114",
+        "filename": "test/rtp_rtcp_observer.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-12-05T12:48:41Z",
+      "side": 1,
+      "message": "I find 2nd approach better (less cross-file dependencies)\nit also allows to split this change into 3 subchanges (one per owner)",
+      "parentUuid": "5ab2016e_d3319b1f",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 36
+      },
+      "revId": "503c09cfb542268749f64e37ae73c3e4a7488acc",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
     }
   ]
 }
