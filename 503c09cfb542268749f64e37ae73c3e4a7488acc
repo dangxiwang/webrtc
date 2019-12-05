@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ab2016e_d3319b1f",
+        "filename": "test/rtp_rtcp_observer.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2019-12-05T11:41:10Z",
+      "side": 1,
+      "message": "Can this be made private, with public methods using it? E.g,\n\n  absl::optional\u003cRtpPacket\u003e Parse(absl::string_view packet) const;\n\nand some method to either register an extension, or replace extensions_ wholesale?\n\nAlternatively, delete the member and let each subclass own and set it up.",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 36
+      },
+      "revId": "503c09cfb542268749f64e37ae73c3e4a7488acc",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
