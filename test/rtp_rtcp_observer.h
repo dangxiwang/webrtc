@@ -18,6 +18,7 @@
 #include "api/test/simulated_network.h"
 #include "call/simulated_packet_receiver.h"
 #include "call/video_send_stream.h"
+#include "modules/rtp_rtcp/include/rtp_header_extension_map.h"
 #include "rtc_base/critical_section.h"
 #include "rtc_base/event.h"
 #include "system_wrappers/include/field_trial.h"
@@ -70,11 +71,10 @@ class RtpRtcpObserver {
  protected:
   RtpRtcpObserver() : RtpRtcpObserver(0) {}
   explicit RtpRtcpObserver(int event_timeout_ms)
-      : parser_(RtpHeaderParser::CreateForTest()),
-        timeout_ms_(event_timeout_ms) {}
+      : timeout_ms_(event_timeout_ms) {}
 
   rtc::Event observation_complete_;
-  const std::unique_ptr<RtpHeaderParser> parser_;
+  RtpHeaderExtensionMap extensions_;
 
  private:
   const int timeout_ms_;
