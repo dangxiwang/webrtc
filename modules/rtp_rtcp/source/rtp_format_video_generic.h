@@ -73,7 +73,7 @@ class RtpDepacketizerGeneric : public RtpDepacketizer {
  public:
   // Parses the generic payload header if |generic_header_enabled| is true,
   // returns raw payload otherwise.
-  explicit RtpDepacketizerGeneric(bool generic_header_enabled);
+  explicit RtpDepacketizerGeneric(bool generic_header_enabled = true);
   ~RtpDepacketizerGeneric() override;
 
   bool Parse(ParsedPayload* parsed_payload,
