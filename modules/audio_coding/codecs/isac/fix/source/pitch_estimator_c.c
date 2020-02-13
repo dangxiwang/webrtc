@@ -54,8 +54,8 @@ void WebRtcIsacfix_PCorr2Q32(const int16_t* in, int32_t* logcorQ8) {
   for (k = 1; k < PITCH_LAG_SPAN2; k++) {
     inptr = &in[k];
     ysum32 -= in[k - 1] * in[k - 1] >> scaling;
-    ysum32 += in[PITCH_CORR_LEN2 + k - 1] * in[PITCH_CORR_LEN2 + k - 1] >>
-        scaling;
+    ysum32 += (int32_t)(in[PITCH_CORR_LEN2 + k - 1])
+        * in[PITCH_CORR_LEN2 + k - 1] >> scaling;
 
 #ifdef WEBRTC_HAS_NEON
     {
@@ -85,11 +85,11 @@ void WebRtcIsacfix_PCorr2Q32(const int16_t* in, int32_t* logcorQ8) {
     csum32 = 0;
     if(scaling == 0) {
       for (n = 0; n < PITCH_CORR_LEN2; n++) {
-        csum32 += x[n] * inptr[n];
+        csum32 += (int32_t)(x[n]) * inptr[n];
       }
     } else {
       for (n = 0; n < PITCH_CORR_LEN2; n++) {
-        csum32 += (x[n] * inptr[n]) >> scaling;
+        csum32 += ((int32_t)(x[n]) * inptr[n]) >> scaling;
       }
     }
 #endif
