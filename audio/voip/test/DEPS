@@ -1,0 +1,13 @@
+specific_include_rules = {
+  "audio_channel_unittest.cc": [
+    "+third_party/abseil-cpp/absl/synchronization/notification.h",
+  ],
+
+  "audio_egress_unittest.cc": [
+    "+third_party/abseil-cpp/absl/synchronization/notification.h",
+  ],
+
+  "audio_ingress_unittest.cc": [
+    "+third_party/abseil-cpp/absl/synchronization/notification.h",
+  ],
+}
