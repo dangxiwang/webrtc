@@ -1,0 +1,464 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "03c77308_751ab90f",
+        "filename": "api/voip/voip_engine_builder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 5027
+      },
+      "writtenOn": "2020-02-25T10:49:03Z",
+      "side": 1,
+      "message": "We try to avoid setters on structs, but this is the Builder pattern. I think we\u0027re fine with that.",
+      "range": {
+        "startLine": 37,
+        "startChar": 2,
+        "endLine": 46,
+        "endChar": 63
+      },
+      "revId": "23b89c261a9d752819019028f470e8f8af8bcdee",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "93ddab3f_009f886f",
+        "filename": "api/voip/voip_engine_builder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 5027
+      },
+      "writtenOn": "2020-02-25T10:49:03Z",
+      "side": 1,
+      "message": "Engine",
+      "range": {
+        "startLine": 48,
+        "startChar": 18,
+        "endLine": 48,
+        "endChar": 23
+      },
+      "revId": "23b89c261a9d752819019028f470e8f8af8bcdee",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0bf2c05b_354690a3",
+        "filename": "audio/voip/audio_channel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 5027
+      },
+      "writtenOn": "2020-02-25T10:49:03Z",
+      "side": 1,
+      "message": "Ingress",
+      "range": {
+        "startLine": 58,
+        "startChar": 46,
+        "endLine": 58,
+        "endChar": 52
+      },
+      "revId": "23b89c261a9d752819019028f470e8f8af8bcdee",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "597511bf_34e145df",
+        "filename": "audio/voip/audio_channel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 5027
+      },
+      "writtenOn": "2020-02-25T10:49:03Z",
+      "side": 1,
+      "message": "Nit: punctuation",
+      "range": {
+        "startLine": 83,
+        "startChar": 5,
+        "endLine": 83,
+        "endChar": 66
+      },
+      "revId": "23b89c261a9d752819019028f470e8f8af8bcdee",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f895f561_f454312b",
+        "filename": "audio/voip/audio_egress.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 5027
+      },
+      "writtenOn": "2020-02-25T10:49:03Z",
+      "side": 1,
+      "message": "Hm, so you both have a worker thread that runs some methods and a task queue that runs others. Maybe consider splitting this class into one worker thread part and one task queue part? It\u0027s real easy to break the thread safety of this class.",
+      "range": {
+        "startLine": 194,
+        "startChar": 2,
+        "endLine": 194,
+        "endChar": 45
+      },
+      "revId": "23b89c261a9d752819019028f470e8f8af8bcdee",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6584395e_243bafbf",
+        "filename": "audio/voip/audio_egress.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 5027
+      },
+      "writtenOn": "2020-02-25T10:49:03Z",
+      "side": 1,
+      "message": "This should be RTC_GUARDED_BY the worker thread checker, right?",
+      "range": {
+        "startLine": 225,
+        "startChar": 2,
+        "endLine": 225,
+        "endChar": 13
+      },
+      "revId": "23b89c261a9d752819019028f470e8f8af8bcdee",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d5719d0_f0744367",
+        "filename": "audio/voip/audio_egress.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 5027
+      },
+      "writtenOn": "2020-02-25T10:49:03Z",
+      "side": 1,
+      "message": "Complete this comment",
+      "range": {
+        "startLine": 79,
+        "startChar": 2,
+        "endLine": 79,
+        "endChar": 9
+      },
+      "revId": "23b89c261a9d752819019028f470e8f8af8bcdee",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1ddf1a2_b7702a90",
+        "filename": "audio/voip/audio_ingress.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 5027
+      },
+      "writtenOn": "2020-02-25T10:49:03Z",
+      "side": 1,
+      "message": "inheritable",
+      "range": {
+        "startLine": 38,
+        "startChar": 37,
+        "endLine": 38,
+        "endChar": 48
+      },
+      "revId": "23b89c261a9d752819019028f470e8f8af8bcdee",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e2916b2_614e2d34",
+        "filename": "audio/voip/audio_ingress.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 5027
+      },
+      "writtenOn": "2020-02-25T10:49:03Z",
+      "side": 1,
+      "message": "Not sure if this comment is necessary. This class clearly uses rtp_rtcp etc, so it\u0027s a no-brainer to pass it in the constructor from this class\u0027 perspective. I suggest removing this comment, or move it to AudioChannel.",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 35
+      },
+      "revId": "23b89c261a9d752819019028f470e8f8af8bcdee",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b46bd2f_83b3eb58",
+        "filename": "audio/voip/audio_ingress.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 5027
+      },
+      "writtenOn": "2020-02-25T10:49:03Z",
+      "side": 1,
+      "message": "Remove?",
+      "range": {
+        "startLine": 66,
+        "startChar": 2,
+        "endLine": 66,
+        "endChar": 23
+      },
+      "revId": "23b89c261a9d752819019028f470e8f8af8bcdee",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "407a6390_f5e1f880",
+        "filename": "audio/voip/test/audio_channel_unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 5027
+      },
+      "writtenOn": "2020-02-25T10:49:03Z",
+      "side": 1,
+      "message": "Move this into the test; seems like overly specific setup. Isn\u0027t there any other codecs you want to test for instance?",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 68
+      },
+      "revId": "23b89c261a9d752819019028f470e8f8af8bcdee",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "060c2418_d8d0a4eb",
+        "filename": "audio/voip/test/audio_channel_unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 5027
+      },
+      "writtenOn": "2020-02-25T10:49:03Z",
+      "side": 1,
+      "message": "Remove muted, appears unused.",
+      "range": {
+        "startLine": 82,
+        "startChar": 44,
+        "endLine": 82,
+        "endChar": 62
+      },
+      "revId": "23b89c261a9d752819019028f470e8f8af8bcdee",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34481420_ba0b0085",
+        "filename": "audio/voip/test/audio_channel_unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 5027
+      },
+      "writtenOn": "2020-02-25T10:49:03Z",
+      "side": 1,
+      "message": "Nit: Advance 10 ms for each frame.",
+      "range": {
+        "startLine": 102,
+        "startChar": 9,
+        "endLine": 102,
+        "endChar": 37
+      },
+      "revId": "23b89c261a9d752819019028f470e8f8af8bcdee",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "856e84ca_20157bb2",
+        "filename": "audio/voip/test/audio_channel_unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 5027
+      },
+      "writtenOn": "2020-02-25T10:49:03Z",
+      "side": 1,
+      "message": "Inline InsertPackets and just call audio_channel-\u003eSendAudioData + fake_clock directly since you\u0027re only sending one packet anyway. Tests should be as simple as possible and preferably not have any loops, so unrolling loops and inlining functions frequently makes sense.",
+      "range": {
+        "startLine": 132,
+        "startChar": 2,
+        "endLine": 132,
+        "endChar": 19
+      },
+      "revId": "23b89c261a9d752819019028f470e8f8af8bcdee",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0dd7bd4b_a6aff305",
+        "filename": "audio/voip/test/audio_channel_unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 5027
+      },
+      "writtenOn": "2020-02-25T10:49:03Z",
+      "side": 1,
+      "message": "You\u0027re not following the arrange-act-assert rule here. You can split this into two cases: one for lines 120-135 and a second with lines 120-145 (but with the ASSERT_TRUE line dropped). You can keep the rtp_done.HasBeenNotified() if it has some other side effect? Does it block? In that case, just remove the ASSERT in the second test. \n\nAlternatively, just keep one test and remove the assert. That assert would appear to test your test code anyway.",
+      "range": {
+        "startLine": 120,
+        "startChar": 1,
+        "endLine": 145,
+        "endChar": 50
+      },
+      "revId": "23b89c261a9d752819019028f470e8f8af8bcdee",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "646e9aad_bd11407f",
+        "filename": "audio/voip/test/audio_egress_unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 5027
+      },
+      "writtenOn": "2020-02-25T10:49:03Z",
+      "side": 1,
+      "message": "This is also very complicated for a test. It would read nicer if it read like\n\negress_-\u003eSendAudioData(GetAudioFrame(1));\negress_-\u003eSendAudioData(GetAudioFrame(2));\negress_-\u003eSendAudioData(GetAudioFrame(3));\n...\n\nnot_dtmf \u003d [](RtpPacketReceived p) { ... move dtmf recognizer code here ... }\nstd::vector\u003cRtpPacketReceived\u003e received \u003d WaitForFrames();\nstd::remove_if(received.begin(), received.end, not_dtmf);\n\nASSERT_EQUAL(kExpected, received.size()) \u003c\u003c \"Did not get enough DTMF tones\";\n\nOf course, it\u0027s somewhat tricky to know when all the packets have trickled through, because this is threaded code under test, right? Counting like you\u0027re doing above is perhaps the simplest and best solution that is fast and thread safe. In that case make your rtp_sent function simpler by moving out the DTMF check and just save the received packet. By splitting gathering and analyzing of results, you make the code simpler.",
+      "range": {
+        "startLine": 190,
+        "startChar": 1,
+        "endLine": 204,
+        "endChar": 4
+      },
+      "revId": "23b89c261a9d752819019028f470e8f8af8bcdee",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a74aea4_63ec3454",
+        "filename": "audio/voip/test/audio_egress_unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 5027
+      },
+      "writtenOn": "2020-02-25T10:49:03Z",
+      "side": 1,
+      "message": "Inline this too and only keep the parts you really need (nuke mute, do you need to advance the fake clock?)",
+      "range": {
+        "startLine": 208,
+        "startChar": 2,
+        "endLine": 208,
+        "endChar": 27
+      },
+      "revId": "23b89c261a9d752819019028f470e8f8af8bcdee",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85415cc8_db6215a9",
+        "filename": "audio/voip/test/audio_ingress_unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 5027
+      },
+      "writtenOn": "2020-02-25T10:49:03Z",
+      "side": 1,
+      "message": "Nit: punctuation etc",
+      "range": {
+        "startLine": 115,
+        "startChar": 9,
+        "endLine": 115,
+        "endChar": 37
+      },
+      "revId": "23b89c261a9d752819019028f470e8f8af8bcdee",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46e96628_abdce875",
+        "filename": "audio/voip/test/audio_ingress_unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 5027
+      },
+      "writtenOn": "2020-02-25T10:49:03Z",
+      "side": 1,
+      "message": "This timeout is way too short. It\u0027s a recipe for flakiness. Increase to at least 1000.",
+      "range": {
+        "startLine": 118,
+        "startChar": 62,
+        "endLine": 118,
+        "endChar": 65
+      },
+      "revId": "23b89c261a9d752819019028f470e8f8af8bcdee",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47753e4b_566f4fd8",
+        "filename": "audio/voip/test/audio_ingress_unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 5027
+      },
+      "writtenOn": "2020-02-25T10:49:03Z",
+      "side": 1,
+      "message": "InsertPacket makes more sense here, but it\u0027s way too complex. It\u0027s hard to tell if the test is correct by inspection.\n\nFirst, mute appears unused here too so nuke it.\n\nSecond, you call this once from most test methods and 11 times in another. That would mean 22 calls to SendAudioData and fake clock advance. That\u0027s actually not as unreasonable as you might think. However, do make InsertPackets as short as possible (extract a function to create a frame, etc). Also, try to make the notify mechanism simpler. Don\u0027t check num_packets \u003e 0 for instance; if that ever triggers somebody invoked InsertPackets(0) or InsertPackets(-X), which are programmer errors.",
+      "range": {
+        "startLine": 88,
+        "startChar": 2,
+        "endLine": 119,
+        "endChar": 3
+      },
+      "revId": "23b89c261a9d752819019028f470e8f8af8bcdee",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
