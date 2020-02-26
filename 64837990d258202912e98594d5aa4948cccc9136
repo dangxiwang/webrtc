@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e4174636_dfe32801",
+        "filename": "sdk/android/api/org/webrtc/VideoEncoderFactory.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5112
+      },
+      "writtenOn": "2020-02-26T11:43:16Z",
+      "side": 1,
+      "message": "You probably want to add a default implementation here as well so you can actually remove the downstream override. (Just throw UnsupportedOperationException)",
+      "range": {
+        "startLine": 28,
+        "startChar": 41,
+        "endLine": 28,
+        "endChar": 58
+      },
+      "revId": "64837990d258202912e98594d5aa4948cccc9136",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
