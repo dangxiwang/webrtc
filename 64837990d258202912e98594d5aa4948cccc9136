@@ -22,6 +22,30 @@
       "revId": "64837990d258202912e98594d5aa4948cccc9136",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d271c6b2_9e0da242",
+        "filename": "sdk/android/api/org/webrtc/VideoEncoderFactory.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 6977
+      },
+      "writtenOn": "2020-02-26T12:09:51Z",
+      "side": 1,
+      "message": "Yes, thanks. Done.",
+      "parentUuid": "e4174636_dfe32801",
+      "range": {
+        "startLine": 28,
+        "startChar": 41,
+        "endLine": 28,
+        "endChar": 58
+      },
+      "revId": "64837990d258202912e98594d5aa4948cccc9136",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
