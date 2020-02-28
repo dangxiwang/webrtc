@@ -35,7 +35,7 @@ namespace webrtc {
 //   auto* voip_codec = voip_engine->Codec();
 //   auto* voip_network = voip_engine->Network();
 //
-//   VoipChannel::Config config = { &app_transport_, 0xdeadc0de };
+//   VoipBase::Config config = { &app_transport_, 0xdeadc0de };
 //   int channel = voip_base->CreateChannel(config);
 //
 //   // After SDP offer/answer, payload type and codec usage have been
