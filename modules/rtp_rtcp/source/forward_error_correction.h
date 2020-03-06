@@ -62,9 +62,11 @@ class ForwardErrorCorrection {
   // TODO(holmer): Refactor into a proper class.
   class SortablePacket {
    public:
-    // Functor which returns true if the sequence number of |first|
-    // is < the sequence number of |second|. Should only ever be called for
-    // packets belonging to the same SSRC.
+    SortablePacket();
+    // Functor which returns true if the timestamp of |first|
+    // is < the timestamp of |second|. If timestamp is equal, it returns true
+    // if the sequence number  of |first| is < the timestamp of |second|.
+    // Should only ever be called for packets belonging to the same SSRC.
     struct LessThan {
       template <typename S, typename T>
       bool operator()(const S& first, const T& second);
@@ -72,6 +74,7 @@ class ForwardErrorCorrection {
 
     uint32_t ssrc;
     uint16_t seq_num;
+    uint32_t timestamp;
   };
 
   // Used for the input to DecodeFec().

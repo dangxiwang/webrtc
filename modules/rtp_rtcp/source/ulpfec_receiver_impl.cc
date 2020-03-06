@@ -105,6 +105,7 @@ bool UlpfecReceiverImpl::AddReceivedRedPacket(const RtpPacket& rtp_packet,
   received_packet->is_fec = payload_type == ulpfec_payload_type;
   received_packet->ssrc = rtp_packet.Ssrc();
   received_packet->seq_num = rtp_packet.SequenceNumber();
+  received_packet->timestamp = rtp_packet.Timestamp();
 
   if (rtp_packet.payload()[0] & 0x80) {
     // f bit set in RED header, i.e. there are more than one RED header blocks.

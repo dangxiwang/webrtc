@@ -31,6 +31,8 @@ namespace webrtc {
 namespace {
 // Transport header size in bytes. Assume UDP/IPv4 as a reasonable minimum.
 constexpr size_t kTransportOverhead = 28;
+// Keep FEC packets for at most this many RTP timestamps.
+constexpr size_t kMaxTimestampsToRetain = 10;
 }  // namespace
 
 ForwardErrorCorrection::Packet::Packet() : data(0), ref_count_(0) {}
@@ -48,6 +50,9 @@ int32_t ForwardErrorCorrection::Packet::Release() {
   return ref_count;
 }
 
+ForwardErrorCorrection::SortablePacket::SortablePacket()
+    : ssrc(0), seq_num(0), timestamp(0) {}
+
 // This comparator is used to compare std::unique_ptr's pointing to
 // subclasses of SortablePackets. It needs to be parametric since
 // the std::unique_ptr's are not covariant w.r.t. the types that
@@ -57,6 +62,9 @@ bool ForwardErrorCorrection::SortablePacket::LessThan::operator()(
     const S& first,
     const T& second) {
   RTC_DCHECK_EQ(first->ssrc, second->ssrc);
+  if (first->timestamp != second->timestamp) {
+    return IsNewerTimestamp(second->timestamp, first->timestamp);
+  }
   return IsNewerSequenceNumber(second->seq_num, first->seq_num);
 }
 
@@ -376,6 +384,7 @@ void ForwardErrorCorrection::InsertMediaPacket(
   // This media packet has already been passed on.
   recovered_packet->returned = true;
   recovered_packet->ssrc = received_packet.ssrc;
+  recovered_packet->timestamp = received_packet.timestamp;
   recovered_packet->seq_num = received_packet.seq_num;
   recovered_packet->pkt = received_packet.pkt;
   // TODO(holmer): Consider replacing this with a binary search for the right
@@ -418,6 +427,7 @@ void ForwardErrorCorrection::InsertFecPacket(
   fec_packet->pkt = received_packet.pkt;
   fec_packet->ssrc = received_packet.ssrc;
   fec_packet->seq_num = received_packet.seq_num;
+  fec_packet->timestamp = received_packet.timestamp;
   // Parse ULPFEC/FlexFEC header specific info.
   bool ret = fec_header_reader_->ReadFecHeader(fec_packet.get());
   if (!ret) {
@@ -450,6 +460,7 @@ void ForwardErrorCorrection::InsertFecPacket(
         protected_packet->ssrc = protected_media_ssrc_;
         protected_packet->seq_num = static_cast<uint16_t>(
             fec_packet->seq_num_base + (byte_idx << 3) + bit_idx);
+        protected_packet->timestamp = fec_packet->timestamp;
         protected_packet->pkt = nullptr;
         fec_packet->protected_packets.push_back(std::move(protected_packet));
       }
@@ -503,25 +514,14 @@ void ForwardErrorCorrection::AssignRecoveredPackets(
 void ForwardErrorCorrection::InsertPacket(
     const ReceivedPacket& received_packet,
     RecoveredPacketList* recovered_packets) {
-  // Discard old FEC packets such that the sequence numbers in
-  // |received_fec_packets_| span at most 1/2 of the sequence number space.
-  // This is important for keeping |received_fec_packets_| sorted, and may
-  // also reduce the possibility of incorrect decoding due to sequence number
-  // wrap-around.
-  // TODO(marpan/holmer): We should be able to improve detection/discarding of
-  // old FEC packets based on timestamp information or better sequence number
-  // thresholding (e.g., to distinguish between wrap-around and reordering).
-  if (!received_fec_packets_.empty() &&
-      received_packet.ssrc == received_fec_packets_.front()->ssrc) {
-    // It only makes sense to detect wrap-around when |received_packet|
-    // and |front_received_fec_packet| belong to the same sequence number
-    // space, i.e., the same SSRC. This happens when |received_packet|
-    // is a FEC packet, or if |received_packet| is a media packet and
-    // RED+ULPFEC is used.
+  // Discard old FEC packets such that the timestamp diff
+  // is larger than kMaxTimestampsToRetain
+  if (!received_fec_packets_.empty()) {
     auto it = received_fec_packets_.begin();
     while (it != received_fec_packets_.end()) {
-      uint16_t seq_num_diff = MinDiff(received_packet.seq_num, (*it)->seq_num);
-      if (seq_num_diff > 0x3fff) {
+      uint32_t timestamp_diff =
+          webrtc::MinDiff(received_packet.timestamp, (*it)->timestamp);
+      if (timestamp_diff > kMaxTimestampsToRetain) {
         it = received_fec_packets_.erase(it);
       } else {
         // No need to keep iterating, since |received_fec_packets_| is sorted.
@@ -599,6 +599,7 @@ bool ForwardErrorCorrection::FinishPacketRecovery(
   // Set the SSRC field.
   ByteWriter<uint32_t>::WriteBigEndian(&data[8], fec_packet.protected_ssrc);
   recovered_packet->ssrc = fec_packet.protected_ssrc;
+  recovered_packet->timestamp = fec_packet.timestamp;
   return true;
 }
 
