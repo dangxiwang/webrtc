@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5abec46e_919e89a6",
+        "filename": "modules/audio_processing/BUILD.gn",
+        "patchSetId": 5
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 5125
+      },
+      "writtenOn": "2020-03-12T19:51:32Z",
+      "side": 1,
+      "message": "Would it be possible to include these as well in the transient build target?\nWithout that, this is mainly a (good) bundling of files into different targets but if we can gather them all in one target, it would be a true build target.\n\nOr can typing_detection.* build without the transient* files?",
+      "range": {
+        "startLine": 132,
+        "startChar": 4,
+        "endLine": 134,
+        "endChar": 0
+      },
+      "revId": "45d7a890bd747ac29c9505ea49f9f152f274059e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
