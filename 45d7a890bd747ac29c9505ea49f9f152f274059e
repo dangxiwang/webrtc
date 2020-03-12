@@ -22,6 +22,30 @@
       "revId": "45d7a890bd747ac29c9505ea49f9f152f274059e",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8315906_2f6a9529",
+        "filename": "modules/audio_processing/BUILD.gn",
+        "patchSetId": 5
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 5119
+      },
+      "writtenOn": "2020-03-12T20:34:06Z",
+      "side": 1,
+      "message": "Yes. In fact, the typing detection .cc and .h files are _completely_ independent of the rest of WebRTC. They depend on nothing except rtc_base export.h, and are not used in APM. Typing detection is run by Chromium code, after APM, in the audio processors there.\n\nI would make it a separate target, but there is some dependency stuff for Chromium+WebRTC that I must read up on first.",
+      "parentUuid": "5abec46e_919e89a6",
+      "range": {
+        "startLine": 132,
+        "startChar": 4,
+        "endLine": 134,
+        "endChar": 0
+      },
+      "revId": "45d7a890bd747ac29c9505ea49f9f152f274059e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
