@@ -16,9 +16,83 @@
 #include "modules/desktop_capture/win/scoped_gdi_object.h"
 #include "rtc_base/checks.h"
 #include "rtc_base/logging.h"
+#include "rtc_base/string_utils.h"
 #include "rtc_base/win32.h"
 
 namespace webrtc {
+
+namespace {
+
+struct WindowsEnumerationParams {
+  WindowsEnumerationParams(bool ignoreNoTitle,
+                           bool ignoreUnresponsive,
+                           DesktopCapturer::SourceList* result)
+      : ignoreNoTitle(ignoreNoTitle),
+        ignoreUnresponsive(ignoreUnresponsive),
+        result(result) {}
+  const bool ignoreNoTitle;
+  const bool ignoreUnresponsive;
+  DesktopCapturer::SourceList* const result;
+};
+
+BOOL CALLBACK WindowsEnumerationHandler(HWND hwnd, LPARAM param) {
+  WindowsEnumerationParams* params =
+      reinterpret_cast<WindowsEnumerationParams*>(param);
+  DesktopCapturer::SourceList* list = params->result;
+
+  // Skip windows that are invisible, minimized, have no title (for
+  // ignoreNoTitle equals true), or are owned, unless they have the app window
+  // style set.
+  int len = GetWindowTextLength(hwnd);
+  HWND owner = GetWindow(hwnd, GW_OWNER);
+  LONG exstyle = GetWindowLong(hwnd, GWL_EXSTYLE);
+  if ((params->ignoreNoTitle && len == 0) || IsIconic(hwnd) ||
+      !IsWindowVisible(hwnd) || (owner && !(exstyle & WS_EX_APPWINDOW))) {
+    return TRUE;
+  }
+
+  // If ignoreUnresponsive is true then skip unresponsive windows. Set timout
+  // with 50ms, in case system is under heavy load, the check can wait longer
+  // but wont' be too long to delay the the enumeration.
+  const UINT uTimeout = 50;  // ms
+  if (params->ignoreUnresponsive &&
+      !SendMessageTimeout(hwnd, WM_NULL, 0, 0, SMTO_ABORTIFHUNG, uTimeout,
+                          nullptr)) {
+    return TRUE;
+  }
+
+  // Skip the Program Manager window and the Start button.
+  const size_t kClassLength = 256;
+  WCHAR class_name[kClassLength];
+  const int class_name_length = GetClassNameW(hwnd, class_name, kClassLength);
+  if (class_name_length < 1)
+    return TRUE;
+
+  // Skip Program Manager window and the Start button. This is the same logic
+  // that's used in Win32WindowPicker in libjingle. Consider filtering other
+  // windows as well (e.g. toolbars).
+  if (wcscmp(class_name, L"Progman") == 0 || wcscmp(class_name, L"Button") == 0)
+    return TRUE;
+
+  DesktopCapturer::Source window;
+  window.id = reinterpret_cast<WindowId>(hwnd);
+
+  const size_t kTitleLength = 500;
+  WCHAR window_title[kTitleLength];
+  // Truncate the title if it's longer than kTitleLength.
+  GetWindowTextW(hwnd, window_title, kTitleLength);
+  window.title = rtc::ToUtf8(window_title);
+
+  // Skip windows when we failed to convert the title or it is empty.
+  if (params->ignoreNoTitle && window.title.empty())
+    return TRUE;
+
+  list->push_back(window);
+
+  return TRUE;
+}
+
+}  // namespace
 
 // Prefix used to match the window class for Chrome windows.
 const wchar_t kChromeWindowClassPrefix[] = L"Chrome_WidgetWin_";
@@ -155,6 +229,14 @@ bool IsWindowMaximized(HWND window, bool* result) {
 
   *result = (placement.showCmd == SW_SHOWMAXIMIZED);
   return true;
+}
+
+bool GetWindowList(DesktopCapturer::SourceList* windows,
+                   bool ignoreNoTitle,
+                   bool ignoreUnresponsive) {
+  WindowsEnumerationParams params(ignoreNoTitle, ignoreUnresponsive, windows);
+  return ::EnumWindows(&WindowsEnumerationHandler,
+                       reinterpret_cast<LPARAM>(&params)) != 0;
 }
 
 // WindowCaptureHelperWin implementation.

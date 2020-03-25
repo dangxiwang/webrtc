@@ -105,4 +105,19 @@ DesktopRect GetScreenRect(DesktopCapturer::SourceId screen,
       device_mode.dmPelsWidth, device_mode.dmPelsHeight);
 }
 
+bool EqualsScreenRect(const DesktopRect& rect) {
+  DesktopCapturer::SourceList screens;
+  if (!GetScreenList(&screens))
+    return false;
+
+  for (size_t i = 0; i < screens.size(); ++i) {
+    std::wstring device_key;
+    if (IsScreenValid(screens[i].id, &device_key) &&
+        rect.equals(GetScreenRect(screens[i].id, device_key))) {
+      return true;
+    }
+  }
+  return false;
+}
+
 }  // namespace webrtc

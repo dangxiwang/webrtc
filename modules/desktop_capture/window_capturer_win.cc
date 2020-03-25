@@ -23,66 +23,12 @@
 #include "rtc_base/checks.h"
 #include "rtc_base/constructor_magic.h"
 #include "rtc_base/logging.h"
-#include "rtc_base/string_utils.h"
 #include "rtc_base/trace_event.h"
 #include "rtc_base/win32.h"
 
 namespace webrtc {
 
 namespace {
-
-BOOL CALLBACK WindowsEnumerationHandler(HWND hwnd, LPARAM param) {
-  DesktopCapturer::SourceList* list =
-      reinterpret_cast<DesktopCapturer::SourceList*>(param);
-
-  // Skip windows that are invisible, minimized, have no title, or are owned,
-  // unless they have the app window style set.
-  int len = GetWindowTextLength(hwnd);
-  HWND owner = GetWindow(hwnd, GW_OWNER);
-  LONG exstyle = GetWindowLong(hwnd, GWL_EXSTYLE);
-  if (len == 0 || IsIconic(hwnd) || !IsWindowVisible(hwnd) ||
-      (owner && !(exstyle & WS_EX_APPWINDOW))) {
-    return TRUE;
-  }
-  // Skip unresponsive windows. Set timout with 50ms, in case system is under
-  // heavy load, the check can wait longer but wont' be too long to delay the
-  // the enumeration.
-  const UINT uTimeout = 50;  // ms
-  if (!SendMessageTimeout(hwnd, WM_NULL, 0, 0, SMTO_ABORTIFHUNG, uTimeout,
-                          nullptr)) {
-    return TRUE;
-  }
-
-  // Skip the Program Manager window and the Start button.
-  const size_t kClassLength = 256;
-  WCHAR class_name[kClassLength];
-  const int class_name_length = GetClassNameW(hwnd, class_name, kClassLength);
-  if (class_name_length < 1)
-    return TRUE;
-
-  // Skip Program Manager window and the Start button. This is the same logic
-  // that's used in Win32WindowPicker in libjingle. Consider filtering other
-  // windows as well (e.g. toolbars).
-  if (wcscmp(class_name, L"Progman") == 0 || wcscmp(class_name, L"Button") == 0)
-    return TRUE;
-
-  DesktopCapturer::Source window;
-  window.id = reinterpret_cast<WindowId>(hwnd);
-
-  const size_t kTitleLength = 500;
-  WCHAR window_title[kTitleLength];
-  // Truncate the title if it's longer than kTitleLength.
-  GetWindowTextW(hwnd, window_title, kTitleLength);
-  window.title = rtc::ToUtf8(window_title);
-
-  // Skip windows when we failed to convert the title or it is empty.
-  if (window.title.empty())
-    return TRUE;
-
-  list->push_back(window);
-
-  return TRUE;
-}
 
 // Used to pass input/output data during the EnumWindows call to collect
 // owned/pop-up windows that should be captured.
@@ -193,9 +139,7 @@ WindowCapturerWin::~WindowCapturerWin() {}
 
 bool WindowCapturerWin::GetSourceList(SourceList* sources) {
   SourceList result;
-  LPARAM param = reinterpret_cast<LPARAM>(&result);
-  // EnumWindows only enumerates root windows.
-  if (!EnumWindows(&WindowsEnumerationHandler, param))
+  if (!webrtc::GetWindowList(&result, true, true))
     return false;
 
   for (auto it = result.begin(); it != result.end();) {

@@ -43,6 +43,9 @@ DesktopRect GetFullscreenRect();
 RTC_EXPORT DesktopRect GetScreenRect(DesktopCapturer::SourceId screen,
                                      const std::wstring& device_key);
 
+// Returns true if |rect| covers the whole of a screen.
+bool EqualsScreenRect(const DesktopRect& rect);
+
 }  // namespace webrtc
 
 #endif  // MODULES_DESKTOP_CAPTURE_WIN_SCREEN_CAPTURE_UTILS_H_

@@ -15,6 +15,7 @@
 #include <windows.h>
 #include <wrl/client.h>
 
+#include "modules/desktop_capture/desktop_capturer.h"
 #include "modules/desktop_capture/desktop_geometry.h"
 #include "rtc_base/constructor_magic.h"
 
@@ -65,6 +66,15 @@ bool GetDcSize(HDC hdc, DesktopSize* size);
 // Retrieves whether the |window| is maximized and stores in |result|. This
 // function returns false if native APIs fail.
 bool IsWindowMaximized(HWND window, bool* result);
+
+// Retrieves the list of all top-level windows on the screen.
+// Windows that are invisible, minimized, have no title (if |ignoreNoTitle| is
+// true), Program Manager window and the Start button, unresponsive (if
+// |ignoreUnresponsive| is true) will be ignored. Returns false if native APIs
+// failed.
+bool GetWindowList(DesktopCapturer::SourceList* windows,
+                   bool ignoreNoTitle,
+                   bool ignoreUnresponsive);
 
 typedef HRESULT(WINAPI* DwmIsCompositionEnabledFunc)(BOOL* enabled);
 typedef HRESULT(WINAPI* DwmGetWindowAttributeFunc)(HWND hwnd,
