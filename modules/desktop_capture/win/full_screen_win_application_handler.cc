@@ -14,6 +14,9 @@
 #include <memory>
 #include <string>
 #include <vector>
+#include "absl/strings/match.h"
+#include "modules/desktop_capture/win/screen_capture_utils.h"
+#include "modules/desktop_capture/win/window_capture_utils.h"
 #include "rtc_base/arraysize.h"
 #include "rtc_base/logging.h"  // For RTC_LOG_GLE
 #include "rtc_base/string_utils.h"
@@ -93,6 +96,8 @@ class FullScreenPowerPointHandler : public FullScreenApplicationHandler {
 
     for (const auto& source : powerpoint_windows) {
       HWND window = reinterpret_cast<HWND>(source.id);
+      if (!IsWindowVisible(window))
+        continue;
 
       // Looking for slide show window for the same document
       if (GetWindowType(window) != WindowType::kSlideShow ||
@@ -170,6 +175,47 @@ class FullScreenPowerPointHandler : public FullScreenApplicationHandler {
   }
 };
 
+class OpenOfficeApplicationHandler : public FullScreenApplicationHandler {
+ public:
+  explicit OpenOfficeApplicationHandler(DesktopCapturer::SourceId sourceId)
+      : FullScreenApplicationHandler(sourceId) {}
+
+  DesktopCapturer::SourceId FindFullScreenWindow(
+      const DesktopCapturer::SourceList& window_list,
+      int64_t timestamp) const override {
+    if (window_list.empty())
+      return 0;
+
+    HWND original_window = reinterpret_cast<HWND>(GetSourceId());
+    DWORD process_id = WindowProcessId(original_window);
+
+    DesktopCapturer::SourceList app_windows =
+        GetProcessWindows(window_list, process_id, nullptr);
+
+    auto first_titled_it =
+        std::find_if(app_windows.begin(), app_windows.end(),
+                     [](const auto& x) { return x.title.length(); });
+
+    // As Slide Show window doesn't have title we need to make sure that
+    // the window we're are sharing is on top of other document windows.
+    if (first_titled_it == app_windows.end() ||
+        first_titled_it->title != WindowText(original_window)) {
+      return 0;
+    }
+
+    // Slide Show window is a fullscreen visible window with empty title.
+    auto slide_show_it =
+        std::find_if(app_windows.begin(), app_windows.end(), [](const auto& x) {
+          DesktopRect rect;
+          HWND hwnd = reinterpret_cast<HWND>(x.id);
+          return IsWindowVisible(hwnd) && x.title.empty() &&
+                 GetWindowRect(hwnd, &rect) && IsScreenRect(rect);
+        });
+
+    return slide_show_it == app_windows.end() ? 0 : slide_show_it->id;
+  }
+};
+
 std::wstring GetPathByWindowId(HWND window_id) {
   DWORD process_id = WindowProcessId(window_id);
   HANDLE process =
@@ -193,13 +239,17 @@ std::wstring GetPathByWindowId(HWND window_id) {
 std::unique_ptr<FullScreenApplicationHandler>
 CreateFullScreenWinApplicationHandler(DesktopCapturer::SourceId source_id) {
   std::unique_ptr<FullScreenApplicationHandler> result;
-  std::wstring exe_path = GetPathByWindowId(reinterpret_cast<HWND>(source_id));
+  HWND hwnd = reinterpret_cast<HWND>(source_id);
+  std::wstring exe_path = GetPathByWindowId(hwnd);
   std::wstring file_name = FileNameFromPath(exe_path);
   std::transform(file_name.begin(), file_name.end(), file_name.begin(),
                  std::towupper);
 
   if (file_name == L"POWERPNT.EXE") {
     result = std::make_unique<FullScreenPowerPointHandler>(source_id);
+  } else if (file_name == L"SOFFICE.BIN" &&
+             absl::EndsWith(WindowText(hwnd), "OpenOffice Impress")) {
+    result = std::make_unique<OpenOfficeApplicationHandler>(source_id);
   }
 
   return result;
