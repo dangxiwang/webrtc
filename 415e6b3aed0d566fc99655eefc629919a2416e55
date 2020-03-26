@@ -1,0 +1,418 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4eb40df4_919d8cb4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5064
+      },
+      "writtenOn": "2020-03-26T15:03:09Z",
+      "side": 1,
+      "message": "nit: Blank line between description and Bug line",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 17
+      },
+      "revId": "415e6b3aed0d566fc99655eefc629919a2416e55",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52839a91_5a31340d",
+        "filename": "modules/desktop_capture/cropping_window_capturer_win.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 5064
+      },
+      "writtenOn": "2020-03-26T15:03:09Z",
+      "side": 1,
+      "message": "According to the comments below, the whole point of this function is to return windows _including_ invisible or untitled ones?",
+      "range": {
+        "startLine": 29,
+        "startChar": 27,
+        "endLine": 29,
+        "endChar": 36
+      },
+      "revId": "415e6b3aed0d566fc99655eefc629919a2416e55",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70972751_66c85bbd",
+        "filename": "modules/desktop_capture/cropping_window_capturer_win.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 5064
+      },
+      "writtenOn": "2020-03-26T15:03:09Z",
+      "side": 1,
+      "message": "This seems like a very bad idea; if some application has a lot of windows open and has then hung then you\u0027ll take 50*n_windows milliseconds on each iteration.",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 3
+      },
+      "revId": "415e6b3aed0d566fc99655eefc629919a2416e55",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe3a529c_d7806e46",
+        "filename": "modules/desktop_capture/cropping_window_capturer_win.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 5064
+      },
+      "writtenOn": "2020-03-26T15:03:09Z",
+      "side": 1,
+      "message": "This comment appears to duplicate and expand upon the preceding comment.",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 37
+      },
+      "revId": "415e6b3aed0d566fc99655eefc629919a2416e55",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0161466c_3a30891e",
+        "filename": "modules/desktop_capture/cropping_window_capturer_win.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 5064
+      },
+      "writtenOn": "2020-03-26T15:03:09Z",
+      "side": 1,
+      "message": "This comment describes a property of the _caller_ of this function, rather than what the function itself does.\n\nI think you probably just want to describe this as:\n\n\"Populates |sources| in the same way as GetSourceList(), but includes windows that are not currently visible, or which have no title.\"\n\nThis function should appear below the CroppingWindowCapturer overrides, e.g. before GetWindowToCapture().\n\n\nWhy are you putting this function on CroppingWindowCapturerWin?  In what way is it specific to the case of \"cropped\" captures?",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 191,
+        "endChar": 61
+      },
+      "revId": "415e6b3aed0d566fc99655eefc629919a2416e55",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6c1293c_6e8a03a2",
+        "filename": "modules/desktop_capture/cropping_window_capturer_win.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 5064
+      },
+      "writtenOn": "2020-03-26T15:03:09Z",
+      "side": 1,
+      "message": "This is where the comment about needing to capture windows including invisible \u0026 untitled ones belongs.",
+      "range": {
+        "startLine": 216,
+        "startChar": 0,
+        "endLine": 217,
+        "endChar": 69
+      },
+      "revId": "415e6b3aed0d566fc99655eefc629919a2416e55",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0b42e6c_83d51776",
+        "filename": "modules/desktop_capture/cropping_window_capturer_win.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 5064
+      },
+      "writtenOn": "2020-03-26T15:03:09Z",
+      "side": 1,
+      "message": "What is this check about?",
+      "range": {
+        "startLine": 320,
+        "startChar": 0,
+        "endLine": 320,
+        "endChar": 64
+      },
+      "revId": "415e6b3aed0d566fc99655eefc629919a2416e55",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cb1520a_b6b2eab4",
+        "filename": "modules/desktop_capture/mac/window_list_utils.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 5064
+      },
+      "writtenOn": "2020-03-26T15:03:09Z",
+      "side": 1,
+      "message": "This function now appears to be calling itself...?",
+      "range": {
+        "startLine": 306,
+        "startChar": 21,
+        "endLine": 306,
+        "endChar": 39
+      },
+      "revId": "415e6b3aed0d566fc99655eefc629919a2416e55",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2cad966_69f7bcbf",
+        "filename": "modules/desktop_capture/win/full_screen_win_application_handler.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 5064
+      },
+      "writtenOn": "2020-03-26T15:03:09Z",
+      "side": 1,
+      "message": "Nice!",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 17
+      },
+      "revId": "415e6b3aed0d566fc99655eefc629919a2416e55",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d85c018_6e337ede",
+        "filename": "modules/desktop_capture/win/full_screen_win_application_handler.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 5064
+      },
+      "writtenOn": "2020-03-26T15:03:09Z",
+      "side": 1,
+      "message": "The \"_it\" suffix makes it sound like you\u0027re using this to iterate, but really you\u0027re using it as a reference to one of the app windows that actually has a title, so I\u0027d remove the \"_it\" and perhaps name this |first_titled_window|",
+      "range": {
+        "startLine": 195,
+        "startChar": 21,
+        "endLine": 195,
+        "endChar": 24
+      },
+      "revId": "415e6b3aed0d566fc99655eefc629919a2416e55",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddac18ec_caceb555",
+        "filename": "modules/desktop_capture/win/full_screen_win_application_handler.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 5064
+      },
+      "writtenOn": "2020-03-26T15:03:09Z",
+      "side": 1,
+      "message": "nit: Do you mean |!x.title.empty()| here?",
+      "range": {
+        "startLine": 197,
+        "startChar": 56,
+        "endLine": 197,
+        "endChar": 62
+      },
+      "revId": "415e6b3aed0d566fc99655eefc629919a2416e55",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a3782ae_bad6cb07",
+        "filename": "modules/desktop_capture/win/full_screen_win_application_handler.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 5064
+      },
+      "writtenOn": "2020-03-26T15:03:09Z",
+      "side": 1,
+      "message": "Please add a comment to explain why you\u0027re enumerating the \"titled\" windows.",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 197,
+        "endChar": 69
+      },
+      "revId": "415e6b3aed0d566fc99655eefc629919a2416e55",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44b62f63_c1457135",
+        "filename": "modules/desktop_capture/win/full_screen_win_application_handler.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 5064
+      },
+      "writtenOn": "2020-03-26T15:03:09Z",
+      "side": 1,
+      "message": "Not sure how this comment relates to the code - the comment implies that you may be moving the window to the top, but you\u0027re not, and it\u0027s not clear what you _are_ doing.",
+      "range": {
+        "startLine": 199,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 5
+      },
+      "revId": "415e6b3aed0d566fc99655eefc629919a2416e55",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "866d6c16_c621278c",
+        "filename": "modules/desktop_capture/win/full_screen_win_application_handler.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 5064
+      },
+      "writtenOn": "2020-03-26T15:03:09Z",
+      "side": 1,
+      "message": "As above, you\u0027re not using this to iterate, so the \"_it\" suffix is misleading, IMO.",
+      "range": {
+        "startLine": 207,
+        "startChar": 19,
+        "endLine": 207,
+        "endChar": 22
+      },
+      "revId": "415e6b3aed0d566fc99655eefc629919a2416e55",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "873c52ed_860a6f2b",
+        "filename": "modules/desktop_capture/win/full_screen_win_application_handler.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 5064
+      },
+      "writtenOn": "2020-03-26T15:03:09Z",
+      "side": 1,
+      "message": "Suggest breaking these into if(...) return; blocks for readability.\n\n  if(!IsWindowVisible(hwnd))\n    return false;\n  ...\n  DesktopRect rect;\n  if (!GetWindowRect(hwnd, \u0026rect))\n    return false;\n  return IsScreenRect(rect);",
+      "range": {
+        "startLine": 211,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 66
+      },
+      "revId": "415e6b3aed0d566fc99655eefc629919a2416e55",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89f4b373_febefa00",
+        "filename": "modules/desktop_capture/win/full_screen_win_application_handler.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 5064
+      },
+      "writtenOn": "2020-03-26T15:03:09Z",
+      "side": 1,
+      "message": "Recommend rewriting as:\n\n  if (slide_show_it \u003d\u003d end())\n    return 0;\n  return slide_show_it-\u003eid();",
+      "range": {
+        "startLine": 215,
+        "startChar": 4,
+        "endLine": 215,
+        "endChar": 70
+      },
+      "revId": "415e6b3aed0d566fc99655eefc629919a2416e55",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14de630f_d19607c7",
+        "filename": "modules/desktop_capture/win/screen_capture_utils.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 5064
+      },
+      "writtenOn": "2020-03-26T15:03:09Z",
+      "side": 1,
+      "message": "Suggest calling this EqualsScreenRect() or IsFullScreen() or something of that sort, to make it clearer what this means.",
+      "range": {
+        "startLine": 108,
+        "startChar": 5,
+        "endLine": 108,
+        "endChar": 17
+      },
+      "revId": "415e6b3aed0d566fc99655eefc629919a2416e55",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b665fce0_9146fa89",
+        "filename": "modules/desktop_capture/win/screen_capture_utils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5064
+      },
+      "writtenOn": "2020-03-26T15:03:09Z",
+      "side": 1,
+      "message": "nit: Suggest rewording:\n\n\"Returns true if |rect| covers the whole of a screen.\"\n\nHowever, will this always be an exact match? Some windows get made \"full-screen\" with their decorations intact, so that they\u0027re actually outside the screen bounds (this is true of maximized windows, for example)",
+      "range": {
+        "startLine": 46,
+        "startChar": 44,
+        "endLine": 47,
+        "endChar": 22
+      },
+      "revId": "415e6b3aed0d566fc99655eefc629919a2416e55",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
