@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5578c03_04d97ab6",
+        "filename": "test/pc/e2e/peer_connection_quality_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 5087
+      },
+      "writtenOn": "2020-04-07T14:25:59Z",
+      "side": 0,
+      "message": "Can you explain why this has been moved at the beginning of the method (together with the TQ and MediaHelper initialization)?\n\nMaybe add that to the CL description because it looks unrelated from the CL desc at the moment.",
+      "range": {
+        "startLine": 251,
+        "startChar": 0,
+        "endLine": 256,
+        "endChar": 39
+      },
+      "revId": "2e3e36312b10b8711c467e7bdc4582c01914e4d0",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
