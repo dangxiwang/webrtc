@@ -65,6 +65,30 @@
     },
     {
       "key": {
+        "uuid": "f82551ab_4e9238f7",
+        "filename": "rtc_base/strings/string_format_unittest.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 5091
+      },
+      "writtenOn": "2020-04-09T16:36:14Z",
+      "side": 1,
+      "message": "Following the advice from kiwberg below and skipping this test.",
+      "parentUuid": "acc7805f_a160da25",
+      "range": {
+        "startLine": 36,
+        "startChar": 20,
+        "endLine": 36,
+        "endChar": 58
+      },
+      "revId": "72d442df4ca88730c8253c2fe7edbd70f0a86c3e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "50b49c09_ecc80a7f",
         "filename": "rtc_base/strings/string_format_unittest.cc",
         "patchSetId": 9
@@ -79,6 +103,24 @@
       "revId": "72d442df4ca88730c8253c2fe7edbd70f0a86c3e",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3eba0caa_27755d4c",
+        "filename": "rtc_base/strings/string_format_unittest.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 5091
+      },
+      "writtenOn": "2020-04-09T16:36:14Z",
+      "side": 1,
+      "message": "Will skip.",
+      "parentUuid": "50b49c09_ecc80a7f",
+      "revId": "72d442df4ca88730c8253c2fe7edbd70f0a86c3e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
