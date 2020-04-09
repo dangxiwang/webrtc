@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "c16ef3f7_da9bdfa9",
+        "filename": "rtc_base/strings/string_format.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5126
+      },
+      "writtenOn": "2020-04-09T13:51:48Z",
+      "side": 1,
+      "message": "RTC_DCHECK_GE(result, 0) \u003c\u003c \"ERROR: vsnprintf() failed with error \" \u003c\u003c result;\n\n?",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 58
+      },
+      "revId": "72d442df4ca88730c8253c2fe7edbd70f0a86c3e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ea4ec47_6edbcc81",
+        "filename": "rtc_base/strings/string_format.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 5126
+      },
+      "writtenOn": "2020-04-09T13:51:48Z",
+      "side": 1,
+      "message": "RTC_DCHECK_LT(result, kMaxSize) \u003c\u003c \"WARNING: string was truncated from \" \u003c\u003c result \u003c\u003c \" to \" \u003c\u003c (kMaxSize - 1) \u003c\u003c \" characters\";\n\n?",
+      "revId": "72d442df4ca88730c8253c2fe7edbd70f0a86c3e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "acc7805f_a160da25",
         "filename": "rtc_base/strings/string_format_unittest.cc",
         "patchSetId": 9
@@ -19,6 +59,23 @@
         "endLine": 36,
         "endChar": 58
       },
+      "revId": "72d442df4ca88730c8253c2fe7edbd70f0a86c3e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50b49c09_ecc80a7f",
+        "filename": "rtc_base/strings/string_format_unittest.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 5126
+      },
+      "writtenOn": "2020-04-09T13:51:48Z",
+      "side": 1,
+      "message": "You would have to expect death if RTC_DCHECK_IS_ON (and maybe expect a truncated string otherwise). But I wouldn\u0027t bother; we don\u0027t normally test DCHECKs.",
       "revId": "72d442df4ca88730c8253c2fe7edbd70f0a86c3e",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
