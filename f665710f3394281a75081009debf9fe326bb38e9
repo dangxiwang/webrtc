@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "75c57f14_cace3edc",
+        "filename": "rtc_base/strings/string_format.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5126
+      },
+      "writtenOn": "2020-04-09T13:09:08Z",
+      "side": 1,
+      "message": "Document that this is an arbitrary limitation that can be changed if necessary, or removed if someone has the time and inclination to replicate the logic from \u003cthe name of Chromium\u0027s StringFormat function\u003e.",
+      "revId": "f665710f3394281a75081009debf9fe326bb38e9",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5dfc2dc9_cf14a762",
+        "filename": "rtc_base/strings/string_format.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 5126
+      },
+      "writtenOn": "2020-04-09T13:09:08Z",
+      "side": 1,
+      "message": "Make two separate DCHECKs. That way, you\u0027ll know which condition failed. Tag one with `// Error.` and one with `// The string was truncated.`.",
+      "revId": "f665710f3394281a75081009debf9fe326bb38e9",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79aa5e3c_561a0519",
+        "filename": "rtc_base/strings/string_format.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 5126
+      },
+      "writtenOn": "2020-04-09T13:09:08Z",
+      "side": 1,
+      "message": "`return std::string(buffer);`",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 13
+      },
+      "revId": "f665710f3394281a75081009debf9fe326bb38e9",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c959511_2779a4e5",
+        "filename": "rtc_base/strings/string_format.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5126
+      },
+      "writtenOn": "2020-04-09T13:09:08Z",
+      "side": 1,
+      "message": "Only required in the .cc file?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 18
+      },
+      "revId": "f665710f3394281a75081009debf9fe326bb38e9",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}

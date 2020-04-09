@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0337cba_f83131e6",
+        "filename": "rtc_base/strings/string_format.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5126
+      },
+      "writtenOn": "2020-04-09T13:09:08Z",
+      "side": 1,
+      "message": "Do you not need to make __attribute__ conditional on a specific compiler? I\u0027m pretty sure it isn\u0027t standard C++.",
+      "revId": "cf7841b6fa70e2571995806fb6db1fcea4238f44",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
