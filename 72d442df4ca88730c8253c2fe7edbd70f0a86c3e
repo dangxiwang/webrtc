@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "acc7805f_a160da25",
+        "filename": "rtc_base/strings/string_format_unittest.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 5087
+      },
+      "writtenOn": "2020-04-09T13:48:30Z",
+      "side": 1,
+      "message": "What about calling the StringFormat function with an fmt close to 512 and format a string of size 10?\n\nThat should be wrapped into an RTC_EXPECT_DEATH (https://cs.chromium.org/chromium/src/third_party/webrtc/test/testsupport/rtc_expect_death.h) but since these are DCHECKS this test should only be enabled in debug mode.",
+      "range": {
+        "startLine": 36,
+        "startChar": 20,
+        "endLine": 36,
+        "endChar": 58
+      },
+      "revId": "72d442df4ca88730c8253c2fe7edbd70f0a86c3e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
