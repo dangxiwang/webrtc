@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7fb73c6_fae7aaca",
+        "filename": "rtc_base/strings/string_format.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5126
+      },
+      "writtenOn": "2020-04-09T13:33:48Z",
+      "side": 1,
+      "message": "Prefix with RTC_.",
+      "range": {
+        "startLine": 20,
+        "startChar": 8,
+        "endLine": 20,
+        "endChar": 21
+      },
+      "revId": "b13355ed014b7ee07a0b663a2c4d6244ce9f4e44",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
