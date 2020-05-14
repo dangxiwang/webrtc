@@ -386,12 +386,12 @@ absl::optional<rtc::SSLRole> JsepTransport::GetDtlsRole() const {
 absl::optional<OpaqueTransportParameters>
 JsepTransport::GetTransportParameters() const {
   rtc::CritScope scope(&accessor_lock_);
-  if (!datagram_transport()) {
+  if (!datagram_transport_) {
     return absl::nullopt;
   }
 
   OpaqueTransportParameters params;
-  params.parameters = datagram_transport()->GetTransportParameters();
+  params.parameters = datagram_transport_->GetTransportParameters();
   return params;
 }
 
@@ -535,7 +535,7 @@ void JsepTransport::ActivateRtcpMux() {
       RTC_DCHECK(dtls_srtp_transport_);
       RTC_DCHECK(!unencrypted_rtp_transport_);
       RTC_DCHECK(!sdes_transport_);
-      dtls_srtp_transport_->SetDtlsTransports(rtp_dtls_transport(),
+      dtls_srtp_transport_->SetDtlsTransports(rtp_dtls_transport_locked(),
                                               /*rtcp_dtls_transport=*/nullptr);
     }
     rtcp_dtls_transport_ = nullptr;  // Destroy this reference.
@@ -734,7 +734,6 @@ webrtc::RTCError JsepTransport::NegotiateDtlsRole(
 bool JsepTransport::GetTransportStats(DtlsTransportInternal* dtls_transport,
                                       TransportStats* stats) {
   RTC_DCHECK_RUN_ON(network_thread_);
-  rtc::CritScope scope(&accessor_lock_);
   RTC_DCHECK(dtls_transport);
   TransportChannelStats substats;
   if (rtcp_dtls_transport_) {
