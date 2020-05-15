@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77418771_778c2c10",
+        "filename": "pc/jsep_transport.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 5525
+      },
+      "writtenOn": "2020-05-15T07:20:26Z",
+      "side": 1,
+      "message": "This method also acquires accessor_lock_. Might be others too, I just did a random sample.",
+      "range": {
+        "startLine": 334,
+        "startChar": 7,
+        "endLine": 334,
+        "endChar": 33
+      },
+      "revId": "2f04c4bd215e2dad8c6870cd109a0c4389f51907",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
