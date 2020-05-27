@@ -196,6 +196,7 @@ EmulatedEndpointImpl::EmulatedEndpointImpl(uint64_t id,
   network_->AddIP(ip);
 
   enabled_state_checker_.Detach();
+  bind_unbind_seq_checker_.Detach();
 }
 EmulatedEndpointImpl::~EmulatedEndpointImpl() = default;
 
@@ -228,6 +229,7 @@ void EmulatedEndpointImpl::SendPacket(const rtc::SocketAddress& from,
 absl::optional<uint16_t> EmulatedEndpointImpl::BindReceiver(
     uint16_t desired_port,
     EmulatedNetworkReceiverInterface* receiver) {
+  RTC_DCHECK_RUN_ON(&bind_unbind_seq_checker_);
   rtc::CritScope crit(&receiver_lock_);
   uint16_t port = desired_port;
   if (port == 0) {
@@ -267,6 +269,7 @@ uint16_t EmulatedEndpointImpl::NextPort() {
 }
 
 void EmulatedEndpointImpl::UnbindReceiver(uint16_t port) {
+  RTC_DCHECK_RUN_ON(&bind_unbind_seq_checker_);
   rtc::CritScope crit(&receiver_lock_);
   port_to_receiver_.erase(port);
 }
