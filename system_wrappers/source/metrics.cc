@@ -12,6 +12,7 @@
 #include <algorithm>
 
 #include "rtc_base/critical_section.h"
+#include "rtc_base/logging.h"
 #include "rtc_base/thread_annotations.h"
 
 // Default implementation of histogram methods for WebRTC clients that do not
@@ -187,7 +188,9 @@ class RtcHistogramMap {
 // application (the memory will be reclaimed by the OS).
 static RtcHistogramMap* volatile g_rtc_histogram_map = nullptr;
 
-void CreateMap() {
+// Creates a new histogram map if no map is previously present. Returns a bool
+// indicating whether a map was created.
+bool CreateMap() {
   RtcHistogramMap* map = rtc::AtomicOps::AcquireLoadPtr(&g_rtc_histogram_map);
   if (map == nullptr) {
     RtcHistogramMap* new_map = new RtcHistogramMap();
@@ -195,7 +198,9 @@ void CreateMap() {
         &g_rtc_histogram_map, static_cast<RtcHistogramMap*>(nullptr), new_map);
     if (old_map != nullptr)
       delete new_map;
+    return true;
   }
+  return false;
 }
 
 // Set the first time we start using histograms. Used to make sure Enable() is
@@ -282,11 +287,16 @@ SampleInfo::~SampleInfo() {}
 
 // Implementation of global functions in metrics.h.
 void Enable() {
-  RTC_DCHECK(g_rtc_histogram_map == nullptr);
-#if RTC_DCHECK_IS_ON
-  RTC_DCHECK_EQ(0, rtc::AtomicOps::AcquireLoad(&g_rtc_histogram_called));
-#endif
-  CreateMap();
+  bool map_created = CreateMap();
+
+  if (map_created) {
+    if (rtc::AtomicOps::AcquireLoad(&g_rtc_histogram_called) != 0) {
+      RTC_LOG(LS_ERROR)
+          << "Histogram data was reported before metrics were enabled.";
+    }
+  } else {
+    RTC_LOG(LS_ERROR) << "Enabling histograms more than once.";
+  }
 }
 
 void GetAndReset(
