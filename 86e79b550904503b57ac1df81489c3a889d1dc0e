@@ -22,6 +22,30 @@
       "revId": "86e79b550904503b57ac1df81489c3a889d1dc0e",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cd38188_ef8921d0",
+        "filename": "system_wrappers/source/metrics.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 5125
+      },
+      "writtenOn": "2020-05-29T14:01:03Z",
+      "side": 1,
+      "message": "Is this something that should be done as part of this CL?\n\nNote also that to fully replicate the ability to log that there is repeated calling of the Enable() method we\u0027d need to do something along.\n\nRtcHistogramMap* GetMap()\n{\n  static RtcHistogramMap* const map \u003d new RtcHistogramMap();\n\n#if RTC_DCHECK_IS_ON\n  if (rtc::AtomicOps::AcquireLoad(\u0026g_rtc_histogram_called) !\u003d 0) {\n    RTC_LOG(LS_ERROR)\n        \u003c\u003c \"Histogram data was reported before metrics were enabled.\";\n  }\n#endif\n\n  return map;\n}\n\nvoid Enable() \n{\n  static bool called_before \u003d false;\n  if (called_before) {\n    RTC_LOG(LS_ERROR) \u003c\u003c \"Enabling histograms more than once.\"; \n  }\n  called_before \u003d true;\n  GetMap();\n}\n\n\nFrom what I can see, the construct in the Enable() call is not thread-safe, but that is maybe fine.",
+      "parentUuid": "6ac010a7_cb630e7d",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 18
+      },
+      "revId": "86e79b550904503b57ac1df81489c3a889d1dc0e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
     }
   ]
 }
