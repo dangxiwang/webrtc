@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6ac010a7_cb630e7d",
+        "filename": "system_wrappers/source/metrics.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2020-05-29T11:08:31Z",
+      "side": 1,
+      "message": "It would be nice to replace this logic with\n\nRtcHistogramMap* GetMap()\n{\n  static RtcHistogramMap* const map \u003d new RtcHistogramMap();\n  return map;\n}\n\nand rely on C++ (was it C++11?) to make this thread safe for us. Not sure what changes that implies for what this cl tries to do. I agree we shouldn\u0027t have DCHECKs for conditions that the release code attempts to handle.",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 18
+      },
+      "revId": "86e79b550904503b57ac1df81489c3a889d1dc0e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
