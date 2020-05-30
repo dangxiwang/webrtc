@@ -46,6 +46,64 @@
       "revId": "86e79b550904503b57ac1df81489c3a889d1dc0e",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4f45b85_2a3b05ea",
+        "filename": "system_wrappers/source/metrics.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 5126
+      },
+      "writtenOn": "2020-05-30T14:34:24Z",
+      "side": 1,
+      "message": "I agree with Nisse; that way is much less error-prone. But perhaps in another CL.\n\nIf you for some reason need to check whether some code is executed more than once, you could do e.g.\n\n  ABSL_CONST_INIT static std::atomic\u003cbool\u003e been_here{false};\n  bool been_here_already \u003d std::atomic_exchange_explicit(\n      \u0026been_here, true, std::memory_order::relaxed);\n  if (been_here_already) {\n    LOG \u003c\u003c \"Called more than once!\";\n  }",
+      "parentUuid": "6cd38188_ef8921d0",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 18
+      },
+      "revId": "86e79b550904503b57ac1df81489c3a889d1dc0e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43631bd8_bfdd7dac",
+        "filename": "system_wrappers/source/metrics.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 5126
+      },
+      "writtenOn": "2020-05-30T14:34:24Z",
+      "side": 1,
+      "message": "Why do you care if this function is called more than once? It\u0027s specifically written to handle that.",
+      "revId": "86e79b550904503b57ac1df81489c3a889d1dc0e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d78e5314_26b237db",
+        "filename": "system_wrappers/source/metrics.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 5126
+      },
+      "writtenOn": "2020-05-30T14:34:24Z",
+      "side": 1,
+      "message": "Should this #if still be here? This code doesn\u0027t appear to still have anything to do with DCHECK.",
+      "revId": "86e79b550904503b57ac1df81489c3a889d1dc0e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
     }
   ]
 }
