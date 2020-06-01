@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "24f9fe5d_1f462a77",
+        "filename": "system_wrappers/source/metrics.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2020-06-01T07:10:25Z",
+      "side": 1,
+      "message": "I don\u0027t have the full context, but I\u0027d suggest to simplify using a C++ static initializer in a separate cl, first, and then reevaluate if this change is still needed, and if so, what\u0027s the best way to do it.",
+      "parentUuid": "a4f45b85_2a3b05ea",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 18
+      },
+      "revId": "86e79b550904503b57ac1df81489c3a889d1dc0e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "43631bd8_bfdd7dac",
         "filename": "system_wrappers/source/metrics.cc",
         "patchSetId": 4
