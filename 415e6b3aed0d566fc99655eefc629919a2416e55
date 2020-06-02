@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fdd23f07_c4379daa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 10010
+      },
+      "writtenOn": "2020-06-02T21:17:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4eb40df4_919d8cb4",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 17
+      },
+      "revId": "415e6b3aed0d566fc99655eefc629919a2416e55",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "52839a91_5a31340d",
         "filename": "modules/desktop_capture/cropping_window_capturer_win.cc",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "415e6b3aed0d566fc99655eefc629919a2416e55",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "773236bf_a7a4e844",
+        "filename": "modules/desktop_capture/cropping_window_capturer_win.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 10010
+      },
+      "writtenOn": "2020-06-02T21:17:04Z",
+      "side": 1,
+      "message": "Not actual anymore as the new function GetWindowList has been added",
+      "parentUuid": "52839a91_5a31340d",
+      "range": {
+        "startLine": 29,
+        "startChar": 27,
+        "endLine": 29,
+        "endChar": 36
+      },
+      "revId": "415e6b3aed0d566fc99655eefc629919a2416e55",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "dee3dcc2_de35940b",
+        "filename": "modules/desktop_capture/cropping_window_capturer_win.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 10010
+      },
+      "writtenOn": "2020-06-02T21:17:04Z",
+      "side": 1,
+      "message": "New function GetWindowList allows to skip this check if required and FullScreenWindowDetector does it.",
+      "parentUuid": "70972751_66c85bbd",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 3
+      },
+      "revId": "415e6b3aed0d566fc99655eefc629919a2416e55",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe3a529c_d7806e46",
         "filename": "modules/desktop_capture/cropping_window_capturer_win.cc",
         "patchSetId": 3
@@ -91,6 +163,30 @@
       "revId": "415e6b3aed0d566fc99655eefc629919a2416e55",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a26bb72_930d639b",
+        "filename": "modules/desktop_capture/cropping_window_capturer_win.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 10010
+      },
+      "writtenOn": "2020-06-02T21:17:04Z",
+      "side": 1,
+      "message": "Comment duplication fixed by introducing GetWindowList function",
+      "parentUuid": "fe3a529c_d7806e46",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 37
+      },
+      "revId": "415e6b3aed0d566fc99655eefc629919a2416e55",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "e07e2f36_dc76f7bb",
+        "filename": "modules/desktop_capture/cropping_window_capturer_win.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 10010
+      },
+      "writtenOn": "2020-06-02T21:17:04Z",
+      "side": 1,
+      "message": "Fixed by introducing GetWindowList function",
+      "parentUuid": "0161466c_3a30891e",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 191,
+        "endChar": 61
+      },
+      "revId": "415e6b3aed0d566fc99655eefc629919a2416e55",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c6c1293c_6e8a03a2",
         "filename": "modules/desktop_capture/cropping_window_capturer_win.cc",
         "patchSetId": 3
@@ -137,6 +257,30 @@
       "revId": "415e6b3aed0d566fc99655eefc629919a2416e55",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffc9713c_35c222eb",
+        "filename": "modules/desktop_capture/cropping_window_capturer_win.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 10010
+      },
+      "writtenOn": "2020-06-02T21:17:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6c1293c_6e8a03a2",
+      "range": {
+        "startLine": 216,
+        "startChar": 0,
+        "endLine": 217,
+        "endChar": 69
+      },
+      "revId": "415e6b3aed0d566fc99655eefc629919a2416e55",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "f8bf7a0d_51c8c4d4",
+        "filename": "modules/desktop_capture/cropping_window_capturer_win.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 10010
+      },
+      "writtenOn": "2020-06-02T21:17:04Z",
+      "side": 1,
+      "message": "We need this check to make sure that these windows belong to the current virtual desktop.",
+      "parentUuid": "d0b42e6c_83d51776",
+      "range": {
+        "startLine": 320,
+        "startChar": 0,
+        "endLine": 320,
+        "endChar": 64
+      },
+      "revId": "415e6b3aed0d566fc99655eefc629919a2416e55",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2cb1520a_b6b2eab4",
         "filename": "modules/desktop_capture/mac/window_list_utils.cc",
         "patchSetId": 3
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "2ff87c38_45e33640",
+        "filename": "modules/desktop_capture/mac/window_list_utils.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 10010
+      },
+      "writtenOn": "2020-06-02T21:17:04Z",
+      "side": 1,
+      "message": "It\u0027s calling not itself but GetWindowOwnerName(CFDictionaryRef).\nActually many functions in this file have two signatures:\n1. implementation which takes CFDictionaryRef\n2. utility function which takes CGWindowID, resolves it to CFDictionaryRef and calls first function passing the dictionary.\n\nGetWindowOwnerName(CGWindowID) doesn\u0027t call its counterpart.",
+      "parentUuid": "2cb1520a_b6b2eab4",
+      "range": {
+        "startLine": 306,
+        "startChar": 21,
+        "endLine": 306,
+        "endChar": 39
+      },
+      "revId": "415e6b3aed0d566fc99655eefc629919a2416e55",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a2cad966_69f7bcbf",
         "filename": "modules/desktop_capture/win/full_screen_win_application_handler.cc",
         "patchSetId": 3
@@ -197,6 +389,30 @@
       "writtenOn": "2020-03-26T15:03:09Z",
       "side": 1,
       "message": "Nice!",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 17
+      },
+      "revId": "415e6b3aed0d566fc99655eefc629919a2416e55",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5af35a8f_bc26bf3a",
+        "filename": "modules/desktop_capture/win/full_screen_win_application_handler.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 10010
+      },
+      "writtenOn": "2020-06-02T21:17:04Z",
+      "side": 1,
+      "message": "Not actual anymore: all windows passing to FullScreenApplicationHandler::FindFullScreenWindow are visible.",
+      "parentUuid": "a2cad966_69f7bcbf",
       "range": {
         "startLine": 99,
         "startChar": 0,
@@ -229,6 +445,30 @@
       "revId": "415e6b3aed0d566fc99655eefc629919a2416e55",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45d14f71_952cb995",
+        "filename": "modules/desktop_capture/win/full_screen_win_application_handler.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 10010
+      },
+      "writtenOn": "2020-06-02T21:17:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d85c018_6e337ede",
+      "range": {
+        "startLine": 195,
+        "startChar": 21,
+        "endLine": 195,
+        "endChar": 24
+      },
+      "revId": "415e6b3aed0d566fc99655eefc629919a2416e55",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     },
     {
       "key": {
@@ -278,6 +518,54 @@
     },
     {
       "key": {
+        "uuid": "3cbdb92f_c89299b4",
+        "filename": "modules/desktop_capture/win/full_screen_win_application_handler.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 10010
+      },
+      "writtenOn": "2020-06-02T21:17:04Z",
+      "side": 1,
+      "message": "New function CheckLastRecentUsedWindowDocument gives more details",
+      "parentUuid": "4a3782ae_bad6cb07",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 197,
+        "endChar": 69
+      },
+      "revId": "415e6b3aed0d566fc99655eefc629919a2416e55",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1038ce9_35005717",
+        "filename": "modules/desktop_capture/win/full_screen_win_application_handler.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 10010
+      },
+      "writtenOn": "2020-06-02T21:17:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ddac18ec_caceb555",
+      "range": {
+        "startLine": 197,
+        "startChar": 56,
+        "endLine": 197,
+        "endChar": 62
+      },
+      "revId": "415e6b3aed0d566fc99655eefc629919a2416e55",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "44b62f63_c1457135",
         "filename": "modules/desktop_capture/win/full_screen_win_application_handler.cc",
         "patchSetId": 3
@@ -298,6 +586,30 @@
       "revId": "415e6b3aed0d566fc99655eefc629919a2416e55",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05382dca_8a7415ea",
+        "filename": "modules/desktop_capture/win/full_screen_win_application_handler.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 10010
+      },
+      "writtenOn": "2020-06-02T21:17:04Z",
+      "side": 1,
+      "message": "New function CheckLastRecentUsedWindowDocument gives more details",
+      "parentUuid": "44b62f63_c1457135",
+      "range": {
+        "startLine": 199,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 5
+      },
+      "revId": "415e6b3aed0d566fc99655eefc629919a2416e55",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     },
     {
       "key": {
@@ -324,6 +636,30 @@
     },
     {
       "key": {
+        "uuid": "5c59f795_a9a1f862",
+        "filename": "modules/desktop_capture/win/full_screen_win_application_handler.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 10010
+      },
+      "writtenOn": "2020-06-02T21:17:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "866d6c16_c621278c",
+      "range": {
+        "startLine": 207,
+        "startChar": 19,
+        "endLine": 207,
+        "endChar": 22
+      },
+      "revId": "415e6b3aed0d566fc99655eefc629919a2416e55",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "873c52ed_860a6f2b",
         "filename": "modules/desktop_capture/win/full_screen_win_application_handler.cc",
         "patchSetId": 3
@@ -344,6 +680,30 @@
       "revId": "415e6b3aed0d566fc99655eefc629919a2416e55",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71b41050_b1768ba8",
+        "filename": "modules/desktop_capture/win/full_screen_win_application_handler.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 10010
+      },
+      "writtenOn": "2020-06-02T21:17:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "873c52ed_860a6f2b",
+      "range": {
+        "startLine": 211,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 66
+      },
+      "revId": "415e6b3aed0d566fc99655eefc629919a2416e55",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     },
     {
       "key": {
@@ -370,6 +730,30 @@
     },
     {
       "key": {
+        "uuid": "a416fb8f_49662c2d",
+        "filename": "modules/desktop_capture/win/full_screen_win_application_handler.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 10010
+      },
+      "writtenOn": "2020-06-02T21:17:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89f4b373_febefa00",
+      "range": {
+        "startLine": 215,
+        "startChar": 4,
+        "endLine": 215,
+        "endChar": 70
+      },
+      "revId": "415e6b3aed0d566fc99655eefc629919a2416e55",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "14de630f_d19607c7",
         "filename": "modules/desktop_capture/win/screen_capture_utils.cc",
         "patchSetId": 3
@@ -393,6 +777,30 @@
     },
     {
       "key": {
+        "uuid": "fdbfc95c_eab84be0",
+        "filename": "modules/desktop_capture/win/screen_capture_utils.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 10010
+      },
+      "writtenOn": "2020-06-02T21:17:04Z",
+      "side": 1,
+      "message": "Renamed to EqualsScreenRect",
+      "parentUuid": "14de630f_d19607c7",
+      "range": {
+        "startLine": 108,
+        "startChar": 5,
+        "endLine": 108,
+        "endChar": 17
+      },
+      "revId": "415e6b3aed0d566fc99655eefc629919a2416e55",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b665fce0_9146fa89",
         "filename": "modules/desktop_capture/win/screen_capture_utils.h",
         "patchSetId": 3
@@ -413,6 +821,30 @@
       "revId": "415e6b3aed0d566fc99655eefc629919a2416e55",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b99c660a_582b9151",
+        "filename": "modules/desktop_capture/win/screen_capture_utils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 10010
+      },
+      "writtenOn": "2020-06-02T21:17:04Z",
+      "side": 1,
+      "message": "Comment and function name changed to suggested ones.\n\nYou\u0027re right, it will not be an exact match always, but putting the function here in screen utils and having an abstract rect as argument which doesn\u0027t have to be window frame we\u0027re trying to avoid misuse of this function with assumption that it could help us to detect if window is full-screen. The function does what the comment says: checks if an rect matches one of screen rect.\n\nBut if we know about window more (the application, kind of window, etc) nothing bad should happen with using the function to check if window is full screen.",
+      "parentUuid": "b665fce0_9146fa89",
+      "range": {
+        "startLine": 46,
+        "startChar": 44,
+        "endLine": 47,
+        "endChar": 22
+      },
+      "revId": "415e6b3aed0d566fc99655eefc629919a2416e55",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
