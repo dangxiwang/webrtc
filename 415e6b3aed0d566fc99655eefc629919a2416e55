@@ -378,6 +378,30 @@
     },
     {
       "key": {
+        "uuid": "5ab4a039_1d7ec2d1",
+        "filename": "modules/desktop_capture/mac/window_list_utils.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 5064
+      },
+      "writtenOn": "2020-06-04T13:25:19Z",
+      "side": 1,
+      "message": "OK, this kind of confusion is precisely why the Google C++ style guide recommends not using function overloading unless a reader can trivially understand what\u0027s going on without having to go and look at the implementations - these functions should probably be GetWindowOwnerNameById and GetWindowOwnerNameByRef, for example.",
+      "parentUuid": "2ff87c38_45e33640",
+      "range": {
+        "startLine": 306,
+        "startChar": 21,
+        "endLine": 306,
+        "endChar": 39
+      },
+      "revId": "415e6b3aed0d566fc99655eefc629919a2416e55",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a2cad966_69f7bcbf",
         "filename": "modules/desktop_capture/win/full_screen_win_application_handler.cc",
         "patchSetId": 3

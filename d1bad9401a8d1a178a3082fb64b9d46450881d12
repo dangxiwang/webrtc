@@ -1,0 +1,395 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b3502ef8_547cc3b0",
+        "filename": "modules/desktop_capture/cropping_window_capturer_win.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 5064
+      },
+      "writtenOn": "2020-06-04T13:25:19Z",
+      "side": 1,
+      "message": "nit: Can we fix this comment to be easier to understand?",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 48
+      },
+      "revId": "d1bad9401a8d1a178a3082fb64b9d46450881d12",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5416b30_de6204d9",
+        "filename": "modules/desktop_capture/cropping_window_capturer_win.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 5064
+      },
+      "writtenOn": "2020-06-04T13:25:19Z",
+      "side": 1,
+      "message": "In general comments of this sort should be documenting _why_ we\u0027re doing something, though it can also help to describe _what_ we\u0027re doing, if the subsequent code is complex.\n\nIn this case it\u0027s not clear why calling GetSourceList() wasn\u0027t sufficient - can we update the comment to clarify why we need to use GetWindowList() and then filter the results?\n\nnit: Punctuation - sentence is missing a full stop at the end.",
+      "range": {
+        "startLine": 162,
+        "startChar": 12,
+        "endLine": 163,
+        "endChar": 20
+      },
+      "revId": "d1bad9401a8d1a178a3082fb64b9d46450881d12",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "015c87fb_f0eb94d3",
+        "filename": "modules/desktop_capture/win/full_screen_win_application_handler.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 5064
+      },
+      "writtenOn": "2020-06-04T13:25:19Z",
+      "side": 1,
+      "message": "Not sure what this is for - a brief comment before this if statement would help, though I suspect renaming the function may also be useful.",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 19
+      },
+      "revId": "d1bad9401a8d1a178a3082fb64b9d46450881d12",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef692541_f219bee4",
+        "filename": "modules/desktop_capture/win/full_screen_win_application_handler.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 5064
+      },
+      "writtenOn": "2020-06-04T13:25:19Z",
+      "side": 1,
+      "message": "It\u0027s not clear from this why we\u0027re using the window title for matching at all, rather than using the window Id?\n\nIIUC the assumption you\u0027re making is that if a presentation is active then the first titled window in the Z-order must be the window that we\u0027re actually trying to share.\n\nIf it is not then someone decided to present some other document - we\u0027re implicitly relying on the most-recently-used document being top in the Z-order, which is not necessarily true.",
+      "range": {
+        "startLine": 218,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 5
+      },
+      "revId": "d1bad9401a8d1a178a3082fb64b9d46450881d12",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a4facdd_a44a737f",
+        "filename": "modules/desktop_capture/win/screen_capture_utils.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 5064
+      },
+      "writtenOn": "2020-06-04T13:25:19Z",
+      "side": 1,
+      "message": "This comment now contradicts the name of the function - function name implies it checks whether the two are _equal_, comment says it checks whether |rect| _covers_ the screen, i.e. whether it is _equal or larger_.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 55
+      },
+      "revId": "d1bad9401a8d1a178a3082fb64b9d46450881d12",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "470ce878_a0da8b73",
+        "filename": "modules/desktop_capture/win/window_capture_utils.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 5064
+      },
+      "writtenOn": "2020-06-04T13:25:19Z",
+      "side": 1,
+      "message": "nit: Suggest GetWindowListParams and GetWindowListHandler",
+      "range": {
+        "startLine": 26,
+        "startChar": 7,
+        "endLine": 26,
+        "endChar": 31
+      },
+      "revId": "d1bad9401a8d1a178a3082fb64b9d46450881d12",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e4c0678_a85d0694",
+        "filename": "modules/desktop_capture/win/window_capture_utils.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 5064
+      },
+      "writtenOn": "2020-06-04T13:25:19Z",
+      "side": 1,
+      "message": "This will be easier to read if you split it into three separate early-exit checks, e.g:\n\n  if (ignoreNoTitle \u0026\u0026 len \u003d\u003d 0)\n    return TRUE;\n  if (IsOconic() || IsWindowVisible())\n    return TRUE;\n  if (owner \u0026\u0026 ...)\n    return TRUE;\n\nwith a brief explanatory comment as to why.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 3
+      },
+      "revId": "d1bad9401a8d1a178a3082fb64b9d46450881d12",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98607a11_ef40be90",
+        "filename": "modules/desktop_capture/win/window_capture_utils.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 5064
+      },
+      "writtenOn": "2020-06-04T13:25:19Z",
+      "side": 1,
+      "message": "nit: 50ms is less than one timeslice on Windows Server SKUs, which run with 120ms timeslices, IIRC - so this code running on a system under heavy load could easily encounter this timeout.",
+      "range": {
+        "startLine": 55,
+        "startChar": 10,
+        "endLine": 55,
+        "endChar": 14
+      },
+      "revId": "d1bad9401a8d1a178a3082fb64b9d46450881d12",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edaef3f9_ddc08866",
+        "filename": "modules/desktop_capture/win/window_capture_utils.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 5064
+      },
+      "writtenOn": "2020-06-04T13:25:19Z",
+      "side": 1,
+      "message": "This comment seems to duplicate the first part of the next block?\n\nI\u0027d suggest changing this to e.g. \"Capture the window class name, to allow specific window classes to be skipped\".",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 58
+      },
+      "revId": "d1bad9401a8d1a178a3082fb64b9d46450881d12",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a89e4a7_982a3979",
+        "filename": "modules/desktop_capture/win/window_capture_utils.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 5064
+      },
+      "writtenOn": "2020-06-04T13:25:19Z",
+      "side": 1,
+      "message": "Please provide a specific link to the file, or replicate the rationale here.\n\nBasically we need to make it clear _why_ the \"Button\" class, which sounds very generic, should be skipped.",
+      "range": {
+        "startLine": 71,
+        "startChar": 55,
+        "endLine": 72,
+        "endChar": 51
+      },
+      "revId": "d1bad9401a8d1a178a3082fb64b9d46450881d12",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "611ebe6d_a235f69e",
+        "filename": "modules/desktop_capture/win/window_capture_utils.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 5064
+      },
+      "writtenOn": "2020-06-04T13:25:19Z",
+      "side": 1,
+      "message": "nit: kMaxTitleLength\n\nWhy is this 500?",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 34
+      },
+      "revId": "d1bad9401a8d1a178a3082fb64b9d46450881d12",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "429a349d_8c5222d6",
+        "filename": "modules/desktop_capture/win/window_capture_utils.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 5064
+      },
+      "writtenOn": "2020-06-04T13:25:19Z",
+      "side": 1,
+      "message": "As per style-guide, please initialize all variables. :)",
+      "range": {
+        "startLine": 81,
+        "startChar": 2,
+        "endLine": 81,
+        "endChar": 35
+      },
+      "revId": "d1bad9401a8d1a178a3082fb64b9d46450881d12",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "832a511b_f81aa957",
+        "filename": "modules/desktop_capture/win/window_capture_utils.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 5064
+      },
+      "writtenOn": "2020-06-04T13:25:19Z",
+      "side": 1,
+      "message": "nit: Please remove this comment, since it doesn\u0027t add anything useful.",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 57
+      },
+      "revId": "d1bad9401a8d1a178a3082fb64b9d46450881d12",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53e3c423_60c36b24",
+        "filename": "modules/desktop_capture/win/window_capture_utils.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 5064
+      },
+      "writtenOn": "2020-06-04T13:25:19Z",
+      "side": 1,
+      "message": "What if GetWindowText fails?",
+      "range": {
+        "startLine": 83,
+        "startChar": 2,
+        "endLine": 83,
+        "endChar": 51
+      },
+      "revId": "d1bad9401a8d1a178a3082fb64b9d46450881d12",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16584934_78ce8a84",
+        "filename": "modules/desktop_capture/win/window_capture_utils.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 5064
+      },
+      "writtenOn": "2020-06-04T13:25:19Z",
+      "side": 1,
+      "message": "This is hard to read; I\u0027d suggest expressing it as a bullet-list, e.g:\n\n  // Some windows will be ignored:\n  // - Those that are invisible or minimized.\n  // - Program Manager \u0026 Start menu.\n  // - [with kIgnoreUntitled] Windows with no title.\n  ...\n\nRather than saying \"retrieves\", which is non-specific about what it does with the results, the comment should be specific, e.g:\n\n  // Adds the top-level windows on the screen to the |windows| list.\n\n(Which windows are the Program Manager and \"Start button\" in the Windows 10 UI, these days?)",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 49
+      },
+      "revId": "d1bad9401a8d1a178a3082fb64b9d46450881d12",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98ad2618_bc23a0a4",
+        "filename": "modules/desktop_capture/win/window_capture_utils.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 5064
+      },
+      "writtenOn": "2020-06-04T13:25:19Z",
+      "side": 1,
+      "message": "Style-guide requires that input-only parameters (ignoreNoTitle and ignoreUnresponsive) come before out or in/out parameters.  This parameter supplies a list that will be modified, so it\u0027s really an in/out parameter.",
+      "range": {
+        "startLine": 75,
+        "startChar": 19,
+        "endLine": 75,
+        "endChar": 55
+      },
+      "revId": "d1bad9401a8d1a178a3082fb64b9d46450881d12",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11f8af19_4b357f9d",
+        "filename": "modules/desktop_capture/win/window_capture_utils.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 5064
+      },
+      "writtenOn": "2020-06-04T13:25:19Z",
+      "side": 1,
+      "message": "It is best to express arguments like these e.g. via an enum, so that call-sites are readable, e.g. if you have an enum with values kIgnoreUntitled and kIgnoreUnresponsive then you\u0027d have call-sites like:\n\n  GetWindowList(\u0026windows, GetWindowListFlags::kIgnoredUntitled);",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 42
+      },
+      "revId": "d1bad9401a8d1a178a3082fb64b9d46450881d12",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
