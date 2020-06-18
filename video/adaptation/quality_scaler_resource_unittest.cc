@@ -87,8 +87,6 @@ class QualityScalerResourceTest : public ::testing::Test {
         quality_scaler_resource_(
             QualityScalerResource::Create(&degradation_preference_provider_)) {
     quality_scaler_resource_->RegisterEncoderTaskQueue(encoder_queue_.Get());
-    quality_scaler_resource_->RegisterAdaptationTaskQueue(
-        resource_adaptation_queue_.Get());
     rtc::Event event;
     encoder_queue_.PostTask([this, &event] {
       quality_scaler_resource_->StartCheckForOveruse(

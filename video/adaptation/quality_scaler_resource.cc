@@ -101,12 +101,7 @@ void QualityScalerResource::OnEncodeCompleted(const EncodedImage& encoded_image,
         timestamp_ms - last_underuse_due_to_disabled_timestamp_ms_.value() >=
             kUnderuseDueToDisabledCooldownMs) {
       last_underuse_due_to_disabled_timestamp_ms_ = timestamp_ms;
-      MaybePostTaskToResourceAdaptationQueue(
-          [this_ref = rtc::scoped_refptr<QualityScalerResource>(this)] {
-            RTC_DCHECK_RUN_ON(this_ref->resource_adaptation_queue());
-            this_ref->OnResourceUsageStateMeasured(
-                ResourceUsageState::kUnderuse);
-          });
+      OnResourceUsageStateMeasured(ResourceUsageState::kUnderuse);
     }
   }
 }
@@ -130,20 +125,12 @@ void QualityScalerResource::OnReportQpUsageHigh(
     rtc::scoped_refptr<QualityScalerQpUsageHandlerCallbackInterface> callback) {
   RTC_DCHECK_RUN_ON(encoder_queue());
   size_t callback_id = QueuePendingCallback(callback);
-  // Reference counting guarantees that this object is still alive by the time
-  // the task is executed.
-  MaybePostTaskToResourceAdaptationQueue(
-      [this_ref = rtc::scoped_refptr<QualityScalerResource>(this),
-       callback_id] {
-        RTC_DCHECK_RUN_ON(this_ref->resource_adaptation_queue());
-        this_ref->clear_qp_samples_ = false;
-        // If this OnResourceUsageStateMeasured() triggers an adaptation,
-        // OnAdaptationApplied() will occur between this line and the next. This
-        // allows modifying |clear_qp_samples_| based on the adaptation.
-        this_ref->OnResourceUsageStateMeasured(ResourceUsageState::kOveruse);
-        this_ref->HandlePendingCallback(callback_id,
-                                        this_ref->clear_qp_samples_);
-      });
+  clear_qp_samples_ = false;
+  // If this OnResourceUsageStateMeasured() triggers an adaptation,
+  // OnAdaptationApplied() will occur between this line and the next. This
+  // allows modifying |clear_qp_samples_| based on the adaptation.
+  OnResourceUsageStateMeasured(ResourceUsageState::kOveruse);
+  HandlePendingCallback(callback_id, clear_qp_samples_);
 }
 
 void QualityScalerResource::OnReportQpUsageLow(
@@ -152,13 +139,8 @@ void QualityScalerResource::OnReportQpUsageLow(
   size_t callback_id = QueuePendingCallback(callback);
   // Reference counting guarantees that this object is still alive by the time
   // the task is executed.
-  MaybePostTaskToResourceAdaptationQueue(
-      [this_ref = rtc::scoped_refptr<QualityScalerResource>(this),
-       callback_id] {
-        RTC_DCHECK_RUN_ON(this_ref->resource_adaptation_queue());
-        this_ref->OnResourceUsageStateMeasured(ResourceUsageState::kUnderuse);
-        this_ref->HandlePendingCallback(callback_id, true);
-      });
+  OnResourceUsageStateMeasured(ResourceUsageState::kUnderuse);
+  HandlePendingCallback(callback_id, true);
 }
 
 void QualityScalerResource::OnAdaptationApplied(
@@ -166,10 +148,19 @@ void QualityScalerResource::OnAdaptationApplied(
     const VideoSourceRestrictions& restrictions_before,
     const VideoSourceRestrictions& restrictions_after,
     rtc::scoped_refptr<Resource> reason_resource) {
-  RTC_DCHECK_RUN_ON(resource_adaptation_queue());
   // We only clear QP samples on adaptations triggered by the QualityScaler.
   if (reason_resource != this)
     return;
+  if (!encoder_queue()->IsCurrent()) {
+    encoder_queue()->PostTask(
+        ToQueuedTask([this, &input_state, &restrictions_before,
+                      &restrictions_after, reason_resource]() {
+          OnAdaptationApplied(input_state, restrictions_before,
+                              restrictions_after, reason_resource);
+        }));
+    return;
+  }
+  RTC_DCHECK_RUN_ON(encoder_queue());
   clear_qp_samples_ = true;
   // If we're in "balanced" and the frame rate before and after adaptation did
   // not differ that much, don't clear the QP samples and instead check for QP
@@ -207,25 +198,17 @@ size_t QualityScalerResource::QueuePendingCallback(
 
 void QualityScalerResource::HandlePendingCallback(size_t callback_id,
                                                   bool clear_qp_samples) {
-  RTC_DCHECK_RUN_ON(resource_adaptation_queue());
-  // Reference counting guarantees that this object is still alive by the time
-  // the task is executed.
-  encoder_queue()->PostTask(
-      ToQueuedTask([this_ref = rtc::scoped_refptr<QualityScalerResource>(this),
-                    callback_id, clear_qp_samples] {
-        RTC_DCHECK_RUN_ON(this_ref->encoder_queue());
-        if (this_ref->num_handled_callbacks_ >= callback_id) {
-          // The callback with this ID has already been handled.
-          // This happens if AbortPendingCallbacks() is called while the task is
-          // in flight.
-          return;
-        }
-        RTC_DCHECK(!this_ref->pending_callbacks_.empty());
-        this_ref->pending_callbacks_.front()->OnQpUsageHandled(
-            clear_qp_samples);
-        ++this_ref->num_handled_callbacks_;
-        this_ref->pending_callbacks_.pop();
-      }));
+  RTC_DCHECK_RUN_ON(encoder_queue());
+  if (num_handled_callbacks_ >= callback_id) {
+    // The callback with this ID has already been handled.
+    // This happens if AbortPendingCallbacks() is called while the task is
+    // in flight.
+    return;
+  }
+  RTC_DCHECK(!pending_callbacks_.empty());
+  pending_callbacks_.front()->OnQpUsageHandled(clear_qp_samples);
+  ++num_handled_callbacks_;
+  pending_callbacks_.pop();
 }
 
 void QualityScalerResource::AbortPendingCallbacks() {
