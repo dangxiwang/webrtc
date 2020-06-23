@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dff861e2_e750b168",
+        "filename": "video/adaptation/quality_scaler_resource.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 5142
+      },
+      "writtenOn": "2020-06-23T10:12:05Z",
+      "side": 1,
+      "message": "The \"ping\" from encoder queue to adaptation queue and back still happens, it just happens more implicitly.\n\nBut I think a side-effect of this is that clear_qp_samples_ is being set *after* we have already handled the pending callback.\n\nI think what happens is:\n\n1. OnReportQpUsageHigh() is called on the encoder queue. It does the following:\na) clear_qp_samples_ is set to false.\nb) OnResourceUsageStateMeasured() is called which internally posts to adaptation queue.\nc) HandlePendingCallback() is called when clear_qp_samples_ is necessarily still false.\n\n2. The OnResourceUsageStateMeasured() is handled on the processor queue by the processor, which results in OnAdaptationApplied() which posts back to the encoder queue.\n\n3. OnAdaptationApplied() is performed on the adaptation queue, which correctly updated clear_qp_samples_, but it\u0027s too late. The HandlePendingCallback() has already been called at 1). The QualityScaler\u0027s OnQpUsageHandled() will be informed of the wrong clear_qp_samples value.\n\nI think for this CL, he QualiyScalerResource still needs to be aware of both queues.\nIf the QualityScaler can be improved such that we can clear qp samples in a separate step and not have to have this pending callback that has to be invoked *after* adaptation has already been applied, then we could do what this CL intends to do, but until then, clear_qp_samples_ need to have been set before we handle the callbacks.",
+      "revId": "d9c860f5106bebc608cd76d04c852b8d1aafc7cd",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
