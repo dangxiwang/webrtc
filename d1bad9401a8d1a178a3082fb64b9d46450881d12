@@ -214,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "4b81d3a1_20be37ad",
+        "filename": "modules/desktop_capture/win/full_screen_win_application_handler.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 10010
+      },
+      "writtenOn": "2020-06-26T20:48:47Z",
+      "side": 1,
+      "message": "The slideshow window is a toplevel window, not owned by any windows. The same for editor and for presenter windows.",
+      "parentUuid": "4ed0d867_fe1de9c8",
+      "range": {
+        "startLine": 218,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 5
+      },
+      "revId": "d1bad9401a8d1a178a3082fb64b9d46450881d12",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2a4facdd_a44a737f",
         "filename": "modules/desktop_capture/win/screen_capture_utils.h",
         "patchSetId": 5
@@ -426,6 +450,30 @@
     },
     {
       "key": {
+        "uuid": "1db6a0f0_f5243ae5",
+        "filename": "modules/desktop_capture/win/window_capture_utils.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 10010
+      },
+      "writtenOn": "2020-06-26T20:48:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c6d42ea_33328252",
+      "range": {
+        "startLine": 55,
+        "startChar": 10,
+        "endLine": 55,
+        "endChar": 14
+      },
+      "revId": "d1bad9401a8d1a178a3082fb64b9d46450881d12",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "edaef3f9_ddc08866",
         "filename": "modules/desktop_capture/win/window_capture_utils.cc",
         "patchSetId": 5
@@ -544,6 +592,30 @@
     },
     {
       "key": {
+        "uuid": "1c96b046_4971cd81",
+        "filename": "modules/desktop_capture/win/window_capture_utils.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 10010
+      },
+      "writtenOn": "2020-06-26T20:48:47Z",
+      "side": 1,
+      "message": "Yes, that would be nice. Do you have any suggestion for change here?",
+      "parentUuid": "ebf2c523_e4f33cab",
+      "range": {
+        "startLine": 71,
+        "startChar": 55,
+        "endLine": 72,
+        "endChar": 51
+      },
+      "revId": "d1bad9401a8d1a178a3082fb64b9d46450881d12",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "611ebe6d_a235f69e",
         "filename": "modules/desktop_capture/win/window_capture_utils.cc",
         "patchSetId": 5
@@ -612,6 +684,30 @@
       "revId": "d1bad9401a8d1a178a3082fb64b9d46450881d12",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18dd4175_6d4e742d",
+        "filename": "modules/desktop_capture/win/window_capture_utils.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 10010
+      },
+      "writtenOn": "2020-06-26T20:48:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04bcc8ce_6f9313a1",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 34
+      },
+      "revId": "d1bad9401a8d1a178a3082fb64b9d46450881d12",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     },
     {
       "key": {
