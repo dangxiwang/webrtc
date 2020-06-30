@@ -238,6 +238,30 @@
     },
     {
       "key": {
+        "uuid": "a7bb3fd6_734f1418",
+        "filename": "modules/desktop_capture/win/full_screen_win_application_handler.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 5064
+      },
+      "writtenOn": "2020-06-30T16:56:07Z",
+      "side": 1,
+      "message": "OK, so the assumption we\u0027re making is that the first titled window in the Z-order, after the slideshow window, and which belongs to the same application, must be _either_ the document window, or some sort of slideshow controls window, and in either case that will have the same title as the window we are trying to share?\n\nI\u0027m not sure that your assumption #2 is valid; if you have a full-screen window active then I\u0027d expect that it is created in the \"topmost\" section of the Z-order, i.e. on top of all \"normal\" windows. If that is the case then I think you can still Alt-Tab to select other windows, which will bring them to the top of the \"normal\" Z-order, even though you can\u0027t actually see them, because they\u0027re behind the \"topmost\" slideshow window?\n\nAlso, regarding the first window being a \"presenter controls\" window, wouldn\u0027t that have to be on-top-of the slideshow window, surely? In which case it won\u0027t be the first window in the Z-order _after_ the slideshow window?\n\nAnother approach to consider is to filter by:\n- Windows which belong to the same process \u0026 thread.\n- Windows which have the same class name as the original window.\nand then enumerate those in Z-order, and match by HWND.\n\nThis assumes that:\na. Slideshow controls are of a different window class to documents.\nb. Documents are all using the same window class.\nbut it doesn\u0027t have the same issue with risk of mis-matching document windows.",
+      "parentUuid": "4b81d3a1_20be37ad",
+      "range": {
+        "startLine": 218,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 5
+      },
+      "revId": "d1bad9401a8d1a178a3082fb64b9d46450881d12",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2a4facdd_a44a737f",
         "filename": "modules/desktop_capture/win/screen_capture_utils.h",
         "patchSetId": 5
@@ -604,6 +628,30 @@
       "side": 1,
       "message": "Yes, that would be nice. Do you have any suggestion for change here?",
       "parentUuid": "ebf2c523_e4f33cab",
+      "range": {
+        "startLine": 71,
+        "startChar": 55,
+        "endLine": 72,
+        "endChar": 51
+      },
+      "revId": "d1bad9401a8d1a178a3082fb64b9d46450881d12",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97c68dcc_1a9d0c4c",
+        "filename": "modules/desktop_capture/win/window_capture_utils.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 5064
+      },
+      "writtenOn": "2020-06-30T16:56:07Z",
+      "side": 1,
+      "message": "My suggestion would just be to rearrange the code to look like:\n\n  // Skip \u003csomething that we need to identify\u003e\n  if (wcscmp(\"Progman\"))\n    return TRUE;\n\nUnfortunately although I actually wrote the original code for this, I don\u0027t recall what uses the \"Progman\" style in modern Windows systems - do you know if it is e.g. the desktop background these days?\n\n  // Skip the Windows Vista Start button, which is a top-level window with Button style.\n  if (wcscmp(....))\n    return TRUE;",
+      "parentUuid": "1c96b046_4971cd81",
       "range": {
         "startLine": 71,
         "startChar": 55,

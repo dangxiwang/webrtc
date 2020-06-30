@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "541e02a6_91fdd1fe",
+        "filename": "modules/desktop_capture/win/window_capture_utils.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 5064
+      },
+      "writtenOn": "2020-06-30T16:56:07Z",
+      "side": 1,
+      "message": "Thanks for adding these explanatory comments.\n\nThe wording for some of these could be improved - remember that the point is to explain _why_ we\u0027re doing and/or _what we intend_, versus the code which really only documents _how_ we\u0027re doing it. 😊\n\nThe third comment really just describes _how_ we\u0027re deciding to skip some owned windows, but not _why_ - the actual goal seems to be to \"skip windows which do not have a taskbar entry\", which is indicated by the window either being unowned, or having the WS_EX_APPWINDOW style.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 66
+      },
+      "revId": "54124c417e98beb73a0bb3b3d8107a1542e92783",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
