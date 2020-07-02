@@ -34,6 +34,24 @@
       "revId": "d9c860f5106bebc608cd76d04c852b8d1aafc7cd",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fc7d122_0ddc377f",
+        "filename": "video/adaptation/quality_scaler_resource.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 8683
+      },
+      "writtenOn": "2020-07-02T09:06:19Z",
+      "side": 1,
+      "message": "I am now wondering if this behaviour can just be removed outright. The owners are back in late July so I will check back then.",
+      "parentUuid": "775b4889_ff5934b0",
+      "revId": "d9c860f5106bebc608cd76d04c852b8d1aafc7cd",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
     }
   ]
 }
