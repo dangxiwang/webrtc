@@ -16,6 +16,24 @@
       "revId": "d9c860f5106bebc608cd76d04c852b8d1aafc7cd",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "775b4889_ff5934b0",
+        "filename": "video/adaptation/quality_scaler_resource.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 8683
+      },
+      "writtenOn": "2020-07-02T08:12:16Z",
+      "side": 1,
+      "message": "I will see if there is a new callback that can be used for this which avoids owning the queue.",
+      "parentUuid": "dff861e2_e750b168",
+      "revId": "d9c860f5106bebc608cd76d04c852b8d1aafc7cd",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
     }
   ]
 }
