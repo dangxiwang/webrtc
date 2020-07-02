@@ -92,9 +92,7 @@ class QualityScalerResource : public VideoStreamEncoderResource,
   std::queue<rtc::scoped_refptr<QualityScalerQpUsageHandlerCallbackInterface>>
       pending_callbacks_ RTC_GUARDED_BY(encoder_queue());
   DegradationPreferenceProvider* const degradation_preference_provider_;
-
-  // Members accessed on the adaptation queue.
-  bool clear_qp_samples_ RTC_GUARDED_BY(resource_adaptation_queue());
+  bool clear_qp_samples_ RTC_GUARDED_BY(encoder_queue());
 };
 
 }  // namespace webrtc
