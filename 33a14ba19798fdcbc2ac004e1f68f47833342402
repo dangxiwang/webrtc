@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aaf330b5_8295831f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7755
+      },
+      "writtenOn": "2020-07-14T06:22:42Z",
+      "side": 1,
+      "message": "I forgot I had an old CL for that bug but this one is slightly better as it actually stores the bandwidth type.\n\nQuite notably I think the AS conversion is still not done per JSEP but that is a different story ;-)",
+      "revId": "33a14ba19798fdcbc2ac004e1f68f47833342402",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    }
+  ]
+}
