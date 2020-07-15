@@ -33,6 +33,24 @@
       "revId": "33a14ba19798fdcbc2ac004e1f68f47833342402",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "753bafd8_a5e35e4b",
+        "filename": "pc/webrtc_sdp_unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2195,
+      "author": {
+        "id": 7755
+      },
+      "writtenOn": "2020-07-15T06:39:39Z",
+      "side": 1,
+      "message": "great idea, done in the one place where this was possible",
+      "parentUuid": "a39f2463_597d781e",
+      "revId": "33a14ba19798fdcbc2ac004e1f68f47833342402",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
