@@ -24,7 +24,6 @@
 #include "api/transport/rtp/dependency_descriptor.h"
 #include "api/video/video_codec_type.h"
 #include "api/video/video_frame_type.h"
-#include "modules/include/module_common_types.h"
 #include "modules/rtp_rtcp/include/rtp_rtcp_defines.h"
 #include "modules/rtp_rtcp/source/absolute_capture_time_sender.h"
 #include "modules/rtp_rtcp/source/active_decode_targets_helper.h"
@@ -97,7 +96,6 @@ class RTPSenderVideo {
                  uint32_t rtp_timestamp,
                  int64_t capture_time_ms,
                  rtc::ArrayView<const uint8_t> payload,
-                 const RTPFragmentationHeader* fragmentation,
                  RTPVideoHeader video_header,
                  absl::optional<int64_t> expected_retransmission_time_ms);
 
@@ -106,7 +104,6 @@ class RTPSenderVideo {
       absl::optional<VideoCodecType> codec_type,
       uint32_t rtp_timestamp,
       const EncodedImage& encoded_image,
-      const RTPFragmentationHeader* fragmentation,
       RTPVideoHeader video_header,
       absl::optional<int64_t> expected_retransmission_time_ms);
 
