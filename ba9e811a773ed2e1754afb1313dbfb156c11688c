@@ -16,6 +16,23 @@
       "revId": "ba9e811a773ed2e1754afb1313dbfb156c11688c",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "86372fcf_af50435a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2020-07-21T13:15:43Z",
+      "side": 1,
+      "message": "Sebastian, can have an approval for call/ change",
+      "revId": "ba9e811a773ed2e1754afb1313dbfb156c11688c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
