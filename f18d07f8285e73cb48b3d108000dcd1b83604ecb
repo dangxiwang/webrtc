@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a941db0_4f86a2d2",
+        "filename": "test/pc/e2e/analyzer/video/default_video_quality_analyzer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 6337
+      },
+      "writtenOn": "2020-07-23T20:45:45Z",
+      "side": 1,
+      "message": "Mention why it\u0027s fine to adjust and improve metrics, because otherwise the question is why we don\u0027t compare the real output with real input?",
+      "range": {
+        "startLine": 175,
+        "startChar": 46,
+        "endLine": 176,
+        "endChar": 20
+      },
+      "revId": "f18d07f8285e73cb48b3d108000dcd1b83604ecb",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12872f8f_133acd3a",
+        "filename": "test/pc/e2e/analyzer/video/default_video_quality_analyzer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 6337
+      },
+      "writtenOn": "2020-07-23T20:45:45Z",
+      "side": 1,
+      "message": "Just drop this constructor if it\u0027s not used, otherwise no need to add this field here. I\u0027ll drop this ctor later then.",
+      "range": {
+        "startLine": 191,
+        "startChar": 2,
+        "endLine": 196,
+        "endChar": 60
+      },
+      "revId": "f18d07f8285e73cb48b3d108000dcd1b83604ecb",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
