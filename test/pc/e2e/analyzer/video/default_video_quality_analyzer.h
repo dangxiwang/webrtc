@@ -170,6 +170,11 @@ struct DefaultVideoQualityAnalyzerOptions {
   // Tells DefaultVideoQualityAnalyzer if heavy metrics like PSNR and SSIM have
   // to be computed or not.
   bool heavy_metrics_computation_enabled = true;
+  // If true DefaultVideoQualityAnalyzer will try to adjust frames before
+  // computing PSNR and SSIM for them. In some cases picture may be shifted by
+  // 1-2 pixels after the encode/decode step. Adjustment eliminates affect of it
+  // on the metrics.
+  bool adjust_cropping_before_comparing_frames = false;
   // Amount of frames that are queued in the DefaultVideoQualityAnalyzer from
   // the point they were captured to the point they were rendered on all
   // receivers per stream.
@@ -187,7 +192,8 @@ class DefaultVideoQualityAnalyzer : public VideoQualityAnalyzerInterface {
   explicit DefaultVideoQualityAnalyzer(
       bool heavy_metrics_computation_enabled = true,
       size_t max_frames_in_flight_per_stream_count =
-          kDefaultMaxFramesInFlightPerStream);
+          kDefaultMaxFramesInFlightPerStream,
+      bool adjust_cropping_before_comparing_frames = false);
   ~DefaultVideoQualityAnalyzer() override;
 
   void Start(std::string test_case_name,
