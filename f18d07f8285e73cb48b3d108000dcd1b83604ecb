@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "878a6fa9_69b27032",
+        "filename": "test/pc/e2e/analyzer/video/default_video_quality_analyzer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 11540
+      },
+      "writtenOn": "2020-07-24T07:45:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a941db0_4f86a2d2",
+      "range": {
+        "startLine": 175,
+        "startChar": 46,
+        "endLine": 176,
+        "endChar": 20
+      },
+      "revId": "f18d07f8285e73cb48b3d108000dcd1b83604ecb",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "12872f8f_133acd3a",
         "filename": "test/pc/e2e/analyzer/video/default_video_quality_analyzer.h",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "f18d07f8285e73cb48b3d108000dcd1b83604ecb",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c90b9b4b_64594689",
+        "filename": "test/pc/e2e/analyzer/video/default_video_quality_analyzer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 11540
+      },
+      "writtenOn": "2020-07-24T07:45:02Z",
+      "side": 1,
+      "message": "It is still used by upstream project. Removed the added parameter.",
+      "parentUuid": "12872f8f_133acd3a",
+      "range": {
+        "startLine": 191,
+        "startChar": 2,
+        "endLine": 196,
+        "endChar": 60
+      },
+      "revId": "f18d07f8285e73cb48b3d108000dcd1b83604ecb",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
