@@ -36,6 +36,29 @@
     },
     {
       "key": {
+        "uuid": "fa01757b_fb2711c0",
+        "filename": "sdk/objc/components/network/RTCNetworkMonitor.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5590
+      },
+      "writtenOn": "2020-08-05T15:42:09Z",
+      "side": 1,
+      "message": "Should there be a check similar to\n    if (@available(iOS 12, macOS 10.14, *)) {\nto ensure this class isn\u0027t available if it\u0027s not iOS 12+?\nWhat would happen or what\u0027s the expected behavior if an earlier os tries to use this class?",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 39
+      },
+      "revId": "078a49e61b1ddf37ee1aec6999bb42520e239f17",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f1734d9e_e5a8f4fa",
         "filename": "sdk/objc/components/network/RTCNetworkMonitor.mm",
         "patchSetId": 1
@@ -117,6 +140,47 @@
     },
     {
       "key": {
+        "uuid": "6c407678_4539659f",
+        "filename": "sdk/objc/components/network/RTCNetworkMonitor.mm",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 5590
+      },
+      "writtenOn": "2020-08-05T15:42:09Z",
+      "side": 1,
+      "message": "You can also call nw_path_get_status(path) to verify that the path \u003d\u003d nw_path_status_satisfied.",
+      "parentUuid": "9f025e73_06850814",
+      "revId": "078a49e61b1ddf37ee1aec6999bb42520e239f17",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1b359981_d3e911b7",
+        "filename": "sdk/objc/components/network/RTCNetworkMonitor.mm",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 5590
+      },
+      "writtenOn": "2020-08-05T15:42:09Z",
+      "side": 1,
+      "message": "Only satisfied interfaces are returned. If the path wasn\u0027t satisfied (ie airplane mode with wifi off), the interfaces array would be empty.",
+      "range": {
+        "startLine": 73,
+        "startChar": 75,
+        "endLine": 73,
+        "endChar": 84
+      },
+      "revId": "078a49e61b1ddf37ee1aec6999bb42520e239f17",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b2eb811c_545a7545",
         "filename": "sdk/objc/components/network/RTCNetworkMonitor.mm",
         "patchSetId": 1
@@ -133,6 +197,52 @@
         "startChar": 8,
         "endLine": 80,
         "endChar": 18
+      },
+      "revId": "078a49e61b1ddf37ee1aec6999bb42520e239f17",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a8360dc_6ca19aca",
+        "filename": "sdk/objc/native/api/network_monitor_factory.mm",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5590
+      },
+      "writtenOn": "2020-08-05T15:42:09Z",
+      "side": 1,
+      "message": "Should this return nil instead if os is less than supported?",
+      "range": {
+        "startLine": 21,
+        "startChar": 26,
+        "endLine": 21,
+        "endChar": 51
+      },
+      "revId": "078a49e61b1ddf37ee1aec6999bb42520e239f17",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "394c9a30_f7ee7055",
+        "filename": "sdk/objc/native/src/objc_network_monitor.mm",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 5590
+      },
+      "writtenOn": "2020-08-05T15:42:09Z",
+      "side": 1,
+      "message": "We shouldn\u0027t allow this to be called if nw path monitor is not available for this os version.",
+      "range": {
+        "startLine": 44,
+        "startChar": 37,
+        "endLine": 44,
+        "endChar": 51
       },
       "revId": "078a49e61b1ddf37ee1aec6999bb42520e239f17",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
