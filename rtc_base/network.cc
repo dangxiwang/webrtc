@@ -567,6 +567,10 @@ void BasicNetworkManager::ConvertIfAddrs(struct ifaddrs* interfaces,
       network->set_scope_id(scope_id);
       network->AddIP(ip);
       network->set_ignored(IsIgnoredNetwork(*network));
+      if (network_monitor_ && !network->ignored()) {
+        network->set_ignored(
+            !network_monitor_->IsAdapterAvailable(network->name()));
+      }
       network->set_underlying_type_for_vpn(vpn_underlying_adapter_type);
       if (include_ignored || !network->ignored()) {
         current_networks[key] = network.get();

@@ -339,6 +339,34 @@ if (is_ios || is_mac) {
       }
     }
 
+    rtc_source_set("network_monitor_observer") {
+      visibility = [ ":*" ]
+
+      sources = [ "objc/native/src/network_monitor_observer.h" ]
+
+      deps = [ "../rtc_base" ]
+    }
+
+    rtc_library("network_monitor_objc") {
+      visibility = [ "*" ]
+
+      sources = [
+        "objc/components/network/RTCNetworkMonitor.h",
+        "objc/components/network/RTCNetworkMonitor.mm",
+      ]
+
+      configs += [ ":used_from_extension" ]
+
+      frameworks = [ "Network.framework" ]
+
+      deps = [
+        ":base_objc",
+        ":helpers_objc",
+        ":network_monitor_observer",
+        "../rtc_base/system:gcd_helpers",
+      ]
+    }
+
     rtc_library("videosource_objc") {
       sources = [
         "objc/api/peerconnection/RTCVideoSource+Private.h",
@@ -1266,6 +1294,7 @@ if (is_ios || is_mac) {
           "objc/components/audio/RTCAudioSessionConfiguration.h",
           "objc/components/capturer/RTCCameraVideoCapturer.h",
           "objc/components/capturer/RTCFileVideoCapturer.h",
+          "objc/components/network/RTCNetworkMonitor.h",
           "objc/components/renderer/metal/RTCMTLVideoView.h",
           "objc/components/renderer/opengl/RTCEAGLVideoView.h",
           "objc/components/renderer/opengl/RTCVideoViewShading.h",
@@ -1540,6 +1569,8 @@ if (is_ios || is_mac) {
       visibility = [ "*" ]
       allow_poison = [ "audio_codecs" ]  # TODO(bugs.webrtc.org/8396): Remove.
       sources = [
+        "objc/native/api/network_monitor_factory.h",
+        "objc/native/api/network_monitor_factory.mm",
         "objc/native/api/video_capturer.h",
         "objc/native/api/video_capturer.mm",
         "objc/native/api/video_decoder_factory.h",
@@ -1560,6 +1591,7 @@ if (is_ios || is_mac) {
 
       deps = [
         ":base_objc",
+        ":native_network_monitor",
         ":native_video",
         ":videoframebuffer_objc",
         "../api:libjingle_peerconnection_api",
@@ -1572,6 +1604,22 @@ if (is_ios || is_mac) {
         "../rtc_base",
       ]
       absl_deps = [ "//third_party/abseil-cpp/absl/memory" ]
+    }
+
+    rtc_library("native_network_monitor") {
+      visibility = [ "*" ]
+
+      sources = [
+        "objc/native/src/objc_network_monitor.h",
+        "objc/native/src/objc_network_monitor.mm",
+      ]
+
+      deps = [
+        ":network_monitor_objc",
+        ":network_monitor_observer",
+        "../rtc_base",
+        "../rtc_base/synchronization:sequence_checker",
+      ]
     }
 
     rtc_library("native_video") {
