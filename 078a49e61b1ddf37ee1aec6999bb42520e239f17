@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6fbfdb34_ae749bff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2020-08-05T00:22:44Z",
+      "side": 1,
+      "message": "Don\u0027t review this yet, just want to ask this question first: is there a reason for having a separate RTCNetworkMonitor component? Or could ObjCNetworkMonitor deal with NWPathMonitor directly? I don\u0027t have a reason for having them separate, other than that\u0027s what existing code seemed to do.",
+      "revId": "078a49e61b1ddf37ee1aec6999bb42520e239f17",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5dd1b97c_33552f8c",
+        "filename": "sdk/objc/components/network/RTCNetworkMonitor.mm",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2020-08-05T00:22:44Z",
+      "side": 1,
+      "message": "Here I\u0027m not checking if the path is satisfied. Again the logic being \"better a list of some interfaces then at all\". I\u0027m assuming that in the unsatisfied case there is a chance the path will become satisfied once WebRTC gets going.",
+      "revId": "078a49e61b1ddf37ee1aec6999bb42520e239f17",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
