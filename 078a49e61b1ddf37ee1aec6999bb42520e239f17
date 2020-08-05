@@ -19,6 +19,69 @@
     },
     {
       "key": {
+        "uuid": "db7fc3c9_d631426d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5249
+      },
+      "writtenOn": "2020-08-05T11:44:07Z",
+      "side": 1,
+      "message": "lgtm % minor comment/question",
+      "revId": "078a49e61b1ddf37ee1aec6999bb42520e239f17",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1734d9e_e5a8f4fa",
+        "filename": "sdk/objc/components/network/RTCNetworkMonitor.mm",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 5249
+      },
+      "writtenOn": "2020-08-05T11:44:07Z",
+      "side": 1,
+      "message": "nit: 2020",
+      "range": {
+        "startLine": 2,
+        "startChar": 14,
+        "endLine": 2,
+        "endChar": 18
+      },
+      "revId": "078a49e61b1ddf37ee1aec6999bb42520e239f17",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a48a4a7_53f22c10",
+        "filename": "sdk/objc/components/network/RTCNetworkMonitor.mm",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 5249
+      },
+      "writtenOn": "2020-08-05T11:44:07Z",
+      "side": 1,
+      "message": "I was surprised to see this being a C API, but I guess the object oriented API is only available in Swift huh?",
+      "range": {
+        "startLine": 60,
+        "startChar": 21,
+        "endLine": 60,
+        "endChar": 43
+      },
+      "revId": "078a49e61b1ddf37ee1aec6999bb42520e239f17",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5dd1b97c_33552f8c",
         "filename": "sdk/objc/components/network/RTCNetworkMonitor.mm",
         "patchSetId": 1
@@ -30,6 +93,47 @@
       "writtenOn": "2020-08-05T00:22:44Z",
       "side": 1,
       "message": "Here I\u0027m not checking if the path is satisfied. Again the logic being \"better a list of some interfaces then at all\". I\u0027m assuming that in the unsatisfied case there is a chance the path will become satisfied once WebRTC gets going.",
+      "revId": "078a49e61b1ddf37ee1aec6999bb42520e239f17",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f025e73_06850814",
+        "filename": "sdk/objc/components/network/RTCNetworkMonitor.mm",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 5249
+      },
+      "writtenOn": "2020-08-05T11:44:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5dd1b97c_33552f8c",
+      "revId": "078a49e61b1ddf37ee1aec6999bb42520e239f17",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b2eb811c_545a7545",
+        "filename": "sdk/objc/components/network/RTCNetworkMonitor.mm",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 5249
+      },
+      "writtenOn": "2020-08-05T11:44:07Z",
+      "side": 1,
+      "message": "Is there a problem if strongSelf is nil here? (is there a risk weakSelf is released while this block is retained?)",
+      "range": {
+        "startLine": 80,
+        "startChar": 8,
+        "endLine": 80,
+        "endChar": 18
+      },
       "revId": "078a49e61b1ddf37ee1aec6999bb42520e239f17",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
