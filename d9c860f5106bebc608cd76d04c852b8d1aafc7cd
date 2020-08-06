@@ -52,6 +52,42 @@
       "revId": "d9c860f5106bebc608cd76d04c852b8d1aafc7cd",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b841d819_8a51aa56",
+        "filename": "video/adaptation/quality_scaler_resource.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 8683
+      },
+      "writtenOn": "2020-08-06T13:26:13Z",
+      "side": 1,
+      "message": "No longer relevant after rebase.",
+      "parentUuid": "0fc7d122_0ddc377f",
+      "revId": "d9c860f5106bebc608cd76d04c852b8d1aafc7cd",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eba2a2c4_fa674907",
+        "filename": "video/adaptation/quality_scaler_resource.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 8683
+      },
+      "writtenOn": "2020-08-06T13:26:13Z",
+      "side": 1,
+      "message": "Comment no longer relevant after rebase.",
+      "parentUuid": "0fc7d122_0ddc377f",
+      "revId": "d9c860f5106bebc608cd76d04c852b8d1aafc7cd",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
