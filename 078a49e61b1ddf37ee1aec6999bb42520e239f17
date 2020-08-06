@@ -59,6 +59,30 @@
     },
     {
       "key": {
+        "uuid": "a9d66185_a3ab9f58",
+        "filename": "sdk/objc/components/network/RTCNetworkMonitor.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2020-08-06T00:47:53Z",
+      "side": 1,
+      "message": "The observer will just not receive any updates, so it will be the same as if the network monitor weren\u0027t created in the first place (besides some memory allocations).",
+      "parentUuid": "fa01757b_fb2711c0",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 39
+      },
+      "revId": "078a49e61b1ddf37ee1aec6999bb42520e239f17",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f1734d9e_e5a8f4fa",
         "filename": "sdk/objc/components/network/RTCNetworkMonitor.mm",
         "patchSetId": 1
@@ -79,6 +103,30 @@
       "revId": "078a49e61b1ddf37ee1aec6999bb42520e239f17",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b74c7886_eb03e9ab",
+        "filename": "sdk/objc/components/network/RTCNetworkMonitor.mm",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2020-08-06T00:47:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1734d9e_e5a8f4fa",
+      "range": {
+        "startLine": 2,
+        "startChar": 14,
+        "endLine": 2,
+        "endChar": 18
+      },
+      "revId": "078a49e61b1ddf37ee1aec6999bb42520e239f17",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     },
     {
       "key": {
@@ -158,6 +206,24 @@
     },
     {
       "key": {
+        "uuid": "a2e5cec5_14431625",
+        "filename": "sdk/objc/components/network/RTCNetworkMonitor.mm",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2020-08-06T00:47:53Z",
+      "side": 1,
+      "message": "I\u0027ll start logging the status at least, that could be useful for debugging connection issues.",
+      "parentUuid": "6c407678_4539659f",
+      "revId": "078a49e61b1ddf37ee1aec6999bb42520e239f17",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1b359981_d3e911b7",
         "filename": "sdk/objc/components/network/RTCNetworkMonitor.mm",
         "patchSetId": 1
@@ -169,6 +235,30 @@
       "writtenOn": "2020-08-05T15:42:09Z",
       "side": 1,
       "message": "Only satisfied interfaces are returned. If the path wasn\u0027t satisfied (ie airplane mode with wifi off), the interfaces array would be empty.",
+      "range": {
+        "startLine": 73,
+        "startChar": 75,
+        "endLine": 73,
+        "endChar": 84
+      },
+      "revId": "078a49e61b1ddf37ee1aec6999bb42520e239f17",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60e2a008_8579b65e",
+        "filename": "sdk/objc/components/network/RTCNetworkMonitor.mm",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2020-08-06T00:47:53Z",
+      "side": 1,
+      "message": "Is that 100% guaranteed? Even so, does it hurt to try enumerating them?",
+      "parentUuid": "1b359981_d3e911b7",
       "range": {
         "startLine": 73,
         "startChar": 75,
@@ -204,6 +294,30 @@
     },
     {
       "key": {
+        "uuid": "a28e3fae_b2df77bc",
+        "filename": "sdk/objc/components/network/RTCNetworkMonitor.mm",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2020-08-06T00:47:53Z",
+      "side": 1,
+      "message": "I was assuming nw_path_monitor_cancel would guarantee no more updates are received, but there is also a \"nw_path_monitor_set_cancel_handler\" method to receive a callback when it\u0027s fully canceled, which implies otherwise. Checking for nil now.",
+      "parentUuid": "b2eb811c_545a7545",
+      "range": {
+        "startLine": 80,
+        "startChar": 8,
+        "endLine": 80,
+        "endChar": 18
+      },
+      "revId": "078a49e61b1ddf37ee1aec6999bb42520e239f17",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a8360dc_6ca19aca",
         "filename": "sdk/objc/native/api/network_monitor_factory.mm",
         "patchSetId": 1
@@ -215,6 +329,30 @@
       "writtenOn": "2020-08-05T15:42:09Z",
       "side": 1,
       "message": "Should this return nil instead if os is less than supported?",
+      "range": {
+        "startLine": 21,
+        "startChar": 26,
+        "endLine": 21,
+        "endChar": 51
+      },
+      "revId": "078a49e61b1ddf37ee1aec6999bb42520e239f17",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42a5e22c_e8bedd4c",
+        "filename": "sdk/objc/native/api/network_monitor_factory.mm",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2020-08-06T00:47:53Z",
+      "side": 1,
+      "message": "As mentioned in the other comment, the only downside of creating a factory/monitor that does nothing is a bit of extra memory use. So I\u0027d say it would be simpler to keep things as is, and keep the \"available\" checks in one file. Note that it already works similarly for Android.",
+      "parentUuid": "1a8360dc_6ca19aca",
       "range": {
         "startLine": 21,
         "startChar": 26,
