@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "318cc652_a6e233cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2020-08-10T22:30:12Z",
+      "side": 1,
+      "message": "hta, still need LGTM from you. Or would there be a better reviewer?",
+      "revId": "73143861058a60f9a84468b502947bc91efb8e01",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    }
+  ]
+}
