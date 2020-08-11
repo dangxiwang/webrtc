@@ -12,6 +12,7 @@
 
 #include <stdlib.h>
 
+#include <algorithm>
 #include <memory>
 #include <vector>
 
@@ -61,8 +62,19 @@ class FakeNetworkMonitor : public NetworkMonitorBase {
     return NetworkPreference::NEUTRAL;
   }
 
+  bool IsAdapterAvailable(const std::string& if_name) override {
+    return std::find(unavailable_adapters_.begin(), unavailable_adapters_.end(),
+                     if_name) == unavailable_adapters_.end();
+  }
+
+  // Used to test IsAdapterAvailable.
+  void set_unavailable_adapters(std::vector<std::string> unavailable_adapters) {
+    unavailable_adapters_ = unavailable_adapters;
+  }
+
  private:
   bool started_ = false;
+  std::vector<std::string> unavailable_adapters_;
 };
 
 class FakeNetworkMonitorFactory : public NetworkMonitorFactory {
@@ -1057,6 +1069,36 @@ TEST_F(NetworkTest, TestNetworkMonitoring) {
   // Network manager is stopped.
   manager.StopUpdating();
   EXPECT_FALSE(GetNetworkMonitor(manager)->started());
+}
+
+// Test that an adapter won't be included in the network list if there's a
+// network monitor that says it's unavailable.
+TEST_F(NetworkTest, TestNetworkMonitorIsAdapterAvailable) {
+  char if_name1[20] = "pdp_ip0";
+  char if_name2[20] = "pdp_ip1";
+  ifaddrs* list = nullptr;
+  list = AddIpv6Address(list, if_name1, "1000:2000:3000:4000:0:0:0:1",
+                        "FFFF:FFFF:FFFF:FFFF::", 0);
+  list = AddIpv6Address(list, if_name2, "1000:2000:3000:4000:0:0:0:2",
+                        "FFFF:FFFF:FFFF:FFFF::", 0);
+  NetworkManager::NetworkList result;
+
+  // Sanity check that both interfaces are included by default.
+  FakeNetworkMonitorFactory factory;
+  BasicNetworkManager manager(&factory);
+  manager.StartUpdating();
+  CallConvertIfAddrs(manager, list, /*include_ignored=*/false, &result);
+  EXPECT_EQ(2U, result.size());
+  result.clear();
+
+  // Now simulate one interface being unavailable.
+  FakeNetworkMonitor* network_monitor = GetNetworkMonitor(manager);
+  network_monitor->set_unavailable_adapters({"pdp_ip0"});
+  CallConvertIfAddrs(manager, list, /*include_ignored=*/false, &result);
+  EXPECT_EQ(1U, result.size());
+  EXPECT_EQ("pdp_ip1", result[0]->name());
+
+  ReleaseIfAddrs(list);
 }
 
 // Fails on Android: https://bugs.chromium.org/p/webrtc/issues/detail?id=4364.
