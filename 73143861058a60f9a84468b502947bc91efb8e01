@@ -16,6 +16,23 @@
       "revId": "73143861058a60f9a84468b502947bc91efb8e01",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "772abbef_0e19b44f",
+        "filename": "rtc_base/network_monitor.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 5613
+      },
+      "writtenOn": "2020-08-11T06:41:31Z",
+      "side": 1,
+      "message": "Can you please also add to documentation if this return value\nis expected to change during a call, or if it is a \"static\" value ?\n\nAlso, if it does change during call, then this should trigger a SignalNetworksChanged ?",
+      "revId": "73143861058a60f9a84468b502947bc91efb8e01",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
     }
   ]
 }
