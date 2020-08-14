@@ -262,6 +262,30 @@
     },
     {
       "key": {
+        "uuid": "85b22d79_179553e3",
+        "filename": "modules/desktop_capture/win/full_screen_win_application_handler.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 10010
+      },
+      "writtenOn": "2020-08-14T18:27:01Z",
+      "side": 1,
+      "message": "- Yes, you got my #1 assumption right\n- \"Presenter Control\" window appears only if you have more than one connected display. For 1 display we have a full screen \"Slide Show\" window, For 2 and more displays we have a full screen \"Slide Show\" window and a full screen \"Presenter Control\" window.\n- Open Office app is affected by webrtc:11455, all windows share process and thread.\n\nOk, As we can not match Slide Show window and Document Window i changed the logic to disable switch in case if we have more than one open document. WDYT?",
+      "parentUuid": "a7bb3fd6_734f1418",
+      "range": {
+        "startLine": 218,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 5
+      },
+      "revId": "d1bad9401a8d1a178a3082fb64b9d46450881d12",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2a4facdd_a44a737f",
         "filename": "modules/desktop_capture/win/screen_capture_utils.h",
         "patchSetId": 5
@@ -661,6 +685,30 @@
       "revId": "d1bad9401a8d1a178a3082fb64b9d46450881d12",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bed2a95_9b50e8fe",
+        "filename": "modules/desktop_capture/win/window_capture_utils.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 10010
+      },
+      "writtenOn": "2020-08-14T18:27:01Z",
+      "side": 1,
+      "message": "Done: \"Progman\" is actual for all supported OS, \"Button\" is needed for Windows Vista and for Windows 7, starting with Windows 8 Start Button is not a top level window.",
+      "parentUuid": "97c68dcc_1a9d0c4c",
+      "range": {
+        "startLine": 71,
+        "startChar": 55,
+        "endLine": 72,
+        "endChar": 51
+      },
+      "revId": "d1bad9401a8d1a178a3082fb64b9d46450881d12",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     },
     {
       "key": {
