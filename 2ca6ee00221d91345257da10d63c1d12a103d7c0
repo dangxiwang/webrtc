@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d2fa0e46_db2d88d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2020-08-17T23:56:58Z",
+      "side": 1,
+      "message": "kwiberg, could you take a look at changes to rtc_base?",
+      "revId": "2ca6ee00221d91345257da10d63c1d12a103d7c0",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    }
+  ]
+}
