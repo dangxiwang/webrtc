@@ -16,6 +16,29 @@
       "revId": "2ca6ee00221d91345257da10d63c1d12a103d7c0",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad6062ee_aa53c02a",
+        "filename": "sdk/objc/components/network/RTCNetworkMonitor.mm",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 5613
+      },
+      "writtenOn": "2020-08-18T06:09:48Z",
+      "side": 1,
+      "message": "nit: i\u0027m almost complete at extending the cellular \u003d\u003e ceullular_{2345}G\nIf it\u0027s easily accessible...it would be great it you add it directly.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 47
+      },
+      "revId": "2ca6ee00221d91345257da10d63c1d12a103d7c0",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
     }
   ]
 }
