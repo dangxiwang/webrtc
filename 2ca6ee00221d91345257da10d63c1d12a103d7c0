@@ -70,6 +70,24 @@
     },
     {
       "key": {
+        "uuid": "dcbbd645_efe4c27c",
+        "filename": "rtc_base/network.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 5590
+      },
+      "writtenOn": "2020-08-18T20:26:09Z",
+      "side": 1,
+      "message": "Moving to isAdapterAvailable is fine.\nAdding to line 800 (after deleting these lines):\n  if (network_monitor_ \u0026\u0026\n      !network_monitor_-\u003eIsAdapterAvailable(network.name())) {\n    return true;\n  }",
+      "parentUuid": "e8c21aa5_357441bc",
+      "revId": "2ca6ee00221d91345257da10d63c1d12a103d7c0",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2369f267_2d71a703",
         "filename": "rtc_base/network_monitor.h",
         "patchSetId": 8
