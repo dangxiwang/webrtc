@@ -36,6 +36,40 @@
     },
     {
       "key": {
+        "uuid": "06ffb278_ca41d4de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2020-08-18T08:19:14Z",
+      "side": 1,
+      "message": "Some tests have memory leaks.... apart from nits, just one question about why we\u0027re adding isAdapterAvailable rather than expanding the responsibility of isIgnoredNetwork.\n",
+      "revId": "2ca6ee00221d91345257da10d63c1d12a103d7c0",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e8c21aa5_357441bc",
+        "filename": "rtc_base/network.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2020-08-18T08:19:14Z",
+      "side": 1,
+      "message": "Why doesn\u0027t IsIgnoredNetwork() return true when IsAdapterAvailable returns false?\nThat would remove the need to do any change here.",
+      "revId": "2ca6ee00221d91345257da10d63c1d12a103d7c0",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2369f267_2d71a703",
         "filename": "rtc_base/network_monitor.h",
         "patchSetId": 8
@@ -116,6 +150,40 @@
         "endLine": 1091,
         "endChar": 14
       },
+      "revId": "2ca6ee00221d91345257da10d63c1d12a103d7c0",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79949a76_f0ecfbc1",
+        "filename": "rtc_base/network_unittest.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1096,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2020-08-18T08:19:14Z",
+      "side": 1,
+      "message": "Use if_name1 here.",
+      "revId": "2ca6ee00221d91345257da10d63c1d12a103d7c0",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd8796bf_18d8ea2d",
+        "filename": "rtc_base/network_unittest.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1099,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2020-08-18T08:19:14Z",
+      "side": 1,
+      "message": "Use if_name2 here.",
       "revId": "2ca6ee00221d91345257da10d63c1d12a103d7c0",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
