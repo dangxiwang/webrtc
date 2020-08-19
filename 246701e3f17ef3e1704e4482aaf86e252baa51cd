@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "49d22498_3a439adc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2020-08-19T23:19:22Z",
+      "side": 1,
+      "message": "I had to restrict this to iOS since the Network framework isn\u0027t available with OS X \u003c 10.14.\n\niOS is the only platform this really mattered to anyway, I just figured I\u0027d enable it for Mac as well if it came for free.\n\nAnyway, let me know if the build file changes look right.",
+      "revId": "246701e3f17ef3e1704e4482aaf86e252baa51cd",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    }
+  ]
+}
