@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "58259eeb_df44a210",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2020-08-19T04:08:57Z",
+      "side": 1,
+      "message": "One thing I don\u0027t understand in the changes since patchset 8....",
+      "revId": "cf0645732ec8c21968fa5b9ee7ef2b655e000869",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2f20e0a7_a9e03362",
+        "filename": "rtc_base/network_unittest.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2020-08-19T04:08:57Z",
+      "side": 1,
+      "message": "This returns true if there is at least one unavailable adapter.\nThe previous would return true if there are no unavailable adapters.\nOne of them can\u0027t be right (and the test should have seen that).",
+      "revId": "cf0645732ec8c21968fa5b9ee7ef2b655e000869",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    }
+  ]
+}
