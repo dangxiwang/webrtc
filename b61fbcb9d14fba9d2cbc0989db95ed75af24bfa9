@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c2f87277_cbf87986",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2020-08-19T21:36:33Z",
+      "side": 1,
+      "message": "Fixed tests.\n\nAlso, Anders: the iOS bots were failing on RTCDoNotPutCPlusPlusInFrameworkHeaders_xctest, due to the C++ observer interface in RTCNetworkMonitor.h, so I moved initWithObserver to RTCNetworkMonitor+Private.h. Is that the correct approach?",
+      "revId": "b61fbcb9d14fba9d2cbc0989db95ed75af24bfa9",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    }
+  ]
+}
