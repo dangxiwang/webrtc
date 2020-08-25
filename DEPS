@@ -10,7 +10,7 @@ vars = {
   # chromium waterfalls. More info at: crbug.com/570091.
   'checkout_configuration': 'default',
   'checkout_instrumented_libraries': 'checkout_linux and checkout_configuration == "default"',
-  'chromium_revision': '0d713c9318ccea3b688d816ddf79967964cf7152',
+  'chromium_revision': 'e270fb482e4b417a2a34d13c400fa47fa1718d30',
 
   # This can be overridden, e.g. with custom_vars, to download a nonstandard
   # Xcode version in build/mac_toolchain.py
@@ -24,7 +24,7 @@ deps = {
   'src/base':
     'https://chromium.googlesource.com/chromium/src/base@a43074db68e9573f9b72026ef39cdb9d68bb3146',
   'src/build':
-    'https://chromium.googlesource.com/chromium/src/build@14f79fb108ebecedb14fc72274a923ba66cf527a',
+    'https://chromium.googlesource.com/chromium/src/build@01c0f6ababf7e35a0b43aebbb1a7df0173d8fc13',
   'src/buildtools':
     'https://chromium.googlesource.com/chromium/src/buildtools@ff93f3ea1a7f033d3caf8f60ec1937cc71351419',
   # Gradle 4.3-rc4. Used for testing Android Studio project generation for WebRTC.
@@ -33,13 +33,13 @@ deps = {
     'condition': 'checkout_android',
   },
   'src/ios': {
-    'url': 'https://chromium.googlesource.com/chromium/src/ios@117ae1b1c9acf70235f541bd6c07a9b6ac51070c',
+    'url': 'https://chromium.googlesource.com/chromium/src/ios@932b08757d9f399e7e4212d121cf09b3c9c49598',
     'condition': 'checkout_ios',
   },
   'src/testing':
     'https://chromium.googlesource.com/chromium/src/testing@7e103ffe645dde50098f22b10240d5d9cb6941ad',
   'src/third_party':
-    'https://chromium.googlesource.com/chromium/src/third_party@1fab87d09933e02434c146563b1c5c8614a3f5bb',
+    'https://chromium.googlesource.com/chromium/src/third_party@b4db50e10d14b58bcadcc598e8ac9281d6c72e53',
 
   'src/buildtools/linux64': {
     'packages': [
@@ -208,7 +208,7 @@ deps = {
       'condition': 'checkout_android',
   },
   'src/third_party/perfetto':
-    'https://android.googlesource.com/platform/external/perfetto.git@cd8de1d295b4bedf5b0b00a6655575881df8696a',
+    'https://android.googlesource.com/platform/external/perfetto.git@41db2fb64914bb8c4cd2261f8ecedf1ef3b28942',
   'src/third_party/libvpx/source/libvpx':
     'https://chromium.googlesource.com/webm/libvpx.git@53747dfe65eaf670a7192f55117f3bf1e0280743',
   'src/third_party/libyuv':
@@ -265,7 +265,7 @@ deps = {
     'condition': 'checkout_win',
   },
   'src/tools':
-    'https://chromium.googlesource.com/chromium/src/tools@69e6a443db3bd0785c8e48883648e7a711a8fd83',
+    'https://chromium.googlesource.com/chromium/src/tools@82aeed100613aba9b1343f5d3c4ec75adce8f289',
   'src/tools/swarming_client':
     'https://chromium.googlesource.com/infra/luci/client-py.git@4c095d04179dc725a300085ae21fe3b79900d072',
 
