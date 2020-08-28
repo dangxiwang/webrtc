@@ -16,6 +16,253 @@
       "revId": "79eac6c6896087eca183619eaadd9434c6c1965f",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f5156c7_7997ff72",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5064
+      },
+      "writtenOn": "2020-08-28T13:58:16Z",
+      "side": 1,
+      "message": "Hi Roman,\n\nApologies for the delay in getting back to this - it\u0027s looking good, the main issue remaining seems is the class-name comparison logic, which seems a little broken?\n\nThanks!\n\nWez\n",
+      "revId": "79eac6c6896087eca183619eaadd9434c6c1965f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d5b170c5_fad91637",
+        "filename": "modules/desktop_capture/mac/full_screen_mac_application_handler.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 5064
+      },
+      "writtenOn": "2020-08-28T13:58:16Z",
+      "side": 1,
+      "message": "nit: Please spell out the type explicitly.",
+      "range": {
+        "startLine": 171,
+        "startChar": 44,
+        "endLine": 171,
+        "endChar": 49
+      },
+      "revId": "79eac6c6896087eca183619eaadd9434c6c1965f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6aa7fedf_0dd654a2",
+        "filename": "modules/desktop_capture/win/full_screen_win_application_handler.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5064
+      },
+      "writtenOn": "2020-08-28T13:58:16Z",
+      "side": 1,
+      "message": "There doesn\u0027t seem to be any value in templatizing this. You can make it just:\n\n  bool CheckWindowClassName(window, const \u003ccharacter type\u003e* class_name);\n\nand internally do wcsncmp() over the number of characters returned by GetClassName() plus one.  You\u0027ll need to explicitly ensure that there is a null at the end of the buffer after the GetClassName() call, though.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 61
+      },
+      "revId": "79eac6c6896087eca183619eaadd9434c6c1965f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7dceb663_bbdc535a",
+        "filename": "modules/desktop_capture/win/full_screen_win_application_handler.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 5064
+      },
+      "writtenOn": "2020-08-28T13:58:16Z",
+      "side": 1,
+      "message": "This will cause the newline to be ignored, which means that the comparison will actually be a prefix-match, e.g:\n\n  CheckWindowClassName(window, \"FOO\");\n\nwill match both \"FOO\" and \"FOOBAR\", since you\u0027ll only compare the first three characters.",
+      "range": {
+        "startLine": 31,
+        "startChar": 59,
+        "endLine": 31,
+        "endChar": 63
+      },
+      "revId": "79eac6c6896087eca183619eaadd9434c6c1965f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f591e787_9ef0484f",
+        "filename": "modules/desktop_capture/win/full_screen_win_application_handler.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 5064
+      },
+      "writtenOn": "2020-08-28T13:58:16Z",
+      "side": 1,
+      "message": "nit: Please spell-out the type here, since it is non-obvious.",
+      "range": {
+        "startLine": 201,
+        "startChar": 30,
+        "endLine": 201,
+        "endChar": 35
+      },
+      "revId": "79eac6c6896087eca183619eaadd9434c6c1965f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94f29659_15eb497f",
+        "filename": "modules/desktop_capture/win/full_screen_win_application_handler.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 5064
+      },
+      "writtenOn": "2020-08-28T13:58:16Z",
+      "side": 1,
+      "message": "nit: Please spell out the type.",
+      "range": {
+        "startLine": 218,
+        "startChar": 36,
+        "endLine": 218,
+        "endChar": 39
+      },
+      "revId": "79eac6c6896087eca183619eaadd9434c6c1965f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8aa60a4_8c82232d",
+        "filename": "modules/desktop_capture/win/full_screen_win_application_handler.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 5064
+      },
+      "writtenOn": "2020-08-28T13:58:16Z",
+      "side": 1,
+      "message": "nit: Isn\u0027t this just:\n\n  !source.title.empty()\n\n?",
+      "range": {
+        "startLine": 236,
+        "startChar": 9,
+        "endLine": 236,
+        "endChar": 33
+      },
+      "revId": "79eac6c6896087eca183619eaadd9434c6c1965f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e25e5384_40640174",
+        "filename": "modules/desktop_capture/win/full_screen_win_application_handler.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 5064
+      },
+      "writtenOn": "2020-08-28T13:58:16Z",
+      "side": 1,
+      "message": "nit: One-line comment to explain that slideshow windows have no title?\n\nDo we need this check?  Are there non-slideshow windows with the same class name, and a title set?",
+      "range": {
+        "startLine": 236,
+        "startChar": 0,
+        "endLine": 238,
+        "endChar": 5
+      },
+      "revId": "79eac6c6896087eca183619eaadd9434c6c1965f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99a9da50_034d8159",
+        "filename": "modules/desktop_capture/win/window_capture_utils.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 5064
+      },
+      "writtenOn": "2020-08-28T13:58:16Z",
+      "side": 1,
+      "message": "nit: Putting () around this calculation will make it wrap more nicely :)",
+      "range": {
+        "startLine": 417,
+        "startChar": 29,
+        "endLine": 418,
+        "endChar": 72
+      },
+      "revId": "79eac6c6896087eca183619eaadd9434c6c1965f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "097cb643_1fb29e6a",
+        "filename": "modules/desktop_capture/win/window_capture_utils.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 5064
+      },
+      "writtenOn": "2020-08-28T13:58:16Z",
+      "side": 1,
+      "message": "nit: Enclose the statement in {} since the conditional has become multi-line.",
+      "range": {
+        "startLine": 420,
+        "startChar": 4,
+        "endLine": 420,
+        "endChar": 17
+      },
+      "revId": "79eac6c6896087eca183619eaadd9434c6c1965f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1a672db_b366536e",
+        "filename": "modules/desktop_capture/win/window_capture_utils.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 5064
+      },
+      "writtenOn": "2020-08-28T13:58:16Z",
+      "side": 1,
+      "message": "What is a \"valid window\"?  Do you mean \"Checks that the HWND is valid?\", i.e. that the handle-to-a-window is itself valid?",
+      "range": {
+        "startLine": 70,
+        "startChar": 33,
+        "endLine": 70,
+        "endChar": 45
+      },
+      "revId": "79eac6c6896087eca183619eaadd9434c6c1965f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
     }
   ]
 }
