@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83bcf0f0_d7bb593c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 10010
+      },
+      "writtenOn": "2020-09-02T16:28:38Z",
+      "side": 1,
+      "message": "Hi Wez, \n\nCan\u0027t confirm that the logic for the class-name comparison is broken, double checked it with case you mentioned - works good.\n\nRemoved template for CheckWindowClassName as you suggested and made some cosmetic changes.\n\nThanks",
+      "revId": "28ad4d73afe30233f2ddc82426eb6b1c4506fc2a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    }
+  ]
+}

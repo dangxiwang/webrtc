@@ -59,6 +59,30 @@
     },
     {
       "key": {
+        "uuid": "347fe141_b097ecc5",
+        "filename": "modules/desktop_capture/mac/full_screen_mac_application_handler.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 10010
+      },
+      "writtenOn": "2020-09-02T16:28:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5b170c5_fad91637",
+      "range": {
+        "startLine": 171,
+        "startChar": 44,
+        "endLine": 171,
+        "endChar": 49
+      },
+      "revId": "79eac6c6896087eca183619eaadd9434c6c1965f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6aa7fedf_0dd654a2",
         "filename": "modules/desktop_capture/win/full_screen_win_application_handler.cc",
         "patchSetId": 8
@@ -70,6 +94,30 @@
       "writtenOn": "2020-08-28T13:58:16Z",
       "side": 1,
       "message": "There doesn\u0027t seem to be any value in templatizing this. You can make it just:\n\n  bool CheckWindowClassName(window, const \u003ccharacter type\u003e* class_name);\n\nand internally do wcsncmp() over the number of characters returned by GetClassName() plus one.  You\u0027ll need to explicitly ensure that there is a null at the end of the buffer after the GetClassName() call, though.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 61
+      },
+      "revId": "79eac6c6896087eca183619eaadd9434c6c1965f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e7fbf0a_11d47f75",
+        "filename": "modules/desktop_capture/win/full_screen_win_application_handler.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 10010
+      },
+      "writtenOn": "2020-09-02T16:28:38Z",
+      "side": 1,
+      "message": "The idea behind having template here is to rely on compile time calculation for string length we want to compare with. The same could be done with string_view but absl version doesn\u0027t have wide characters support. If you think it\u0027s better to have null terminated string as argument i can make it.\n\nWhy do you think that we need to check null termination for a buffer filled by GetClassNameW explicitly? wcsncmp accepts the number of characters to be compared and by that point we know that the strings have equal length. Can you provide an example of what could happen without this check?",
+      "parentUuid": "6aa7fedf_0dd654a2",
       "range": {
         "startLine": 27,
         "startChar": 0,
@@ -105,6 +153,30 @@
     },
     {
       "key": {
+        "uuid": "a5ec6241_59695c9b",
+        "filename": "modules/desktop_capture/win/full_screen_win_application_handler.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 10010
+      },
+      "writtenOn": "2020-09-02T16:28:38Z",
+      "side": 1,
+      "message": "Can\u0027t see how it\u0027s possible and comments there cover exactly your case:\n\nCheckWindowClassName(FOOBARClassHWND, L\"FOO\");\nwill return false here (length\u003d6, kClassNameLength\u003d3):\n\nif (length !\u003d kClassNameLength)\n  return false;",
+      "parentUuid": "7dceb663_bbdc535a",
+      "range": {
+        "startLine": 31,
+        "startChar": 59,
+        "endLine": 31,
+        "endChar": 63
+      },
+      "revId": "79eac6c6896087eca183619eaadd9434c6c1965f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f591e787_9ef0484f",
         "filename": "modules/desktop_capture/win/full_screen_win_application_handler.cc",
         "patchSetId": 8
@@ -125,6 +197,30 @@
       "revId": "79eac6c6896087eca183619eaadd9434c6c1965f",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccc35ab5_32b7959b",
+        "filename": "modules/desktop_capture/win/full_screen_win_application_handler.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 10010
+      },
+      "writtenOn": "2020-09-02T16:28:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f591e787_9ef0484f",
+      "range": {
+        "startLine": 201,
+        "startChar": 30,
+        "endLine": 201,
+        "endChar": 35
+      },
+      "revId": "79eac6c6896087eca183619eaadd9434c6c1965f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     },
     {
       "key": {
@@ -151,6 +247,30 @@
     },
     {
       "key": {
+        "uuid": "6c3c22cd_691aefe8",
+        "filename": "modules/desktop_capture/win/full_screen_win_application_handler.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 10010
+      },
+      "writtenOn": "2020-09-02T16:28:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94f29659_15eb497f",
+      "range": {
+        "startLine": 218,
+        "startChar": 36,
+        "endLine": 218,
+        "endChar": 39
+      },
+      "revId": "79eac6c6896087eca183619eaadd9434c6c1965f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8aa60a4_8c82232d",
         "filename": "modules/desktop_capture/win/full_screen_win_application_handler.cc",
         "patchSetId": 8
@@ -171,6 +291,30 @@
       "revId": "79eac6c6896087eca183619eaadd9434c6c1965f",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "003c8e24_52017f80",
+        "filename": "modules/desktop_capture/win/full_screen_win_application_handler.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 10010
+      },
+      "writtenOn": "2020-09-02T16:28:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8aa60a4_8c82232d",
+      "range": {
+        "startLine": 236,
+        "startChar": 9,
+        "endLine": 236,
+        "endChar": 33
+      },
+      "revId": "79eac6c6896087eca183619eaadd9434c6c1965f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     },
     {
       "key": {
@@ -197,6 +341,30 @@
     },
     {
       "key": {
+        "uuid": "d3de0b6d_53e39dac",
+        "filename": "modules/desktop_capture/win/full_screen_win_application_handler.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 10010
+      },
+      "writtenOn": "2020-09-02T16:28:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e25e5384_40640174",
+      "range": {
+        "startLine": 236,
+        "startChar": 0,
+        "endLine": 238,
+        "endChar": 5
+      },
+      "revId": "79eac6c6896087eca183619eaadd9434c6c1965f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "99a9da50_034d8159",
         "filename": "modules/desktop_capture/win/window_capture_utils.cc",
         "patchSetId": 8
@@ -217,6 +385,30 @@
       "revId": "79eac6c6896087eca183619eaadd9434c6c1965f",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21e612df_bf77b3d2",
+        "filename": "modules/desktop_capture/win/window_capture_utils.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 10010
+      },
+      "writtenOn": "2020-09-02T16:28:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99a9da50_034d8159",
+      "range": {
+        "startLine": 417,
+        "startChar": 29,
+        "endLine": 418,
+        "endChar": 72
+      },
+      "revId": "79eac6c6896087eca183619eaadd9434c6c1965f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     },
     {
       "key": {
@@ -243,6 +435,30 @@
     },
     {
       "key": {
+        "uuid": "6aaed678_7d58d154",
+        "filename": "modules/desktop_capture/win/window_capture_utils.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 10010
+      },
+      "writtenOn": "2020-09-02T16:28:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "097cb643_1fb29e6a",
+      "range": {
+        "startLine": 420,
+        "startChar": 4,
+        "endLine": 420,
+        "endChar": 17
+      },
+      "revId": "79eac6c6896087eca183619eaadd9434c6c1965f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c1a672db_b366536e",
         "filename": "modules/desktop_capture/win/window_capture_utils.h",
         "patchSetId": 8
@@ -263,6 +479,30 @@
       "revId": "79eac6c6896087eca183619eaadd9434c6c1965f",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c79c129_5c4e7cf4",
+        "filename": "modules/desktop_capture/win/window_capture_utils.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 10010
+      },
+      "writtenOn": "2020-09-02T16:28:38Z",
+      "side": 1,
+      "message": "I didn\u0027t change this code at all and didn\u0027t mean anything (at least for Base -\u003e Patchset 8), probably you added this comment by mistake.",
+      "parentUuid": "c1a672db_b366536e",
+      "range": {
+        "startLine": 70,
+        "startChar": 33,
+        "endLine": 70,
+        "endChar": 45
+      },
+      "revId": "79eac6c6896087eca183619eaadd9434c6c1965f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
