@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "94114939_9eb45c4f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6758
+      },
+      "writtenOn": "2020-09-21T19:07:07Z",
+      "side": 1,
+      "message": "I don\u0027t think this is the right way to resolve this. \n\nSee https://chromium-review.googlesource.com/c/chromium/src/+/2416999/4#message-40e7a075dab108af3246464524dbab7046c35d3f for the explanation why :).",
+      "revId": "5581ee420724fe67f907e2b8310e01b9335a0d4f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    }
+  ]
+}
