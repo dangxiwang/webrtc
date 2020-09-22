@@ -16,6 +16,23 @@
       "revId": "5581ee420724fe67f907e2b8310e01b9335a0d4f",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5adc7d28_00d609e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 11540
+      },
+      "writtenOn": "2020-09-22T07:36:22Z",
+      "side": 1,
+      "message": "CL that have caused the issue is about to be reverted: https://crrev.com/c/2422599. No need for the fix anymore",
+      "revId": "5581ee420724fe67f907e2b8310e01b9335a0d4f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
