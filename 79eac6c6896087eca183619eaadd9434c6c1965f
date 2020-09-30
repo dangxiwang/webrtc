@@ -130,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "ead4bab8_bb783e1a",
+        "filename": "modules/desktop_capture/win/full_screen_win_application_handler.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5064
+      },
+      "writtenOn": "2020-09-30T15:09:16Z",
+      "side": 1,
+      "message": "Based on the need to not accept prefix-only matches - your explicit length check addresses that though.",
+      "parentUuid": "7e7fbf0a_11d47f75",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 61
+      },
+      "revId": "79eac6c6896087eca183619eaadd9434c6c1965f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7dceb663_bbdc535a",
         "filename": "modules/desktop_capture/win/full_screen_win_application_handler.cc",
         "patchSetId": 8
@@ -165,6 +189,30 @@
       "side": 1,
       "message": "Can\u0027t see how it\u0027s possible and comments there cover exactly your case:\n\nCheckWindowClassName(FOOBARClassHWND, L\"FOO\");\nwill return false here (length\u003d6, kClassNameLength\u003d3):\n\nif (length !\u003d kClassNameLength)\n  return false;",
       "parentUuid": "7dceb663_bbdc535a",
+      "range": {
+        "startLine": 31,
+        "startChar": 59,
+        "endLine": 31,
+        "endChar": 63
+      },
+      "revId": "79eac6c6896087eca183619eaadd9434c6c1965f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5dff4f60_c68af179",
+        "filename": "modules/desktop_capture/win/full_screen_win_application_handler.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 5064
+      },
+      "writtenOn": "2020-09-30T15:09:16Z",
+      "side": 1,
+      "message": "Apologies; I missed the explicit length check.",
+      "parentUuid": "a5ec6241_59695c9b",
       "range": {
         "startLine": 31,
         "startChar": 59,
