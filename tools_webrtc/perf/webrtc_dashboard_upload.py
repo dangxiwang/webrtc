@@ -51,6 +51,18 @@ def _CreateParser():
                       help='Where to write the output (for debugging).')
   parser.add_argument('--outdir', required=True,
                       help='Path to the local out/ dir (usually out/Default)')
+  parser.add_argument('--wait-for-upload', type=bool, default=False,
+                      help='If true, script will wait untill Chrome perf '
+                      'dashboard confirms that the data was succesfully '
+                      'proccessed and uploaded')
+  parser.add_argument('--wait-timeout', type=int, default=300,
+                      help='Used only if wait-for-upload is True. Maximum '
+                      'amount of time in seconds that the script will wait '
+                      'for the confirmation.')
+  parser.add_argument('--wait-polling-period', type=int, default=60,
+                      help='Used only if wait-for-upload is True. Status will '
+                      'be requested from the Dashboard every '
+                      'wait-polling-period seconds.')
   return parser
 
 
