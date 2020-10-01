@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9d259194_7ab2eb8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 12416
+      },
+      "writtenOn": "2020-10-01T22:08:42Z",
+      "side": 1,
+      "message": "This reland should prevent any issues with downstream projects, PTAL.",
+      "revId": "4e2df43c854a1d71602530b93e25a857296bd19e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    }
+  ]
+}
