@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a82bae86_685f993f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 11540
+      },
+      "writtenOn": "2020-10-01T11:14:00Z",
+      "side": 1,
+      "message": "Mirko is an owner, need an LGTM from him",
+      "revId": "70d930af204f49d555a1d1f2fb606ecf2875b7cf",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
+    }
+  ]
+}
