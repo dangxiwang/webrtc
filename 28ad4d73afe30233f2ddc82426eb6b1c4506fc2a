@@ -67,6 +67,23 @@
       "revId": "28ad4d73afe30233f2ddc82426eb6b1c4506fc2a",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "23bf7e70_1b3ab97a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5166
+      },
+      "writtenOn": "2020-10-01T17:54:19Z",
+      "side": 1,
+      "message": "Running now.\n\nIt looks like you have an LGTM from Wez; would you like me to submit it to CQ too?",
+      "revId": "28ad4d73afe30233f2ddc82426eb6b1c4506fc2a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767",
+      "unresolved": false
     }
   ]
 }
