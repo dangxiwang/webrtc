@@ -13,6 +13,7 @@
 #include <assert.h>
 #include <stdio.h>
 
+#include <memory>
 #include <string>
 
 #include "absl/types/optional.h"
@@ -34,9 +35,18 @@ constexpr int kDecelerationTargetLevelOffsetMs = 85;
 namespace webrtc {
 
 DecisionLogic::DecisionLogic(NetEqController::Config config)
-    : delay_manager_(DelayManager::Create(config.max_packets_in_buffer,
-                                          config.base_min_delay_ms,
-                                          config.tick_timer)),
+    : DecisionLogic(config,
+                    DelayManager::Create(config.max_packets_in_buffer,
+                                         config.base_min_delay_ms,
+                                         config.tick_timer),
+                    std::make_unique<BufferLevelFilter>()) {}
+
+DecisionLogic::DecisionLogic(
+    NetEqController::Config config,
+    std::unique_ptr<DelayManager> delay_manager,
+    std::unique_ptr<BufferLevelFilter> buffer_level_filter)
+    : delay_manager_(std::move(delay_manager)),
+      buffer_level_filter_(std::move(buffer_level_filter)),
       tick_timer_(config.tick_timer),
       disallow_time_stretching_(!config.allow_time_stretching),
       timescale_countdown_(
@@ -82,7 +92,7 @@ void DecisionLogic::SoftReset() {
       tick_timer_->GetNewCountdown(kMinTimescaleInterval + 1);
   time_stretched_cn_samples_ = 0;
   delay_manager_->Reset();
-  buffer_level_filter_.Reset();
+  buffer_level_filter_->Reset();
 }
 
 void DecisionLogic::SetSampleRate(int fs_hz, size_t output_size_samples) {
@@ -223,7 +233,7 @@ absl::optional<int> DecisionLogic::PacketArrived(bool is_cng_or_dtmf,
 }
 
 void DecisionLogic::FilterBufferLevel(size_t buffer_size_samples) {
-  buffer_level_filter_.SetTargetBufferLevel(delay_manager_->TargetDelayMs());
+  buffer_level_filter_->SetTargetBufferLevel(delay_manager_->TargetDelayMs());
 
   int time_stretched_samples = time_stretched_cn_samples_;
   if (prev_time_scale_) {
@@ -231,7 +241,7 @@ void DecisionLogic::FilterBufferLevel(size_t buffer_size_samples) {
     timescale_countdown_ = tick_timer_->GetNewCountdown(kMinTimescaleInterval);
   }
 
-  buffer_level_filter_.Update(buffer_size_samples, time_stretched_samples);
+  buffer_level_filter_->Update(buffer_size_samples, time_stretched_samples);
   prev_time_scale_ = false;
   time_stretched_cn_samples_ = 0;
 }
@@ -302,7 +312,7 @@ NetEq::Operation DecisionLogic::ExpectedPacketAvailable(NetEq::Mode prev_mode,
         std::max(target_level_samples, low_limit + 20 * samples_per_ms);
 
     const int buffer_level_samples =
-        buffer_level_filter_.filtered_current_level();
+        buffer_level_filter_->filtered_current_level();
     if (buffer_level_samples >= high_limit << 2)
       return NetEq::Operation::kFastAccelerate;
     if (TimescaleAllowed()) {
@@ -404,7 +414,7 @@ NetEq::Operation DecisionLogic::FuturePacketAvailable(
 }
 
 bool DecisionLogic::UnderTargetLevel() const {
-  return buffer_level_filter_.filtered_current_level() <
+  return buffer_level_filter_->filtered_current_level() <
          delay_manager_->TargetDelayMs() * sample_rate_ / 1000;
 }
 
