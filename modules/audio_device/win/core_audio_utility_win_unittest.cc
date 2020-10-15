@@ -11,6 +11,7 @@
 #include "modules/audio_device/win/core_audio_utility_win.h"
 #include "rtc_base/arraysize.h"
 #include "rtc_base/logging.h"
+#include "rtc_base/win/scoped_com_initializer.h"
 #include "rtc_base/win/windows_version.h"
 #include "test/gtest.h"
 
@@ -57,7 +58,7 @@ bool ShouldAbortTest(bool requirements_satisfied,
 class CoreAudioUtilityWinTest : public ::testing::Test {
  protected:
   CoreAudioUtilityWinTest()
-      : com_init_(webrtc_win::ScopedCOMInitializer::kMTA) {
+      : com_init_(rtc_base::win::ScopedCOMInitializer::kMTA) {
     // We must initialize the COM library on a thread before we calling any of
     // the library functions. All COM functions will return CO_E_NOTINITIALIZED
     // otherwise.
@@ -78,7 +79,7 @@ class CoreAudioUtilityWinTest : public ::testing::Test {
   }
 
  private:
-  ScopedCOMInitializer com_init_;
+  rtc_base::win::ScopedCOMInitializer com_init_;
 };
 
 TEST_F(CoreAudioUtilityWinTest, WaveFormatWrapper) {

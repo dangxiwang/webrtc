@@ -19,6 +19,7 @@
 #include "rtc_base/logging.h"
 #include "rtc_base/numerics/safe_conversions.h"
 #include "rtc_base/time_utils.h"
+#include "rtc_base/win/scoped_com_initializer.h"
 #include "rtc_base/win/windows_version.h"
 
 using Microsoft::WRL::ComPtr;
@@ -796,7 +797,7 @@ HRESULT CoreAudioBase::QueryInterface(REFIID iid, void** object) {
   if (iid == IID_IUnknown || iid == __uuidof(IAudioSessionEvents)) {
     *object = static_cast<IAudioSessionEvents*>(this);
     return S_OK;
-  };
+  }
   *object = nullptr;
   return E_NOINTERFACE;
 }
@@ -884,7 +885,8 @@ void CoreAudioBase::ThreadRun() {
                  << "] ThreadRun starts...";
   // TODO(henrika): difference between "Pro Audio" and "Audio"?
   ScopedMMCSSRegistration mmcss_registration(L"Pro Audio");
-  ScopedCOMInitializer com_initializer(ScopedCOMInitializer::kMTA);
+  rtc_base::win::ScopedCOMInitializer com_initializer(
+      rtc_base::win::ScopedCOMInitializer::kMTA);
   RTC_DCHECK(mmcss_registration.Succeeded());
   RTC_DCHECK(com_initializer.Succeeded());
   RTC_DCHECK(stop_event_.IsValid());
