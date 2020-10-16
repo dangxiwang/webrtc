@@ -18,6 +18,24 @@
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd78abe0_accf4b76",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8038
+      },
+      "writtenOn": "2020-10-16T16:29:50Z",
+      "side": 1,
+      "message": "Thanks for the review!",
+      "parentUuid": "8b864b13_7f56eac3",
+      "revId": "e0a5381e5de55394fb82acf9ba556fc0d1a0909c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fad8e235_d48ee1cf",
@@ -31,6 +49,30 @@
       "writtenOn": "2020-10-16T15:23:20Z",
       "side": 1,
       "message": "I think this include belongs in the header, since the unique_ptrs are declared there.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 17
+      },
+      "revId": "e0a5381e5de55394fb82acf9ba556fc0d1a0909c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7330ca57_0d6aa08b",
+        "filename": "modules/audio_coding/neteq/decision_logic.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 8038
+      },
+      "writtenOn": "2020-10-16T16:29:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fad8e235_d48ee1cf",
       "range": {
         "startLine": 16,
         "startChar": 0,
@@ -66,6 +108,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "02e7b05f_f74e8c15",
+        "filename": "modules/audio_coding/neteq/decision_logic_unittest.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 8038
+      },
+      "writtenOn": "2020-10-16T16:29:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1575a5fa_ae1bcac8",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 24
+      },
+      "revId": "e0a5381e5de55394fb82acf9ba556fc0d1a0909c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "6a5b975f_e621934e",
         "filename": "modules/audio_coding/neteq/decision_logic_unittest.cc",
         "patchSetId": 4
@@ -77,6 +143,30 @@
       "writtenOn": "2020-10-16T15:23:20Z",
       "side": 1,
       "message": "totw/122 says that we should avoid test fixtures where possible, although in this case I guess the difference is quite small. You can consider making this a standalone struct, but I\u0027ll leave it up to you.",
+      "range": {
+        "startLine": 51,
+        "startChar": 26,
+        "endLine": 51,
+        "endChar": 48
+      },
+      "revId": "e0a5381e5de55394fb82acf9ba556fc0d1a0909c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07985cf7_5e6704f3",
+        "filename": "modules/audio_coding/neteq/decision_logic_unittest.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 8038
+      },
+      "writtenOn": "2020-10-16T16:29:50Z",
+      "side": 1,
+      "message": "Yeah I think it doesn\u0027t really matter here since we don\u0027t have methods modifying the state in this case.",
+      "parentUuid": "6a5b975f_e621934e",
       "range": {
         "startLine": 51,
         "startChar": 26,
@@ -110,6 +200,30 @@
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57ca6f73_59faaa7d",
+        "filename": "modules/audio_coding/neteq/decision_logic_unittest.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 8038
+      },
+      "writtenOn": "2020-10-16T16:29:50Z",
+      "side": 1,
+      "message": "It does...pretty sure I tried that first, but might have made a mistake ;) Done",
+      "parentUuid": "99379492_83dd62c8",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 0
+      },
+      "revId": "e0a5381e5de55394fb82acf9ba556fc0d1a0909c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "29f2ed4f_f5eee0b7",
@@ -123,6 +237,30 @@
       "writtenOn": "2020-10-16T15:23:20Z",
       "side": 1,
       "message": "nit: missing include for this.",
+      "range": {
+        "startLine": 27,
+        "startChar": 25,
+        "endLine": 27,
+        "endChar": 34
+      },
+      "revId": "e0a5381e5de55394fb82acf9ba556fc0d1a0909c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2202af2a_4cb9e579",
+        "filename": "modules/audio_coding/neteq/mock/mock_delay_manager.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 8038
+      },
+      "writtenOn": "2020-10-16T16:29:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29f2ed4f_f5eee0b7",
       "range": {
         "startLine": 27,
         "startChar": 25,
