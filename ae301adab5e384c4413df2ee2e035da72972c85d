@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43091f61_f2e8adab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13074
+      },
+      "writtenOn": "2020-10-16T20:28:04Z",
+      "side": 1,
+      "message": "Refactor LGTM. Thanks Austin!\n\n(Dry running latest patch)",
+      "revId": "ae301adab5e384c4413df2ee2e035da72972c85d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
