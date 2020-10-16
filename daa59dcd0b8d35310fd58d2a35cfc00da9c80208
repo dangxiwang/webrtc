@@ -16,6 +16,29 @@
       "message": "Hi Tommi, Mirko,\n\nI\u0027ve added and moved some functionality into rtc_base/win that I\u0027ll need for the new window capturer implementation, PTAL!\n\nThanks,\nAustin Orion",
       "revId": "daa59dcd0b8d35310fd58d2a35cfc00da9c80208",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "959fd3dc_b236be30",
+        "filename": "rtc_base/win/scoped_com_initializer.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5087
+      },
+      "writtenOn": "2020-10-16T14:03:24Z",
+      "side": 1,
+      "message": "We tend to avoid nested namespace in new code.\n\nFeel free to use:\n\nnamespace webrtc {};\n\nFor example https://source.chromium.org/chromium/chromium/src/+/master:third_party/webrtc/rtc_base/random.h;l\u003d20;drc\u003dde95329daa7175fa28a508681ab262596111cc57.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 15
+      },
+      "revId": "daa59dcd0b8d35310fd58d2a35cfc00da9c80208",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
