@@ -69,6 +69,23 @@
       "parentUuid": "1277d674_8b64d7e6",
       "revId": "ae301adab5e384c4413df2ee2e035da72972c85d",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dad735c7_d76b1dd5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 12416
+      },
+      "writtenOn": "2020-10-20T18:23:28Z",
+      "side": 1,
+      "message": "Mirko, Tommi, do you have some time to review this change? If not, no worries, I can add some other reviewers. Just let me know!",
+      "revId": "ae301adab5e384c4413df2ee2e035da72972c85d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
