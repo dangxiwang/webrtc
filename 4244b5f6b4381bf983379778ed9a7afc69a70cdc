@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d56ec383_313b4d01",
+        "filename": "modules/audio_device/audio_device_unittest.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 5087
+      },
+      "writtenOn": "2020-10-21T14:09:40Z",
+      "side": 0,
+      "message": "Thanks for removing this.",
+      "range": {
+        "startLine": 600,
+        "startChar": 42,
+        "endLine": 600,
+        "endChar": 54
+      },
+      "revId": "4244b5f6b4381bf983379778ed9a7afc69a70cdc",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
