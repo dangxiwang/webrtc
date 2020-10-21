@@ -127,6 +127,30 @@
       },
       "revId": "ae301adab5e384c4413df2ee2e035da72972c85d",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af925559_69508764",
+        "filename": "modules/audio_device/win/core_audio_base_win.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 888,
+      "author": {
+        "id": 12416
+      },
+      "writtenOn": "2020-10-21T18:02:21Z",
+      "side": 1,
+      "message": "No it is not, I\u0027ve removed it now. Thanks for flagging!",
+      "parentUuid": "11f602b2_ed4ba758",
+      "range": {
+        "startLine": 888,
+        "startChar": 2,
+        "endLine": 888,
+        "endChar": 10
+      },
+      "revId": "ae301adab5e384c4413df2ee2e035da72972c85d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
