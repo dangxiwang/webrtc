@@ -57,4 +57,8 @@ declare_args() {
   # If true, it assumes that //third_party/abseil-cpp is an available
   # dependency for googletest.
   gtest_enable_absl_printers = true
+
+  # This arg is needed only for compatibility with chromium. Otherwise we get
+  # warnings about it being unused.
+  ozone_platform = ""
 }
