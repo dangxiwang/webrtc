@@ -51,6 +51,23 @@
       "message": "Hi guys, could you please help with adding this PR into commit queue?",
       "revId": "e85b01406f1ceee0838e420ec38050047a9f7e29",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ff67563_74bc6661",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 10010
+      },
+      "writtenOn": "2020-10-28T16:57:26Z",
+      "side": 1,
+      "message": "Jamie, could you please help with code review, presubmit step just failed cause there is no approval from owner.",
+      "revId": "e85b01406f1ceee0838e420ec38050047a9f7e29",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
