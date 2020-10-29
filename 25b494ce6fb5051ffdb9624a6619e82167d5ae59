@@ -16,6 +16,40 @@
       "message": "Tommi, do you have some time to review this change this week?",
       "revId": "25b494ce6fb5051ffdb9624a6619e82167d5ae59",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c951aa53_1b89323b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5508
+      },
+      "writtenOn": "2020-10-29T18:04:00Z",
+      "side": 1,
+      "message": "apart from those nits, the change lgtm",
+      "revId": "25b494ce6fb5051ffdb9624a6619e82167d5ae59",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10634131_dba9e59f",
+        "filename": "modules/audio_device/win/audio_device_core_win.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 5508
+      },
+      "writtenOn": "2020-10-29T18:04:00Z",
+      "side": 1,
+      "message": "(here too)",
+      "revId": "25b494ce6fb5051ffdb9624a6619e82167d5ae59",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
