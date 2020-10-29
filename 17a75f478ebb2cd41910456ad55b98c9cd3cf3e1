@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e271b68a_f4bd5003",
+        "filename": "modules/audio_device/win/audio_device_core_win.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 5508
+      },
+      "writtenOn": "2020-10-29T17:52:00Z",
+      "side": 1,
+      "message": "since you\u0027re here - can you change these assert() statements to be RTC_DCHECK?",
+      "revId": "17a75f478ebb2cd41910456ad55b98c9cd3cf3e1",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
