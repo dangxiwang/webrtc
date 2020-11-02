@@ -1,0 +1,25 @@
+/*
+ *  Copyright (c) 2020 The WebRTC project authors. All Rights Reserved.
+ *
+ *  Use of this source code is governed by a BSD-style license
+ *  that can be found in the LICENSE file in the root of the source
+ *  tree. An additional intellectual property rights grant can be found
+ *  in the file PATENTS.  All contributing project authors may
+ *  be found in the AUTHORS file in the root of the source tree.
+ */
+
+#include "call/version.h"
+
+namespace webrtc {
+
+const char* const kSourceTimestamp =
+    "WebRTC source timestamp 2020-09-02T09:49:00";
+
+void LoadWebRTCVersionInRegister() {
+  // Using volatile to instruct the compiler to not optimize `p` away even
+  // if it looks unused.
+  const char* volatile p = kSourceTimestamp;
+  (void)p;
+}
+
+}  // namespace webrtc
