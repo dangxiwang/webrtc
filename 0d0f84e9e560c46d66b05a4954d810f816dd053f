@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5205d69e_d2f47f82",
+        "filename": "call/call.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2020-11-02T11:13:55Z",
+      "side": 1,
+      "message": "\u003e Also, we don\u0027t have a log once utility yet.\n\nOne could put the logging code into the expression that initializes a static variable. (There are surely other ways).",
+      "parentUuid": "5aeddde3_7cb4f670",
+      "range": {
+        "startLine": 628,
+        "startChar": 2,
+        "endLine": 628,
+        "endChar": 32
+      },
+      "revId": "0d0f84e9e560c46d66b05a4954d810f816dd053f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c1c10e54_e7d1efed",
         "filename": "call/version.cc",
         "patchSetId": 3
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "Let me try this, last time I hit the unused variable warning but if we return it we might be fine.",
       "parentUuid": "c1c10e54_e7d1efed",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 33
+      },
+      "revId": "0d0f84e9e560c46d66b05a4954d810f816dd053f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ef39f51_686f3abb",
+        "filename": "call/version.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2020-11-02T11:13:55Z",
+      "side": 1,
+      "message": "\u003e Let me try this, last time I hit the unused variable warning but if we return it we might be fine.\n\nYou can probably just add a \n\n (void) ts;\n\nfor that.",
+      "parentUuid": "81276f4b_87fbedcd",
       "range": {
         "startLine": 20,
         "startChar": 0,
