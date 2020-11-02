@@ -623,6 +623,10 @@ Call::Call(Clock* clock,
   RTC_DCHECK(config.trials != nullptr);
   RTC_DCHECK(worker_thread_->IsCurrent());
 
+  // Do not remove this call; it is here to convince the compiler that the
+  // WebRTC source timestamp string needs to be in the final binary.
+  LoadWebRTCVersionInRegister();
+
   call_stats_->RegisterStatsObserver(&receive_side_cc_);
 
   module_process_thread_->process_thread()->RegisterModule(
