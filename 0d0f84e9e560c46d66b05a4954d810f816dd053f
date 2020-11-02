@@ -91,6 +91,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3f0851e5_850c83ca",
+        "filename": "call/call.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 5126
+      },
+      "writtenOn": "2020-11-02T12:18:16Z",
+      "side": 1,
+      "message": "In earlier discussions, IIRC we decided to not tie this into logging, because we wanted to minimize the probability of WebRTC library users stripping it out. The point of this thing is to enable scanning of apps to discover which ones are using an out-of-date copy of WebRTC, and it seems likely to me that a nonnegligible fraction of apps simply kill logging.\n\n(It\u0027s of course fine if apps decide to strip this string out specifically---it\u0027s open source, after all---but it would be unfortunate if lots of apps stripped it out without even noticing what they were doing.)",
+      "parentUuid": "5205d69e_d2f47f82",
+      "range": {
+        "startLine": 628,
+        "startChar": 2,
+        "endLine": 628,
+        "endChar": 32
+      },
+      "revId": "0d0f84e9e560c46d66b05a4954d810f816dd053f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c1c10e54_e7d1efed",
         "filename": "call/version.cc",
         "patchSetId": 3
@@ -174,6 +198,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "3ef39f51_686f3abb",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 33
+      },
+      "revId": "0d0f84e9e560c46d66b05a4954d810f816dd053f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02dbf463_812ad5e2",
+        "filename": "call/version.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5126
+      },
+      "writtenOn": "2020-11-02T12:18:16Z",
+      "side": 1,
+      "message": "If it works, I\u0027m fine with it.",
+      "parentUuid": "0a4e22f4_abe04c10",
       "range": {
         "startLine": 20,
         "startChar": 0,

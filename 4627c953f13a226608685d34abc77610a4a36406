@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71d246ba_b1ec3d77",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5126
+      },
+      "writtenOn": "2020-11-02T12:18:16Z",
+      "side": 1,
+      "message": "This needs to be combined with a test that verifies that the string is there, since the compiler might in theory be smart enough to notice that omitting it doesn\u0027t change program behavior.",
+      "revId": "4627c953f13a226608685d34abc77610a4a36406",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82cd16c7_08298361",
+        "filename": "call/version.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5126
+      },
+      "writtenOn": "2020-11-02T12:18:16Z",
+      "side": 1,
+      "message": "static_cast\u003cvoid\u003e",
+      "revId": "4627c953f13a226608685d34abc77610a4a36406",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
