@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "68a465b6_0bd3171c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5087
+      },
+      "writtenOn": "2020-11-02T12:26:17Z",
+      "side": 1,
+      "message": "Sounds good. Re-opening the comment since I plan to add the test to this CL.",
+      "parentUuid": "71d246ba_b1ec3d77",
+      "revId": "4627c953f13a226608685d34abc77610a4a36406",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "82cd16c7_08298361",
         "filename": "call/version.cc",
         "patchSetId": 5
