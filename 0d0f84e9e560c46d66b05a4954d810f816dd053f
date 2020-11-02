@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5aeddde3_7cb4f670",
+        "filename": "call/call.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 5087
+      },
+      "writtenOn": "2020-11-02T11:00:33Z",
+      "side": 1,
+      "message": "Maybe, I am not doing that because the location is this call might not happen early enough (to have the version printed right away and not later in the log).\n\nAlso, we don\u0027t have a log once utility yet.",
+      "parentUuid": "816d3297_e6a7b9ca",
+      "range": {
+        "startLine": 628,
+        "startChar": 2,
+        "endLine": 628,
+        "endChar": 32
+      },
+      "revId": "0d0f84e9e560c46d66b05a4954d810f816dd053f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c1c10e54_e7d1efed",
         "filename": "call/version.cc",
         "patchSetId": 3
@@ -54,6 +78,30 @@
       "writtenOn": "2020-11-02T10:54:30Z",
       "side": 1,
       "message": "Avoid asm, if at all possible. One possibility is to actually use the value, by returning the version string and let the caller write it to the log. Or try the more portable\n\n  const char * volatile ts \u003d kSourceTimestamp;\n\n(The use of volatile is supposed to tell the compiler that the assignment to the pointer named `ts` is essential and must not be optimized away).",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 33
+      },
+      "revId": "0d0f84e9e560c46d66b05a4954d810f816dd053f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81276f4b_87fbedcd",
+        "filename": "call/version.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5087
+      },
+      "writtenOn": "2020-11-02T11:00:33Z",
+      "side": 1,
+      "message": "Let me try this, last time I hit the unused variable warning but if we return it we might be fine.",
+      "parentUuid": "c1c10e54_e7d1efed",
       "range": {
         "startLine": 20,
         "startChar": 0,
