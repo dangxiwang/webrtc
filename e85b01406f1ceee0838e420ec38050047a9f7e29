@@ -85,6 +85,23 @@
       "message": "Adding Jamie to attention-set.",
       "revId": "e85b01406f1ceee0838e420ec38050047a9f7e29",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40868761_bbc51df4",
+        "filename": "modules/desktop_capture/mac/full_screen_mac_application_handler.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 5166
+      },
+      "writtenOn": "2020-11-05T19:45:00Z",
+      "side": 1,
+      "message": "Not a blocker, and I don\u0027t have any suggestions on how to improve this, but it seems like a bad UX to fail silently in this case without telling the user how to fix it. Is there any mechanism by which an error can be propagated to the UI here?",
+      "revId": "e85b01406f1ceee0838e420ec38050047a9f7e29",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
