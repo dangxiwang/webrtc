@@ -43,6 +43,11 @@
     "label": "//modules/audio_coding:audio_decoder_unittests",
     "type": "console_test_launcher",
   },
+  "binary_version_test": {
+    "label": "//tools_webrtc:binary_version_test",
+    "type": "script",
+    "script": "//tools_webrtc/binary_version_test.py",
+  },
   "common_audio_unittests": {
     "label": "//common_audio:common_audio_unittests",
     "type": "console_test_launcher",
