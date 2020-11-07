@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33c7f622_d1cf292d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5087
+      },
+      "writtenOn": "2020-11-07T08:44:22Z",
+      "side": 1,
+      "message": "This is ready to go. Before landing this, I am creating an automated process to update the version on a daily basis.",
+      "revId": "5c2c8b405e044343e213f449bed9892fbad00dcd",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
