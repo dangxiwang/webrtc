@@ -16,6 +16,23 @@
       "message": "I\u0027m not following the fine details of these python scripts, but still lgtm.",
       "revId": "2b727b100a9517fd0026664ac7892b4cdd5f5c5a",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c693bdfb_350e1e57",
+        "filename": "call/version.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5126
+      },
+      "writtenOn": "2020-11-11T14:08:15Z",
+      "side": 1,
+      "message": "Idea: Especially if we omit the time of day (but even otherwise), have the script put a comment here with a full timestamp including time of day and time zone, to remove any ambiguity.",
+      "revId": "2b727b100a9517fd0026664ac7892b4cdd5f5c5a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
