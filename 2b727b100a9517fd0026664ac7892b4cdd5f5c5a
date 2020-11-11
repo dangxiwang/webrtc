@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3a816bd_f9dad5be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2020-11-11T12:52:09Z",
+      "side": 1,
+      "message": "I\u0027m not following the fine details of these python scripts, but still lgtm.",
+      "revId": "2b727b100a9517fd0026664ac7892b4cdd5f5c5a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
