@@ -80,6 +80,8 @@ rtc_library("rtc_p2p") {
     "base/udp_port.h",
     "client/basic_port_allocator.cc",
     "client/basic_port_allocator.h",
+    "client/port_configuration.cc",
+    "client/port_configuration.h",
     "client/relay_port_factory_interface.h",
     "client/turn_port_factory.cc",
     "client/turn_port_factory.h",
