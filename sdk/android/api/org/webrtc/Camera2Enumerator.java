@@ -123,7 +123,7 @@ public class Camera2Enumerator implements CameraEnumerator {
       // On Android OS pre 4.4.2, a class will not load because of VerifyError if it contains a
       // catch statement with an Exception from a newer API, even if the code is never executed.
       // https://code.google.com/p/android/issues/detail?id=209129
-    } catch (/* CameraAccessException */ AndroidException e) {
+    } catch (Exception e) {
       Logging.e(TAG, "Camera access exception: " + e);
       return false;
     }
@@ -231,8 +231,10 @@ public class Camera2Enumerator implements CameraEnumerator {
   // Convert from android.util.Size to Size.
   private static List<Size> convertSizes(android.util.Size[] cameraSizes) {
     final List<Size> sizes = new ArrayList<Size>();
-    for (android.util.Size size : cameraSizes) {
-      sizes.add(new Size(size.getWidth(), size.getHeight()));
+    if (cameraSizes != null) {
+      for (android.util.Size size : cameraSizes) {
+        sizes.add(new Size(size.getWidth(), size.getHeight()));
+      }
     }
     return sizes;
   }

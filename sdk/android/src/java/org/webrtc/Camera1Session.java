@@ -52,11 +52,19 @@ class Camera1Session implements CameraSession {
   @SuppressWarnings("ByteBufferBackingArray")
   public static void create(final CreateSessionCallback callback, final Events events,
       final boolean captureToTexture, final Context applicationContext,
-      final SurfaceTextureHelper surfaceTextureHelper, final int cameraId, final int width,
+      final SurfaceTextureHelper surfaceTextureHelper, final String cameraName, final int width,
       final int height, final int framerate) {
     final long constructionTimeNs = System.nanoTime();
-    Logging.d(TAG, "Open camera " + cameraId);
+    Logging.d(TAG, "Open camera " + cameraName);
     events.onCameraOpening();
+
+    final int cameraId;
+    try {
+      cameraId = Camera1Enumerator.getCameraIndex(cameraName);
+    } catch (IllegalArgumentException e) {
+      callback.onFailure(FailureType.ERROR, e.getMessage());
+      return;
+    }
 
     final android.hardware.Camera camera;
     try {
@@ -104,7 +112,13 @@ class Camera1Session implements CameraSession {
     }
 
     // Calculate orientation manually and send it as CVO insted.
-    camera.setDisplayOrientation(0 /* degrees */);
+    try {
+      camera.setDisplayOrientation(0 /* degrees */);
+    } catch (RuntimeException e) {
+      camera.release();
+      callback.onFailure(FailureType.ERROR, e.getMessage());
+      return;
+    }
 
     callback.onDone(new Camera1Session(events, captureToTexture, applicationContext,
         surfaceTextureHelper, cameraId, camera, info, captureFormat, constructionTimeNs));
@@ -125,7 +139,8 @@ class Camera1Session implements CameraSession {
     if (parameters.isVideoStabilizationSupported()) {
       parameters.setVideoStabilization(true);
     }
-    if (focusModes.contains(android.hardware.Camera.Parameters.FOCUS_MODE_CONTINUOUS_VIDEO)) {
+    if (focusModes != null
+        && focusModes.contains(android.hardware.Camera.Parameters.FOCUS_MODE_CONTINUOUS_VIDEO)) {
       parameters.setFocusMode(android.hardware.Camera.Parameters.FOCUS_MODE_CONTINUOUS_VIDEO);
     }
     camera.setParameters(parameters);
