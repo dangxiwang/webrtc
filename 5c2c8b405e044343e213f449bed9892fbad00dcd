@@ -87,6 +87,30 @@
       },
       "revId": "5c2c8b405e044343e213f449bed9892fbad00dcd",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "068c31bd_6cfa62c3",
+        "filename": "call/version.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 7133
+      },
+      "writtenOn": "2020-12-04T18:48:29Z",
+      "side": 1,
+      "message": "I think we should keep the time, I do think it\u0027s possible this will come up if we\u0027re trying to forbid versions that don\u0027t contain a specific patch, and someone syncs to the next patch right after that one.",
+      "parentUuid": "12b9c711_21da34a8",
+      "range": {
+        "startLine": 16,
+        "startChar": 39,
+        "endLine": 16,
+        "endChar": 48
+      },
+      "revId": "5c2c8b405e044343e213f449bed9892fbad00dcd",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
