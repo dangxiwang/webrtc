@@ -1059,12 +1059,14 @@ void StatsCollector::ExtractMediaInfo() {
   std::vector<std::unique_ptr<MediaChannelStatsGatherer>> gatherers;
 
   {
-    rtc::Thread::ScopedDisallowBlockingCalls no_blocking_calls;
+    // TODO(bugs.webrtc.org/12230): Restore when not jumping to worker
+    // rtc::Thread::ScopedDisallowBlockingCalls no_blocking_calls;
     for (const auto& transceiver : pc_->GetTransceiversInternal()) {
       cricket::ChannelInterface* channel = transceiver->internal()->channel();
       if (!channel) {
         continue;
       }
+      // Note - media_channel() jumps to worker thread
       std::unique_ptr<MediaChannelStatsGatherer> gatherer =
           CreateMediaChannelStatsGatherer(channel->media_channel());
       gatherer->mid = channel->content_name();

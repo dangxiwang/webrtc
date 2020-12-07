@@ -160,13 +160,14 @@ BaseChannel::~BaseChannel() {
 }
 
 std::string BaseChannel::ToString() const {
-  // TODO(bugs.webrtc.org/12230): When media_channel_ is guarded by
-  // worker_thread(), rewrite this debug printout to not print the
-  // media type when called from non-worker-thread.
   rtc::StringBuilder sb;
   sb << "{mid: " << content_name_;
-  if (media_channel_) {
-    sb << ", media_type: " << MediaTypeToString(media_channel_->media_type());
+  if (worker_thread_->IsCurrent()) {
+    RTC_DCHECK_RUN_ON(worker_thread());
+    // Can only get media_channel_ if we're on the worker thread.
+    if (media_channel_) {
+      sb << ", media_type: " << MediaTypeToString(media_channel_->media_type());
+    }
   }
   sb << "}";
   return sb.Release();

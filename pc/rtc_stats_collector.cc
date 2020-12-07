@@ -1907,7 +1907,9 @@ void RTCStatsCollector::PrepareTransceiverStatsInfosAndCallStats_s_w() {
       video_stats;
 
   {
-    rtc::Thread::ScopedDisallowBlockingCalls no_blocking_calls;
+    // TODO(bugs.webrtc.org/12230): Restore when not needing access to
+    // media_channel() operator from signaling thread.
+    // rtc::Thread::ScopedDisallowBlockingCalls no_blocking_calls;
 
     for (const auto& transceiver : pc_->GetTransceiversInternal()) {
       cricket::MediaType media_type = transceiver->media_type();

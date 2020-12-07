@@ -185,9 +185,12 @@ class BaseChannel : public ChannelInterface,
   }
 
   MediaChannel* media_channel() const override {
-    // TODO(bugs.webrtc.org/12230): Called on multiple threads,
-    // including from StatsCollector::ExtractMediaInfo.
-    // RTC_DCHECK_RUN_ON(worker_thread());
+    if (!worker_thread_->IsCurrent()) {
+      RTC_LOG(LS_ERROR) << "DEBUG: media_channel() thread jump";
+      return worker_thread_->Invoke<MediaChannel*>(
+          RTC_FROM_HERE, [this] { return media_channel(); });
+    }
+    RTC_DCHECK_RUN_ON(worker_thread());
     return media_channel_.get();
   }
 
@@ -348,9 +351,7 @@ class BaseChannel : public ChannelInterface,
 
   // MediaChannel related members that should be accessed from the worker
   // thread.
-  // TODO(bugs.webrtc.org/12230): written on worker thread, accessed by
-  // multiple threads.
-  std::unique_ptr<MediaChannel> media_channel_;
+  std::unique_ptr<MediaChannel> media_channel_ RTC_GUARDED_BY(worker_thread());
   // Currently the |enabled_| flag is accessed from the signaling thread as
   // well, but it can be changed only when signaling thread does a synchronous
   // call to the worker thread, so it should be safe.

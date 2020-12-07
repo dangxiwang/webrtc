@@ -157,20 +157,25 @@ void RtpTransceiver::SetChannel(cricket::ChannelInterface* channel) {
   if (channel_) {
     channel_->SignalFirstPacketReceived().connect(
         this, &RtpTransceiver::OnFirstPacketReceived);
-  }
+    auto media_channel = channel_->media_channel();
 
-  for (const auto& sender : senders_) {
-    sender->internal()->SetMediaChannel(channel_ ? channel_->media_channel()
-                                                 : nullptr);
-  }
-
-  for (const auto& receiver : receivers_) {
-    if (!channel_) {
-      receiver->internal()->Stop();
+    for (const auto& sender : senders_) {
+      sender->internal()->SetMediaChannel(media_channel);
     }
 
-    receiver->internal()->SetMediaChannel(channel_ ? channel_->media_channel()
-                                                   : nullptr);
+    for (const auto& receiver : receivers_) {
+      receiver->internal()->SetMediaChannel(media_channel);
+    }
+  } else {
+    // channel_ is null
+    for (const auto& sender : senders_) {
+      sender->internal()->SetMediaChannel(nullptr);
+    }
+
+    for (const auto& receiver : receivers_) {
+      receiver->internal()->Stop();
+      receiver->internal()->SetMediaChannel(nullptr);
+    }
   }
 }
 
