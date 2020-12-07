@@ -18,6 +18,23 @@
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc4da309_cc0fea8d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2020-12-07T11:30:55Z",
+      "side": 1,
+      "message": "Rethinking.\n",
+      "revId": "87b24b85a647aef8ec83f85366f325de845d09e3",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ed923cc_2ce1c5b3",
@@ -31,6 +48,24 @@
       "writtenOn": "2020-12-07T11:01:03Z",
       "side": 1,
       "message": "What is the plan here? To me it looks like we are increasing the number of thread jumps without actually providing safety.\n\nIf the channel really is to only be used on the worker thread, then doing a block-invoke to get the pointer, only to leak the raw pointer to a non-worker thread where it is de-referenced, isn\u0027t doing much good.\n\nIf on the other hand there is something about the existing calling places to media_channel() that implicitly ensures that the media_channel() is safe to use - for example maybe we are currently on the signaling thread and so we KNOW that we are currently not coordinating the destruction of any media channels - then perhaps there is no need to block the thread here anyway. And in light of the many performance and threading issues, I would be very hesitant to add blocking-invokes without race conditions identified.\n\nIn order to proceed with this code review, can you explain what the life-time is of the media channel and why this block-invoke is a good thing? I am currently operating under the assumption that media channels are created or destroyed by blocking-invokes from the signaling thread, which means that the signaling thread could potentially grab the raw pointer safely without block-invoke. It\u0027s ugly to have code make assumptions about life-time like this, but blocking-invokes are expensive.\n\nPlease clarify maybe my understanding is incorrect.",
+      "revId": "87b24b85a647aef8ec83f85366f325de845d09e3",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fe81075_d8d840e0",
+        "filename": "pc/channel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2020-12-07T11:30:55Z",
+      "side": 1,
+      "message": "I\u0027m trying to make sure all the access rules for objects are documented. Some access rules are really not expressible in code - such as \"it\u0027s only changed by blocking invokes from the signalling thread\" - and that means the compiler can\u0027t help us verify them, which makes me nervous.\n\nThe media channel is set in the channel constructor (with std::move), and the constructor is called on the worker thread. The reason it\u0027s not const is because it has to be destroyed before the end of the destructor - which seems positively weird to me, since that\u0027s exactly what happens next anyway.\n\nHm. If it\u0027s as meaningless as I think, I\u0027ll try making it const, which makes the pointer thread-safe (but the channel object is not).\n\nThe two places in stats that accessed it were both building a table that was then passed to the worker thread for more work - I wonder if it makes more sense to pull the table-building into the worker-thread part, but that may require access to other things.\n\nRethinking.",
+      "parentUuid": "7ed923cc_2ce1c5b3",
       "revId": "87b24b85a647aef8ec83f85366f325de845d09e3",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
