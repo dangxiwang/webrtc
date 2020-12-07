@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f5a9989_9c6b62d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2020-12-07T10:36:20Z",
+      "side": 1,
+      "message": "I don\u0027t think this is a right solution for stats. WDYT about moving the array-building functions\ninside the worker-thread section of rtc_stats_collector?\n\n(Differentiating between the thread-jumping and non-jumping media_channel() function would require making changes to the API interface class, unlike in the other CL. Still considering that.)\n",
+      "revId": "87b24b85a647aef8ec83f85366f325de845d09e3",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
