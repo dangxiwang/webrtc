@@ -68,6 +68,24 @@
       "parentUuid": "7ed923cc_2ce1c5b3",
       "revId": "87b24b85a647aef8ec83f85366f325de845d09e3",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bd100bc_c6ce4154",
+        "filename": "pc/channel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 5142
+      },
+      "writtenOn": "2020-12-07T11:47:47Z",
+      "side": 1,
+      "message": "It makes me nervous too and I hope we can avoid it in the future, but let\u0027s try to avoid more blocking-invokes until we\u0027ve fixed the performance issues or changed the life time and/or access rules of the objects or else we might have another performance regression on our hands - which would make me even more nervous. Shakes.\n\nUsing const and adding comments sounds like a good first step that avoids blocking-invokes.\n\nReference counting and \"only access on such and such thread\" methods or even locks instead of blocks may be something to consider for the future.",
+      "parentUuid": "1fe81075_d8d840e0",
+      "revId": "87b24b85a647aef8ec83f85366f325de845d09e3",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
