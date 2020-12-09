@@ -111,6 +111,30 @@
       },
       "revId": "5c2c8b405e044343e213f449bed9892fbad00dcd",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e676a3e9_0907db24",
+        "filename": "call/version.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5087
+      },
+      "writtenOn": "2020-12-09T12:51:53Z",
+      "side": 1,
+      "message": "Sounds good. It is also a good thing to have to make tail string optimization more difficult.",
+      "parentUuid": "068c31bd_6cfa62c3",
+      "range": {
+        "startLine": 16,
+        "startChar": 39,
+        "endLine": 16,
+        "endChar": 48
+      },
+      "revId": "5c2c8b405e044343e213f449bed9892fbad00dcd",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
