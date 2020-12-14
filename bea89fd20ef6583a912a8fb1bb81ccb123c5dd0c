@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "813eece0_e3bebe32",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5087
+      },
+      "writtenOn": "2020-12-14T14:41:59Z",
+      "side": 1,
+      "message": "No-Presubmit to skip the pylint error.",
+      "revId": "bea89fd20ef6583a912a8fb1bb81ccb123c5dd0c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
