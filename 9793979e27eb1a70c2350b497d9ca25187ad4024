@@ -53,6 +53,23 @@
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb2df0d4_eb5c3c35",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 12416
+      },
+      "writtenOn": "2020-12-14T23:07:16Z",
+      "side": 1,
+      "message": "Hi Lahiru, do you have some time to take a look at this CL this week? If not, no worries, just let me know and I can find another reviewer. Thanks!",
+      "revId": "9793979e27eb1a70c2350b497d9ca25187ad4024",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00498070_ebb99126",
