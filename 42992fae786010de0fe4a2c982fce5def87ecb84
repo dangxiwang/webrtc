@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b5e4223_7d7e0df8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5166
+      },
+      "writtenOn": "2020-12-15T18:43:49Z",
+      "side": 1,
+      "message": "LGTM. Please LMK if you need me to submit this for you.",
+      "revId": "42992fae786010de0fe4a2c982fce5def87ecb84",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
