@@ -29,9 +29,9 @@ deps = {
     'condition': 'checkout_ios',
   },
   'src/testing':
-    'https://chromium.googlesource.com/chromium/src/testing@a509699f6ded825c8a9e73a33f5e567a026163bc',
+    'https://chromium.googlesource.com/chromium/src/testing@7534b563e9eb34398858d54474f9c2d5813983d2',
   'src/third_party':
-    'https://chromium.googlesource.com/chromium/src/third_party@418971e2fbc58d676275ba4ccb0c94e50a579f87',
+    'https://chromium.googlesource.com/chromium/src/third_party@072702c96d53a897b09588ff1fadd985608aa887',
 
   'src/buildtools/linux64': {
     'packages': [
