@@ -115,6 +115,23 @@
       },
       "revId": "9793979e27eb1a70c2350b497d9ca25187ad4024",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e9857ef_dcdaf6ca",
+        "filename": "modules/desktop_capture/win/test_support/test_window.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 5166
+      },
+      "writtenOn": "2020-12-15T18:05:40Z",
+      "side": 1,
+      "message": "Is this correct? I\u0027m not a Windows programmer myself, but a quick web search suggests that ShowWindow(hwnd, SW_MINIMIZE) would be more appropriate.",
+      "revId": "9793979e27eb1a70c2350b497d9ca25187ad4024",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
