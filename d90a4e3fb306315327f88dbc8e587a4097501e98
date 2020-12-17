@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25feaebf_a72abc0d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5607
+      },
+      "writtenOn": "2020-12-17T14:54:21Z",
+      "side": 1,
+      "message": "Hi Henrik, PTAL at a small follow-up fix.",
+      "revId": "d90a4e3fb306315327f88dbc8e587a4097501e98",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
