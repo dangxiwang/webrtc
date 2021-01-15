@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c527d22_ea7e6e45",
+        "filename": "rtc_base/win/create_direct3d_device.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5087
+      },
+      "writtenOn": "2021-01-15T12:41:29Z",
+      "side": 0,
+      "message": "Austin, is it possible to hide this one behind RTC_ENABLE_WIN_WGC? It looks like the easiest way to land this one without breaking downstream projects.\n\nSince this is rtc_base, this define (https://source.chromium.org/chromium/chromium/src/+/master:third_party/webrtc/modules/desktop_capture/BUILD.gn;l\u003d571;drc\u003d8987c88190067339e737dc32749a75a2f3cbc1a7) should probably go in the main BUILD.gn file (something like https://source.chromium.org/chromium/chromium/src/+/master:third_party/webrtc/BUILD.gn;l\u003d255-257;drc\u003db985748f66fb3a1d595a92a0c4c43efd5013cb88).",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 45
+      },
+      "revId": "b45d3aa30e99e5b9c797d3268e8660b9a08801b4",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
