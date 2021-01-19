@@ -22,6 +22,30 @@
       },
       "revId": "b45d3aa30e99e5b9c797d3268e8660b9a08801b4",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21319737_36b0d2b9",
+        "filename": "rtc_base/win/create_direct3d_device.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 12416
+      },
+      "writtenOn": "2021-01-19T20:53:57Z",
+      "side": 0,
+      "message": "Yes, it\u0027s definitely possible. I\u0027ll try to find some time to do this soon, I\u0027m currently on a sheriff rotation so it may be delayed. Thanks for the suggestions on where to put the defines!",
+      "parentUuid": "4c527d22_ea7e6e45",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 45
+      },
+      "revId": "b45d3aa30e99e5b9c797d3268e8660b9a08801b4",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
