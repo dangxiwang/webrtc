@@ -33,6 +33,24 @@
       "message": "This block of code is responsible for creating overshoot detectors for all active layers.\nWhat scenario does it fail to do it\u0027s job that you want to add extra checks below?\nCan you add such scenario to the encoder_bitrate_adjuster unittests?\n\n(I think the bug is not below, but somewhere in this block. \nOr, more likely, this class makes some assumptions about the `rates` that in some new scenario become false)",
       "revId": "472fb90fcd927e4bb3b0deefc818b8edcf19564d",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0b146d5_d4cbf146",
+        "filename": "video/encoder_bitrate_adjuster.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 5963
+      },
+      "writtenOn": "2021-01-25T17:00:32Z",
+      "side": 1,
+      "message": "As explained on thye bug, I have been experiencing random crashes due to  overshoot_detectors_[si][ti] and  overshoot_detectors_[si][0] being null (as explained on the bug).\n\nI am not sure what is the underlying cause, but at least this checks prevents chrome from crashing.",
+      "parentUuid": "1df2a786_a4f61af2",
+      "revId": "472fb90fcd927e4bb3b0deefc818b8edcf19564d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
