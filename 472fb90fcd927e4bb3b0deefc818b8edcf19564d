@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cc9fa3e_f5f83af5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5963
+      },
+      "writtenOn": "2021-01-25T11:15:29Z",
+      "side": 1,
+      "message": "Probably it is not the best way of dealing with the root cause, but at least it prevents the seg faults. ",
+      "revId": "472fb90fcd927e4bb3b0deefc818b8edcf19564d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
