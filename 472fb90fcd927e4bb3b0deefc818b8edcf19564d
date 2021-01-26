@@ -51,6 +51,24 @@
       "parentUuid": "1df2a786_a4f61af2",
       "revId": "472fb90fcd927e4bb3b0deefc818b8edcf19564d",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6275695d_f9aa6479",
+        "filename": "video/encoder_bitrate_adjuster.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 5524
+      },
+      "writtenOn": "2021-01-26T10:58:27Z",
+      "side": 1,
+      "message": "The only way I can see that would trigger this is if the active temporal layers aren\u0027t continuous, which this code is assuming.\nE.g. if tl0 has no bitrate or fps, but tl1 and tl2 do - which is what your comment in the bug suggests.\nThat sounds like a bug in bps/fps allocation, or is that somehow valid for av1?\nIn any case, need to think about how to validate that condition better here.",
+      "parentUuid": "d0b146d5_d4cbf146",
+      "revId": "472fb90fcd927e4bb3b0deefc818b8edcf19564d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
