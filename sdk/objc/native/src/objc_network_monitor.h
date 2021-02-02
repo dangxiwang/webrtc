@@ -16,10 +16,10 @@
 #include "sdk/objc/components/network/RTCNetworkMonitor+Private.h"
 #include "sdk/objc/native/src/network_monitor_observer.h"
 
+#include "api/sequence_checker.h"
 #include "rtc_base/async_invoker.h"
 #include "rtc_base/network_monitor.h"
 #include "rtc_base/network_monitor_factory.h"
-#include "rtc_base/synchronization/sequence_checker.h"
 #include "rtc_base/thread.h"
 #include "rtc_base/thread_annotations.h"
 

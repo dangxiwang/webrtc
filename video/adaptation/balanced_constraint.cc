@@ -11,7 +11,7 @@
 #include <string>
 #include <utility>
 
-#include "rtc_base/synchronization/sequence_checker.h"
+#include "api/sequence_checker.h"
 #include "rtc_base/task_utils/to_queued_task.h"
 #include "video/adaptation/balanced_constraint.h"
 
