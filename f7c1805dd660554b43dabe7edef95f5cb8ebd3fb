@@ -18,6 +18,23 @@
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "543f67c7_2ce3b96c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5508
+      },
+      "writtenOn": "2021-02-02T17:23:36Z",
+      "side": 1,
+      "message": "nice!\n\nLooks like there are some duplicate dependencies in a few places - can you fix those?",
+      "revId": "f7c1805dd660554b43dabe7edef95f5cb8ebd3fb",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8713e09_95600465",
@@ -84,6 +101,74 @@
         "endLine": 96,
         "endChar": 31
       },
+      "revId": "f7c1805dd660554b43dabe7edef95f5cb8ebd3fb",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d47349b5_e953460d",
+        "filename": "audio/voip/BUILD.gn",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 5508
+      },
+      "writtenOn": "2021-02-02T17:23:36Z",
+      "side": 1,
+      "message": "duplication?",
+      "revId": "f7c1805dd660554b43dabe7edef95f5cb8ebd3fb",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "810162d3_67df5ba9",
+        "filename": "call/BUILD.gn",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 5508
+      },
+      "writtenOn": "2021-02-02T17:23:36Z",
+      "side": 1,
+      "message": "duplicate",
+      "revId": "f7c1805dd660554b43dabe7edef95f5cb8ebd3fb",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09a0a7db_7e223c2e",
+        "filename": "call/BUILD.gn",
+        "patchSetId": 1
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 5508
+      },
+      "writtenOn": "2021-02-02T17:23:36Z",
+      "side": 1,
+      "message": "duplicate",
+      "revId": "f7c1805dd660554b43dabe7edef95f5cb8ebd3fb",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d07824eb_8df8ce3b",
+        "filename": "call/adaptation/BUILD.gn",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5508
+      },
+      "writtenOn": "2021-02-02T17:23:36Z",
+      "side": 1,
+      "message": "duplicate",
       "revId": "f7c1805dd660554b43dabe7edef95f5cb8ebd3fb",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
