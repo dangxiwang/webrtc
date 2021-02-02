@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a6d9ae0_5bbab33d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6337
+      },
+      "writtenOn": "2021-02-02T17:04:54Z",
+      "side": 1,
+      "message": "Add sequence checker to API will leak headers:\nrtc_base/platform_thread_types.h\nrtc_base/synchronization/mutex.h\nrtc_base/thread_annotations.h\n\nI talked with Danil and looks like leaking of thread_annotations and mutex shouldn\u0027t be a big problem. Also the question is about platform_thread_types. rtc::PlatformThreadRef can be replaced with uint64_t, but should we? \n\nWDYT about it?",
+      "revId": "f7c1805dd660554b43dabe7edef95f5cb8ebd3fb",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
