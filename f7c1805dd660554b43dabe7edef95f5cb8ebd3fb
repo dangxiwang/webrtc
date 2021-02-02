@@ -39,6 +39,53 @@
       },
       "revId": "f7c1805dd660554b43dabe7edef95f5cb8ebd3fb",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96d0fd35_46694e5f",
+        "filename": "api/sequence_checker.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2021-02-02T17:23:07Z",
+      "side": 1,
+      "message": "better yet: webrtc_internal to avoid potential namespace conflict, (or even webrtc_sequence_checker_internal to stress it is not internal just to webrtc, but internal to SequenceChecker code)",
+      "parentUuid": "d8713e09_95600465",
+      "range": {
+        "startLine": 24,
+        "startChar": 10,
+        "endLine": 24,
+        "endChar": 14
+      },
+      "revId": "f7c1805dd660554b43dabe7edef95f5cb8ebd3fb",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e16606b_02fbcf13",
+        "filename": "api/sequence_checker.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2021-02-02T17:23:07Z",
+      "side": 1,
+      "message": "and use the same \"internal\" namespace here, for consistency.",
+      "range": {
+        "startLine": 96,
+        "startChar": 10,
+        "endLine": 96,
+        "endChar": 31
+      },
+      "revId": "f7c1805dd660554b43dabe7edef95f5cb8ebd3fb",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
