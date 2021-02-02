@@ -90,6 +90,7 @@ rtc_library("rtc_p2p") {
     "../api:packet_socket_factory",
     "../api:rtc_error",
     "../api:scoped_refptr",
+    "../api:sequence_checker_api",
     "../api/crypto:options",
     "../api/rtc_event_log",
     "../api/transport:enums",
@@ -108,7 +109,6 @@ rtc_library("rtc_p2p") {
     "../rtc_base:socket_server",
     "../rtc_base:threading",
     "../rtc_base/experiments:field_trial_parser",
-    "../rtc_base/synchronization:sequence_checker",
     "../rtc_base/system:no_unique_address",
 
     # Needed by pseudo_tcp, which should move to a separate target.
@@ -181,6 +181,7 @@ if (rtc_include_tests) {
       ":rtc_p2p",
       "../api:libjingle_peerconnection_api",
       "../api:packet_socket_factory",
+      "../api:sequence_checker_api",
       "../api/crypto:options",
       "../api/transport:stun_types",
       "../rtc_base",
@@ -275,6 +276,7 @@ rtc_library("p2p_server_utils") {
   deps = [
     ":rtc_p2p",
     "../api:packet_socket_factory",
+    "../api:sequence_checker_api",
     "../api/transport:stun_types",
     "../rtc_base",
     "../rtc_base:checks",
@@ -296,6 +298,7 @@ rtc_library("libstunprober") {
   deps = [
     ":rtc_p2p",
     "../api:packet_socket_factory",
+    "../api:sequence_checker_api",
     "../api/transport:stun_types",
     "../rtc_base",
     "../rtc_base:async_resolver_interface",
