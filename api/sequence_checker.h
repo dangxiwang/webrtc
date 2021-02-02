@@ -7,9 +7,10 @@
  *  in the file PATENTS.  All contributing project authors may
  *  be found in the AUTHORS file in the root of the source tree.
  */
-#ifndef RTC_BASE_SYNCHRONIZATION_SEQUENCE_CHECKER_H_
-#define RTC_BASE_SYNCHRONIZATION_SEQUENCE_CHECKER_H_
+#ifndef API_SEQUENCE_CHECKER_H_
+#define API_SEQUENCE_CHECKER_H_
 
+#include <string>
 #include <type_traits>
 
 #include "api/task_queue/task_queue_base.h"
@@ -19,6 +20,8 @@
 #include "rtc_base/thread_annotations.h"
 
 namespace webrtc {
+
+namespace webrtc_sequence_checker_internal {
 // Real implementation of SequenceChecker, for use in debug mode, or
 // for temporary use in release mode (e.g. to RTC_CHECK on a threading issue
 // seen only in the wild).
@@ -60,10 +63,15 @@ class SequenceCheckerDoNothing {
   void Detach() {}
 };
 
+}  // namespace webrtc_sequence_checker_internal
+
 // SequenceChecker is a helper class used to help verify that some methods
 // of a class are called on the same task queue or thread. A
 // SequenceChecker is bound to a a task queue if the object is
 // created on a task queue, or a thread otherwise.
+//
+// Sequence checker can be used to verify WebRTC threading expectations when
+// used with other WebRTC classes.
 //
 //
 // Example:
@@ -80,12 +88,14 @@ class SequenceCheckerDoNothing {
 //
 // In Release mode, IsCurrent will always return true.
 #if RTC_DCHECK_IS_ON
-class RTC_LOCKABLE SequenceChecker : public SequenceCheckerImpl {};
+class RTC_LOCKABLE SequenceChecker
+    : public webrtc_sequence_checker_internal::SequenceCheckerImpl {};
 #else
-class RTC_LOCKABLE SequenceChecker : public SequenceCheckerDoNothing {};
+class RTC_LOCKABLE SequenceChecker
+    : public webrtc_sequence_checker_internal::SequenceCheckerDoNothing {};
 #endif  // RTC_ENABLE_THREAD_CHECKER
 
-namespace webrtc_seq_check_impl {
+namespace webrtc_sequence_checker_internal {
 // Helper class used by RTC_DCHECK_RUN_ON (see example usage below).
 class RTC_SCOPED_LOCKABLE SequenceCheckerScope {
  public:
@@ -101,7 +111,7 @@ class RTC_SCOPED_LOCKABLE SequenceCheckerScope {
     return thread_like_object->IsCurrent();
   }
 };
-}  // namespace webrtc_seq_check_impl
+}  // namespace webrtc_sequence_checker_internal
 }  // namespace webrtc
 
 // RTC_RUN_ON/RTC_GUARDED_BY/RTC_DCHECK_RUN_ON macros allows to annotate
@@ -180,8 +190,9 @@ std::string ExpectationToString(const ThreadLikeObject*) {
 
 }  // namespace webrtc
 
-#define RTC_DCHECK_RUN_ON(x)                                              \
-  webrtc::webrtc_seq_check_impl::SequenceCheckerScope seq_check_scope(x); \
+#define RTC_DCHECK_RUN_ON(x)                                     \
+  webrtc::webrtc_sequence_checker_internal::SequenceCheckerScope \
+      seq_check_scope(x);                                        \
   RTC_DCHECK((x)->IsCurrent()) << webrtc::ExpectationToString(x)
 
-#endif  // RTC_BASE_SYNCHRONIZATION_SEQUENCE_CHECKER_H_
+#endif  // API_SEQUENCE_CHECKER_H_
