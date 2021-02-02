@@ -92,6 +92,8 @@ rtc_library("rtc_pc_base") {
     "../api:rtp_parameters",
     "../api:rtp_transceiver_direction",
     "../api:scoped_refptr",
+    "../api:sequence_checker_api",
+    "../api:sequence_checker_api",
     "../api/crypto:options",
     "../api/rtc_event_log",
     "../api/task_queue",
@@ -126,7 +128,6 @@ rtc_library("rtc_pc_base") {
     "../rtc_base:threading",
     "../rtc_base/network:sent_packet",
     "../rtc_base/synchronization:mutex",
-    "../rtc_base/synchronization:sequence_checker",
     "../rtc_base/system:file_wrapper",
     "../rtc_base/system:rtc_export",
     "../rtc_base/task_utils:pending_task_safety_flag",
@@ -257,6 +258,8 @@ rtc_library("peerconnection") {
     "../api:rtp_parameters",
     "../api:rtp_transceiver_direction",
     "../api:scoped_refptr",
+    "../api:sequence_checker_api",
+    "../api:sequence_checker_api",
     "../api/adaptation:resource_adaptation_api",
     "../api/audio_codecs:audio_codecs_api",
     "../api/crypto:frame_decryptor_interface",
@@ -302,7 +305,6 @@ rtc_library("peerconnection") {
     "../rtc_base/experiments:field_trial_parser",
     "../rtc_base/network:sent_packet",
     "../rtc_base/synchronization:mutex",
-    "../rtc_base/synchronization:sequence_checker",
     "../rtc_base/system:file_wrapper",
     "../rtc_base/system:no_unique_address",
     "../rtc_base/system:rtc_export",
@@ -333,6 +335,7 @@ rtc_library("connection_context") {
     "../api:libjingle_peerconnection_api",
     "../api:media_stream_interface",
     "../api:scoped_refptr",
+    "../api:sequence_checker_api",
     "../api/neteq:neteq_api",
     "../api/transport:field_trial_based_config",
     "../api/transport:sctp_transport_factory_interface",
@@ -357,10 +360,11 @@ rtc_library("peer_connection_message_handler") {
     "../api:media_stream_interface",
     "../api:rtc_error",
     "../api:scoped_refptr",
+    "../api:sequence_checker_api",
+    "../api:sequence_checker_api",
     "../rtc_base",
     "../rtc_base:checks",
     "../rtc_base:threading",
-    "../rtc_base/synchronization:sequence_checker",
   ]
 }
 
@@ -392,6 +396,8 @@ rtc_library("rtp_transceiver") {
     "../api:rtp_parameters",
     "../api:rtp_transceiver_direction",
     "../api:scoped_refptr",
+    "../api:sequence_checker_api",
+    "../api:sequence_checker_api",
     "../api/task_queue",
     "../media:rtc_media_base",
     "../rtc_base:checks",
@@ -399,7 +405,6 @@ rtc_library("rtp_transceiver") {
     "../rtc_base:macromagic",
     "../rtc_base:refcount",
     "../rtc_base:threading",
-    "../rtc_base/synchronization:sequence_checker",
     "../rtc_base/third_party/sigslot",
   ]
   absl_deps = [
@@ -430,6 +435,7 @@ rtc_library("rtp_transmission_manager") {
     "../api:rtp_parameters",
     "../api:rtp_transceiver_direction",
     "../api:scoped_refptr",
+    "../api:sequence_checker_api",
     "../media:rtc_media_base",
     "../rtc_base",
     "../rtc_base:checks",
@@ -506,6 +512,7 @@ rtc_library("audio_rtp_receiver") {
     "../api:media_stream_interface",
     "../api:rtp_parameters",
     "../api:scoped_refptr",
+    "../api:sequence_checker_api",
     "../api/crypto:frame_decryptor_interface",
     "../api/transport/rtp:rtp_source",
     "../media:rtc_media_base",
@@ -539,6 +546,7 @@ rtc_library("video_rtp_receiver") {
     "../api:media_stream_interface",
     "../api:rtp_parameters",
     "../api:scoped_refptr",
+    "../api:sequence_checker_api",
     "../api/crypto:frame_decryptor_interface",
     "../api/transport/rtp:rtp_source",
     "../api/video:recordable_encoded_frame",
@@ -563,6 +571,7 @@ rtc_library("video_rtp_track_source") {
   ]
   deps = [
     ":video_track_source",
+    "../api:sequence_checker_api",
     "../api/video:recordable_encoded_frame",
     "../api/video:video_frame",
     "../media:rtc_media_base",
@@ -581,10 +590,11 @@ rtc_library("audio_track") {
   deps = [
     "../api:media_stream_interface",
     "../api:scoped_refptr",
+    "../api:sequence_checker_api",
+    "../api:sequence_checker_api",
     "../rtc_base:checks",
     "../rtc_base:refcount",
     "../rtc_base:thread_checker",
-    "../rtc_base/synchronization:sequence_checker",
   ]
 }
 
@@ -596,6 +606,7 @@ rtc_library("video_track") {
   deps = [
     "../api:media_stream_interface",
     "../api:scoped_refptr",
+    "../api:sequence_checker_api",
     "../api/video:video_frame",
     "../media:rtc_media_base",
     "../rtc_base",
@@ -643,6 +654,7 @@ rtc_library("jitter_buffer_delay") {
   ]
   deps = [
     ":jitter_buffer_delay_interface",
+    "../api:sequence_checker_api",
     "../media:rtc_media_base",
     "../rtc_base",
     "../rtc_base:checks",
@@ -667,6 +679,7 @@ rtc_library("remote_audio_source") {
     "../api:call_api",
     "../api:media_stream_interface",
     "../api:scoped_refptr",
+    "../api:sequence_checker_api",
     "../media:rtc_media_base",
     "../rtc_base",
     "../rtc_base:checks",
@@ -784,6 +797,7 @@ rtc_library("video_track_source") {
   ]
   deps = [
     "../api:media_stream_interface",
+    "../api:sequence_checker_api",
     "../api/video:recordable_encoded_frame",
     "../api/video:video_frame",
     "../media:rtc_media_base",
@@ -998,6 +1012,8 @@ if (rtc_include_tests && !build_with_chromium) {
       "../api:rtc_error",
       "../api:rtc_stats_api",
       "../api:scoped_refptr",
+      "../api:sequence_checker_api",
+      "../api:sequence_checker_api",
       "../api/audio:audio_mixer_api",
       "../api/audio_codecs:audio_codecs_api",
       "../api/task_queue",
@@ -1027,7 +1043,6 @@ if (rtc_include_tests && !build_with_chromium) {
       "../rtc_base:task_queue_for_test",
       "../rtc_base:threading",
       "../rtc_base/synchronization:mutex",
-      "../rtc_base/synchronization:sequence_checker",
       "../rtc_base/task_utils:repeating_task",
       "../rtc_base/third_party/sigslot",
       "../test:test_support",

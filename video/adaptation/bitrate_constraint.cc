@@ -12,8 +12,8 @@
 #include <utility>
 #include <vector>
 
+#include "api/sequence_checker.h"
 #include "call/adaptation/video_stream_adapter.h"
-#include "rtc_base/synchronization/sequence_checker.h"
 #include "video/adaptation/bitrate_constraint.h"
 #include "video/adaptation/video_stream_encoder_resource_manager.h"
 
