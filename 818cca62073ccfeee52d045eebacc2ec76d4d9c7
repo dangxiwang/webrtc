@@ -24,6 +24,30 @@
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de62a965_d3bf4378",
+        "filename": "audio/audio_send_stream.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 902,
+      "author": {
+        "id": 6337
+      },
+      "writtenOn": "2021-02-03T12:10:00Z",
+      "side": 1,
+      "message": "It can be rewritten by allocation_settings_.(min|max)_bitrate. The check was added with that ability initially.",
+      "parentUuid": "626b9469_c09f42b1",
+      "range": {
+        "startLine": 902,
+        "startChar": 2,
+        "endLine": 902,
+        "endChar": 43
+      },
+      "revId": "818cca62073ccfeee52d045eebacc2ec76d4d9c7",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be234409_096cd31d",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-03T11:40:49Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 906,
+        "startChar": 6,
+        "endLine": 906,
+        "endChar": 21
+      },
+      "revId": "818cca62073ccfeee52d045eebacc2ec76d4d9c7",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c05efcb1_89ac9d9b",
+        "filename": "audio/audio_send_stream.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 906,
+      "author": {
+        "id": 6337
+      },
+      "writtenOn": "2021-02-03T12:10:00Z",
+      "side": 1,
+      "message": "It can be rewritten by allocation_settings_.(min|max)_bitrate. The check was added with that ability initially.",
+      "parentUuid": "be234409_096cd31d",
       "range": {
         "startLine": 906,
         "startChar": 6,
