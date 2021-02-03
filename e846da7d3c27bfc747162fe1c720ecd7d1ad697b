@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33be8cf9_6cd7b607",
+        "filename": "api/BUILD.gn",
+        "patchSetId": 2
+      },
+      "lineNbr": 709,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2021-02-03T10:35:23Z",
+      "side": 1,
+      "message": "why \"_api\" suffix?",
+      "range": {
+        "startLine": 709,
+        "startChar": 32,
+        "endLine": 709,
+        "endChar": 36
+      },
+      "revId": "e846da7d3c27bfc747162fe1c720ecd7d1ad697b",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15f74b83_04d8b492",
+        "filename": "api/BUILD.gn",
+        "patchSetId": 2
+      },
+      "lineNbr": 721,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2021-02-03T10:35:23Z",
+      "side": 1,
+      "message": "should be just \"task_queue\"\n(when build target has the same name as folder it is in, the name is usually omited)",
+      "range": {
+        "startLine": 721,
+        "startChar": 4,
+        "endLine": 721,
+        "endChar": 27
+      },
+      "revId": "e846da7d3c27bfc747162fe1c720ecd7d1ad697b",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}

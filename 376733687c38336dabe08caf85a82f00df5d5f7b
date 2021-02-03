@@ -16,6 +16,98 @@
       "message": "Will need to split this one into multiple steps, so first move headers only: https://webrtc-review.googlesource.com/c/src/+/205380\n\nAfter that one will be landed, will rebase the current one on top.",
       "revId": "376733687c38336dabe08caf85a82f00df5d5f7b",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f274f07e_0df463f9",
+        "filename": "api/sequence_checker.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2021-02-03T10:35:23Z",
+      "side": 1,
+      "message": "Since this class is moving into api, may be make separation between implementation and interface clearer.\ne.g. add an extra file (something like internal_sequence_checker.h) that has all the implementation classes that has to be in the header file, i.e. the SequenceCheckerImpl,  SequenceCheckerDoNothing, SequenceCheckerScope\n\nIn this file keep just the names that suppose to be used, i.e.\nSequenceChecker and two macros with all the documentation\n\n(may be also explicitly declare function Detach() in the SequenceChecker as it is the part of the public api. but keep IsCurrent hidden since it is better be used through a macro)",
+      "range": {
+        "startLine": 24,
+        "startChar": 10,
+        "endLine": 24,
+        "endChar": 31
+      },
+      "revId": "376733687c38336dabe08caf85a82f00df5d5f7b",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cea7d4da_c11a103d",
+        "filename": "api/sequence_checker.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2021-02-03T10:35:23Z",
+      "side": 1,
+      "message": "macros ignore namespace [they are expanded before namespaces are taken into account], so no need to close and reopen the webrtc namespace.",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 18
+      },
+      "revId": "376733687c38336dabe08caf85a82f00df5d5f7b",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f55d1efd_9605b8dc",
+        "filename": "api/sequence_checker.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2021-02-03T10:35:23Z",
+      "side": 1,
+      "message": "Is this function part of the api? if not - hide it into sequence checker internal namespace",
+      "range": {
+        "startLine": 183,
+        "startChar": 12,
+        "endLine": 183,
+        "endChar": 31
+      },
+      "revId": "376733687c38336dabe08caf85a82f00df5d5f7b",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f208eda_50d59f20",
+        "filename": "api/sequence_checker.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2021-02-03T10:35:23Z",
+      "side": 1,
+      "message": "Looking at this macro now, it probably can be rewritten to be a helper class similar to MutexLock, i.e. avoid beeing a macro. Though that would require to a different syntax to use.\n\nI wonder if it would be beneficial to create such scope object for public api, while keep this macro internal to webrtc. Less macros is better, specially in api.\n\n(rough draft:\n\nusage:\nwebrtc::SequenceVerifier check_thread(sequence_checker_);\n\nimplementation (basically the same as SequenceCheckerScope, but use absl::SourceLocation to properly catch the current file and line):\nclass SequenceVerifier {\n public:\n  explicit SequenceVerifier(const SequenceChecker\u0026 checker, absl::SourceLocation loc \u003d ABSL_LOC) \n     RTC_EXCLUSIVE_LOCK_FUNCTION(checker) {\n    RTC_DCHECK(checker.IsCurrent()) \u003c\u003c loc \u003c\u003c checker.ExpectationToString();\n  }\n  explicit SequenceVerifier(const TaskQueueBase\u0026 tq, absl::SourceLocation loc \u003d ABSL_LOC) \n     RTC_EXCLUSIVE_LOCK_FUNCTION(tq) {\n    RTC_DCHECK(tq.IsCurrent()) \u003c\u003c loc;\n  }\n  // no support for any other thread-like object.\n}",
+      "range": {
+        "startLine": 193,
+        "startChar": 8,
+        "endLine": 193,
+        "endChar": 28
+      },
+      "revId": "376733687c38336dabe08caf85a82f00df5d5f7b",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
