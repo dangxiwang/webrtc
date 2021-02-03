@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "626b9469_c09f42b1",
+        "filename": "audio/audio_send_stream.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 902,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2021-02-03T11:40:49Z",
+      "side": 1,
+      "message": "isn\u0027t it redundant to the first check in this function?",
+      "range": {
+        "startLine": 902,
+        "startChar": 2,
+        "endLine": 902,
+        "endChar": 43
+      },
+      "revId": "818cca62073ccfeee52d045eebacc2ec76d4d9c7",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be234409_096cd31d",
+        "filename": "audio/audio_send_stream.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 906,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2021-02-03T11:40:49Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 906,
+        "startChar": 6,
+        "endLine": 906,
+        "endChar": 21
+      },
+      "revId": "818cca62073ccfeee52d045eebacc2ec76d4d9c7",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d0ec22b_afe57339",
+        "filename": "audio/audio_send_stream.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 910,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2021-02-03T11:40:49Z",
+      "side": 1,
+      "message": "this one is not redundant, but may be it also should be checked in the first validation to reduce amount of log statements.",
+      "range": {
+        "startLine": 910,
+        "startChar": 6,
+        "endLine": 910,
+        "endChar": 39
+      },
+      "revId": "818cca62073ccfeee52d045eebacc2ec76d4d9c7",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
