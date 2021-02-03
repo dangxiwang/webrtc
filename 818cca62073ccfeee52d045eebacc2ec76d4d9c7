@@ -48,6 +48,30 @@
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ab40629_7ec3ab5c",
+        "filename": "audio/audio_send_stream.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 902,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2021-02-03T12:12:38Z",
+      "side": 1,
+      "message": "may be remove the first check then?\n\n(or move it here, i.e. combine 3 checks into one)",
+      "parentUuid": "de62a965_d3bf4378",
+      "range": {
+        "startLine": 902,
+        "startChar": 2,
+        "endLine": 902,
+        "endChar": 43
+      },
+      "revId": "818cca62073ccfeee52d045eebacc2ec76d4d9c7",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be234409_096cd31d",
