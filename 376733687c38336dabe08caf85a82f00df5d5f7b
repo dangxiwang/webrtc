@@ -41,6 +41,29 @@
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "878a33e2_b1ae2302",
+        "filename": "api/sequence_checker.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2021-02-04T08:48:36Z",
+      "side": 1,
+      "message": "If there are valid usecases that need access to this class, it shouldn\u0027t be in the _impl namespace. Rather, webrtc::UnconditionalSequenceChecker or the like.",
+      "range": {
+        "startLine": 25,
+        "startChar": 66,
+        "endLine": 27,
+        "endChar": 26
+      },
+      "revId": "376733687c38336dabe08caf85a82f00df5d5f7b",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "cea7d4da_c11a103d",
