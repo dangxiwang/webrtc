@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e3cc131_74237a21",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2021-02-09T09:46:20Z",
+      "side": 1,
+      "message": "nit: may be \u0027Use SequenceChecker from public API\u0027 or something similar\n(since move is already done, this is a post-move step)",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 4
+      },
+      "revId": "887ddebf1f2d6aa3c9abee202c9ca134f8f2f625",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5151699c_7802d948",
+        "filename": "modules/congestion_controller/rtp/BUILD.gn",
+        "patchSetId": 7
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2021-02-09T09:46:20Z",
+      "side": 1,
+      "message": "remove one (can \"git cl format\" remove duplication?)",
+      "revId": "887ddebf1f2d6aa3c9abee202c9ca134f8f2f625",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9eb35cc5_2a401d1d",
+        "filename": "pc/jsep_transport.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2021-02-09T09:46:20Z",
+      "side": 1,
+      "message": "why replace it with mutex? (can\u0027t find Mutexes in this header),\nbut still needs api/sequence_checker.h because there is usage of RTC_RUN_ON macro in this file.",
+      "range": {
+        "startLine": 49,
+        "startChar": 35,
+        "endLine": 49,
+        "endChar": 40
+      },
+      "revId": "887ddebf1f2d6aa3c9abee202c9ca134f8f2f625",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cb937ba_3d5572b7",
+        "filename": "test/pc/e2e/BUILD.gn",
+        "patchSetId": 7
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2021-02-09T09:46:20Z",
+      "side": 1,
+      "message": "remove one",
+      "revId": "887ddebf1f2d6aa3c9abee202c9ca134f8f2f625",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
