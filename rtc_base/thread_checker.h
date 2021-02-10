@@ -13,8 +13,8 @@
 #ifndef RTC_BASE_THREAD_CHECKER_H_
 #define RTC_BASE_THREAD_CHECKER_H_
 
+#include "api/sequence_checker.h"
 #include "rtc_base/deprecation.h"
-#include "rtc_base/synchronization/sequence_checker.h"
 
 namespace rtc {
 // TODO(srte): Replace usages of this with SequenceChecker.
