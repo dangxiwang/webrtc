@@ -564,23 +564,11 @@ const IsSameCodecParamsTestCase kH264ParamsSameTestCases[] = {
     MakeTestCase({{cricket::kH264FmtpPacketizationMode, "1"}},
                  {{cricket::kH264FmtpPacketizationMode, "1"}}),
 };
-INSTANTIATE_TEST_SUITE_P(
-    H264_Same,
-    IsSameCodecParamsTest,
-    ::testing::Combine(::testing::Values("H264"),
-                       ::testing::Values(true),
-                       ::testing::ValuesIn(kH264ParamsSameTestCases)));
 
 const IsSameCodecParamsTestCase kH264ParamsNotSameTestCases[] = {
     // packetization-mode does not match the default of "0".
     MakeTestCase({{cricket::kH264FmtpPacketizationMode, "1"}}, {}),
 };
-INSTANTIATE_TEST_SUITE_P(
-    H264_NotSame,
-    IsSameCodecParamsTest,
-    ::testing::Combine(::testing::Values("H264"),
-                       ::testing::Values(false),
-                       ::testing::ValuesIn(kH264ParamsNotSameTestCases)));
 
 const IsSameCodecParamsTestCase kVP9ParamsSameTestCases[] = {
     // Both have the same defaults.
@@ -591,12 +579,6 @@ const IsSameCodecParamsTestCase kVP9ParamsSameTestCases[] = {
     MakeTestCase({{webrtc::kVP9FmtpProfileId, "2"}},
                  {{webrtc::kVP9FmtpProfileId, "2"}}),
 };
-INSTANTIATE_TEST_SUITE_P(
-    VP9_Same,
-    IsSameCodecParamsTest,
-    ::testing::Combine(::testing::Values("VP9"),
-                       ::testing::Values(true),
-                       ::testing::ValuesIn(kVP9ParamsSameTestCases)));
 
 const IsSameCodecParamsTestCase kVP9ParamsNotSameTestCases[] = {
     // profile-id missing from right.
