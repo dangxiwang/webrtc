@@ -57,6 +57,24 @@
       "parentUuid": "0e9ac181_1162f4ba",
       "revId": "58c9d8b8132b09c4cb69468cd24dbc1ed56dec05",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c51f98d2_a38ef5ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7641
+      },
+      "writtenOn": "2021-02-19T15:33:28Z",
+      "side": 1,
+      "message": "I just realized this as well 😊\n\nI guess it\u0027s best to take the 3-step approach.",
+      "parentUuid": "10597e7c_13f1f029",
+      "revId": "58c9d8b8132b09c4cb69468cd24dbc1ed56dec05",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
