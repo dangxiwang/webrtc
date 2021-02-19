@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b505ded8_85a72957",
+        "filename": "rtc_base/BUILD.gn",
+        "patchSetId": 1
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 5087
+      },
+      "writtenOn": "2021-02-19T13:11:43Z",
+      "side": 1,
+      "message": "We do this for logging but that is a thing to fix.\n\nI think it is better to do what we do for metrics.\n\nYou need:\n\n1- Define a GN arg like: rtc_exclude_system_time \u003d build_with_chromium (see e.g. https://source.chromium.org/chromium/chromium/src/+/master:third_party/webrtc/webrtc.gni;l\u003d56-60;drc\u003d14b036d4360ea58a6ed550ae82a5e36b42b5a0f8).\n2- A macro defined if the GN arg is true (e.g. WEBTRC_EXCLUDE_SYSTEM_TIME): https://source.chromium.org/chromium/chromium/src/+/master:third_party/webrtc/system_wrappers/BUILD.gn;l\u003d101-103;drc\u003de7c79fd3d66e0f6c54c027f880a8b1682ebae58a.\n3- Wrap https://source.chromium.org/chromium/chromium/src/+/master:third_party/webrtc/rtc_base/system_time.cc;l\u003d39;drc\u003db73c9f0bc3c0331c177fcbd54224b350153aebcd inside an #ifndef WEBTRC_EXCLUDE_SYSTEM_TIME.\n\nThen in the Chromium we will add the .cc file you have created to the build (adding a comment there).",
+      "range": {
+        "startLine": 418,
+        "startChar": 2,
+        "endLine": 423,
+        "endChar": 3
+      },
+      "revId": "86d754b1dc156d8fc32271d3fa0bb4e42b19534b",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
