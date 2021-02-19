@@ -22,6 +22,30 @@
       },
       "revId": "86d754b1dc156d8fc32271d3fa0bb4e42b19534b",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42ec6590_251da439",
+        "filename": "rtc_base/BUILD.gn",
+        "patchSetId": 1
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 7641
+      },
+      "writtenOn": "2021-02-19T13:32:18Z",
+      "side": 1,
+      "message": "Thanks for the pointers! I\u0027ll update the CLs accordingly.\n\nIs this to get greater visibility that the code path might not be used?",
+      "parentUuid": "b505ded8_85a72957",
+      "range": {
+        "startLine": 418,
+        "startChar": 2,
+        "endLine": 423,
+        "endChar": 3
+      },
+      "revId": "86d754b1dc156d8fc32271d3fa0bb4e42b19534b",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
