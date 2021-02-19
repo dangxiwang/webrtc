@@ -70,6 +70,30 @@
       },
       "revId": "86d754b1dc156d8fc32271d3fa0bb4e42b19534b",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50cfb0ac_8935baf4",
+        "filename": "rtc_base/BUILD.gn",
+        "patchSetId": 1
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 7641
+      },
+      "writtenOn": "2021-02-19T14:31:55Z",
+      "side": 1,
+      "message": "Thanks for the explanation!\nI agree, it can be very difficult to debug if you don\u0027t quickly see that a code path might be disabled.",
+      "parentUuid": "75c196df_5f6454fd",
+      "range": {
+        "startLine": 418,
+        "startChar": 2,
+        "endLine": 423,
+        "endChar": 3
+      },
+      "revId": "86d754b1dc156d8fc32271d3fa0bb4e42b19534b",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
