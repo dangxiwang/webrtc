@@ -46,6 +46,30 @@
       },
       "revId": "86d754b1dc156d8fc32271d3fa0bb4e42b19534b",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75c196df_5f6454fd",
+        "filename": "rtc_base/BUILD.gn",
+        "patchSetId": 1
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 5087
+      },
+      "writtenOn": "2021-02-19T13:38:41Z",
+      "side": 1,
+      "message": "\u003e Is this to get greater visibility that the code path might not be used?\n\nNo, it is to avoid to glue the WebRTC build with Chrome. Having a GN arg and a macro makes it easier to do this replacement on other build systems (if needed) while using the current approach will only be usable by Chromium and also a bit hidden (looking at the code and seeing an #ifdef is easier than a BUILD.gn swap).",
+      "parentUuid": "42ec6590_251da439",
+      "range": {
+        "startLine": 418,
+        "startChar": 2,
+        "endLine": 423,
+        "endChar": 3
+      },
+      "revId": "86d754b1dc156d8fc32271d3fa0bb4e42b19534b",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
