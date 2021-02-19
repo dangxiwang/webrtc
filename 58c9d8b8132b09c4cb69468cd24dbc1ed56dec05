@@ -39,6 +39,24 @@
       "message": "LGTM.\n\nIt might be that the next WebRTC roll will fail and I suggest we make a manual roll in https://chromium-review.googlesource.com/c/chromium/src/+/2705726 by adding a change to https://source.chromium.org/chromium/chromium/src/+/master:DEPS;l\u003d1538;drc\u003dc69f999e3c16899caf6705d21ef6c262ee234846 in the Chromium side CL (with the commit of this CL once landed).",
       "revId": "58c9d8b8132b09c4cb69468cd24dbc1ed56dec05",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10597e7c_13f1f029",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5087
+      },
+      "writtenOn": "2021-02-19T15:15:36Z",
+      "side": 1,
+      "message": "Ah, if we want to be incremental, maybe introduce the GN argument:\n\nrtc_exclude_system_time \u003d false\n\nIn a separate CL.\n\nThen we use it in an if(rtc_exclude_system_time) in the Chromium CL to avoid to define the symbol twice, then we land this one which flips to \"rtc_exclude_system_time \u003d build_with_chromium\" and everything should work smoothly. What do you think?",
+      "parentUuid": "0e9ac181_1162f4ba",
+      "revId": "58c9d8b8132b09c4cb69468cd24dbc1ed56dec05",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
