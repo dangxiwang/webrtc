@@ -400,7 +400,6 @@ rtc_source_set("safe_conversions") {
 rtc_library("timeutils") {
   visibility = [ "*" ]
   sources = [
-    "system_time.cc",
     "system_time.h",
     "time_utils.cc",
     "time_utils.h",
@@ -414,6 +413,13 @@ rtc_library("timeutils") {
   libs = []
   if (is_win) {
     libs += [ "winmm.lib" ]
+  }
+
+  if (build_with_chromium) {
+    sources += [ "../../webrtc_overrides/rtc_base/system_time.cc" ]
+    deps += [ "//base" ]
+  } else {
+    sources += [ "system_time.cc" ]
   }
 }
 
