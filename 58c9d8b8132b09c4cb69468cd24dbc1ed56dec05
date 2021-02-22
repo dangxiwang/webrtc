@@ -93,6 +93,23 @@
       "parentUuid": "c51f98d2_a38ef5ce",
       "revId": "58c9d8b8132b09c4cb69468cd24dbc1ed56dec05",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ea9ccbf_bf041066",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5087
+      },
+      "writtenOn": "2021-02-22T15:15:11Z",
+      "side": 1,
+      "message": "This should be ready to go % merge conflict.",
+      "revId": "58c9d8b8132b09c4cb69468cd24dbc1ed56dec05",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
