@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b2476d6_c8c672bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7641
+      },
+      "writtenOn": "2021-02-23T14:35:46Z",
+      "side": 1,
+      "message": "Chen, FYI this is the CL that will activate the Chromium override of SystemTimeNanos(). The effect for most Windows users is that we will use QueryPerformanceCounter instead of timeGetTime. I will do a quick benchmark just to see that this isn\u0027t too expensive.",
+      "revId": "1bed014b37045e04dec152163fc47ce757a9a509",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
