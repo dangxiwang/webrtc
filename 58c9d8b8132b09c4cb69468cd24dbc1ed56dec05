@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "e0db84d6_8e0539c5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 7641
+      },
+      "writtenOn": "2021-02-23T14:01:13Z",
+      "side": 1,
+      "message": "Ack. I rewrote the commit message.",
+      "parentUuid": "cdad40f0_f7b54fbe",
+      "range": {
+        "startLine": 9,
+        "startChar": 9,
+        "endLine": 9,
+        "endChar": 16
+      },
+      "revId": "58c9d8b8132b09c4cb69468cd24dbc1ed56dec05",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "0e9ac181_1162f4ba",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
