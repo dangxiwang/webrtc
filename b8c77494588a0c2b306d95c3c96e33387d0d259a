@@ -16,6 +16,29 @@
       "message": "Mirko, PTAL. Long-term it is easier for me to fix the documentation / gn args --list output than to to answer my coworkers (great) questions",
       "revId": "b8c77494588a0c2b306d95c3c96e33387d0d259a",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95851e4a_88e9571e",
+        "filename": "webrtc.gni",
+        "patchSetId": 2
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 5087
+      },
+      "writtenOn": "2021-03-03T18:01:48Z",
+      "side": 1,
+      "message": "This seem a bit redundant with the code below (it is quite clear by the code itself).",
+      "range": {
+        "startLine": 268,
+        "startChar": 0,
+        "endLine": 268,
+        "endChar": 52
+      },
+      "revId": "b8c77494588a0c2b306d95c3c96e33387d0d259a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
