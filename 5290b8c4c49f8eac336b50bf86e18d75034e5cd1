@@ -22,6 +22,30 @@
       },
       "revId": "5290b8c4c49f8eac336b50bf86e18d75034e5cd1",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7d72315_238d5809",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2021-04-06T13:03:52Z",
+      "side": 1,
+      "message": "+1\ngerrit is case sensitive: normally this link is clickable, but here it is not.",
+      "parentUuid": "a9315cd6_86f0b95f",
+      "range": {
+        "startLine": 11,
+        "startChar": 5,
+        "endLine": 11,
+        "endChar": 11
+      },
+      "revId": "5290b8c4c49f8eac336b50bf86e18d75034e5cd1",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
