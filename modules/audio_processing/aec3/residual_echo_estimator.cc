@@ -167,7 +167,8 @@ void ResidualEchoEstimator::Estimate(
     const RenderBuffer& render_buffer,
     rtc::ArrayView<const std::array<float, kFftLengthBy2Plus1>> S2_linear,
     rtc::ArrayView<const std::array<float, kFftLengthBy2Plus1>> Y2,
-    rtc::ArrayView<std::array<float, kFftLengthBy2Plus1>> R2) {
+    rtc::ArrayView<std::array<float, kFftLengthBy2Plus1>> R2,
+    bool dominant_nearend) {
   RTC_DCHECK_EQ(R2.size(), Y2.size());
   RTC_DCHECK_EQ(R2.size(), S2_linear.size());
 
@@ -185,7 +186,8 @@ void ResidualEchoEstimator::Estimate(
         std::copy(Y2[ch].begin(), Y2[ch].end(), R2[ch].begin());
       }
     } else {
-      LinearEstimate(S2_linear, aec_state.Erle(), R2);
+      const bool onset_compensated = !dominant_nearend;
+      LinearEstimate(S2_linear, aec_state.Erle(onset_compensated), R2);
     }
 
     AddReverb(ReverbType::kLinear, aec_state, render_buffer, R2);

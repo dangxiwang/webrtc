@@ -406,7 +406,8 @@ void EchoRemoverImpl::ProcessCapture(
   if (capture_output_used_) {
     // Estimate the residual echo power.
     residual_echo_estimator_.Estimate(aec_state_, *render_buffer, S2_linear, Y2,
-                                      R2);
+                                      R2,
+                                      suppression_gain_.IsDominantNearend());
 
     // Suppressor nearend estimate.
     if (aec_state_.UsableLinearEstimate()) {
