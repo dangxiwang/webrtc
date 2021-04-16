@@ -39,7 +39,8 @@ class ResidualEchoEstimator {
       const RenderBuffer& render_buffer,
       rtc::ArrayView<const std::array<float, kFftLengthBy2Plus1>> S2_linear,
       rtc::ArrayView<const std::array<float, kFftLengthBy2Plus1>> Y2,
-      rtc::ArrayView<std::array<float, kFftLengthBy2Plus1>> R2);
+      rtc::ArrayView<std::array<float, kFftLengthBy2Plus1>> R2,
+      bool dominant_nearend);
 
  private:
   enum class ReverbType { kLinear, kNonLinear };
