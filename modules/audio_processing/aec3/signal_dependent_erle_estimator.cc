@@ -180,6 +180,8 @@ void SignalDependentErleEstimator::Update(
     rtc::ArrayView<const std::array<float, kFftLengthBy2Plus1>> Y2,
     rtc::ArrayView<const std::array<float, kFftLengthBy2Plus1>> E2,
     rtc::ArrayView<const std::array<float, kFftLengthBy2Plus1>> average_erle,
+    rtc::ArrayView<const std::array<float, kFftLengthBy2Plus1>>
+        average_erle_onset_compensated,
     const std::vector<bool>& converged_filters) {
   RTC_DCHECK_GT(num_sections_, 1);
 
@@ -202,6 +204,9 @@ void SignalDependentErleEstimator::Update(
                              [band_to_subband_[k]];
       erle_[ch][k] = rtc::SafeClamp(average_erle[ch][k] * correction_factor,
                                     min_erle_, max_erle_[band_to_subband_[k]]);
+      erle_onset_compensated_[ch][k] = rtc::SafeClamp(
+          average_erle_onset_compensated[ch][k] * correction_factor, min_erle_,
+          max_erle_[band_to_subband_[k]]);
     }
   }
 }
