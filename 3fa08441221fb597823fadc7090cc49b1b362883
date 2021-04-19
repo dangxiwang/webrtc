@@ -58,6 +58,30 @@
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98783901_ff59e6ed",
+        "filename": "api/audio/echo_canceller3_config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 5116
+      },
+      "writtenOn": "2021-04-19T14:31:35Z",
+      "side": 1,
+      "message": "You might be right that it\u0027s a bit overkill. I\u0027ll remove the config parameter.",
+      "parentUuid": "ca559f02_886e514f",
+      "range": {
+        "startLine": 112,
+        "startChar": 9,
+        "endLine": 112,
+        "endChar": 52
+      },
+      "revId": "3fa08441221fb597823fadc7090cc49b1b362883",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71fb36f5_e4263906",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-04-19T09:45:10Z",
       "side": 1,
       "message": "it would be nice to just do this when config.erle.onset_detection is equal to true.",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 42
+      },
+      "revId": "3fa08441221fb597823fadc7090cc49b1b362883",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86c72ead_acf8eace",
+        "filename": "modules/audio_processing/aec3/signal_dependent_erle_estimator.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 5116
+      },
+      "writtenOn": "2021-04-19T14:31:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71fb36f5_e4263906",
       "range": {
         "startLine": 209,
         "startChar": 0,
@@ -104,6 +152,30 @@
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbcd6bba_43330ddd",
+        "filename": "modules/audio_processing/aec3/subband_erle_estimator.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 5116
+      },
+      "writtenOn": "2021-04-19T14:31:35Z",
+      "side": 1,
+      "message": "Good suggestion, but I think I would like to delay that decision a bit. Let\u0027s discuss it offline.",
+      "parentUuid": "7aab22e8_2d1f8f95",
+      "range": {
+        "startLine": 38,
+        "startChar": 34,
+        "endLine": 38,
+        "endChar": 74
+      },
+      "revId": "3fa08441221fb597823fadc7090cc49b1b362883",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dcd835bf_c91c0a43",
@@ -127,6 +199,30 @@
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2697b7bb_f9ef5e49",
+        "filename": "modules/audio_processing/aec3/subband_erle_estimator.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 5116
+      },
+      "writtenOn": "2021-04-19T14:31:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dcd835bf_c91c0a43",
+      "range": {
+        "startLine": 162,
+        "startChar": 7,
+        "endLine": 163,
+        "endChar": 69
+      },
+      "revId": "3fa08441221fb597823fadc7090cc49b1b362883",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63374c17_439e4dc7",
@@ -140,6 +236,30 @@
       "writtenOn": "2021-04-19T09:45:10Z",
       "side": 1,
       "message": "onset_compensated_ \u0026\u0026 use_onset_detection_ ?",
+      "range": {
+        "startLine": 46,
+        "startChar": 11,
+        "endLine": 46,
+        "endChar": 29
+      },
+      "revId": "3fa08441221fb597823fadc7090cc49b1b362883",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "432a0509_2d39e7aa",
+        "filename": "modules/audio_processing/aec3/subband_erle_estimator.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 5116
+      },
+      "writtenOn": "2021-04-19T14:31:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63374c17_439e4dc7",
       "range": {
         "startLine": 46,
         "startChar": 11,
