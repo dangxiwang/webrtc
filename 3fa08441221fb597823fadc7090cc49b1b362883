@@ -16,6 +16,138 @@
       "message": "Jesús, could you please take a look?",
       "revId": "3fa08441221fb597823fadc7090cc49b1b362883",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fd47c49_953cf0d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6876
+      },
+      "writtenOn": "2021-04-19T09:45:10Z",
+      "side": 1,
+      "message": "Thanks for this CL, it looks really good. I have just some minor comments related to: \n- React to the config flag use_onset_detection_ so we just update the onset erle when the config is telling us so.\n- Maybe time to remove a kill switch which I think that it will make the code easier to read.\n\n\n",
+      "revId": "3fa08441221fb597823fadc7090cc49b1b362883",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca559f02_886e514f",
+        "filename": "api/audio/echo_canceller3_config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 6876
+      },
+      "writtenOn": "2021-04-19T09:45:10Z",
+      "side": 1,
+      "message": "Do we want this in the config? I think that with the field_trial is enough, what do you think?",
+      "range": {
+        "startLine": 112,
+        "startChar": 9,
+        "endLine": 112,
+        "endChar": 52
+      },
+      "revId": "3fa08441221fb597823fadc7090cc49b1b362883",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71fb36f5_e4263906",
+        "filename": "modules/audio_processing/aec3/signal_dependent_erle_estimator.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 6876
+      },
+      "writtenOn": "2021-04-19T09:45:10Z",
+      "side": 1,
+      "message": "it would be nice to just do this when config.erle.onset_detection is equal to true.",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 42
+      },
+      "revId": "3fa08441221fb597823fadc7090cc49b1b362883",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7aab22e8_2d1f8f95",
+        "filename": "modules/audio_processing/aec3/subband_erle_estimator.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 6876
+      },
+      "writtenOn": "2021-04-19T09:45:10Z",
+      "side": 1,
+      "message": "maybe it is time to remove this code so we do not need the erle_during_onsets_ variable anymore?",
+      "range": {
+        "startLine": 38,
+        "startChar": 34,
+        "endLine": 38,
+        "endChar": 74
+      },
+      "revId": "3fa08441221fb597823fadc7090cc49b1b362883",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcd835bf_c91c0a43",
+        "filename": "modules/audio_processing/aec3/subband_erle_estimator.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 6876
+      },
+      "writtenOn": "2021-04-19T09:45:10Z",
+      "side": 1,
+      "message": "should we do this just when (use_onset_detection_) is enabled?",
+      "range": {
+        "startLine": 162,
+        "startChar": 7,
+        "endLine": 163,
+        "endChar": 69
+      },
+      "revId": "3fa08441221fb597823fadc7090cc49b1b362883",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63374c17_439e4dc7",
+        "filename": "modules/audio_processing/aec3/subband_erle_estimator.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 6876
+      },
+      "writtenOn": "2021-04-19T09:45:10Z",
+      "side": 1,
+      "message": "onset_compensated_ \u0026\u0026 use_onset_detection_ ?",
+      "range": {
+        "startLine": 46,
+        "startChar": 11,
+        "endLine": 46,
+        "endChar": 29
+      },
+      "revId": "3fa08441221fb597823fadc7090cc49b1b362883",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
