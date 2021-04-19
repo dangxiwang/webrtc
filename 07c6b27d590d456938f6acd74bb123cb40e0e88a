@@ -16,6 +16,69 @@
       "message": "Thanks for the review and all the good comments! I have tried to address all of them. Please take another look.",
       "revId": "07c6b27d590d456938f6acd74bb123cb40e0e88a",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d7b24d1_18259258",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6876
+      },
+      "writtenOn": "2021-04-19T15:05:13Z",
+      "side": 1,
+      "message": "Thanks for the changes, just 2 really small comments more.",
+      "revId": "07c6b27d590d456938f6acd74bb123cb40e0e88a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3498da0_58b9a8e2",
+        "filename": "modules/audio_processing/aec3/residual_echo_estimator.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 6876
+      },
+      "writtenOn": "2021-04-19T15:05:13Z",
+      "side": 1,
+      "message": "it seems that the config is no longer needed.",
+      "range": {
+        "startLine": 49,
+        "startChar": 4,
+        "endLine": 49,
+        "endChar": 50
+      },
+      "revId": "07c6b27d590d456938f6acd74bb123cb40e0e88a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f729612_16c3f6e1",
+        "filename": "modules/audio_processing/aec3/residual_echo_estimator.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 6876
+      },
+      "writtenOn": "2021-04-19T15:05:13Z",
+      "side": 1,
+      "message": "is the config still needed?",
+      "range": {
+        "startLine": 167,
+        "startChar": 52,
+        "endLine": 167,
+        "endChar": 71
+      },
+      "revId": "07c6b27d590d456938f6acd74bb123cb40e0e88a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
