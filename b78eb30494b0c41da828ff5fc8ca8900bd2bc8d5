@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52d45fc1_252b1cab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5116
+      },
+      "writtenOn": "2021-04-20T07:44:21Z",
+      "side": 1,
+      "message": "Thanks! Removed the unused function argument.",
+      "revId": "b78eb30494b0c41da828ff5fc8ca8900bd2bc8d5",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
