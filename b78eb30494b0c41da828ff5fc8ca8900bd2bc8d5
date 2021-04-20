@@ -56,6 +56,30 @@
       },
       "revId": "b78eb30494b0c41da828ff5fc8ca8900bd2bc8d5",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67bde702_af442c91",
+        "filename": "modules/audio_processing/aec3/residual_echo_estimator.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 5116
+      },
+      "writtenOn": "2021-04-20T12:03:05Z",
+      "side": 1,
+      "message": "Thanks, done!",
+      "parentUuid": "b3ec74c0_e5072b2f",
+      "range": {
+        "startLine": 43,
+        "startChar": 11,
+        "endLine": 43,
+        "endChar": 27
+      },
+      "revId": "b78eb30494b0c41da828ff5fc8ca8900bd2bc8d5",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
