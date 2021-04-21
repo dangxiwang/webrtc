@@ -2560,6 +2560,7 @@ include_rules = [
 
   # Abseil allowlist. Keep this in sync with abseil-in-webrtc.md.
   "+absl/algorithm/algorithm.h",
+  "+absl/functional/bind_front.h",
   "+absl/algorithm/container.h",
   "+absl/base/attributes.h",
   "+absl/base/config.h",
