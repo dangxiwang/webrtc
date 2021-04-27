@@ -80,6 +80,30 @@
       },
       "revId": "ebd19821f28bc32f96e5938365df0103929ef795",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac595b59_d3e006d2",
+        "filename": "modules/video_coding/codecs/vp8/libvpx_vp8_encoder.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 5117
+      },
+      "writtenOn": "2021-04-27T10:04:31Z",
+      "side": 1,
+      "message": "I don\u0027t think any special code needs to be added to I420A buffer type, since it\u0027s already derived from I420BufferInterface. So it\u0027s enough to simply call GetI420 if the type is I420 or I420A.",
+      "parentUuid": "86bfd819_40725f72",
+      "range": {
+        "startLine": 179,
+        "startChar": 33,
+        "endLine": 179,
+        "endChar": 39
+      },
+      "revId": "ebd19821f28bc32f96e5938365df0103929ef795",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
