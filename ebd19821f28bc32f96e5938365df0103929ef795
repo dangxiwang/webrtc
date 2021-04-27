@@ -39,6 +39,30 @@
       },
       "revId": "ebd19821f28bc32f96e5938365df0103929ef795",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86bfd819_40725f72",
+        "filename": "modules/video_coding/codecs/vp8/libvpx_vp8_encoder.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 5142
+      },
+      "writtenOn": "2021-04-27T09:46:31Z",
+      "side": 1,
+      "message": "I see similar checks in many places so I think this could be improved as suggested or the comparison function used in more places, but not in this CL which I want to keep as simple as possible to backmerge",
+      "parentUuid": "fdf338dc_fefaa1db",
+      "range": {
+        "startLine": 179,
+        "startChar": 33,
+        "endLine": 179,
+        "endChar": 39
+      },
+      "revId": "ebd19821f28bc32f96e5938365df0103929ef795",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
