@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fea78ca3_80a2a4f4",
+        "filename": "net/dcsctp/timer/task_queue_timeout.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 5087
+      },
+      "writtenOn": "2021-05-03T15:03:49Z",
+      "side": 1,
+      "message": "Nit:\n\nRTC_NO_UNIQUE_ADDRESS webrtc::SequenceChecker thread_checker_;",
+      "range": {
+        "startLine": 81,
+        "startChar": 2,
+        "endLine": 81,
+        "endChar": 42
+      },
+      "revId": "1010f580cf6c553e45cd85a05f90ee467ad053da",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
