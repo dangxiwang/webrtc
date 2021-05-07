@@ -7,7 +7,7 @@ vars = {
   # chromium waterfalls. More info at: crbug.com/570091.
   'checkout_configuration': 'default',
   'checkout_instrumented_libraries': 'checkout_linux and checkout_configuration == "default"',
-  'chromium_revision': '53cbc6d4fd298e78c699d76ababac7daee9daa90',
+  'chromium_revision': '23992f1b25f41a4dd055d7dc12361f5f9aeda42b',
 }
 
 deps = {
@@ -25,19 +25,19 @@ deps = {
     'condition': 'checkout_android',
   },
   'src/ios': {
-    'url': 'https://chromium.googlesource.com/chromium/src/ios@343cb2975ab0b6b7a509bd1e09c13bddbf62156b',
+    'url': 'https://chromium.googlesource.com/chromium/src/ios@7893ae6f2e1bb2e0915cd1a49b04d244ce72f902',
     'condition': 'checkout_ios',
   },
   'src/testing':
-    'https://chromium.googlesource.com/chromium/src/testing@ce5176748387fcc1805284d86b84e1ad8d330bde',
+    'https://chromium.googlesource.com/chromium/src/testing@30a216349453f451e767e74648c76493923745f2',
   'src/third_party':
-    'https://chromium.googlesource.com/chromium/src/third_party@3c91c747bcf9d4f5d7c086587714af3ad7bd433f',
+    'https://chromium.googlesource.com/chromium/src/third_party@6f67d3f994721fa86b28d42a24f54e7c362d8d77',
 
   'src/buildtools/linux64': {
     'packages': [
       {
         'package': 'gn/gn/linux-amd64',
-        'version': 'git_revision:7b23bd91f996722e5e55e0ccf0c80c0a984efca5',
+        'version': 'git_revision:281c994dc67772cc2a6f5c5fa1c4bafb9dcb733e',
       }
     ],
     'dep_type': 'cipd',
@@ -47,7 +47,7 @@ deps = {
     'packages': [
       {
         'package': 'gn/gn/mac-${{arch}}',
-        'version': 'git_revision:7b23bd91f996722e5e55e0ccf0c80c0a984efca5',
+        'version': 'git_revision:281c994dc67772cc2a6f5c5fa1c4bafb9dcb733e',
       }
     ],
     'dep_type': 'cipd',
@@ -57,7 +57,7 @@ deps = {
     'packages': [
       {
         'package': 'gn/gn/windows-amd64',
-        'version': 'git_revision:7b23bd91f996722e5e55e0ccf0c80c0a984efca5',
+        'version': 'git_revision:281c994dc67772cc2a6f5c5fa1c4bafb9dcb733e',
       }
     ],
     'dep_type': 'cipd',
@@ -265,7 +265,7 @@ deps = {
     'condition': 'checkout_win',
   },
   'src/tools':
-    'https://chromium.googlesource.com/chromium/src/tools@4448f54474e1d6c92edec744ec9c701560427007',
+    'https://chromium.googlesource.com/chromium/src/tools@40a9071d139999d405a2fc2c83cfef5021da25e9',
   'src/tools/swarming_client':
     'https://chromium.googlesource.com/infra/luci/client-py.git@a32a1607f6093d338f756c7e7c7b4333b0c50c9c',
 
