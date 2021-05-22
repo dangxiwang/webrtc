@@ -214,6 +214,8 @@ class RetransmissionQueue {
     UnwrappedTSN highest_tsn_acked;
   };
 
+  bool IsConsistent() const;
+
   // Returns how large a chunk will be, serialized, carrying the data
   size_t GetSerializedChunkSize(const Data& data) const;
 
@@ -270,8 +272,6 @@ class RetransmissionQueue {
   // Update the congestion control algorithm, given as packet loss has been
   // detected, as reported in an incoming SACK chunk.
   void HandlePacketLoss(UnwrappedTSN highest_tsn_acked);
-  // Recalculate the number of in-flight payload bytes.
-  void RecalculateOutstandingBytes();
   // Update the view of the receiver window size.
   void UpdateReceiverWindow(uint32_t a_rwnd);
   // Given `max_size` of space left in a packet, which chunks can be added to
@@ -337,7 +337,7 @@ class RetransmissionQueue {
   // cumulative acked. Note that it also contains chunks that have been acked in
   // gap ack blocks.
   std::map<UnwrappedTSN, TxData> outstanding_data_;
-  // The sum of the message bytes of the send_queue_
+  // The number of bytes that are in-flight (sent but not yet acked/nacked/etc).
   size_t outstanding_bytes_ = 0;
 };
 }  // namespace dcsctp
