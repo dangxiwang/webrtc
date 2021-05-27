@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66bcd030_ad61f6cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2021-05-27T07:32:18Z",
+      "side": 1,
+      "message": "LGTM, nice refactor.\n",
+      "revId": "f1403b79ce8bd52ff25ad80eb6b509ef68cc2dbb",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
