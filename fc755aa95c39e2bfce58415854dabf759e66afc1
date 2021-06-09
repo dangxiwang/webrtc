@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b64f4e00_119fe25e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6192
+      },
+      "writtenOn": "2021-06-09T15:45:35Z",
+      "side": 1,
+      "message": "Currently it blocks submit due to them not working properly.",
+      "revId": "fc755aa95c39e2bfce58415854dabf759e66afc1",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
