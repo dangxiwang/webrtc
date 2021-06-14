@@ -85,9 +85,6 @@ class RTCPSender final {
   };
 
   explicit RTCPSender(const Configuration& config);
-  // TODO(bugs.webrtc.org/11581): delete this temporary compatibility helper
-  // once downstream dependencies migrates.
-  explicit RTCPSender(const RtpRtcpInterface::Configuration& config);
 
   RTCPSender() = delete;
   RTCPSender(const RTCPSender&) = delete;

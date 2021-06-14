@@ -166,19 +166,6 @@ RTCPSender::RTCPSender(const Configuration& config)
   builders_[kRtcpAnyExtendedReports] = &RTCPSender::BuildExtendedReports;
 }
 
-RTCPSender::RTCPSender(const RtpRtcpInterface::Configuration& config)
-    : RTCPSender(Configuration{
-          .audio = config.audio,
-          .local_media_ssrc = config.local_media_ssrc,
-          .clock = config.clock,
-          .outgoing_transport = config.outgoing_transport,
-          .non_sender_rtt_measurement = config.non_sender_rtt_measurement,
-          .event_log = config.event_log,
-          .rtcp_report_interval_ms = config.rtcp_report_interval_ms,
-          .receive_statistics = config.receive_statistics,
-          .rtcp_packet_type_counter_observer =
-              config.rtcp_packet_type_counter_observer}) {}
-
 RTCPSender::~RTCPSender() {}
 
 RtcpMode RTCPSender::Status() const {
