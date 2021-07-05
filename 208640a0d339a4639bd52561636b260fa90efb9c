@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d55fafbe_89f920c6",
+        "filename": "g3doc/become_a_committer.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 6337
+      },
+      "writtenOn": "2021-07-05T18:06:06Z",
+      "side": 1,
+      "message": "WDYT, which email can we use here?",
+      "range": {
+        "startLine": 32,
+        "startChar": 44,
+        "endLine": 32,
+        "endChar": 62
+      },
+      "revId": "208640a0d339a4639bd52561636b260fa90efb9c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
