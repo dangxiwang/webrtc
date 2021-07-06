@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a25974b_7295ef66",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5087
+      },
+      "writtenOn": "2021-07-06T15:06:03Z",
+      "side": 1,
+      "message": "LGTM % comment.",
+      "revId": "686354e747558e7ad135850d5ea47fcfc2fa9270",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "590bf554_8d51e3a7",
+        "filename": "g3doc/become_a_committer.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 5087
+      },
+      "writtenOn": "2021-07-06T15:06:03Z",
+      "side": 1,
+      "message": "Is this going to be added later or should we do it now?",
+      "range": {
+        "startLine": 38,
+        "startChar": 4,
+        "endLine": 38,
+        "endChar": 35
+      },
+      "revId": "686354e747558e7ad135850d5ea47fcfc2fa9270",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
