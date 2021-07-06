@@ -39,6 +39,30 @@
       },
       "revId": "686354e747558e7ad135850d5ea47fcfc2fa9270",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35859583_0b518c4f",
+        "filename": "g3doc/become_a_committer.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 6337
+      },
+      "writtenOn": "2021-07-06T15:28:04Z",
+      "side": 1,
+      "message": "I\u0027ll add it later, because I want to link this document in the template.",
+      "parentUuid": "590bf554_8d51e3a7",
+      "range": {
+        "startLine": 38,
+        "startChar": 4,
+        "endLine": 38,
+        "endChar": 35
+      },
+      "revId": "686354e747558e7ad135850d5ea47fcfc2fa9270",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
