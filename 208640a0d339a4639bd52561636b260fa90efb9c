@@ -18,6 +18,24 @@
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8c5fe7a_aee28ff2",
+        "filename": "g3doc/become_a_committer.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 6337
+      },
+      "writtenOn": "2021-07-06T14:48:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a247f71_2b7c913e",
+      "revId": "208640a0d339a4639bd52561636b260fa90efb9c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d55d118_9f98bd12",
@@ -41,6 +59,30 @@
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "966f9847_2229f620",
+        "filename": "g3doc/become_a_committer.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 6337
+      },
+      "writtenOn": "2021-07-06T14:48:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d55d118_9f98bd12",
+      "range": {
+        "startLine": 19,
+        "startChar": 60,
+        "endLine": 19,
+        "endChar": 61
+      },
+      "revId": "208640a0d339a4639bd52561636b260fa90efb9c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c482a949_3f430c67",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-07-06T09:48:20Z",
       "side": 1,
       "message": "Link to https://source.chromium.org/chromium/chromium/src/+/main:third_party/webrtc/docs/faq.md;l\u003d140;drc\u003d8696f9a062e2b256ef03eb6d9fff9d46a069dddf. Or to the FAQ page.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 56
+      },
+      "revId": "208640a0d339a4639bd52561636b260fa90efb9c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f23eb5fe_bf4c1363",
+        "filename": "g3doc/become_a_committer.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 6337
+      },
+      "writtenOn": "2021-07-06T14:48:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c482a949_3f430c67",
       "range": {
         "startLine": 24,
         "startChar": 0,
@@ -101,6 +167,30 @@
       "side": 1,
       "message": "I would keep the number of mailing list addresses low. So one of the two you are planning to create should work I think.\n\nMaybe committers@webrtc.org.",
       "parentUuid": "d55fafbe_89f920c6",
+      "range": {
+        "startLine": 32,
+        "startChar": 44,
+        "endLine": 32,
+        "endChar": 62
+      },
+      "revId": "208640a0d339a4639bd52561636b260fa90efb9c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04ea5e9a_fcefaeff",
+        "filename": "g3doc/become_a_committer.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 6337
+      },
+      "writtenOn": "2021-07-06T14:48:51Z",
+      "side": 1,
+      "message": "Rewrote this section",
+      "parentUuid": "b24a814d_421ef101",
       "range": {
         "startLine": 32,
         "startChar": 44,
