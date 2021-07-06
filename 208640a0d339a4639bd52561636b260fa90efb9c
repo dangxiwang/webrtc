@@ -3,6 +3,69 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1a247f71_2b7c913e",
+        "filename": "g3doc/become_a_committer.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 5087
+      },
+      "writtenOn": "2021-07-06T09:48:20Z",
+      "side": 1,
+      "message": "This CL also needs to update the FAQ: https://source.chromium.org/chromium/chromium/src/+/main:third_party/webrtc/docs/faq.md;l\u003d145-155;drc\u003d8696f9a062e2b256ef03eb6d9fff9d46a069dddf.\n\nMaybe change the FAQ reply to point to this page?\n\nAlso maybe mention the CLA (it is mentioned also for the contributor https://source.chromium.org/chromium/chromium/src/+/main:third_party/webrtc/docs/faq.md;l\u003d140;drc\u003d8696f9a062e2b256ef03eb6d9fff9d46a069dddf, but good to mention more than once).",
+      "revId": "208640a0d339a4639bd52561636b260fa90efb9c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d55d118_9f98bd12",
+        "filename": "g3doc/become_a_committer.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5087
+      },
+      "writtenOn": "2021-07-06T09:48:20Z",
+      "side": 1,
+      "message": "the",
+      "range": {
+        "startLine": 19,
+        "startChar": 60,
+        "endLine": 19,
+        "endChar": 61
+      },
+      "revId": "208640a0d339a4639bd52561636b260fa90efb9c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c482a949_3f430c67",
+        "filename": "g3doc/become_a_committer.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5087
+      },
+      "writtenOn": "2021-07-06T09:48:20Z",
+      "side": 1,
+      "message": "Link to https://source.chromium.org/chromium/chromium/src/+/main:third_party/webrtc/docs/faq.md;l\u003d140;drc\u003d8696f9a062e2b256ef03eb6d9fff9d46a069dddf. Or to the FAQ page.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 56
+      },
+      "revId": "208640a0d339a4639bd52561636b260fa90efb9c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d55fafbe_89f920c6",
         "filename": "g3doc/become_a_committer.md",
         "patchSetId": 1
@@ -14,6 +77,30 @@
       "writtenOn": "2021-07-05T18:06:06Z",
       "side": 1,
       "message": "WDYT, which email can we use here?",
+      "range": {
+        "startLine": 32,
+        "startChar": 44,
+        "endLine": 32,
+        "endChar": 62
+      },
+      "revId": "208640a0d339a4639bd52561636b260fa90efb9c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b24a814d_421ef101",
+        "filename": "g3doc/become_a_committer.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 5087
+      },
+      "writtenOn": "2021-07-06T09:48:20Z",
+      "side": 1,
+      "message": "I would keep the number of mailing list addresses low. So one of the two you are planning to create should work I think.\n\nMaybe committers@webrtc.org.",
+      "parentUuid": "d55fafbe_89f920c6",
       "range": {
         "startLine": 32,
         "startChar": 44,
