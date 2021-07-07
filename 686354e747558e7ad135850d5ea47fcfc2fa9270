@@ -18,6 +18,57 @@
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "70c8c3d0_2319a275",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2021-07-07T12:23:30Z",
+      "side": 1,
+      "message": "Nits, the only necessary one is adding link to the Google c++ style guide (https://google.github.io/styleguide/cppguide.html)\n",
+      "revId": "686354e747558e7ad135850d5ea47fcfc2fa9270",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f841a955_82a66e03",
+        "filename": "docs/faq.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2021-07-07T12:23:30Z",
+      "side": 1,
+      "message": "Better: \"The process of becoming a committer is documented in a [separate page].",
+      "revId": "686354e747558e7ad135850d5ea47fcfc2fa9270",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "067871cc_e2f887ba",
+        "filename": "g3doc/become_a_committer.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2021-07-07T12:23:30Z",
+      "side": 1,
+      "message": "Add Google style guide. It\u0027s public too, and is where most of the meat is.",
+      "revId": "686354e747558e7ad135850d5ea47fcfc2fa9270",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "590bf554_8d51e3a7",
@@ -61,6 +112,91 @@
         "endLine": 38,
         "endChar": 35
       },
+      "revId": "686354e747558e7ad135850d5ea47fcfc2fa9270",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c94480a_45164805",
+        "filename": "g3doc/become_a_committer.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2021-07-07T12:23:30Z",
+      "side": 1,
+      "message": "Nit: \"For C++ authors, the mentor will also look for...\"\nrecomended -\u003e recommended",
+      "revId": "686354e747558e7ad135850d5ea47fcfc2fa9270",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7615bc76_137ccec6",
+        "filename": "g3doc/become_a_committer.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2021-07-07T12:23:30Z",
+      "side": 1,
+      "message": "with code base -\u003e with the code base",
+      "revId": "686354e747558e7ad135850d5ea47fcfc2fa9270",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0ef7a1a_cf3b1bbc",
+        "filename": "g3doc/become_a_committer.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2021-07-07T12:23:30Z",
+      "side": 1,
+      "message": "\u003c\u003e around the email address (don\u0027t know if markdown insists on \u0026lt; or \\\u003c or something different)",
+      "revId": "686354e747558e7ad135850d5ea47fcfc2fa9270",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15b21462_1aafdaf8",
+        "filename": "g3doc/become_a_committer.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2021-07-07T12:23:30Z",
+      "side": 1,
+      "message": "For readability: () around \"for c++ authors\"",
+      "revId": "686354e747558e7ad135850d5ea47fcfc2fa9270",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d59463eb_d341e1bc",
+        "filename": "g3doc/become_a_committer.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2021-07-07T12:23:30Z",
+      "side": 1,
+      "message": "comma after \"good enough\"",
       "revId": "686354e747558e7ad135850d5ea47fcfc2fa9270",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
