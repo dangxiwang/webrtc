@@ -26,6 +26,10 @@ namespace webrtc {
 class MockPeerConnectionInterface
     : public rtc::RefCountedObject<webrtc::PeerConnectionInterface> {
  public:
+  static rtc::scoped_refptr<MockPeerConnectionInterface> Create() {
+    return new MockPeerConnectionInterface();
+  }
+
   // PeerConnectionInterface
   MOCK_METHOD(rtc::scoped_refptr<StreamCollectionInterface>,
               local_streams,
