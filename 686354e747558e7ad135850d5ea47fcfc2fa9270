@@ -69,6 +69,24 @@
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "40598b83_ef65e78a",
+        "filename": "g3doc/become_a_committer.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 6337
+      },
+      "writtenOn": "2021-07-21T12:31:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "067871cc_e2f887ba",
+      "revId": "686354e747558e7ad135850d5ea47fcfc2fa9270",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "590bf554_8d51e3a7",
@@ -133,6 +151,24 @@
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4696498_5015e074",
+        "filename": "g3doc/become_a_committer.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 6337
+      },
+      "writtenOn": "2021-07-21T12:31:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c94480a_45164805",
+      "revId": "686354e747558e7ad135850d5ea47fcfc2fa9270",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7615bc76_137ccec6",
@@ -150,6 +186,24 @@
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7418470_b4767df7",
+        "filename": "g3doc/become_a_committer.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 6337
+      },
+      "writtenOn": "2021-07-21T12:31:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7615bc76_137ccec6",
+      "revId": "686354e747558e7ad135850d5ea47fcfc2fa9270",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0ef7a1a_cf3b1bbc",
@@ -163,6 +217,24 @@
       "writtenOn": "2021-07-07T12:23:30Z",
       "side": 1,
       "message": "\u003c\u003e around the email address (don\u0027t know if markdown insists on \u0026lt; or \\\u003c or something different)",
+      "revId": "686354e747558e7ad135850d5ea47fcfc2fa9270",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e032417e_26a6c773",
+        "filename": "g3doc/become_a_committer.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 6337
+      },
+      "writtenOn": "2021-07-21T12:31:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0ef7a1a_cf3b1bbc",
       "revId": "686354e747558e7ad135850d5ea47fcfc2fa9270",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
@@ -197,6 +269,24 @@
       "writtenOn": "2021-07-07T12:23:30Z",
       "side": 1,
       "message": "comma after \"good enough\"",
+      "revId": "686354e747558e7ad135850d5ea47fcfc2fa9270",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9a2cf30_85a52f99",
+        "filename": "g3doc/become_a_committer.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 6337
+      },
+      "writtenOn": "2021-07-21T12:31:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d59463eb_d341e1bc",
       "revId": "686354e747558e7ad135850d5ea47fcfc2fa9270",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
