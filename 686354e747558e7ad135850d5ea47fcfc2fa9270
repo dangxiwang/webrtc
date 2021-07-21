@@ -52,6 +52,24 @@
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c14e406b_97bf247f",
+        "filename": "docs/faq.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 6337
+      },
+      "writtenOn": "2021-07-21T12:34:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f841a955_82a66e03",
+      "revId": "686354e747558e7ad135850d5ea47fcfc2fa9270",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "067871cc_e2f887ba",
@@ -252,6 +270,24 @@
       "writtenOn": "2021-07-07T12:23:30Z",
       "side": 1,
       "message": "For readability: () around \"for c++ authors\"",
+      "revId": "686354e747558e7ad135850d5ea47fcfc2fa9270",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57fdc469_d3811504",
+        "filename": "g3doc/become_a_committer.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 6337
+      },
+      "writtenOn": "2021-07-21T12:34:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15b21462_1aafdaf8",
       "revId": "686354e747558e7ad135850d5ea47fcfc2fa9270",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
