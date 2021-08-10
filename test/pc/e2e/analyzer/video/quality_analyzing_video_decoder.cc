@@ -226,6 +226,7 @@ void QualityAnalyzingVideoDecoder::OnFrameDecoded(
   // image.
   frame->set_id(frame_id);
   VideoQualityAnalyzerInterface::DecoderStats stats;
+  stats.decoder_name = delegate_->GetDecoderInfo().ToString();
   stats.decode_time_ms = decode_time_ms;
   analyzer_->OnFrameDecoded(peer_name_, *frame, stats);
 }

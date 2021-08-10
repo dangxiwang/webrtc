@@ -275,6 +275,7 @@ EncodedImageCallback::Result QualityAnalyzingVideoEncoder::OnEncodedImage(
     // Analyzer should see only encoded images, that weren't discarded. But all
     // not discarded layers have to be passed.
     VideoQualityAnalyzerInterface::EncoderStats stats;
+    stats.encoder_name = delegate_->GetEncoderInfo().ToString();
     stats.target_encode_bitrate = target_encode_bitrate;
     analyzer_->OnFrameEncoded(peer_name_, frame_id, encoded_image, stats);
   }
