@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "601d161a_a23b1cb8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6337
+      },
+      "writtenOn": "2021-08-10T19:35:18Z",
+      "side": 1,
+      "message": "Example output:\nVP8 simulcast:\n(default_video_quality_analyzer.cc:62): [alice-simulcast_alice_bob] Used encoder: \"EncoderInfo { ScalingSettings { min_pixels_per_frame \u003d 57600 }, requested_resolution_alignment \u003d 1, apply_alignment_to_all_simulcast_layers \u003d 0, supports_native_handle \u003d 0, implementation_name \u003d \u0027libvpx\u0027, has_trusted_rate_controller \u003d 1, is_hardware_accelerated \u003d 0, has_internal_source \u003d 0, fps_allocation \u003d [[ 0.247059, 0.498039, 1] , [ 0.247059, 0.498039, 1] ], resolution_bitrate_limits \u003d [] , supports_simulcast \u003d 1, preferred_pixel_formats \u003d [kI420, kNV12]}\" used from (frame_id\u003d1; from_stream_start\u003d136ms, from_call_start\u003d205ms) until (frame_id\u003d31; from_stream_start\u003d2078ms, from_call_start\u003d2146ms)\n(default_video_quality_analyzer.cc:77): [alice-simulcast_alice_bob] Used decoder: DecoderInfo { prefers_late_decoding \u003d implementation_name \u003d \u0027libvpx\u0027, is_hardware_accelerated \u003d false }; used from (frame_id\u003d1; from_stream_start\u003d146ms, from_call_start\u003d215ms) until (frame_id\u003d31; from_stream_start\u003d2093ms, from_call_start\u003d2162ms)\n\nVP9 SVC:\n(default_video_quality_analyzer.cc:62): [alice-svc_alice_bob] Used encoder: \"EncoderInfo { ScalingSettings { min_pixels_per_frame \u003d 57600 }, requested_resolution_alignment \u003d 1, apply_alignment_to_all_simulcast_layers \u003d 0, supports_native_handle \u003d 0, implementation_name \u003d \u0027libvpx\u0027, has_trusted_rate_controller \u003d 1, is_hardware_accelerated \u003d 0, has_internal_source \u003d 0, fps_allocation \u003d [[ 0.247059, 0.498039, 1] , [ 0.247059, 0.498039, 1] ], resolution_bitrate_limits \u003d [] , supports_simulcast \u003d 0, preferred_pixel_formats \u003d [kI420, kNV12]}\" used from (frame_id\u003d1; from_stream_start\u003d116ms, from_call_start\u003d185ms) until (frame_id\u003d30; from_stream_start\u003d2009ms, from_call_start\u003d2078ms)\n(default_video_quality_analyzer.cc:77): [alice-svc_alice_bob] Used decoder: DecoderInfo { prefers_late_decoding \u003d implementation_name \u003d \u0027libvpx\u0027, is_hardware_accelerated \u003d false }; used from (frame_id\u003d1; from_stream_start\u003d135ms, from_call_start\u003d204ms) until (frame_id\u003d30; from_stream_start\u003d2048ms, from_call_start\u003d2117ms)",
+      "revId": "ea72a7cae7268bfcad1dd1fc97536241ebd00121",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
