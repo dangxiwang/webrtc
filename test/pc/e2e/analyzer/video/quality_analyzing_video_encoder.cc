@@ -168,44 +168,44 @@ void QualityAnalyzingVideoEncoder::SetRates(
     return delegate_->SetRates(parameters);
   }
 
-  // Simulating encoder overshooting target bitrate, by configuring actual
-  // encoder too high. Take care not to adjust past limits of config,
-  // otherwise encoders may crash on DCHECK.
-  VideoBitrateAllocation multiplied_allocation;
-  for (size_t si = 0; si < kMaxSpatialLayers; ++si) {
-    const uint32_t spatial_layer_bitrate_bps =
-        parameters.bitrate.GetSpatialLayerSum(si);
-    if (spatial_layer_bitrate_bps == 0) {
-      continue;
-    }
-
-    uint32_t min_bitrate_bps;
-    uint32_t max_bitrate_bps;
-    std::tie(min_bitrate_bps, max_bitrate_bps) =
-        GetMinMaxBitratesBps(codec_settings_, si);
-    double bitrate_multiplier = bitrate_multiplier_;
-    const uint32_t corrected_bitrate = rtc::checked_cast<uint32_t>(
-        bitrate_multiplier * spatial_layer_bitrate_bps);
-    if (corrected_bitrate < min_bitrate_bps) {
-      bitrate_multiplier = min_bitrate_bps / spatial_layer_bitrate_bps;
-    } else if (corrected_bitrate > max_bitrate_bps) {
-      bitrate_multiplier = max_bitrate_bps / spatial_layer_bitrate_bps;
-    }
-
-    for (size_t ti = 0; ti < kMaxTemporalStreams; ++ti) {
-      if (parameters.bitrate.HasBitrate(si, ti)) {
-        multiplied_allocation.SetBitrate(
-            si, ti,
-            rtc::checked_cast<uint32_t>(bitrate_multiplier *
-                                        parameters.bitrate.GetBitrate(si, ti)));
-      }
-    }
-  }
-
   RateControlParameters adjusted_params = parameters;
-  adjusted_params.bitrate = multiplied_allocation;
   {
     MutexLock lock(&lock_);
+    // Simulating encoder overshooting target bitrate, by configuring actual
+    // encoder too high. Take care not to adjust past limits of config,
+    // otherwise encoders may crash on DCHECK.
+    VideoBitrateAllocation multiplied_allocation;
+    for (size_t si = 0; si < kMaxSpatialLayers; ++si) {
+      const uint32_t spatial_layer_bitrate_bps =
+          parameters.bitrate.GetSpatialLayerSum(si);
+      if (spatial_layer_bitrate_bps == 0) {
+        continue;
+      }
+
+      uint32_t min_bitrate_bps;
+      uint32_t max_bitrate_bps;
+      std::tie(min_bitrate_bps, max_bitrate_bps) =
+          GetMinMaxBitratesBps(codec_settings_, si);
+      double bitrate_multiplier = bitrate_multiplier_;
+      const uint32_t corrected_bitrate = rtc::checked_cast<uint32_t>(
+          bitrate_multiplier * spatial_layer_bitrate_bps);
+      if (corrected_bitrate < min_bitrate_bps) {
+        bitrate_multiplier = min_bitrate_bps / spatial_layer_bitrate_bps;
+      } else if (corrected_bitrate > max_bitrate_bps) {
+        bitrate_multiplier = max_bitrate_bps / spatial_layer_bitrate_bps;
+      }
+
+      for (size_t ti = 0; ti < kMaxTemporalStreams; ++ti) {
+        if (parameters.bitrate.HasBitrate(si, ti)) {
+          multiplied_allocation.SetBitrate(
+              si, ti,
+              rtc::checked_cast<uint32_t>(
+                  bitrate_multiplier * parameters.bitrate.GetBitrate(si, ti)));
+        }
+      }
+    }
+
+    adjusted_params.bitrate = multiplied_allocation;
     bitrate_allocation_ = adjusted_params.bitrate;
   }
   return delegate_->SetRates(adjusted_params);
@@ -234,6 +234,7 @@ EncodedImageCallback::Result QualityAnalyzingVideoEncoder::OnEncodedImage(
   uint16_t frame_id;
   bool discard = false;
   uint32_t target_encode_bitrate = 0;
+  std::string codec_name;
   {
     MutexLock lock(&lock_);
     std::pair<uint32_t, uint16_t> timestamp_frame_id;
@@ -269,12 +270,14 @@ EncodedImageCallback::Result QualityAnalyzingVideoEncoder::OnEncodedImage(
       target_encode_bitrate = bitrate_allocation_.GetSpatialLayerSum(
           encoded_image.SpatialIndex().value_or(0));
     }
+    codec_name = CodecTypeToPayloadString(codec_settings_.codecType);
   }
 
   if (!discard) {
     // Analyzer should see only encoded images, that weren't discarded. But all
     // not discarded layers have to be passed.
     VideoQualityAnalyzerInterface::EncoderStats stats;
+    stats.encoder_name = codec_name;
     stats.target_encode_bitrate = target_encode_bitrate;
     analyzer_->OnFrameEncoded(peer_name_, frame_id, encoded_image, stats);
   }

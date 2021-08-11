@@ -152,7 +152,7 @@ class QualityAnalyzingVideoEncoder : public VideoEncoder,
   // from received VideoFrame to resulted EncodedImage.
   Mutex lock_;
 
-  VideoCodec codec_settings_;
+  VideoCodec codec_settings_ RTC_GUARDED_BY(lock_);
   SimulcastMode mode_ RTC_GUARDED_BY(lock_);
   EncodedImageCallback* delegate_callback_ RTC_GUARDED_BY(lock_);
   std::list<std::pair<uint32_t, uint16_t>> timestamp_to_frame_id_list_
