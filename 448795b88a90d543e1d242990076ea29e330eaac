@@ -18,6 +18,24 @@
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03079fcc_e3d831d1",
+        "filename": "test/pc/e2e/analyzer/video/default_video_quality_analyzer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 6337
+      },
+      "writtenOn": "2021-08-11T15:13:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a01e71f_40594ac2",
+      "revId": "448795b88a90d543e1d242990076ea29e330eaac",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01a973e5_c728772a",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-08-11T10:28:57Z",
       "side": 1,
       "message": "Ditto.",
+      "revId": "448795b88a90d543e1d242990076ea29e330eaac",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9d070ea_3657344a",
+        "filename": "test/pc/e2e/analyzer/video/default_video_quality_analyzer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 6337
+      },
+      "writtenOn": "2021-08-11T15:13:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01a973e5_c728772a",
       "revId": "448795b88a90d543e1d242990076ea29e330eaac",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
@@ -58,6 +94,30 @@
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a6bf490_9c6a4e05",
+        "filename": "test/pc/e2e/analyzer/video/quality_analyzing_video_decoder.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 6337
+      },
+      "writtenOn": "2021-08-11T15:13:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0ebff20_01f3394e",
+      "range": {
+        "startLine": 235,
+        "startChar": 2,
+        "endLine": 235,
+        "endChar": 33
+      },
+      "revId": "448795b88a90d543e1d242990076ea29e330eaac",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b3d10e9c_a5f0a70c",
@@ -71,6 +131,30 @@
       "writtenOn": "2021-08-11T10:28:57Z",
       "side": 1,
       "message": "Strictly speaking, this isn\u0027t encoder name, this is codec name.\n\nAlso, you will get only vp8/vp9 and coudn\u0027t distinguish between encoder implementation (\"libvpx\" vs \"external (va-api)\"). This is important for software fallback stats etc.\n\nI suggest you append delegate_-\u003eGetEncoderInfo().implementation_name at least.",
+      "range": {
+        "startLine": 280,
+        "startChar": 10,
+        "endLine": 280,
+        "endChar": 23
+      },
+      "revId": "448795b88a90d543e1d242990076ea29e330eaac",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76b0c340_ae1904d7",
+        "filename": "test/pc/e2e/analyzer/video/quality_analyzing_video_encoder.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 6337
+      },
+      "writtenOn": "2021-08-11T15:13:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3d10e9c_a5f0a70c",
       "range": {
         "startLine": 280,
         "startChar": 10,

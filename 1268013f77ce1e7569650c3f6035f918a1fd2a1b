@@ -18,6 +18,24 @@
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cb0e273_50863653",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6337
+      },
+      "writtenOn": "2021-08-11T15:13:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4ffd695_e39d722a",
+      "revId": "1268013f77ce1e7569650c3f6035f918a1fd2a1b",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c5afd15_2fa4ca4b",
@@ -41,6 +59,30 @@
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "510ae357_edd3b65a",
+        "filename": "test/pc/e2e/analyzer/video/default_video_quality_analyzer.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1202,
+      "author": {
+        "id": 6337
+      },
+      "writtenOn": "2021-08-11T15:13:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c5afd15_2fa4ca4b",
+      "range": {
+        "startLine": 1202,
+        "startChar": 24,
+        "endLine": 1202,
+        "endChar": 28
+      },
+      "revId": "1268013f77ce1e7569650c3f6035f918a1fd2a1b",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "36742b23_87f189e6",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-08-11T10:28:54Z",
       "side": 1,
       "message": "codec_name? (shorter and I am not sure \"type\" has real meaning here)",
+      "range": {
+        "startLine": 116,
+        "startChar": 14,
+        "endLine": 116,
+        "endChar": 30
+      },
+      "revId": "1268013f77ce1e7569650c3f6035f918a1fd2a1b",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b9e7fe4_d54e021f",
+        "filename": "test/pc/e2e/analyzer/video/quality_analyzing_video_decoder.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 6337
+      },
+      "writtenOn": "2021-08-11T15:13:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36742b23_87f189e6",
       "range": {
         "startLine": 116,
         "startChar": 14,
