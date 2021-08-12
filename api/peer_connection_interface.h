@@ -437,8 +437,9 @@ class RTC_EXPORT PeerConnectionInterface : public rtc::RefCountInterface {
     // The below fields are not part of the standard.
     /////////////////////////////////////////////////
 
-    // Can be used to disable TCP candidate generation.
-    TcpCandidatePolicy tcp_candidate_policy = kTcpCandidatePolicyEnabled;
+    // Can be used to enable generation of passive TCP candidates (i.e.
+    // listening sockets)
+    TcpCandidatePolicy tcp_candidate_policy = kTcpCandidatePolicyDisabled;
 
     // Can be used to avoid gathering candidates for a "higher cost" network,
     // if a lower cost one exists. For example, if both Wi-Fi and cellular

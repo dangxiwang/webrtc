@@ -411,6 +411,10 @@ TEST_F(PeerConnectionRampUpTest, Bwe_After_UDPPeerToPeer) {
 }
 
 TEST_F(PeerConnectionRampUpTest, Bwe_After_TCPPeerToPeer) {
+  client_1_config.tcp_candidate_policy =
+      PeerConnection::kTcpCandidatePolicyEnabled;
+  client_1_config.tcp_candidate_policy =
+      PeerConnection::kTcpCandidatePolicyEnabled;
   firewall_socket_server()->set_udp_sockets_enabled(false);
   ASSERT_TRUE(CreatePeerConnectionWrappers(
       PeerConnectionInterface::RTCConfiguration(),
