@@ -97,7 +97,7 @@ PortAllocator::PortAllocator()
       max_port_(0),
       max_ipv6_networks_(kDefaultMaxIPv6Networks),
       step_delay_(kDefaultStepDelay),
-      allow_tcp_listen_(true),
+      allow_tcp_listen_(false),
       candidate_filter_(CF_ALL) {
   // The allocator will be attached to a thread in Initialize.
   thread_checker_.Detach();
