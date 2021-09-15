@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "411e57d0_47d18b05",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5087
+      },
+      "writtenOn": "2021-09-15T14:26:39Z",
+      "side": 1,
+      "message": "LGTM.\n\nI don\u0027t own this new file (https://source.chromium.org/chromium/_/webrtc/src.git/+/225cd47445736285c767977fa7c9365bbc4614d7:OWNERS;l\u003d12;drc\u003db7a74c3805ce1489bb525de2020e80aa7dbbb5fe), can you also add me and maybe you as owners in this CL and then send it to hta@?",
+      "revId": "39982a828a10ecb8d3c873fee1fb9b564b037783",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
