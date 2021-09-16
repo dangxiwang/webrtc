@@ -122,6 +122,16 @@ webrtc_fuzzer_test("h264_bitstream_parser_fuzzer") {
   ]
 }
 
+webrtc_fuzzer_test("h264_pps_parser_fuzzer") {
+  sources = [ "h264_pps_parser_fuzzer.cc" ]
+  deps = [ "../../common_video" ]
+}
+
+webrtc_fuzzer_test("h264_sps_parser_fuzzer") {
+  sources = [ "h264_sps_parser_fuzzer.cc" ]
+  deps = [ "../../common_video" ]
+}
+
 webrtc_fuzzer_test("forward_error_correction_fuzzer") {
   sources = [ "forward_error_correction_fuzzer.cc" ]
   deps = [
