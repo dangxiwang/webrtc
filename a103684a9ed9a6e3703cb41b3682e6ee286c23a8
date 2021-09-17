@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1b8d82d4_bb47cdad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5527
+      },
+      "writtenOn": "2021-09-17T14:08:45Z",
+      "side": 1,
+      "message": "1) Doesn\u0027t have to be separate CLS, just thinking it was cleaner to land them separately. Maybe it\u0027s just causing more confusion instead :)\n2) Better answered in the related CL; TLDR, it\u0027s consistent.",
+      "parentUuid": "eb27fa09_4febebbb",
+      "revId": "a103684a9ed9a6e3703cb41b3682e6ee286c23a8",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "954e2f40_bd5eab38",
         "filename": "modules/rtp_rtcp/source/rtp_packet.h",
         "patchSetId": 2
@@ -115,6 +133,30 @@
       "side": 1,
       "message": "sorry, I mistyped, I didn\u0027t mean to suggest to remove enable_if_t line, just \u0027T\u0027 parameter, i.e.\n  template \u003c\n      typename std::enable_if_t\u003c\n          !std::is_convertible\u003crtc::ArrayView\u003cconst uint8_t\u003e,\n                               rtc::CopyOnWriteBuffer\u003e::value\u003e* \u003d nullptr\u003e\n  bool Parse(rtc::ArrayView\u003cconst uint8_t\u003e packet) {\n    return Parse(packet.data(), packet.size());\n  }\n  \n(though that is a minor comment, if that doesn\u0027t work with some compiler, then do not bother)",
       "parentUuid": "579cf60c_86ccc31d",
+      "range": {
+        "startLine": 51,
+        "startChar": 6,
+        "endLine": 51,
+        "endChar": 49
+      },
+      "revId": "a103684a9ed9a6e3703cb41b3682e6ee286c23a8",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "769ac20e_453a6411",
+        "filename": "modules/rtp_rtcp/source/rtp_packet.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 5527
+      },
+      "writtenOn": "2021-09-17T14:08:45Z",
+      "side": 1,
+      "message": "That doesn\u0027t work unfortunately",
+      "parentUuid": "6d4bd85f_4133ae84",
       "range": {
         "startLine": 51,
         "startChar": 6,
