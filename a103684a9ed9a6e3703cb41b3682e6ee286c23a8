@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab2b8f11_26e3980c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2021-09-17T13:11:15Z",
+      "side": 1,
+      "message": "why do you need this temporary solution?\ncan\u0027t you remove this Parse version same change rtc::CowBuffer gets implicit conversion from rtc::ArrayView ?\n\n",
+      "revId": "a103684a9ed9a6e3703cb41b3682e6ee286c23a8",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "954e2f40_bd5eab38",
+        "filename": "modules/rtp_rtcp/source/rtp_packet.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2021-09-17T13:11:15Z",
+      "side": 1,
+      "message": "you don\u0027t need this parameter (because it is not used in the Parse signature):\n\n  template \u003c\n  std::is_convertible\u003crtc::ArrayView\u003cconst uint8_t\u003e, \n                      rtc::CopyOnWriteBuffer\u003e::value\u003e* \u003d nullptr\u003e\n  bool Parse(rtc::ArrayView\u003cconst uint8_t\u003e)",
+      "range": {
+        "startLine": 51,
+        "startChar": 6,
+        "endLine": 51,
+        "endChar": 49
+      },
+      "revId": "a103684a9ed9a6e3703cb41b3682e6ee286c23a8",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2992a8c_6c61a2f5",
+        "filename": "modules/rtp_rtcp/source/rtp_packet.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2021-09-17T13:11:15Z",
+      "side": 1,
+      "message": "this version is slightly different to the Parse(CowBuffer): it doesn\u0027t do any memcpy when parse fails. \nBut I guess that difference is not that important to keep the overload.",
+      "range": {
+        "startLine": 54,
+        "startChar": 7,
+        "endLine": 54,
+        "endChar": 50
+      },
+      "revId": "a103684a9ed9a6e3703cb41b3682e6ee286c23a8",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
