@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eb27fa09_4febebbb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2021-09-17T13:44:19Z",
+      "side": 1,
+      "message": "sorry, I still do not understand:\n1) why this change and change to CowBuffer need to be two separate CLs?\n2) why CowBuffer constructor that accepts rtc::ArrayView-like object needs to be implicit (e.g. why conversion from absl::Span to CowBuffer needs to be implicit?)",
+      "parentUuid": "f964da4a_4da3ef65",
+      "revId": "a103684a9ed9a6e3703cb41b3682e6ee286c23a8",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "954e2f40_bd5eab38",
         "filename": "modules/rtp_rtcp/source/rtp_packet.h",
         "patchSetId": 2
@@ -73,6 +91,30 @@
       "side": 1,
       "message": "That doesn\u0027t work, the deduction has to rely on the function level template parameters.\n\nAlso, std::is_convertible always has ::value defined, that\u0027s why I need to use enable_if where the type is only defined if the predicate is true so SFINAE can take place.",
       "parentUuid": "954e2f40_bd5eab38",
+      "range": {
+        "startLine": 51,
+        "startChar": 6,
+        "endLine": 51,
+        "endChar": 49
+      },
+      "revId": "a103684a9ed9a6e3703cb41b3682e6ee286c23a8",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d4bd85f_4133ae84",
+        "filename": "modules/rtp_rtcp/source/rtp_packet.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2021-09-17T13:44:19Z",
+      "side": 1,
+      "message": "sorry, I mistyped, I didn\u0027t mean to suggest to remove enable_if_t line, just \u0027T\u0027 parameter, i.e.\n  template \u003c\n      typename std::enable_if_t\u003c\n          !std::is_convertible\u003crtc::ArrayView\u003cconst uint8_t\u003e,\n                               rtc::CopyOnWriteBuffer\u003e::value\u003e* \u003d nullptr\u003e\n  bool Parse(rtc::ArrayView\u003cconst uint8_t\u003e packet) {\n    return Parse(packet.data(), packet.size());\n  }\n  \n(though that is a minor comment, if that doesn\u0027t work with some compiler, then do not bother)",
+      "parentUuid": "579cf60c_86ccc31d",
       "range": {
         "startLine": 51,
         "startChar": 6,
