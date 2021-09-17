@@ -18,6 +18,24 @@
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f964da4a_4da3ef65",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5527
+      },
+      "writtenOn": "2021-09-17T13:27:43Z",
+      "side": 1,
+      "message": "I can\u0027t land my COW change since Parse calls becomes ambiguous when absl::Span is used (can now implicitly convert to both rtc::ArrayView and rtc::CopyOnWriteBuffer), so that\u0027s why I need to land this first.\n\nAfter this and the COW change has landed I can remove this signature.",
+      "parentUuid": "ab2b8f11_26e3980c",
+      "revId": "a103684a9ed9a6e3703cb41b3682e6ee286c23a8",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "954e2f40_bd5eab38",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-09-17T13:11:15Z",
       "side": 1,
       "message": "you don\u0027t need this parameter (because it is not used in the Parse signature):\n\n  template \u003c\n  std::is_convertible\u003crtc::ArrayView\u003cconst uint8_t\u003e, \n                      rtc::CopyOnWriteBuffer\u003e::value\u003e* \u003d nullptr\u003e\n  bool Parse(rtc::ArrayView\u003cconst uint8_t\u003e)",
+      "range": {
+        "startLine": 51,
+        "startChar": 6,
+        "endLine": 51,
+        "endChar": 49
+      },
+      "revId": "a103684a9ed9a6e3703cb41b3682e6ee286c23a8",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "579cf60c_86ccc31d",
+        "filename": "modules/rtp_rtcp/source/rtp_packet.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 5527
+      },
+      "writtenOn": "2021-09-17T13:27:43Z",
+      "side": 1,
+      "message": "That doesn\u0027t work, the deduction has to rely on the function level template parameters.\n\nAlso, std::is_convertible always has ::value defined, that\u0027s why I need to use enable_if where the type is only defined if the predicate is true so SFINAE can take place.",
+      "parentUuid": "954e2f40_bd5eab38",
       "range": {
         "startLine": 51,
         "startChar": 6,
