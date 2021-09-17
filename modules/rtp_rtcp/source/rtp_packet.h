@@ -45,7 +45,15 @@ class RtpPacket {
   // read or allocate extensions in methods GetExtension, AllocateExtension,
   // etc.)
   bool Parse(const uint8_t* buffer, size_t size);
-  bool Parse(rtc::ArrayView<const uint8_t> packet);
+
+  // TODO(philipel): Remove when COW can be instantiated form an ArrayView.
+  template <
+      typename T = rtc::ArrayView<const uint8_t>,
+      typename std::enable_if_t<
+          !std::is_convertible<T, rtc::CopyOnWriteBuffer>::value>* = nullptr>
+  bool Parse(rtc::ArrayView<const uint8_t> packet) {
+    return Parse(packet.data(), packet.size());
+  }
 
   // Parse and move given buffer into Packet.
   bool Parse(rtc::CopyOnWriteBuffer packet);
