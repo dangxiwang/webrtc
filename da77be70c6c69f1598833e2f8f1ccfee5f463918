@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e124acc_83b86f86",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5609
+      },
+      "writtenOn": "2021-10-07T14:13:30Z",
+      "side": 1,
+      "message": "LGTM, this is in practice enabled already.",
+      "revId": "da77be70c6c69f1598833e2f8f1ccfee5f463918",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
