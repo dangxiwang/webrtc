@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8d505f5_5ec09c2e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2021-10-20T13:44:10Z",
+      "side": 1,
+      "message": "PTAL. Intended to only affect test code.",
+      "revId": "acbbe0ea0ae51a907c768d49bb2c05d9ac23bb5c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
