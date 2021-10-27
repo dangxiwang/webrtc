@@ -231,7 +231,11 @@ class VideoStreamEncoder : public VideoStreamEncoderInterface,
   // Reports UMAs on frame rate constraints usage on the first call.
   void MaybeReportFrameRateConstraintUmas() RTC_RUN_ON(&encoder_queue_);
 
-  TaskQueueBase* const main_queue_;
+  // Use from network queue context. Updates the context if unset, and if
+  // already set DCHECKs that we're on it.
+  void UpdateOrCheckRunningOnNetwork();
+
+  TaskQueueBase* const worker_queue_;
 
   const uint32_t number_of_cores_;
 
@@ -243,10 +247,11 @@ class VideoStreamEncoder : public VideoStreamEncoderInterface,
   std::unique_ptr<VideoEncoderFactory::EncoderSelectorInterface> const
       encoder_selector_;
   VideoStreamEncoderObserver* const encoder_stats_observer_;
+  TaskQueueBase* network_queue_ = nullptr;
 
   // The source's constraints.
   absl::optional<VideoTrackSourceConstraints> source_constraints_
-      RTC_GUARDED_BY(main_queue_);
+      RTC_GUARDED_BY(worker_queue_);
   bool has_reported_screenshare_frame_rate_umas_
       RTC_GUARDED_BY(&encoder_queue_) = false;
 
@@ -284,16 +289,13 @@ class VideoStreamEncoder : public VideoStreamEncoderInterface,
   bool encoder_failed_ RTC_GUARDED_BY(&encoder_queue_);
   Clock* const clock_;
 
-  rtc::RaceChecker incoming_frame_race_checker_
-      RTC_GUARDED_BY(incoming_frame_race_checker_);
   std::atomic<int> posted_frames_waiting_for_encode_;
   // Used to make sure incoming time stamp is increasing for every frame.
-  int64_t last_captured_timestamp_ RTC_GUARDED_BY(incoming_frame_race_checker_);
+  int64_t last_captured_timestamp_ RTC_GUARDED_BY(network_queue_);
   // Delta used for translating between NTP and internal timestamps.
-  const int64_t delta_ntp_internal_ms_
-      RTC_GUARDED_BY(incoming_frame_race_checker_);
+  const int64_t delta_ntp_internal_ms_ RTC_GUARDED_BY(network_queue_);
 
-  int64_t last_frame_log_ms_ RTC_GUARDED_BY(incoming_frame_race_checker_);
+  int64_t last_frame_log_ms_ RTC_GUARDED_BY(network_queue_);
   int captured_frame_count_ RTC_GUARDED_BY(&encoder_queue_);
   int dropped_frame_cwnd_pushback_count_ RTC_GUARDED_BY(&encoder_queue_);
   int dropped_frame_encoder_block_count_ RTC_GUARDED_BY(&encoder_queue_);
@@ -410,7 +412,7 @@ class VideoStreamEncoder : public VideoStreamEncoderInterface,
   // to provide us with different resolution or frame rate.
   // This class is thread-safe.
   VideoSourceSinkController video_source_sink_controller_
-      RTC_GUARDED_BY(main_queue_);
+      RTC_GUARDED_BY(worker_queue_);
 
   // Default bitrate limits in EncoderInfoSettings allowed.
   const bool default_limits_allowed_;
