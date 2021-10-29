@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2612c920_cdd60834",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2021-10-29T14:44:54Z",
+      "side": 1,
+      "message": "Some drive-by comments.",
+      "revId": "ca3e3a5b73415898be4d479271d1acf127d60b85",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7c58307_3060fab7",
+        "filename": "video/video_stream_encoder.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1276,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2021-10-29T14:44:54Z",
+      "side": 1,
+      "message": "This is underdocumented, but I think it\u0027s a reasonable requirement on a VideoSourceInterface that it won\u0027t call a sink\u0027s OnFrame method until the previous call to OnFrame has returned.\n\nIf the VideoBroadcaster is on the frame path, it looks like it enforces that, since it calls OnFrame while holding its `sinks_and_wants_` lock.\n\nBut I see there\u0027s a problem that we do some state updates (e.g.,\n`last_captured_timestamp_`) on the calling thread. Could we change this method to at most do the call\n\nnow \u003d clock_-\u003eCurrentTime() \n\non the calling thread, and move *all* other state access to a task posted to the worker queue? Like we do for, e.g., accumulated_update_rect_? If we do all work in the same task, we get as a bonus some serialization even in the odd case of concurrent calls to OnFrame.",
+      "range": {
+        "startLine": 1275,
+        "startChar": 0,
+        "endLine": 1276,
+        "endChar": 66
+      },
+      "revId": "ca3e3a5b73415898be4d479271d1acf127d60b85",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c91de98_c5f03c6a",
+        "filename": "video/video_stream_encoder.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1387,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2021-10-29T14:44:54Z",
+      "side": 1,
+      "message": "If the only thing we do on the calling thread is to post to the worker_queue_, anyway, why should we care what the calling thread is?\n\nIn general, I think it\u0027s a nice part of the TaskQueue model to be able to have thread agnostic methods like this, and let the code that cares that certain stuff runs on a certain queue (in this case, VSE) be responsible for posting it there.",
+      "range": {
+        "startLine": 1387,
+        "startChar": 0,
+        "endLine": 1387,
+        "endChar": 36
+      },
+      "revId": "ca3e3a5b73415898be4d479271d1acf127d60b85",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
