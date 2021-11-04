@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88064081_32bb8edb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2021-11-04T13:53:34Z",
+      "side": 1,
+      "message": "Found a downstream user. Reverting in the hope of having a smaller merge if we have to reenable the functionality in M97.\n",
+      "revId": "45d44738856618b707f7752f9d8aef556e8da552",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
