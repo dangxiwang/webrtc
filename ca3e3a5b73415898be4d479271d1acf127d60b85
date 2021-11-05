@@ -41,6 +41,30 @@
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7169a3cf_98761eae",
+        "filename": "video/video_stream_encoder.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1276,
+      "author": {
+        "id": 9515
+      },
+      "writtenOn": "2021-11-05T09:09:44Z",
+      "side": 1,
+      "message": "Moving processing to the worker thread is handled on https://webrtc-review.googlesource.com/c/src/+/237142.",
+      "parentUuid": "a7c58307_3060fab7",
+      "range": {
+        "startLine": 1275,
+        "startChar": 0,
+        "endLine": 1276,
+        "endChar": 66
+      },
+      "revId": "ca3e3a5b73415898be4d479271d1acf127d60b85",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1c91de98_c5f03c6a",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-10-29T14:44:54Z",
       "side": 1,
       "message": "If the only thing we do on the calling thread is to post to the worker_queue_, anyway, why should we care what the calling thread is?\n\nIn general, I think it\u0027s a nice part of the TaskQueue model to be able to have thread agnostic methods like this, and let the code that cares that certain stuff runs on a certain queue (in this case, VSE) be responsible for posting it there.",
+      "range": {
+        "startLine": 1387,
+        "startChar": 0,
+        "endLine": 1387,
+        "endChar": 36
+      },
+      "revId": "ca3e3a5b73415898be4d479271d1acf127d60b85",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "836c134d_81fc2d4e",
+        "filename": "video/video_stream_encoder.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1387,
+      "author": {
+        "id": 9515
+      },
+      "writtenOn": "2021-11-05T09:09:44Z",
+      "side": 1,
+      "message": "I had an earlier review comment disliking the \"this is the networking thread\" statement didn\u0027t have checks in the code. I was going to make further use of the networking queue context in the VSE but I\u0027m not 100% sure anymore given the inception of the frame cadence adapter.",
+      "parentUuid": "1c91de98_c5f03c6a",
       "range": {
         "startLine": 1387,
         "startChar": 0,
