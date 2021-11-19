@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d848fb0_7500706f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 12234
+      },
+      "writtenOn": "2021-11-19T10:44:18Z",
+      "side": 1,
+      "message": "I split up https://webrtc-review.googlesource.com/c/src/+/238000 in 2 in order to fix the presubmit failure.",
+      "revId": "08cd9f0ceb1d573eb0a137a590ef15fc09c31c02",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
