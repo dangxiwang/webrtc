@@ -78,11 +78,11 @@ rtc::scoped_refptr<PeerConnectionFactoryInterface> CreatePeerConnectionFactory(
 rtc::scoped_refptr<PeerConnectionInterface> CreatePeerConnection(
     const rtc::scoped_refptr<PeerConnectionFactoryInterface>& pcf,
     PeerConnectionObserver* observer,
-    rtc::NetworkManager* network_manager,
+    EmulatedNetworkManagerInterface* network,
     EmulatedTURNServerInterface* turn_server = nullptr) {
   PeerConnectionDependencies pc_deps(observer);
-  auto port_allocator =
-      std::make_unique<cricket::BasicPortAllocator>(network_manager);
+  auto port_allocator = std::make_unique<cricket::BasicPortAllocator>(
+      network->network_manager(), network->packet_socket_factory());
 
   // This test does not support TCP
   int flags = cricket::PORTALLOCATOR_DISABLE_TCP;
@@ -147,13 +147,12 @@ TEST(NetworkEmulationManagerPCTest, Run) {
   signaling_thread->Invoke<void>(RTC_FROM_HERE, [&]() {
     alice_pcf = CreatePeerConnectionFactory(signaling_thread.get(),
                                             alice_network->network_thread());
-    alice_pc = CreatePeerConnection(alice_pcf, alice_observer.get(),
-                                    alice_network->network_manager());
+    alice_pc =
+        CreatePeerConnection(alice_pcf, alice_observer.get(), alice_network);
 
     bob_pcf = CreatePeerConnectionFactory(signaling_thread.get(),
                                           bob_network->network_thread());
-    bob_pc = CreatePeerConnection(bob_pcf, bob_observer.get(),
-                                  bob_network->network_manager());
+    bob_pc = CreatePeerConnection(bob_pcf, bob_observer.get(), bob_network);
   });
 
   std::unique_ptr<PeerConnectionWrapper> alice =
@@ -255,14 +254,13 @@ TEST(NetworkEmulationManagerPCTest, RunTURN) {
   signaling_thread->Invoke<void>(RTC_FROM_HERE, [&]() {
     alice_pcf = CreatePeerConnectionFactory(signaling_thread.get(),
                                             alice_network->network_thread());
-    alice_pc =
-        CreatePeerConnection(alice_pcf, alice_observer.get(),
-                             alice_network->network_manager(), alice_turn);
+    alice_pc = CreatePeerConnection(alice_pcf, alice_observer.get(),
+                                    alice_network, alice_turn);
 
     bob_pcf = CreatePeerConnectionFactory(signaling_thread.get(),
                                           bob_network->network_thread());
-    bob_pc = CreatePeerConnection(bob_pcf, bob_observer.get(),
-                                  bob_network->network_manager(), bob_turn);
+    bob_pc = CreatePeerConnection(bob_pcf, bob_observer.get(), bob_network,
+                                  bob_turn);
   });
 
   std::unique_ptr<PeerConnectionWrapper> alice =
