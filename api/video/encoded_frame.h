@@ -14,6 +14,8 @@
 #include <stddef.h>
 #include <stdint.h>
 
+#include <iostream>
+
 #include "modules/video_coding/encoded_frame.h"
 
 namespace webrtc {
@@ -52,6 +54,11 @@ class EncodedFrame : public webrtc::VCMEncodedFrame {
   // Is this subframe the last one in the superframe (In RTP stream that would
   // mean that the last packet has a marker bit set).
   bool is_last_spatial_layer = true;
+
+  friend void PrintTo(const EncodedFrame& frame, std::ostream* os) {
+    *os << "Frame with id(" << frame.Id()
+        << ") and render-time=" << frame.RenderTime() << "ms";
+  }
 
  private:
   // The ID of the frame is determined from RTP level information. The IDs are

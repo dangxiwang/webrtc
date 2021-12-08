@@ -16,9 +16,12 @@
 #include <memory>
 #include <vector>
 
+#include "modules/video_coding/frame_buffer2_adapter.h"
+#include "modules/video_coding/frame_buffer2_interface.h"
 #include "modules/video_coding/frame_object.h"
 #include "modules/video_coding/jitter_estimator.h"
 #include "modules/video_coding/timing.h"
+#include "rtc_base/logging.h"
 #include "rtc_base/numerics/sequence_number_util.h"
 #include "rtc_base/platform_thread.h"
 #include "rtc_base/random.h"
@@ -133,7 +136,7 @@ class VCMReceiveStatisticsCallbackMock : public VCMReceiveStatisticsCallback {
               (override));
 };
 
-class TestFrameBuffer2 : public ::testing::Test {
+class TestFrameBuffer2 : public ::testing::TestWithParam<bool> {
  protected:
   static constexpr int kMaxReferences = 5;
   static constexpr int kFps1 = 1000;
@@ -144,17 +147,26 @@ class TestFrameBuffer2 : public ::testing::Test {
   static constexpr DecodeStreamTimeouts kTimeouts{kMaxWait, kMaxWait};
 
   TestFrameBuffer2()
-      : time_controller_(Timestamp::Seconds(0)),
+      : scoped_field_trials_("WebRTC-LegacyFrameIdJumpBehavior/Enabled/"),
+        time_controller_(Timestamp::Seconds(0)),
         time_task_queue_(
             time_controller_.GetTaskQueueFactory()->CreateTaskQueue(
                 "extract queue",
                 TaskQueueFactory::Priority::NORMAL)),
         timing_(time_controller_.GetClock()),
-        buffer_(new FrameBuffer(kTimeouts,
-                                time_controller_.GetClock(),
-                                &timing_,
-                                &stats_callback_)),
-        rand_(0x34678213) {}
+        rand_(0x34678213) {
+    if (GetParam())
+      buffer_ = std::make_unique<FrameBuffer>(
+          kTimeouts, time_controller_.GetClock(), &timing_, &stats_callback_);
+    else
+      buffer_ = std::make_unique<FrameBuffer2Adapter>(
+          kTimeouts, time_controller_.GetClock(), &timing_, &stats_callback_);
+  }
+
+  void TearDown() override {
+    time_task_queue_.PostTask([this] { buffer_->Stop(); });
+    time_controller_.AdvanceTime(TimeDelta::Zero());
+  }
 
   template <typename... T>
   std::unique_ptr<FrameObjectFake> CreateFrame(uint16_t picture_id,
@@ -229,15 +241,17 @@ class TestFrameBuffer2 : public ::testing::Test {
 
   void CheckNoFrame(size_t index) {
     ASSERT_LT(index, frames_.size());
-    ASSERT_FALSE(frames_[index]);
+    ASSERT_FALSE(frames_[index])
+        << "Frame at " << index << " was present. id=" << frames_[index]->Id();
   }
 
   uint32_t Rand() { return rand_.Rand<uint32_t>(); }
 
+  test::ScopedFieldTrials scoped_field_trials_;
   webrtc::GlobalSimulatedTimeController time_controller_;
   rtc::TaskQueue time_task_queue_;
   VCMTimingFake timing_;
-  std::unique_ptr<FrameBuffer> buffer_;
+  std::unique_ptr<FrameBuffer2Interface> buffer_;
   std::vector<std::unique_ptr<EncodedFrame>> frames_;
   Random rand_;
   ::testing::NiceMock<VCMReceiveStatisticsCallbackMock> stats_callback_;
@@ -252,7 +266,7 @@ class TestFrameBuffer2 : public ::testing::Test {
 constexpr size_t TestFrameBuffer2::kFrameSize;
 #endif
 
-TEST_F(TestFrameBuffer2, WaitForFrame) {
+TEST_P(TestFrameBuffer2, WaitForFrame) {
   uint16_t pid = Rand();
   uint32_t ts = Rand();
 
@@ -262,7 +276,7 @@ TEST_F(TestFrameBuffer2, WaitForFrame) {
   CheckFrame(0, pid, 0);
 }
 
-TEST_F(TestFrameBuffer2, ClearWhileWaitingForFrame) {
+TEST_P(TestFrameBuffer2, ClearWhileWaitingForFrame) {
   const uint16_t pid = Rand();
 
   // Insert a frame and wait for it for max 100ms.
@@ -285,7 +299,7 @@ TEST_F(TestFrameBuffer2, ClearWhileWaitingForFrame) {
   CheckFrame(0, new_pid, 0);
 }
 
-TEST_F(TestFrameBuffer2, OneSuperFrame) {
+TEST_P(TestFrameBuffer2, OneSuperFrame) {
   uint16_t pid = Rand();
   uint32_t ts = Rand();
 
@@ -296,7 +310,7 @@ TEST_F(TestFrameBuffer2, OneSuperFrame) {
   CheckFrame(0, pid, 1);
 }
 
-TEST_F(TestFrameBuffer2, ZeroPlayoutDelay) {
+TEST_P(TestFrameBuffer2, ZeroPlayoutDelay) {
   VCMTiming timing(time_controller_.GetClock());
   buffer_ = std::make_unique<FrameBuffer>(
       kTimeouts, time_controller_.GetClock(), &timing, &stats_callback_);
@@ -311,7 +325,7 @@ TEST_F(TestFrameBuffer2, ZeroPlayoutDelay) {
 }
 
 // Flaky test, see bugs.webrtc.org/7068.
-TEST_F(TestFrameBuffer2, DISABLED_OneUnorderedSuperFrame) {
+TEST_P(TestFrameBuffer2, DISABLED_OneUnorderedSuperFrame) {
   uint16_t pid = Rand();
   uint32_t ts = Rand();
 
@@ -324,7 +338,7 @@ TEST_F(TestFrameBuffer2, DISABLED_OneUnorderedSuperFrame) {
   CheckFrame(1, pid, 1);
 }
 
-TEST_F(TestFrameBuffer2, DISABLED_OneLayerStreamReordered) {
+TEST_P(TestFrameBuffer2, DISABLED_OneLayerStreamReordered) {
   uint16_t pid = Rand();
   uint32_t ts = Rand();
 
@@ -344,12 +358,12 @@ TEST_F(TestFrameBuffer2, DISABLED_OneLayerStreamReordered) {
   }
 }
 
-TEST_F(TestFrameBuffer2, ExtractFromEmptyBuffer) {
+TEST_P(TestFrameBuffer2, ExtractFromEmptyBuffer) {
   ExtractFrame();
   CheckNoFrame(0);
 }
 
-TEST_F(TestFrameBuffer2, MissingFrame) {
+TEST_P(TestFrameBuffer2, MissingFrame) {
   uint16_t pid = Rand();
   uint32_t ts = Rand();
 
@@ -365,7 +379,7 @@ TEST_F(TestFrameBuffer2, MissingFrame) {
   CheckNoFrame(2);
 }
 
-TEST_F(TestFrameBuffer2, OneLayerStream) {
+TEST_P(TestFrameBuffer2, OneLayerStream) {
   uint16_t pid = Rand();
   uint32_t ts = Rand();
 
@@ -380,9 +394,9 @@ TEST_F(TestFrameBuffer2, OneLayerStream) {
   }
 }
 
-TEST_F(TestFrameBuffer2, DropTemporalLayerSlowDecoder) {
-  uint16_t pid = Rand();
-  uint32_t ts = Rand();
+TEST_P(TestFrameBuffer2, DropTemporalLayerSlowDecoder) {
+  uint16_t pid = 1000;
+  uint32_t ts = 90000;
 
   InsertFrame(pid, 0, ts, true, kFrameSize);
   InsertFrame(pid + 1, 0, ts + kFps20, true, kFrameSize, pid);
@@ -412,27 +426,34 @@ TEST_F(TestFrameBuffer2, DropTemporalLayerSlowDecoder) {
   CheckNoFrame(9);
 }
 
-TEST_F(TestFrameBuffer2, DropFramesIfSystemIsStalled) {
-  uint16_t pid = Rand();
-  uint32_t ts = Rand();
+TEST_P(TestFrameBuffer2, DropFramesIfSystemIsStalled) {
+  uint16_t pid = 1000;
+  uint32_t ts = 90000;
 
-  InsertFrame(pid, 0, ts, true, kFrameSize);
-  InsertFrame(pid + 1, 0, ts + 1 * kFps10, true, kFrameSize, pid);
-  InsertFrame(pid + 2, 0, ts + 2 * kFps10, true, kFrameSize, pid + 1);
-  InsertFrame(pid + 3, 0, ts + 3 * kFps10, true, kFrameSize);
+  EXPECT_EQ(pid, InsertFrame(pid, 0, ts, true, kFrameSize));
+  EXPECT_EQ(pid + 1,
+            InsertFrame(pid + 1, 0, ts + 1 * kFps10, true, kFrameSize, pid));
+  EXPECT_EQ(pid + 2, InsertFrame(pid + 2, 0, ts + 2 * kFps10, true, kFrameSize,
+                                 pid + 1));
+  EXPECT_EQ(pid + 3,
+            InsertFrame(pid + 3, 0, ts + 3 * kFps10, true, kFrameSize));
 
   ExtractFrame();
   // Jump forward in time, simulating the system being stalled for some reason.
   time_controller_.AdvanceTime(TimeDelta::Millis(3) * kFps10);
   // Extract one more frame, expect second and third frame to be dropped.
-  EXPECT_CALL(stats_callback_, OnDroppedFrames(2)).Times(1);
+  int total_frame_drops = 0;
+  EXPECT_CALL(stats_callback_, OnDroppedFrames(_))
+      .WillRepeatedly(
+          [&total_frame_drops](auto drops) { total_frame_drops += drops; });
   ExtractFrame();
+  EXPECT_EQ(2, total_frame_drops);
 
   CheckFrame(0, pid + 0, 0);
   CheckFrame(1, pid + 3, 0);
 }
 
-TEST_F(TestFrameBuffer2, DroppedFramesCountedOnClear) {
+TEST_P(TestFrameBuffer2, DroppedFramesCountedOnClear) {
   uint16_t pid = Rand();
   uint32_t ts = Rand();
 
@@ -446,7 +467,7 @@ TEST_F(TestFrameBuffer2, DroppedFramesCountedOnClear) {
   buffer_->Clear();
 }
 
-TEST_F(TestFrameBuffer2, InsertLateFrame) {
+TEST_P(TestFrameBuffer2, InsertLateFrame) {
   uint16_t pid = Rand();
   uint32_t ts = Rand();
 
@@ -462,7 +483,7 @@ TEST_F(TestFrameBuffer2, InsertLateFrame) {
   CheckNoFrame(2);
 }
 
-TEST_F(TestFrameBuffer2, ProtectionModeNackFEC) {
+TEST_P(TestFrameBuffer2, ProtectionModeNackFEC) {
   uint16_t pid = Rand();
   uint32_t ts = Rand();
   constexpr int64_t kRttMs = 200;
@@ -482,14 +503,14 @@ TEST_F(TestFrameBuffer2, ProtectionModeNackFEC) {
   EXPECT_LT(timing_.GetCurrentJitter(), kRttMs);
 }
 
-TEST_F(TestFrameBuffer2, NoContinuousFrame) {
+TEST_P(TestFrameBuffer2, NoContinuousFrame) {
   uint16_t pid = Rand();
   uint32_t ts = Rand();
 
   EXPECT_EQ(-1, InsertFrame(pid + 1, 0, ts, true, kFrameSize, pid));
 }
 
-TEST_F(TestFrameBuffer2, LastContinuousFrameSingleLayer) {
+TEST_P(TestFrameBuffer2, LastContinuousFrameSingleLayer) {
   uint16_t pid = Rand();
   uint32_t ts = Rand();
 
@@ -500,7 +521,7 @@ TEST_F(TestFrameBuffer2, LastContinuousFrameSingleLayer) {
   EXPECT_EQ(pid + 5, InsertFrame(pid + 5, 0, ts, true, kFrameSize));
 }
 
-TEST_F(TestFrameBuffer2, LastContinuousFrameTwoLayers) {
+TEST_P(TestFrameBuffer2, LastContinuousFrameTwoLayers) {
   uint16_t pid = Rand();
   uint32_t ts = Rand();
 
@@ -517,7 +538,7 @@ TEST_F(TestFrameBuffer2, LastContinuousFrameTwoLayers) {
             InsertFrame(pid + 7, 1, ts, true, kFrameSize, pid + 5, pid + 6));
 }
 
-TEST_F(TestFrameBuffer2, PictureIdJumpBack) {
+TEST_P(TestFrameBuffer2, PictureIdJumpBack) {
   uint16_t pid = Rand();
   uint32_t ts = Rand();
 
@@ -534,7 +555,7 @@ TEST_F(TestFrameBuffer2, PictureIdJumpBack) {
   CheckNoFrame(2);
 }
 
-TEST_F(TestFrameBuffer2, StatsCallback) {
+TEST_P(TestFrameBuffer2, StatsCallback) {
   uint16_t pid = Rand();
   uint32_t ts = Rand();
   const int kFrameSize = 5000;
@@ -557,7 +578,7 @@ TEST_F(TestFrameBuffer2, StatsCallback) {
   CheckFrame(0, pid, 0);
 }
 
-TEST_F(TestFrameBuffer2, ForwardJumps) {
+TEST_P(TestFrameBuffer2, ForwardJumps) {
   EXPECT_EQ(5453, InsertFrame(5453, 0, 1, true, kFrameSize));
   ExtractFrame();
   EXPECT_EQ(5454, InsertFrame(5454, 0, 1, true, kFrameSize, 5453));
@@ -576,21 +597,21 @@ TEST_F(TestFrameBuffer2, ForwardJumps) {
   ExtractFrame();
 }
 
-TEST_F(TestFrameBuffer2, DuplicateFrames) {
+TEST_P(TestFrameBuffer2, DuplicateFrames) {
   EXPECT_EQ(22256, InsertFrame(22256, 0, 1, true, kFrameSize));
   ExtractFrame();
   EXPECT_EQ(22256, InsertFrame(22256, 0, 1, true, kFrameSize));
 }
 
 // TODO(philipel): implement more unittests related to invalid references.
-TEST_F(TestFrameBuffer2, InvalidReferences) {
+TEST_P(TestFrameBuffer2, InvalidReferences) {
   EXPECT_EQ(-1, InsertFrame(0, 0, 1000, true, kFrameSize, 2));
   EXPECT_EQ(1, InsertFrame(1, 0, 2000, true, kFrameSize));
   ExtractFrame();
   EXPECT_EQ(2, InsertFrame(2, 0, 3000, true, kFrameSize, 1));
 }
 
-TEST_F(TestFrameBuffer2, KeyframeRequired) {
+TEST_P(TestFrameBuffer2, KeyframeRequired) {
   EXPECT_EQ(1, InsertFrame(1, 0, 1000, true, kFrameSize));
   EXPECT_EQ(2, InsertFrame(2, 0, 2000, true, kFrameSize, 1));
   EXPECT_EQ(3, InsertFrame(3, 0, 3000, true, kFrameSize));
@@ -603,7 +624,7 @@ TEST_F(TestFrameBuffer2, KeyframeRequired) {
   CheckNoFrame(2);
 }
 
-TEST_F(TestFrameBuffer2, KeyframeClearsFullBuffer) {
+TEST_P(TestFrameBuffer2, KeyframeClearsFullBuffer) {
   const int kMaxBufferSize = 600;
 
   for (int i = 1; i <= kMaxBufferSize; ++i)
@@ -618,7 +639,7 @@ TEST_F(TestFrameBuffer2, KeyframeClearsFullBuffer) {
   CheckFrame(1, kMaxBufferSize + 1, 0);
 }
 
-TEST_F(TestFrameBuffer2, DontUpdateOnUndecodableFrame) {
+TEST_P(TestFrameBuffer2, DontUpdateOnUndecodableFrame) {
   InsertFrame(1, 0, 0, true, kFrameSize);
   ExtractFrame(true);
   InsertFrame(3, 0, 0, true, kFrameSize, 2, 0);
@@ -628,7 +649,7 @@ TEST_F(TestFrameBuffer2, DontUpdateOnUndecodableFrame) {
   ExtractFrame(true);
 }
 
-TEST_F(TestFrameBuffer2, DontDecodeOlderTimestamp) {
+TEST_P(TestFrameBuffer2, DontDecodeOlderTimestamp) {
   InsertFrame(2, 0, 0, true, kFrameSize);
   InsertFrame(1, 0, kFps20, true,
               kFrameSize);  // Older picture id but newer timestamp.
@@ -646,7 +667,7 @@ TEST_F(TestFrameBuffer2, DontDecodeOlderTimestamp) {
   CheckNoFrame(3);
 }
 
-TEST_F(TestFrameBuffer2, CombineFramesToSuperframe) {
+TEST_P(TestFrameBuffer2, CombineFramesToSuperframe) {
   uint16_t pid = Rand();
   uint32_t ts = Rand();
 
@@ -664,7 +685,7 @@ TEST_F(TestFrameBuffer2, CombineFramesToSuperframe) {
   EXPECT_EQ(frames_[0]->SpatialLayerFrameSize(1), 2 * kFrameSize);
 }
 
-TEST_F(TestFrameBuffer2, HigherSpatialLayerNonDecodable) {
+TEST_P(TestFrameBuffer2, HigherSpatialLayerNonDecodable) {
   uint16_t pid = Rand();
   uint32_t ts = Rand();
 
@@ -689,7 +710,7 @@ TEST_F(TestFrameBuffer2, HigherSpatialLayerNonDecodable) {
   CheckFrame(2, pid + 4, 1);
 }
 
-TEST_F(TestFrameBuffer2, StopWhileWaitingForFrame) {
+TEST_P(TestFrameBuffer2, StopWhileWaitingForFrame) {
   uint16_t pid = Rand();
   uint32_t ts = Rand();
 
@@ -703,6 +724,8 @@ TEST_F(TestFrameBuffer2, StopWhileWaitingForFrame) {
   ExtractFrame();
   EXPECT_THAT(frames_, IsEmpty());
 }
+
+INSTANTIATE_TEST_SUITE_P(TestFrameBuffer2, TestFrameBuffer2, ::testing::Bool());
 
 }  // namespace video_coding
 }  // namespace webrtc
