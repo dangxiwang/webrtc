@@ -168,6 +168,21 @@ rtc_library("frame_buffer") {
   ]
 }
 
+rtc_library("frame_scheduler") {
+  sources = [
+    "frame_scheduler.cc",
+    "frame_scheduler.h",
+  ]
+  deps = [
+    ":frame_buffer",
+    "../../api/units:time_delta",
+    "../../api/units:timestamp",
+    "../../rtc_base/system:no_unique_address",
+    "../../rtc_base/task_utils:repeating_task",
+    "../../rtc_base/task_utils:to_queued_task",
+  ]
+}
+
 rtc_library("video_coding") {
   visibility = [ "*" ]
   sources = [
@@ -180,6 +195,9 @@ rtc_library("video_coding") {
     "fec_rate_table.h",
     "frame_buffer2.cc",
     "frame_buffer2.h",
+    "frame_buffer2_adapter.cc",
+    "frame_buffer2_adapter.h",
+    "frame_buffer2_interface.h",
     "frame_object.cc",
     "frame_object.h",
     "generic_decoder.cc",
@@ -227,6 +245,7 @@ rtc_library("video_coding") {
     ":codec_globals_headers",
     ":encoded_frame",
     ":frame_buffer",
+    ":frame_scheduler",
     ":packet_buffer",
     ":video_codec_interface",
     ":video_coding_utility",
@@ -1034,6 +1053,7 @@ if (rtc_include_tests) {
       "frame_buffer2_unittest.cc",
       "frame_buffer3_unittest.cc",
       "frame_dependencies_calculator_unittest.cc",
+      "frame_scheduler_unittest.cc",
       "generic_decoder_unittest.cc",
       "h264_packet_buffer_unittest.cc",
       "h264_sprop_parameter_sets_unittest.cc",
