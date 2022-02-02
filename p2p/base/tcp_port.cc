@@ -496,9 +496,6 @@ void TCPConnection::OnClose(rtc::AsyncPacketSocket* socket, int error) {
     // events.
     pretending_to_be_writable_ = true;
 
-    // If this connection can't become connected and writable again in 5
-    // seconds, it's time to tear this down. This is the case for the original
-    // TCP connection on passive side during a reconnect.
     // We don't attempt reconnect right here. This is to avoid a case where the
     // shutdown is intentional and reconnect is not necessary. We only reconnect
     // when the connection is used to Send() or Ping().
