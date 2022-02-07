@@ -10,7 +10,7 @@ vars = {
   # chromium waterfalls. More info at: crbug.com/570091.
   'checkout_configuration': 'default',
   'checkout_instrumented_libraries': 'checkout_linux and checkout_configuration == "default"',
-  'chromium_revision': '3e0d7b640a9686b5feba24efce5724649c5f9be8',
+  'chromium_revision': '7418694af87abbc51ffdf976ef6916f9b7dd1893',
 
   # Keep the Chromium default of generating location tags.
   'generate_location_tags': True,
@@ -23,7 +23,7 @@ deps = {
   # TODO(kjellander): Move this to be Android-only once the libevent dependency
   # in base/third_party/libevent is solved.
   'src/base':
-    'https://chromium.googlesource.com/chromium/src/base@7c808cc2b6b105717d98670fd178dc4b7e2436a5',
+    'https://chromium.googlesource.com/chromium/src/base@5897cdd3958b4d77fdac9dc13a9349ca11c2fea2',
   'src/build':
     'https://chromium.googlesource.com/chromium/src/build@96a2a5744438e1669443de43839ee0e22846e191',
   'src/buildtools':
@@ -34,13 +34,13 @@ deps = {
     'condition': 'checkout_android',
   },
   'src/ios': {
-    'url': 'https://chromium.googlesource.com/chromium/src/ios@7c0e734dc0d65cb91c561e53c4bf51e4de2f49a3',
+    'url': 'https://chromium.googlesource.com/chromium/src/ios@632d249087a2f90054143741396be545aa1d3de6',
     'condition': 'checkout_ios',
   },
   'src/testing':
     'https://chromium.googlesource.com/chromium/src/testing@7832edc9807f0495e54d96242605f4abc23751e8',
   'src/third_party':
-    'https://chromium.googlesource.com/chromium/src/third_party@e632b10a1456b1e599e06d7fe7791eae0028c35f',
+    'https://chromium.googlesource.com/chromium/src/third_party@060ec73d223c1a0c68f44d257ebc6faf093f94eb',
 
   'src/buildtools/linux64': {
     'packages': [
@@ -285,7 +285,7 @@ deps = {
     'condition': 'checkout_win',
   },
   'src/tools':
-    'https://chromium.googlesource.com/chromium/src/tools@13a42c80239294018f6bfca94b23cf25bdf86517',
+    'https://chromium.googlesource.com/chromium/src/tools@f7f87fd6c9fd24aa1e8df33d40afb6cc6661381e',
 
   'src/third_party/accessibility_test_framework': {
       'packages': [
