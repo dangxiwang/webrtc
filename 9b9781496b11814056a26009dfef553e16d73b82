@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2ecdc37_221739ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2022-02-08T10:55:07Z",
+      "side": 1,
+      "message": "A little more of pushing things onto the peer_connection_interface here - duplicates work in the now-reverted \"no signals\" CL.\n",
+      "revId": "9b9781496b11814056a26009dfef553e16d73b82",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
