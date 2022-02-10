@@ -160,19 +160,6 @@ BasicPortAllocator::BasicPortAllocator(
                    webrtc::NO_PRUNE, customizer);
 }
 
-BasicPortAllocator::BasicPortAllocator(rtc::NetworkManager* network_manager)
-    : network_manager_(network_manager), socket_factory_(nullptr) {
-  InitRelayPortFactory(nullptr);
-  RTC_DCHECK(relay_port_factory_ != nullptr);
-  RTC_DCHECK(network_manager_ != nullptr);
-}
-
-BasicPortAllocator::BasicPortAllocator(rtc::NetworkManager* network_manager,
-                                       const ServerAddresses& stun_servers)
-    : BasicPortAllocator(network_manager,
-                         /*socket_factory=*/nullptr,
-                         stun_servers) {}
-
 BasicPortAllocator::BasicPortAllocator(rtc::NetworkManager* network_manager,
                                        rtc::PacketSocketFactory* socket_factory,
                                        const ServerAddresses& stun_servers)
