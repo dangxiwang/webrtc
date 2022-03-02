@@ -35,8 +35,10 @@ rtc_library("transient_suppressor_impl") {
     "wpd_tree.cc",
     "wpd_tree.h",
   ]
+  configs += [ "..:apm_debug_dump" ]
   deps = [
     ":transient_suppressor_api",
+    "..:apm_logging",
     "../../../common_audio:common_audio",
     "../../../common_audio:common_audio_c",
     "../../../common_audio:fir_filter",

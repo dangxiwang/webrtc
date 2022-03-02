@@ -16,6 +16,7 @@
 
 #include <memory>
 
+#include "modules/audio_processing/logging/apm_data_dumper.h"
 #include "modules/audio_processing/transient/transient_suppressor.h"
 #include "rtc_base/gtest_prod_util.h"
 
