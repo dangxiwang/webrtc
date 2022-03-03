@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c60404bf_584b4c77",
+        "filename": "modules/audio_processing/BUILD.gn",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5087
+      },
+      "writtenOn": "2022-03-03T10:39:23Z",
+      "side": 1,
+      "message": "I suggest we remove this \"config\" and move the if/else here: https://source.chromium.org/chromium/chromium/src/+/main:third_party/webrtc/BUILD.gn;l\u003d128;drc\u003de47493b3c0147775e8ed4dc0dd5cf297e4a24f95.\n\nThis way, we are sure to have the macros correctly defined without using the public_deps trick, which is problematic in another way.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 1
+      },
+      "revId": "751f23b76cd859e24eb4eacd8d052568ab1974ad",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
