@@ -213,6 +213,7 @@ void AimdRateControl::SetInApplicationLimitedRegion(bool in_alr) {
 void AimdRateControl::SetEstimate(DataRate bitrate, Timestamp at_time) {
   bitrate_is_initialized_ = true;
   DataRate prev_bitrate = current_bitrate_;
+
   current_bitrate_ = ClampBitrate(bitrate);
   time_last_bitrate_change_ = at_time;
   if (current_bitrate_ < prev_bitrate) {
@@ -338,11 +339,6 @@ void AimdRateControl::ChangeBitrate(const RateControlInput& input,
           decreased_bitrate = beta_ * link_capacity_.estimate();
         }
       }
-      if (estimate_bounded_backoff_ && network_estimate_) {
-        decreased_bitrate = std::max(
-            decreased_bitrate, network_estimate_->link_capacity_lower * beta_);
-      }
-
       // Avoid increasing the rate when over-using.
       if (decreased_bitrate < current_bitrate_) {
         new_bitrate = decreased_bitrate;
@@ -385,6 +381,12 @@ DataRate AimdRateControl::ClampBitrate(DataRate new_bitrate) const {
       upper_bound = std::max(upper_bound, current_bitrate_);
     }
     new_bitrate = std::min(upper_bound, new_bitrate);
+  }
+  if (estimate_bounded_backoff_ && network_estimate_ &&
+      network_estimate_->link_capacity_lower.IsFinite() &&
+      new_bitrate < current_bitrate_) {
+    new_bitrate =
+        std::max(new_bitrate, network_estimate_->link_capacity_lower * beta_);
   }
   new_bitrate = std::max(new_bitrate, min_configured_bitrate_);
   return new_bitrate;
