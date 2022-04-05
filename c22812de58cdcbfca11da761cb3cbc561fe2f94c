@@ -16,6 +16,52 @@
       "message": "Please take a look. Thank you.",
       "revId": "c22812de58cdcbfca11da761cb3cbc561fe2f94c",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0b2e2df_d8e7fed6",
+        "filename": "video/video_stream_encoder_unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 7703,
+      "author": {
+        "id": 6337
+      },
+      "writtenOn": "2022-04-05T19:25:47Z",
+      "side": 1,
+      "message": "Comment which parameter is replaced on nullptr, like /*encoder\u003d*/nullptr",
+      "range": {
+        "startLine": 7703,
+        "startChar": 10,
+        "endLine": 7703,
+        "endChar": 17
+      },
+      "revId": "c22812de58cdcbfca11da761cb3cbc561fe2f94c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7f98c46_ecebc990",
+        "filename": "video/video_stream_encoder_unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 7730,
+      "author": {
+        "id": 6337
+      },
+      "writtenOn": "2022-04-05T19:25:47Z",
+      "side": 1,
+      "message": "I worry a bit that it is done after \"encode_attempted.Wait(3000);\". Can you please double check that it won\u0027t block in some cases.",
+      "range": {
+        "startLine": 7730,
+        "startChar": 14,
+        "endLine": 7730,
+        "endChar": 31
+      },
+      "revId": "c22812de58cdcbfca11da761cb3cbc561fe2f94c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
