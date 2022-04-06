@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "93d375c0_6a85fa6a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 7036
+      },
+      "writtenOn": "2022-04-06T09:08:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b69fc839_9dd91c03",
+      "revId": "82c3f0fdbcaa41cfc5ce4c20dcd85de5dfefed60",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "a060f61e_ed949a13",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -48,6 +66,24 @@
       "writtenOn": "2022-04-06T06:10:37Z",
       "side": 1,
       "message": "I take it the numerous changes in this file is due to \"git cl format\"; offhand, I find it hard to identify the actual change. Is there any?",
+      "revId": "82c3f0fdbcaa41cfc5ce4c20dcd85de5dfefed60",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33c86135_ee94c8d3",
+        "filename": "sdk/objc/api/peerconnection/RTCConfiguration.mm",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 7036
+      },
+      "writtenOn": "2022-04-06T09:08:09Z",
+      "side": 1,
+      "message": "I\u0027m confused at why this reformat was done when I just did a global replace of kPlanB -\u003e kPlanB_DEPRECATED and submitted the result. Will remove it.",
+      "parentUuid": "c5f7642f_471d15d2",
       "revId": "82c3f0fdbcaa41cfc5ce4c20dcd85de5dfefed60",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
