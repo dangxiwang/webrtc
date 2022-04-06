@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b69fc839_9dd91c03",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2022-04-06T06:10:37Z",
+      "side": 1,
+      "message": "Same comment as on the other CL on the commit message.",
+      "revId": "82c3f0fdbcaa41cfc5ce4c20dcd85de5dfefed60",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a060f61e_ed949a13",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2022-04-06T06:10:37Z",
+      "side": 1,
+      "message": "Good change!\n",
+      "revId": "82c3f0fdbcaa41cfc5ce4c20dcd85de5dfefed60",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5f7642f_471d15d2",
+        "filename": "sdk/objc/api/peerconnection/RTCConfiguration.mm",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2022-04-06T06:10:37Z",
+      "side": 1,
+      "message": "I take it the numerous changes in this file is due to \"git cl format\"; offhand, I find it hard to identify the actual change. Is there any?",
+      "revId": "82c3f0fdbcaa41cfc5ce4c20dcd85de5dfefed60",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
