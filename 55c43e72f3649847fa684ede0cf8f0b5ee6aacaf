@@ -39,6 +39,30 @@
       },
       "revId": "55c43e72f3649847fa684ede0cf8f0b5ee6aacaf",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4893102_d5e8b1af",
+        "filename": "video/video_stream_encoder_unittest.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 7720,
+      "author": {
+        "id": 9405
+      },
+      "writtenOn": "2022-04-08T07:25:06Z",
+      "side": 1,
+      "message": "Well, AV2 was added from https://webrtc-review.googlesource.com/c/src/+/168193\nThese tests don\u0027t depend on actual codec/video encoder factories, so even if AV2 codec support is added to WebRTC someday, it won\u0027t fail.",
+      "parentUuid": "71897054_4f64d59b",
+      "range": {
+        "startLine": 7720,
+        "startChar": 44,
+        "endLine": 7720,
+        "endChar": 47
+      },
+      "revId": "55c43e72f3649847fa684ede0cf8f0b5ee6aacaf",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
