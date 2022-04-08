@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8179b627_3d59d73a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5524
+      },
+      "writtenOn": "2022-04-08T07:20:13Z",
+      "side": 1,
+      "message": "lgtm % nit",
+      "revId": "55c43e72f3649847fa684ede0cf8f0b5ee6aacaf",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71897054_4f64d59b",
+        "filename": "video/video_stream_encoder_unittest.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 7720,
+      "author": {
+        "id": 5524
+      },
+      "writtenOn": "2022-04-08T07:20:13Z",
+      "side": 1,
+      "message": "nit: Why is this set to AV2? If it\u0027s to indicate a non-supported format, will this test start failing when AV2 actually arrives? :)",
+      "range": {
+        "startLine": 7720,
+        "startChar": 44,
+        "endLine": 7720,
+        "endChar": 47
+      },
+      "revId": "55c43e72f3649847fa684ede0cf8f0b5ee6aacaf",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
