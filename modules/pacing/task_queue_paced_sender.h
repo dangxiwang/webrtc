@@ -28,6 +28,7 @@
 #include "modules/pacing/pacing_controller.h"
 #include "modules/pacing/rtp_packet_pacer.h"
 #include "modules/rtp_rtcp/source/rtp_packet_to_send.h"
+#include "rtc_base/experiments/field_trial_parser.h"
 #include "rtc_base/numerics/exp_filter.h"
 #include "rtc_base/task_queue.h"
 #include "rtc_base/thread_annotations.h"
@@ -137,6 +138,11 @@ class TaskQueuePacedSender : public RtpPacketPacer, public RtpPacketSender {
   // When probing, high precision is used regardless of `allow_low_precision_`
   // to ensure good bandwidth estimation.
   const bool allow_low_precision_;
+  // Controlled via a `kSlackedTaskQueuePacedSenderFieldTrial` experiment arm
+  // (e.g. "max_queue_time:75ms"). If set, uses high precision scheduling of
+  // MaybeProcessPackets() whenever the expected queue time is greater than or
+  // equal to this value.
+  FieldTrialOptional<TimeDelta> max_low_precision_expected_queue_time_;
   // The holdback window prevents too frequent delayed MaybeProcessPackets()
   // calls. These are only applicable if `allow_low_precision_` is false.
   const TimeDelta max_hold_back_window_;
