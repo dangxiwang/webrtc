@@ -15,6 +15,8 @@
 
 #include "absl/memory/memory.h"
 #include "rtc_base/checks.h"
+#include "rtc_base/experiments/field_trial_parser.h"
+#include "rtc_base/experiments/field_trial_units.h"
 #include "rtc_base/trace_event.h"
 
 namespace webrtc {
@@ -38,6 +40,7 @@ TaskQueuePacedSender::TaskQueuePacedSender(
     : clock_(clock),
       allow_low_precision_(
           field_trials.IsEnabled(kSlackedTaskQueuePacedSenderFieldTrial)),
+      max_low_precision_expected_queue_time_("max_queue_time"),
       max_hold_back_window_(allow_low_precision_
                                 ? PacingController::kMinSleepTime
                                 : max_hold_back_window),
@@ -56,6 +59,8 @@ TaskQueuePacedSender::TaskQueuePacedSender(
           "TaskQueuePacedSender",
           TaskQueueFactory::Priority::NORMAL)) {
   RTC_DCHECK_GE(max_hold_back_window_, PacingController::kMinSleepTime);
+  ParseFieldTrial({&max_low_precision_expected_queue_time_},
+                  field_trials.Lookup(kSlackedTaskQueuePacedSenderFieldTrial));
 }
 
 TaskQueuePacedSender::~TaskQueuePacedSender() {
@@ -282,6 +287,14 @@ void TaskQueuePacedSender::MaybeProcessPackets(
         allow_low_precision_ && !pacing_controller_.IsProbing()
             ? TaskQueueBase::DelayPrecision::kLow
             : TaskQueueBase::DelayPrecision::kHigh;
+    // Optionally disable low precision if the expected queue time is greater
+    // than `max_low_precision_expected_queue_time_`.
+    if (precision == TaskQueueBase::DelayPrecision::kLow &&
+        max_low_precision_expected_queue_time_ &&
+        pacing_controller_.ExpectedQueueTime() >=
+            max_low_precision_expected_queue_time_.Value()) {
+      precision = TaskQueueBase::DelayPrecision::kHigh;
+    }
 
     task_queue_.PostDelayedTaskWithPrecision(
         precision,
