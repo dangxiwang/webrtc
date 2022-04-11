@@ -16,6 +16,23 @@
       "message": "Please take a look, Erik.",
       "revId": "98045dac46fdfcc7b6a0d3d00579abfa2815db73",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a36486b1_ba83d0e0",
+        "filename": "modules/pacing/task_queue_paced_sender.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 5142
+      },
+      "writtenOn": "2022-04-11T09:18:01Z",
+      "side": 1,
+      "message": "Note: I kept this as a normal bool rather than a \"FieldTrialOptional\u003cbool\u003e\" for backwards compatibility with \"IsEnabled()\" so the key:value format is not necessary as long as \"Enabled\" is part of the string.",
+      "revId": "98045dac46fdfcc7b6a0d3d00579abfa2815db73",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
