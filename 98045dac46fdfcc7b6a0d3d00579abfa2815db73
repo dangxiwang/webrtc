@@ -51,6 +51,24 @@
       "parentUuid": "a36486b1_ba83d0e0",
       "revId": "98045dac46fdfcc7b6a0d3d00579abfa2815db73",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ee0e595_0feef83e",
+        "filename": "modules/pacing/task_queue_paced_sender.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 5524
+      },
+      "writtenOn": "2022-04-12T08:11:47Z",
+      "side": 1,
+      "message": "Not sure you want to mix parsing methods like this. Can you add a FieldTrialFlag with the name \"Enabled\" instead? Then you don\u0027t need the :enabled part (also iirc the syntax is \"my_bool:1\" rather than \"my_bool:true\")\n\nIf you need to preserve constness it seem common to put the field trial parameters in a struct, and have a helper function to parse that before the fields are used.",
+      "parentUuid": "fe6b8992_7819690f",
+      "revId": "98045dac46fdfcc7b6a0d3d00579abfa2815db73",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
