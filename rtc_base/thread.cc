@@ -874,7 +874,7 @@ void* Thread::PreRun(void* pv) {
 #endif
   Thread* thread = static_cast<Thread*>(pv);
   ThreadManager::Instance()->SetCurrentThread(thread);
-  rtc::SetCurrentThreadName(thread->name_.c_str());
+  rtc::SetCurrentThreadName(thread->name_);
 #if defined(WEBRTC_MAC)
   ScopedAutoReleasePool pool;
 #endif
