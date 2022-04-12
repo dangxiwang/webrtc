@@ -180,7 +180,7 @@ PlatformThread PlatformThread::SpawnThread(
   auto start_thread_function_ptr =
       new std::function<void()>([thread_function = std::move(thread_function),
                                  name = std::string(name), attributes] {
-        rtc::SetCurrentThreadName(name.c_str());
+        rtc::SetCurrentThreadName(name);
         SetPriority(attributes.priority);
         thread_function();
       });
