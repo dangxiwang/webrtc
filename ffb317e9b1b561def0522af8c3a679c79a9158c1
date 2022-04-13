@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00588a63_6f89f193",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 10107
+      },
+      "writtenOn": "2022-04-13T14:00:32Z",
+      "side": 1,
+      "message": "PTAL. These conversions to absl::string_view should be mostly straightforward cases.",
+      "revId": "ffb317e9b1b561def0522af8c3a679c79a9158c1",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
