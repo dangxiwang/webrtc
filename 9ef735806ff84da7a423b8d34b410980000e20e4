@@ -16,6 +16,23 @@
       "message": "PTAL Erik",
       "revId": "9ef735806ff84da7a423b8d34b410980000e20e4",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "538f2ad3_ed4fce8d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5524
+      },
+      "writtenOn": "2022-04-13T11:21:01Z",
+      "side": 1,
+      "message": "thanks, lgtm!",
+      "revId": "9ef735806ff84da7a423b8d34b410980000e20e4",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
