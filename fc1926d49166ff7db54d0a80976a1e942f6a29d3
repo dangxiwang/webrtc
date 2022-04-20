@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b47c9140_1865b262",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6337
+      },
+      "writtenOn": "2022-04-20T15:16:54Z",
+      "side": 1,
+      "message": "Harald, PTAL changes in api/BUILD.gn",
+      "revId": "fc1926d49166ff7db54d0a80976a1e942f6a29d3",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
