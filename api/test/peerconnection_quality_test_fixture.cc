@@ -12,6 +12,7 @@
 
 #include "absl/types/optional.h"
 #include "api/array_view.h"
+#include "rtc_base/checks.h"
 
 namespace webrtc {
 namespace webrtc_pc_e2e {
@@ -21,23 +22,16 @@ using VideoCodecConfig = ::webrtc::webrtc_pc_e2e::
 using VideoSubscription = ::webrtc::webrtc_pc_e2e::
     PeerConnectionE2EQualityTestFixture::VideoSubscription;
 
-PeerConnectionE2EQualityTestFixture::VideoSubscription::Resolution::Resolution(
+PeerConnectionE2EQualityTestFixture::VideoResolution::VideoResolution(
     size_t width,
     size_t height,
     int32_t fps)
     : width_(width), height_(height), fps_(fps), spec_(Spec::kNone) {}
-PeerConnectionE2EQualityTestFixture::VideoSubscription::Resolution::Resolution(
-    const VideoConfig& video_config)
-    : width_(video_config.width),
-      height_(video_config.height),
-      fps_(video_config.fps),
-      spec_(Spec::kNone) {}
-PeerConnectionE2EQualityTestFixture::VideoSubscription::Resolution::Resolution(
-    Spec spec)
+PeerConnectionE2EQualityTestFixture::VideoResolution::VideoResolution(Spec spec)
     : width_(0), height_(0), fps_(0), spec_(spec) {}
 
-bool PeerConnectionE2EQualityTestFixture::VideoSubscription::Resolution::
-operator==(const Resolution& other) const {
+bool PeerConnectionE2EQualityTestFixture::VideoResolution::operator==(
+    const VideoResolution& other) const {
   if (spec_ != Spec::kNone && spec_ == other.spec_) {
     // If there is some particular spec set, then it doesn't matter what
     // values we have in other fields.
@@ -47,14 +41,14 @@ operator==(const Resolution& other) const {
          fps_ == other.fps_ && spec_ == other.spec_;
 }
 
-absl::optional<VideoSubscription::Resolution>
+absl::optional<PeerConnectionE2EQualityTestFixture::VideoResolution>
 PeerConnectionE2EQualityTestFixture::VideoSubscription::GetMaxResolution(
     rtc::ArrayView<const VideoConfig> video_configs) {
   if (video_configs.empty()) {
     return absl::nullopt;
   }
 
-  VideoSubscription::Resolution max_resolution;
+  VideoResolution max_resolution;
   for (const VideoConfig& config : video_configs) {
     if (max_resolution.width() < config.width) {
       max_resolution.set_width(config.width);
@@ -67,6 +61,14 @@ PeerConnectionE2EQualityTestFixture::VideoSubscription::GetMaxResolution(
     }
   }
   return max_resolution;
+}
+
+PeerConnectionE2EQualityTestFixture::VideoConfig::VideoConfig(
+    const VideoResolution& resolution)
+    : width(resolution.width()),
+      height(resolution.height()),
+      fps(resolution.fps()) {
+  RTC_CHECK(resolution.IsRegular());
 }
 
 }  // namespace webrtc_pc_e2e
