@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "343aa99d_b70aa323",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6039
+      },
+      "writtenOn": "2022-04-28T12:23:10Z",
+      "side": 1,
+      "message": "Don\u0027t know this area but lgtm",
+      "revId": "2a395a116cf4f4f17932e8d2eaf95cbc701287fd",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
