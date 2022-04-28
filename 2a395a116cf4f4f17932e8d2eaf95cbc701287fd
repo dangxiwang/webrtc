@@ -39,6 +39,30 @@
       },
       "revId": "2a395a116cf4f4f17932e8d2eaf95cbc701287fd",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f18eb272_f789891c",
+        "filename": "system_wrappers/source/cpu_features.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 5116
+      },
+      "writtenOn": "2022-04-28T13:56:13Z",
+      "side": 1,
+      "message": "Good suggestion. Added.",
+      "parentUuid": "deb688ff_a80b448e",
+      "range": {
+        "startLine": 97,
+        "startChar": 19,
+        "endLine": 97,
+        "endChar": 20
+      },
+      "revId": "2a395a116cf4f4f17932e8d2eaf95cbc701287fd",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
