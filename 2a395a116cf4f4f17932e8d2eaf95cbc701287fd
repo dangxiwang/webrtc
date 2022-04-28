@@ -16,6 +16,29 @@
       "message": "Don\u0027t know this area but lgtm",
       "revId": "2a395a116cf4f4f17932e8d2eaf95cbc701287fd",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "deb688ff_a80b448e",
+        "filename": "system_wrappers/source/cpu_features.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 5119
+      },
+      "writtenOn": "2022-04-28T12:42:14Z",
+      "side": 1,
+      "message": "Can you link to crbug.com/1315519 in this comment? Helps a future reader skip past the git-log archaeology.",
+      "range": {
+        "startLine": 97,
+        "startChar": 19,
+        "endLine": 97,
+        "endChar": 20
+      },
+      "revId": "2a395a116cf4f4f17932e8d2eaf95cbc701287fd",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
