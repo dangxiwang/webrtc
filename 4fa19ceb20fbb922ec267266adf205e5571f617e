@@ -87,6 +87,70 @@
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bd67a9b_7dcfce94",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2022-04-28T14:45:53Z",
+      "side": 1,
+      "message": "So there are lots of intrinsics, but we don\u0027t explicitly use anything obviously mapping to mulx; it\u0027s the compiler that generates that for some mul operation written without intrinsics?\n\nWill the intrinsics be rejected if we build without /arch:AVX2?",
+      "parentUuid": "d6e3baf7_05bcfaf2",
+      "revId": "4fa19ceb20fbb922ec267266adf205e5571f617e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1490a381_6ad37558",
+        "filename": "system_wrappers/source/cpu_features.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2022-04-28T14:45:53Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 96,
+        "startChar": 60,
+        "endLine": 96,
+        "endChar": 72
+      },
+      "revId": "4fa19ceb20fbb922ec267266adf205e5571f617e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ada405cd_769e0d5a",
+        "filename": "system_wrappers/source/cpu_features.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2022-04-28T14:45:53Z",
+      "side": 1,
+      "message": "If you can be a bit more specific (but brief), I think it would be good to specify which compiler it is and that it\u0027s behavior of /arch:AVX2 that is a bit unexpected.",
+      "range": {
+        "startLine": 96,
+        "startChar": 10,
+        "endLine": 96,
+        "endChar": 17
+      },
+      "revId": "4fa19ceb20fbb922ec267266adf205e5571f617e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a503c44b_193fabf5",
@@ -124,6 +188,30 @@
       "side": 1,
       "message": "I thought about it, but the AVX2 without BMI2 is extremely rare. So I thought I should spare the code from an \"ifdef\". WDYT?",
       "parentUuid": "a503c44b_193fabf5",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 55
+      },
+      "revId": "4fa19ceb20fbb922ec267266adf205e5571f617e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca4bbc90_7a1d44a0",
+        "filename": "system_wrappers/source/cpu_features.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2022-04-28T14:45:53Z",
+      "side": 1,
+      "message": "Agree with keeping it simple. Code doesn\u0027t need more ifdefs.",
+      "parentUuid": "489012f4_e5ea2e70",
       "range": {
         "startLine": 103,
         "startChar": 0,
