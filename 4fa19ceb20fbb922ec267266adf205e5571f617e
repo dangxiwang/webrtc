@@ -35,6 +35,41 @@
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f27c29b_3812d31c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5116
+      },
+      "writtenOn": "2022-04-28T14:29:21Z",
+      "side": 1,
+      "message": "Thanks for the review! Please see the comments below.",
+      "revId": "4fa19ceb20fbb922ec267266adf205e5571f617e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6e3baf7_05bcfaf2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5116
+      },
+      "writtenOn": "2022-04-28T14:29:21Z",
+      "side": 1,
+      "message": "It\u0027s in this function. But I don\u0027t know from which line of C++.\nhttps://source.chromium.org/chromium/chromium/src/+/main:third_party/webrtc/modules/audio_processing/aec3/adaptive_fir_filter_avx2.cc;l\u003d43;bpv\u003d1;bpt\u003d1",
+      "parentUuid": "0db50e2f_27a83b7e",
+      "revId": "4fa19ceb20fbb922ec267266adf205e5571f617e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a503c44b_193fabf5",
@@ -48,6 +83,30 @@
       "writtenOn": "2022-04-28T14:07:30Z",
       "side": 1,
       "message": "I think the BMI2 check here deserves a comment.\n\nIf it\u0027s a quirk particular to a windows compiler (and/or the way we configure that), you could consider having this check only in windows builds, but perhaps not worth the effort if missing BMI2 support is rare.",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 55
+      },
+      "revId": "4fa19ceb20fbb922ec267266adf205e5571f617e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "489012f4_e5ea2e70",
+        "filename": "system_wrappers/source/cpu_features.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 5116
+      },
+      "writtenOn": "2022-04-28T14:29:21Z",
+      "side": 1,
+      "message": "I thought about it, but the AVX2 without BMI2 is extremely rare. So I thought I should spare the code from an \"ifdef\". WDYT?",
+      "parentUuid": "a503c44b_193fabf5",
       "range": {
         "startLine": 103,
         "startChar": 0,
