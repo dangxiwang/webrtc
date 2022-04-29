@@ -105,6 +105,24 @@
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "097c4cb3_4ee52181",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5116
+      },
+      "writtenOn": "2022-04-29T07:11:53Z",
+      "side": 1,
+      "message": "1. Yes, mulx is generated without intrinsics because of /arch:AVX2.\n2. I _think_ that the intrinsics will not be rejected on MSC without the flag.",
+      "parentUuid": "5bd67a9b_7dcfce94",
+      "revId": "4fa19ceb20fbb922ec267266adf205e5571f617e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1490a381_6ad37558",
@@ -141,6 +159,54 @@
       "writtenOn": "2022-04-28T14:45:53Z",
       "side": 1,
       "message": "If you can be a bit more specific (but brief), I think it would be good to specify which compiler it is and that it\u0027s behavior of /arch:AVX2 that is a bit unexpected.",
+      "range": {
+        "startLine": 96,
+        "startChar": 10,
+        "endLine": 96,
+        "endChar": 17
+      },
+      "revId": "4fa19ceb20fbb922ec267266adf205e5571f617e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d866b650_91ece5a6",
+        "filename": "system_wrappers/source/cpu_features.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 5116
+      },
+      "writtenOn": "2022-04-29T07:11:53Z",
+      "side": 1,
+      "message": "Thanks, fixed",
+      "parentUuid": "1490a381_6ad37558",
+      "range": {
+        "startLine": 96,
+        "startChar": 60,
+        "endLine": 96,
+        "endChar": 72
+      },
+      "revId": "4fa19ceb20fbb922ec267266adf205e5571f617e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59b25ee7_5a21dd28",
+        "filename": "system_wrappers/source/cpu_features.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 5116
+      },
+      "writtenOn": "2022-04-29T07:11:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ada405cd_769e0d5a",
       "range": {
         "startLine": 96,
         "startChar": 10,
@@ -212,6 +278,30 @@
       "side": 1,
       "message": "Agree with keeping it simple. Code doesn\u0027t need more ifdefs.",
       "parentUuid": "489012f4_e5ea2e70",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 55
+      },
+      "revId": "4fa19ceb20fbb922ec267266adf205e5571f617e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e3a5205_b2b4b2d5",
+        "filename": "system_wrappers/source/cpu_features.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 5116
+      },
+      "writtenOn": "2022-04-29T07:11:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca4bbc90_7a1d44a0",
       "range": {
         "startLine": 103,
         "startChar": 0,

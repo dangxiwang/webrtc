@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d0f28ab_186d641b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5116
+      },
+      "writtenOn": "2022-04-29T07:11:53Z",
+      "side": 1,
+      "message": "Thank you, Niels, Sam and Henrik!",
+      "revId": "162f7f984ba5fc2ba72b05ba0dea2942224b097f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
