@@ -15,6 +15,7 @@
 #include <vector>
 
 #include "api/rtp_sender_interface.h"
+#include "rtc_base/ref_counted_object.h"
 #include "test/gmock.h"
 
 namespace webrtc {
@@ -46,7 +47,8 @@ class MockRtpSender : public RtpSenderInterface {
               (const, override));
 };
 
-static_assert(!std::is_abstract_v<rtc::RefCountedObject<MockRtpSender>>, "");
+static_assert(!std::is_abstract_v<rtc::RefCountedObject<MockRtpSender>>);
+
 }  // namespace webrtc
 
 #endif  // API_TEST_MOCK_RTPSENDER_H_
