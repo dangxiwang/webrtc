@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd3b5d6f_955dcf24",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7036
+      },
+      "writtenOn": "2022-05-13T23:17:08Z",
+      "side": 1,
+      "message": "While I imagine it will probably fail to build in upstream projects since I hide some constructors and require Create() methods to be called, and I know we probably want to agree on a unified shape for all the mocks, I went ahead and did some cleanup already.",
+      "revId": "df9be43bf6c7949381c0a5bc50f56eee760a7e78",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
