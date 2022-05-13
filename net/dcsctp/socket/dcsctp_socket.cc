@@ -306,6 +306,42 @@ void DcSctpSocket::Connect() {
   RTC_DCHECK(IsConsistent());
 }
 
+void DcSctpSocket::CreateTransmissionControlBlock(
+    const Capabilities& capabilities,
+    VerificationTag my_verification_tag,
+    TSN my_initial_tsn,
+    VerificationTag peer_verification_tag,
+    TSN peer_initial_tsn,
+    size_t a_rwnd,
+    TieTag tie_tag) {
+  metrics_.uses_message_interleaving = capabilities.message_interleaving;
+  tcb_ = TransmissionControlBlock::Create(
+      timer_manager_, log_prefix_, options_, capabilities, callbacks_,
+      send_queue_, my_verification_tag, my_initial_tsn, peer_verification_tag,
+      peer_initial_tsn, a_rwnd, tie_tag, packet_sender_,
+      [this]() { return state_ == State::kEstablished; });
+
+  RTC_DLOG(LS_VERBOSE) << log_prefix() << "Created TCB: " << tcb_->ToString();
+}
+
+void DcSctpSocket::CreateTransmissionControlBlockFromHandoverState(
+    const Capabilities& capabilities,
+    VerificationTag my_verification_tag,
+    TSN my_initial_tsn,
+    VerificationTag peer_verification_tag,
+    TSN peer_initial_tsn,
+    TieTag tie_tag,
+    const DcSctpSocketHandoverState& handover_state) {
+  metrics_.uses_message_interleaving = capabilities.message_interleaving;
+  tcb_ = TransmissionControlBlock::CreateFromHandover(
+      timer_manager_, log_prefix_, options_, capabilities, callbacks_,
+      send_queue_, my_verification_tag, my_initial_tsn, peer_verification_tag,
+      peer_initial_tsn, tie_tag, packet_sender_,
+      [this]() { return state_ == State::kEstablished; }, handover_state);
+
+  RTC_DLOG(LS_VERBOSE) << log_prefix() << "Created TCB: " << tcb_->ToString();
+}
+
 void DcSctpSocket::RestoreFromState(const DcSctpSocketHandoverState& state) {
   RTC_DCHECK_RUN_ON(&thread_checker_);
   CallbackDeferrer::ScopedDeferrer deferrer(callbacks_);
@@ -328,15 +364,12 @@ void DcSctpSocket::RestoreFromState(const DcSctpSocketHandoverState& state) {
 
       send_queue_.RestoreFromState(state);
 
-      tcb_ = std::make_unique<TransmissionControlBlock>(
-          timer_manager_, log_prefix_, options_, capabilities, callbacks_,
-          send_queue_, my_verification_tag, TSN(state.my_initial_tsn),
+      // Note: The zero value a_rwnd will be unused as the rwnd from `state` is
+      // used instead in `RetransmissionQueue` constructor.
+      CreateTransmissionControlBlockFromHandoverState(
+          capabilities, my_verification_tag, TSN(state.my_initial_tsn),
           VerificationTag(state.peer_verification_tag),
-          TSN(state.peer_initial_tsn), static_cast<size_t>(0),
-          TieTag(state.tie_tag), packet_sender_,
-          [this]() { return state_ == State::kEstablished; }, &state);
-      RTC_DLOG(LS_VERBOSE) << log_prefix() << "Created peer TCB from state: "
-                           << tcb_->ToString();
+          TSN(state.peer_initial_tsn), TieTag(state.tie_tag), state);
 
       SetState(State::kEstablished, "restored from handover state");
       callbacks_.OnConnected();
@@ -1201,14 +1234,10 @@ void DcSctpSocket::HandleInitAck(
 
   metrics_.peer_implementation = DeterminePeerImplementation(cookie->data());
 
-  tcb_ = std::make_unique<TransmissionControlBlock>(
-      timer_manager_, log_prefix_, options_, capabilities, callbacks_,
-      send_queue_, connect_params_.verification_tag,
-      connect_params_.initial_tsn, chunk->initiate_tag(), chunk->initial_tsn(),
-      chunk->a_rwnd(), MakeTieTag(callbacks_), packet_sender_,
-      [this]() { return state_ == State::kEstablished; });
-  RTC_DLOG(LS_VERBOSE) << log_prefix()
-                       << "Created peer TCB: " << tcb_->ToString();
+  CreateTransmissionControlBlock(capabilities, connect_params_.verification_tag,
+                                 connect_params_.initial_tsn,
+                                 chunk->initiate_tag(), chunk->initial_tsn(),
+                                 chunk->a_rwnd(), MakeTieTag(callbacks_));
 
   SetState(State::kCookieEchoed, "INIT_ACK received");
 
@@ -1262,14 +1291,10 @@ void DcSctpSocket::HandleCookieEcho(
   }
 
   if (tcb_ == nullptr) {
-    tcb_ = std::make_unique<TransmissionControlBlock>(
-        timer_manager_, log_prefix_, options_, cookie->capabilities(),
-        callbacks_, send_queue_, connect_params_.verification_tag,
+    CreateTransmissionControlBlock(
+        cookie->capabilities(), connect_params_.verification_tag,
         connect_params_.initial_tsn, cookie->initiate_tag(),
-        cookie->initial_tsn(), cookie->a_rwnd(), MakeTieTag(callbacks_),
-        packet_sender_, [this]() { return state_ == State::kEstablished; });
-    RTC_DLOG(LS_VERBOSE) << log_prefix()
-                         << "Created peer TCB: " << tcb_->ToString();
+        cookie->initial_tsn(), cookie->a_rwnd(), MakeTieTag(callbacks_));
   }
 
   SctpPacket::Builder b = tcb_->PacketBuilder();
