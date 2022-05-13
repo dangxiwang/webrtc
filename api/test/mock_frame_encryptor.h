@@ -18,6 +18,10 @@ namespace webrtc {
 
 class MockFrameEncryptor : public FrameEncryptorInterface {
  public:
+  static rtc::scoped_refptr<MockFrameEncryptor> Create() {
+    return rtc::make_ref_counted<MockFrameEncryptor>();
+  }
+
   MOCK_METHOD(int,
               Encrypt,
               (cricket::MediaType,
@@ -32,7 +36,12 @@ class MockFrameEncryptor : public FrameEncryptorInterface {
               GetMaxCiphertextByteSize,
               (cricket::MediaType media_type, size_t frame_size),
               (override));
+
+ protected:
+  MockFrameEncryptor() = default;
 };
+
+static_assert(!std::is_abstract_v<rtc::RefCountedObject<MockFrameEncryptor>>);
 
 }  // namespace webrtc
 

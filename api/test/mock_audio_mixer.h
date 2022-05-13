@@ -19,10 +19,20 @@ namespace test {
 
 class MockAudioMixer : public AudioMixer {
  public:
+  static rtc::scoped_refptr<MockAudioMixer> Create() {
+    return rtc::make_ref_counted<MockAudioMixer>();
+  }
+
   MOCK_METHOD(bool, AddSource, (Source*), (override));
   MOCK_METHOD(void, RemoveSource, (Source*), (override));
   MOCK_METHOD(void, Mix, (size_t number_of_channels, AudioFrame*), (override));
+
+ protected:
+  MockAudioMixer() = default;
 };
+
+static_assert(!std::is_abstract_v<rtc::RefCountedObject<MockAudioMixer>>);
+
 }  // namespace test
 }  // namespace webrtc
 

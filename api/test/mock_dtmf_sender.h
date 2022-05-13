@@ -27,7 +27,7 @@ class MockDtmfSenderObserver : public DtmfSenderObserverInterface {
   MOCK_METHOD(void, OnToneChange, (const std::string&), (override));
 };
 
-static_assert(!std::is_abstract_v<MockDtmfSenderObserver>, "");
+static_assert(!std::is_abstract_v<MockDtmfSenderObserver>);
 
 class MockDtmfSender : public DtmfSenderInterface {
  public:
@@ -49,7 +49,7 @@ class MockDtmfSender : public DtmfSenderInterface {
   MockDtmfSender() = default;
 };
 
-static_assert(!std::is_abstract_v<rtc::RefCountedObject<MockDtmfSender>>, "");
+static_assert(!std::is_abstract_v<rtc::RefCountedObject<MockDtmfSender>>);
 
 }  // namespace webrtc
 

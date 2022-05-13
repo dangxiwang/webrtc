@@ -46,7 +46,8 @@ class MockRtpSender : public RtpSenderInterface {
               (const, override));
 };
 
-static_assert(!std::is_abstract_v<rtc::RefCountedObject<MockRtpSender>>, "");
+static_assert(!std::is_abstract_v<rtc::RefCountedObject<MockRtpSender>>);
+
 }  // namespace webrtc
 
 #endif  // API_TEST_MOCK_RTPSENDER_H_

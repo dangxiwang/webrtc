@@ -199,8 +199,7 @@ class MockPeerConnectionInterface : public webrtc::PeerConnectionInterface {
 };
 
 static_assert(
-    !std::is_abstract_v<rtc::RefCountedObject<MockPeerConnectionInterface>>,
-    "");
+    !std::is_abstract_v<rtc::RefCountedObject<MockPeerConnectionInterface>>);
 
 }  // namespace webrtc
 

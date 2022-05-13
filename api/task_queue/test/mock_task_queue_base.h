@@ -20,12 +20,19 @@ namespace webrtc {
 
 class MockTaskQueueBase : public TaskQueueBase {
  public:
-  MOCK_METHOD0(Delete, void());
-  MOCK_METHOD1(PostTask, void(std::unique_ptr<QueuedTask>));
-  MOCK_METHOD2(PostDelayedTask, void(std::unique_ptr<QueuedTask>, uint32_t));
-  MOCK_METHOD2(PostDelayedHighPrecisionTask,
-               void(std::unique_ptr<QueuedTask>, uint32_t));
+  MOCK_METHOD(void, Delete, (), (override));
+  MOCK_METHOD(void, PostTask, (std::unique_ptr<QueuedTask>), (override));
+  MOCK_METHOD(void,
+              PostDelayedTask,
+              (std::unique_ptr<QueuedTask>, uint32_t),
+              (override));
+  MOCK_METHOD(void,
+              PostDelayedHighPrecisionTask,
+              (std::unique_ptr<QueuedTask>, uint32_t),
+              (override));
 };
+
+static_assert(!std::is_abstract_v<MockTaskQueueBase>);
 
 }  // namespace webrtc
 

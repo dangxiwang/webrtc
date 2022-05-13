@@ -21,8 +21,6 @@ namespace webrtc {
 
 class MockRtpTransceiver : public RtpTransceiverInterface {
  public:
-  MockRtpTransceiver() = default;
-
   static rtc::scoped_refptr<MockRtpTransceiver> Create() {
     return rtc::make_ref_counted<MockRtpTransceiver>();
   }
@@ -80,7 +78,12 @@ class MockRtpTransceiver : public RtpTransceiverInterface {
               (rtc::ArrayView<const RtpHeaderExtensionCapability>
                    header_extensions_to_offer),
               (override));
+
+ protected:
+  MockRtpTransceiver() = default;
 };
+
+static_assert(!std::is_abstract_v<rtc::RefCountedObject<MockRtpTransceiver>>);
 
 }  // namespace webrtc
 
