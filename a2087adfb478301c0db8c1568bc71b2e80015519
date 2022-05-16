@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cbb2bd4_7ee22f90",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2022-05-16T05:05:45Z",
+      "side": 1,
+      "message": "Can you add an api/test/g3doc/index.md that states the rules for making mocks?\n\nLet\u0027s submit this after the Monday discussion.\n",
+      "revId": "a2087adfb478301c0db8c1568bc71b2e80015519",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
