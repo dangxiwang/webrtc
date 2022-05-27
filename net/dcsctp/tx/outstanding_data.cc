@@ -382,8 +382,8 @@ UnwrappedTSN OutstandingData::highest_outstanding_tsn() const {
 
 absl::optional<UnwrappedTSN> OutstandingData::Insert(
     const Data& data,
-    MaxRetransmits max_retransmissions,
     TimeMs time_sent,
+    MaxRetransmits max_retransmissions,
     TimeMs expires_at) {
   UnwrappedTSN tsn = next_tsn_;
   next_tsn_.Increment();

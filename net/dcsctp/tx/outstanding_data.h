@@ -21,6 +21,7 @@
 #include "net/dcsctp/packet/chunk/iforward_tsn_chunk.h"
 #include "net/dcsctp/packet/chunk/sack_chunk.h"
 #include "net/dcsctp/packet/data.h"
+#include "net/dcsctp/public/types.h"
 
 namespace dcsctp {
 
@@ -120,10 +121,11 @@ class OutstandingData {
   // Schedules `data` to be sent, with the provided partial reliability
   // parameters. Returns the TSN if the item was actually added and scheduled to
   // be sent, and absl::nullopt if it shouldn't be sent.
-  absl::optional<UnwrappedTSN> Insert(const Data& data,
-                                      MaxRetransmits max_retransmissions,
-                                      TimeMs time_sent,
-                                      TimeMs expires_at);
+  absl::optional<UnwrappedTSN> Insert(
+      const Data& data,
+      TimeMs time_sent,
+      MaxRetransmits max_retransmissions = MaxRetransmits::NoLimit(),
+      TimeMs expires_at = TimeMs::InfiniteFuture());
 
   // Nacks all outstanding data.
   void NackAll();
