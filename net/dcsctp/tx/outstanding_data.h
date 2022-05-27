@@ -21,6 +21,7 @@
 #include "net/dcsctp/packet/chunk/iforward_tsn_chunk.h"
 #include "net/dcsctp/packet/chunk/sack_chunk.h"
 #include "net/dcsctp/packet/data.h"
+#include "net/dcsctp/public/types.h"
 
 namespace dcsctp {
 
@@ -120,10 +121,11 @@ class OutstandingData {
   // Schedules `data` to be sent, with the provided partial reliability
   // parameters. Returns the TSN if the item was actually added and scheduled to
   // be sent, and absl::nullopt if it shouldn't be sent.
-  absl::optional<UnwrappedTSN> Insert(const Data& data,
-                                      MaxRetransmits max_retransmissions,
-                                      TimeMs time_sent,
-                                      TimeMs expires_at);
+  absl::optional<UnwrappedTSN> Insert(
+      const Data& data,
+      TimeMs time_sent,
+      MaxRetransmits max_retransmissions = MaxRetransmits::NoLimit(),
+      TimeMs expires_at = TimeMs::InfiniteFuture());
 
   // Nacks all outstanding data.
   void NackAll();
@@ -159,11 +161,11 @@ class OutstandingData {
     };
 
     explicit Item(Data data,
-                  MaxRetransmits max_retransmissions,
                   TimeMs time_sent,
+                  MaxRetransmits max_retransmissions,
                   TimeMs expires_at)
-        : max_retransmissions_(max_retransmissions),
-          time_sent_(time_sent),
+        : time_sent_(time_sent),
+          max_retransmissions_(max_retransmissions),
           expires_at_(expires_at),
           data_(std::move(data)) {}
 
@@ -221,6 +223,20 @@ class OutstandingData {
       // The chunk has been nacked and is possibly lost.
       kNacked
     };
+
+    // When the packet was sent, and placed in this queue.
+    const TimeMs time_sent_;
+    // If the message was sent with a maximum number of retransmissions, this is
+    // set to that number. The value zero (0) means that it will never be
+    // retransmitted.
+    const MaxRetransmits max_retransmissions_;
+    // At this exact millisecond, the item is considered expired. If the message
+    // is not to be expired, this is set to the infinite future.
+    const TimeMs expires_at_;
+
+    // The actual data to send/retransmit.
+    Data data_;
+
     // Indicates the life cycle status of this chunk.
     Lifecycle lifecycle_ = Lifecycle::kActive;
     // Indicates the presence of this chunk, if it's in flight (Unacked), has
@@ -232,17 +248,6 @@ class OutstandingData {
     uint8_t nack_count_ = 0;
     // The number of times the DATA chunk has been retransmitted.
     uint16_t num_retransmissions_ = 0;
-    // If the message was sent with a maximum number of retransmissions, this is
-    // set to that number. The value zero (0) means that it will never be
-    // retransmitted.
-    const MaxRetransmits max_retransmissions_;
-    // When the packet was sent, and placed in this queue.
-    const TimeMs time_sent_;
-    // At this exact millisecond, the item is considered expired. If the message
-    // is not to be expired, this is set to the infinite future.
-    const TimeMs expires_at_;
-    // The actual data to send/retransmit.
-    Data data_;
   };
 
   // Returns how large a chunk will be, serialized, carrying the data
