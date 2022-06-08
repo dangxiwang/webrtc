@@ -204,7 +204,7 @@ class PeerConnectionBundleBaseTest : public ::testing::Test {
   typedef std::unique_ptr<PeerConnectionWrapperForBundleTest> WrapperPtr;
 
   explicit PeerConnectionBundleBaseTest(SdpSemantics sdp_semantics)
-      : vss_(new rtc::VirtualSocketServer()),
+      : vss_(std::make_unique<rtc::VirtualSocketServer>()),
         main_(vss_.get()),
         sdp_semantics_(sdp_semantics) {
 #ifdef WEBRTC_ANDROID
