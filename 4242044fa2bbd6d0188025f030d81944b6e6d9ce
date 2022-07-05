@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6b1cb0b_97c8df30",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5234
+      },
+      "writtenOn": "2022-07-05T14:20:54Z",
+      "side": 1,
+      "message": "PTAL. This method was added for MediaTransportInterface project, but now unused.",
+      "revId": "4242044fa2bbd6d0188025f030d81944b6e6d9ce",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
