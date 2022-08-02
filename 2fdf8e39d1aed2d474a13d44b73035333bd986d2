@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22002421_a04dda4a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6305
+      },
+      "writtenOn": "2022-08-02T16:17:51Z",
+      "side": 1,
+      "message": "Hello Xavier!\n\nCould you please review this CL which modifies build_aar.py script to allow user of the script request usage of unstripped so files within .aar.\n\nThanks a lot in advance,\nYury.",
+      "revId": "2fdf8e39d1aed2d474a13d44b73035333bd986d2",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
