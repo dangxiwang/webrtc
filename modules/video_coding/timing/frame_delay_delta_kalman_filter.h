@@ -76,10 +76,40 @@ class FrameDelayDeltaKalmanFilter {
   double GetFrameDelayDeltaEstimateTotal(double frame_size_delta_bytes) const;
 
  private:
-  double theta_[2];         // Estimated line parameters:
-                            //   (slope [1 / bytes per ms], offset [ms])
-  double theta_cov_[2][2];  // Estimate covariance.
-  double q_cov_[2][2];      // Process noise covariance.
+  // Type for keeping track of the current filter state.
+  enum class LogicalState {
+    kInitialized,
+    kPredicted,
+    kUpdated,
+  };
+
+  // Performs the predict step
+  // (https://en.wikipedia.org/wiki/Kalman_filter#Predict). Should only be
+  // called from `kInitialized` or `kUpdated`.
+  void Predict();
+
+  // Performs the update step
+  // (https://en.wikipedia.org/wiki/Kalman_filter#Update). Should only be called
+  // from `kPredicted`.
+  void Update(TimeDelta frame_delay_delta,
+              double frame_size_delta_bytes,
+              DataSize max_frame_size,
+              double var_noise);
+
+  // Current logical state of the filter.
+  LogicalState logical_state_ = LogicalState::kInitialized;
+
+  // State vector estimate.
+  double estimate_[2];  // Estimated line parameters:
+                        //   (slope [1 / bytes per ms], offset [ms])
+
+  // Estimate covariance. Contains the a priori estimate covariance when
+  // in `kPredicted` and the a posteriori estimate covariance when in
+  // `kUpdated`.
+  double estimate_cov_[2][2];  // Estimate covariance.
+
+  // Process noise covariance.
+  double process_noise_cov_[2][2];  // Process noise covariance.
 };
 
 }  // namespace webrtc
