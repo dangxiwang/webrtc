@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e98dd556_7d8d0758",
+        "filename": "net/dcsctp/socket/dcsctp_socket_network_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 5087
+      },
+      "writtenOn": "2022-08-09T08:31:24Z",
+      "side": 1,
+      "message": "HEAD:\n(dcsctp_socket_network_test.cc:170): Z: 100001000: Received 69.21 Mbps\n(dcsctp_socket_network_test.cc:170): Z: 100002000: Received 568.33 Mbps\n(dcsctp_socket_network_test.cc:170): Z: 100003000: Received 606.08 Mbps\n(dcsctp_socket_network_test.cc:170): Z: 100004000: Received 606.08 Mbps\n(dcsctp_socket_network_test.cc:170): Z: 100005000: Received 570.43 Mbps\n(dcsctp_socket_network_test.cc:170): Z: 100006000: Received 606.08 Mbps\n(dcsctp_socket_network_test.cc:170): Z: 100007000: Received 606.08 Mbps\n(dcsctp_socket_network_test.cc:170): Z: 100008000: Received 570.43 Mbps\n(dcsctp_socket_network_test.cc:170): Z: 100009000: Received 606.08 Mbps\n(dcsctp_socket_network_test.cc:170): Z: 100010000: Received 606.08 Mbps\n(dcsctp_socket_network_test.cc:170): Z: 100011000: Received 2.10 Mbps \u003c--- THIS IS REMOVED FROM CALCULATION\n\nCL:\n(dcsctp_socket_network_test.cc:170): Z: 100001000: Received 69.21 Mbps\n(dcsctp_socket_network_test.cc:170): Z: 100002000: Received 568.33 Mbps\n(dcsctp_socket_network_test.cc:170): Z: 100003000: Received 606.08 Mbps\n(dcsctp_socket_network_test.cc:170): Z: 100004000: Received 606.08 Mbps\n(dcsctp_socket_network_test.cc:170): Z: 100005000: Received 570.43 Mbps\n(dcsctp_socket_network_test.cc:170): Z: 100006000: Received 606.08 Mbps\n(dcsctp_socket_network_test.cc:170): Z: 100007000: Received 606.08 Mbps\n(dcsctp_socket_network_test.cc:170): Z: 100008000: Received 570.43 Mbps\n(dcsctp_socket_network_test.cc:170): Z: 100009000: Received 606.08 Mbps\n(dcsctp_socket_network_test.cc:170): Z: 100010000: Received 606.08 Mbps\n(dcsctp_socket_network_test.cc:170): Z: 100011000: Received 2.10 Mbps \u003c--- THIS IS COUNTED AND LOWERS THE AVERAGE",
+      "range": {
+        "startLine": 519,
+        "startChar": 32,
+        "endLine": 519,
+        "endChar": 35
+      },
+      "revId": "004437098957ca624bd51889ff17810a38f024eb",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}

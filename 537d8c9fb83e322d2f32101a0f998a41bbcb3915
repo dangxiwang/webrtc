@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec45bb9d_f7dfbfc9",
+        "filename": "net/dcsctp/socket/dcsctp_socket_network_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 5087
+      },
+      "writtenOn": "2022-08-09T08:31:24Z",
+      "side": 1,
+      "message": "This goes from 0.786432 to 0.898779 on this CL, after removing the removal of the last element in bitrates (to keep the number of samples at the denominator identical, since with this CL, we collect one less sample, so there is no need to remove it).\n\nBefore we were considering:\n(dcsctp_socket_network_test.cc:170): Z: 100004000: Received 0.00 Mbps\n(dcsctp_socket_network_test.cc:170): Z: 100005000: Received 2.10 Mbps\n(dcsctp_socket_network_test.cc:170): Z: 100006000: Received 0.00 Mbps\n(dcsctp_socket_network_test.cc:170): Z: 100007000: Received 2.10 Mbps\n(dcsctp_socket_network_test.cc:170): Z: 100008000: Received 0.00 Mbps\n(dcsctp_socket_network_test.cc:170): Z: 100009000: Received 2.10 Mbps\n(dcsctp_socket_network_test.cc:170): Z: 100010000: Received 0.00 Mbps\n\n\nNow:\n(dcsctp_socket_network_test.cc:170): Z: 100004000: Received 0.00 Mbps\n(dcsctp_socket_network_test.cc:170): Z: 100005000: Received 2.10 Mbps\n(dcsctp_socket_network_test.cc:170): Z: 100006000: Received 0.00 Mbps\n(dcsctp_socket_network_test.cc:170): Z: 100007000: Received 2.10 Mbps\n(dcsctp_socket_network_test.cc:170): Z: 100008000: Received 0.00 Mbps\n(dcsctp_socket_network_test.cc:170): Z: 100009000: Received 2.10 Mbps\n(dcsctp_socket_network_test.cc:170): Z: 100010000: Received 0.00 Mbps",
+      "range": {
+        "startLine": 433,
+        "startChar": 9,
+        "endLine": 433,
+        "endChar": 16
+      },
+      "revId": "537d8c9fb83e322d2f32101a0f998a41bbcb3915",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
