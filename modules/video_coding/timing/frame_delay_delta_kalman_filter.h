@@ -85,11 +85,11 @@ class FrameDelayDeltaKalmanFilter {
   double GetFrameDelayDeltaEstimateTotal(double frame_size_delta_bytes) const;
 
  private:
-  double theta_[2];         // Estimated line parameters:
-                            // (bandwidth [1 / bytes per ms],
-                            //  queue buildup [ms])
-  double theta_cov_[2][2];  // Estimate covariance.
-  double q_cov_[2][2];      // Process noise covariance.
+  // State estimate (bandwidth [1 / bytes per ms], queue buildup [ms]).
+  double estimate_[2];
+  double estimate_cov_[2][2];  // Estimate covariance.
+
+  double process_noise_cov_[2][2];  // Process noise covariance.
 };
 
 }  // namespace webrtc
