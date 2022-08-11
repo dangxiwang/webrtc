@@ -21,16 +21,19 @@ constexpr double kThetaLow = 0.000001;
 
 FrameDelayDeltaKalmanFilter::FrameDelayDeltaKalmanFilter() {
   // TODO(brandtr): Is there a factor 1000 missing here?
-  theta_[0] = 1 / (512e3 / 8);  // Unit: [1 / bytes per ms]
-  theta_[1] = 0;                // Unit: [ms]
+  estimate_[0] = 1 / (512e3 / 8);  // Unit: [1 / bytes per ms]
+  estimate_[1] = 0;                // Unit: [ms]
 
-  theta_cov_[0][0] = 1e-4;  // Unit: [(1 / bytes per ms)^2]
-  theta_cov_[1][1] = 1e2;   // Unit: [ms^2]
-  theta_cov_[0][1] = theta_cov_[1][0] = 0;
+  // Initial estimate covariance.
+  estimate_cov_[0][0] = 1e-4;  // Unit: [(1 / bytes per ms)^2]
+  estimate_cov_[1][1] = 1e2;   // Unit: [ms^2]
+  estimate_cov_[0][1] = estimate_cov_[1][0] = 0;
 
-  q_cov_[0][0] = 2.5e-10;  // Unit: [(1 / bytes per ms)^2]
-  q_cov_[1][1] = 1e-10;    // Unit: [ms^2]
-  q_cov_[0][1] = q_cov_[1][0] = 0;
+  // Process noise covariance.
+  process_noise_cov_[0][0] = 2.5e-10;  // Unit: [(1 / bytes per ms)^2]
+  process_noise_cov_[1][1] = 1e-10;    // Unit: [ms^2]
+  // TODO(brandtr): Remove.
+  process_noise_cov_[0][1] = process_noise_cov_[1][0] = 0;
 }
 
 void FrameDelayDeltaKalmanFilter::PredictAndUpdate(
@@ -38,28 +41,30 @@ void FrameDelayDeltaKalmanFilter::PredictAndUpdate(
     double frame_size_delta_bytes,
     DataSize max_frame_size,
     double var_noise) {
+  // Estimate prediction: There is no need to explicitly predict the estimate,
+  // since the state transition matrix is the identity.
+
+  // Estimate covariance prediction: This is done by simply adding the process
+  // noise covariance, again since the state transition matrix is the identity.
+  estimate_cov_[0][0] += process_noise_cov_[0][0];
+  estimate_cov_[0][1] += process_noise_cov_[0][1];  // TODO(brandtr): Remove.
+  estimate_cov_[1][0] += process_noise_cov_[1][0];
+  estimate_cov_[1][1] += process_noise_cov_[1][1];  // TODO(brandtr): Remove.
+
+  // Estimate update.
   double Mh[2];
   double hMh_sigma;
   double kalmanGain[2];
   double measureRes;
   double t00, t01;
 
-  // Kalman filtering
-
-  // Prediction
-  // M = M + Q
-  theta_cov_[0][0] += q_cov_[0][0];
-  theta_cov_[0][1] += q_cov_[0][1];
-  theta_cov_[1][0] += q_cov_[1][0];
-  theta_cov_[1][1] += q_cov_[1][1];
-
   // Kalman gain
   // K = M*h'/(sigma2n + h*M*h') = M*h'/(1 + h*M*h')
   // h = [dFS 1]
   // Mh = M*h'
   // hMh_sigma = h*M*h' + R
-  Mh[0] = theta_cov_[0][0] * frame_size_delta_bytes + theta_cov_[0][1];
-  Mh[1] = theta_cov_[1][0] * frame_size_delta_bytes + theta_cov_[1][1];
+  Mh[0] = estimate_cov_[0][0] * frame_size_delta_bytes + estimate_cov_[0][1];
+  Mh[1] = estimate_cov_[1][0] * frame_size_delta_bytes + estimate_cov_[1][1];
   // sigma weights measurements with a small deltaFS as noisy and
   // measurements with large deltaFS as good
   if (max_frame_size < DataSize::Bytes(1)) {
@@ -85,46 +90,46 @@ void FrameDelayDeltaKalmanFilter::PredictAndUpdate(
 
   // Correction
   // theta = theta + K*(dT - h*theta)
-  measureRes =
-      frame_delay_delta.ms() - (frame_size_delta_bytes * theta_[0] + theta_[1]);
-  theta_[0] += kalmanGain[0] * measureRes;
-  theta_[1] += kalmanGain[1] * measureRes;
+  measureRes = frame_delay_delta.ms() -
+               (frame_size_delta_bytes * estimate_[0] + estimate_[1]);
+  estimate_[0] += kalmanGain[0] * measureRes;
+  estimate_[1] += kalmanGain[1] * measureRes;
 
-  if (theta_[0] < kThetaLow) {
-    theta_[0] = kThetaLow;
+  if (estimate_[0] < kThetaLow) {
+    estimate_[0] = kThetaLow;
   }
 
   // M = (I - K*h)*M
-  t00 = theta_cov_[0][0];
-  t01 = theta_cov_[0][1];
-  theta_cov_[0][0] = (1 - kalmanGain[0] * frame_size_delta_bytes) * t00 -
-                     kalmanGain[0] * theta_cov_[1][0];
-  theta_cov_[0][1] = (1 - kalmanGain[0] * frame_size_delta_bytes) * t01 -
-                     kalmanGain[0] * theta_cov_[1][1];
-  theta_cov_[1][0] = theta_cov_[1][0] * (1 - kalmanGain[1]) -
-                     kalmanGain[1] * frame_size_delta_bytes * t00;
-  theta_cov_[1][1] = theta_cov_[1][1] * (1 - kalmanGain[1]) -
-                     kalmanGain[1] * frame_size_delta_bytes * t01;
+  t00 = estimate_cov_[0][0];
+  t01 = estimate_cov_[0][1];
+  estimate_cov_[0][0] = (1 - kalmanGain[0] * frame_size_delta_bytes) * t00 -
+                        kalmanGain[0] * estimate_cov_[1][0];
+  estimate_cov_[0][1] = (1 - kalmanGain[0] * frame_size_delta_bytes) * t01 -
+                        kalmanGain[0] * estimate_cov_[1][1];
+  estimate_cov_[1][0] = estimate_cov_[1][0] * (1 - kalmanGain[1]) -
+                        kalmanGain[1] * frame_size_delta_bytes * t00;
+  estimate_cov_[1][1] = estimate_cov_[1][1] * (1 - kalmanGain[1]) -
+                        kalmanGain[1] * frame_size_delta_bytes * t01;
 
   // Covariance matrix, must be positive semi-definite.
-  RTC_DCHECK(theta_cov_[0][0] + theta_cov_[1][1] >= 0 &&
-             theta_cov_[0][0] * theta_cov_[1][1] -
-                     theta_cov_[0][1] * theta_cov_[1][0] >=
+  RTC_DCHECK(estimate_cov_[0][0] + estimate_cov_[1][1] >= 0 &&
+             estimate_cov_[0][0] * estimate_cov_[1][1] -
+                     estimate_cov_[0][1] * estimate_cov_[1][0] >=
                  0 &&
-             theta_cov_[0][0] >= 0);
+             estimate_cov_[0][0] >= 0);
 }
 
 double FrameDelayDeltaKalmanFilter::GetFrameDelayDeltaEstimateSizeBased(
     double frame_size_delta_bytes) const {
   // Unit: [1 / bytes per millisecond] * [bytes] = [milliseconds].
-  return theta_[0] * frame_size_delta_bytes;
+  return estimate_[0] * frame_size_delta_bytes;
 }
 
 double FrameDelayDeltaKalmanFilter::GetFrameDelayDeltaEstimateTotal(
     double frame_size_delta_bytes) const {
   double frame_transmission_delay_ms =
       GetFrameDelayDeltaEstimateSizeBased(frame_size_delta_bytes);
-  double link_queuing_delay_ms = theta_[1];
+  double link_queuing_delay_ms = estimate_[1];
   return frame_transmission_delay_ms + link_queuing_delay_ms;
 }
 
