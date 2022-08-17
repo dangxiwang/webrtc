@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d71157a_cc5e92de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2022-08-17T16:27:06Z",
+      "side": 1,
+      "message": "This slightly changes the behaviour: OnFailure callback might trigger after peer connection is destroyed where before it would be triggered during peer connection destructor, but it still would trigger [unless signalling thread itself is stopped]\n\nI can keep the old behavior, but that adds extra complexity that I do not think is needed.\n\nI\u0027ve also considered to do a more radical change (https://webrtc-review.googlesource.com/c/src/+/272001) but that also changes expectation for legacy callbacks, I\u0027m not sure if those changes are ok, and I prefer to keep functional changes at minimum during refactoring like this one.",
+      "revId": "0a44ab237cf78b5140673036286c65b7a8928db2",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
