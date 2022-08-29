@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a2cd2ad_66c6d41a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7036
+      },
+      "writtenOn": "2022-08-29T20:41:25Z",
+      "side": 1,
+      "message": "Great work overall and I\u0027ve been working on similar changes today too!\n\nI would like to keep a single test per SVC mode though, I don\u0027t think the CI will enjoy the high load otherwise (even if we\u0027re going to shard the tests on multiple machines now).",
+      "revId": "93f9f4800782f61d35bd88ade3e485e7400c64f7",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa6e39cb_31d43677",
+        "filename": "api/test/peerconnection_quality_test_fixture.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 7036
+      },
+      "writtenOn": "2022-08-29T20:41:25Z",
+      "side": 1,
+      "message": "I don\u0027t think we want to extend this structure:\nI\u0027m currently working (as of this afternoon, before I was made aware of your WIP CL) of moving out the target_spatial_index into a new \"EmulatedSFUConfig\" struct, leaving the old \"simulcast_streams_count\" alone until we can replace it with a helper function that would generate something that can be stored into encoding_params.\nHaving an extra value for the temporal index is a great addition though!",
+      "revId": "93f9f4800782f61d35bd88ade3e485e7400c64f7",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efe57c25_93977faf",
+        "filename": "pc/test/svc_e2e_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 7036
+      },
+      "writtenOn": "2022-08-29T20:41:25Z",
+      "side": 1,
+      "message": "I like the simplicity of it, not having to list all the layer count and we should probably integrate that in the other fixture.\n\nThough, as it is, it will create a lot of tests (153 in this patch), and that will be a problem to run that in CI. It\u0027ll be even worse when we add all the remaining SVC modes.\nI don\u0027t think there\u0027s a lot of value in testing all the combinations, it\u0027ll be testing the emulated SFU more than the actual codecs.\nAsserting on 0 decoder errors is probably better as it will go through all the frames anyway.\n\nBut the SFU is needed to test the S modes, so it\u0027d be great to have something like that landed, which I started working on this afternoon until Artem remembered your change. For S modes, we probably just want to check a single layer though.",
+      "revId": "93f9f4800782f61d35bd88ade3e485e7400c64f7",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdd57870_b926b85c",
+        "filename": "pc/test/svc_e2e_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 7036
+      },
+      "writtenOn": "2022-08-29T20:41:25Z",
+      "side": 1,
+      "message": "Do we need another fixture? Can you reuse the existing one?\nOr is there an issue with some SVC mode that can\u0027t be used with this new test yet?",
+      "revId": "93f9f4800782f61d35bd88ade3e485e7400c64f7",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50e022ba_911b22c0",
+        "filename": "pc/test/svc_e2e_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 7036
+      },
+      "writtenOn": "2022-08-29T20:41:25Z",
+      "side": 1,
+      "message": "Do you know why the field trial is causing issues with your new test?\nIt would be great to keep using it (it\u0027s a lot cleaner than having to change the frame content, which didn\u0027t work with some SVC modes / codec).",
+      "revId": "93f9f4800782f61d35bd88ade3e485e7400c64f7",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69efd445_4551710f",
+        "filename": "pc/test/svc_e2e_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 7036
+      },
+      "writtenOn": "2022-08-29T20:41:25Z",
+      "side": 1,
+      "message": "Noting you are using a different test file, did you notice any significant difference compared to the screenshare scenario that was used instead?\nI\u0027m thinking of keeping the differences as small as possible.",
+      "revId": "93f9f4800782f61d35bd88ade3e485e7400c64f7",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7249be4_8a6671e6",
+        "filename": "pc/test/svc_e2e_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 7036
+      },
+      "writtenOn": "2022-08-29T20:41:25Z",
+      "side": 1,
+      "message": "Do you think you could merge the size tests in the existing test counting frames?",
+      "revId": "93f9f4800782f61d35bd88ade3e485e7400c64f7",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
