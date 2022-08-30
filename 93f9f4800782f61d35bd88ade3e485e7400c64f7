@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a84c3b01_9695f772",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7036
+      },
+      "writtenOn": "2022-08-30T13:06:19Z",
+      "side": 1,
+      "message": "4 minutes for linux_rel means it\u0027s a lot longer for linux_msan and linux_tsan. Those bots will take a lot longer to run the tests. Actually, svc_tests was hitting the deadline yesterday as new SVC modes were tested and we enabled sharding them on 4 machines.\nAnd that was a small fraction of the tests compared to what you\u0027re adding, that\u0027s why I\u0027m worried about this now.",
+      "parentUuid": "360e12d1_97313d0b",
+      "revId": "93f9f4800782f61d35bd88ade3e485e7400c64f7",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aa6e39cb_31d43677",
         "filename": "api/test/peerconnection_quality_test_fixture.h",
         "patchSetId": 2
@@ -84,6 +102,24 @@
       "side": 1,
       "message": "Please see my comments on how long the test will take.\n\nI couldn\u0027t find a test that confirms that the VP9/AV1 SVC works properly when some layers are omitted. So I added all cases here.",
       "parentUuid": "efe57c25_93977faf",
+      "revId": "93f9f4800782f61d35bd88ade3e485e7400c64f7",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6b3cbca_c4c66fb7",
+        "filename": "pc/test/svc_e2e_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 7036
+      },
+      "writtenOn": "2022-08-30T13:06:19Z",
+      "side": 1,
+      "message": "We could possibly reduce the runtime of the tests to something shorter that still gives good coverage for the codecs to save time. But I still think running all of those might be excessive in CI pre-submit. Having it part of the tests that run after a merge (with a shorter selection pre-submit) would be acceptable.",
+      "parentUuid": "28972846_217d52cb",
       "revId": "93f9f4800782f61d35bd88ade3e485e7400c64f7",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
@@ -154,6 +190,24 @@
       "side": 1,
       "message": "The reason is simple. I had to use SingleProcessEncodedImageDataInjector rather than VideoFrameTrackingIdInjector to omit some video frames. (See https://source.chromium.org/chromium/chromium/src/+/main:third_party/webrtc/test/pc/e2e/peer_connection_quality_test.cc;drc\u003d2aaef458767aaef50a42255c3ba08479c8c23e03;l\u003d143 ) `QualityAnalyzingVideoEncoder::ShouldDiscard` has no effect on transmitting RTP frames. Instead, it is used at the receiving end to determine whether an encoded video frame is intended for decoding. Unfortunately, the VideoFrameTrackingIdInjector does not mark the encoded image as discarded. According to the comments, this is the intended behavior.\n\n```\n// https://source.chromium.org/chromium/chromium/src/+/main:third_party/webrtc/test/pc/e2e/analyzer/video/video_frame_tracking_id_injector.h;drc\u003dae271ff05aa46c8fd3b6fe73f3a48518dcc7872a;l\u003d29\n// Note that this injector doesn\u0027t allow to discard frames.\n```",
       "parentUuid": "50e022ba_911b22c0",
+      "revId": "93f9f4800782f61d35bd88ade3e485e7400c64f7",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77172874_4f097ccd",
+        "filename": "pc/test/svc_e2e_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 7036
+      },
+      "writtenOn": "2022-08-30T13:06:19Z",
+      "side": 1,
+      "message": "I noticed that the crash tried to avoid with this is not reproducible if the dependency descriptor is used, so we can remove this difference and have https://webrtc-review.googlesource.com/c/src/+/273488 in review.",
+      "parentUuid": "fdca2040_b7546ceb",
       "revId": "93f9f4800782f61d35bd88ade3e485e7400c64f7",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
