@@ -127,38 +127,52 @@ class PeerConnectionE2EQualityTestFixture {
     std::vector<std::string> slides_yuv_file_names;
   };
 
-  // Config for Vp8 simulcast or non-standard Vp9 SVC testing.
+  // Config for simulcast or SVC testing.
   //
   // To configure standard SVC setting, use `scalability_mode` in the
   // `encoding_params` array.
-  // This configures Vp9 SVC by requesting simulcast layers, the request is
+  // This configures SVC by requesting simulcast layers, the request is
   // internally converted to a request for SVC layers.
   //
   // SVC support is limited:
   // During SVC testing there is no SFU, so framework will try to emulate SFU
   // behavior in regular p2p call. Because of it there are such limitations:
   //  * if `target_spatial_index` is not equal to the highest spatial layer
-  //    then no packet/frame drops are allowed.
-  //
-  //    If there will be any drops, that will affect requested layer, then
-  //    WebRTC SVC implementation will continue decoding only the highest
-  //    available layer and won't restore lower layers, so analyzer won't
-  //    receive required data which will cause wrong results or test failures.
+  //    then decoder will get all spatial layers' frames unless
+  //    EncodedImageDataPropagator is used.
   struct VideoSimulcastConfig {
     explicit VideoSimulcastConfig(int simulcast_streams_count)
-        : simulcast_streams_count(simulcast_streams_count) {
+        : is_svc(false), simulcast_streams_count(simulcast_streams_count) {
       RTC_CHECK_GT(simulcast_streams_count, 1);
     }
     VideoSimulcastConfig(int simulcast_streams_count, int target_spatial_index)
-        : simulcast_streams_count(simulcast_streams_count),
+        : is_svc(false),
+          simulcast_streams_count(simulcast_streams_count),
           target_spatial_index(target_spatial_index) {
       RTC_CHECK_GT(simulcast_streams_count, 1);
       RTC_CHECK_GE(target_spatial_index, 0);
       RTC_CHECK_LT(target_spatial_index, simulcast_streams_count);
     }
 
-    // Specified amount of simulcast streams/SVC layers, depending on which
-    // encoder is used.
+    VideoSimulcastConfig(bool is_svc,
+                         int simulcast_streams_count,
+                         int target_spatial_index,
+                         int target_temporal_index)
+        : is_svc(is_svc),
+          simulcast_streams_count(simulcast_streams_count),
+          target_spatial_index(target_spatial_index),
+          target_temporal_index(target_temporal_index) {
+      if (!is_svc) {
+        RTC_CHECK_GT(simulcast_streams_count, 1);
+      }
+      RTC_CHECK_GE(target_spatial_index, 0);
+      RTC_CHECK_LT(target_spatial_index, simulcast_streams_count);
+    }
+
+    // Whether this configuration is for SVC.
+    bool is_svc;
+    // Specified amount of simulcast streams/SVC spatial layers, depending on
+    // which encoder is used.
     int simulcast_streams_count;
     // Specifies spatial index of the video stream to analyze.
     // There are 2 cases:
@@ -174,6 +188,8 @@ class PeerConnectionE2EQualityTestFixture {
     // It requires Selective Forwarding Unit (SFU) to be configured in the
     // network.
     absl::optional<int> target_spatial_index;
+    // Specifies temporal index of the video stream to analyze.
+    absl::optional<int> target_temporal_index;
   };
 
   class VideoResolution {
