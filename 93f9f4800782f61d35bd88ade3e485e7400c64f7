@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "360e12d1_97313d0b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9405
+      },
+      "writtenOn": "2022-08-30T05:49:50Z",
+      "side": 1,
+      "message": "What a coincidence that we\u0027re working similar changes!\n\nThis CL is currently working in progress, as some test, especially L2T2_KEY_SHIFT isn\u0027t working as expected. Digging the cause requires some time, and it is okay for me to comment that test for now and fix it later.\n\nRunning all 257 tests from svc_tests using gtest-parallel on my workstation took about 70 seconds (by wall clock).\nOn the linux_rel trybot it took about 4 minutes (on a non-shared build). https://chromium-swarm.appspot.com/task?id\u003d5cf24ec3516daa10\nI think this amount of time is suitable for a build that doesn\u0027t use sanitizers. WDTY?\nAlternatively, we can modify RunParams to reduce the amount of frames sent.",
+      "parentUuid": "3a2cd2ad_66c6d41a",
+      "revId": "93f9f4800782f61d35bd88ade3e485e7400c64f7",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aa6e39cb_31d43677",
         "filename": "api/test/peerconnection_quality_test_fixture.h",
         "patchSetId": 2
@@ -54,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "28972846_217d52cb",
+        "filename": "pc/test/svc_e2e_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 9405
+      },
+      "writtenOn": "2022-08-30T05:49:50Z",
+      "side": 1,
+      "message": "Please see my comments on how long the test will take.\n\nI couldn\u0027t find a test that confirms that the VP9/AV1 SVC works properly when some layers are omitted. So I added all cases here.",
+      "parentUuid": "efe57c25_93977faf",
+      "revId": "93f9f4800782f61d35bd88ade3e485e7400c64f7",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cdd57870_b926b85c",
         "filename": "pc/test/svc_e2e_tests.cc",
         "patchSetId": 2
@@ -65,6 +101,24 @@
       "writtenOn": "2022-08-29T20:41:25Z",
       "side": 1,
       "message": "Do we need another fixture? Can you reuse the existing one?\nOr is there an issue with some SVC mode that can\u0027t be used with this new test yet?",
+      "revId": "93f9f4800782f61d35bd88ade3e485e7400c64f7",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ca99402_59ced96e",
+        "filename": "pc/test/svc_e2e_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 9405
+      },
+      "writtenOn": "2022-08-30T05:49:50Z",
+      "side": 1,
+      "message": "I had to split the two test fixtures because the parameters used in each test are different (SvcTestParameters vs SvcSelectLayerTestParameters). I don\u0027t know if I\u0027ll add more tests.",
+      "parentUuid": "cdd57870_b926b85c",
       "revId": "93f9f4800782f61d35bd88ade3e485e7400c64f7",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
@@ -88,6 +142,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fdca2040_b7546ceb",
+        "filename": "pc/test/svc_e2e_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 9405
+      },
+      "writtenOn": "2022-08-30T05:49:50Z",
+      "side": 1,
+      "message": "The reason is simple. I had to use SingleProcessEncodedImageDataInjector rather than VideoFrameTrackingIdInjector to omit some video frames. (See https://source.chromium.org/chromium/chromium/src/+/main:third_party/webrtc/test/pc/e2e/peer_connection_quality_test.cc;drc\u003d2aaef458767aaef50a42255c3ba08479c8c23e03;l\u003d143 ) `QualityAnalyzingVideoEncoder::ShouldDiscard` has no effect on transmitting RTP frames. Instead, it is used at the receiving end to determine whether an encoded video frame is intended for decoding. Unfortunately, the VideoFrameTrackingIdInjector does not mark the encoded image as discarded. According to the comments, this is the intended behavior.\n\n```\n// https://source.chromium.org/chromium/chromium/src/+/main:third_party/webrtc/test/pc/e2e/analyzer/video/video_frame_tracking_id_injector.h;drc\u003dae271ff05aa46c8fd3b6fe73f3a48518dcc7872a;l\u003d29\n// Note that this injector doesn\u0027t allow to discard frames.\n```",
+      "parentUuid": "50e022ba_911b22c0",
+      "revId": "93f9f4800782f61d35bd88ade3e485e7400c64f7",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "69efd445_4551710f",
         "filename": "pc/test/svc_e2e_tests.cc",
         "patchSetId": 2
@@ -99,6 +171,24 @@
       "writtenOn": "2022-08-29T20:41:25Z",
       "side": 1,
       "message": "Noting you are using a different test file, did you notice any significant difference compared to the screenshare scenario that was used instead?\nI\u0027m thinking of keeping the differences as small as possible.",
+      "revId": "93f9f4800782f61d35bd88ade3e485e7400c64f7",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ad0b2e9_c45f501f",
+        "filename": "pc/test/svc_e2e_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 9405
+      },
+      "writtenOn": "2022-08-30T05:49:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69efd445_4551710f",
       "revId": "93f9f4800782f61d35bd88ade3e485e7400c64f7",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
@@ -116,6 +206,24 @@
       "writtenOn": "2022-08-29T20:41:25Z",
       "side": 1,
       "message": "Do you think you could merge the size tests in the existing test counting frames?",
+      "revId": "93f9f4800782f61d35bd88ade3e485e7400c64f7",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d03e61b4_1315cb3b",
+        "filename": "pc/test/svc_e2e_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 9405
+      },
+      "writtenOn": "2022-08-30T05:49:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7249be4_8a6671e6",
       "revId": "93f9f4800782f61d35bd88ade3e485e7400c64f7",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
