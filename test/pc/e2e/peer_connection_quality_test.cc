@@ -496,6 +496,12 @@ void PeerConnectionE2EQualityTest::SetupCallOnSignalingThread(
                            std::to_string(i);
           transceiver_params.send_encodings.push_back(enc_params);
         }
+      } else {
+        RtpEncodingParameters enc_params;
+        if (!video_config.encoding_params.empty()) {
+          enc_params = video_config.encoding_params[0];
+        }
+        transceiver_params.send_encodings.push_back(enc_params);
       }
     } else {
       transceiver_params.direction = RtpTransceiverDirection::kSendRecv;

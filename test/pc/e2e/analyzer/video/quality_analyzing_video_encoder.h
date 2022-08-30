@@ -17,6 +17,7 @@
 #include <vector>
 
 #include "absl/strings/string_view.h"
+#include "absl/types/optional.h"
 #include "api/test/video_quality_analyzer_interface.h"
 #include "api/video/video_frame.h"
 #include "api/video_codecs/sdp_video_format.h"
@@ -29,10 +30,16 @@
 namespace webrtc {
 namespace webrtc_pc_e2e {
 
-// Tells QualityAnalyzingVideoEncoder that it shouldn't mark any spatial stream
-// as to be discarded. In such case the top stream will be passed to
-// VideoQualityAnalyzerInterface as a reference.
-constexpr int kAnalyzeAnySpatialStream = -1;
+struct RequiredLayerPerStreamParam {
+ public:
+  // Tells QualityAnalyzingVideoEncoder that it shouldn't mark any spatial
+  // stream as to be discarded. In such case the top stream will be passed to
+  // VideoQualityAnalyzerInterface as a reference.
+  static constexpr int kAnalyzeAnySpatialStream = -1;
+
+  std::map<std::string, absl::optional<int>> stream_required_spatial_index;
+  std::map<std::string, absl::optional<int>> stream_required_temporal_index;
+};
 
 // QualityAnalyzingVideoEncoder is used to wrap origin video encoder and inject
 // VideoQualityAnalyzerInterface before and after encoder.
@@ -58,7 +65,7 @@ class QualityAnalyzingVideoEncoder : public VideoEncoder,
       absl::string_view peer_name,
       std::unique_ptr<VideoEncoder> delegate,
       double bitrate_multiplier,
-      std::map<std::string, absl::optional<int>> stream_required_spatial_index,
+      const RequiredLayerPerStreamParam& required_layer_per_stream_param,
       EncodedImageDataInjector* injector,
       VideoQualityAnalyzerInterface* analyzer);
   ~QualityAnalyzingVideoEncoder() override;
@@ -143,7 +150,7 @@ class QualityAnalyzingVideoEncoder : public VideoEncoder,
   // 2. `kAnalyzeAnySpatialStream` means all simulcast/SVC streams are required
   // 3. Concrete value means that particular simulcast/SVC stream have to be
   //    analyzed.
-  std::map<std::string, absl::optional<int>> stream_required_spatial_index_;
+  RequiredLayerPerStreamParam required_layer_per_stream_param_;
   EncodedImageDataInjector* const injector_;
   VideoQualityAnalyzerInterface* const analyzer_;
 
@@ -169,7 +176,7 @@ class QualityAnalyzingVideoEncoderFactory : public VideoEncoderFactory {
       absl::string_view peer_name,
       std::unique_ptr<VideoEncoderFactory> delegate,
       double bitrate_multiplier,
-      std::map<std::string, absl::optional<int>> stream_required_spatial_index,
+      const RequiredLayerPerStreamParam& required_layer_per_stream_param,
       EncodedImageDataInjector* injector,
       VideoQualityAnalyzerInterface* analyzer);
   ~QualityAnalyzingVideoEncoderFactory() override;
@@ -183,7 +190,7 @@ class QualityAnalyzingVideoEncoderFactory : public VideoEncoderFactory {
   const std::string peer_name_;
   std::unique_ptr<VideoEncoderFactory> delegate_;
   const double bitrate_multiplier_;
-  std::map<std::string, absl::optional<int>> stream_required_spatial_index_;
+  RequiredLayerPerStreamParam required_layer_per_stream_param_;
   EncodedImageDataInjector* const injector_;
   VideoQualityAnalyzerInterface* const analyzer_;
 };
