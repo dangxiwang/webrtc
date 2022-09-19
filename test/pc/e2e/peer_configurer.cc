@@ -135,7 +135,8 @@ void PeerParamsPreprocessor::ValidateParams(const PeerConfigurerImpl& peer) {
         RTC_CHECK_LT(*video_config.simulcast_config->target_spatial_index,
                      video_config.simulcast_config->simulcast_streams_count);
       }
-      if (!video_config.encoding_params.empty()) {
+      if (!video_config.simulcast_config->is_svc &&
+          !video_config.encoding_params.empty()) {
         RTC_CHECK_EQ(video_config.simulcast_config->simulcast_streams_count,
                      video_config.encoding_params.size())
             << "|encoding_params| have to be specified for each simulcast "

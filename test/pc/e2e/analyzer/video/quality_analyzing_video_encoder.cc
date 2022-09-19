@@ -57,13 +57,13 @@ QualityAnalyzingVideoEncoder::QualityAnalyzingVideoEncoder(
     absl::string_view peer_name,
     std::unique_ptr<VideoEncoder> delegate,
     double bitrate_multiplier,
-    std::map<std::string, absl::optional<int>> stream_required_spatial_index,
+    const RequiredLayerPerStreamParam& required_layer_per_stream_param,
     EncodedImageDataInjector* injector,
     VideoQualityAnalyzerInterface* analyzer)
     : peer_name_(peer_name),
       delegate_(std::move(delegate)),
       bitrate_multiplier_(bitrate_multiplier),
-      stream_required_spatial_index_(std::move(stream_required_spatial_index)),
+      required_layer_per_stream_param_(required_layer_per_stream_param),
       injector_(injector),
       analyzer_(analyzer),
       mode_(SimulcastMode::kNormal),
@@ -320,14 +320,24 @@ bool QualityAnalyzingVideoEncoder::ShouldDiscard(
     const EncodedImage& encoded_image) {
   std::string stream_label = analyzer_->GetStreamLabel(frame_id);
   absl::optional<int> required_spatial_index =
-      stream_required_spatial_index_[stream_label];
-  if (required_spatial_index) {
-    if (*required_spatial_index == kAnalyzeAnySpatialStream) {
-      return false;
+      required_layer_per_stream_param_
+          .stream_required_spatial_index[stream_label];
+  absl::optional<int> required_temporal_index =
+      required_layer_per_stream_param_
+          .stream_required_temporal_index[stream_label];
+
+  int cur_spatial_index = encoded_image.SpatialIndex().value_or(0);
+  int cur_temporal_index = encoded_image.TemporalIndex().value_or(0);
+  if (required_temporal_index) {
+    if (cur_temporal_index > *required_temporal_index) {
+      return true;
     }
-    absl::optional<int> cur_spatial_index = encoded_image.SpatialIndex();
-    if (!cur_spatial_index) {
-      cur_spatial_index = 0;
+  }
+
+  if (required_spatial_index) {
+    if (*required_spatial_index ==
+        RequiredLayerPerStreamParam::kAnalyzeAnySpatialStream) {
+      return false;
     }
     RTC_CHECK(mode_ != SimulcastMode::kNormal)
         << "Analyzing encoder is in kNormal "
@@ -336,21 +346,21 @@ bool QualityAnalyzingVideoEncoder::ShouldDiscard(
     if (mode_ == SimulcastMode::kSimulcast) {
       // In simulcast mode only encoded images with required spatial index are
       // interested, so all others have to be discarded.
-      return *cur_spatial_index != *required_spatial_index;
+      return cur_spatial_index != *required_spatial_index;
     } else if (mode_ == SimulcastMode::kSVC) {
       // In SVC mode encoded images with spatial indexes that are equal or
       // less than required one are interesting, so all above have to be
       // discarded.
-      return *cur_spatial_index > *required_spatial_index;
+      return cur_spatial_index > *required_spatial_index;
     } else if (mode_ == SimulcastMode::kKSVC) {
       // In KSVC mode for key frame encoded images with spatial indexes that
       // are equal or less than required one are interesting, so all above
       // have to be discarded. For other frames only required spatial index
       // is interesting, so all others have to be discarded.
       if (encoded_image._frameType == VideoFrameType::kVideoFrameKey) {
-        return *cur_spatial_index > *required_spatial_index;
+        return cur_spatial_index > *required_spatial_index;
       } else {
-        return *cur_spatial_index != *required_spatial_index;
+        return cur_spatial_index != *required_spatial_index;
       }
     } else {
       RTC_DCHECK_NOTREACHED() << "Unsupported encoder mode";
@@ -363,13 +373,13 @@ QualityAnalyzingVideoEncoderFactory::QualityAnalyzingVideoEncoderFactory(
     absl::string_view peer_name,
     std::unique_ptr<VideoEncoderFactory> delegate,
     double bitrate_multiplier,
-    std::map<std::string, absl::optional<int>> stream_required_spatial_index,
+    const RequiredLayerPerStreamParam& required_layer_per_stream_param,
     EncodedImageDataInjector* injector,
     VideoQualityAnalyzerInterface* analyzer)
     : peer_name_(peer_name),
       delegate_(std::move(delegate)),
       bitrate_multiplier_(bitrate_multiplier),
-      stream_required_spatial_index_(std::move(stream_required_spatial_index)),
+      required_layer_per_stream_param_(required_layer_per_stream_param),
       injector_(injector),
       analyzer_(analyzer) {}
 QualityAnalyzingVideoEncoderFactory::~QualityAnalyzingVideoEncoderFactory() =
@@ -385,7 +395,7 @@ QualityAnalyzingVideoEncoderFactory::CreateVideoEncoder(
     const SdpVideoFormat& format) {
   return std::make_unique<QualityAnalyzingVideoEncoder>(
       peer_name_, delegate_->CreateVideoEncoder(format), bitrate_multiplier_,
-      stream_required_spatial_index_, injector_, analyzer_);
+      required_layer_per_stream_param_, injector_, analyzer_);
 }
 
 }  // namespace webrtc_pc_e2e

@@ -69,6 +69,8 @@ class SingleProcessEncodedImageDataInjector
     const static size_t kUsedBufferSize = 3;
     // Frame sub id to distinguish encoded images for different spatial layers.
     uint8_t sub_id;
+    // Frame's temporal layer.
+    int tid;
     // Flag to show is this encoded images should be discarded by analyzing
     // decoder because of not required spatial layer/simulcast stream.
     bool discard;
