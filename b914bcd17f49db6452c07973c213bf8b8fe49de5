@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d4ff4a6_1ca0df3d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9405
+      },
+      "writtenOn": "2022-09-19T09:57:07Z",
+      "side": 1,
+      "message": "Hi, Florent. Please take another look.\n\nI\u0027ve split this test into `slow_svc_tests`. Duplicate code with svc_tests exists, and I have tried to reduce it.\nI also modified this test to work with the L2T2_KEY_SHIFT case as well.",
+      "revId": "b914bcd17f49db6452c07973c213bf8b8fe49de5",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
