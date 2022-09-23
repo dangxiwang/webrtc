@@ -16,6 +16,24 @@
       "message": "Hi, Florent. Please take another look.\n\nI\u0027ve split this test into `slow_svc_tests`. Duplicate code with svc_tests exists, and I have tried to reduce it.\nI also modified this test to work with the L2T2_KEY_SHIFT case as well.",
       "revId": "b914bcd17f49db6452c07973c213bf8b8fe49de5",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8df74e15_0ed56d63",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 7036
+      },
+      "writtenOn": "2022-09-23T14:18:39Z",
+      "side": 1,
+      "message": "Hey, I\u0027ve moved the emulated SFU configuration into another struct and added similar functionality that you have in this CL in https://webrtc-review.googlesource.com/c/src/+/274162 (landing now). It fixes the behavior framework behavior for S modes and adds the ability to do filtering based on the temporal layer as well.\n\nWould you be able to rebase your changes on top of this for clarity?",
+      "parentUuid": "3d4ff4a6_1ca0df3d",
+      "revId": "b914bcd17f49db6452c07973c213bf8b8fe49de5",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
