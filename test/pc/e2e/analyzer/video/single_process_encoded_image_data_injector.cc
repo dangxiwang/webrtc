@@ -41,6 +41,7 @@ EncodedImage SingleProcessEncodedImageDataInjector::InjectData(
     // Will create new one if missed.
     ExtractionInfoVector& ev = extraction_cache_[id];
     info.sub_id = ev.next_sub_id++;
+    info.tid = source.TemporalIndex().value_or(0);
     ev.infos[info.sub_id] = info;
   }
 
@@ -151,6 +152,7 @@ EncodedImageExtractionResult SingleProcessEncodedImageDataInjector::ExtractData(
   // Make a pass from begin to end to restore origin payload and erase discarded
   // encoded images.
   size_t pos = 0;
+  int tid = -1;
   for (size_t frame_index = 0; frame_index < frame_sizes.size();
        ++frame_index) {
     RTC_CHECK(pos < size);
@@ -171,9 +173,14 @@ EncodedImageExtractionResult SingleProcessEncodedImageDataInjector::ExtractData(
           &buffer->data()[pos + frame_size - ExtractionInfo::kUsedBufferSize],
           info.origin_data, ExtractionInfo::kUsedBufferSize);
       pos += frame_size;
+      // In KEY_SHIFT svc the temporal index should be adjusted to the index
+      // of the available frame.
+      tid = std::max(tid, info.tid);
     }
   }
   out.set_size(pos);
+  RTC_DCHECK_GE(tid, 0);
+  out.SetTemporalIndex(tid);
 
   return EncodedImageExtractionResult{*id, out, discard};
 }
