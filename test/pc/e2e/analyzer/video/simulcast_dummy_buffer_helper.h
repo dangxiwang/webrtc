@@ -11,7 +11,7 @@
 #ifndef TEST_PC_E2E_ANALYZER_VIDEO_SIMULCAST_DUMMY_BUFFER_HELPER_H_
 #define TEST_PC_E2E_ANALYZER_VIDEO_SIMULCAST_DUMMY_BUFFER_HELPER_H_
 
-#include "api/video/i420_buffer.h"
+#include "api/video/video_frame.h"
 #include "api/video/video_frame_buffer.h"
 
 namespace webrtc {
@@ -19,8 +19,7 @@ namespace webrtc_pc_e2e {
 
 rtc::scoped_refptr<webrtc::VideoFrameBuffer> CreateDummyFrameBuffer();
 
-bool IsDummyFrameBuffer(
-    rtc::scoped_refptr<webrtc::VideoFrameBuffer> video_frame_buffer);
+bool IsDummyFrame(const webrtc::VideoFrame& video_frame);
 
 }  // namespace webrtc_pc_e2e
 }  // namespace webrtc
