@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e49380c0_70a15b07",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8046
+      },
+      "writtenOn": "2022-10-13T08:51:53Z",
+      "side": 1,
+      "message": "I checked chromium/chrome/installer and it looks both debian and rpm have libdrm as dependency so it should be safe to link against it and not dlopen it.",
+      "revId": "a362a9ee16a77909b419630e9ad5e69c6cb84740",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
