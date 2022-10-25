@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "555ac475_f29e07b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2022-10-25T07:56:04Z",
+      "side": 1,
+      "message": "Seems I did not check my handiwork well enough last time.",
+      "revId": "08c285ddabcc7ba4aa5ad7ee005400280a4dbac4",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
