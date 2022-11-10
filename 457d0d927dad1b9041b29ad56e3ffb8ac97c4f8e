@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dcc2ce8_5b681b18",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2022-11-10T12:44:42Z",
+      "side": 1,
+      "message": "Good to get rid of the \"final\" markers too.",
+      "revId": "457d0d927dad1b9041b29ad56e3ffb8ac97c4f8e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
