@@ -64,6 +64,30 @@
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7eb70053_17e2c034",
+        "filename": "modules/audio_processing/agc2/input_volume_controller.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 17719
+      },
+      "writtenOn": "2022-11-18T18:42:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49285b5b_c54d4ae7",
+      "range": {
+        "startLine": 209,
+        "startChar": 27,
+        "endLine": 209,
+        "endChar": 72
+      },
+      "revId": "645e7bcab68692c55a8e96e38424913db1e6f697",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2414e03d_30ac4817",
@@ -77,6 +101,30 @@
       "writtenOn": "2022-11-18T13:50:59Z",
       "side": 1,
       "message": "I would be clear on whether the threshold is used to detect either speech or silence as you may use two different thresholds with a gap in between to gain confidence on the decision being taken.\n\nI guess this is to detect silence: when the voice probability is below 0.7, \"unvoiced\" is detected. If that\u0027s the case, you could name the param after the \"unvoiced\" keyword.",
+      "range": {
+        "startLine": 65,
+        "startChar": 36,
+        "endLine": 65,
+        "endChar": 54
+      },
+      "revId": "645e7bcab68692c55a8e96e38424913db1e6f697",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "828ade44_bff48fd7",
+        "filename": "modules/audio_processing/agc2/input_volume_controller.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 17719
+      },
+      "writtenOn": "2022-11-18T18:42:24Z",
+      "side": 1,
+      "message": "I\u0027ve added a comment to clarify. Let\u0027s think about how to rename it.",
+      "parentUuid": "2414e03d_30ac4817",
       "range": {
         "startLine": 65,
         "startChar": 36,
@@ -110,6 +158,30 @@
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9076024d_c3abb8ed",
+        "filename": "modules/audio_processing/agc2/input_volume_controller.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 17719
+      },
+      "writtenOn": "2022-11-18T18:42:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b4c868f_fdd48ee6",
+      "range": {
+        "startLine": 211,
+        "startChar": 65,
+        "endLine": 216,
+        "endChar": 31
+      },
+      "revId": "645e7bcab68692c55a8e96e38424913db1e6f697",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "144a0d53_75e9ea26",
@@ -123,6 +195,30 @@
       "writtenOn": "2022-11-18T13:50:59Z",
       "side": 1,
       "message": "maybe this should be addressed in a separate CL, but this name looks strange as no audio to process is passed at this step\n\nwhat about RecommendInputVolume()? I\u0027d do it in a separate CL where you also remove recommended_analog_level() and make this method return the recommendation",
+      "range": {
+        "startLine": 217,
+        "startChar": 7,
+        "endLine": 217,
+        "endChar": 14
+      },
+      "revId": "645e7bcab68692c55a8e96e38424913db1e6f697",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32b7dd12_56e8e5b5",
+        "filename": "modules/audio_processing/agc2/input_volume_controller.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 17719
+      },
+      "writtenOn": "2022-11-18T18:42:24Z",
+      "side": 1,
+      "message": "Let\u0027s rename `Process()` in both classes. I\u0027ve added a TODO in both places.",
+      "parentUuid": "144a0d53_75e9ea26",
       "range": {
         "startLine": 217,
         "startChar": 7,
@@ -156,6 +252,30 @@
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2296fc5e_2a24e50a",
+        "filename": "modules/audio_processing/agc2/input_volume_controller_unittest.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 17719
+      },
+      "writtenOn": "2022-11-18T18:42:24Z",
+      "side": 1,
+      "message": "Agreed but let\u0027s do this in another CL since it\u0027s not part of the changes here.",
+      "parentUuid": "f7945eb2_9d40233c",
+      "range": {
+        "startLine": 261,
+        "startChar": 2,
+        "endLine": 261,
+        "endChar": 36
+      },
+      "revId": "645e7bcab68692c55a8e96e38424913db1e6f697",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f1eb6b10_92a1e240",
@@ -169,6 +289,30 @@
       "writtenOn": "2022-11-18T13:50:59Z",
       "side": 1,
       "message": "maybe make this visible by adding 2 args in CreateInputVolumeController() or just removed since the test shows the different behaviors by changing the input instead of changing the tuning\n\nso you could write \"create two controllers with the exact same settings\" and below add a comment that highlights that a different input is provided in order to trigger two different adaptation behaviors",
+      "range": {
+        "startLine": 1559,
+        "startChar": 5,
+        "endLine": 1559,
+        "endChar": 78
+      },
+      "revId": "645e7bcab68692c55a8e96e38424913db1e6f697",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0fe610b_ad97b41d",
+        "filename": "modules/audio_processing/agc2/input_volume_controller_unittest.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1559,
+      "author": {
+        "id": 17719
+      },
+      "writtenOn": "2022-11-18T18:42:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1eb6b10_92a1e240",
       "range": {
         "startLine": 1559,
         "startChar": 5,
