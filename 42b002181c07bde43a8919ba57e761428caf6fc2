@@ -16,6 +16,23 @@
       "message": "Hi Alessio, could you please take a look? Thanks!",
       "revId": "42b002181c07bde43a8919ba57e761428caf6fc2",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c9c483a_1630d621",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 17719
+      },
+      "writtenOn": "2022-12-08T15:20:45Z",
+      "side": 1,
+      "message": "Hi Alessio, this CL renames a class member and a few test variables. It doesn\u0027t change the functionality of the code. Can you please take a look?",
+      "revId": "42b002181c07bde43a8919ba57e761428caf6fc2",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
