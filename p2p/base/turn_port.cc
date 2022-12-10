@@ -684,7 +684,19 @@ int TurnPort::SendTo(const void* data,
 
 bool TurnPort::CanHandleIncomingPacketsFrom(
     const rtc::SocketAddress& addr) const {
+  if (server_address_.address == addr) {
+    // RTC_DCHECK(const_cast<TurnPort*>(this)->GetConnection(addr) != nullptr);
+  }
   return server_address_.address == addr;
+}
+
+void TurnPort::SendBindingErrorResponse(StunMessage* message,
+                                        const rtc::SocketAddress& addr,
+                                        int error_code,
+                                        absl::string_view reason) {
+  RTC_DCHECK(const_cast<TurnPort*>(this)->GetConnection(addr) != nullptr);
+
+  Port::SendBindingErrorResponse(message, addr, error_code, reason);
 }
 
 bool TurnPort::HandleIncomingPacket(rtc::AsyncPacketSocket* socket,

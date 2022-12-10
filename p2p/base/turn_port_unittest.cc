@@ -683,6 +683,18 @@ class TurnPortTest : public ::testing::Test,
     // unknown address.
     turn_unknown_address_ = false;
     fake_clock_.AdvanceTime(webrtc::TimeDelta::Seconds(5 * 60));
+
+    RTC_DCHECK_RUN_ON(conn1->network_thread_);
+    conn1->remote_candidate_.set_password("bad");
+    auto msg = conn1->BuildPingRequest();
+
+    rtc::ByteBufferWriter buf;
+    msg->Write(&buf);
+    conn1->Send(buf.Data(), buf.Length(), options);
+
+    EXPECT_TRUE_SIMULATED_WAIT(turn_unknown_address_, kSimulatedRtt,
+                               fake_clock_);
+
     conn1->Ping(0);
     EXPECT_TRUE_SIMULATED_WAIT(turn_unknown_address_, kSimulatedRtt,
                                fake_clock_);
