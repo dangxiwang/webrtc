@@ -372,6 +372,8 @@ class Connection : public CandidatePairInterface {
   rtc::RateTracker send_rate_tracker_;
   int64_t last_send_data_ = 0;
 
+  friend class TurnPortTest;
+
  private:
   // Update the local candidate based on the mapped address attribute.
   // If the local candidate changed, fires SignalStateChange.

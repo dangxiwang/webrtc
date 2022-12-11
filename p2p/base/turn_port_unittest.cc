@@ -683,6 +683,27 @@ class TurnPortTest : public ::testing::Test,
     // unknown address.
     turn_unknown_address_ = false;
     fake_clock_.AdvanceTime(webrtc::TimeDelta::Seconds(5 * 60));
+
+    // TODO(chromium:1395625): When `TurnPort` doesn't find connection objects
+    // for incoming packets, it forwards calls to the parent class, `Port`. This
+    // happens inside `TurnPort::DispatchPacket`. The `Port` implementation may
+    // need to send a binding error back over a connection which, unless the
+    // `TurnPort` implementation handles it, could result in a null deref.
+    // This special check tests if dispatching messages via `TurnPort` for which
+    // there's no connection, results in a no-op rather than crashing.
+    // See `TurnPort::SendBindingErrorResponse` for the check.
+    RTC_DCHECK_RUN_ON(conn1->network_thread_);
+    std::string pwd = conn1->remote_candidate_.password();
+    conn1->remote_candidate_.set_password("bad");
+    auto msg = conn1->BuildPingRequest();
+
+    rtc::ByteBufferWriter buf;
+    msg->Write(&buf);
+    conn1->Send(buf.Data(), buf.Length(), options);
+
+    // Now restore the password before continuing.
+    conn1->remote_candidate_.set_password(pwd);
+
     conn1->Ping(0);
     EXPECT_TRUE_SIMULATED_WAIT(turn_unknown_address_, kSimulatedRtt,
                                fake_clock_);
