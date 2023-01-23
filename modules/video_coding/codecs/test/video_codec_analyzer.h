@@ -15,10 +15,11 @@
 
 #include "absl/types/optional.h"
 #include "api/sequence_checker.h"
+#include "api/test/video_codec_tester.h"
 #include "api/video/encoded_image.h"
 #include "api/video/resolution.h"
 #include "api/video/video_frame.h"
-#include "modules/video_coding/codecs/test/videocodec_test_stats_impl.h"
+#include "modules/video_coding/codecs/test/video_codec_stats_impl.h"
 #include "rtc_base/synchronization/mutex.h"
 #include "rtc_base/system/no_unique_address.h"
 #include "rtc_base/task_queue_for_test.h"
@@ -50,12 +51,14 @@ class VideoCodecAnalyzer {
 
   void FinishDecode(const VideoFrame& frame, int spatial_idx);
 
-  std::unique_ptr<VideoCodecTestStats> GetStats();
+  std::unique_ptr<VideoCodecStats> GetStats();
 
  protected:
   rtc::TaskQueue& task_queue_;
   ReferenceVideoSource* const reference_video_source_;
-  VideoCodecTestStatsImpl stats_ RTC_GUARDED_BY(sequence_checker_);
+  int num_frames_ RTC_GUARDED_BY(sequence_checker_);
+  VideoCodecStatsImpl stats_ RTC_GUARDED_BY(sequence_checker_);
+
   RTC_NO_UNIQUE_ADDRESS SequenceChecker sequence_checker_;
 };
 

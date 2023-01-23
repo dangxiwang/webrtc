@@ -878,6 +878,8 @@ if (rtc_include_tests) {
     sources = [
       "codecs/test/video_codec_analyzer.cc",
       "codecs/test/video_codec_analyzer.h",
+      "codecs/test/video_codec_stats_impl.cc",
+      "codecs/test/video_codec_stats_impl.h",
       "codecs/test/video_codec_unittest.cc",
       "codecs/test/video_codec_unittest.h",
       "codecs/test/videoprocessor.cc",
@@ -896,6 +898,7 @@ if (rtc_include_tests) {
       "../../api:frame_generator_api",
       "../../api:scoped_refptr",
       "../../api:sequence_checker",
+      "../../api:video_codec_stats_api",
       "../../api:video_codec_tester_api",
       "../../api:videocodec_test_fixture_api",
       "../../api/task_queue",
@@ -1162,6 +1165,7 @@ if (rtc_include_tests) {
     sources = [
       "chain_diff_calculator_unittest.cc",
       "codecs/test/video_codec_analyzer_unittest.cc",
+      "codecs/test/video_codec_stats_impl_unittest.cc",
       "codecs/test/video_codec_tester_impl_unittest.cc",
       "codecs/test/videocodec_test_fixture_config_unittest.cc",
       "codecs/test/videocodec_test_stats_impl_unittest.cc",
