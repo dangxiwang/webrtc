@@ -23,8 +23,8 @@ namespace {
 using ::testing::Return;
 using ::testing::Values;
 
-const size_t kTimestamp = 3000;
-const size_t kSpatialIdx = 2;
+const uint32_t kTimestamp = 3000;
+const int kSpatialIdx = 2;
 
 class MockReferenceVideoSource
     : public VideoCodecAnalyzer::ReferenceVideoSource {
@@ -57,17 +57,17 @@ EncodedImage CreateEncodedImage(uint32_t timestamp_rtp, int spatial_idx = 0) {
 }
 }  // namespace
 
-TEST(VideoCodecAnalyzerTest, EncodeStartedCreatesFrameStats) {
+TEST(VideoCodecAnalyzerTest, StartEncode) {
   TaskQueueForTest task_queue;
   VideoCodecAnalyzer analyzer(task_queue);
   analyzer.StartEncode(CreateVideoFrame(kTimestamp));
 
-  auto fs = analyzer.GetStats()->GetFrameStatistics();
+  auto fs = analyzer.GetStats()->Slice();
   EXPECT_EQ(1u, fs.size());
-  EXPECT_EQ(fs[0].rtp_timestamp, kTimestamp);
+  EXPECT_EQ(fs[0].timestamp_rtp, kTimestamp);
 }
 
-TEST(VideoCodecAnalyzerTest, EncodeFinishedUpdatesFrameStats) {
+TEST(VideoCodecAnalyzerTest, FinishEncode) {
   TaskQueueForTest task_queue;
   VideoCodecAnalyzer analyzer(task_queue);
   analyzer.StartEncode(CreateVideoFrame(kTimestamp));
@@ -75,47 +75,35 @@ TEST(VideoCodecAnalyzerTest, EncodeFinishedUpdatesFrameStats) {
   EncodedImage encoded_frame = CreateEncodedImage(kTimestamp, kSpatialIdx);
   analyzer.FinishEncode(encoded_frame);
 
-  auto fs = analyzer.GetStats()->GetFrameStatistics();
+  auto fs = analyzer.GetStats()->Slice();
   EXPECT_EQ(2u, fs.size());
-  EXPECT_TRUE(fs[1].encoding_successful);
+  EXPECT_EQ(kSpatialIdx, fs[1].spatial_idx);
 }
 
-TEST(VideoCodecAnalyzerTest, DecodeStartedNoFrameStatsCreatesFrameStats) {
+TEST(VideoCodecAnalyzerTest, StartDecode) {
   TaskQueueForTest task_queue;
   VideoCodecAnalyzer analyzer(task_queue);
   analyzer.StartDecode(CreateEncodedImage(kTimestamp, kSpatialIdx));
 
-  auto fs = analyzer.GetStats()->GetFrameStatistics();
+  auto fs = analyzer.GetStats()->Slice();
   EXPECT_EQ(1u, fs.size());
-  EXPECT_EQ(fs[0].rtp_timestamp, kTimestamp);
+  EXPECT_EQ(kTimestamp, fs[0].timestamp_rtp);
 }
 
-TEST(VideoCodecAnalyzerTest, DecodeStartedFrameStatsExistsReusesFrameStats) {
-  TaskQueueForTest task_queue;
-  VideoCodecAnalyzer analyzer(task_queue);
-  analyzer.StartEncode(CreateVideoFrame(kTimestamp));
-  analyzer.StartDecode(CreateEncodedImage(kTimestamp, /*spatial_idx=*/0));
-
-  auto fs = analyzer.GetStats()->GetFrameStatistics();
-  EXPECT_EQ(1u, fs.size());
-}
-
-TEST(VideoCodecAnalyzerTest, DecodeFinishedUpdatesFrameStats) {
+TEST(VideoCodecAnalyzerTest, FinishDecode) {
   TaskQueueForTest task_queue;
   VideoCodecAnalyzer analyzer(task_queue);
   analyzer.StartDecode(CreateEncodedImage(kTimestamp, kSpatialIdx));
   VideoFrame decoded_frame = CreateVideoFrame(kTimestamp);
   analyzer.FinishDecode(decoded_frame, kSpatialIdx);
 
-  auto fs = analyzer.GetStats()->GetFrameStatistics();
+  auto fs = analyzer.GetStats()->Slice();
   EXPECT_EQ(1u, fs.size());
-
-  EXPECT_TRUE(fs[0].decoding_successful);
-  EXPECT_EQ(static_cast<int>(fs[0].decoded_width), decoded_frame.width());
-  EXPECT_EQ(static_cast<int>(fs[0].decoded_height), decoded_frame.height());
+  EXPECT_EQ(decoded_frame.width(), fs[0].width);
+  EXPECT_EQ(decoded_frame.height(), fs[0].height);
 }
 
-TEST(VideoCodecAnalyzerTest, DecodeFinishedComputesPsnr) {
+TEST(VideoCodecAnalyzerTest, FinishDecodeComputesPsnr) {
   TaskQueueForTest task_queue;
   MockReferenceVideoSource reference_video_source;
   VideoCodecAnalyzer analyzer(task_queue, &reference_video_source);
@@ -129,12 +117,14 @@ TEST(VideoCodecAnalyzerTest, DecodeFinishedComputesPsnr) {
       CreateVideoFrame(kTimestamp, /*value_y=*/1, /*value_u=*/2, /*value_v=*/3),
       kSpatialIdx);
 
-  auto fs = analyzer.GetStats()->GetFrameStatistics();
+  auto fs = analyzer.GetStats()->Slice();
   EXPECT_EQ(1u, fs.size());
+  EXPECT_TRUE(fs[0].psnr.has_value());
 
-  EXPECT_NEAR(fs[0].psnr_y, 48, 1);
-  EXPECT_NEAR(fs[0].psnr_u, 42, 1);
-  EXPECT_NEAR(fs[0].psnr_v, 38, 1);
+  const VideoCodecStats::Psnr& psnr = *fs[0].psnr;
+  EXPECT_NEAR(psnr.y, 48, 1);
+  EXPECT_NEAR(psnr.u, 42, 1);
+  EXPECT_NEAR(psnr.v, 38, 1);
 }
 
 }  // namespace test
