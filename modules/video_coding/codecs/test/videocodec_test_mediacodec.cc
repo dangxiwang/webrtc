@@ -110,6 +110,28 @@ TEST(VideoCodecTestMediaCodec, ForemanCif500kbpsVp8) {
   fixture->RunTest(rate_profiles, &rc_thresholds, &quality_thresholds, nullptr);
 }
 
+TEST(VideoCodecTestMediaCodec, BitrateUpdate) {
+  auto config = CreateConfig();
+  config.SetCodecSettings(cricket::kVp8CodecName, 1, 1, 1, false, false, false,
+                          352, 288);
+  config.num_frames = 30;
+  auto fixture = CreateTestFixtureWithConfig(config);
+
+  std::vector<RateProfile> rate_profiles;
+  for (size_t n = 0; n < 30; n += 10) {
+    rate_profiles.push_back(
+        {.target_kbps = 128, .input_fps = 30.0, .frame_num = n});
+  }
+  fixture->RunTest(rate_profiles, nullptr, nullptr, nullptr);
+
+  VideoCodecTestStats& stats = fixture->GetStats();
+  std::vector<VideoCodecTestStats::FrameStatistics> fs =
+      stats.GetFrameStatistics();
+  for (int n = 0; n < 30; ++n) {
+    printf("\nframe_num=%d qp=%d", n, fs[n].qp);
+  }
+}
+
 TEST(VideoCodecTestMediaCodec, ForemanCif500kbpsH264CBP) {
   auto config = CreateConfig();
   const auto frame_checker =
