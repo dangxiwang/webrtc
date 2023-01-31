@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e53fd37d_196ed439",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5023
+      },
+      "writtenOn": "2023-01-31T08:43:50Z",
+      "side": 1,
+      "message": "I did an overview review, and this lgtm. Let me know if there is anything in particular you would like me to look more carefully at.\n\nIME, this sort of change is best validated by running a bunch of manual tests, which I assume you are already doing :)",
+      "revId": "d469280765c13e9749858663f2427b21281409cb",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7615840_054112cb",
+        "filename": "api/test/video_codec_stats.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 5023
+      },
+      "writtenOn": "2023-01-31T08:43:50Z",
+      "side": 1,
+      "message": "Should all of these SamplesStatsCounters be of the same length? If so, add a comment about it.",
+      "range": {
+        "startLine": 72,
+        "startChar": 29,
+        "endLine": 72,
+        "endChar": 30
+      },
+      "revId": "d469280765c13e9749858663f2427b21281409cb",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bed3765a_cadd4fcc",
+        "filename": "api/test/video_codec_stats.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 5023
+      },
+      "writtenOn": "2023-01-31T08:43:50Z",
+      "side": 1,
+      "message": "It might be more general to use an rtc::ArrayView here?",
+      "range": {
+        "startLine": 104,
+        "startChar": 6,
+        "endLine": 104,
+        "endChar": 31
+      },
+      "revId": "d469280765c13e9749858663f2427b21281409cb",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a54e85ee_ed9d2795",
+        "filename": "api/test/video_codec_stats.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 5023
+      },
+      "writtenOn": "2023-01-31T08:43:50Z",
+      "side": 1,
+      "message": "Add comment describing what this method does. (Logs a stream to the global metrics logger?)",
+      "range": {
+        "startLine": 108,
+        "startChar": 15,
+        "endLine": 108,
+        "endChar": 25
+      },
+      "revId": "d469280765c13e9749858663f2427b21281409cb",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca299bba_7b6f8463",
+        "filename": "modules/video_coding/codecs/test/video_codec_stats_impl.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 5023
+      },
+      "writtenOn": "2023-01-31T08:43:50Z",
+      "side": 1,
+      "message": "Could this be changed to private? I couldn\u0027t find a derived class that used these protected members.",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 10
+      },
+      "revId": "d469280765c13e9749858663f2427b21281409cb",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
