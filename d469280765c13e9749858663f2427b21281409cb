@@ -41,6 +41,30 @@
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf862069_5704c272",
+        "filename": "api/test/video_codec_stats.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 5825
+      },
+      "writtenOn": "2023-02-01T18:17:59Z",
+      "side": 1,
+      "message": "Seems no, not all. encode/decode_time_us may have gaps due to frame dropping.",
+      "parentUuid": "a7615840_054112cb",
+      "range": {
+        "startLine": 72,
+        "startChar": 29,
+        "endLine": 72,
+        "endChar": 30
+      },
+      "revId": "d469280765c13e9749858663f2427b21281409cb",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bed3765a_cadd4fcc",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-01-31T08:43:50Z",
       "side": 1,
       "message": "It might be more general to use an rtc::ArrayView here?",
+      "range": {
+        "startLine": 104,
+        "startChar": 6,
+        "endLine": 104,
+        "endChar": 31
+      },
+      "revId": "d469280765c13e9749858663f2427b21281409cb",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dd10845_a348e0df",
+        "filename": "api/test/video_codec_stats.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 5825
+      },
+      "writtenOn": "2023-02-01T18:17:59Z",
+      "side": 1,
+      "message": "I\u0027m not sure. From example in https://source.chromium.org/chromium/chromium/src/+/main:third_party/webrtc/api/array_view.h, ArrayView allows replacing Contains17(const int* arr, size_t size) with Contains17(rtc::ArrayView\u003cconst int\u003e arr). That\u0027s convenient. But we don\u0027t expect input to Aggregate() be a raw memory or anything else than vector\u003c\u003e returned by Slice().\n\nI would prefer not to bring extra dtypes unless there is some benefit.",
+      "parentUuid": "bed3765a_cadd4fcc",
       "range": {
         "startLine": 104,
         "startChar": 6,
@@ -87,6 +135,30 @@
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38aa4ad5_93c29f07",
+        "filename": "api/test/video_codec_stats.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 5825
+      },
+      "writtenOn": "2023-02-01T18:17:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a54e85ee_ed9d2795",
+      "range": {
+        "startLine": 108,
+        "startChar": 15,
+        "endLine": 108,
+        "endChar": 25
+      },
+      "revId": "d469280765c13e9749858663f2427b21281409cb",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca299bba_7b6f8463",
@@ -100,6 +172,30 @@
       "writtenOn": "2023-01-31T08:43:50Z",
       "side": 1,
       "message": "Could this be changed to private? I couldn\u0027t find a derived class that used these protected members.",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 10
+      },
+      "revId": "d469280765c13e9749858663f2427b21281409cb",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17188251_018a1866",
+        "filename": "modules/video_coding/codecs/test/video_codec_stats_impl.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 5825
+      },
+      "writtenOn": "2023-02-01T18:17:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca299bba_7b6f8463",
       "range": {
         "startLine": 45,
         "startChar": 1,
