@@ -16,6 +16,23 @@
       "message": "I found some more ISAC leftovers ;-)",
       "revId": "ef633ebb3465adf095ba20742c14e863ec36840f",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0744968a_2632996c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5122
+      },
+      "writtenOn": "2023-02-22T11:42:20Z",
+      "side": 1,
+      "message": "Thanks for the clean-up CL!",
+      "revId": "ef633ebb3465adf095ba20742c14e863ec36840f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
