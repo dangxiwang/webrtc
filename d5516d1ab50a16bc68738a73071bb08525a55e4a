@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05502526_cadfe904",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2023-03-09T17:16:17Z",
+      "side": 1,
+      "message": "This one sure complicates analyzer, and may be make it brittle,\nbut it would use ReceiveSideCC through the same api production code uses it.\nAnd would unblock cleaning up ReceiveSideCC.",
+      "revId": "d5516d1ab50a16bc68738a73071bb08525a55e4a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2830dcc_8dded0b2",
+        "filename": "rtc_tools/rtc_event_log_visualizer/analyzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1541,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2023-03-09T17:16:17Z",
+      "side": 1,
+      "message": "previous code passed payload (total_length) into parameter that expects payload_size when used with transport sequence number/for send side BWE,\nand expects total packet size when used for receive side BWE.\n\nI fixed that, but that would sure change behavior in some cases.",
+      "range": {
+        "startLine": 1539,
+        "startChar": 0,
+        "endLine": 1541,
+        "endChar": 0
+      },
+      "revId": "d5516d1ab50a16bc68738a73071bb08525a55e4a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e870821_f3627ff6",
+        "filename": "rtc_tools/rtc_event_log_visualizer/analyzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1545,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2023-03-09T17:16:17Z",
+      "side": 1,
+      "message": "here I\u0027m still not sure what bitrate acked_bitrate should count, so keeping existent behavior and existent comment.",
+      "range": {
+        "startLine": 1545,
+        "startChar": 25,
+        "endLine": 1545,
+        "endChar": 77
+      },
+      "revId": "d5516d1ab50a16bc68738a73071bb08525a55e4a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
