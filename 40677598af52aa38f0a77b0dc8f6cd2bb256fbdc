@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62aedb3f_6ff555c4",
+        "filename": "video/pc_full_stack_tests.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 5087
+      },
+      "writtenOn": "2023-03-21T21:54:48Z",
+      "side": 1,
+      "message": "nit: skipping",
+      "range": {
+        "startLine": 67,
+        "startChar": 57,
+        "endLine": 67,
+        "endChar": 61
+      },
+      "revId": "40677598af52aa38f0a77b0dc8f6cd2bb256fbdc",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
