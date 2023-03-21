@@ -611,6 +611,8 @@ if (rtc_include_tests) {
         "../test:fileutils",
         "../test:test_support",
         "../test/pc/e2e:network_quality_metrics_reporter",
+        "../test/pc/e2e/analyzer/video:default_video_quality_analyzer",
+        "../test/pc/e2e/analyzer/video:default_video_quality_analyzer_shared",
       ]
     }
 

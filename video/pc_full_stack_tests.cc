@@ -31,6 +31,8 @@
 #include "system_wrappers/include/field_trial.h"
 #include "test/field_trial.h"
 #include "test/gtest.h"
+#include "test/pc/e2e/analyzer/video/default_video_quality_analyzer.h"
+#include "test/pc/e2e/analyzer/video/default_video_quality_analyzer_shared_objects.h"
 #include "test/pc/e2e/network_quality_metrics_reporter.h"
 #include "test/testsupport/file_utils.h"
 
@@ -58,7 +60,13 @@ CreateTestFixture(const std::string& test_case_name,
                   rtc::FunctionView<void(PeerConfigurer*)> bob_configurer) {
   auto fixture = webrtc_pc_e2e::CreatePeerConnectionE2EQualityTestFixture(
       test_case_name, time_controller, /*audio_quality_analyzer=*/nullptr,
-      /*video_quality_analyzer=*/nullptr);
+      /*video_quality_analyzer=*/
+      std::make_unique<DefaultVideoQualityAnalyzer>(
+          time_controller.GetClock(), test::GetGlobalMetricsLogger(),
+          DefaultVideoQualityAnalyzerOptions{
+              // Store frames up to 5 seconds to prevent skip SSIM/PSNR
+              // computation in case of big delays.
+              .max_frames_storage_duration = webrtc::TimeDelta::Seconds(5)}));
   auto alice = std::make_unique<PeerConfigurer>(
       network_links.first->network_dependencies());
   auto bob = std::make_unique<PeerConfigurer>(
