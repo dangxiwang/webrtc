@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2a4deae_7ed29b75",
+        "filename": "video/pc_full_stack_tests.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 5117
+      },
+      "writtenOn": "2023-03-22T10:01:47Z",
+      "side": 1,
+      "message": "Is there any specific reason why this is the place the config is updated?\nWhy not do it in the same place where the analyzer is created right now [1]?\n\nIt looks a little strange: we don\u0027t just update a parameter, but rather create an analyzer where it weren\u0027t created before.\n\nIt increases the probability of a mistake in the future. Next, someone might just change the parameters in the one of the two places.\n\nThen, we now have two different configs for different scenarios. Why not increase the timeout for all tests?\n\nI would expect this CL to be a 1 line change of a const value somewhere.\n\n[1] https://source.chromium.org/chromium/chromium/src/+/main:third_party/webrtc/test/pc/e2e/peer_connection_quality_test.cc;l\u003d157;drc\u003d74e6f5b10c176e517d8535b6278e43988df17455",
+      "revId": "3a7a98e57a5db30ef8551b1e85b429002f295ebd",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
