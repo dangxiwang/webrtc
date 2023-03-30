@@ -43,6 +43,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "425ebbdf_95fced85",
+        "filename": "rtc_tools/rtc_event_log_visualizer/analyzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2023-03-30T12:14:45Z",
+      "side": 1,
+      "message": "for ReceiveSideCC it doesn\u0027t matter, it just need to get the extension values by type.\n\n(in particular ReceiveSideCC itself doesn\u0027t know id\u003c-\u003etype mapping)",
+      "parentUuid": "a3f4933a_57a1e526",
+      "range": {
+        "startLine": 354,
+        "startChar": 0,
+        "endLine": 354,
+        "endChar": 56
+      },
+      "revId": "d5516d1ab50a16bc68738a73071bb08525a55e4a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b2830dcc_8dded0b2",
         "filename": "rtc_tools/rtc_event_log_visualizer/analyzer.cc",
         "patchSetId": 2
@@ -101,6 +125,30 @@
       "side": 1,
       "message": "Looks like this should not subtract the header. The analogous production code is here https://source.chromium.org/chromium/chromium/src/+/main:third_party/webrtc/modules/congestion_controller/goog_cc/acknowledged_bitrate_estimator.cc;l\u003d47;drc\u003d48340c1e35efad5fb0253025dcc36b3a9573e258, which reads SentPacket::size which apparently should be the size of the full packet including headers https://source.chromium.org/chromium/chromium/src/+/main:third_party/webrtc/api/transport/network_types.h;l\u003d106;drc\u003d48340c1e35efad5fb0253025dcc36b3a9573e258",
       "parentUuid": "0e870821_f3627ff6",
+      "range": {
+        "startLine": 1545,
+        "startChar": 25,
+        "endLine": 1545,
+        "endChar": 77
+      },
+      "revId": "d5516d1ab50a16bc68738a73071bb08525a55e4a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95d6c146_0f0c2f67",
+        "filename": "rtc_tools/rtc_event_log_visualizer/analyzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1545,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2023-03-30T12:14:45Z",
+      "side": 1,
+      "message": "ok, I won\u0027t keep the question then.",
+      "parentUuid": "630153ba_73b28970",
       "range": {
         "startLine": 1545,
         "startChar": 25,
