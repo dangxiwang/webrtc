@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "927e3a53_d1ceea61",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2023-05-12T12:45:37Z",
+      "side": 1,
+      "message": "noop change in preparation for the https://webrtc-review.googlesource.com/c/src/+/305022",
+      "revId": "8ace2f079735cb832a20164366838c3e8d8f6e6d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
