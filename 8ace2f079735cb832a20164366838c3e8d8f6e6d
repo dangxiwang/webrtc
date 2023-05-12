@@ -16,6 +16,52 @@
       "message": "noop change in preparation for the https://webrtc-review.googlesource.com/c/src/+/305022",
       "revId": "8ace2f079735cb832a20164366838c3e8d8f6e6d",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec43940d_070906cb",
+        "filename": "call/rtp_transport_controller_send.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 13704
+      },
+      "writtenOn": "2023-05-12T15:34:57Z",
+      "side": 1,
+      "message": "```suggestion\n    auto [it, inserted] \u003d\n        last_report_blocks_.try_emplace(report_block.source_ssrc);\n    LossReport\u0026 last_loss_report \u003d it-\u003esecond;\n    if (!inserted) {\n      total_packets_delta +\u003d report_block.extended_highest_sequence_number -\n                             last_loss_report.extended_highest_sequence_number;\n      total_packets_lost_delta +\u003d\n          report_block.packets_lost - last_loss_report.cumulative_lost;\n    }\n    last_loss_report.extended_highest_sequence_number \u003d\n        report_block.extended_highest_sequence_number;\n    last_loss_report.cumulative_lost \u003d report_block.packets_lost;\n```\n\nGiving `it-\u003esecond` a name makes it slightly more readable.",
+      "range": {
+        "startLine": 673,
+        "startChar": 0,
+        "endLine": 683,
+        "endChar": 59
+      },
+      "revId": "8ace2f079735cb832a20164366838c3e8d8f6e6d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "648e0fc7_6435c39b",
+        "filename": "call/rtp_transport_controller_send.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 13704
+      },
+      "writtenOn": "2023-05-12T15:34:57Z",
+      "side": 1,
+      "message": "Nit: `last_loss_reports_`?",
+      "range": {
+        "startLine": 186,
+        "startChar": 33,
+        "endLine": 186,
+        "endChar": 52
+      },
+      "revId": "8ace2f079735cb832a20164366838c3e8d8f6e6d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
