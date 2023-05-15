@@ -43,6 +43,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c78eb4a4_c2f04ea4",
+        "filename": "call/rtp_transport_controller_send.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2023-05-15T07:28:27Z",
+      "side": 1,
+      "message": "Agree and Done",
+      "parentUuid": "ec43940d_070906cb",
+      "range": {
+        "startLine": 673,
+        "startChar": 0,
+        "endLine": 683,
+        "endChar": 59
+      },
+      "revId": "8ace2f079735cb832a20164366838c3e8d8f6e6d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "648e0fc7_6435c39b",
         "filename": "call/rtp_transport_controller_send.h",
         "patchSetId": 2
@@ -54,6 +78,30 @@
       "writtenOn": "2023-05-12T15:34:57Z",
       "side": 1,
       "message": "Nit: `last_loss_reports_`?",
+      "range": {
+        "startLine": 186,
+        "startChar": 33,
+        "endLine": 186,
+        "endChar": 52
+      },
+      "revId": "8ace2f079735cb832a20164366838c3e8d8f6e6d",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "228c4f4d_acd1021f",
+        "filename": "call/rtp_transport_controller_send.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2023-05-15T07:28:27Z",
+      "side": 1,
+      "message": "not sure it is better, so prefer to leave as is.\n\nLoss may be reported through transport feedback RTCP message or through report blocks. I want to keep somewhere this one is from the report blocks.",
+      "parentUuid": "648e0fc7_6435c39b",
       "range": {
         "startLine": 186,
         "startChar": 33,
