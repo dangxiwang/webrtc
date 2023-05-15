@@ -139,9 +139,10 @@ void ConvertRtpPacket(
     reconstructed_packet.SetExtension<webrtc::AudioLevel>(
         incoming.rtp.header.extension.voiceActivity,
         incoming.rtp.header.extension.audioLevel);
-  if (incoming.rtp.header.extension.hasVideoRotation)
+  if (incoming.rtp.header.extension.videoRotation.has_value()) {
     reconstructed_packet.SetExtension<webrtc::VideoOrientation>(
-        incoming.rtp.header.extension.videoRotation);
+        incoming.rtp.header.extension.videoRotation.value());
+  }
   if (incoming.rtp.header.extension.hasVideoContentType)
     reconstructed_packet.SetExtension<webrtc::VideoContentTypeExtension>(
         incoming.rtp.header.extension.videoContentType);

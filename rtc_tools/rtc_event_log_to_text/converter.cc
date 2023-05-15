@@ -338,9 +338,9 @@ bool Convert(std::string inputfile,
               event.rtp.header.extension.voiceActivity);
       fprintf(output, " audio_level=%u", event.rtp.header.extension.audioLevel);
     }
-    if (event.rtp.header.extension.hasVideoRotation) {
+    if (event.rtp.header.extension.videoRotation.has_value()) {
       fprintf(output, " video_rotation=%d",
-              event.rtp.header.extension.videoRotation);
+              event.rtp.header.extension.videoRotation.value());
     }
     if (event.rtp.header.extension.hasTransportSequenceNumber) {
       fprintf(output, " transport_seq_no=%u",
@@ -372,9 +372,9 @@ bool Convert(std::string inputfile,
               event.rtp.header.extension.voiceActivity);
       fprintf(output, " audio_level=%u", event.rtp.header.extension.audioLevel);
     }
-    if (event.rtp.header.extension.hasVideoRotation) {
+    if (event.rtp.header.extension.videoRotation.has_value()) {
       fprintf(output, " video_rotation=%d",
-              event.rtp.header.extension.videoRotation);
+              event.rtp.header.extension.videoRotation.value());
     }
     if (event.rtp.header.extension.hasTransportSequenceNumber) {
       fprintf(output, " transport_seq_no=%u",

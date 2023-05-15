@@ -63,8 +63,7 @@ void RtpPacketReceived::GetHeader(RTPHeader* header) const {
           &header->extension.transportSequenceNumber);
   header->extension.hasAudioLevel = GetExtension<AudioLevel>(
       &header->extension.voiceActivity, &header->extension.audioLevel);
-  header->extension.hasVideoRotation =
-      GetExtension<VideoOrientation>(&header->extension.videoRotation);
+  header->extension.videoRotation = GetExtension<VideoOrientation>();
   header->extension.hasVideoContentType =
       GetExtension<VideoContentTypeExtension>(
           &header->extension.videoContentType);
