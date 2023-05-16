@@ -344,7 +344,6 @@ ParsedRtcEventLog::ParseStatus StoreRtpPackets(
           rtc::checked_cast<uint32_t>(proto.absolute_send_time());
     }
     if (proto.has_video_rotation()) {
-      header.extension.hasVideoRotation = true;
       header.extension.videoRotation = ConvertCVOByteToVideoRotation(
           rtc::checked_cast<uint8_t>(proto.video_rotation()));
     }
@@ -545,12 +544,13 @@ ParsedRtcEventLog::ParseStatus StoreRtpPackets(
       header.extension.absoluteSendTime =
           rtc::checked_cast<uint32_t>(absolute_send_time_values[i].value());
     }
+
     if (video_rotation_values.size() > i &&
         video_rotation_values[i].has_value()) {
-      header.extension.hasVideoRotation = true;
       header.extension.videoRotation = ConvertCVOByteToVideoRotation(
           rtc::checked_cast<uint8_t>(video_rotation_values[i].value()));
     }
+
     if (audio_level_values.size() > i && audio_level_values[i].has_value()) {
       RTC_PARSE_CHECK_OR_RETURN(voice_activity_values.size() > i &&
                                 voice_activity_values[i].has_value());
