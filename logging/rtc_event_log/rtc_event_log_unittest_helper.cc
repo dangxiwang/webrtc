@@ -1021,13 +1021,14 @@ void VerifyLoggedRtpHeader(const Event& original_header,
 
   // VideoOrientation header extension.
   ASSERT_EQ(original_header.template HasExtension<VideoOrientation>(),
-            logged_header.extension.hasVideoRotation);
-  if (logged_header.extension.hasVideoRotation) {
+            logged_header.extension.videoRotation.has_value());
+
+  if (logged_header.extension.videoRotation.has_value()) {
     uint8_t rotation;
     ASSERT_TRUE(
         original_header.template GetExtension<VideoOrientation>(&rotation));
     EXPECT_EQ(ConvertCVOByteToVideoRotation(rotation),
-              logged_header.extension.videoRotation);
+              *logged_header.extension.videoRotation);
   }
 }
 
