@@ -35,6 +35,23 @@
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdb96d26_c66e08e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5150
+      },
+      "writtenOn": "2023-05-16T12:55:27Z",
+      "side": 1,
+      "message": "Code lgtm, but it seems a bit inconsistent with the other header extensions that seem to follow\n```\nbool hasFoo;\nFooType foo;\n```\npattern.\n\nWhat\u0027s the plan for the other extensions?",
+      "revId": "3ab18de2a447a5f0938f5ee49cdc67b0e12553d8",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14843514_0dc0cfeb",
