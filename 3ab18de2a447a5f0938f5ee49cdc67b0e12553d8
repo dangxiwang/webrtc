@@ -16,6 +16,46 @@
       "message": "over to more appropriate reviewers",
       "revId": "3ab18de2a447a5f0938f5ee49cdc67b0e12553d8",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cee011e_c03aa61c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2023-05-16T10:46:15Z",
+      "side": 1,
+      "message": "this is an improvement,\n\nthough longer term I would like to deprecated and delete RTPHeaderExtension and RTPHeader in favor of RtpPacket.",
+      "revId": "3ab18de2a447a5f0938f5ee49cdc67b0e12553d8",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14843514_0dc0cfeb",
+        "filename": "logging/rtc_event_log/rtc_event_log_unittest_helper.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1031,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2023-05-16T10:46:15Z",
+      "side": 1,
+      "message": "here and in other files\nprefer to derefernce optional using \u0027*\u0027 instead of \u0027.value()\u0027\n\nhttps://abseil.io/tips/181#solution\n\n“Testing the ... object for validity (as you would a smart pointer or optional) and accessing it using operator* or operator-\u003e is readable, efficient, and safe.”",
+      "range": {
+        "startLine": 1031,
+        "startChar": 15,
+        "endLine": 1031,
+        "endChar": 59
+      },
+      "revId": "3ab18de2a447a5f0938f5ee49cdc67b0e12553d8",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
