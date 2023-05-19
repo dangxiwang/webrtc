@@ -22,7 +22,6 @@ RTPHeaderExtension::RTPHeaderExtension()
       hasAudioLevel(false),
       voiceActivity(false),
       audioLevel(0),
-      hasVideoRotation(false),
       videoRotation(kVideoRotation_0),
       hasVideoContentType(false),
       videoContentType(VideoContentType::UNSPECIFIED),
