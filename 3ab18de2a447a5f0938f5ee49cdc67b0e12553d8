@@ -52,6 +52,24 @@
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0ebd649_61ef5868",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 20759
+      },
+      "writtenOn": "2023-05-19T10:47:18Z",
+      "side": 1,
+      "message": "hi,\n\nI saw this struct and some extensions are using \"hasFoo\" and\nothers are using absl::optional.\n\nThere is a comment in the code, saying TODO: convert to absl::optional\n\n\nI wanted to help out with this effort, so I converted one\nextension type from \"hasFoo\" to absl::optional.\nIf the patch is accepted, I will convert more types.\n\n\nI did not see that the class is part of the public API,\nand that native users can poke directly into the class members.\nBetter to add setters and getters.",
+      "parentUuid": "fdb96d26_c66e08e8",
+      "revId": "3ab18de2a447a5f0938f5ee49cdc67b0e12553d8",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14843514_0dc0cfeb",
