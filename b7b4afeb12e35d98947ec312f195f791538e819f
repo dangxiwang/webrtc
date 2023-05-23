@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d933dca9_31a1c47b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 19549
+      },
+      "writtenOn": "2023-05-23T19:53:19Z",
+      "side": 1,
+      "message": "sadly not the one that allows us to simplify stats but... small steps!",
+      "revId": "b7b4afeb12e35d98947ec312f195f791538e819f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
