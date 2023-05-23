@@ -16,6 +16,57 @@
       "message": "To be landed after branch cut to maximize time-in-flight",
       "revId": "ad489309f191d1b94035d9ba534e768547ff7791",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bd48df4_780799e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2023-05-23T14:01:06Z",
+      "side": 1,
+      "message": "Have to understand the bundle removal statements before approving.",
+      "revId": "ad489309f191d1b94035d9ba534e768547ff7791",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca0c4f33_1965dd05",
+        "filename": "pc/peer_connection_media_unittest.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1041,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2023-05-23T14:01:06Z",
+      "side": 1,
+      "message": "Since this is a helper function, shouldn\u0027t it be guarded by \"If bundle is now empty\"?\nFrom the fact that tests did not fail, I assume that all existing tests go from 1-\u003e0 bundle members. Or did they go from 2 (audio/video) to 1?",
+      "revId": "ad489309f191d1b94035d9ba534e768547ff7791",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afb83a6c_7e807633",
+        "filename": "pc/peer_connection_media_unittest.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1048,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2023-05-23T14:01:06Z",
+      "side": 1,
+      "message": "In this case, removing the BUNDLE group seems REALLY odd.",
+      "revId": "ad489309f191d1b94035d9ba534e768547ff7791",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
