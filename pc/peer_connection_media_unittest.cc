@@ -1038,12 +1038,14 @@ TEST_P(PeerConnectionMediaInvalidMediaTest, FailToSetLocalAnswer) {
 }
 
 void RemoveVideoContent(cricket::SessionDescription* desc) {
+  desc->RemoveGroupByName("BUNDLE");
   auto content_name = cricket::GetFirstVideoContent(desc)->name;
   desc->RemoveContentByName(content_name);
   desc->RemoveTransportInfoByName(content_name);
 }
 
 void RenameVideoContent(cricket::SessionDescription* desc) {
+  desc->RemoveGroupByName("BUNDLE");
   auto* video_content = cricket::GetFirstVideoContent(desc);
   auto* transport_info = desc->GetTransportInfoByName(video_content->name);
   video_content->name = "video_renamed";
