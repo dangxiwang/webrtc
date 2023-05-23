@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "502adc7d_c5fa788c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 19549
+      },
+      "writtenOn": "2023-05-23T15:06:56Z",
+      "side": 1,
+      "message": "A bit easier if you look at the error that is expected to be thrown in line 1069 - it is always about the order of m-lines not matching, when removing, renaming, swapping and changing the type (which is a bit odd, I\u0027d expect another error for that?)\n\nBUNDLE isn\u0027t relevant for these, surprisingly nothing else did this consistency check before... see https://webrtc-review.googlesource.com/c/src/+/306223?checksPatchset\u003d1\u0026tab\u003dchecks for the failures. With BUNDLE and the latest patch set this runs into this error:\nhttps://source.chromium.org/chromium/chromium/src/+/main:third_party/webrtc/pc/sdp_offer_answer.cc;l\u003d526?q\u003dValidateBundledRtpHeaderExtensions",
+      "parentUuid": "5bd48df4_780799e7",
+      "revId": "ad489309f191d1b94035d9ba534e768547ff7791",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ca0c4f33_1965dd05",
         "filename": "pc/peer_connection_media_unittest.cc",
         "patchSetId": 3
@@ -54,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5ab2181c_0994acc2",
+        "filename": "pc/peer_connection_media_unittest.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1041,
+      "author": {
+        "id": 19549
+      },
+      "writtenOn": "2023-05-23T15:06:56Z",
+      "side": 1,
+      "message": "The test removes the first item from the bundle group. So if the mid is 0 the bundle group is 0-1 before, mid\u003d0 is removed but the bundle group is not updated and still says 0-1.\nRemoving BUNDLE is simpler than searching all bundle groups and updating them.",
+      "parentUuid": "ca0c4f33_1965dd05",
+      "revId": "ad489309f191d1b94035d9ba534e768547ff7791",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "afb83a6c_7e807633",
         "filename": "pc/peer_connection_media_unittest.cc",
         "patchSetId": 3
@@ -65,6 +101,24 @@
       "writtenOn": "2023-05-23T14:01:06Z",
       "side": 1,
       "message": "In this case, removing the BUNDLE group seems REALLY odd.",
+      "revId": "ad489309f191d1b94035d9ba534e768547ff7791",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25c62d9b_fa322589",
+        "filename": "pc/peer_connection_media_unittest.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1048,
+      "author": {
+        "id": 19549
+      },
+      "writtenOn": "2023-05-23T15:06:56Z",
+      "side": 1,
+      "message": "Same story, if you rename the video content you\u0027d have to update the bundle group too.",
+      "parentUuid": "afb83a6c_7e807633",
       "revId": "ad489309f191d1b94035d9ba534e768547ff7791",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
