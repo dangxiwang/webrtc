@@ -16,6 +16,23 @@
       "message": "hi,\n\nDo you think this patch is ready to merge ?\n\n\nBr,\nAlfred",
       "revId": "983661a31bebb47ba51a12870305483a27239c57",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4756b6c_c86aa629",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 20759
+      },
+      "writtenOn": "2023-05-23T17:20:18Z",
+      "side": 1,
+      "message": "hi,\n\nsince my changes are in deprecated classes, I suggest to\nabandon my change instead.",
+      "revId": "983661a31bebb47ba51a12870305483a27239c57",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
