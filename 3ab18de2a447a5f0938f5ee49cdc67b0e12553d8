@@ -70,6 +70,24 @@
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01a8b840_dfd4f798",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5150
+      },
+      "writtenOn": "2023-05-23T09:27:54Z",
+      "side": 1,
+      "message": "LGTM, though I think the general goal is to deprecate this class altogether in favor of the RtpPacket class. See https://bugs.chromium.org/p/webrtc/issues/detail?id\u003d15054\n\nFor the video rotation extension in particular, it looks like the RTPHeaderExtension struct is only used in logging/debugging tools. Iiuc, the production library reads the extension directly from the RtpPacket class using GetExtension\u003cVideoOrientation\u003e() https://source.chromium.org/chromium/chromium/src/+/main:third_party/webrtc/video/rtp_video_stream_receiver2.cc;l\u003d572;drc\u003d8095d0288440866a2d425fedea725934cfa5512b",
+      "parentUuid": "f0ebd649_61ef5868",
+      "revId": "3ab18de2a447a5f0938f5ee49cdc67b0e12553d8",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14843514_0dc0cfeb",
