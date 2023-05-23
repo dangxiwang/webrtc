@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c18a8f35_c538eb16",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 20759
+      },
+      "writtenOn": "2023-05-23T09:10:51Z",
+      "side": 1,
+      "message": "hi,\n\nDo you think this patch is ready to merge ?\n\n\nBr,\nAlfred",
+      "revId": "983661a31bebb47ba51a12870305483a27239c57",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
