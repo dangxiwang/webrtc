@@ -16,6 +16,40 @@
       "message": "sadly not the one that allows us to simplify stats but... small steps!",
       "revId": "b7b4afeb12e35d98947ec312f195f791538e819f",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "695965d7_5ee49694",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5142
+      },
+      "writtenOn": "2023-05-24T10:20:01Z",
+      "side": 1,
+      "message": "nit",
+      "revId": "b7b4afeb12e35d98947ec312f195f791538e819f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c59f36ef_8f998ee3",
+        "filename": "pc/peer_connection_media_unittest.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1050,
+      "author": {
+        "id": 5142
+      },
+      "writtenOn": "2023-05-24T10:20:01Z",
+      "side": 1,
+      "message": "With the name of these methods being what they are, removing BUNDLE seems unexpected. I think these methods either need to call out the fact that they remove BUNDLE, e.g.\n\n[Remove/Rename]VideoContentAndRemoveBundle()\n\nor be updated to make sure the BUNDLE line is up-to-date with the content removal/rename.",
+      "revId": "b7b4afeb12e35d98947ec312f195f791538e819f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
