@@ -350,7 +350,7 @@ void RtpPacketHistory::Clear() {
 void RtpPacketHistory::Reset() {
   packet_history_.clear();
   padding_priority_.clear();
-  large_payload_packet_ = std::nullopt;
+  large_payload_packet_ = absl::nullopt;
 }
 
 void RtpPacketHistory::CullOldPackets() {
