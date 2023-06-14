@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7df9759b_0251e840",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 19549
+      },
+      "writtenOn": "2023-06-14T15:58:28Z",
+      "side": 1,
+      "message": "This should be built under the same conditions as video_replay, no?",
+      "revId": "3d6ec4f84747f6f4ac8a04f3b7a5f56a356a0096",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
