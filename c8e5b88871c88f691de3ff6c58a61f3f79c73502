@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4961fe1_7029a2dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 19549
+      },
+      "writtenOn": "2023-06-15T09:09:01Z",
+      "side": 1,
+      "message": "Debugging decode errors is so much less fun without this ;-)",
+      "revId": "c8e5b88871c88f691de3ff6c58a61f3f79c73502",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
