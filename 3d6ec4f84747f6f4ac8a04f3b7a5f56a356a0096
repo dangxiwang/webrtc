@@ -16,6 +16,23 @@
       "message": "This should be built under the same conditions as video_replay, no?",
       "revId": "3d6ec4f84747f6f4ac8a04f3b7a5f56a356a0096",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "609a6794_c4e14fe2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 18554
+      },
+      "writtenOn": "2023-06-15T01:08:18Z",
+      "side": 1,
+      "message": "Thanks fixing the typo.",
+      "revId": "3d6ec4f84747f6f4ac8a04f3b7a5f56a356a0096",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
