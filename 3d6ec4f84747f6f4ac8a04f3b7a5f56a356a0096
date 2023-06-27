@@ -50,6 +50,23 @@
       "message": "Friendly ping reviewers.",
       "revId": "3d6ec4f84747f6f4ac8a04f3b7a5f56a356a0096",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36ded428_f00bc09b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9515
+      },
+      "writtenOn": "2023-06-27T08:30:13Z",
+      "side": 1,
+      "message": "RS LGTM",
+      "revId": "3d6ec4f84747f6f4ac8a04f3b7a5f56a356a0096",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
