@@ -33,6 +33,23 @@
       "message": "Thanks fixing the typo.",
       "revId": "3d6ec4f84747f6f4ac8a04f3b7a5f56a356a0096",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5764ec7e_7029fee5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 18554
+      },
+      "writtenOn": "2023-06-27T02:03:02Z",
+      "side": 1,
+      "message": "Friendly ping reviewers.",
+      "revId": "3d6ec4f84747f6f4ac8a04f3b7a5f56a356a0096",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
