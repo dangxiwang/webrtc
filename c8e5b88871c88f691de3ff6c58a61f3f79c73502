@@ -39,6 +39,30 @@
       },
       "revId": "c8e5b88871c88f691de3ff6c58a61f3f79c73502",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba6fdb95_b04c41a0",
+        "filename": "modules/video_coding/generic_decoder.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 19549
+      },
+      "writtenOn": "2023-07-03T10:12:48Z",
+      "side": 1,
+      "message": "Done. I wonder if we should have a rtc::ToString(absl::optional\u003cuint32_t\u003e) and uint16_t to take care of the variants of \"not set\" we have.\nBut then doing that properly would require introducing type aliases for RTP sequence numbers and timestamps and finding all the places where it could be useful... I\u0027ll try without that first.",
+      "parentUuid": "31f78a77_5b5ed182",
+      "range": {
+        "startLine": 302,
+        "startChar": 4,
+        "endLine": 305,
+        "endChar": 28
+      },
+      "revId": "c8e5b88871c88f691de3ff6c58a61f3f79c73502",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
