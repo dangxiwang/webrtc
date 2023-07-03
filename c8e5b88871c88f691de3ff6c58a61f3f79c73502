@@ -16,6 +16,29 @@
       "message": "Debugging decode errors is so much less fun without this ;-)",
       "revId": "c8e5b88871c88f691de3ff6c58a61f3f79c73502",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31f78a77_5b5ed182",
+        "filename": "modules/video_coding/generic_decoder.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 5117
+      },
+      "writtenOn": "2023-07-03T08:49:41Z",
+      "side": 1,
+      "message": "`value_or(-1)` below converts to unit32_t, so there will be an overflow and 4294967295 will be printed instead.\n\nAlso, using optional for only one `value_or` use might not be great.\n\nI believe the most readable way would be to have an if-else clause here. Or inline the ternary operator inside the log line (preferably converting to string)",
+      "range": {
+        "startLine": 302,
+        "startChar": 4,
+        "endLine": 305,
+        "endChar": 28
+      },
+      "revId": "c8e5b88871c88f691de3ff6c58a61f3f79c73502",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
