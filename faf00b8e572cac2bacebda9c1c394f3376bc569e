@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae7b83aa_c74da681",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2023-07-28T14:27:04Z",
+      "side": 1,
+      "message": "That is against style guide:\nhttps://google.github.io/styleguide/cppguide.html#Integer_Types\n“Of the built-in C++ integer types, the only one used is int.”\n\"do not use unsigned types to say a number will never be negative. Instead, use assertions for this.\"",
+      "revId": "faf00b8e572cac2bacebda9c1c394f3376bc569e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
