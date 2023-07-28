@@ -69,8 +69,8 @@ void RtpDependencyDescriptorReader::ReadTemplateLayers() {
   };
   std::vector<FrameDependencyTemplate> templates;
 
-  int temporal_id = 0;
-  int spatial_id = 0;
+  unsigned temporal_id = 0;
+  unsigned spatial_id = 0;
   NextLayerIdc next_layer_idc;
   do {
     if (templates.size() == DependencyDescriptor::kMaxTemplates) {
@@ -146,9 +146,9 @@ void RtpDependencyDescriptorReader::ReadTemplateChains() {
 void RtpDependencyDescriptorReader::ReadResolutions() {
   FrameDependencyStructure* structure = descriptor_->attached_structure.get();
   // The way templates are bitpacked, they are always ordered by spatial_id.
-  int spatial_layers = structure->templates.back().spatial_id + 1;
+  unsigned spatial_layers = structure->templates.back().spatial_id + 1;
   structure->resolutions.reserve(spatial_layers);
-  for (int sid = 0; sid < spatial_layers; ++sid) {
+  for (unsigned sid = 0; sid < spatial_layers; ++sid) {
     uint16_t width_minus_1 = buffer_.Read<uint16_t>();
     uint16_t height_minus_1 = buffer_.Read<uint16_t>();
     structure->resolutions.emplace_back(width_minus_1 + 1, height_minus_1 + 1);
