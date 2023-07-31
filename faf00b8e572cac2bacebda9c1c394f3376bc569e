@@ -52,6 +52,24 @@
       "parentUuid": "6b7fbb2d_58dda674",
       "revId": "faf00b8e572cac2bacebda9c1c394f3376bc569e",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f90a9ca_b434f46f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 20759
+      },
+      "writtenOn": "2023-07-31T16:50:55Z",
+      "side": 1,
+      "message": "Thanks, I respect your code guidance.\n\nPersonally I prefer to use \"unsigned\" where the value is\nalways positive...\n\n\nI am going to close this CL now, thanks for your patience 😊",
+      "parentUuid": "b8e5a359_d4a18421",
+      "revId": "faf00b8e572cac2bacebda9c1c394f3376bc569e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
