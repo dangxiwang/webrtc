@@ -16,6 +16,24 @@
       "message": "That is against style guide:\nhttps://google.github.io/styleguide/cppguide.html#Integer_Types\n“Of the built-in C++ integer types, the only one used is int.”\n\"do not use unsigned types to say a number will never be negative. Instead, use assertions for this.\"",
       "revId": "faf00b8e572cac2bacebda9c1c394f3376bc569e",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b7fbb2d_58dda674",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 20759
+      },
+      "writtenOn": "2023-07-31T13:53:17Z",
+      "side": 1,
+      "message": "Many thanks for the explanation.\n\nIs it allowed to use size_t instead ?\n\nhttps://webrtc.googlesource.com/src/+/refs/heads/main/modules/rtp_rtcp/source/rtp_dependency_descriptor_reader.cc#181",
+      "parentUuid": "ae7b83aa_c74da681",
+      "revId": "faf00b8e572cac2bacebda9c1c394f3376bc569e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
