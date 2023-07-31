@@ -34,6 +34,24 @@
       "parentUuid": "ae7b83aa_c74da681",
       "revId": "faf00b8e572cac2bacebda9c1c394f3376bc569e",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8e5a359_d4a18421",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2023-07-31T14:08:50Z",
+      "side": 1,
+      "message": "size_t is generally allowed (it is not a built-in type), but in this case it is still against guidance\n\"do not use unsigned types to say a number will never be negative\"\n\nin the reader it is used because template_index there is an index for the templates array.\n(when std::ssize will be available, there will be less reasons to use unsigned size_t)",
+      "parentUuid": "6b7fbb2d_58dda674",
+      "revId": "faf00b8e572cac2bacebda9c1c394f3376bc569e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
