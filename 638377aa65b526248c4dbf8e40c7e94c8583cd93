@@ -125,6 +125,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5e416249_c2c16480",
+        "filename": "pc/sdp_offer_answer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 7036
+      },
+      "writtenOn": "2023-08-11T14:57:41Z",
+      "side": 1,
+      "message": "I don\u0027t know of any users of SVC with more than 3 layers at the moment, but I\u0027m not necessarily the most informed person there is.\nAs this is non standard behaviour and probably unused with a count bigger than 3, I think it\u0027s fine.\n\n@ssilkin may know more.\n\nOtherwise, yes, this should be checked for kMaxSimulcastStreams only (which I believe, we should probably be able to increase to a higher value now).",
+      "parentUuid": "91e847b5_3e2e3541",
+      "revId": "638377aa65b526248c4dbf8e40c7e94c8583cd93",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "65990e3c_a8eae1b5",
         "filename": "pc/sdp_offer_answer_unittest.cc",
         "patchSetId": 2
