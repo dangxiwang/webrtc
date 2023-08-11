@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d6e68602_cecb62ba",
+        "filename": "pc/sdp_offer_answer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 19549
+      },
+      "writtenOn": "2023-08-11T07:34:09Z",
+      "side": 1,
+      "message": "Can\u0027t switch on strings sadly.\nI don\u0027t see StreamParams supporting more than two, in particular it uses  AddFidSsrc and AddFecFrSsrc. The SIM ssrc group is created via this:\nhttps://source.chromium.org/chromium/chromium/src/+/refs/heads/main:third_party/webrtc/pc/webrtc_sdp.cc;l\u003d3558;drc\u003db86abfa407f3f35d3e5904e76b9a8d3a741bdc8b;bpv\u003d1;bpt\u003d1\n\nI also wonder how the FEC-FR ssrc group looks like with multiple ssrcs which is being worked on in https://bugs.chromium.org/p/webrtc/issues/detail?id\u003d15002\nI\u0027d rather not reject 2 now and then create a huge backward compat problem between versions...\nMy interpretation is that a FEC packet can protect multiple SSRCs but that means the FEC-FR groups are still\na\u003dssrc-group:FEC-FR videossrc1 fecssrc1\na\u003dssrc-group:FEC-FR videossrc2 fecssrc1\nand not\na\u003dssrc-group:FEC-FR videossrc1 videossrc2 fecssrc1\nsince the notion is always \"primary-secondary\". Not necessarily covered by RFC 5576 though...",
+      "parentUuid": "470a6d64_931349e6",
+      "revId": "638377aa65b526248c4dbf8e40c7e94c8583cd93",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8c74e6e0_da19f2a9",
         "filename": "pc/sdp_offer_answer.cc",
         "patchSetId": 2
@@ -89,6 +107,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "91e847b5_3e2e3541",
+        "filename": "pc/sdp_offer_answer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 19549
+      },
+      "writtenOn": "2023-08-11T07:34:09Z",
+      "side": 1,
+      "message": "The tricky thing here is that certain services use the SIM ssrc-group to enable SVC ;-)",
+      "parentUuid": "0a34cc61_e97ec6d1",
+      "revId": "638377aa65b526248c4dbf8e40c7e94c8583cd93",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "65990e3c_a8eae1b5",
         "filename": "pc/sdp_offer_answer_unittest.cc",
         "patchSetId": 2
@@ -100,6 +136,24 @@
       "writtenOn": "2023-08-11T06:39:35Z",
       "side": 1,
       "message": "Can you EXPECT on the error?",
+      "revId": "638377aa65b526248c4dbf8e40c7e94c8583cd93",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b09b658_13f91e03",
+        "filename": "pc/sdp_offer_answer_unittest.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 19549
+      },
+      "writtenOn": "2023-08-11T07:34:09Z",
+      "side": 1,
+      "message": "All of them!",
+      "parentUuid": "65990e3c_a8eae1b5",
       "revId": "638377aa65b526248c4dbf8e40c7e94c8583cd93",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
