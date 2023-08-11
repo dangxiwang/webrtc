@@ -18,6 +18,40 @@
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d580034_f607b376",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2023-08-11T06:39:35Z",
+      "side": 1,
+      "message": "Adding orphis to answer question about kMaxSimulcastStreams.",
+      "revId": "638377aa65b526248c4dbf8e40c7e94c8583cd93",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "470a6d64_931349e6",
+        "filename": "pc/sdp_offer_answer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2023-08-11T06:39:35Z",
+      "side": 1,
+      "message": "As a matter of style, I\u0027d prefer this to be a case statement over group.semantics.\n\nI also wonder if the whole validation function belongs in stream_params.cc rather than sdp_offer_answer.cc.",
+      "revId": "638377aa65b526248c4dbf8e40c7e94c8583cd93",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c74e6e0_da19f2a9",
@@ -31,6 +65,41 @@
       "writtenOn": "2023-08-10T12:53:55Z",
       "side": 1,
       "message": "Does this need to be kMaxSimulcastStreams (3) or kMaxSpatialLayers (5)?\nhttps://source.chromium.org/chromium/chromium/src/+/refs/heads/main:third_party/webrtc/api/video/video_codec_constants.h;l\u003d17;drc\u003d1c5350e7f3c012f386e12a8167b2a3e28f57774a;bpv\u003d1;bpt\u003d1",
+      "revId": "638377aa65b526248c4dbf8e40c7e94c8583cd93",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a34cc61_e97ec6d1",
+        "filename": "pc/sdp_offer_answer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2023-08-11T06:39:35Z",
+      "side": 1,
+      "message": "In theory, kMaxSpatialLayers should only refer to the SVC type of spatial layers, so it should be kMaxSimulcastStreams.\n\n@orphis will know if there are hacks to avoid.\n\nOn the simulcast layers, I do wonder if erroring the SetRemoteDescription is the right thing; a remote may propose more simulcast streams than the local can support, and that\u0027s not an error, it\u0027s a reason to truncate the list. (Not that I think we test this!)",
+      "parentUuid": "8c74e6e0_da19f2a9",
+      "revId": "638377aa65b526248c4dbf8e40c7e94c8583cd93",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65990e3c_a8eae1b5",
+        "filename": "pc/sdp_offer_answer_unittest.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2023-08-11T06:39:35Z",
+      "side": 1,
+      "message": "Can you EXPECT on the error?",
       "revId": "638377aa65b526248c4dbf8e40c7e94c8583cd93",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
