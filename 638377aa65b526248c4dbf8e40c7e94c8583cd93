@@ -143,6 +143,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7b1d3442_f104b4b5",
+        "filename": "pc/sdp_offer_answer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 5825
+      },
+      "writtenOn": "2023-08-16T13:39:57Z",
+      "side": 1,
+      "message": "https://source.chromium.org/chromium/chromium/src/+/main:third_party/webrtc/media/engine/webrtc_video_engine.cc;l\u003d889:\nvp9_settings.numberOfSpatialLayers \u003d std::min\u003cunsigned char\u003e(\n        parameters_.config.rtp.ssrcs.size(), kConferenceMaxNumSpatialLayers);\n\nhttps://source.chromium.org/chromium/chromium/src/+/refs/heads/main:third_party/webrtc/media/base/media_constants.cc;l\u003d120:\nconst size_t kConferenceMaxNumSpatialLayers \u003d 3;\n\nI.e., even when inferred from number of SSRCs, the max number of VP9 spatial layers is capped by 3. In case of AV1 scalability_mode is the only source for the number of spatial layers (max \u003d3). It should be OK to use kMaxSimulcastStreams (\u003d3) here, not kMaxSpatialLayers (\u003d5), at least for now.",
+      "parentUuid": "5e416249_c2c16480",
+      "revId": "638377aa65b526248c4dbf8e40c7e94c8583cd93",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "65990e3c_a8eae1b5",
         "filename": "pc/sdp_offer_answer_unittest.cc",
         "patchSetId": 2
