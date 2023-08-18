@@ -159,6 +159,24 @@
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "35bdfc77_5d773a7a",
+        "filename": "pc/sdp_offer_answer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 19549
+      },
+      "writtenOn": "2023-08-18T07:11:54Z",
+      "side": 1,
+      "message": "No change required then. Until you move to four layers because of 1080p but that might be when you need to stop SDP munging ;-)",
+      "parentUuid": "7b1d3442_f104b4b5",
+      "revId": "638377aa65b526248c4dbf8e40c7e94c8583cd93",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65990e3c_a8eae1b5",
