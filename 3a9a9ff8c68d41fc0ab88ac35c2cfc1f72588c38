@@ -16,6 +16,24 @@
       "message": "Hi Mirko, \nWhat do you think of doing something like this?",
       "revId": "3a9a9ff8c68d41fc0ab88ac35c2cfc1f72588c38",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ece8708_8c1653df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5087
+      },
+      "writtenOn": "2023-08-29T15:15:51Z",
+      "side": 1,
+      "message": "Nice!\n\nThis looks OK to me!",
+      "parentUuid": "cafb069e_d4d8fb95",
+      "revId": "3a9a9ff8c68d41fc0ab88ac35c2cfc1f72588c38",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
