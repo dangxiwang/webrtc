@@ -16,6 +16,24 @@
       "message": "I\u0027m not sure if it makes tests easier to read, but does let them become shorter.",
       "revId": "9968f4a99eaf10f431effed56095326810873e33",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f57d31bd_c9c38185",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 12215
+      },
+      "writtenOn": "2023-09-25T17:37:30Z",
+      "side": 1,
+      "message": "It\u0027s an acquired taste, but following the style guide better.",
+      "parentUuid": "252df3d3_9ba0ae56",
+      "revId": "9968f4a99eaf10f431effed56095326810873e33",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
