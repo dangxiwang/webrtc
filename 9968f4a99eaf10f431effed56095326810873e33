@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "252df3d3_9ba0ae56",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2023-09-25T16:03:54Z",
+      "side": 1,
+      "message": "I\u0027m not sure if it makes tests easier to read, but does let them become shorter.",
+      "revId": "9968f4a99eaf10f431effed56095326810873e33",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
