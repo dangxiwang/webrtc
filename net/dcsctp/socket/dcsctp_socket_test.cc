@@ -315,6 +315,8 @@ void ConnectSockets(SocketUnderTest& a, SocketUnderTest& z) {
 
 std::unique_ptr<SocketUnderTest> HandoverSocket(
     std::unique_ptr<SocketUnderTest> sut) {
+  RTC_DLOG(LS_VERBOSE) << "Handover status: "
+                       << sut->socket.GetHandoverReadiness().ToString();
   EXPECT_EQ(sut->socket.GetHandoverReadiness(), HandoverReadinessStatus());
 
   bool is_closed = sut->socket.state() == SocketState::kClosed;
