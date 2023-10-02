@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0446253e_084f35d2",
+        "filename": "pc/session_description.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 7036
+      },
+      "writtenOn": "2023-10-02T15:47:35Z",
+      "side": 0,
+      "message": "We have some internal usage of this templated class.\nWe should add an alias for it, migrate the internal usage to that alias and then swap what the alias points to.",
+      "revId": "4d2d215b737368a262bb03701484adcc57a78316",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
