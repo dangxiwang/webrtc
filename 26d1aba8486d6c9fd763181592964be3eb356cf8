@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "281fef5c_a960a299",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 19549
+      },
+      "writtenOn": "2023-10-02T14:16:26Z",
+      "side": 1,
+      "message": "PS1 seems relatively safe, PS2 might cause downstream breakages...",
+      "revId": "26d1aba8486d6c9fd763181592964be3eb356cf8",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
