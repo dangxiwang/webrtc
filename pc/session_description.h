@@ -290,37 +290,34 @@ class MediaContentDescription {
   std::vector<Codec> codecs_;
 };
 
-template <class C>
-class MediaContentDescriptionImpl : public MediaContentDescription {
+class AudioContentDescription : public MediaContentDescription {
  public:
   void set_protocol(absl::string_view protocol) override {
     RTC_DCHECK(IsRtpProtocol(protocol));
     protocol_ = std::string(protocol);
   }
-};
-
-class AudioContentDescription : public MediaContentDescriptionImpl<Codec> {
- public:
-  AudioContentDescription() {}
-
-  virtual MediaType type() const { return MEDIA_TYPE_AUDIO; }
-  virtual AudioContentDescription* as_audio() { return this; }
-  virtual const AudioContentDescription* as_audio() const { return this; }
+  MediaType type() const override { return MEDIA_TYPE_AUDIO; }
+  AudioContentDescription* as_audio() override { return this; }
+  const AudioContentDescription* as_audio() const override { return this; }
 
  private:
-  virtual AudioContentDescription* CloneInternal() const {
+  AudioContentDescription* CloneInternal() const override {
     return new AudioContentDescription(*this);
   }
 };
 
-class VideoContentDescription : public MediaContentDescriptionImpl<Codec> {
+class VideoContentDescription : public MediaContentDescription {
  public:
-  virtual MediaType type() const { return MEDIA_TYPE_VIDEO; }
-  virtual VideoContentDescription* as_video() { return this; }
-  virtual const VideoContentDescription* as_video() const { return this; }
+  void set_protocol(absl::string_view protocol) override {
+    RTC_DCHECK(IsRtpProtocol(protocol));
+    protocol_ = std::string(protocol);
+  }
+  MediaType type() const override { return MEDIA_TYPE_VIDEO; }
+  VideoContentDescription* as_video() override { return this; }
+  const VideoContentDescription* as_video() const override { return this; }
 
  private:
-  virtual VideoContentDescription* CloneInternal() const {
+  VideoContentDescription* CloneInternal() const override {
     return new VideoContentDescription(*this);
   }
 };
