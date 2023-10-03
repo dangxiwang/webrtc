@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f70d1f6_7ebc2694",
+        "filename": "system_wrappers/source/field_trial.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 13704
+      },
+      "writtenOn": "2023-10-03T10:21:36Z",
+      "side": 1,
+      "message": "What are you trying to achieve here? This should only be written once so why would there ever be concurrent writes to it? If that\u0027s the case it sounds like a bug at the callsite and not in WebRTC.\n\nBtw, there\u0027s an effort to get rid of this global string altogether [1], would that help your use case?\n\n[1] https://crbug.com/webrtc/10335",
+      "revId": "67f6fbf6c58e87e90664b8e3d2018226df9a389e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
