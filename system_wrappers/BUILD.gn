@@ -87,16 +87,14 @@ rtc_library("field_trial") {
     defines = [ "WEBRTC_EXCLUDE_FIELD_TRIAL_DEFAULT" ]
   }
   deps = [
-    "../experiments:registered_field_trials",
     "../rtc_base:checks",
     "../rtc_base:logging",
+    "../rtc_base:macromagic",
     "../rtc_base:stringutils",
     "../rtc_base/containers:flat_set",
+    "../rtc_base/synchronization:mutex",
   ]
-  absl_deps = [
-    "//third_party/abseil-cpp/absl/algorithm:container",
-    "//third_party/abseil-cpp/absl/strings",
-  ]
+  absl_deps = [ "//third_party/abseil-cpp/absl/strings" ]
 }
 
 rtc_library("metrics") {

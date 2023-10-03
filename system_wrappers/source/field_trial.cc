@@ -14,21 +14,29 @@
 #include <map>
 #include <string>
 #include <utility>
+#include <vector>
 
-#include "absl/algorithm/container.h"
 #include "absl/strings/string_view.h"
-#include "experiments/registered_field_trials.h"
 #include "rtc_base/checks.h"
 #include "rtc_base/containers/flat_set.h"
 #include "rtc_base/logging.h"
 #include "rtc_base/string_encode.h"
+#include "rtc_base/synchronization/mutex.h"
+#include "rtc_base/thread_annotations.h"
 
 // Simple field trial implementation, which allows client to
 // specify desired flags in InitFieldTrialsFromString.
 namespace webrtc {
 namespace field_trial {
 
-static const char* trials_init_string = NULL;
+// Global lock for field trial system.
+webrtc::Mutex& GetFieldTrialsLock() {
+  static Mutex& mutex = *new Mutex();
+  return mutex;
+}
+
+static const char* trials_init_string RTC_GUARDED_BY(GetFieldTrialsLock()) =
+    NULL;
 
 namespace {
 
@@ -127,12 +135,11 @@ std::string FindFullName(absl::string_view name) {
       << name << " is not registered, see g3doc/field-trials.md.";
 #endif
 
-  if (trials_init_string == NULL)
-    return std::string();
-
-  absl::string_view trials_string(trials_init_string);
-  if (trials_string.empty())
-    return std::string();
+  std::string trials_string;
+  {
+    MutexLock lock(&GetFieldTrialsLock());
+    trials_string = trials_init_string == NULL ? "" : trials_init_string;
+  }
 
   size_t next_item = 0;
   while (next_item < trials_string.length()) {
@@ -146,14 +153,14 @@ std::string FindFullName(absl::string_view name) {
     if (field_value_end == trials_string.npos ||
         field_value_end == field_name_end + 1)
       break;
-    absl::string_view field_name =
+    std::string field_name =
         trials_string.substr(next_item, field_name_end - next_item);
-    absl::string_view field_value = trials_string.substr(
+    std::string field_value = trials_string.substr(
         field_name_end + 1, field_value_end - field_name_end - 1);
     next_item = field_value_end + 1;
 
     if (name == field_name)
-      return std::string(field_value);
+      return field_value;
   }
   return std::string();
 }
@@ -165,11 +172,13 @@ void InitFieldTrialsFromString(const char* trials_string) {
   if (trials_string) {
     RTC_DCHECK(FieldTrialsStringIsValidInternal(trials_string))
         << "Invalid field trials string:" << trials_string;
-  };
+  }
+  MutexLock lock(&GetFieldTrialsLock());
   trials_init_string = trials_string;
 }
 
 const char* GetFieldTrialString() {
+  MutexLock lock(&GetFieldTrialsLock());
   return trials_init_string;
 }
 
