@@ -52,6 +52,24 @@
       "parentUuid": "535f171f_943ad188",
       "revId": "67f6fbf6c58e87e90664b8e3d2018226df9a389e",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1581f693_624cba9d",
+        "filename": "system_wrappers/source/field_trial.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 12234
+      },
+      "writtenOn": "2023-10-03T14:10:28Z",
+      "side": 1,
+      "message": "I see the uses_global_ boolean makes the trick.\nThanks, I\u0027ll abandon this CL then.",
+      "parentUuid": "6b8c5e44_95f1e43b",
+      "revId": "67f6fbf6c58e87e90664b8e3d2018226df9a389e",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
