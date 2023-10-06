@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "457e02a8_3248cb5c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2023-10-06T16:58:30Z",
+      "side": 1,
+      "message": "This is ready to land (blocking tests have been disabled).",
+      "revId": "44ea5842cfbc31c9465d50630b6307cc2e25a693",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
