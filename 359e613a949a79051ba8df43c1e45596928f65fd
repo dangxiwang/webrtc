@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "191aa95f_9e2957b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 18224
+      },
+      "writtenOn": "2023-10-06T13:18:07Z",
+      "side": 1,
+      "message": "The failing test `SurfaceTextureHelperTest#testThreeConstantColorFrames` switches between two EglBase instances on one thread without detaching them. To support that case I updated the code to also check if the context is current before checking if the surface is.\nThe strange thing is that the test in question is failing for me locally even on main without this cl, but with this latest addition this cl is at least failing in the same way as main. I\u0027m running the tryjob to see if it passes, but I\u0027ll have to look into this test later since its behavior appears to be device dependent.",
+      "revId": "359e613a949a79051ba8df43c1e45596928f65fd",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
