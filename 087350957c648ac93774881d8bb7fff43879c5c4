@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a47e548e_a65abbb0",
+        "filename": "modules/congestion_controller/goog_cc/loss_based_bwe_v2.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 5578
+      },
+      "writtenOn": "2023-10-18T12:56:20Z",
+      "side": 1,
+      "message": "Suggest renaming to UpdateResult  and inline current method UpdateCurrentState into UpdateResult.",
+      "range": {
+        "startLine": 309,
+        "startChar": 21,
+        "endLine": 309,
+        "endChar": 44
+      },
+      "revId": "087350957c648ac93774881d8bb7fff43879c5c4",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "912d75b4_936d2fbb",
+        "filename": "modules/congestion_controller/goog_cc/loss_based_bwe_v2.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1036,
+      "author": {
+        "id": 5578
+      },
+      "writtenOn": "2023-10-18T12:56:20Z",
+      "side": 1,
+      "message": "Suggest rename IsInLossLimitedState() ?",
+      "range": {
+        "startLine": 1036,
+        "startChar": 21,
+        "endLine": 1036,
+        "endChar": 48
+      },
+      "revId": "087350957c648ac93774881d8bb7fff43879c5c4",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
