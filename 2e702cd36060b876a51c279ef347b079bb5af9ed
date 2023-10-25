@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cbaf0e8_3b11bf8e",
+        "filename": "audio/audio_send_stream.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 646,
+      "author": {
+        "id": 19549
+      },
+      "writtenOn": "2023-10-25T17:53:48Z",
+      "side": 1,
+      "message": "This is a bit icky because of the way RED wraps the (opus) encoder but it ensures that the mimeType shows up as audio/red in JS to distinguish the format from audio/opus.\n\n(red shows up as opus in stats, I am not sure if I consider this a bug, see also https://github.com/w3c/webrtc-stats/issues/610)",
+      "revId": "2e702cd36060b876a51c279ef347b079bb5af9ed",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9310f94_253c499a",
+        "filename": "audio/channel_send.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 19549
+      },
+      "writtenOn": "2023-10-25T17:53:48Z",
+      "side": 1,
+      "message": "VoipCodec::SetSendCodec already does this so yay consistency!",
+      "revId": "2e702cd36060b876a51c279ef347b079bb5af9ed",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc255a44_8153cca6",
+        "filename": "audio/channel_send.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 19549
+      },
+      "writtenOn": "2023-10-25T17:53:48Z",
+      "side": 1,
+      "message": "ideally I wanted to lookup the mime type based on the PT but the sender has no map of payload types like the receiver has. Fortunately I stopped the complicated way of switching between raw opus and red-opus in the C++ RED encoder a while back so this works.",
+      "revId": "2e702cd36060b876a51c279ef347b079bb5af9ed",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
