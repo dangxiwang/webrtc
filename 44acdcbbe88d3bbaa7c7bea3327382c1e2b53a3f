@@ -183,6 +183,30 @@
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3f8829b_98202ac6",
+        "filename": "modules/rtp_rtcp/source/absolute_capture_time_sender.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 8392
+      },
+      "writtenOn": "2023-10-25T21:37:30Z",
+      "side": 1,
+      "message": "Looks good to me!",
+      "parentUuid": "ce38c6d4_4e62d3d3",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 72
+      },
+      "revId": "44acdcbbe88d3bbaa7c7bea3327382c1e2b53a3f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3388f7ba_bb47ebfe",
@@ -326,6 +350,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fdebc1b7_e688433d",
+        "filename": "modules/rtp_rtcp/source/absolute_capture_time_sender.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 8392
+      },
+      "writtenOn": "2023-10-25T21:37:30Z",
+      "side": 1,
+      "message": "The meaning of the CSRCs is unchanged. It\u0027s still a list of \"source[s] of a stream of RTP packets that has contributed to the combined stream produced by an RTP mixer\" and the intention is to stay aligned with RFC3550 on how SSRCs and CSRCs are meant to be used:\n\n```\n   Mixer: Receives streams of RTP data packets from one or more\n      sources, possibly changes the data format, combines the streams in\n      some manner and then forwards the combined stream.  Since the\n      timing among multiple input sources will not generally be\n      synchronized, the mixer will make timing adjustments among the\n      streams and generate its own timing for the combined stream, so it\n      is the synchronization source.  Thus, all data packets forwarded\n      by a mixer MUST be marked with the mixer\u0027s own SSRC identifier.\n      In order to preserve the identity of the original sources\n      contributing to the mixed packet, the mixer SHOULD insert their\n      SSRC identifiers into the CSRC identifier list following the fixed\n      RTP header of the packet.  A mixer that is also itself a\n      contributing source for some packet SHOULD explicitly include its\n      own SSRC identifier in the CSRC list for that packet.\n```\n\nFor bandwidth efficiency reasons, and it being \"good enough\" for most of the current use cases, the current abs-capture-time header extension only provides the means to transport capture timestamp and clock offset of *one* CSRC/SSRC per RTP packet. That source is arbitrary(1) chosen to be the first CSRC/SSRC in the list and then called the \"capture system\" by the abs-capture-time\u0027s specs.\n\nBecause of that, abs-capture-time recommends that the most prominent (e.g. loudest) CSRC is placed first in the list. But abs-capture-time doesn\u0027t add any requirement of that mixers \"must\" behave that way. Every CSRC is in reality a \"capture system\" and I should now in hindsight probably have made abs-capture-time call it the \"chosen capture system\" or something else along those lines instead.\n\n\u003e Besides, on the sender side tracking change of the capture system clock is done implicitly - when clock really changes, then interpolation error would be large enough to force sending the extensions.\n\n\"Which source is the capture system?\" and \"When should interpolation omit the header extension?\" are somewhat orthogonal to each other. There\u0027s currently a recommendation that \"Mixers SHOULD always send abs-capture-time with the first RTP packet after changing capture system.\" since it is desirable to flush the receiver-side state (i.e. `AbsoluteCaptureTimeInterpolator`) when the capture system changes. This is similar to the recent discovery that it probably also would make sense to always send the header extension on keyframes.\n\nI think that changing this logic is very dangerous. There are several edge cases that must be re-evaluated and potentially fixed through other means. If we were to commit this CL as it originally was written, then there would have been at least two other things to also consider:\n\n1. Any change to `AbsoluteCaptureTimeSender` will often require a corresponding change to `AbsoluteCaptureTimeInterpolator`. Removing the `last_source_ !\u003d source` check in `AbsoluteCaptureTimeSender` must come with a similar change in [`AbsoluteCaptureTimeInterpolator::ShouldInterpolateExtension`](https://source.chromium.org/chromium/chromium/src/+/main:third_party/webrtc/modules/rtp_rtcp/source/absolute_capture_time_interpolator.cc;l\u003d108;drc\u003d63b3095d2ba163eb189c8af798d89f9a75dfad4f) or else `AbsoluteCaptureTimeInterpolator` will refuse to interpolate across a capture system change.\n\n\n2. Removing `last_source_ !\u003d source` from `AbsoluteCaptureTimeInterpolator::ShouldInterpolateExtension()` introduces a subtle, but severe, bug with [`estimated_capture_clock_offset`](https://source.chromium.org/chromium/chromium/src/+/main:third_party/webrtc/modules/rtp_rtcp/source/absolute_capture_time_interpolator.cc;l\u003d59;drc\u003d63b3095d2ba163eb189c8af798d89f9a75dfad4f). It\u0027s technically possible to allow interpolation of `absolute_capture_timestamp` across a capture system change but we must never allow `estimated_capture_clock_offset` of one source to be used for another.\n\nWe can certainly discuss this further if we are keen on improving this area.\n\n(1) \u003d The capture system is actually carefully chosen to be the first CSRC because there are existing WebRTC applications that misuse the CSRC list by appending \"fake\" CSRCs as a way to \"tag\" individual audio packets.",
+      "parentUuid": "5ef2c969_a25cf1ea",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 3
+      },
+      "revId": "44acdcbbe88d3bbaa7c7bea3327382c1e2b53a3f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7be36081_a8b6b942",
         "filename": "modules/rtp_rtcp/source/absolute_capture_time_sender.h",
         "patchSetId": 4
@@ -361,6 +409,30 @@
       "side": 1,
       "message": "I did check spelling, but obviously overlooked some of the errors.\nChanged \"source system\" to \"capture system\"",
       "parentUuid": "7be36081_a8b6b942",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 80
+      },
+      "revId": "44acdcbbe88d3bbaa7c7bea3327382c1e2b53a3f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0020cd2_d0aaeb32",
+        "filename": "modules/rtp_rtcp/source/absolute_capture_time_sender.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 8392
+      },
+      "writtenOn": "2023-10-25T21:37:30Z",
+      "side": 1,
+      "message": "Looks good now!",
+      "parentUuid": "af4b50e8_2c7e1404",
       "range": {
         "startLine": 56,
         "startChar": 0,

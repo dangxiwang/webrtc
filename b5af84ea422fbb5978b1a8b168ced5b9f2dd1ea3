@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd779c99_f7ca8635",
+        "filename": "modules/rtp_rtcp/source/absolute_capture_time_sender.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 8392
+      },
+      "writtenOn": "2023-10-25T21:37:30Z",
+      "side": 1,
+      "message": "Can you make the same changes to `AbsoluteCaptureTimeInterpolator` since these two helpers come in a pair?",
+      "range": {
+        "startLine": 40,
+        "startChar": 6,
+        "endLine": 40,
+        "endChar": 31
+      },
+      "revId": "b5af84ea422fbb5978b1a8b168ced5b9f2dd1ea3",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "844fe020_03477ad0",
+        "filename": "modules/rtp_rtcp/source/absolute_capture_time_sender_unittest.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 8392
+      },
+      "writtenOn": "2023-10-25T21:37:30Z",
+      "side": 1,
+      "message": "nit: Is it possible to `constexpr` these today? The `static const` was there so that these constexpr-like test setup variables could be named with the same `k` prefix as the other constexpr test setup variables. It\u0027s no big deal if we can\u0027t have that.",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 38,
+        "endChar": 7
+      },
+      "revId": "b5af84ea422fbb5978b1a8b168ced5b9f2dd1ea3",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a4705c4_c4bb4a29",
+        "filename": "modules/rtp_rtcp/source/rtp_sender_video.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 8392
+      },
+      "writtenOn": "2023-10-25T21:37:30Z",
+      "side": 1,
+      "message": "nit: I think it\u0027s more risky (in case of future code changes to this function) to use `csrcs` rather than `single_packet-\u003eCsrcs()`.",
+      "range": {
+        "startLine": 551,
+        "startChar": 72,
+        "endLine": 551,
+        "endChar": 77
+      },
+      "revId": "b5af84ea422fbb5978b1a8b168ced5b9f2dd1ea3",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
