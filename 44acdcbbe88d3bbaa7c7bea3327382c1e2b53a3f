@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c865b7f_bf24f7b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2023-10-25T13:33:54Z",
+      "side": 1,
+      "message": "I\u0027m not comfortable with just adding a new parameter because I have multiple other issues with this helper. While touching this code would like to address them too.\n\nI smell some YAGNI: https://testing.googleblog.com/2017/08/code-health-eliminate-yagni-smells.html",
+      "revId": "44acdcbbe88d3bbaa7c7bea3327382c1e2b53a3f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
