@@ -548,10 +548,9 @@ bool RTPSenderVideo::SendVideo(int payload_type,
   if (video_header.absolute_capture_time.has_value()) {
     video_header.absolute_capture_time =
         absolute_capture_time_sender_.OnSendPacket(
-            AbsoluteCaptureTimeSender::GetSource(single_packet->Ssrc(),
-                                                 single_packet->Csrcs()),
-            single_packet->Timestamp(), kVideoPayloadTypeFrequency,
-            video_header.absolute_capture_time->absolute_capture_timestamp,
+            rtp_timestamp, kVideoPayloadTypeFrequency,
+            NtpTime(
+                video_header.absolute_capture_time->absolute_capture_timestamp),
             video_header.absolute_capture_time->estimated_capture_clock_offset);
   }
 
