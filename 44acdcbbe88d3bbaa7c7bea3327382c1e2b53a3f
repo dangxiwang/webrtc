@@ -36,6 +36,24 @@
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3056e355_1d437e11",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2023-10-25T19:07:01Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "fbb56f67_e169c44f",
+      "revId": "44acdcbbe88d3bbaa7c7bea3327382c1e2b53a3f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b1bcaa83_eec80465",
@@ -53,6 +71,24 @@
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c66c7e11_4d1664f6",
+        "filename": "modules/rtp_rtcp/source/absolute_capture_time_sender.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2023-10-25T19:07:01Z",
+      "side": 1,
+      "message": "reverted to \u0027send_time\u0027\n\n(even though there still can be some time between packet is generated and actually sent, but I\u0027m not sure what would be better name for this time)",
+      "parentUuid": "b1bcaa83_eec80465",
+      "revId": "44acdcbbe88d3bbaa7c7bea3327382c1e2b53a3f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1c66e6e4_9a89b8b9",
@@ -66,6 +102,30 @@
       "writtenOn": "2023-10-25T17:15:40Z",
       "side": 1,
       "message": "All `last_xyz_` variables should be named after equivalent `xyz` variables. In particular:\n\n- `last_rtp_clock_frequency_` no longer matches `rtp_clock_frequency_hz`.\n- `last_absolute_capture_timestamp_` no longer matches `absolute_capture_time`.",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 72
+      },
+      "revId": "44acdcbbe88d3bbaa7c7bea3327382c1e2b53a3f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8998f924_41fcb543",
+        "filename": "modules/rtp_rtcp/source/absolute_capture_time_sender.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2023-10-25T19:07:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c66e6e4_9a89b8b9",
       "range": {
         "startLine": 62,
         "startChar": 0,
@@ -99,6 +159,30 @@
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce38c6d4_4e62d3d3",
+        "filename": "modules/rtp_rtcp/source/absolute_capture_time_sender.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2023-10-25T19:07:01Z",
+      "side": 1,
+      "message": "rewrote static_cast as braced initialization cast, then absolute_capture_timestamp fit into one line.\n\n(it is actually preferred over static_cast: https://google.github.io/styleguide/cppguide.html#Casting \nthough not too sure NtpTime can be counted as an arithmetic type)\n\nadded extra comma so that formatting would add an extra line (personally I prefer to have less lines in cases like this one, but do not have a strong opinion)",
+      "parentUuid": "793540b7_19047745",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 72
+      },
+      "revId": "44acdcbbe88d3bbaa7c7bea3327382c1e2b53a3f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3388f7ba_bb47ebfe",
@@ -112,6 +196,30 @@
       "writtenOn": "2023-10-25T17:15:40Z",
       "side": 1,
       "message": "Aha! Neat that `Timestamp` is handling the infinity cases properly.",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 3
+      },
+      "revId": "44acdcbbe88d3bbaa7c7bea3327382c1e2b53a3f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0344290c_fbf7b47b",
+        "filename": "modules/rtp_rtcp/source/absolute_capture_time_sender.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2023-10-25T19:07:01Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "3388f7ba_bb47ebfe",
       "range": {
         "startLine": 80,
         "startChar": 0,
@@ -145,6 +253,30 @@
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f4fa5cf_72aed22c",
+        "filename": "modules/rtp_rtcp/source/absolute_capture_time_sender.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2023-10-25T19:07:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4ac12f9_c59d210a",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 51
+      },
+      "revId": "44acdcbbe88d3bbaa7c7bea3327382c1e2b53a3f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e632ec7_d013eef7",
@@ -158,6 +290,30 @@
       "writtenOn": "2023-10-25T17:15:40Z",
       "side": 1,
       "message": "I don\u0027t think that it\u0027s a good idea to push the requirement of knowing \"how the source should be picked\" onto the callers. In several discussions with people who are implementing mixers (e.g. the audio processor in Meet), there\u0027s already a lot of confusion of how to properly implement abs-capture-time.\n\n`AbsoluteCaptureTimeSender` is currently a \"complete\" spec-compliant implementation of https://webrtc.org/experiments/rtp-hdrext/abs-capture-time/ and it\u0027s much safer to move all users onto it rather than to force each call site to reimplement the specs as there\u0027s a very high likelihood of that doing so introduces bugs.",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 3
+      },
+      "revId": "44acdcbbe88d3bbaa7c7bea3327382c1e2b53a3f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ef2c969_a25cf1ea",
+        "filename": "modules/rtp_rtcp/source/absolute_capture_time_sender.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2023-10-25T19:07:01Z",
+      "side": 1,
+      "message": "Reading abs-capture-time spec I see it redefines meaning of the CSRCs... compare to how it is defined in the RFC 3550.\ne.g. it mandates order for CSRCs. RFC3550 doesn\u0027t.\n\nIn the mixer I think this function is used incorrectly.\n\nI\u0027m not sure CSRC is an accurate representation of the \u0027capture system\u0027 at the send side (including send side of the mixer). More accurate representation is mixer implementation detail.\n\nBesides, on the sender side tracking change of the capture system clock is done implicitly - when clock really changes, then interpolation error would be large enough to force sending the extensions.\n\nAnyway, reverted this function and usage of CSRC to track synchronization source.\nProbably deserve dedicated discussion and change.",
+      "parentUuid": "9e632ec7_d013eef7",
       "range": {
         "startLine": 48,
         "startChar": 0,
@@ -191,6 +347,30 @@
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af4b50e8_2c7e1404",
+        "filename": "modules/rtp_rtcp/source/absolute_capture_time_sender.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2023-10-25T19:07:01Z",
+      "side": 1,
+      "message": "I did check spelling, but obviously overlooked some of the errors.\nChanged \"source system\" to \"capture system\"",
+      "parentUuid": "7be36081_a8b6b942",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 80
+      },
+      "revId": "44acdcbbe88d3bbaa7c7bea3327382c1e2b53a3f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d9ae9ad_7cfc7e61",
@@ -214,6 +394,30 @@
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d08344e_843c001a",
+        "filename": "modules/rtp_rtcp/source/absolute_capture_time_sender.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2023-10-25T19:07:01Z",
+      "side": 1,
+      "message": "timestamp frequency is not rtp timestamp.\nAnd thus shouldn\u0027t be using uint32_t type according to style guide.",
+      "parentUuid": "8d9ae9ad_7cfc7e61",
+      "range": {
+        "startLine": 102,
+        "startChar": 2,
+        "endLine": 102,
+        "endChar": 32
+      },
+      "revId": "44acdcbbe88d3bbaa7c7bea3327382c1e2b53a3f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1716bc09_9fb09a0c",
@@ -227,6 +431,30 @@
       "writtenOn": "2023-10-25T17:15:40Z",
       "side": 1,
       "message": "The `frequency` parameter is also unsigned here. It doesn\u0027t look to me like there should be a preference of making these `int`. On the contrary: There seems to be a good argument that all the `int` on the video side should really be `uint32_t`.\n\nImplicit unsigned to signed behavior is undesirable (as opposed to implicit signed to unsigned conversions that are well defined).",
+      "range": {
+        "startLine": 95,
+        "startChar": 4,
+        "endLine": 95,
+        "endChar": 49
+      },
+      "revId": "44acdcbbe88d3bbaa7c7bea3327382c1e2b53a3f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2171ffb_8150432a",
+        "filename": "modules/rtp_rtcp/source/rtp_sender_audio.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2023-10-25T19:07:01Z",
+      "side": 1,
+      "message": "I\u0027m following style guide here, specifically \n\nhttps://google.github.io/styleguide/cppguide.html#Integer_Types\n\n“You should not use the unsigned integer types such as uint32_t, unless there is a valid reason such as representing a bit pattern rather than a number, or you need defined overflow modulo 2^N. In particular, do not use unsigned types to say a number will never be negative.”\n\n\nuint32_t for rtp timestamp is appropriate because rtp timestamps relies on defined overflow modulo 2^32\nfor clock rate such reason doesn\u0027t apply.",
+      "parentUuid": "1716bc09_9fb09a0c",
       "range": {
         "startLine": 95,
         "startChar": 4,
