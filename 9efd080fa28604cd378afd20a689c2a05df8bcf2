@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11ff3a2a_cb5b4458",
+        "filename": "modules/rtp_rtcp/source/absolute_capture_time_sender.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 8392
+      },
+      "writtenOn": "2023-10-25T17:15:40Z",
+      "side": 0,
+      "message": "I *think* that omitting these require a C++17 compiler (i.e. `constexpr` is now implicitly `inline`). Does Chromium/WebRTC force that today? IIRC, there\u0027s  otherwise a problem with that the variables are declared but not defined.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 70
+      },
+      "revId": "9efd080fa28604cd378afd20a689c2a05df8bcf2",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}

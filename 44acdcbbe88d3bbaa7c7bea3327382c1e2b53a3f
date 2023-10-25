@@ -16,6 +16,225 @@
       "message": "I\u0027m not comfortable with just adding a new parameter because I have multiple other issues with this helper. While touching this code would like to address them too.\n\nI smell some YAGNI: https://testing.googleblog.com/2017/08/code-health-eliminate-yagni-smells.html",
       "revId": "44acdcbbe88d3bbaa7c7bea3327382c1e2b53a3f",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbb56f67_e169c44f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8392
+      },
+      "writtenOn": "2023-10-25T17:15:40Z",
+      "side": 1,
+      "message": "One thing to keep in mind is that WebRTC is not the only intended user of these helpers. All mixers in google3 (and other external places) should also use them and not implement the specs on their own.",
+      "parentUuid": "5c865b7f_bf24f7b1",
+      "revId": "44acdcbbe88d3bbaa7c7bea3327382c1e2b53a3f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1bcaa83_eec80465",
+        "filename": "modules/rtp_rtcp/source/absolute_capture_time_sender.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 8392
+      },
+      "writtenOn": "2023-10-25T17:15:40Z",
+      "side": 1,
+      "message": "I think it\u0027s a greater mental burden on the reader to realize that \"now\" and \"send_time\" is the same thing.\n\nIt used to be that all parameters/variables \"xyz\" in this function is named exactly the same as the parameters for `ShouldSendExtension()` (that function merely extracts the complex series of if-checks that belong to `OnSendPacket()`) and also the same as the \"last_xyz_\" member variables.",
+      "revId": "44acdcbbe88d3bbaa7c7bea3327382c1e2b53a3f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c66e6e4_9a89b8b9",
+        "filename": "modules/rtp_rtcp/source/absolute_capture_time_sender.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 8392
+      },
+      "writtenOn": "2023-10-25T17:15:40Z",
+      "side": 1,
+      "message": "All `last_xyz_` variables should be named after equivalent `xyz` variables. In particular:\n\n- `last_rtp_clock_frequency_` no longer matches `rtp_clock_frequency_hz`.\n- `last_absolute_capture_timestamp_` no longer matches `absolute_capture_time`.",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 72
+      },
+      "revId": "44acdcbbe88d3bbaa7c7bea3327382c1e2b53a3f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "793540b7_19047745",
+        "filename": "modules/rtp_rtcp/source/absolute_capture_time_sender.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 8392
+      },
+      "writtenOn": "2023-10-25T17:15:40Z",
+      "side": 1,
+      "message": "I think the automatic code formatting here makes this alternative harder to read than the original one. If we can get rid of the line break for `absolute_capture_timestamp \u003d static_cast\u003c...` and perhaps also get the closing `}` on its own separate line, then this would definitely be a readability improvement.",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 72
+      },
+      "revId": "44acdcbbe88d3bbaa7c7bea3327382c1e2b53a3f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3388f7ba_bb47ebfe",
+        "filename": "modules/rtp_rtcp/source/absolute_capture_time_sender.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 8392
+      },
+      "writtenOn": "2023-10-25T17:15:40Z",
+      "side": 1,
+      "message": "Aha! Neat that `Timestamp` is handling the infinity cases properly.",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 3
+      },
+      "revId": "44acdcbbe88d3bbaa7c7bea3327382c1e2b53a3f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4ac12f9_c59d210a",
+        "filename": "modules/rtp_rtcp/source/absolute_capture_time_sender.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 8392
+      },
+      "writtenOn": "2023-10-25T17:15:40Z",
+      "side": 1,
+      "message": "I consider consistency to be important. It makes sense to have `*_time` symbolize the `NtpTime` version and `*_timestamp` be the `uint64_t` version of `absolute_capture_*`. But we should then also make sure that `last_absolute_capture_timestamp_` is named `last_absolute_capture_time_` if we also change it from `uint64_t` to `NtpTime`.",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 51
+      },
+      "revId": "44acdcbbe88d3bbaa7c7bea3327382c1e2b53a3f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e632ec7_d013eef7",
+        "filename": "modules/rtp_rtcp/source/absolute_capture_time_sender.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 8392
+      },
+      "writtenOn": "2023-10-25T17:15:40Z",
+      "side": 1,
+      "message": "I don\u0027t think that it\u0027s a good idea to push the requirement of knowing \"how the source should be picked\" onto the callers. In several discussions with people who are implementing mixers (e.g. the audio processor in Meet), there\u0027s already a lot of confusion of how to properly implement abs-capture-time.\n\n`AbsoluteCaptureTimeSender` is currently a \"complete\" spec-compliant implementation of https://webrtc.org/experiments/rtp-hdrext/abs-capture-time/ and it\u0027s much safer to move all users onto it rather than to force each call site to reimplement the specs as there\u0027s a very high likelihood of that doing so introduces bugs.",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 3
+      },
+      "revId": "44acdcbbe88d3bbaa7c7bea3327382c1e2b53a3f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7be36081_a8b6b942",
+        "filename": "modules/rtp_rtcp/source/absolute_capture_time_sender.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 8392
+      },
+      "writtenOn": "2023-10-25T17:15:40Z",
+      "side": 1,
+      "message": "Please check the comments for spelling errors (e.g. `rtp_clock_freqnecy_hz`). We should also refer to the \"capture system\" rather than the \"source system\" so that we match the terminology of the specs.",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 80
+      },
+      "revId": "44acdcbbe88d3bbaa7c7bea3327382c1e2b53a3f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d9ae9ad_7cfc7e61",
+        "filename": "modules/rtp_rtcp/source/absolute_capture_time_sender.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 8392
+      },
+      "writtenOn": "2023-10-25T17:15:40Z",
+      "side": 1,
+      "message": "`encoder_rtp_timestamp_frequency` in `RTPSenderAudio` is `uint32_t`-like:\n\nhttps://source.chromium.org/chromium/chromium/src/+/main:third_party/webrtc/modules/rtp_rtcp/source/rtp_sender_audio.cc;l\u003d264;drc\u003d10e5724fe992d443f2aa3fa113ccc16d17dd9a3f\n\nIt\u0027s furthermore important that we make all timestamps calculations in unsigned integer space and not in signed integer space since signed integer overflow is undefined (and not \"wrap around\") behavior in C++.",
+      "range": {
+        "startLine": 102,
+        "startChar": 2,
+        "endLine": 102,
+        "endChar": 32
+      },
+      "revId": "44acdcbbe88d3bbaa7c7bea3327382c1e2b53a3f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1716bc09_9fb09a0c",
+        "filename": "modules/rtp_rtcp/source/rtp_sender_audio.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 8392
+      },
+      "writtenOn": "2023-10-25T17:15:40Z",
+      "side": 1,
+      "message": "The `frequency` parameter is also unsigned here. It doesn\u0027t look to me like there should be a preference of making these `int`. On the contrary: There seems to be a good argument that all the `int` on the video side should really be `uint32_t`.\n\nImplicit unsigned to signed behavior is undesirable (as opposed to implicit signed to unsigned conversions that are well defined).",
+      "range": {
+        "startLine": 95,
+        "startChar": 4,
+        "endLine": 95,
+        "endChar": 49
+      },
+      "revId": "44acdcbbe88d3bbaa7c7bea3327382c1e2b53a3f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
