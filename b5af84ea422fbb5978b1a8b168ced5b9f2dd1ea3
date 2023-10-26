@@ -24,6 +24,30 @@
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95db6b94_a06bfc62",
+        "filename": "modules/rtp_rtcp/source/absolute_capture_time_sender.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2023-10-26T09:52:33Z",
+      "side": 1,
+      "message": "did some of them.\n\nalso updated casting in the interpolate function a bit:\nuint32_t -\u003e uint64_t doesn\u0027t need to be dchecked, there is not information loss,\nused braced initialization conversion that won\u0027t compile if there would be loss.\n\nint tests removed constants for special values like absl::nullopt and 0.\nas well as double names for the same values\nI find such constants against https://www.googblogs.com/testing-on-the-toilet-keep-cause-and-effect-clear/\n(I did get confused in one of the tests where one call use kSomething1, next call used kSomething2, but test expectation actually relied on them having the same value)\n\nI\u0027ve skip making Interpolator thread-compatible instead of thread safe as that needs double checking all placess it is used in webrtc and g3. (For AbsoluteCaptureTimeSender I did such check)",
+      "parentUuid": "cd779c99_f7ca8635",
+      "range": {
+        "startLine": 40,
+        "startChar": 6,
+        "endLine": 40,
+        "endChar": 31
+      },
+      "revId": "b5af84ea422fbb5978b1a8b168ced5b9f2dd1ea3",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "844fe020_03477ad0",
@@ -47,6 +71,30 @@
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82862235_af01f1f4",
+        "filename": "modules/rtp_rtcp/source/absolute_capture_time_sender_unittest.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2023-10-26T09:52:33Z",
+      "side": 1,
+      "message": "to make them constexpr they should have constexpr initialization, \nsuch initialization requires Int64MsToUQ32x32 to be constexpr.\nmay be possible, but I do not see any value in making them constexpr.\n\nYou want to keep constant notation name? Style guide allows that in this scenario, I\u0027ve changed them back:\n\nhttps://google.github.io/styleguide/cppguide.html#Constant_Names\n“All such variables with static storage duration should be named this way. ... This convention is optional for variables of other storage classes, e.g., automatic variables”\n\n\n[btw, having these constants as static actually goes against spirit of another style rule that static variables should have constexpr initialization. non-constexpr initialization for static variables is allowed inside functions, e.g. tests, but that adds extra overhead that is not needed]",
+      "parentUuid": "844fe020_03477ad0",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 38,
+        "endChar": 7
+      },
+      "revId": "b5af84ea422fbb5978b1a8b168ced5b9f2dd1ea3",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a4705c4_c4bb4a29",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-10-25T21:37:30Z",
       "side": 1,
       "message": "nit: I think it\u0027s more risky (in case of future code changes to this function) to use `csrcs` rather than `single_packet-\u003eCsrcs()`.",
+      "range": {
+        "startLine": 551,
+        "startChar": 72,
+        "endLine": 551,
+        "endChar": 77
+      },
+      "revId": "b5af84ea422fbb5978b1a8b168ced5b9f2dd1ea3",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e95174c_9d2eebff",
+        "filename": "modules/rtp_rtcp/source/rtp_sender_video.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2023-10-26T09:52:33Z",
+      "side": 1,
+      "message": "I think it is as risky in case of future code changes, may be even less risky.\ne.g. The could be refactoring that postpones setting csrcs until actual packets are created, instead of their templates.\n`csrcs` in that case would be more correct - it is associated with the incoming frame.\n\nThough I\u0027ve changed it because it is a bit cheaper: pulling csrcs from RtpPacket requires to create a new temporary vector. reusing existent one just references it.",
+      "parentUuid": "1a4705c4_c4bb4a29",
       "range": {
         "startLine": 551,
         "startChar": 72,
