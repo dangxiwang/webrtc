@@ -87,6 +87,30 @@
       },
       "revId": "f3e150d42b42edba17bbdf382d0efe6a2d85976f",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e94ff4c_0fb06012",
+        "filename": "modules/rtp_rtcp/source/absolute_capture_time_sender.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2023-10-26T12:24:36Z",
+      "side": 1,
+      "message": "I do not think it makes noticeable difference, so keeping it as it is now.\n\nfor now output is always the same as input (or nullopt),\nwhen output and input would be different, then it would be more meaningful to review what do we want to store.",
+      "parentUuid": "842db57e_f63b4fc2",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 63
+      },
+      "revId": "f3e150d42b42edba17bbdf382d0efe6a2d85976f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
