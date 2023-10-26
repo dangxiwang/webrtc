@@ -39,6 +39,30 @@
       },
       "revId": "f3e150d42b42edba17bbdf382d0efe6a2d85976f",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2887afa_0c3bc20a",
+        "filename": "modules/rtp_rtcp/source/absolute_capture_time_sender.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2023-10-26T10:27:03Z",
+      "side": 1,
+      "message": "I\u0027m using different view of consistency here:\nFor the sake of consistency these last_ variables match input parameters of the main On(Receive|Send)Packet function.\n\nInterpolator takes AbsoluteCaptureTime as a parameter, thus saves that as AbsoluteCaptureTime\n\nSender takes AbsoluteCaptureTime as two parameters (do you suggest to change signature to take single parameter?), thus saves two member variables.",
+      "parentUuid": "d870db77_a43464fe",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 63
+      },
+      "revId": "f3e150d42b42edba17bbdf382d0efe6a2d85976f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
