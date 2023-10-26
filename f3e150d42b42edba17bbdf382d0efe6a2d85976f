@@ -63,6 +63,30 @@
       },
       "revId": "f3e150d42b42edba17bbdf382d0efe6a2d85976f",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "842db57e_f63b4fc2",
+        "filename": "modules/rtp_rtcp/source/absolute_capture_time_sender.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 8392
+      },
+      "writtenOn": "2023-10-26T12:20:06Z",
+      "side": 1,
+      "message": "I see your point!\n\nI think for the sender case, we can reason that what we want to store isn\u0027t necessarily the \"caller-provided parameters\" but rather the \"last known extension sent\". You can for example see this by `OnSendPacket()` only updating the variables for the non-`nullopt` case. If it was storing the \"last input parameters\", then it should also have done so for the `nullopt` case.\n\nI can also see that it could be interpreted as \"storing the input parameters used to generate the last extension sent\", so I\u0027m OK either way!",
+      "parentUuid": "f2887afa_0c3bc20a",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 63
+      },
+      "revId": "f3e150d42b42edba17bbdf382d0efe6a2d85976f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
