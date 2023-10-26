@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abdfb5ce_e0252899",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 8392
+      },
+      "writtenOn": "2023-10-26T10:15:41Z",
+      "side": 1,
+      "message": "Thanks for spending all the effort to improve this code!",
+      "revId": "f3e150d42b42edba17bbdf382d0efe6a2d85976f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d870db77_a43464fe",
+        "filename": "modules/rtp_rtcp/source/absolute_capture_time_sender.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 8392
+      },
+      "writtenOn": "2023-10-26T10:15:41Z",
+      "side": 1,
+      "message": "For the sake of consistency, is it possible to change these member variables to use the same `last_sent_extension_` approach as `AbsoluteCaptureTimeInterpolator`?",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 63
+      },
+      "revId": "f3e150d42b42edba17bbdf382d0efe6a2d85976f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}

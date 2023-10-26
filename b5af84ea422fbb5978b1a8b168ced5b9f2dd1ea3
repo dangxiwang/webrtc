@@ -48,6 +48,30 @@
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a9335f1_2f9567e4",
+        "filename": "modules/rtp_rtcp/source/absolute_capture_time_sender.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 8392
+      },
+      "writtenOn": "2023-10-26T10:15:41Z",
+      "side": 1,
+      "message": "The numbered suffixes in the variables were written in terms of \"all 1s belong to the first packet, all 2s to the second\" rather than \"first unique value, second unique value\". Either way is fine though! Whatever is causing the least amount of confusion for the read. 😊",
+      "parentUuid": "95db6b94_a06bfc62",
+      "range": {
+        "startLine": 40,
+        "startChar": 6,
+        "endLine": 40,
+        "endChar": 31
+      },
+      "revId": "b5af84ea422fbb5978b1a8b168ced5b9f2dd1ea3",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "844fe020_03477ad0",
@@ -95,6 +119,30 @@
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad0b64b1_6ea4e66d",
+        "filename": "modules/rtp_rtcp/source/absolute_capture_time_sender_unittest.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 8392
+      },
+      "writtenOn": "2023-10-26T10:15:41Z",
+      "side": 1,
+      "message": "This looks good! I agree that `static const` in a function is super weird.",
+      "parentUuid": "82862235_af01f1f4",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 38,
+        "endChar": 7
+      },
+      "revId": "b5af84ea422fbb5978b1a8b168ced5b9f2dd1ea3",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a4705c4_c4bb4a29",
@@ -132,6 +180,30 @@
       "side": 1,
       "message": "I think it is as risky in case of future code changes, may be even less risky.\ne.g. The could be refactoring that postpones setting csrcs until actual packets are created, instead of their templates.\n`csrcs` in that case would be more correct - it is associated with the incoming frame.\n\nThough I\u0027ve changed it because it is a bit cheaper: pulling csrcs from RtpPacket requires to create a new temporary vector. reusing existent one just references it.",
       "parentUuid": "1a4705c4_c4bb4a29",
+      "range": {
+        "startLine": 551,
+        "startChar": 72,
+        "endLine": 551,
+        "endChar": 77
+      },
+      "revId": "b5af84ea422fbb5978b1a8b168ced5b9f2dd1ea3",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8efd18a6_82230c68",
+        "filename": "modules/rtp_rtcp/source/rtp_sender_video.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 8392
+      },
+      "writtenOn": "2023-10-26T10:15:41Z",
+      "side": 1,
+      "message": "Sounds good to me!",
+      "parentUuid": "8e95174c_9d2eebff",
       "range": {
         "startLine": 551,
         "startChar": 72,
