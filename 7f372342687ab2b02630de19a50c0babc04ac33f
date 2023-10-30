@@ -16,6 +16,40 @@
       "message": "Audio is still a bit more contentious than video. Also tests are missing but then the video ones were based on cloning and that is not there for audio yet?",
       "revId": "7f372342687ab2b02630de19a50c0babc04ac33f",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14002891_56259ad9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2023-10-30T13:51:17Z",
+      "side": 1,
+      "message": "Looks good, apart from the plus signs.",
+      "revId": "7f372342687ab2b02630de19a50c0babc04ac33f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34b5f92b_1b087e86",
+        "filename": "audio/channel_receive.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2023-10-30T13:51:17Z",
+      "side": 1,
+      "message": "Recommendation: Don\u0027t use + for string concatenation.\nJust merged https://webrtc-review.googlesource.com/c/src/+/325282 that says something about why not.",
+      "revId": "7f372342687ab2b02630de19a50c0babc04ac33f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
