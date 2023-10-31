@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a9a78b9_555d6fe5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2023-10-31T18:31:18Z",
+      "side": 1,
+      "message": "chromium component build is one of the intended usage for this helper, so it need to be marked accordingly.\nForgot to do it originally.",
+      "revId": "a656abb69ae07ee40d0d456bce01db38f4e5c1d6",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
