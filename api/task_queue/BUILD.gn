@@ -82,9 +82,6 @@ rtc_library("task_queue_test") {
 
 rtc_library("default_task_queue_factory") {
   visibility = [ "*" ]
-  if (!is_ios && !is_android) {
-    poisonous = [ "default_task_queue" ]
-  }
   sources = [ "default_task_queue_factory.h" ]
   deps = [
     ":task_queue",

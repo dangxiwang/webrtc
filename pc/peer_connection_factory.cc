@@ -22,6 +22,7 @@
 #include "api/packet_socket_factory.h"
 #include "api/rtc_event_log/rtc_event_log.h"
 #include "api/sequence_checker.h"
+#include "api/task_queue/default_task_queue_factory.h"
 #include "api/transport/bitrate_settings.h"
 #include "api/units/data_rate.h"
 #include "call/audio_state.h"
@@ -56,6 +57,10 @@ namespace webrtc {
 rtc::scoped_refptr<PeerConnectionFactoryInterface>
 CreateModularPeerConnectionFactory(
     PeerConnectionFactoryDependencies dependencies) {
+  if (dependencies.task_queue_factory == nullptr) {
+    dependencies.task_queue_factory = CreateDefaultTaskQueueFactory();
+  }
+
   // The PeerConnectionFactory must be created on the signaling thread.
   if (dependencies.signaling_thread &&
       !dependencies.signaling_thread->IsCurrent()) {
