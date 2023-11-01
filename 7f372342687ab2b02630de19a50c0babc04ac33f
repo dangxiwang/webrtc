@@ -68,6 +68,24 @@
       "parentUuid": "34b5f92b_1b087e86",
       "revId": "7f372342687ab2b02630de19a50c0babc04ac33f",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "759406eb_7d568532",
+        "filename": "audio/channel_receive.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2023-11-01T13:01:20Z",
+      "side": 1,
+      "message": "Would make some sense to have a SimpleStringBuffer() constructor that created the buffer internally, but would have the disadvantage that callers wouldn\u0027t spend any cycles at all thinking about how their messages are going to be..",
+      "parentUuid": "96e49a29_af9ea14d",
+      "revId": "7f372342687ab2b02630de19a50c0babc04ac33f",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
