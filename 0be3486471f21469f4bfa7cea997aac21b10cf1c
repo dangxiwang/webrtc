@@ -16,6 +16,24 @@
       "message": "Mirko, any idea why the missing include was an issue only for the Chromium bots? I would have expected linux_rel to catch this too)",
       "revId": "0be3486471f21469f4bfa7cea997aac21b10cf1c",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4704ef4b_49819688",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5087
+      },
+      "writtenOn": "2023-11-03T09:09:38Z",
+      "side": 1,
+      "message": "Do you have a link to the failing bot?",
+      "parentUuid": "cbafe16e_a9e63c79",
+      "revId": "0be3486471f21469f4bfa7cea997aac21b10cf1c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
