@@ -52,6 +52,24 @@
       "parentUuid": "4704ef4b_49819688",
       "revId": "0be3486471f21469f4bfa7cea997aac21b10cf1c",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07aeaa36_62ed8578",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5087
+      },
+      "writtenOn": "2023-11-03T13:10:07Z",
+      "side": 1,
+      "message": "Hmm, this is confusing. I agree.\n\nThe only thing that comes to my mind is some sort of transitive #include that is not there when building for Chromium (e.g. because of #ifdef).",
+      "parentUuid": "5698671d_8e0ee16f",
+      "revId": "0be3486471f21469f4bfa7cea997aac21b10cf1c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ],
   "submitRequirementResults": [
