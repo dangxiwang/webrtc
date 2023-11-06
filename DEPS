@@ -10,7 +10,7 @@ vars = {
   # chromium waterfalls. More info at: crbug.com/570091.
   'checkout_configuration': 'default',
   'checkout_instrumented_libraries': 'checkout_linux and checkout_configuration == "default"',
-  'chromium_revision': '1204aeca4d2dcb4de49a5b0eb702e7fc1792ac76',
+  'chromium_revision': '2a83c1f4098a3fa75e84af66eeeffaa66841b48f',
 
   # Fetch the prebuilt binaries for llvm-cov and llvm-profdata. Needed to
   # process the raw profiles produced by instrumented targets (built with
@@ -50,9 +50,9 @@ vars = {
 deps = {
   # TODO(kjellander): Move this to be Android-only.
   'src/base':
-    'https://chromium.googlesource.com/chromium/src/base@ae6082baabd8e397d19ab5e493861ffffd5d14fa',
+    'https://chromium.googlesource.com/chromium/src/base@864fd82310f51d98fdc65a2a56d7793c7b04a8a6',
   'src/build':
-    'https://chromium.googlesource.com/chromium/src/build@65cd2ac234e05a5a970451e9b537184493cbce6f',
+    'https://chromium.googlesource.com/chromium/src/build@f4f93067362cc84423929e8e5a4cf4b7385c1ad9',
   'src/buildtools':
     'https://chromium.googlesource.com/chromium/src/buildtools@e1fa8831f1cedbaf91002ad32b476cb33aafe72f',
   # Gradle 6.6.1. Used for testing Android Studio project generation for WebRTC.
@@ -61,13 +61,13 @@ deps = {
     'condition': 'checkout_android',
   },
   'src/ios': {
-    'url': 'https://chromium.googlesource.com/chromium/src/ios@9a13e5ba210dccd53f8158c836fee4a93365cfc6',
+    'url': 'https://chromium.googlesource.com/chromium/src/ios@fcc6d14f84715d2626c7cfd06b7394ac6b99c937',
     'condition': 'checkout_ios',
   },
   'src/testing':
-    'https://chromium.googlesource.com/chromium/src/testing@da5a47c57ca448fda143da6d2c904f852e5afcb2',
+    'https://chromium.googlesource.com/chromium/src/testing@fda341aa0b369a9939d8662be2ad348739b55bc2',
   'src/third_party':
-    'https://chromium.googlesource.com/chromium/src/third_party@3ff0a6225a59abba838e89f9dff844b294c78a6c',
+    'https://chromium.googlesource.com/chromium/src/third_party@e73ff986159984bd12416eb1d7355e0c67e04b35',
 
   'src/buildtools/linux64': {
     'packages': [
@@ -205,9 +205,9 @@ deps = {
       'condition': 'checkout_linux',
   },
   'src/third_party/freetype/src':
-    'https://chromium.googlesource.com/chromium/src/third_party/freetype2.git@6d6607b8b3a78a305cc92d6016c411344c8c7b89',
+    'https://chromium.googlesource.com/chromium/src/third_party/freetype2.git@e9202737747ac008819d24a39c54584200c7a254',
   'src/third_party/harfbuzz-ng/src':
-    'https://chromium.googlesource.com/external/github.com/harfbuzz/harfbuzz.git@f26fd69d858642d76413b8f4068eaf9b57c40a5f',
+    'https://chromium.googlesource.com/external/github.com/harfbuzz/harfbuzz.git@920c40cd43dd7b10b7ecba3d82a46f5fea88536f',
   'src/third_party/google_benchmark/src': {
     'url': 'https://chromium.googlesource.com/external/github.com/google/benchmark.git@b177433f3ee2513b1075140c723d73ab8901790f',
   },
@@ -291,7 +291,7 @@ deps = {
       'condition': 'checkout_android',
   },
   'src/third_party/perfetto':
-    'https://android.googlesource.com/platform/external/perfetto.git@eaa388ea811c973cbc86d6c304cbdc847cebe47d',
+    'https://android.googlesource.com/platform/external/perfetto.git@8ba96658b6e52e7d1f644973e6e89aeb8e5d1bda',
   'src/third_party/libvpx/source/libvpx':
     'https://chromium.googlesource.com/webm/libvpx.git@424723dc025ce451dab9568239a46b18d0919b4d',
   'src/third_party/libyuv':
@@ -344,7 +344,7 @@ deps = {
     'condition': 'checkout_android',
   },
   'src/tools':
-    'https://chromium.googlesource.com/chromium/src/tools@97c493c880b35657cac91481f41f56d24f3ec900',
+    'https://chromium.googlesource.com/chromium/src/tools@ee5f8e091a3a564cff3cd0f6a124670ab2ed0418',
 
   'src/third_party/accessibility_test_framework': {
       'packages': [
@@ -416,7 +416,7 @@ deps = {
     'packages': [
       {
           'package': 'chromium/third_party/androidx',
-          'version': 'jYnZMA1q1qNqyYpVcsoN14-OPUhM_wdPIFCxcGj8zakC',
+          'version': '7gw0P2lS-ut2s5t50FOrENILfpO4Z8dgj0tIwzxV448C',
       },
     ],
     'condition': 'checkout_android',
