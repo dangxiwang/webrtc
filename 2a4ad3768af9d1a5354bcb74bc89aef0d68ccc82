@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7613da3e_7ce2d342",
+        "filename": "pc/channel.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1029,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2023-11-08T21:44:15Z",
+      "side": 1,
+      "message": "This is a bit confusing since we\u0027re trying to support two paradigms at once, one where the offer includes both packetization modes and the answer selects one (or both) of them, and one where the offer just includes raw packetization and the answer can either be default or raw. I wonder if we can get rid of this once all the clients are updated.",
+      "revId": "2a4ad3768af9d1a5354bcb74bc89aef0d68ccc82",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e44d64c_1dd17a45",
+        "filename": "pc/channel.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1041,
+      "author": {
+        "id": 5053
+      },
+      "writtenOn": "2023-11-08T21:44:15Z",
+      "side": 1,
+      "message": "It\u0027s unexpected that this doesn\u0027t take packetization into account. Even if that\u0027s what desired here, I would expect FindAllMatchingCodecs to use the same criteria as Matches based on the name",
+      "range": {
+        "startLine": 1041,
+        "startChar": 10,
+        "endLine": 1041,
+        "endChar": 31
+      },
+      "revId": "2a4ad3768af9d1a5354bcb74bc89aef0d68ccc82",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
