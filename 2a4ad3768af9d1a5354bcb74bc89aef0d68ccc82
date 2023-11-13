@@ -18,6 +18,24 @@
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bc7ba17_33b226fa",
+        "filename": "pc/channel.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1029,
+      "author": {
+        "id": 13704
+      },
+      "writtenOn": "2023-11-13T09:21:57Z",
+      "side": 1,
+      "message": "Indeed, I hope we can deprecate the a\u003dpacketization attribute and implement this functionality some other way.",
+      "parentUuid": "7613da3e_7ce2d342",
+      "revId": "2a4ad3768af9d1a5354bcb74bc89aef0d68ccc82",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e44d64c_1dd17a45",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-11-08T21:44:15Z",
       "side": 1,
       "message": "It\u0027s unexpected that this doesn\u0027t take packetization into account. Even if that\u0027s what desired here, I would expect FindAllMatchingCodecs to use the same criteria as Matches based on the name",
+      "range": {
+        "startLine": 1041,
+        "startChar": 10,
+        "endLine": 1041,
+        "endChar": 31
+      },
+      "revId": "2a4ad3768af9d1a5354bcb74bc89aef0d68ccc82",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4aa1355_7079614c",
+        "filename": "pc/channel.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1041,
+      "author": {
+        "id": 13704
+      },
+      "writtenOn": "2023-11-13T09:21:57Z",
+      "side": 1,
+      "message": "I\u0027m honestly not sure why this function is implemented the way it is, namely converting it to a `SdpVideoFormat` for the purpose of finding a match. Since this particular type doesn\u0027t consider packetization, `FindAllMatchingCodecs` doesn\u0027t to it either...\n\nThe long term solution here is probably to narrow the number of overlapping types we have.",
+      "parentUuid": "0e44d64c_1dd17a45",
       "range": {
         "startLine": 1041,
         "startChar": 10,
