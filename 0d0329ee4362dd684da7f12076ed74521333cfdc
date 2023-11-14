@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e87399b4_1becbce7",
+        "filename": "rtc_base/strings/str_join.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5087
+      },
+      "writtenOn": "2023-11-14T16:54:39Z",
+      "side": 1,
+      "message": "Let\u0027s use webrtc as namespace (I know rtc_base is full of rtc but we are slowly moving away from it).",
+      "range": {
+        "startLine": 18,
+        "startChar": 10,
+        "endLine": 18,
+        "endChar": 13
+      },
+      "revId": "0d0329ee4362dd684da7f12076ed74521333cfdc",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
