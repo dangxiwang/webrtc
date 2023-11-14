@@ -23,7 +23,6 @@
 #include "absl/types/optional.h"
 #include "api/array_view.h"
 #include "net/dcsctp/common/sequence_numbers.h"
-#include "net/dcsctp/common/str_join.h"
 #include "net/dcsctp/packet/chunk/forward_tsn_common.h"
 #include "net/dcsctp/packet/data.h"
 #include "net/dcsctp/packet/parameter/outgoing_ssn_reset_request_parameter.h"
@@ -34,6 +33,7 @@
 #include "net/dcsctp/rx/reassembly_streams.h"
 #include "net/dcsctp/rx/traditional_reassembly_streams.h"
 #include "rtc_base/logging.h"
+#include "rtc_base/strings/str_join.h"
 
 namespace dcsctp {
 namespace {
@@ -118,10 +118,9 @@ void ReassemblyQueue::Add(TSN tsn, Data data) {
 void ReassemblyQueue::ResetStreamsAndLeaveDeferredReset(
     rtc::ArrayView<const StreamID> stream_ids) {
   RTC_DLOG(LS_VERBOSE) << log_prefix_ << "Resetting streams: ["
-                       << StrJoin(stream_ids, ",",
-                                  [](rtc::StringBuilder& sb, StreamID sid) {
-                                    sb << *sid;
-                                  })
+                       << rtc::StrJoin(stream_ids, ",",
+                                       [](rtc::StringBuilder& sb,
+                                          StreamID sid) { sb << *sid; })
                        << "]";
 
   // https://tools.ietf.org/html/rfc6525#section-5.2.2
@@ -172,10 +171,11 @@ void ReassemblyQueue::AddReassembledMessage(
     rtc::ArrayView<const UnwrappedTSN> tsns,
     DcSctpMessage message) {
   RTC_DLOG(LS_VERBOSE) << log_prefix_ << "Assembled message from TSN=["
-                       << StrJoin(tsns, ",",
-                                  [](rtc::StringBuilder& sb, UnwrappedTSN tsn) {
-                                    sb << *tsn.Wrap();
-                                  })
+                       << rtc::StrJoin(
+                              tsns, ",",
+                              [](rtc::StringBuilder& sb, UnwrappedTSN tsn) {
+                                sb << *tsn.Wrap();
+                              })
                        << "], message; stream_id=" << *message.stream_id()
                        << ", ppid=" << *message.ppid()
                        << ", payload=" << message.payload().size() << " bytes";

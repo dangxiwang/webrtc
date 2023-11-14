@@ -7,16 +7,15 @@
  *  in the file PATENTS.  All contributing project authors may
  *  be found in the AUTHORS file in the root of the source tree.
  */
-#include "net/dcsctp/common/str_join.h"
+#include "rtc_base/strings/str_join.h"
 
 #include <string>
 #include <utility>
 #include <vector>
 
-#include "test/gmock.h"
+#include "test/gtest.h"
 
-namespace dcsctp {
-namespace {
+namespace rtc {
 
 TEST(StrJoinTest, CanJoinStringsFromVector) {
   std::vector<std::string> strings = {"Hello", "World"};
@@ -41,5 +40,4 @@ TEST(StrJoinTest, CanFormatElementsWhileJoining) {
   EXPECT_EQ(s, "hello=world,foo=bar,fum=gazonk");
 }
 
-}  // namespace
-}  // namespace dcsctp
+}  // namespace rtc

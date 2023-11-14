@@ -18,7 +18,6 @@
 #include "api/array_view.h"
 #include "api/units/time_delta.h"
 #include "net/dcsctp/common/internal_types.h"
-#include "net/dcsctp/common/str_join.h"
 #include "net/dcsctp/packet/chunk/reconfig_chunk.h"
 #include "net/dcsctp/packet/parameter/add_incoming_streams_request_parameter.h"
 #include "net/dcsctp/packet/parameter/add_outgoing_streams_request_parameter.h"
@@ -36,6 +35,7 @@
 #include "net/dcsctp/timer/timer.h"
 #include "net/dcsctp/tx/retransmission_queue.h"
 #include "rtc_base/logging.h"
+#include "rtc_base/strings/str_join.h"
 
 namespace dcsctp {
 namespace {
@@ -261,10 +261,10 @@ void StreamResetHandler::HandleResponse(const ParameterDescriptor& descriptor) {
         RTC_DLOG(LS_VERBOSE)
             << log_prefix_ << "Reset stream success, req_seq_nbr="
             << *current_request_->req_seq_nbr() << ", streams="
-            << StrJoin(current_request_->streams(), ",",
-                       [](rtc::StringBuilder& sb, StreamID stream_id) {
-                         sb << *stream_id;
-                       });
+            << rtc::StrJoin(current_request_->streams(), ",",
+                            [](rtc::StringBuilder& sb, StreamID stream_id) {
+                              sb << *stream_id;
+                            });
         ctx_->callbacks().OnStreamsResetPerformed(current_request_->streams());
         current_request_ = absl::nullopt;
         retransmission_queue_->CommitResetStreams();
@@ -273,10 +273,10 @@ void StreamResetHandler::HandleResponse(const ParameterDescriptor& descriptor) {
         RTC_DLOG(LS_VERBOSE)
             << log_prefix_ << "Reset stream still pending, req_seq_nbr="
             << *current_request_->req_seq_nbr() << ", streams="
-            << StrJoin(current_request_->streams(), ",",
-                       [](rtc::StringBuilder& sb, StreamID stream_id) {
-                         sb << *stream_id;
-                       });
+            << rtc::StrJoin(current_request_->streams(), ",",
+                            [](rtc::StringBuilder& sb, StreamID stream_id) {
+                              sb << *stream_id;
+                            });
         // Force this request to be sent again, but with new req_seq_nbr.
         current_request_->PrepareRetransmission();
         reconfig_timer_->set_duration(ctx_->current_rto());
@@ -290,10 +290,10 @@ void StreamResetHandler::HandleResponse(const ParameterDescriptor& descriptor) {
             << log_prefix_ << "Reset stream error=" << ToString(resp->result())
             << ", req_seq_nbr=" << *current_request_->req_seq_nbr()
             << ", streams="
-            << StrJoin(current_request_->streams(), ",",
-                       [](rtc::StringBuilder& sb, StreamID stream_id) {
-                         sb << *stream_id;
-                       });
+            << rtc::StrJoin(current_request_->streams(), ",",
+                            [](rtc::StringBuilder& sb, StreamID stream_id) {
+                              sb << *stream_id;
+                            });
         ctx_->callbacks().OnStreamsResetFailed(current_request_->streams(),
                                                ToString(resp->result()));
         current_request_ = absl::nullopt;

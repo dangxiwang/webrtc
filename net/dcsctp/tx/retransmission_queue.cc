@@ -25,7 +25,6 @@
 #include "api/array_view.h"
 #include "net/dcsctp/common/math.h"
 #include "net/dcsctp/common/sequence_numbers.h"
-#include "net/dcsctp/common/str_join.h"
 #include "net/dcsctp/packet/chunk/data_chunk.h"
 #include "net/dcsctp/packet/chunk/forward_tsn_chunk.h"
 #include "net/dcsctp/packet/chunk/forward_tsn_common.h"
@@ -40,6 +39,7 @@
 #include "net/dcsctp/tx/send_queue.h"
 #include "rtc_base/checks.h"
 #include "rtc_base/logging.h"
+#include "rtc_base/strings/str_join.h"
 #include "rtc_base/strings/string_builder.h"
 
 namespace dcsctp {
@@ -436,11 +436,11 @@ RetransmissionQueue::GetChunksForFastRetransmit(size_t bytes_in_packet) {
   rtx_bytes_count_ += bytes_retransmitted;
 
   RTC_DLOG(LS_VERBOSE) << log_prefix_ << "Fast-retransmitting TSN "
-                       << StrJoin(to_be_sent, ",",
-                                  [&](rtc::StringBuilder& sb,
-                                      const std::pair<TSN, Data>& c) {
-                                    sb << *c.first;
-                                  })
+                       << rtc::StrJoin(to_be_sent, ",",
+                                       [&](rtc::StringBuilder& sb,
+                                           const std::pair<TSN, Data>& c) {
+                                         sb << *c.first;
+                                       })
                        << " - " << bytes_retransmitted
                        << " bytes. outstanding_bytes=" << outstanding_bytes()
                        << " (" << old_outstanding_bytes << ")";
@@ -517,11 +517,11 @@ std::vector<std::pair<TSN, Data>> RetransmissionQueue::GetChunksToSend(
       t3_rtx_.Start();
     }
     RTC_DLOG(LS_VERBOSE) << log_prefix_ << "Sending TSN "
-                         << StrJoin(to_be_sent, ",",
-                                    [&](rtc::StringBuilder& sb,
-                                        const std::pair<TSN, Data>& c) {
-                                      sb << *c.first;
-                                    })
+                         << rtc::StrJoin(to_be_sent, ",",
+                                         [&](rtc::StringBuilder& sb,
+                                             const std::pair<TSN, Data>& c) {
+                                           sb << *c.first;
+                                         })
                          << " - "
                          << absl::c_accumulate(
                                 to_be_sent, 0,
