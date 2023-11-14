@@ -21,13 +21,13 @@
 #include "absl/types/optional.h"
 #include "api/array_view.h"
 #include "net/dcsctp/common/internal_types.h"
-#include "net/dcsctp/common/str_join.h"
 #include "net/dcsctp/packet/data.h"
 #include "net/dcsctp/public/dcsctp_message.h"
 #include "net/dcsctp/public/dcsctp_socket.h"
 #include "net/dcsctp/public/types.h"
 #include "net/dcsctp/tx/send_queue.h"
 #include "rtc_base/logging.h"
+#include "rtc_base/strings/str_join.h"
 
 namespace dcsctp {
 using ::webrtc::TimeDelta;
@@ -86,9 +86,9 @@ bool RRSendQueue::IsConsistent() const {
   if (expected_active_streams != actual_active_streams) {
     auto fn = [&](rtc::StringBuilder& sb, const auto& p) { sb << *p; };
     RTC_DLOG(LS_ERROR) << "Active streams mismatch, is=["
-                       << StrJoin(actual_active_streams, ",", fn)
+                       << rtc::StrJoin(actual_active_streams, ",", fn)
                        << "], expected=["
-                       << StrJoin(expected_active_streams, ",", fn) << "]";
+                       << rtc::StrJoin(expected_active_streams, ",", fn) << "]";
     return false;
   }
 
