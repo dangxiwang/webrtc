@@ -99,6 +99,10 @@ class TransformedFrameCallback : public rtc::RefCountInterface {
   virtual void OnTransformedFrame(
       std::unique_ptr<TransformableFrameInterface> frame) = 0;
 
+  // Request to no longer be called on each frame, instead having frames be
+  // sent directly to OnTransformedFrame without additional work.
+  virtual void StartShortCircuiting() = 0;
+
  protected:
   ~TransformedFrameCallback() override = default;
 };
