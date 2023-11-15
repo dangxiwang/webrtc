@@ -35,6 +35,23 @@
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0aa56178_a4dd875e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2023-11-15T08:38:47Z",
+      "side": 1,
+      "message": "The openssl_adapter.cc uses it once.\nDCSCTP uses it twice.",
+      "revId": "0d0329ee4362dd684da7f12076ed74521333cfdc",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e87399b4_1becbce7",
