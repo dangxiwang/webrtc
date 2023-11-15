@@ -69,6 +69,42 @@
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28f932dc_8d61e03e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5825
+      },
+      "writtenOn": "2023-11-15T10:16:33Z",
+      "side": 1,
+      "message": "StrJoin call fits into ~1 line of code. Unwrapping it and using SimpleStringBuilder directly will inflate and clog the code. Unless you have ideas for how SimpleStringBuilder can be used with minimal clogging I think we should continue using StrJoin.",
+      "parentUuid": "ba1e4deb_2b9971ae",
+      "revId": "0d0329ee4362dd684da7f12076ed74521333cfdc",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31306aa6_7b255f98",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5825
+      },
+      "writtenOn": "2023-11-15T10:16:33Z",
+      "side": 1,
+      "message": "Updated the style guide.",
+      "parentUuid": "d6a43f2b_bb68efae",
+      "revId": "0d0329ee4362dd684da7f12076ed74521333cfdc",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e87399b4_1becbce7",
