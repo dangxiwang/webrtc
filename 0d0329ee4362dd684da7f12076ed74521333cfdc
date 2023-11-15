@@ -52,6 +52,23 @@
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6a43f2b_bb68efae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2023-11-15T08:43:28Z",
+      "side": 1,
+      "message": "The counterargument is that the argument about not using absl::StrJoin is not valid when the implementation uses rtc::StringBuilder. That\u0027s relevant - but in that case, please make an update to g3doc/style-guilde.md saying that webrtc::StrJoin is a valid alternative for string concatenation of arrays.",
+      "revId": "0d0329ee4362dd684da7f12076ed74521333cfdc",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e87399b4_1becbce7",
