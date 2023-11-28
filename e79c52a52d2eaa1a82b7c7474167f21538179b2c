@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9e1d0f9_d2e86bdd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2023-11-28T10:48:12Z",
+      "side": 1,
+      "message": "based on the discussion in the\nhttps://webrtc-review.googlesource.com/c/src/+/328881/2/pc/media_factory.h#42",
+      "revId": "e79c52a52d2eaa1a82b7c7474167f21538179b2c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
