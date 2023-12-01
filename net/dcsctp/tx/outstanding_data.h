@@ -10,6 +10,7 @@
 #ifndef NET_DCSCTP_TX_OUTSTANDING_DATA_H_
 #define NET_DCSCTP_TX_OUTSTANDING_DATA_H_
 
+#include <deque>
 #include <map>
 #include <set>
 #include <utility>
@@ -290,6 +291,9 @@ class OutstandingData {
   // Returns how large a chunk will be, serialized, carrying the data
   size_t GetSerializedChunkSize(const Data& data) const;
 
+  Item& GetItem(UnwrappedTSN tsn);
+  const Item& GetItem(UnwrappedTSN tsn) const;
+
   // Given a `cumulative_tsn_ack` from an incoming SACK, will remove those items
   // in the retransmission queue up until this value and will update `ack_info`
   // by setting `bytes_acked_by_cumulative_tsn_ack`.
@@ -313,7 +317,7 @@ class OutstandingData {
 
   // Process the acknowledgement of the chunk referenced by `iter` and updates
   // state in `ack_info` and the object's state.
-  void AckChunk(AckInfo& ack_info, std::map<UnwrappedTSN, Item>::iterator iter);
+  void AckChunk(AckInfo& ack_info, UnwrappedTSN tsn, Item& item);
 
   // Helper method to process an incoming nack of an item and perform the
   // correct operations given the action indicated when nacking an item (e.g.
@@ -346,7 +350,7 @@ class OutstandingData {
   // Callback when to discard items from the send queue.
   std::function<bool(StreamID, OutgoingMessageId)> discard_from_send_queue_;
 
-  std::map<UnwrappedTSN, Item> outstanding_data_;
+  std::deque<Item> outstanding_data_;
   // The number of bytes that are in-flight (sent but not yet acked or nacked).
   size_t outstanding_bytes_ = 0;
   // The number of DATA chunks that are in-flight (sent but not yet acked or
