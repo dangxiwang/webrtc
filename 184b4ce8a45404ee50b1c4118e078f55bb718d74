@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b98cfdb6_153bad14",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2023-12-04T07:39:40Z",
+      "side": 1,
+      "message": "I don\u0027t see the circular buffer - should it be simply \"use a std::deque instead\"?",
+      "revId": "184b4ce8a45404ee50b1c4118e078f55bb718d74",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39192353_69124e97",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2023-12-04T07:39:40Z",
+      "side": 1,
+      "message": "Looks good.",
+      "revId": "184b4ce8a45404ee50b1c4118e078f55bb718d74",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e004936e_0fe09808",
+        "filename": "net/dcsctp/tx/outstanding_data.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2023-12-04T07:39:40Z",
+      "side": 1,
+      "message": "should we replace outstanding_items_ with outstanding_data_.size() in order to get one less thing that can be inconsistent?",
+      "revId": "184b4ce8a45404ee50b1c4118e078f55bb718d74",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
