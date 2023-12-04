@@ -35,6 +35,23 @@
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aafc3a3f_7c39b4ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2023-12-04T07:40:51Z",
+      "side": 1,
+      "message": "... does it work when (if possible) some items in the middle of the queue time out before items that are later in the queue .... ?\nIt seems to depend a lot on TSNs being contiguous across the outstanding_data_ - might want to add a check for that in IsConsistent()",
+      "revId": "184b4ce8a45404ee50b1c4118e078f55bb718d74",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e004936e_0fe09808",
