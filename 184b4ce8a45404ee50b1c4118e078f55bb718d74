@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "fdb082ef_cef3038e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 12215
+      },
+      "writtenOn": "2023-12-04T11:51:34Z",
+      "side": 1,
+      "message": "It\u0027s just a conceptual circular buffer :) But mentioning that doesn\u0027t help - removed it.",
+      "parentUuid": "b98cfdb6_153bad14",
+      "revId": "184b4ce8a45404ee50b1c4118e078f55bb718d74",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "39192353_69124e97",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -65,6 +83,24 @@
       "writtenOn": "2023-12-04T07:39:40Z",
       "side": 1,
       "message": "should we replace outstanding_items_ with outstanding_data_.size() in order to get one less thing that can be inconsistent?",
+      "revId": "184b4ce8a45404ee50b1c4118e078f55bb718d74",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a61cde60_ba2b9ef4",
+        "filename": "net/dcsctp/tx/outstanding_data.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 12215
+      },
+      "writtenOn": "2023-12-04T11:51:34Z",
+      "side": 1,
+      "message": "That name (outstanding items) is really bad - I\u0027m making a follow-up CL to rename that one. Thanks for bring this to my attention",
+      "parentUuid": "e004936e_0fe09808",
       "revId": "184b4ce8a45404ee50b1c4118e078f55bb718d74",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
