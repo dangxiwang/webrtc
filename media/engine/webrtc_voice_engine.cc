@@ -1402,7 +1402,8 @@ bool WebRtcVoiceSendChannel::SetSendCodecs(
   }
 
   if (!send_codec_spec) {
-    return false;
+    // No codecs in common, bail out early.
+    return true;
   }
 
   RTC_DCHECK(voice_codec_info);
