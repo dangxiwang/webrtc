@@ -1318,7 +1318,7 @@ bool WebRtcVoiceSendChannel::SetSenderParameters(
     }
   }
 
-  if (!SetMaxSendBitrate(params.max_bandwidth_bps)) {
+  if (send_codec_spec_ && !SetMaxSendBitrate(params.max_bandwidth_bps)) {
     return false;
   }
   return SetOptions(params.options);
@@ -1402,7 +1402,8 @@ bool WebRtcVoiceSendChannel::SetSendCodecs(
   }
 
   if (!send_codec_spec) {
-    return false;
+    // No codecs in common, bail out early.
+    return true;
   }
 
   RTC_DCHECK(voice_codec_info);

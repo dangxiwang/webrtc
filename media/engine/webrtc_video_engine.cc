@@ -1041,10 +1041,10 @@ bool WebRtcVideoSendChannel::GetChangedSenderParameters(
   std::vector<VideoCodecSettings> negotiated_codecs =
       SelectSendVideoCodecs(MapCodecs(params.codecs));
 
-  // We should only fail here if send direction is enabled.
+  // This is not a failure but will lead to the answer being rejected.
   if (params.is_stream_active && negotiated_codecs.empty()) {
-    RTC_LOG(LS_ERROR) << "No video codecs supported.";
-    return false;
+    RTC_LOG(LS_ERROR) << "No video codecs in common.";
+    return true;
   }
 
   // Never enable sending FlexFEC, unless we are in the experiment.
