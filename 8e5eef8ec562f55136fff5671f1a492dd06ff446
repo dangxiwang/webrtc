@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e40d45a_569c67ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2023-12-07T17:09:37Z",
+      "side": 1,
+      "message": "are you ok with this direction?\n\nDo you have an alternative thought how to cleanup webrtc::field_trial:: usage in RtcEventLogEncoderNewFormat?",
+      "revId": "8e5eef8ec562f55136fff5671f1a492dd06ff446",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
