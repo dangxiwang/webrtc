@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91daf868_b4f52294",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 19549
+      },
+      "writtenOn": "2023-12-07T10:22:18Z",
+      "side": 1,
+      "message": "Ilya/Sam: can you take a look at audio/video please?\n\nI *think* not throwing an error at the stage of setRemoteDescription is safe since, as the test shows, the content is rejected which means it will not send (also since the remote description controls what codec would be used).\nI tried adding SetSend(false) to be on the safe side but that did not work.",
+      "revId": "97072dd2fbf835d274d2a47f90fc113a6c67c64c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
