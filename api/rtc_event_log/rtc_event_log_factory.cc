@@ -25,19 +25,12 @@ namespace webrtc {
 
 absl::Nonnull<std::unique_ptr<RtcEventLog>> RtcEventLogFactory::Create(
     const Environment& env) const {
-#ifndef WEBRTC_ENABLE_RTC_EVENT_LOG
-  return std::make_unique<RtcEventLogNull>();
-#else
-  if (env.field_trials().IsEnabled("WebRTC-RtcEventLogKillSwitch")) {
-    return std::make_unique<RtcEventLogNull>();
+#ifdef WEBRTC_ENABLE_RTC_EVENT_LOG
+  if (!env.field_trials().IsEnabled("WebRTC-RtcEventLogKillSwitch")) {
+    return std::make_unique<RtcEventLogImpl>(env);
   }
-  RtcEventLog::EncodingType encoding_type =
-      env.field_trials().IsDisabled("WebRTC-RtcEventLogNewFormat")
-          ? RtcEventLog::EncodingType::Legacy
-          : RtcEventLog::EncodingType::NewFormat;
-  return std::make_unique<RtcEventLogImpl>(
-      RtcEventLogImpl::CreateEncoder(encoding_type), &env.task_queue_factory());
 #endif
+  return std::make_unique<RtcEventLogNull>();
 }
 
 }  // namespace webrtc
