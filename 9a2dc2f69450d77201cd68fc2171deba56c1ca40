@@ -18,6 +18,24 @@
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e052990_9ff9c67c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 19549
+      },
+      "writtenOn": "2023-12-11T09:22:19Z",
+      "side": 1,
+      "message": "Orthogonal problem. In this case (see the unit test) we have no send codecs and throw which is nothing we can fix by adding more receive codecs (which we don\u0027t do)",
+      "parentUuid": "ab895645_7c2d87ed",
+      "revId": "9a2dc2f69450d77201cd68fc2171deba56c1ca40",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "ac44f64e_d50df670",
