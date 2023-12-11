@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab895645_7c2d87ed",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5142
+      },
+      "writtenOn": "2023-12-11T09:17:05Z",
+      "side": 1,
+      "message": "Is this compatible with the latest discussions in https://github.com/w3c/webrtc-pc/issues/2888 ?\n\nBased on JSEP, codecs in offer and codecs in answer seem like they need to have nothing in common, since SDP just talks about receive preferences, and the two endpoints can have different preferences.\n\nMaybe I send X but receive Y etc.",
+      "revId": "9a2dc2f69450d77201cd68fc2171deba56c1ca40",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "ac44f64e_d50df670",
