@@ -69,6 +69,23 @@
       "message": "Thank you for fixing this!",
       "revId": "9a2dc2f69450d77201cd68fc2171deba56c1ca40",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3531ff4_9ce75562",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2023-12-11T13:53:58Z",
+      "side": 1,
+      "message": "It makes more sense this way.",
+      "revId": "9a2dc2f69450d77201cd68fc2171deba56c1ca40",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
