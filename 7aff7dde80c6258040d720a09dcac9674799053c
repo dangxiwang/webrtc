@@ -1,0 +1,228 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bffd2e6e_e2e5809a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5524
+      },
+      "writtenOn": "2023-12-18T15:53:06Z",
+      "side": 1,
+      "message": "just a few q\u0027s",
+      "revId": "7aff7dde80c6258040d720a09dcac9674799053c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0543e407_5d93ddf9",
+        "filename": "modules/pacing/pacing_controller.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 726,
+      "author": {
+        "id": 5524
+      },
+      "writtenOn": "2023-12-18T15:53:06Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we take the minimum of these, if they are both finite?\n...at least if we don\u0027t prioritize audio retransmissions.\nStarting to feel like this logic would be better to have in the queue instead..",
+      "range": {
+        "startLine": 715,
+        "startChar": 3,
+        "endLine": 726,
+        "endChar": 5
+      },
+      "revId": "7aff7dde80c6258040d720a09dcac9674799053c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "707b0999_f4bfa5a1",
+        "filename": "modules/pacing/pacing_controller.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 5524
+      },
+      "writtenOn": "2023-12-18T15:53:06Z",
+      "side": 1,
+      "message": "nit: sends",
+      "range": {
+        "startLine": 98,
+        "startChar": 13,
+        "endLine": 98,
+        "endChar": 17
+      },
+      "revId": "7aff7dde80c6258040d720a09dcac9674799053c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1805091_0432b225",
+        "filename": "modules/pacing/pacing_controller.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 5524
+      },
+      "writtenOn": "2023-12-18T15:53:06Z",
+      "side": 1,
+      "message": "nit: skips, drops ?",
+      "range": {
+        "startLine": 108,
+        "startChar": 7,
+        "endLine": 108,
+        "endChar": 74
+      },
+      "revId": "7aff7dde80c6258040d720a09dcac9674799053c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5066dc16_32a5528a",
+        "filename": "modules/pacing/prioritized_packet_queue.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 5524
+      },
+      "writtenOn": "2023-12-18T15:53:06Z",
+      "side": 1,
+      "message": "nit: use {} for consistency with rest of class",
+      "range": {
+        "startLine": 39,
+        "startChar": 6,
+        "endLine": 41,
+        "endChar": 35
+      },
+      "revId": "7aff7dde80c6258040d720a09dcac9674799053c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db4e7e29_fe80360d",
+        "filename": "modules/pacing/prioritized_packet_queue.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5524
+      },
+      "writtenOn": "2023-12-18T15:53:06Z",
+      "side": 1,
+      "message": "nit: drop `else`",
+      "range": {
+        "startLine": 42,
+        "startChar": 6,
+        "endLine": 42,
+        "endChar": 10
+      },
+      "revId": "7aff7dde80c6258040d720a09dcac9674799053c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "430d0ef8_6e90e764",
+        "filename": "modules/pacing/prioritized_packet_queue.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 5524
+      },
+      "writtenOn": "2023-12-18T15:53:06Z",
+      "side": 1,
+      "message": "Maybe shorten this to\n```\nstd::array\u003cTimeDelta, kNumPriorityLevels\u003e ttl_per_prio;\nttl_per_prio.fill(TimeDelta::PlusInfinity());\n```",
+      "range": {
+        "startLine": 62,
+        "startChar": 56,
+        "endLine": 65,
+        "endChar": 33
+      },
+      "revId": "7aff7dde80c6258040d720a09dcac9674799053c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "697d88a6_e1e0f374",
+        "filename": "modules/pacing/prioritized_packet_queue.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 5524
+      },
+      "writtenOn": "2023-12-18T15:53:06Z",
+      "side": 1,
+      "message": "Should this ever be possible? Add CHECKs otherwise?",
+      "range": {
+        "startLine": 412,
+        "startChar": 2,
+        "endLine": 413,
+        "endChar": 11
+      },
+      "revId": "7aff7dde80c6258040d720a09dcac9674799053c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e13ada6d_d1c68794",
+        "filename": "modules/pacing/prioritized_packet_queue.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 5524
+      },
+      "writtenOn": "2023-12-18T15:53:06Z",
+      "side": 1,
+      "message": "I would just use value instead of a reference.",
+      "range": {
+        "startLine": 414,
+        "startChar": 17,
+        "endLine": 414,
+        "endChar": 18
+      },
+      "revId": "7aff7dde80c6258040d720a09dcac9674799053c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21fc795f_92837c39",
+        "filename": "modules/pacing/prioritized_packet_queue.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 5524
+      },
+      "writtenOn": "2023-12-18T15:53:06Z",
+      "side": 1,
+      "message": "nit: PurgeOldPacketsAtPriorityLevel",
+      "range": {
+        "startLine": 153,
+        "startChar": 7,
+        "endLine": 153,
+        "endChar": 36
+      },
+      "revId": "7aff7dde80c6258040d720a09dcac9674799053c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
