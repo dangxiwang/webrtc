@@ -326,6 +326,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "27d1af81_ec5a4425",
+        "filename": "modules/pacing/prioritized_packet_queue.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 5524
+      },
+      "writtenOn": "2023-12-19T10:06:51Z",
+      "side": 1,
+      "message": "Ah right, that bother...\nYou could potentially copy the hack I did here but use it for TimeDelta instead of DataRate: https://source.chromium.org/chromium/chromium/src/+/main:third_party/webrtc/modules/rtp_rtcp/include/rtp_rtcp_defines.h;l\u003d352\n\nThe code for sure does not become easier to read, but on the plus side we wouldn\u0027t need to update it by hand any time kNumPrioLevels change. \n\nAnother potential option is `absl::InlinedVector\u003cTimeDelta, kNumPriorityLevels\u003e` - I _think_ that one does not have the same issue.\n\nAnyway not going to block on this, up to you!",
+      "parentUuid": "e119d6ce_0ad2e1c4",
+      "range": {
+        "startLine": 62,
+        "startChar": 56,
+        "endLine": 65,
+        "endChar": 33
+      },
+      "revId": "7aff7dde80c6258040d720a09dcac9674799053c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "697d88a6_e1e0f374",
         "filename": "modules/pacing/prioritized_packet_queue.cc",
         "patchSetId": 2
