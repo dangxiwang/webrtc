@@ -18,7 +18,6 @@
 #include <list>
 #include <memory>
 #include <unordered_map>
-#include <vector>
 
 #include "api/units/data_size.h"
 #include "api/units/time_delta.h"
@@ -27,9 +26,19 @@
 
 namespace webrtc {
 
+// Describes how long time a packet may stay in the queue before being dropped.
+struct PacketQueueTTL {
+  TimeDelta audio_retransmission = TimeDelta::PlusInfinity();
+  TimeDelta video_retransmission = TimeDelta::PlusInfinity();
+  TimeDelta video = TimeDelta::PlusInfinity();
+};
+
 class PrioritizedPacketQueue {
  public:
-  explicit PrioritizedPacketQueue(Timestamp creation_time);
+  explicit PrioritizedPacketQueue(
+      Timestamp creation_time,
+      bool prioritize_audio_retransmission = false,
+      PacketQueueTTL packet_queue_ttl = PacketQueueTTL());
   PrioritizedPacketQueue(const PrioritizedPacketQueue&) = delete;
   PrioritizedPacketQueue& operator=(const PrioritizedPacketQueue&) = delete;
 
@@ -63,6 +72,7 @@ class PrioritizedPacketQueue {
   // method, for the given packet type. If queue has no packets, of that type,
   // returns Timestamp::MinusInfinity().
   Timestamp LeadingPacketEnqueueTime(RtpPacketMediaType type) const;
+  Timestamp LeadingPacketEnqueueTimeForRetransmission() const;
 
   // Enqueue time of the oldest packet in the queue,
   // Timestamp::MinusInfinity() if queue is empty.
@@ -90,7 +100,7 @@ class PrioritizedPacketQueue {
   bool HasKeyframePackets(uint32_t ssrc) const;
 
  private:
-  static constexpr int kNumPriorityLevels = 4;
+  static constexpr int kNumPriorityLevels = 5;
 
   class QueuedPacket {
    public:
@@ -138,6 +148,13 @@ class PrioritizedPacketQueue {
   // Check if the queue pointed to by `top_active_prio_level_` is empty and
   // if so move it to the lowest non-empty index.
   void MaybeUpdateTopPrioLevel();
+
+  void PurgeOldPacketsAtPriorityLevel(int prio_level, Timestamp now);
+
+  static std::array<TimeDelta, kNumPriorityLevels> ToTtlPerPrio(PacketQueueTTL);
+
+  const bool prioritize_audio_retransmission_;
+  const std::array<TimeDelta, kNumPriorityLevels> time_to_live_per_prio_;
 
   // Cumulative sum, over all packets, of time spent in the queue.
   TimeDelta queue_time_sum_;
