@@ -350,6 +350,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6d401fea_7118a0fd",
+        "filename": "modules/pacing/prioritized_packet_queue.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 5578
+      },
+      "writtenOn": "2023-12-19T10:36:52Z",
+      "side": 1,
+      "message": "inlined vector!",
+      "parentUuid": "27d1af81_ec5a4425",
+      "range": {
+        "startLine": 62,
+        "startChar": 56,
+        "endLine": 65,
+        "endChar": 33
+      },
+      "revId": "7aff7dde80c6258040d720a09dcac9674799053c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "697d88a6_e1e0f374",
         "filename": "modules/pacing/prioritized_packet_queue.cc",
         "patchSetId": 2
