@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21075742_9dd1c885",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5142
+      },
+      "writtenOn": "2024-02-01T14:39:53Z",
+      "side": 1,
+      "message": "LGTM but I would prefer if you `EXPECT_TRUE_WAIT()` or equivalent instead if possible",
+      "revId": "f520c2fc0d793e620269d722cc171db667b421fe",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b036e786_326c9239",
+        "filename": "test/peer_scenario/tests/bwe_ramp_up_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 5142
+      },
+      "writtenOn": "2024-02-01T14:39:53Z",
+      "side": 1,
+      "message": "typo: callee",
+      "range": {
+        "startLine": 152,
+        "startChar": 24,
+        "endLine": 152,
+        "endChar": 29
+      },
+      "revId": "f520c2fc0d793e620269d722cc171db667b421fe",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6243ea88_50a8700f",
+        "filename": "test/peer_scenario/tests/bwe_ramp_up_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 5142
+      },
+      "writtenOn": "2024-02-01T14:39:53Z",
+      "side": 1,
+      "message": "Suggestion: Instead of always waiting 1 second and then asserting, you can `EXPECT_TRUE_WAIT()` until BWE is known, and subsequently call GetStats() to confirm that `frames_received` is 0.\n\nIt achieves the same thing, except:\n- On fast bots, the test can finish faster than 1 second, since as soon as BWE is known it continues.\n- On really slow ASAN bots, there is no risk of flake if it takes 1.1 s to get ICE connected. If we end up increasing the timeout then it might not matter for one test, but if many tests all take X seconds to run, the seconds can add up to minutes if many tests do this.",
+      "revId": "f520c2fc0d793e620269d722cc171db667b421fe",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
