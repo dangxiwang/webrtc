@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b52f8a82_6559c623",
+        "filename": "test/testsupport/file_utils.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 6337
+      },
+      "writtenOn": "2024-02-13T11:49:07Z",
+      "side": 1,
+      "message": "Let\u0027s add some tests for it",
+      "range": {
+        "startLine": 237,
+        "startChar": 12,
+        "endLine": 237,
+        "endChar": 24
+      },
+      "revId": "60d51f8c812027ba7b2be1116b4eabfe0ba56b9c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63787ac6_4054406b",
+        "filename": "test/testsupport/file_utils.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 6337
+      },
+      "writtenOn": "2024-02-13T11:49:07Z",
+      "side": 1,
+      "message": "Theoretically this is redundant, as above we have a check that dir isn\u0027t empty",
+      "range": {
+        "startLine": 242,
+        "startChar": 6,
+        "endLine": 242,
+        "endChar": 24
+      },
+      "revId": "60d51f8c812027ba7b2be1116b4eabfe0ba56b9c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
