@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10071b9d_e603b321",
+        "filename": "test/testsupport/file_utils.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 19769
+      },
+      "writtenOn": "2024-02-13T10:04:42Z",
+      "side": 1,
+      "message": "Notice a small bug fix here, previously we were running with a duplicate delimiter. \nI.e \"/a/b/c//name.txt\"",
+      "revId": "dfc7d90ea76ae8ae28f0c9368a3285b0187ef556",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc937582_37be5701",
+        "filename": "test/testsupport/test_artifacts.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 19769
+      },
+      "writtenOn": "2024-02-13T10:04:42Z",
+      "side": 1,
+      "message": "A small log here in case we use the randomized output dir",
+      "revId": "dfc7d90ea76ae8ae28f0c9368a3285b0187ef556",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
