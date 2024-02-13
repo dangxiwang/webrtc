@@ -170,8 +170,8 @@ TEST_F(FileUtilsTest, GenerateTempFilename) {
 #define MAYBE_CreateDir CreateDir
 #endif
 TEST_F(FileUtilsTest, MAYBE_CreateDir) {
-  std::string directory = test::OutputPath() + "fileutils-unittest-empty-dir" +
-                          rtc::CreateRandomUuid();
+  std::string directory =
+      test::OutputPathWithRandomDirectory() + "fileutils-unittest-empty-dir";
   // Make sure it's removed if a previous test has failed:
   remove(directory.c_str());
   ASSERT_TRUE(webrtc::test::CreateDir(directory));
@@ -255,8 +255,7 @@ TEST_F(FileUtilsTest, WriteReadDeleteFilesAndDirs) {
 
   // Create an empty temporary directory for this test.
   const std::string temp_directory =
-      OutputPath() +
-      Path("TempFileUtilsTestReadDirectory" + rtc::CreateRandomUuid() + "/");
+      OutputPathWithRandomDirectory() + Path("TempFileUtilsTestReadDirectory/");
   CreateDir(temp_directory);
   EXPECT_NO_FATAL_FAILURE(CleanDir(temp_directory, &num_deleted_entries));
   EXPECT_TRUE(DirExists(temp_directory));
