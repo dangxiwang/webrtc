@@ -51,6 +51,24 @@
       "parentUuid": "fc937582_37be5701",
       "revId": "dfc7d90ea76ae8ae28f0c9368a3285b0187ef556",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17438280_df41b3d7",
+        "filename": "test/testsupport/test_artifacts.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 19769
+      },
+      "writtenOn": "2024-02-14T07:09:16Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "dbcbe5cb_30630de2",
+      "revId": "dfc7d90ea76ae8ae28f0c9368a3285b0187ef556",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
