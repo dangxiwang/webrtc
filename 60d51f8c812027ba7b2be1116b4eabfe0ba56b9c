@@ -65,6 +65,30 @@
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7b17cfe_80205754",
+        "filename": "test/testsupport/file_utils.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 19769
+      },
+      "writtenOn": "2024-02-14T08:10:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6293f80c_78935353",
+      "range": {
+        "startLine": 237,
+        "startChar": 12,
+        "endLine": 237,
+        "endChar": 24
+      },
+      "revId": "60d51f8c812027ba7b2be1116b4eabfe0ba56b9c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63787ac6_4054406b",
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "Agreed, I missed the check",
       "parentUuid": "63787ac6_4054406b",
+      "range": {
+        "startLine": 242,
+        "startChar": 6,
+        "endLine": 242,
+        "endChar": 24
+      },
+      "revId": "60d51f8c812027ba7b2be1116b4eabfe0ba56b9c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3f929c7_5e892381",
+        "filename": "test/testsupport/file_utils.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 19769
+      },
+      "writtenOn": "2024-02-14T08:10:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71848044_10e7802e",
       "range": {
         "startLine": 242,
         "startChar": 6,
