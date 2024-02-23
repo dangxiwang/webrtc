@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "972fe1d1_5a6b8bd9",
+        "filename": "pc/media_session.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2275,
+      "author": {
+        "id": 19549
+      },
+      "writtenOn": "2024-02-23T07:55:02Z",
+      "side": 0,
+      "message": "oh this and below was copy-pasted from above but changes the condition. I think it is more correct now but please double check. I think it was not broken in practice since data channels are rarely rejected and unsupported content is never not rejected.",
+      "revId": "dc6a001b6b4f17c63700452e838d57f057e4bdbb",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
