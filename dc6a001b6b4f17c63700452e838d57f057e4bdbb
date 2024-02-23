@@ -16,6 +16,24 @@
       "message": "oh this and below was copy-pasted from above but changes the condition. I think it is more correct now but please double check. I think it was not broken in practice since data channels are rarely rejected and unsupported content is never not rejected.",
       "revId": "dc6a001b6b4f17c63700452e838d57f057e4bdbb",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cc9fde3_ab8471a9",
+        "filename": "pc/media_session.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2275,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2024-02-23T09:35:16Z",
+      "side": 0,
+      "message": "Heh. I just added that comment about the DTLS parameters. The flag was the other way around, and that was erroneous (part of straightening out the logic after removing SDES).\n\nLooks right to me now.",
+      "parentUuid": "972fe1d1_5a6b8bd9",
+      "revId": "dc6a001b6b4f17c63700452e838d57f057e4bdbb",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
