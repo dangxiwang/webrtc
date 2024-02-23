@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05d4f75e_14dc13ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 19549
+      },
+      "writtenOn": "2024-02-23T07:26:36Z",
+      "side": 1,
+      "message": "Test separate for merge-ability since we need to CP to M123.\n\nShould be easy, I *think* it will repro with the initial remote offer being rejected.",
+      "revId": "0fc6b2ebc382df5d3f08a9addeb303b2a7e77512",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
