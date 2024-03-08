@@ -702,6 +702,34 @@ int PhysicalSocket::TranslateOption(Option opt, int* slevel, int* sopt) {
 #endif
     case OPT_RTP_SENDTIME_EXTN_ID:
       return -1;  // No logging is necessary as this not a OS socket option.
+    case OPT_KEEPALIVE:
+      *slevel = SOL_SOCKET;
+      *sopt = SO_KEEPALIVE;
+      break;
+    case OPT_TCP_KEEPCNT:
+      *slevel = IPPROTO_TCP;
+      *sopt = TCP_KEEPCNT;
+      break;
+    case OPT_TCP_KEEPIDLE:
+      *slevel = IPPROTO_TCP;
+#if !defined(WEBRTC_MAC)
+      *sopt = TCP_KEEPIDLE;
+#else
+      *sopt = TCP_KEEPALIVE;
+#endif
+      break;
+    case OPT_TCP_KEEPINTVL:
+      *slevel = IPPROTO_TCP;
+      *sopt = TCP_KEEPINTVL;
+      break;
+    case OPT_TCP_USER_TIMEOUT:
+#if defined(WEBRTC_LINUX)
+      *slevel = IPPROTO_TCP;
+      *sopt = TCP_USER_TIMEOUT;
+      break;
+#else
+      return -1;
+#endif
     default:
       RTC_DCHECK_NOTREACHED();
       return -1;
