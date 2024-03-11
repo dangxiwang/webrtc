@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cc7e355_32eb37a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 10558
+      },
+      "writtenOn": "2024-03-11T23:17:44Z",
+      "side": 1,
+      "message": "Hi Harald, please take a look at additional options added for TCP keep-alive socket options.",
+      "revId": "6e61041157705075f6f402b9ab5cdf3f7c0ff489",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
