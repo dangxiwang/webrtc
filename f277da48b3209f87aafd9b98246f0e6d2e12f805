@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40d7d294_86cc1dbd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2024-03-12T06:37:09Z",
+      "side": 1,
+      "message": "Code is straightforward, but I wonder how this will add any value over ICE keepalives in practice. Commented in bug.",
+      "revId": "f277da48b3209f87aafd9b98246f0e6d2e12f805",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
