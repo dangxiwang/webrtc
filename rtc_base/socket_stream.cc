@@ -15,6 +15,7 @@
 
 namespace rtc {
 
+/*
 SocketStream::SocketStream(Socket* socket) : socket_(nullptr) {
   Attach(socket);
 }
@@ -117,5 +118,5 @@ void SocketStream::OnCloseEvent(Socket* socket, int err) {
   RTC_DCHECK(socket == socket_);
   SignalEvent(this, SE_CLOSE, err);
 }
-
+*/
 }  // namespace rtc

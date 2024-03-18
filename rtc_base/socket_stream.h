@@ -20,7 +20,7 @@
 namespace rtc {
 
 ///////////////////////////////////////////////////////////////////////////////
-
+/*
 class SocketStream : public StreamInterface, public sigslot::has_slots<> {
  public:
   explicit SocketStream(Socket* socket);
@@ -53,7 +53,7 @@ class SocketStream : public StreamInterface, public sigslot::has_slots<> {
   void OnCloseEvent(Socket* socket, int err);
 
   Socket* socket_;
-};
+};*/
 
 ///////////////////////////////////////////////////////////////////////////////
 
