@@ -384,11 +384,18 @@ class SSLStreamAdapterTestBase : public ::testing::Test,
   void ResetIdentitiesWithValidity(int not_before, int not_after) {
     CreateStreams();
 
+    RTC_DCHECK(client_stream_);
+    RTC_DCHECK(server_stream_);
+
+    RTC_DCHECK(!client_ssl_) << "Free signals first?";
+    RTC_DCHECK(!server_ssl_) << "Free signals first?";
+
     client_ssl_ =
         rtc::SSLStreamAdapter::Create(absl::WrapUnique(client_stream_));
     server_ssl_ =
         rtc::SSLStreamAdapter::Create(absl::WrapUnique(server_stream_));
 
+    // TODO(tommi): Don't use the same method for these signals.
     client_ssl_->SignalEvent.connect(this, &SSLStreamAdapterTestBase::OnEvent);
     server_ssl_->SignalEvent.connect(this, &SSLStreamAdapterTestBase::OnEvent);
 
@@ -412,7 +419,10 @@ class SSLStreamAdapterTestBase : public ::testing::Test,
     server_ssl_->SetIdentity(std::move(server_identity));
   }
 
-  virtual void OnEvent(rtc::StreamInterface* stream, int sig, int err) {
+  // TODO(tommi): Consider `OnEvent` to be private and avoid subclasses setting
+  // up signal handlers to it.
+  //  private:
+  void OnEvent(rtc::StreamInterface* stream, int sig, int err) {
     RTC_LOG(LS_VERBOSE) << "SSLStreamAdapterTestBase::OnEvent sig=" << sig;
 
     if (sig & rtc::SE_READ) {
@@ -424,6 +434,8 @@ class SSLStreamAdapterTestBase : public ::testing::Test,
     }
   }
 
+  // TODO(tommi): Remove label.
+  // public:
   void SetPeerIdentitiesByDigest(bool correct, bool expect_success) {
     unsigned char server_digest[20];
     size_t server_digest_len;
@@ -801,7 +813,9 @@ class SSLStreamAdapterTestTLS
         client_buffer_(kFifoBufferSize),
         server_buffer_(kFifoBufferSize) {}
 
-  void CreateStreams() override {
+  void CreateStreams() override final {
+    RTC_DCHECK(!client_stream_);
+    RTC_DCHECK(!server_stream_);
     client_stream_ =
         new SSLDummyStreamTLS(this, "c2s", &client_buffer_, &server_buffer_);
     server_stream_ =
@@ -930,7 +944,9 @@ class SSLStreamAdapterTestDTLSBase : public SSLStreamAdapterTestBase {
         count_(0),
         sent_(0) {}
 
-  void CreateStreams() override {
+  void CreateStreams() override final {
+    RTC_DCHECK(!client_stream_);
+    RTC_DCHECK(!server_stream_);
     client_stream_ =
         new SSLDummyStreamDTLS(this, "c2s", &client_buffer_, &server_buffer_);
     server_stream_ =
@@ -1085,11 +1101,13 @@ class SSLStreamAdapterTestDTLSCertChain : public SSLStreamAdapterTestDTLS {
         rtc::SSLStreamAdapter::Create(absl::WrapUnique(server_stream_));
 
     // Set up the slots
+    // TODO(tommi): Don't use the same method for these signals. Is OnEvent
+    // here perhaps also being used for `client_stream_`, `server_stream_`?
     client_ssl_->SignalEvent.connect(
-        reinterpret_cast<SSLStreamAdapterTestBase*>(this),
+        static_cast<SSLStreamAdapterTestBase*>(this),
         &SSLStreamAdapterTestBase::OnEvent);
     server_ssl_->SignalEvent.connect(
-        reinterpret_cast<SSLStreamAdapterTestBase*>(this),
+        static_cast<SSLStreamAdapterTestBase*>(this),
         &SSLStreamAdapterTestBase::OnEvent);
 
     std::unique_ptr<rtc::SSLIdentity> client_identity;
@@ -1634,6 +1652,8 @@ class SSLStreamAdapterTestDTLSExtensionPermutation
 
   void ConfigureClient(absl::string_view experiment) {
     webrtc::test::ScopedFieldTrials trial{std::string(experiment)};
+    RTC_DCHECK(!client_stream_);
+    RTC_DCHECK(!client_ssl_);
     client_stream_ =
         new SSLDummyStreamDTLS(this, "c2s", &client_buffer_, &server_buffer_);
     client_ssl_ =
