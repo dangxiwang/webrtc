@@ -93,10 +93,12 @@ TEST(GainController2AdaptiveDigitalGainControllerTest, MaxGainApplied) {
                        GetMaxGainChangePerFrameDb(
                            kDefaultConfig.max_gain_change_db_per_second)) +
       kNumExtraFrames;
-
-  GainApplierHelper helper(kDefaultConfig, kAdjacentSpeechFramesThreshold);
+  auto config = kDefaultConfig;
+  // Increase from the default in order to reach the maximum gain.
+  config.max_output_noise_level_dbfs = -40.0f;
+  GainApplierHelper helper(config, kAdjacentSpeechFramesThreshold);
   AdaptiveDigitalGainController::FrameInfo info =
-      GetFrameInfoToNotAdapt(kDefaultConfig);
+      GetFrameInfoToNotAdapt(config);
   info.speech_level_dbfs = -60.0f;
   float applied_gain;
   for (int i = 0; i < kNumFramesToAdapt; ++i) {
