@@ -16,6 +16,23 @@
       "message": "Hi Ilya and Sergey,\n\nThis CL is more of a bug report. I am usng the CL to describe the bug. The changes I proposed are probably not the right way to fix the bug.\n\nIf the off-by-one error of VideoFrame::UpdateRect is not serious, we can just add a comment to acknowledge that we are ignore the bug.",
       "revId": "9aa6582756bfc1d8b86baee0dcb57cf3104fda33",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0b63493_b5f8dc83",
+        "filename": "video/video_stream_encoder.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1974,
+      "author": {
+        "id": 20429
+      },
+      "writtenOn": "2024-04-08T21:27:34Z",
+      "side": 1,
+      "message": "A better way to fix the bug is for `CropAndScale()` to output the `offset_x` and `offset_y` values actually used, e.g., by making them in/out parameters. Then the right values of `offset_x` and `offset_y` will be used in lines 1976-1977.",
+      "revId": "9aa6582756bfc1d8b86baee0dcb57cf3104fda33",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
