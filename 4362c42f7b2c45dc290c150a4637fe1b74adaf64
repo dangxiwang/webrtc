@@ -56,6 +56,30 @@
       },
       "revId": "4362c42f7b2c45dc290c150a4637fe1b74adaf64",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "725398d2_ebc3b76a",
+        "filename": "modules/audio_processing/agc2/adaptive_digital_gain_controller_unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 17719
+      },
+      "writtenOn": "2024-04-08T12:59:25Z",
+      "side": 1,
+      "message": "Thanks! This is now changed to a constexpr (with a non-default max output noise level).",
+      "parentUuid": "8c2a2f28_21064179",
+      "range": {
+        "startLine": 96,
+        "startChar": 7,
+        "endLine": 96,
+        "endChar": 13
+      },
+      "revId": "4362c42f7b2c45dc290c150a4637fe1b74adaf64",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
