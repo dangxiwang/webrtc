@@ -16,6 +16,46 @@
       "message": "Hi Per and Sam, could you please take a look? Thanks!",
       "revId": "4362c42f7b2c45dc290c150a4637fe1b74adaf64",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96c7b20a_1ae07cc9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5125
+      },
+      "writtenOn": "2024-04-08T11:20:52Z",
+      "side": 1,
+      "message": "Thanks or this CL!\nlgtm with one comment",
+      "revId": "4362c42f7b2c45dc290c150a4637fe1b74adaf64",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c2a2f28_21064179",
+        "filename": "modules/audio_processing/agc2/adaptive_digital_gain_controller_unittest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 5125
+      },
+      "writtenOn": "2024-04-08T11:20:52Z",
+      "side": 1,
+      "message": "Since it won\u0027t result into more lines I would avoid the usage of auto here.\nIMO it does not help code readability (the reader must doublecheck the type).\nAlso, I think this should be made constexpr, right?\n\nI.e.,\nconstexpr AdaptiveDigitalConfig kConfig \u003d kDefaultConfig;",
+      "range": {
+        "startLine": 96,
+        "startChar": 7,
+        "endLine": 96,
+        "endChar": 13
+      },
+      "revId": "4362c42f7b2c45dc290c150a4637fe1b74adaf64",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
