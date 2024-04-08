@@ -1952,11 +1952,29 @@ void VideoStreamEncoder::EncodeVideoFrame(const VideoFrame& video_frame,
     VideoFrame::UpdateRect update_rect = video_frame.update_rect();
     if (crop_width_ < 4 && crop_height_ < 4) {
       // The difference is small, crop without scaling.
+      int offset_x = crop_width_ / 2;
+      int offset_y = crop_height_ / 2;
+      // Make sure offset is even so that u/v plane becomes aligned.
+      // VideoFrameBuffer::CropAndScale() may make offset_x and offset_y even.
+      // Since VideoFrameBuffer::CropAndScale() does not return the offset_x and
+      // offset_y values actually used, make offset_x and offset_y even now so
+      // that update_rect.offset_x and update_rect.offset_y will not be off by
+      // one.
+      if (video_frame.video_frame_buffer()->type() !=
+          VideoFrameBuffer::Type::kI444) {
+        offset_x = offset_x / 2 * 2;
+      }
+      if (video_frame.video_frame_buffer()->type() !=
+              VideoFrameBuffer::Type::kI444 &&
+          video_frame.video_frame_buffer()->type() !=
+              VideoFrameBuffer::Type::kI422) {
+        offset_y = offset_y / 2 * 2;
+      }
       cropped_buffer = video_frame.video_frame_buffer()->CropAndScale(
-          crop_width_ / 2, crop_height_ / 2, cropped_width, cropped_height,
-          cropped_width, cropped_height);
-      update_rect.offset_x -= crop_width_ / 2;
-      update_rect.offset_y -= crop_height_ / 2;
+          offset_x, offset_y, cropped_width, cropped_height, cropped_width,
+          cropped_height);
+      update_rect.offset_x -= offset_x;
+      update_rect.offset_y -= offset_y;
       update_rect.Intersect(
           VideoFrame::UpdateRect{0, 0, cropped_width, cropped_height});
 
