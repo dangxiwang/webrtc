@@ -18,6 +18,29 @@
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f2b4e80_86670088",
+        "filename": "video/video_stream_encoder.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1972,
+      "author": {
+        "id": 5825
+      },
+      "writtenOn": "2024-04-09T07:32:00Z",
+      "side": 1,
+      "message": "Maybe use switch() without default? So that when someone adds a new format (4:1:1, for example) to https://source.chromium.org/chromium/chromium/src/+/main:third_party/webrtc/api/video/video_frame_buffer.h;l\u003d54 he/she will have to update this place?",
+      "range": {
+        "startLine": 1963,
+        "startChar": 6,
+        "endLine": 1972,
+        "endChar": 7
+      },
+      "revId": "9aa6582756bfc1d8b86baee0dcb57cf3104fda33",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "f0b63493_b5f8dc83",
