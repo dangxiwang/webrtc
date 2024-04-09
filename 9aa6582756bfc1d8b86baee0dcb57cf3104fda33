@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "21f41067_ad90a5f7",
+        "filename": "video/video_stream_encoder.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1962,
+      "author": {
+        "id": 5117
+      },
+      "writtenOn": "2024-04-09T08:19:36Z",
+      "side": 1,
+      "message": "nit: could you rephrase it to make it shorter and more focused? There\u0027s so much information here now and it doesn\u0027t really say \"why\" this code here is needed.",
+      "range": {
+        "startLine": 1958,
+        "startChar": 8,
+        "endLine": 1962,
+        "endChar": 13
+      },
+      "revId": "9aa6582756bfc1d8b86baee0dcb57cf3104fda33",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3f2b4e80_86670088",
         "filename": "video/video_stream_encoder.cc",
         "patchSetId": 4
@@ -31,6 +54,30 @@
       "writtenOn": "2024-04-09T07:32:00Z",
       "side": 1,
       "message": "Maybe use switch() without default? So that when someone adds a new format (4:1:1, for example) to https://source.chromium.org/chromium/chromium/src/+/main:third_party/webrtc/api/video/video_frame_buffer.h;l\u003d54 he/she will have to update this place?",
+      "range": {
+        "startLine": 1963,
+        "startChar": 6,
+        "endLine": 1972,
+        "endChar": 7
+      },
+      "revId": "9aa6582756bfc1d8b86baee0dcb57cf3104fda33",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66335765_a4005a77",
+        "filename": "video/video_stream_encoder.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1972,
+      "author": {
+        "id": 5117
+      },
+      "writtenOn": "2024-04-09T08:19:36Z",
+      "side": 1,
+      "message": "It might be cleaner to add something to webrtc::VideoFrameBuffer interface regarding required alignment.\nLike HeightAlignment() and WidthAlignment(), default implementations return 1, but I422 overrides them both to return 2, I422 overrides only HeightAlignment(), etc.\n\nThen here you just do \n```\noffset_x -\u003d offset_x % video_frame_buffer()-\u003eWidthAlignment();\noffset_y -\u003d offset_y % video_frame_buffer()-\u003eHeightAlignment();\n```",
+      "parentUuid": "3f2b4e80_86670088",
       "range": {
         "startLine": 1963,
         "startChar": 6,
