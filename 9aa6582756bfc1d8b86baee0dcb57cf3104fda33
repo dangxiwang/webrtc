@@ -112,6 +112,30 @@
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "005a2ffd_0b4ceab3",
+        "filename": "video/video_stream_encoder.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1972,
+      "author": {
+        "id": 5117
+      },
+      "writtenOn": "2024-04-10T07:44:24Z",
+      "side": 1,
+      "message": "Maybe call it WidthSubsampling and HeightSubsampling. Because there\u0027s no offset intrinsic to the buffer. The offset is important, when doing cropping, alright, but it would be weird to have something cropping specific in the buffer class.",
+      "parentUuid": "8048d596_783f3d69",
+      "range": {
+        "startLine": 1963,
+        "startChar": 6,
+        "endLine": 1972,
+        "endChar": 7
+      },
+      "revId": "9aa6582756bfc1d8b86baee0dcb57cf3104fda33",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "f0b63493_b5f8dc83",
