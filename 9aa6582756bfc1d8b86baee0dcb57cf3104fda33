@@ -88,6 +88,30 @@
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "8048d596_783f3d69",
+        "filename": "video/video_stream_encoder.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1972,
+      "author": {
+        "id": 20429
+      },
+      "writtenOn": "2024-04-10T00:44:47Z",
+      "side": 1,
+      "message": "Thank you both for suggesting improvements. I like Ilya\u0027s suggestion of adding new methods to the webrtc::VideoFrameBuffer interface regarding the required alignment because it is object-oriented. Sergey, if that approach is okay with you, I will go ahead and implement it.\n\nIt also has the nice side effect that the comment I added at line 1957 won\u0027t be needed.\n\nIlya, the two methods should be named OffsetXAlignment and OffsetYAlignment, because the width and height can be odd for I420 and I422.",
+      "parentUuid": "66335765_a4005a77",
+      "range": {
+        "startLine": 1963,
+        "startChar": 6,
+        "endLine": 1972,
+        "endChar": 7
+      },
+      "revId": "9aa6582756bfc1d8b86baee0dcb57cf3104fda33",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "f0b63493_b5f8dc83",
