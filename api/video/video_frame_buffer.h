@@ -89,11 +89,20 @@ class RTC_EXPORT VideoFrameBuffer : public webrtc::RefCountInterface {
   // behave as the other GetXXX methods below.
   virtual const I420BufferInterface* GetI420() const;
 
+  // Returns 1 if the width of some planes in the VideoFrameBuffer returned by
+  // CropAndScale() are subsampled. Otherwise returns 0.
+  virtual int WidthSubsampling() const;
+  // Returns 1 if the height of some planes in the VideoFrameBuffer returned by
+  // CropAndScale() are subsampled. Otherwise returns 0.
+  virtual int HeightSubsampling() const;
+
   // A format specific scale function. Default implementation works by
   // converting to I420. But more efficient implementations may override it,
   // especially for kNative.
   // First, the image is cropped to `crop_width` and `crop_height` and then
   // scaled to `scaled_width` and `scaled_height`.
+  // The offset_x or offset_y parameter of CropAndScale() should be even if
+  // WidthSubsampling() or HeightSubsampling() returns 1, respectively.
   virtual rtc::scoped_refptr<VideoFrameBuffer> CropAndScale(int offset_x,
                                                             int offset_y,
                                                             int crop_width,
@@ -191,6 +200,8 @@ class I422BufferInterface : public PlanarYuv8Buffer {
  public:
   Type type() const final;
 
+  int HeightSubsampling() const final;
+
   int ChromaWidth() const final;
   int ChromaHeight() const final;
 
@@ -210,6 +221,9 @@ class I444BufferInterface : public PlanarYuv8Buffer {
  public:
   Type type() const final;
 
+  int WidthSubsampling() const final;
+  int HeightSubsampling() const final;
+
   int ChromaWidth() const final;
   int ChromaHeight() const final;
 
@@ -224,8 +238,8 @@ class I444BufferInterface : public PlanarYuv8Buffer {
   ~I444BufferInterface() override {}
 };
 
-// This interface represents 8-bit to 16-bit color depth formats: Type::kI010 or
-// Type::kI210 .
+// This interface represents 8-bit to 16-bit color depth formats: Type::kI010,
+// Type::kI210, or Type::kI410.
 class PlanarYuv16BBuffer : public PlanarYuvBuffer {
  public:
   // Returns pointer to the pixel data for a given plane. The memory is owned by
