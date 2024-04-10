@@ -160,6 +160,30 @@
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "42b5746b_dc108a9e",
+        "filename": "video/video_stream_encoder.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1972,
+      "author": {
+        "id": 5117
+      },
+      "writtenOn": "2024-04-10T08:04:46Z",
+      "side": 1,
+      "message": "We can have odd width/height, right. In that case the last pixel in a row will have it\u0027s own u/v 2x2 block.\n\nBut we can\u0027t crop with odd offset, since in the format the first two pixels share the same U/V big pixel. But if we have odd offset, we will have the first two pixels from two different U/V 2x2 blocks, so this will require remixing all the U/V data, which would change all the colors slightly.",
+      "parentUuid": "68df3220_22cc9e87",
+      "range": {
+        "startLine": 1963,
+        "startChar": 6,
+        "endLine": 1972,
+        "endChar": 7
+      },
+      "revId": "9aa6582756bfc1d8b86baee0dcb57cf3104fda33",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "f0b63493_b5f8dc83",
