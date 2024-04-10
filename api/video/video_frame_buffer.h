@@ -71,6 +71,16 @@ class RTC_EXPORT VideoFrameBuffer : public webrtc::RefCountInterface {
   virtual int width() const = 0;
   virtual int height() const = 0;
 
+  // NOTE: Keep WidthSubsampling() and HeightSubsampling() in sync with
+  // CropAndScale(). The offset_x or offset_y parameter of CropAndScale()
+  // should be even if WidthSubsampling() or HeightSubsampling() returns 1,
+  // respectively.
+
+  // Returns 1 if the width of some planes are subsampled. Otherwise returns 0.
+  virtual int WidthSubsampling() const;
+  // Returns 1 if the height of some planes are subsampled. Otherwise returns 0.
+  virtual int HeightSubsampling() const;
+
   // Returns a memory-backed frame buffer in I420 format. If the pixel data is
   // in another format, a conversion will take place. All implementations must
   // provide a fallback to I420 for compatibility with e.g. the internal WebRTC
@@ -191,6 +201,8 @@ class I422BufferInterface : public PlanarYuv8Buffer {
  public:
   Type type() const final;
 
+  int HeightSubsampling() const final;
+
   int ChromaWidth() const final;
   int ChromaHeight() const final;
 
@@ -210,6 +222,9 @@ class I444BufferInterface : public PlanarYuv8Buffer {
  public:
   Type type() const final;
 
+  int WidthSubsampling() const final;
+  int HeightSubsampling() const final;
+
   int ChromaWidth() const final;
   int ChromaHeight() const final;
 
@@ -224,8 +239,8 @@ class I444BufferInterface : public PlanarYuv8Buffer {
   ~I444BufferInterface() override {}
 };
 
-// This interface represents 8-bit to 16-bit color depth formats: Type::kI010 or
-// Type::kI210 .
+// This interface represents 8-bit to 16-bit color depth formats: Type::kI010,
+// Type::kI210, or Type::kI410.
 class PlanarYuv16BBuffer : public PlanarYuvBuffer {
  public:
   // Returns pointer to the pixel data for a given plane. The memory is owned by
@@ -257,6 +272,8 @@ class I210BufferInterface : public PlanarYuv16BBuffer {
  public:
   Type type() const override;
 
+  int HeightSubsampling() const final;
+
   int ChromaWidth() const final;
   int ChromaHeight() const final;
 
@@ -269,6 +286,9 @@ class I210BufferInterface : public PlanarYuv16BBuffer {
 class I410BufferInterface : public PlanarYuv16BBuffer {
  public:
   Type type() const override;
+
+  int WidthSubsampling() const final;
+  int HeightSubsampling() const final;
 
   int ChromaWidth() const final;
   int ChromaHeight() const final;

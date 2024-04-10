@@ -18,6 +18,19 @@
 
 namespace webrtc {
 
+// The default implementation of CropAndScale() uses I420Buffer. Therefore the
+// default implementation of WidthSubsampling() and HeightSubsampling() assumes
+// I420.
+int VideoFrameBuffer::WidthSubsampling() const {
+  // The width of chroma planes in I420 is subsampled.
+  return 1;
+}
+
+int VideoFrameBuffer::HeightSubsampling() const {
+  // The height of chroma planes in I420 is subsampled.
+  return 1;
+}
+
 rtc::scoped_refptr<VideoFrameBuffer> VideoFrameBuffer::CropAndScale(
     int offset_x,
     int offset_y,
@@ -132,6 +145,16 @@ VideoFrameBuffer::Type I444BufferInterface::type() const {
   return Type::kI444;
 }
 
+int I444BufferInterface::WidthSubsampling() const {
+  // The width of chroma planes in I444 is not subsampled.
+  return 0;
+}
+
+int I444BufferInterface::HeightSubsampling() const {
+  // The height of chroma planes in I444 is not subsampled.
+  return 0;
+}
+
 int I444BufferInterface::ChromaWidth() const {
   return width();
 }
@@ -155,6 +178,11 @@ rtc::scoped_refptr<VideoFrameBuffer> I444BufferInterface::CropAndScale(
 
 VideoFrameBuffer::Type I422BufferInterface::type() const {
   return Type::kI422;
+}
+
+int I422BufferInterface::HeightSubsampling() const {
+  // The height of chroma planes in I422 is not subsampled.
+  return 0;
 }
 
 int I422BufferInterface::ChromaWidth() const {
@@ -194,6 +222,11 @@ VideoFrameBuffer::Type I210BufferInterface::type() const {
   return Type::kI210;
 }
 
+int I210BufferInterface::HeightSubsampling() const {
+  // The height of chroma planes in I210 is subsampled.
+  return 0;
+}
+
 int I210BufferInterface::ChromaWidth() const {
   return (width() + 1) / 2;
 }
@@ -204,6 +237,16 @@ int I210BufferInterface::ChromaHeight() const {
 
 VideoFrameBuffer::Type I410BufferInterface::type() const {
   return Type::kI410;
+}
+
+int I410BufferInterface::WidthSubsampling() const {
+  // The width of chroma planes in I410 is not subsampled.
+  return 0;
+}
+
+int I410BufferInterface::HeightSubsampling() const {
+  // The height of chroma planes in I410 is not subsampled.
+  return 0;
 }
 
 int I410BufferInterface::ChromaWidth() const {
