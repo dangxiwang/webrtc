@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16e42509_04c3af85",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 20429
+      },
+      "writtenOn": "2024-04-10T21:25:58Z",
+      "side": 1,
+      "message": "Ilya, Sergey: I implemented your suggestion. But I am not quite happy with the result. Please see my comments below.",
+      "revId": "b33ded886e31672cb5f1cd780e04848b15d0257c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62df703d_7373ee23",
+        "filename": "api/video/video_frame_buffer.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 20429
+      },
+      "writtenOn": "2024-04-10T21:25:58Z",
+      "side": 1,
+      "message": "I am not happy with the definition of these two methods. In order to fix this bug, their definition must be tied to the `VideoFrameBuffer` subclass returned by `CropAndScale()`, rather than the current `VideoFrameBuffer` subclass (i.e., `this`).",
+      "revId": "b33ded886e31672cb5f1cd780e04848b15d0257c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bbeb70b_e0525b00",
+        "filename": "api/video/video_frame_buffer.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 20429
+      },
+      "writtenOn": "2024-04-10T21:25:58Z",
+      "side": 1,
+      "message": "Although the height of the chroma planes in I210 is not subsampled, we cannot override `HeightSubsampling()` to return 0 because this class does not override `CropAndScale()` and the default implementation of `CropAndScale()` converts to I420.",
+      "revId": "b33ded886e31672cb5f1cd780e04848b15d0257c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef1fa52b_1a3d12d7",
+        "filename": "api/video/video_frame_buffer.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 20429
+      },
+      "writtenOn": "2024-04-10T21:25:58Z",
+      "side": 1,
+      "message": "Although the width and height of the chroma planes in I410 are not subsampled, we cannot override `WidthSubsampling()` and `HeightSubsampling()` to return 0 because this class does not override `CropAndScale()` and the default implementation of `CropAndScale()` converts to I420.",
+      "revId": "b33ded886e31672cb5f1cd780e04848b15d0257c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
