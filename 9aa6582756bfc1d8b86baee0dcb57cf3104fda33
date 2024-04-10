@@ -184,6 +184,30 @@
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b5be030_1acc577e",
+        "filename": "video/video_stream_encoder.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1972,
+      "author": {
+        "id": 5825
+      },
+      "writtenOn": "2024-04-10T08:32:35Z",
+      "side": 1,
+      "message": "Thanks. Yes, we should avoid odd cropping from left/top.",
+      "parentUuid": "42b5746b_dc108a9e",
+      "range": {
+        "startLine": 1963,
+        "startChar": 6,
+        "endLine": 1972,
+        "endChar": 7
+      },
+      "revId": "9aa6582756bfc1d8b86baee0dcb57cf3104fda33",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "f0b63493_b5f8dc83",
