@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d78cabd_a7f93437",
+        "filename": "video/video_stream_encoder.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1960,
+      "author": {
+        "id": 20429
+      },
+      "writtenOn": "2024-04-11T21:15:02Z",
+      "side": 1,
+      "message": "Would you prefer the more clever but less clear form?\n\n```\n      offset_x \u0026\u003d ~1;\n      offset_y \u0026\u003d ~1;\n```",
+      "revId": "8f0a2fbf8ddc939baf5af781abb9ab92600c3042",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
