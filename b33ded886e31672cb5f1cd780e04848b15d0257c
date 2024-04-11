@@ -20,6 +20,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4778f113_201e6bf4",
+        "filename": "api/video/video_frame_buffer.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5117
+      },
+      "writtenOn": "2024-04-11T09:37:46Z",
+      "side": 1,
+      "message": "This is a bummer. It\u0027s in theory quite OK to output I420 when cropping is happening from I444 with an odd offset, if the conversion happened at the end, not at the beginning, like it happens now. \n\nOn one hand, it\u0027s safe. All the important formats have CropAndScale overriden.\nAnd in the end I420::CropAndScale will round offsets to nearest even number for you:\nhttps://source.chromium.org/chromium/chromium/src/+/main:third_party/webrtc/api/video/i420_buffer.cc;l\u003d199;drc\u003d3f44955ac74c25c15d3fece126fb4d29f9e82d9b\n\nBut that will result in a wrong UpdateRect, though... So the main issue isn\u0027t addressed by this change. \n\nSo we need a completely different approach. Sorry for backing up, but the change proved out to be far tricker than I anticipated.\n\nWe can compensate for any implicit roundings by just adding 1 to the UpdateRect sizes.\n\nOr maybe we are grossly overthinking things here. For the purpose of a small 1-4 pixel crop we can just always make the offset even! Even for I444 or RGB. It doesn\u0027t matter what side of the picture we are shaving a few pixels off.",
+      "range": {
+        "startLine": 21,
+        "startChar": 3,
+        "endLine": 21,
+        "endChar": 64
+      },
+      "revId": "b33ded886e31672cb5f1cd780e04848b15d0257c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94bdffa0_e281c8ff",
+        "filename": "api/video/video_frame_buffer.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 5117
+      },
+      "writtenOn": "2024-04-11T09:37:46Z",
+      "side": 1,
+      "message": "The default implementation should return \"No subsampling\" or sample size \u003d 1x1.\n\nBut that\u0027s won\u0027t fix the issue with implicit offset rounding and UpdateRect being out of sync, you are right. So this makes this all approach very brittle and hacky.",
+      "range": {
+        "startLine": 26,
+        "startChar": 9,
+        "endLine": 26,
+        "endChar": 10
+      },
+      "revId": "b33ded886e31672cb5f1cd780e04848b15d0257c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e1f9077_13d844ff",
+        "filename": "api/video/video_frame_buffer.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 5117
+      },
+      "writtenOn": "2024-04-11T09:37:46Z",
+      "side": 1,
+      "message": "If there\u0027s no subsampling, it should return 1.",
+      "range": {
+        "startLine": 150,
+        "startChar": 9,
+        "endLine": 150,
+        "endChar": 11
+      },
+      "revId": "b33ded886e31672cb5f1cd780e04848b15d0257c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "62df703d_7373ee23",
         "filename": "api/video/video_frame_buffer.h",
         "patchSetId": 7
@@ -65,6 +134,29 @@
       "writtenOn": "2024-04-10T21:25:58Z",
       "side": 1,
       "message": "Although the width and height of the chroma planes in I410 are not subsampled, we cannot override `WidthSubsampling()` and `HeightSubsampling()` to return 0 because this class does not override `CropAndScale()` and the default implementation of `CropAndScale()` converts to I420.",
+      "revId": "b33ded886e31672cb5f1cd780e04848b15d0257c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9434d4e8_b7338d3f",
+        "filename": "video/video_stream_encoder.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 1963,
+      "author": {
+        "id": 5117
+      },
+      "writtenOn": "2024-04-11T09:37:46Z",
+      "side": 1,
+      "message": "This is confusing. Returning alignment 1 or 2 is better. Here you use essentially bool values in bit arithmetic.\n\nLet\u0027s copy the chromium way: https://source.chromium.org/chromium/chromium/src/+/main:media/base/video_frame.cc;l\u003d119;drc\u003d3f44955ac74c25c15d3fece126fb4d29f9e82d9b\n\nName the functions SampleWidth and SampleHight probably.\n\nThen the code is more clear:\n```\noffset_x -\u003d offest_x % video_frame.video_frame_buffer()-\u003eSampleWidth();\n```",
+      "range": {
+        "startLine": 1963,
+        "startChar": 17,
+        "endLine": 1963,
+        "endChar": 70
+      },
       "revId": "b33ded886e31672cb5f1cd780e04848b15d0257c",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
