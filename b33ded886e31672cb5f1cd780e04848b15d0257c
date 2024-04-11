@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ed94b76d_5a062645",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5117
+      },
+      "writtenOn": "2024-04-11T14:17:10Z",
+      "side": 1,
+      "message": "\u003e We need to implement propper CropAndScale() for all 10+ bits formats. Or there is something else?\n\nYes. It\u0027s not complex, but will require A LOT of grunt work. We currently have 3 buffer implementation classes, which actually store data. We will need to add ~7 more to store the scaled data. And wire up ~7 more libyuv functions in webrtc.\n\n\u003e Current native buffers are excluded from cropping:\n\nThat\u0027s only for external encoders. The code you\u0027ve linked is: \n`VideoFrameBuffer::Type::kNative || !info.supports_native_handle`\n\nNote the second part. For internal software encoders all the buffers will be cropped. \nIn practice, at this point in code every single buffer will be kNative in chrome.\n\nHow these native buffers actually do CropAndScale is a very big question. In chrome it soft-applies crop and scale and postpones it until the actual data is being accessed. What happens in other use cases of webrtc - we can\u0027t even know.\n\nI\u0027m getting more and more convinced, that we should just always round offset to 2 and not try to be very clever here.",
+      "parentUuid": "2046975f_e2ddf01f",
+      "revId": "b33ded886e31672cb5f1cd780e04848b15d0257c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4778f113_201e6bf4",
         "filename": "api/video/video_frame_buffer.cc",
         "patchSetId": 7
