@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c8be8609_fd799ea9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5117
+      },
+      "writtenOn": "2024-04-11T12:59:08Z",
+      "side": 1,
+      "message": "That will not work, if the incoming buffer is kI410. The buffer has 1x1 samples. But the CropAndScale() would first convert to I420 (because there\u0027s no override for I410BufferInterface), which has 2x2 samples, so it will round the offset implicitly, which is the issue this CL is addressing. \n\nThen, it will also not work for all the native buffers and there the amount of possibilities is even bigger.",
+      "parentUuid": "6274c557_4efd6a3b",
+      "revId": "b33ded886e31672cb5f1cd780e04848b15d0257c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4778f113_201e6bf4",
         "filename": "api/video/video_frame_buffer.cc",
         "patchSetId": 7
