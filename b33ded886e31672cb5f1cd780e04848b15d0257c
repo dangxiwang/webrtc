@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6274c557_4efd6a3b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5825
+      },
+      "writtenOn": "2024-04-11T11:59:40Z",
+      "side": 1,
+      "message": "I think that knowing chrome subsampling alone is not enough. To crop frames of formats https://www.kernel.org/doc/html/v4.18/media/uapi/v4l/pixfmt-y41p.html , which we do not support yet but it would be better to account for from the very beginning, and avoid displacement or/and re-packing we need something like this https://webrtc-review.googlesource.com/c/src/+/346661",
+      "revId": "b33ded886e31672cb5f1cd780e04848b15d0257c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4778f113_201e6bf4",
         "filename": "api/video/video_frame_buffer.cc",
         "patchSetId": 7
