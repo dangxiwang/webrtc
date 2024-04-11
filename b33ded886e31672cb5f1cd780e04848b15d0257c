@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2046975f_e2ddf01f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5825
+      },
+      "writtenOn": "2024-04-11T14:02:22Z",
+      "side": 1,
+      "message": "\u003e\u003e he buffer has 1x1 samples. But the CropAndScale() would first convert to I420 (because there\u0027s no override for I410BufferInterface),\n\nWe need to implement propper CropAndScale() for all 10+ bits formats. Or there is something else?\n\n\n\u003e\u003e Then, it will also not work for all the native buffers\n\nCurrent native buffers are excluded from cropping: https://source.chromium.org/chromium/chromium/src/+/main:third_party/webrtc/video/video_stream_encoder.cc;l\u003d1945;drc\u003d19f1297f7fca14311e614f204a85582c3bd12b61\n\nhttps://webrtc-review.googlesource.com/c/src/+/154424\n\nNot sure what this results to on practice.",
+      "parentUuid": "c8be8609_fd799ea9",
+      "revId": "b33ded886e31672cb5f1cd780e04848b15d0257c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4778f113_201e6bf4",
         "filename": "api/video/video_frame_buffer.cc",
         "patchSetId": 7
