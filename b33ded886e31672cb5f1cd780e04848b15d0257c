@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cb425d17_7e79cacd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 20429
+      },
+      "writtenOn": "2024-04-11T14:24:36Z",
+      "side": 1,
+      "message": "Yes, always rounding offset down to an even number is a good idea. In fact, since the offset is either 0 or 1 (because crop_width_ and crop_height are \u003c 4), this means always using 0 offset.",
+      "parentUuid": "ed94b76d_5a062645",
+      "revId": "b33ded886e31672cb5f1cd780e04848b15d0257c",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4778f113_201e6bf4",
         "filename": "api/video/video_frame_buffer.cc",
         "patchSetId": 7
