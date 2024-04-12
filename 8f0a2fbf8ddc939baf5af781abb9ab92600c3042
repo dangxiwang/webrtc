@@ -1,6 +1,46 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57417b64_ded64718",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5117
+      },
+      "writtenOn": "2024-04-12T08:07:28Z",
+      "side": 1,
+      "message": "Wan-Teh, if you are not able to land this with changes now, we will take care of it.",
+      "revId": "8f0a2fbf8ddc939baf5af781abb9ab92600c3042",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61543a08_73d36681",
+        "filename": "video/video_stream_encoder.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1955,
+      "author": {
+        "id": 5117
+      },
+      "writtenOn": "2024-04-12T08:07:28Z",
+      "side": 1,
+      "message": "```\nint offset_x \u003d (crop_width_ + 1) / 2;\nint offset_y \u003d (crop_height_ + 1) / 2\n```",
+      "range": {
+        "startLine": 1955,
+        "startChar": 20,
+        "endLine": 1955,
+        "endChar": 37
+      },
+      "revId": "8f0a2fbf8ddc939baf5af781abb9ab92600c3042",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d78cabd_a7f93437",
@@ -31,6 +71,48 @@
       "writtenOn": "2024-04-12T07:07:09Z",
       "side": 1,
       "message": "Have not we came to conclusion that this will always be zero given that (crop_width_ \u003c 4 \u0026\u0026 crop_height_ \u003c 4)? Or we think that these thresholds may increase in future? I guess that\u0027s unlikely. @ilnik@webrtc.org",
+      "range": {
+        "startLine": 1959,
+        "startChar": 6,
+        "endLine": 1960,
+        "endChar": 31
+      },
+      "revId": "8f0a2fbf8ddc939baf5af781abb9ab92600c3042",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b606a3b6_f7a17d09",
+        "filename": "video/video_stream_encoder.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1960,
+      "author": {
+        "id": 5117
+      },
+      "writtenOn": "2024-04-12T08:07:28Z",
+      "side": 1,
+      "message": "Current one is good with me.",
+      "parentUuid": "2d78cabd_a7f93437",
+      "revId": "8f0a2fbf8ddc939baf5af781abb9ab92600c3042",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57698d6e_1c73b198",
+        "filename": "video/video_stream_encoder.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1960,
+      "author": {
+        "id": 5117
+      },
+      "writtenOn": "2024-04-12T08:07:28Z",
+      "side": 1,
+      "message": "Currently, it will. But that isn\u0027t very good. Better to round the offset up when dividing crop size by 2 above. So what the real cropped sizes on left and right wold be 0+1, 2+0, or 2+1 instead of 0+1, 0+2, 0+3. That makes the cropping more centered and symmetrical.",
+      "parentUuid": "fda14f6c_8c4e9387",
       "range": {
         "startLine": 1959,
         "startChar": 6,
