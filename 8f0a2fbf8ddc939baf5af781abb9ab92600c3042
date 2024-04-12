@@ -121,6 +121,30 @@
       },
       "revId": "8f0a2fbf8ddc939baf5af781abb9ab92600c3042",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce8376c7_2f8d6c77",
+        "filename": "video/video_stream_encoder.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1960,
+      "author": {
+        "id": 5825
+      },
+      "writtenOn": "2024-04-12T08:33:38Z",
+      "side": 1,
+      "message": "+1 for making it more symmetrical",
+      "parentUuid": "57698d6e_1c73b198",
+      "range": {
+        "startLine": 1959,
+        "startChar": 6,
+        "endLine": 1960,
+        "endChar": 31
+      },
+      "revId": "8f0a2fbf8ddc939baf5af781abb9ab92600c3042",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
