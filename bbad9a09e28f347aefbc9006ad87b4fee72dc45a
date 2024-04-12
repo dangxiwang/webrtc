@@ -16,6 +16,23 @@
       "message": "I made the suggested changes. Thanks for all the discussions and guidance!",
       "revId": "bbad9a09e28f347aefbc9006ad87b4fee72dc45a",
       "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbd77a55_9a8b99a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5117
+      },
+      "writtenOn": "2024-04-12T11:55:58Z",
+      "side": 1,
+      "message": "Thanks for bearing with us.",
+      "revId": "bbad9a09e28f347aefbc9006ad87b4fee72dc45a",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
     }
   ]
 }
