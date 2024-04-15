@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74adaa54_8b0e553e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5634
+      },
+      "writtenOn": "2024-04-15T13:48:33Z",
+      "side": 1,
+      "message": "I don\u0027t find it easy to read, but it looks like a clear improvement.",
+      "revId": "279ee8475ec2d22e0145b8b31c6f3ba45491c211",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
