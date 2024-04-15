@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c558977a_32e2bc7d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2024-04-15T14:16:51Z",
+      "side": 1,
+      "message": "It seems both field trials in DefaultTemporalLayers are not used.\n(TL2 uses short variant by default; TL3 uses long variant by default).\n\nIf it is ok to delete both of them, then there will be no need to propagate environment/field trials into DefaultTemporalLayers class.\n\nstarting with the one that seems easier to remove: implemented as killswitch (!IsDisabled), there are no tests that verify behavior when it is disabled.",
+      "revId": "07e0092c37914b933a1b4566c57018609cc53bbe",
+      "serverId": "58829da1-049c-39fb-b951-ebdcd0984767"
+    }
+  ]
+}
